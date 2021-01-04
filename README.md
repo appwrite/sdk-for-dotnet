@@ -9,7 +9,6 @@ Appwrite is an open-source backend as a service server that abstract and simplif
                         Use the .NET SDK to integrate your app with the Appwrite server to easily start interacting with all of Appwrite backend APIs and tools.
                         For full API documentation and tutorials go to [https://appwrite.io/docs](https://appwrite.io/docs)
 
-![Appwrite](https://appwrite.io/images/github.png)
 
 ## Installation
 
