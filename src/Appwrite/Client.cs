@@ -37,7 +37,7 @@ namespace Appwrite
             this.headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "x-sdk-version", "appwrite:csharp:0.0.1" }
+                { "x-sdk-version", "appwrite:dotnet:0.0.1" }
             };
             this.config = new Dictionary<string, string>();
             this.http = http;

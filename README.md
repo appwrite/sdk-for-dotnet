@@ -9,30 +9,27 @@ Appwrite is an open-source backend as a service server that abstract and simplif
                         Use the .NET SDK to integrate your app with the Appwrite server to easily start interacting with all of Appwrite backend APIs and tools.
                         For full API documentation and tutorials go to [https://appwrite.io/docs](https://appwrite.io/docs)
 
-
-
 ![Appwrite](https://appwrite.io/images/github.png)
 
 ## Installation
 
-### Maven
-Add this to your project's `pom.xml` file:
+### .NET
+Add this reference to your projects's `.csproj` file:
 
 ```xml
-<dependencies>
-    <dependency>
-        <groupId>com.squareup.okhttp3</groupId>
-        <artifactId>appwrite</artifactId>
-        <version>0.0.1</version>
-    </dependency>
-</dependencies>
+<PackageReference Include="Appwrite" Version="0.0.1" />
 ```
 
 You can install packages from the command line:
 
-```bash
-mvn install appwrite
+```powershell
+# Package Manager
+Install-Package Appwrite -Version 0.0.1
+
+# or .NET CLI
+dotnet add package Appwrite --version 0.0.1
 ```
+
 
 ## Contribution
 
