@@ -19,7 +19,7 @@ namespace Appwrite
      * your results. On admin mode, this endpoint will return a list of all of the
      * project files. [Learn more about different API modes](/docs/admin).
         */
-        public async Task<HttpResponseMessage> ListFiles(string search, int limit, int offset, OrderType orderType) 
+        public async Task<HttpResponseMessage> ListFiles(string search = "", int? limit = 25, int? offset = 0, OrderType orderType = OrderType.ASC) 
         {
             string path = "/storage/files";
 
@@ -159,7 +159,7 @@ namespace Appwrite
      * 'Content-Disposition: attachment' header that tells the browser to start
      * downloading the file to user downloads directory.
         */
-        public async Task<string> GetFileDownload(string fileId) 
+        public string GetFileDownload(string fileId) 
         {
             string path = "/storage/files/{fileId}/download".Replace("{fileId}", fileId);
 
@@ -180,7 +180,7 @@ namespace Appwrite
      * and spreadsheets, will return the file icon image. You can also pass query
      * string arguments for cutting and resizing your preview image.
         */
-        public async Task<string> GetFilePreview(string fileId, int width, int height, int quality, string background, string output) 
+        public string GetFilePreview(string fileId, int? width = 0, int? height = 0, int? quality = 100, string background = "", string output = "") 
         {
             string path = "/storage/files/{fileId}/preview".Replace("{fileId}", fileId);
 
@@ -209,7 +209,7 @@ namespace Appwrite
          * Get file content by its unique ID. This endpoint is similar to the download
      * method but returns with no  'Content-Disposition: attachment' header.
         */
-        public async Task<string> GetFileView(string fileId, string xas) 
+        public string GetFileView(string fileId, string xas = "") 
         {
             string path = "/storage/files/{fileId}/view".Replace("{fileId}", fileId);
 
