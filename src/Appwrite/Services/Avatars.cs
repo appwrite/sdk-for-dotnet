@@ -20,7 +20,7 @@ namespace Appwrite
      * /account/sessions endpoint. Use width, height and quality arguments to
      * change the output settings.
         */
-        public async Task<string> GetBrowser(string code, int width, int height, int quality) 
+        public string GetBrowser(string code, int? width = 100, int? height = 100, int? quality = 100) 
         {
             string path = "/avatars/browsers/{code}".Replace("{code}", code);
 
@@ -47,7 +47,7 @@ namespace Appwrite
      * card provider you need. Use width, height and quality arguments to change
      * the output settings.
         */
-        public async Task<string> GetCreditCard(string code, int width, int height, int quality) 
+        public string GetCreditCard(string code, int? width = 100, int? height = 100, int? quality = 100) 
         {
             string path = "/avatars/credit-cards/{code}".Replace("{code}", code);
 
@@ -72,7 +72,7 @@ namespace Appwrite
          * Use this endpoint to fetch the favorite icon (AKA favicon) of a  any remote
      * website URL.
         */
-        public async Task<string> GetFavicon(string url) 
+        public string GetFavicon(string url) 
         {
             string path = "/avatars/favicon";
 
@@ -94,7 +94,7 @@ namespace Appwrite
      * users. The code argument receives the 2 letter country code. Use width,
      * height and quality arguments to change the output settings.
         */
-        public async Task<string> GetFlag(string code, int width, int height, int quality) 
+        public string GetFlag(string code, int? width = 100, int? height = 100, int? quality = 100) 
         {
             string path = "/avatars/flags/{code}".Replace("{code}", code);
 
@@ -121,7 +121,7 @@ namespace Appwrite
      * remote images in your app or in case you want to make sure a 3rd party
      * image is properly served using a TLS protocol.
         */
-        public async Task<string> GetImage(string url, int width, int height) 
+        public string GetImage(string url, int? width = 400, int? height = 400) 
         {
             string path = "/avatars/image";
 
@@ -154,7 +154,7 @@ namespace Appwrite
      * the user's initials when reloading the same theme will always return for
      * the same initials.
         */
-        public async Task<string> GetInitials(string name, int width, int height, string color, string background) 
+        public string GetInitials(string name = "", int? width = 500, int? height = 500, string color = "", string background = "") 
         {
             string path = "/avatars/initials";
 
@@ -183,7 +183,7 @@ namespace Appwrite
          * Converts a given plain text to a QR code image. You can use the query
      * parameters to change the size and style of the resulting image.
         */
-        public async Task<string> GetQR(string text, int size, int margin, bool download) 
+        public string GetQR(string text, int? size = 400, int? margin = 1, bool? download = false) 
         {
             string path = "/avatars/qr";
 

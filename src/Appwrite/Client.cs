@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -148,6 +147,9 @@ namespace Appwrite
                 }
                 else
                 {
+                    if (http.DefaultRequestHeaders.Contains(header.Key)) {
+                        http.DefaultRequestHeaders.Remove(header.Key);
+                    }
                     http.DefaultRequestHeaders.Add(header.Key, header.Value);
                 }
             }
@@ -160,6 +162,9 @@ namespace Appwrite
                 }
                 else
                 {
+                    if (request.Headers.Contains(header.Key)) {
+                        request.Headers.Remove(header.Key);
+                    }
                     request.Headers.Add(header.Key, header.Value);
                 }
             }

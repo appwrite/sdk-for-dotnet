@@ -20,7 +20,7 @@ namespace Appwrite
      * of the project collections. [Learn more about different API
      * modes](/docs/admin).
         */
-        public async Task<HttpResponseMessage> ListCollections(string search, int limit, int offset, OrderType orderType) 
+        public async Task<HttpResponseMessage> ListCollections(string search = "", int? limit = 25, int? offset = 0, OrderType orderType = OrderType.ASC) 
         {
             string path = "/database/collections";
 
@@ -106,7 +106,7 @@ namespace Appwrite
             /*
          * Update collection by its unique ID.
         */
-        public async Task<HttpResponseMessage> UpdateCollection(string collectionId, string name, List<object> read, List<object> write, List<object> rules) 
+        public async Task<HttpResponseMessage> UpdateCollection(string collectionId, string name, List<object> read, List<object> write, List<object> rules = null) 
         {
             string path = "/database/collections/{collectionId}".Replace("{collectionId}", collectionId);
 
@@ -164,7 +164,7 @@ namespace Appwrite
      * of the project documents. [Learn more about different API
      * modes](/docs/admin).
         */
-        public async Task<HttpResponseMessage> ListDocuments(string collectionId, List<object> filters, int offset, int limit, string orderField, OrderType orderType, string orderCast, string search) 
+        public async Task<HttpResponseMessage> ListDocuments(string collectionId, List<object> filters = null, int? offset = 0, int? limit = 50, string orderField = "$id", OrderType orderType = OrderType.ASC, string orderCast = "string", string search = "") 
         {
             string path = "/database/collections/{collectionId}/documents".Replace("{collectionId}", collectionId);
 
@@ -204,7 +204,7 @@ namespace Appwrite
      * integration](/docs/server/database?sdk=nodejs#createCollection) API or
      * directly from your database console.
         */
-        public async Task<HttpResponseMessage> CreateDocument(string collectionId, object data, List<object> read, List<object> write, string parentDocument, string parentProperty, string parentPropertyType) 
+        public async Task<HttpResponseMessage> CreateDocument(string collectionId, object data, List<object> read, List<object> write, string parentDocument = "", string parentProperty = "", string parentPropertyType = "assign") 
         {
             string path = "/database/collections/{collectionId}/documents".Replace("{collectionId}", collectionId);
 

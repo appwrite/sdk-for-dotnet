@@ -18,7 +18,7 @@ namespace Appwrite
          * Get a list of all the project users. You can use the query params to filter
      * your results.
         */
-        public async Task<HttpResponseMessage> List(string search, int limit, int offset, OrderType orderType) 
+        public async Task<HttpResponseMessage> List(string search = "", int? limit = 25, int? offset = 0, OrderType orderType = OrderType.ASC) 
         {
             string path = "/users";
 
@@ -49,7 +49,7 @@ namespace Appwrite
             /*
          * Create a new user.
         */
-        public async Task<HttpResponseMessage> Create(string email, string password, string name) 
+        public async Task<HttpResponseMessage> Create(string email, string password, string name = "") 
         {
             string path = "/users";
 

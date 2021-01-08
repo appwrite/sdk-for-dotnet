@@ -19,7 +19,7 @@ namespace Appwrite
      * filter your results. On admin mode, this endpoint will return a list of all
      * of the project teams. [Learn more about different API modes](/docs/admin).
         */
-        public async Task<HttpResponseMessage> List(string search, int limit, int offset, OrderType orderType) 
+        public async Task<HttpResponseMessage> List(string search = "", int? limit = 25, int? offset = 0, OrderType orderType = OrderType.ASC) 
         {
             string path = "/teams";
 
@@ -53,7 +53,7 @@ namespace Appwrite
      * who will be able add new owners and update or delete the team from your
      * project.
         */
-        public async Task<HttpResponseMessage> Create(string name, List<object> roles) 
+        public async Task<HttpResponseMessage> Create(string name, List<object> roles = null) 
         {
             string path = "/teams";
 
@@ -155,7 +155,7 @@ namespace Appwrite
          * Get team members by the team unique ID. All team members have read access
      * for this list of resources.
         */
-        public async Task<HttpResponseMessage> GetMemberships(string teamId, string search, int limit, int offset, OrderType orderType) 
+        public async Task<HttpResponseMessage> GetMemberships(string teamId, string search = "", int? limit = 25, int? offset = 0, OrderType orderType = OrderType.ASC) 
         {
             string path = "/teams/{teamId}/memberships".Replace("{teamId}", teamId);
 
@@ -198,7 +198,7 @@ namespace Appwrite
      * the only valid redirect URL's are the once from domains you have set when
      * added your platforms in the console interface.
         */
-        public async Task<HttpResponseMessage> CreateMembership(string teamId, string email, List<object> roles, string url, string name) 
+        public async Task<HttpResponseMessage> CreateMembership(string teamId, string email, List<object> roles, string url, string name = "") 
         {
             string path = "/teams/{teamId}/memberships".Replace("{teamId}", teamId);
 
