@@ -42,10 +42,9 @@ namespace Appwrite
     
         /// Get Credit Card Icon
             /*
-         * Need to display your users with your billing method or their payment
-     * methods? The credit card endpoint will return you the icon of the credit
-     * card provider you need. Use width, height and quality arguments to change
-     * the output settings.
+         * The credit card endpoint will return you the icon of the credit card
+     * provider you need. Use width, height and quality arguments to change the
+     * output settings.
         */
         public string GetCreditCard(string code, int? width = 100, int? height = 100, int? quality = 100) 
         {
@@ -69,8 +68,9 @@ namespace Appwrite
     
         /// Get Favicon
             /*
-         * Use this endpoint to fetch the favorite icon (AKA favicon) of a  any remote
+         * Use this endpoint to fetch the favorite icon (AKA favicon) of any remote
      * website URL.
+     * 
         */
         public string GetFavicon(string url) 
         {
