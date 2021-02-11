@@ -1,9 +1,9 @@
 # Appwrite .NET SDK
 
 ![License](https://img.shields.io/github/license/appwrite/sdk-for-dotnet.svg?v=1)
-![Version](https://img.shields.io/badge/api%20version-0.6.2-blue.svg?v=1)
+![Version](https://img.shields.io/badge/api%20version-0.7.0-blue.svg?v=1)
 
-**This SDK is compatible with Appwrite server version 0.6.2. For older versions, please check [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases).**
+**This SDK is compatible with Appwrite server version 0.7.0. For older versions, please check [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases).**
 
 Appwrite is an open-source backend as a service server that abstract and simplify complex and repetitive development tasks behind a very simple to use REST API. Appwrite aims to help you develop your apps faster and in a more secure way.
                         Use the .NET SDK to integrate your app with the Appwrite server to easily start interacting with all of Appwrite backend APIs and tools.
@@ -13,20 +13,20 @@ Appwrite is an open-source backend as a service server that abstract and simplif
 ## Installation
 
 ### .NET
-Add this reference to your projects's `.csproj` file:
+Add this reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="0.0.3" />
+<PackageReference Include="Appwrite" Version="0.1.0" />
 ```
 
 You can install packages from the command line:
 
 ```powershell
 # Package Manager
-Install-Package Appwrite -Version 0.0.3
+Install-Package Appwrite -Version 0.1.0
 
 # or .NET CLI
-dotnet add package Appwrite --version 0.0.3
+dotnet add package Appwrite --version 0.1.0
 ```
 
 

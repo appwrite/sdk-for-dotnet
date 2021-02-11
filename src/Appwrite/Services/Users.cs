@@ -15,8 +15,8 @@ namespace Appwrite
     
         /// List Users
             /*
-         * Get a list of all the project users. You can use the query params to filter
-     * your results.
+         * Get a list of all the project's users. You can use the query params to
+     * filter your results.
         */
         public async Task<HttpResponseMessage> List(string search = "", int? limit = 25, int? offset = 0, OrderType orderType = OrderType.ASC) 
         {
@@ -76,7 +76,7 @@ namespace Appwrite
     
         /// Get User
             /*
-         * Get user by its unique ID.
+         * Get a user by its unique ID.
         */
         public async Task<HttpResponseMessage> Get(string userId) 
         {
@@ -97,9 +97,32 @@ namespace Appwrite
             return await _client.Call("GET", path, headers, parameters);
         }
     
+        /// Delete User
+            /*
+         * Delete a user by its unique ID.
+        */
+        public async Task<HttpResponseMessage> DeleteUser(string userId) 
+        {
+            string path = "/users/{userId}".Replace("{userId}", userId);
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+            };
+
+    //             
+    
+    
+            Dictionary<string, string> headers = new Dictionary<string, string>()
+            {
+                {"content-type", "application/json" }
+            };
+
+            return await _client.Call("DELETE", path, headers, parameters);
+        }
+    
         /// Get User Logs
             /*
-         * Get user activity logs list by its unique ID.
+         * Get a user activity logs list by its unique ID.
         */
         public async Task<HttpResponseMessage> GetLogs(string userId) 
         {
@@ -122,7 +145,7 @@ namespace Appwrite
     
         /// Get User Preferences
             /*
-         * Get user preferences by its unique ID.
+         * Get the user preferences by its unique ID.
         */
         public async Task<HttpResponseMessage> GetPrefs(string userId) 
         {
@@ -145,8 +168,8 @@ namespace Appwrite
     
         /// Update User Preferences
             /*
-         * Update user preferences by its unique ID. You can pass only the specific
-     * settings you wish to update.
+         * Update the user preferences by its unique ID. You can pass only the
+     * specific settings you wish to update.
         */
         public async Task<HttpResponseMessage> UpdatePrefs(string userId, object prefs) 
         {
@@ -171,7 +194,7 @@ namespace Appwrite
     
         /// Get User Sessions
             /*
-         * Get user sessions list by its unique ID.
+         * Get the user sessions list by its unique ID.
         */
         public async Task<HttpResponseMessage> GetSessions(string userId) 
         {
@@ -194,7 +217,7 @@ namespace Appwrite
     
         /// Delete User Sessions
             /*
-         * Delete all user sessions by its unique ID.
+         * Delete all user's sessions by using the user's unique ID.
         */
         public async Task<HttpResponseMessage> DeleteSessions(string userId) 
         {
@@ -217,7 +240,7 @@ namespace Appwrite
     
         /// Delete User Session
             /*
-         * Delete user sessions by its unique ID.
+         * Delete a user sessions by its unique ID.
         */
         public async Task<HttpResponseMessage> DeleteSession(string userId, string sessionId) 
         {
@@ -240,7 +263,7 @@ namespace Appwrite
     
         /// Update User Status
             /*
-         * Update user status by its unique ID.
+         * Update the user status by its unique ID.
         */
         public async Task<HttpResponseMessage> UpdateStatus(string userId, string status) 
         {
