@@ -7,8 +7,8 @@ dotnet: 5.0
 # before_install:
 # - sudo apt-get -y install libpam0g-dev
 
-install:
-  - dotnet restore
+#install:
+#  - dotnet restore
 
 script:
   - dotnet build -c Release
