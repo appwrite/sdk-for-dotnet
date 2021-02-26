@@ -2,7 +2,7 @@ language: csharp
 
 mono: none
 
-dotnet: 3.5
+dotnet: 5.0
 
 # before_install:
 # - sudo apt-get -y install libpam0g-dev
