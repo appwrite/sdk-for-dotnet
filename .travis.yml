@@ -1,5 +1,7 @@
 os: windows
 
+language: shell
+
 install:
 - dotnet restore
 
