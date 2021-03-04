@@ -1,13 +1,21 @@
-os: windows
+language: csharp
 
-language: shell
+mono: none
+
+dotnet: 5.0
+
+before_install:
+- sudo apt-get -y install libpam0g-dev
 
 install:
 - dotnet restore
 
 script:
-- dotnet build -c Release ./src
-- ls ./src/Appwrite/bin/Release 
+- dotnet build -c Release
+
+before_deploy:
+- dotnet pack -c Release
+- ls ./
 
 #deploy:
 #  skip_cleanup: true
