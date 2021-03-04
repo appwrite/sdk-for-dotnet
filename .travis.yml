@@ -8,14 +8,14 @@ before_install:
 - sudo apt-get -y install libpam0g-dev
 
 install:
-- dotnet restore
+- dotnet restore ./src
 
 script:
-- dotnet build -c Release
+- dotnet build -c Release ./src
 
 before_deploy:
-- dotnet pack -c Release
-- ls ./
+- dotnet pack -c Release ./src
+- ls ./src/Appwrite/bin/Release/
 
 #deploy:
 #  skip_cleanup: true
