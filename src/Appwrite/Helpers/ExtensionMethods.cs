@@ -8,7 +8,6 @@ namespace Appwrite
 {
     public static class ExtensionMethods
     {
-
         public static string ToJson(this Dictionary<string, object> dict)
         {
             var settings = new JsonSerializerSettings
@@ -43,6 +42,5 @@ namespace Appwrite
             }
             return string.Join("&", query);
         }
-
     }
 }

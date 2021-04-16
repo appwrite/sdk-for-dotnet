@@ -8,20 +8,19 @@ namespace Appwrite
 {
     public class Locale : Service
     {
-
         public Locale(Client client) : base(client) { }
 
-
-    
+        /// <summary>
         /// Get User Locale
-            /*
-         * Get the current user location based on IP. Returns an object with user
-     * country code, country name, continent name, continent code, ip address and
-     * suggested currency. You can use the locale header to get the data in a
-     * supported language.
-     * 
-     * ([IP Geolocation by DB-IP](https://db-ip.com))
-        */
+        /// <para>
+        /// Get the current user location based on IP. Returns an object with user
+        /// country code, country name, continent name, continent code, ip address and
+        /// suggested currency. You can use the locale header to get the data in a
+        /// supported language.
+        /// 
+        /// ([IP Geolocation by DB-IP](https://db-ip.com))
+        /// </para>
+        /// </summary>
         public async Task<HttpResponseMessage> Get() 
         {
             string path = "/locale";
@@ -30,22 +29,21 @@ namespace Appwrite
             {
             };
 
-    //             
-    
-    
             Dictionary<string, string> headers = new Dictionary<string, string>()
             {
-                {"content-type", "application/json" }
+                { "content-type", "application/json" }
             };
 
             return await _client.Call("GET", path, headers, parameters);
         }
-    
+
+        /// <summary>
         /// List Continents
-            /*
-         * List of all continents. You can use the locale header to get the data in a
-     * supported language.
-        */
+        /// <para>
+        /// List of all continents. You can use the locale header to get the data in a
+        /// supported language.
+        /// </para>
+        /// </summary>
         public async Task<HttpResponseMessage> GetContinents() 
         {
             string path = "/locale/continents";
@@ -54,22 +52,21 @@ namespace Appwrite
             {
             };
 
-    //             
-    
-    
             Dictionary<string, string> headers = new Dictionary<string, string>()
             {
-                {"content-type", "application/json" }
+                { "content-type", "application/json" }
             };
 
             return await _client.Call("GET", path, headers, parameters);
         }
-    
+
+        /// <summary>
         /// List Countries
-            /*
-         * List of all countries. You can use the locale header to get the data in a
-     * supported language.
-        */
+        /// <para>
+        /// List of all countries. You can use the locale header to get the data in a
+        /// supported language.
+        /// </para>
+        /// </summary>
         public async Task<HttpResponseMessage> GetCountries() 
         {
             string path = "/locale/countries";
@@ -78,22 +75,21 @@ namespace Appwrite
             {
             };
 
-    //             
-    
-    
             Dictionary<string, string> headers = new Dictionary<string, string>()
             {
-                {"content-type", "application/json" }
+                { "content-type", "application/json" }
             };
 
             return await _client.Call("GET", path, headers, parameters);
         }
-    
+
+        /// <summary>
         /// List EU Countries
-            /*
-         * List of all countries that are currently members of the EU. You can use the
-     * locale header to get the data in a supported language.
-        */
+        /// <para>
+        /// List of all countries that are currently members of the EU. You can use the
+        /// locale header to get the data in a supported language.
+        /// </para>
+        /// </summary>
         public async Task<HttpResponseMessage> GetCountriesEU() 
         {
             string path = "/locale/countries/eu";
@@ -102,22 +98,21 @@ namespace Appwrite
             {
             };
 
-    //             
-    
-    
             Dictionary<string, string> headers = new Dictionary<string, string>()
             {
-                {"content-type", "application/json" }
+                { "content-type", "application/json" }
             };
 
             return await _client.Call("GET", path, headers, parameters);
         }
-    
+
+        /// <summary>
         /// List Countries Phone Codes
-            /*
-         * List of all countries phone codes. You can use the locale header to get the
-     * data in a supported language.
-        */
+        /// <para>
+        /// List of all countries phone codes. You can use the locale header to get the
+        /// data in a supported language.
+        /// </para>
+        /// </summary>
         public async Task<HttpResponseMessage> GetCountriesPhones() 
         {
             string path = "/locale/countries/phones";
@@ -126,23 +121,22 @@ namespace Appwrite
             {
             };
 
-    //             
-    
-    
             Dictionary<string, string> headers = new Dictionary<string, string>()
             {
-                {"content-type", "application/json" }
+                { "content-type", "application/json" }
             };
 
             return await _client.Call("GET", path, headers, parameters);
         }
-    
+
+        /// <summary>
         /// List Currencies
-            /*
-         * List of all currencies, including currency symbol, name, plural, and
-     * decimal digits for all major and minor currencies. You can use the locale
-     * header to get the data in a supported language.
-        */
+        /// <para>
+        /// List of all currencies, including currency symbol, name, plural, and
+        /// decimal digits for all major and minor currencies. You can use the locale
+        /// header to get the data in a supported language.
+        /// </para>
+        /// </summary>
         public async Task<HttpResponseMessage> GetCurrencies() 
         {
             string path = "/locale/currencies";
@@ -151,22 +145,21 @@ namespace Appwrite
             {
             };
 
-    //             
-    
-    
             Dictionary<string, string> headers = new Dictionary<string, string>()
             {
-                {"content-type", "application/json" }
+                { "content-type", "application/json" }
             };
 
             return await _client.Call("GET", path, headers, parameters);
         }
-    
+
+        /// <summary>
         /// List Languages
-            /*
-         * List of all languages classified by ISO 639-1 including 2-letter code, name
-     * in English, and name in the respective language.
-        */
+        /// <para>
+        /// List of all languages classified by ISO 639-1 including 2-letter code, name
+        /// in English, and name in the respective language.
+        /// </para>
+        /// </summary>
         public async Task<HttpResponseMessage> GetLanguages() 
         {
             string path = "/locale/languages";
@@ -175,15 +168,12 @@ namespace Appwrite
             {
             };
 
-    //             
-    
-    
             Dictionary<string, string> headers = new Dictionary<string, string>()
             {
-                {"content-type", "application/json" }
+                { "content-type", "application/json" }
             };
 
             return await _client.Call("GET", path, headers, parameters);
         }
-        };
+    };
 }
