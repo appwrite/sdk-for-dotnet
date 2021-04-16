@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,22 +12,14 @@ namespace Appwrite
 {
     public class Client
     {
-        
         private readonly HttpClient http;
-
         private readonly Dictionary<string, string> headers;
-
         private readonly Dictionary<string, string> config;
-
         private string endPoint;
-        
         private bool selfSigned;
         
-        CookieContainer cookieJar = new CookieContainer();
-
         public Client() : this("https://appwrite.io/v1", false, new HttpClient())
         {
-
         }
 
         public Client(string endPoint, bool selfSigned, HttpClient http)
@@ -36,13 +29,11 @@ namespace Appwrite
             this.headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "x-sdk-version", "appwrite:dotnet:0.1.0" }
+                { "x-sdk-version", "appwrite:dotnet:0.2.0" }
 
             };
             this.config = new Dictionary<string, string>();
-            this.http = http;
-
-            // coockie container ??                     
+            this.http = http;                 
         }
 
         public Client SetSelfSigned(bool selfSigned)
@@ -67,15 +58,14 @@ namespace Appwrite
             return config;
         }
 
-
-        /// Your project ID
+        /// <summary>Your project ID</summary>
         public Client SetProject(string value) {
             config.Add("project", value);
             AddHeader("X-Appwrite-Project", value);
             return this;
         }
 
-        /// Your secret API key
+        /// <summary>Your secret API key</summary>
         public Client SetKey(string value) {
             config.Add("key", value);
             AddHeader("X-Appwrite-Key", value);
@@ -87,8 +77,6 @@ namespace Appwrite
             AddHeader("X-Appwrite-Locale", value);
             return this;
         }
-
-
 
         public Client AddHeader(String key, String value)
         {
@@ -111,8 +99,6 @@ namespace Appwrite
 
             if ("multipart/form-data".Equals(headers["content-type"], StringComparison.InvariantCultureIgnoreCase))
             {
-
-
                 MultipartFormDataContent form = new MultipartFormDataContent();
 
                 foreach (var parameter in parameters)
@@ -177,10 +163,24 @@ namespace Appwrite
                     request.Headers.Add(header.Key, header.Value);
                 }
             }
-            HttpResponseMessage httpResponseMessage = await http.SendAsync(request);
+            try
+            {
+                var httpResponseMessage = await http.SendAsync(request);
+                var code = (int) httpResponseMessage.StatusCode;
+                var response = await httpResponseMessage.Content.ReadAsStringAsync();
 
-            return httpResponseMessage;
+                if (code >= 400) {
+                    string message = (JObject.Parse(response))["message"].ToString();
+                    throw new AppwriteException(message, code, response.ToString());
+                }
+
+                return httpResponseMessage;
+            }
+            catch (System.Exception e)
+            {
+                throw new AppwriteException(e.Message, e);
+            }
+
         }
-
     }
 }
