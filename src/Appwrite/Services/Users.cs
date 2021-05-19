@@ -90,7 +90,7 @@ namespace Appwrite
         /// Delete a user by its unique ID.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> DeleteUser(string userId) 
+        public async Task<HttpResponseMessage> Delete(string userId) 
         {
             string path = "/users/{userId}".Replace("{userId}", userId);
 
@@ -246,7 +246,7 @@ namespace Appwrite
         /// Update the user status by its unique ID.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> UpdateStatus(string userId, string status) 
+        public async Task<HttpResponseMessage> UpdateStatus(string userId, int status) 
         {
             string path = "/users/{userId}/status".Replace("{userId}", userId);
 

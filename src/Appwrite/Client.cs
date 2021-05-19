@@ -2,6 +2,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -29,8 +30,8 @@ namespace Appwrite
             this.headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "x-sdk-version", "appwrite:dotnet:0.2.0" }
-
+                { "x-sdk-version", "appwrite:dotnet:0.3.0" },
+                { "X-Appwrite-Response-Format", "0.8.0" }
             };
             this.config = new Dictionary<string, string>();
             this.http = http;                 
@@ -69,6 +70,13 @@ namespace Appwrite
         public Client SetKey(string value) {
             config.Add("key", value);
             AddHeader("X-Appwrite-Key", value);
+            return this;
+        }
+
+        /// <summary>Your secret JSON Web Token</summary>
+        public Client SetJWT(string value) {
+            config.Add("jWT", value);
+            AddHeader("X-Appwrite-JWT", value);
             return this;
         }
 
@@ -170,7 +178,13 @@ namespace Appwrite
                 var response = await httpResponseMessage.Content.ReadAsStringAsync();
 
                 if (code >= 400) {
-                    string message = (JObject.Parse(response))["message"].ToString();
+                    var message = response.ToString();
+                    var isJson = httpResponseMessage.Content.Headers.GetValues("Content-Type").FirstOrDefault().Contains("application/json");
+
+                    if (isJson) {
+                        message = (JObject.Parse(message))["message"].ToString();
+                    }
+
                     throw new AppwriteException(message, code, response.ToString());
                 }
 

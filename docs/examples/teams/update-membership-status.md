@@ -5,9 +5,9 @@ Client client = new Client();
 client
   .SetEndPoint("https://[HOSTNAME_OR_IP]/v1") // Your API Endpoint
   .SetProject("5df5acd0d48c2") // Your project ID
-  .SetKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+  .SetJWT("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...") // Your secret JSON Web Token
 ;
 
 Teams teams = new Teams(client);
 
-HttpResponseMessage result = await teams.DeleteMembership("[TEAM_ID]", "[MEMBERSHIP_ID]");
+HttpResponseMessage result = await teams.UpdateMembershipStatus("[TEAM_ID]", "[MEMBERSHIP_ID]", "[USER_ID]", "[SECRET]");

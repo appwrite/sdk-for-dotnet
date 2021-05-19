@@ -145,8 +145,8 @@ namespace Appwrite
         /// <para>
         /// Get a list of all the current user function execution logs. You can use the
         /// query params to filter your results. On admin mode, this endpoint will
-        /// return a list of all of the project's teams. [Learn more about different
-        /// API modes](/docs/admin).
+        /// return a list of all of the project's executions. [Learn more about
+        /// different API modes](/docs/admin).
         /// </para>
         /// </summary>
         public async Task<HttpResponseMessage> ListExecutions(string functionId, string search = "", int? limit = 25, int? offset = 0, OrderType orderType = OrderType.ASC) 
@@ -178,12 +178,13 @@ namespace Appwrite
         /// function execution process will start asynchronously.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> CreateExecution(string functionId) 
+        public async Task<HttpResponseMessage> CreateExecution(string functionId, string data = "") 
         {
             string path = "/functions/{functionId}/executions".Replace("{functionId}", functionId);
 
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
+                { "data", data }
             };
 
             Dictionary<string, string> headers = new Dictionary<string, string>()

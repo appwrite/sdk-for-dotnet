@@ -202,6 +202,26 @@ namespace Appwrite
         }
 
         /// <summary>
+        /// Update Membership Roles
+        /// </summary>
+        public async Task<HttpResponseMessage> UpdateMembershipRoles(string teamId, string membershipId, List<object> roles) 
+        {
+            string path = "/teams/{teamId}/memberships/{membershipId}".Replace("{teamId}", teamId).Replace("{membershipId}", membershipId);
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "roles", roles }
+            };
+
+            Dictionary<string, string> headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+            return await _client.Call("PATCH", path, headers, parameters);
+        }
+
+        /// <summary>
         /// Delete Team Membership
         /// <para>
         /// This endpoint allows a user to leave a team or for a team owner to delete
@@ -209,9 +229,9 @@ namespace Appwrite
         /// delete a user membership even if it is not accepted.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> DeleteMembership(string teamId, string inviteId) 
+        public async Task<HttpResponseMessage> DeleteMembership(string teamId, string membershipId) 
         {
-            string path = "/teams/{teamId}/memberships/{inviteId}".Replace("{teamId}", teamId).Replace("{inviteId}", inviteId);
+            string path = "/teams/{teamId}/memberships/{membershipId}".Replace("{teamId}", teamId).Replace("{membershipId}", membershipId);
 
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
@@ -223,6 +243,32 @@ namespace Appwrite
             };
 
             return await _client.Call("DELETE", path, headers, parameters);
+        }
+
+        /// <summary>
+        /// Update Team Membership Status
+        /// <para>
+        /// Use this endpoint to allow a user to accept an invitation to join a team
+        /// after being redirected back to your app from the invitation email recieved
+        /// by the user.
+        /// </para>
+        /// </summary>
+        public async Task<HttpResponseMessage> UpdateMembershipStatus(string teamId, string membershipId, string userId, string secret) 
+        {
+            string path = "/teams/{teamId}/memberships/{membershipId}/status".Replace("{teamId}", teamId).Replace("{membershipId}", membershipId);
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "userId", userId },
+                { "secret", secret }
+            };
+
+            Dictionary<string, string> headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+            return await _client.Call("PATCH", path, headers, parameters);
         }
     };
 }

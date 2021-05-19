@@ -8,6 +8,6 @@ client
   .SetKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 ;
 
-Users users = new Users(client);
+Teams teams = new Teams(client);
 
-HttpResponseMessage result = await users.DeleteUser("[USER_ID]");
+HttpResponseMessage result = await teams.UpdateMembershipRoles("[TEAM_ID]", "[MEMBERSHIP_ID]", [List<object>]);

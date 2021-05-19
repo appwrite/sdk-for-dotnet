@@ -94,7 +94,7 @@ namespace Appwrite
         /// Update a collection by its unique ID.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> UpdateCollection(string collectionId, string name, List<object> read, List<object> write, List<object> rules = null) 
+        public async Task<HttpResponseMessage> UpdateCollection(string collectionId, string name, List<object> read = null, List<object> write = null, List<object> rules = null) 
         {
             string path = "/database/collections/{collectionId}".Replace("{collectionId}", collectionId);
 
@@ -178,7 +178,7 @@ namespace Appwrite
         /// directly from your database console.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> CreateDocument(string collectionId, object data, List<object> read, List<object> write, string parentDocument = "", string parentProperty = "", string parentPropertyType = "assign") 
+        public async Task<HttpResponseMessage> CreateDocument(string collectionId, object data, List<object> read = null, List<object> write = null, string parentDocument = "", string parentProperty = "", string parentPropertyType = "assign") 
         {
             string path = "/database/collections/{collectionId}/documents".Replace("{collectionId}", collectionId);
 
@@ -230,7 +230,7 @@ namespace Appwrite
         /// only specific fields that will get updated.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> UpdateDocument(string collectionId, string documentId, object data, List<object> read, List<object> write) 
+        public async Task<HttpResponseMessage> UpdateDocument(string collectionId, string documentId, object data, List<object> read = null, List<object> write = null) 
         {
             string path = "/database/collections/{collectionId}/documents/{documentId}".Replace("{collectionId}", collectionId).Replace("{documentId}", documentId);
 

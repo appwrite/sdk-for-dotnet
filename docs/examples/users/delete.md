@@ -8,6 +8,6 @@ client
   .SetKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 ;
 
-Database database = new Database(client);
+Users users = new Users(client);
 
-HttpResponseMessage result = await database.CreateDocument("[COLLECTION_ID]", [object]);
+HttpResponseMessage result = await users.Delete("[USER_ID]");

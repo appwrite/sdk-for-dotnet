@@ -46,7 +46,7 @@ namespace Appwrite
         /// read and write arguments.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> CreateFile(FileInfo file, List<object> read, List<object> write) 
+        public async Task<HttpResponseMessage> CreateFile(FileInfo file, List<object> read = null, List<object> write = null) 
         {
             string path = "/storage/files";
 
@@ -166,7 +166,7 @@ namespace Appwrite
         /// string arguments for cutting and resizing your preview image.
         /// </para>
         /// </summary>
-        public string GetFilePreview(string fileId, int? width = 0, int? height = 0, int? quality = 100, string background = "", string output = "") 
+        public string GetFilePreview(string fileId, int? width = 0, int? height = 0, int? quality = 100, int? borderWidth = 0, string borderColor = "", int? borderRadius = 0, int? opacity = 1, int? rotation = 0, string background = "", string output = "") 
         {
             string path = "/storage/files/{fileId}/preview".Replace("{fileId}", fileId);
 
@@ -175,6 +175,11 @@ namespace Appwrite
                 { "width", width },
                 { "height", height },
                 { "quality", quality },
+                { "borderWidth", borderWidth },
+                { "borderColor", borderColor },
+                { "borderRadius", borderRadius },
+                { "opacity", opacity },
+                { "rotation", rotation },
                 { "background", background },
                 { "output", output },
             };
