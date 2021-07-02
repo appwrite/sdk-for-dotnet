@@ -30,7 +30,7 @@ namespace Appwrite
             this.headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "x-sdk-version", "appwrite:dotnet:0.4.0" },
+                { "x-sdk-version", "appwrite:dotnet:0.3.0" },
                 { "X-Appwrite-Response-Format", "0.9.0" }
             };
             this.config = new Dictionary<string, string>();
