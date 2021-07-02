@@ -10,4 +10,4 @@ client
 
 Users users = new Users(client);
 
-HttpResponseMessage result = await users.DeleteUser("[USER_ID]");
+HttpResponseMessage result = await users.UpdateVerification("[USER_ID]", false);

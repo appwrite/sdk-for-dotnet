@@ -8,6 +8,6 @@ client
   .SetKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 ;
 
-Functions functions = new Functions(client);
+Users users = new Users(client);
 
-HttpResponseMessage result = await functions.Create("[NAME]", [List<object>], "java-11");
+HttpResponseMessage result = await users.Delete("[USER_ID]");

@@ -10,4 +10,4 @@ client
 
 Database database = new Database(client);
 
-HttpResponseMessage result = await database.CreateDocument("[COLLECTION_ID]", [object], [List<object>], [List<object>]);
+HttpResponseMessage result = await database.CreateDocument("[COLLECTION_ID]", [object]);

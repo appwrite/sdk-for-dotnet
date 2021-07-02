@@ -90,7 +90,7 @@ namespace Appwrite
         /// Delete a user by its unique ID.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> DeleteUser(string userId) 
+        public async Task<HttpResponseMessage> Delete(string userId) 
         {
             string path = "/users/{userId}".Replace("{userId}", userId);
 
@@ -246,13 +246,36 @@ namespace Appwrite
         /// Update the user status by its unique ID.
         /// </para>
         /// </summary>
-        public async Task<HttpResponseMessage> UpdateStatus(string userId, string status) 
+        public async Task<HttpResponseMessage> UpdateStatus(string userId, int status) 
         {
             string path = "/users/{userId}/status".Replace("{userId}", userId);
 
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
                 { "status", status }
+            };
+
+            Dictionary<string, string> headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+            return await _client.Call("PATCH", path, headers, parameters);
+        }
+
+        /// <summary>
+        /// Update Email Verification
+        /// <para>
+        /// Update the user email verification status by its unique ID.
+        /// </para>
+        /// </summary>
+        public async Task<HttpResponseMessage> UpdateVerification(string userId, bool emailVerification) 
+        {
+            string path = "/users/{userId}/verification".Replace("{userId}", userId);
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "emailVerification", emailVerification }
             };
 
             Dictionary<string, string> headers = new Dictionary<string, string>()
