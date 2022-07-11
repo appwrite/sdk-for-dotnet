@@ -5,11 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Appwrite.Models;
 
 namespace Appwrite
 {
     public class Users : Service
     {
+
         public Users(Client client) : base(client) { }
 
         /// <summary>
@@ -19,7 +21,7 @@ namespace Appwrite
         /// filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.UserList> List(string? search = null, int? limit = null, int? offset = null, OrderType orderType = OrderType.ASC)
+        public Task<Models.UserList> List(string? search = null, long? limit = null, long? offset = null, string? cursor = null, string? cursorDirection = null, OrderType orderType = OrderType.ASC)
         {
             var path = "/users";
 
@@ -28,6 +30,8 @@ namespace Appwrite
                 { "search", search },
                 { "limit", limit },
                 { "offset", offset },
+                { "cursor", cursor },
+                { "cursorDirection", cursorDirection },
                 { "orderType", orderType.ToString() }
             };
 
@@ -37,18 +41,16 @@ namespace Appwrite
             };
 
 
-            static Models.UserList convert(Dictionary<string, object> it)
-            {
-                return Models.UserList.From(map: it);
-            }
+            static Models.UserList Convert(Dictionary<string, object> it) =>
+                Models.UserList.From(map: it);
+
 
             return _client.Call<Models.UserList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.UserList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -57,12 +59,13 @@ namespace Appwrite
         /// Create a new user.
         /// </para>
         /// </summary>
-        public Task<Models.User> Create(string email, string password, string? name = null)
+        public Task<Models.User> Create(string userId, string email, string password, string? name = null)
         {
             var path = "/users";
 
             var parameters = new Dictionary<string, object?>()
             {
+                { "userId", userId },
                 { "email", email },
                 { "password", password },
                 { "name", name }
@@ -74,18 +77,16 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "POST",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
         }
 
         /// <summary>
@@ -109,24 +110,26 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
         }
 
         /// <summary>
         /// Delete User
         /// <para>
-        /// Delete a user by its unique ID.
+        /// Delete a user by its unique ID, thereby releasing it's ID. Since ID is
+        /// released and can be reused, all user-related resources like documents or
+        /// storage files should be deleted before user deletion. If you want to keep
+        /// ID reserved, use the [updateStatus](/docs/server/users#usersUpdateStatus)
+        /// endpoint instead.
         /// </para>
         /// </summary>
         public Task<object> Delete(string userId)
@@ -142,6 +145,7 @@ namespace Appwrite
             {
                 { "content-type", "application/json" }
             };
+
 
 
 
@@ -174,29 +178,62 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
         }
 
         /// <summary>
         /// Get User Logs
         /// <para>
-        /// Get a user activity logs list by its unique ID.
+        /// Get the user activity logs list by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.LogList> GetLogs(string userId)
+        public Task<Models.LogList> GetLogs(string userId, long? limit = null, long? offset = null)
         {
             var path = "/users/{userId}/logs"
+                .Replace("{userId}", userId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "limit", limit },
+                { "offset", offset }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.LogList Convert(Dictionary<string, object> it) =>
+                Models.LogList.From(map: it);
+
+
+            return _client.Call<Models.LogList>(
+                method: "GET",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Get User Memberships
+        /// <para>
+        /// Get the user membership list by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.MembershipList> GetMemberships(string userId)
+        {
+            var path = "/users/{userId}/memberships"
                 .Replace("{userId}", userId);
 
             var parameters = new Dictionary<string, object?>()
@@ -209,18 +246,16 @@ namespace Appwrite
             };
 
 
-            static Models.LogList convert(Dictionary<string, object> it)
-            {
-                return Models.LogList.From(map: it);
-            }
+            static Models.MembershipList Convert(Dictionary<string, object> it) =>
+                Models.MembershipList.From(map: it);
 
-            return _client.Call<Models.LogList>(
+
+            return _client.Call<Models.MembershipList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.LogList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -245,18 +280,16 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
         }
 
         /// <summary>
@@ -281,18 +314,50 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Update Phone
+        /// <para>
+        /// Update the user phone by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.User> UpdatePhone(string userId, string number)
+        {
+            var path = "/users/{userId}/phone"
+                .Replace("{userId}", userId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "number", number }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+
+            return _client.Call<Models.User>(
+                method: "PATCH",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
         }
 
         /// <summary>
@@ -316,25 +381,24 @@ namespace Appwrite
             };
 
 
-            static Models.Preferences convert(Dictionary<string, object> it)
-            {
-                return Models.Preferences.From(map: it);
-            }
+            static Models.Preferences Convert(Dictionary<string, object> it) =>
+                Models.Preferences.From(map: it);
+
 
             return _client.Call<Models.Preferences>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Preferences));
+                convert: Convert);
         }
 
         /// <summary>
         /// Update User Preferences
         /// <para>
-        /// Update the user preferences by its unique ID. You can pass only the
-        /// specific settings you wish to update.
+        /// Update the user preferences by its unique ID. The object you pass is stored
+        /// as is, and replaces any previous value. The maximum allowed prefs size is
+        /// 64kB and throws error if exceeded.
         /// </para>
         /// </summary>
         public Task<Models.Preferences> UpdatePrefs(string userId, object prefs)
@@ -353,18 +417,16 @@ namespace Appwrite
             };
 
 
-            static Models.Preferences convert(Dictionary<string, object> it)
-            {
-                return Models.Preferences.From(map: it);
-            }
+            static Models.Preferences Convert(Dictionary<string, object> it) =>
+                Models.Preferences.From(map: it);
+
 
             return _client.Call<Models.Preferences>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Preferences));
+                convert: Convert);
         }
 
         /// <summary>
@@ -388,18 +450,16 @@ namespace Appwrite
             };
 
 
-            static Models.SessionList convert(Dictionary<string, object> it)
-            {
-                return Models.SessionList.From(map: it);
-            }
+            static Models.SessionList Convert(Dictionary<string, object> it) =>
+                Models.SessionList.From(map: it);
+
 
             return _client.Call<Models.SessionList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.SessionList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -421,6 +481,7 @@ namespace Appwrite
             {
                 { "content-type", "application/json" }
             };
+
 
 
 
@@ -454,6 +515,7 @@ namespace Appwrite
 
 
 
+
             return _client.Call<object>(
                 method: "DELETE",
                 path: path,
@@ -464,10 +526,11 @@ namespace Appwrite
         /// <summary>
         /// Update User Status
         /// <para>
-        /// Update the user status by its unique ID.
+        /// Update the user status by its unique ID. Use this endpoint as an
+        /// alternative to deleting a user if you want to keep user's ID reserved.
         /// </para>
         /// </summary>
-        public Task<Models.User> UpdateStatus(string userId, int status)
+        public Task<Models.User> UpdateStatus(string userId, bool status)
         {
             var path = "/users/{userId}/status"
                 .Replace("{userId}", userId);
@@ -483,18 +546,16 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
         }
 
         /// <summary>
@@ -503,7 +564,7 @@ namespace Appwrite
         /// Update the user email verification status by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.User> UpdateVerification(string userId, bool emailVerification)
+        public Task<Models.User> UpdateEmailVerification(string userId, bool emailVerification)
         {
             var path = "/users/{userId}/verification"
                 .Replace("{userId}", userId);
@@ -519,18 +580,50 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
         }
-    };
+
+        /// <summary>
+        /// Update Phone Verification
+        /// <para>
+        /// Update the user phone verification status by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.User> UpdatePhoneVerification(string userId, bool phoneVerification)
+        {
+            var path = "/users/{userId}/verification/phone"
+                .Replace("{userId}", userId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "phoneVerification", phoneVerification }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+
+            return _client.Call<Models.User>(
+                method: "PATCH",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+    }
 }

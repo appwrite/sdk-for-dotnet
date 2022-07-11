@@ -30,7 +30,7 @@ namespace Appwrite.Models
             code: (string)map["code"]
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "name", Name },
             { "code", Code }

@@ -36,7 +36,7 @@ namespace Appwrite.Models
             countryName: (string)map["countryName"]
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "code", Code },
             { "countryCode", CountryCode },

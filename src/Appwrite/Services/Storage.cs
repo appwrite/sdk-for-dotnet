@@ -5,30 +5,33 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Appwrite.Models;
 
 namespace Appwrite
 {
     public class Storage : Service
     {
+
         public Storage(Client client) : base(client) { }
 
         /// <summary>
-        /// List Files
+        /// List buckets
         /// <para>
-        /// Get a list of all the user files. You can use the query params to filter
-        /// your results. On admin mode, this endpoint will return a list of all of the
-        /// project's files. [Learn more about different API modes](/docs/admin).
+        /// Get a list of all the storage buckets. You can use the query params to
+        /// filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.FileList> ListFiles(string? search = null, int? limit = null, int? offset = null, OrderType orderType = OrderType.ASC)
+        public Task<Models.BucketList> ListBuckets(string? search = null, long? limit = null, long? offset = null, string? cursor = null, string? cursorDirection = null, OrderType orderType = OrderType.ASC)
         {
-            var path = "/storage/files";
+            var path = "/storage/buckets";
 
             var parameters = new Dictionary<string, object?>()
             {
                 { "search", search },
                 { "limit", limit },
                 { "offset", offset },
+                { "cursor", cursor },
+                { "cursorDirection", cursorDirection },
                 { "orderType", orderType.ToString() }
             };
 
@@ -38,34 +41,238 @@ namespace Appwrite
             };
 
 
-            static Models.FileList convert(Dictionary<string, object> it)
+            static Models.BucketList Convert(Dictionary<string, object> it) =>
+                Models.BucketList.From(map: it);
+
+
+            return _client.Call<Models.BucketList>(
+                method: "GET",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Create bucket
+        /// <para>
+        /// Create a new storage bucket.
+        /// </para>
+        /// </summary>
+        public Task<Models.Bucket> CreateBucket(string bucketId, string name, string permission, List<object>? read = null, List<object>? write = null, bool? enabled = null, long? maximumFileSize = null, List<object>? allowedFileExtensions = null, bool? encryption = null, bool? antivirus = null)
+        {
+            var path = "/storage/buckets";
+
+            var parameters = new Dictionary<string, object?>()
             {
-                return Models.FileList.From(map: it);
-            }
+                { "bucketId", bucketId },
+                { "name", name },
+                { "permission", permission },
+                { "read", read },
+                { "write", write },
+                { "enabled", enabled },
+                { "maximumFileSize", maximumFileSize },
+                { "allowedFileExtensions", allowedFileExtensions },
+                { "encryption", encryption },
+                { "antivirus", antivirus }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Bucket Convert(Dictionary<string, object> it) =>
+                Models.Bucket.From(map: it);
+
+
+            return _client.Call<Models.Bucket>(
+                method: "POST",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Get Bucket
+        /// <para>
+        /// Get a storage bucket by its unique ID. This endpoint response returns a
+        /// JSON object with the storage bucket metadata.
+        /// </para>
+        /// </summary>
+        public Task<Models.Bucket> GetBucket(string bucketId)
+        {
+            var path = "/storage/buckets/{bucketId}"
+                .Replace("{bucketId}", bucketId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Bucket Convert(Dictionary<string, object> it) =>
+                Models.Bucket.From(map: it);
+
+
+            return _client.Call<Models.Bucket>(
+                method: "GET",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Update Bucket
+        /// <para>
+        /// Update a storage bucket by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Bucket> UpdateBucket(string bucketId, string name, string permission, List<object>? read = null, List<object>? write = null, bool? enabled = null, long? maximumFileSize = null, List<object>? allowedFileExtensions = null, bool? encryption = null, bool? antivirus = null)
+        {
+            var path = "/storage/buckets/{bucketId}"
+                .Replace("{bucketId}", bucketId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "permission", permission },
+                { "read", read },
+                { "write", write },
+                { "enabled", enabled },
+                { "maximumFileSize", maximumFileSize },
+                { "allowedFileExtensions", allowedFileExtensions },
+                { "encryption", encryption },
+                { "antivirus", antivirus }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Bucket Convert(Dictionary<string, object> it) =>
+                Models.Bucket.From(map: it);
+
+
+            return _client.Call<Models.Bucket>(
+                method: "PUT",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Delete Bucket
+        /// <para>
+        /// Delete a storage bucket by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteBucket(string bucketId)
+        {
+            var path = "/storage/buckets/{bucketId}"
+                .Replace("{bucketId}", bucketId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+        }
+
+        /// <summary>
+        /// List Files
+        /// <para>
+        /// Get a list of all the user files. You can use the query params to filter
+        /// your results. On admin mode, this endpoint will return a list of all of the
+        /// project's files. [Learn more about different API modes](/docs/admin).
+        /// </para>
+        /// </summary>
+        public Task<Models.FileList> ListFiles(string bucketId, string? search = null, long? limit = null, long? offset = null, string? cursor = null, string? cursorDirection = null, OrderType orderType = OrderType.ASC)
+        {
+            var path = "/storage/buckets/{bucketId}/files"
+                .Replace("{bucketId}", bucketId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "search", search },
+                { "limit", limit },
+                { "offset", offset },
+                { "cursor", cursor },
+                { "cursorDirection", cursorDirection },
+                { "orderType", orderType.ToString() }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.FileList Convert(Dictionary<string, object> it) =>
+                Models.FileList.From(map: it);
+
 
             return _client.Call<Models.FileList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.FileList));
+                convert: Convert);
         }
 
         /// <summary>
         /// Create File
         /// <para>
-        /// Create a new file. The user who creates the file will automatically be
-        /// assigned to read and write access unless he has passed custom values for
-        /// read and write arguments.
+        /// Create a new file. Before using this route, you should create a new bucket
+        /// resource using either a [server
+        /// integration](/docs/server/database#storageCreateBucket) API or directly
+        /// from your Appwrite console.
+        /// 
+        /// Larger files should be uploaded using multiple requests with the
+        /// [content-range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Range)
+        /// header to send a partial request with a maximum supported chunk of `5MB`.
+        /// The `content-range` header values should always be in bytes.
+        /// 
+        /// When the first request is sent, the server will return the **File** object,
+        /// and the subsequent part request must include the file's **id** in
+        /// `x-appwrite-id` header to allow the server to know that the partial upload
+        /// is for the existing file and not for a new one.
+        /// 
+        /// If you're creating a new file using one of the Appwrite SDKs, all the
+        /// chunking logic will be managed by the SDK internally.
+        /// 
         /// </para>
         /// </summary>
-        public Task<Models.File> CreateFile(FileInfo file, List<object>? read = null, List<object>? write = null)
+        public Task<Models.File> CreateFile(string bucketId, string fileId, InputFile file, List<object>? read = null, List<object>? write = null, Action<UploadProgress>? onProgress = null)
         {
-            var path = "/storage/files";
+            var path = "/storage/buckets/{bucketId}/files"
+                .Replace("{bucketId}", bucketId);
 
             var parameters = new Dictionary<string, object?>()
             {
+                { "fileId", fileId },
                 { "file", file },
                 { "read", read },
                 { "write", write }
@@ -77,18 +284,21 @@ namespace Appwrite
             };
 
 
-            static Models.File convert(Dictionary<string, object> it)
-            {
-                return Models.File.From(map: it);
-            }
+            static Models.File Convert(Dictionary<string, object> it) =>
+                Models.File.From(map: it);
 
-            return _client.Call<Models.File>(
-                method: "POST",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.File));
+            string? idParamName = "fileId";
+
+            var paramName = "file";
+
+            return _client.ChunkedUpload(
+                path,
+                headers,
+                parameters,
+                Convert,
+                paramName,
+                idParamName,
+                onProgress);
         }
 
         /// <summary>
@@ -98,9 +308,10 @@ namespace Appwrite
         /// with the file metadata.
         /// </para>
         /// </summary>
-        public Task<Models.File> GetFile(string fileId)
+        public Task<Models.File> GetFile(string bucketId, string fileId)
         {
-            var path = "/storage/files/{fileId}"
+            var path = "/storage/buckets/{bucketId}/files/{fileId}"
+                .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
             var parameters = new Dictionary<string, object?>()
@@ -113,18 +324,16 @@ namespace Appwrite
             };
 
 
-            static Models.File convert(Dictionary<string, object> it)
-            {
-                return Models.File.From(map: it);
-            }
+            static Models.File Convert(Dictionary<string, object> it) =>
+                Models.File.From(map: it);
+
 
             return _client.Call<Models.File>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.File));
+                convert: Convert);
         }
 
         /// <summary>
@@ -134,9 +343,10 @@ namespace Appwrite
         /// access to update this resource.
         /// </para>
         /// </summary>
-        public Task<Models.File> UpdateFile(string fileId, List<object> read, List<object> write)
+        public Task<Models.File> UpdateFile(string bucketId, string fileId, List<object>? read = null, List<object>? write = null)
         {
-            var path = "/storage/files/{fileId}"
+            var path = "/storage/buckets/{bucketId}/files/{fileId}"
+                .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
             var parameters = new Dictionary<string, object?>()
@@ -151,18 +361,16 @@ namespace Appwrite
             };
 
 
-            static Models.File convert(Dictionary<string, object> it)
-            {
-                return Models.File.From(map: it);
-            }
+            static Models.File Convert(Dictionary<string, object> it) =>
+                Models.File.From(map: it);
+
 
             return _client.Call<Models.File>(
                 method: "PUT",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.File));
+                convert: Convert);
         }
 
         /// <summary>
@@ -172,9 +380,10 @@ namespace Appwrite
         /// access to delete this resource.
         /// </para>
         /// </summary>
-        public Task<object> DeleteFile(string fileId)
+        public Task<object> DeleteFile(string bucketId, string fileId)
         {
-            var path = "/storage/files/{fileId}"
+            var path = "/storage/buckets/{bucketId}/files/{fileId}"
+                .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
             var parameters = new Dictionary<string, object?>()
@@ -185,6 +394,7 @@ namespace Appwrite
             {
                 { "content-type", "application/json" }
             };
+
 
 
 
@@ -203,9 +413,10 @@ namespace Appwrite
         /// downloading the file to user downloads directory.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetFileDownload(string fileId)
+        public Task<byte[]> GetFileDownload(string bucketId, string fileId)
         {
-            var path = "/storage/files/{fileId}/download"
+            var path = "/storage/buckets/{bucketId}/files/{fileId}/download"
+                .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
             var parameters = new Dictionary<string, object?>()
@@ -223,8 +434,7 @@ namespace Appwrite
                 method: "GET",
                 path: path,
                 headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                responseType: typeof(byte[]));
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
         }
 
         /// <summary>
@@ -233,12 +443,14 @@ namespace Appwrite
         /// Get a file preview image. Currently, this method supports preview for image
         /// files (jpg, png, and gif), other supported formats, like pdf, docs, slides,
         /// and spreadsheets, will return the file icon image. You can also pass query
-        /// string arguments for cutting and resizing your preview image.
+        /// string arguments for cutting and resizing your preview image. Preview is
+        /// supported only for image files smaller than 10MB.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetFilePreview(string fileId, int? width = null, int? height = null, string? gravity = null, int? quality = null, int? borderWidth = null, string? borderColor = null, int? borderRadius = null, double? opacity = null, int? rotation = null, string? background = null, string? output = null)
+        public Task<byte[]> GetFilePreview(string bucketId, string fileId, long? width = null, long? height = null, string? gravity = null, long? quality = null, long? borderWidth = null, string? borderColor = null, long? borderRadius = null, double? opacity = null, long? rotation = null, string? background = null, string? output = null)
         {
-            var path = "/storage/files/{fileId}/preview"
+            var path = "/storage/buckets/{bucketId}/files/{fileId}/preview"
+                .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
             var parameters = new Dictionary<string, object?>()
@@ -267,8 +479,7 @@ namespace Appwrite
                 method: "GET",
                 path: path,
                 headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                responseType: typeof(byte[]));
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
         }
 
         /// <summary>
@@ -279,9 +490,10 @@ namespace Appwrite
         /// header.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetFileView(string fileId)
+        public Task<byte[]> GetFileView(string bucketId, string fileId)
         {
-            var path = "/storage/files/{fileId}/view"
+            var path = "/storage/buckets/{bucketId}/files/{fileId}/view"
+                .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
             var parameters = new Dictionary<string, object?>()
@@ -299,8 +511,7 @@ namespace Appwrite
                 method: "GET",
                 path: path,
                 headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                responseType: typeof(byte[]));
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
         }
-    };
+    }
 }

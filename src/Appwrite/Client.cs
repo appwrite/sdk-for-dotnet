@@ -1,5 +1,7 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +11,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Appwrite.Models;
 
 namespace Appwrite
 {
@@ -22,10 +25,23 @@ namespace Appwrite
         private readonly Dictionary<string, string> _config;
         private string _endPoint;
 
-        private JsonSerializerSettings _serializerSettings = new JsonSerializerSettings {
+        private static readonly int ChunkSize = 5 * 1024 * 1024;
+
+        public static JsonSerializerSettings DeserializerSettings { get; set; } = new JsonSerializerSettings {
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+            NullValueHandling = NullValueHandling.Ignore,
+            ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Converters = new List<JsonConverter> {
-                new Int32JsonConverter()
+                new StringEnumConverter()
+            }
+        };
+
+        public static JsonSerializerSettings SerializerSettings { get; set; } = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            Converters = new List<JsonConverter> {
+                new StringEnumConverter()
             }
         };
 
@@ -39,12 +55,17 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "x-sdk-version", "appwrite:dotnet:0.3.0" },
-                { "X-Appwrite-Response-Format", "0.11.0" }
+                { "x-sdk-version", "appwrite:dotnet:0.3.0-alpha02" },
+                { "X-Appwrite-Response-Format", "0.15.0" }
             };
             _config = new Dictionary<string, string>();
 
+            if (selfSigned)
+            {
+                SetSelfSigned(true);
+            }
 
+            JsonConvert.DefaultSettings = () => DeserializerSettings;
         }
 
         public Client SetSelfSigned(bool selfSigned)
@@ -106,30 +127,35 @@ namespace Appwrite
             return this;
         }
 
-        public Task Call(
+        public Task<Dictionary<string, object?>> Call(
             string method,
             string path,
             Dictionary<string, string> headers,
-            Dictionary<string, object> parameters)
+            Dictionary<string, object?> parameters)
         {
-            return Call<object>(method, path, headers, parameters);
+            return Call<Dictionary<string, object?>>(method, path, headers, parameters);
         }
 
         public async Task<T> Call<T>(
             string method,
             string path,
             Dictionary<string, string> headers,
-            Dictionary<string, object> parameters,
-            Func<Dictionary<string, object>, T>? convert = null,
-            Type? responseType = null) where T : class
+            Dictionary<string, object?> parameters,
+            Func<Dictionary<string, object>, T>? convert = null) where T : class
         {
             var methodGet = "GET".Equals(method, StringComparison.OrdinalIgnoreCase);
 
-            var queryString = methodGet ? "?" + parameters.ToQueryString() : string.Empty;
+            var queryString = methodGet ?
+                "?" + parameters.ToQueryString() :
+                string.Empty;
 
-            var request = new HttpRequestMessage(new HttpMethod(method), _endPoint + path + queryString);
+            var request = new HttpRequestMessage(
+                new HttpMethod(method),
+                _endPoint + path + queryString);
 
-            if ("multipart/form-data".Equals(headers["content-type"], StringComparison.OrdinalIgnoreCase))
+            if ("multipart/form-data".Equals(
+                headers["content-type"],
+                StringComparison.OrdinalIgnoreCase))
             {
                 var form = new MultipartFormDataContent();
 
@@ -137,10 +163,7 @@ namespace Appwrite
                 {
                     if (parameter.Key == "file")
                     {
-                        var fi = (FileInfo)parameters["file"];
-                        var file = File.ReadAllBytes(fi.FullName);
-
-                        form.Add(new ByteArrayContent(file, 0, file.Length), "file", fi.Name);
+                        form.Add(((MultipartFormDataContent)parameters["file"]).First()!);
                     }
                     else if (parameter.Value is IEnumerable<object> enumerable)
                     {
@@ -186,6 +209,10 @@ namespace Appwrite
                 {
                     request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(header.Value));
                 }
+                else if (header.Key.Equals("content-range", StringComparison.OrdinalIgnoreCase))
+                {
+                    request.Content.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
                 else
                 {
                     if (request.Headers.Contains(header.Key)) {
@@ -221,7 +248,7 @@ namespace Appwrite
 
                     var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(
                         responseString,
-                        _serializerSettings);
+                        DeserializerSettings);
 
                     if (convert != null)
                     {
@@ -243,6 +270,137 @@ namespace Appwrite
             {
                 throw new AppwriteException(e.Message, e);
             }
+        }
+
+        public async Task<T> ChunkedUpload<T>(
+            string path,
+            Dictionary<string, string> headers,
+            Dictionary<string, object?> parameters,
+            Func<Dictionary<string, object>, T> converter,
+            string paramName,
+            string? idParamName = null,
+            Action<UploadProgress>? onProgress = null) where T : class
+        {
+            var input = parameters[paramName] as InputFile;
+            var size = 0L;
+            switch(input.SourceType)
+            {
+                case "path":
+                    var info = new FileInfo(input.Path);
+                    input.Data = info.OpenRead();
+                    size = info.Length;
+                    break;
+                case "stream":
+                    size = (input.Data as Stream).Length;
+                    break;
+                case "bytes":
+                    size = ((byte[])input.Data).Length;
+                    break;
+            };
+
+            var offset = 0L;
+            var buffer = new byte[Math.Min(size, ChunkSize)];
+            var result = new Dictionary<string, object?>();
+
+            if (size < ChunkSize)
+            {
+                switch(input.SourceType)
+                {
+                    case "path":
+                    case "stream":
+                        await (input.Data as Stream).ReadAsync(buffer, 0, (int)size);
+                        break;
+                    case "bytes":
+                        buffer = (byte[])input.Data;
+                        break;
+                }
+
+                var content = new MultipartFormDataContent {
+                    { new ByteArrayContent(buffer), paramName, input.Filename }
+                };
+
+                parameters[paramName] = content;
+
+                return await Call(
+                    method: "POST",
+                    path,
+                    headers,
+                    parameters,
+                    converter
+                );
+            }
+
+            if (!string.IsNullOrEmpty(idParamName) && (string)parameters[idParamName] != "unique()")
+            {
+                // Make a request to check if a file already exists
+                var current = await Call<Dictionary<string, object?>>(
+                    method: "GET",
+                    path: "$path/${params[idParamName]}",
+                    headers,
+                    parameters = new Dictionary<string, object?>()
+                );
+                var chunksUploaded = (long)current["chunksUploaded"];
+                offset = Math.Min(chunksUploaded * ChunkSize, size);
+            }
+
+            while (offset < size)
+            {
+                switch(input.SourceType)
+                {
+                    case "path":
+                    case "stream":
+                        var stream = input.Data as Stream;
+                        stream.Seek(offset, SeekOrigin.Begin);
+                        await stream.ReadAsync(buffer, 0, ChunkSize);
+                        break;
+                    case "bytes":
+                        buffer = ((byte[])input.Data)
+                            .Skip((int)offset)
+                            .Take((int)Math.Min(size - offset, ChunkSize))
+                            .ToArray();
+                        break;
+                }
+
+                var content = new MultipartFormDataContent {
+                    { new ByteArrayContent(buffer), paramName, input.Filename }
+                };
+
+                parameters[paramName] = content;
+
+                headers["Content-Range"] =
+                    $"bytes {offset}-{Math.Min(offset + ChunkSize - 1, size)}/{size}";
+
+                result = await Call<Dictionary<string, object?>>(
+                    method: "POST",
+                    path,
+                    headers,
+                    parameters
+                );
+
+                offset += ChunkSize;
+
+                var id = result.ContainsKey("$id")
+                    ? result["$id"]?.ToString() ?? string.Empty
+                    : string.Empty;
+                var chunksTotal = result.ContainsKey("chunksTotal")
+                    ? (long)result["chunksTotal"]
+                    : 0;
+                var chunksUploaded = result.ContainsKey("chunksUploaded")
+                    ? (long)result["chunksUploaded"]
+                    : 0;
+
+                headers["x-appwrite-id"] = id;
+
+                onProgress?.Invoke(
+                    new UploadProgress(
+                        id: id,
+                        progress: Math.Min(offset, size) / size * 100,
+                        sizeUploaded: Math.Min(offset, size),
+                        chunksTotal: chunksTotal,
+                        chunksUploaded: chunksUploaded));
+            }
+
+            return converter(result);
         }
     }
 }

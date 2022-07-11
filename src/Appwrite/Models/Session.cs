@@ -13,11 +13,14 @@ namespace Appwrite.Models
         [JsonProperty("$id")]
         public string Id { get; set; }
 
+        [JsonProperty("$createdAt")]
+        public long CreatedAt { get; set; }
+
         [JsonProperty("userId")]
         public string UserId { get; set; }
 
         [JsonProperty("expire")]
-        public int Expire { get; set; }
+        public long Expire { get; set; }
 
         [JsonProperty("provider")]
         public string Provider { get; set; }
@@ -25,8 +28,14 @@ namespace Appwrite.Models
         [JsonProperty("providerUid")]
         public string ProviderUid { get; set; }
 
-        [JsonProperty("providerToken")]
-        public string ProviderToken { get; set; }
+        [JsonProperty("providerAccessToken")]
+        public string ProviderAccessToken { get; set; }
+
+        [JsonProperty("providerAccessTokenExpiry")]
+        public long ProviderAccessTokenExpiry { get; set; }
+
+        [JsonProperty("providerRefreshToken")]
+        public string ProviderRefreshToken { get; set; }
 
         [JsonProperty("ip")]
         public string Ip { get; set; }
@@ -79,11 +88,14 @@ namespace Appwrite.Models
 
         public Session(
             string id,
+            long createdAt,
             string userId,
-            int expire,
+            long expire,
             string provider,
             string providerUid,
-            string providerToken,
+            string providerAccessToken,
+            long providerAccessTokenExpiry,
+            string providerRefreshToken,
             string ip,
             string osCode,
             string osName,
@@ -102,11 +114,14 @@ namespace Appwrite.Models
             bool current
         ) {
             Id = id;
+            CreatedAt = createdAt;
             UserId = userId;
             Expire = expire;
             Provider = provider;
             ProviderUid = providerUid;
-            ProviderToken = providerToken;
+            ProviderAccessToken = providerAccessToken;
+            ProviderAccessTokenExpiry = providerAccessTokenExpiry;
+            ProviderRefreshToken = providerRefreshToken;
             Ip = ip;
             OsCode = osCode;
             OsName = osName;
@@ -127,11 +142,14 @@ namespace Appwrite.Models
 
         public static Session From(Dictionary<string, object> map) => new Session(
             id: (string)map["$id"],
+            createdAt: Convert.ToInt64(map["$createdAt"]),
             userId: (string)map["userId"],
-            expire: (int)map["expire"],
+            expire: Convert.ToInt64(map["expire"]),
             provider: (string)map["provider"],
             providerUid: (string)map["providerUid"],
-            providerToken: (string)map["providerToken"],
+            providerAccessToken: (string)map["providerAccessToken"],
+            providerAccessTokenExpiry: Convert.ToInt64(map["providerAccessTokenExpiry"]),
+            providerRefreshToken: (string)map["providerRefreshToken"],
             ip: (string)map["ip"],
             osCode: (string)map["osCode"],
             osName: (string)map["osName"],
@@ -150,14 +168,17 @@ namespace Appwrite.Models
             current: (bool)map["current"]
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "$id", Id },
+            { "$createdAt", CreatedAt },
             { "userId", UserId },
             { "expire", Expire },
             { "provider", Provider },
             { "providerUid", ProviderUid },
-            { "providerToken", ProviderToken },
+            { "providerAccessToken", ProviderAccessToken },
+            { "providerAccessTokenExpiry", ProviderAccessTokenExpiry },
+            { "providerRefreshToken", ProviderRefreshToken },
             { "ip", Ip },
             { "osCode", OsCode },
             { "osName", OsName },

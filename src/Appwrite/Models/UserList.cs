@@ -10,29 +10,29 @@ namespace Appwrite.Models
 {
     public class UserList
     {
-        [JsonProperty("sum")]
-        public int Sum { get; set; }
+        [JsonProperty("total")]
+        public long Total { get; set; }
 
         [JsonProperty("users")]
         public List<User> Users { get; set; }
 
 
         public UserList(
-            int sum,
+            long total,
             List<User> users
         ) {
-            Sum = sum;
+            Total = total;
             Users = users;
         }
 
         public static UserList From(Dictionary<string, object> map) => new UserList(
-            sum: (int)map["sum"],
-            users: ((JArray)map["users"]).ToObject<List<User>>()!
+            total: Convert.ToInt64(map["total"]),
+            users: ((JArray)map["users"]).ToObject<List<Dictionary<string, object>>>().Select(it => User.From(map: it)).ToList()
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "sum", Sum },
+            { "total", Total },
             { "users", Users.Select(it => it.ToMap()) }
         };
     }

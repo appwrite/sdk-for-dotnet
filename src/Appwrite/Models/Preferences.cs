@@ -19,12 +19,10 @@ namespace Appwrite.Models
         }
 
         public static Preferences From(Dictionary<string, object> map) => new Preferences(
-            data: map.ContainsKey("data")
-                ? ((JObject)map["data"]).ToObject<Dictionary<string, object>>()!
-                : new Dictionary<string, object>()
+            data: map
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "data", Data }
         };

@@ -20,7 +20,7 @@ namespace Appwrite.Models
         public string SymbolNative { get; set; }
 
         [JsonProperty("decimalDigits")]
-        public int DecimalDigits { get; set; }
+        public long DecimalDigits { get; set; }
 
         [JsonProperty("rounding")]
         public double Rounding { get; set; }
@@ -36,7 +36,7 @@ namespace Appwrite.Models
             string symbol,
             string name,
             string symbolNative,
-            int decimalDigits,
+            long decimalDigits,
             double rounding,
             string code,
             string namePlural
@@ -54,13 +54,13 @@ namespace Appwrite.Models
             symbol: (string)map["symbol"],
             name: (string)map["name"],
             symbolNative: (string)map["symbolNative"],
-            decimalDigits: (int)map["decimalDigits"],
-            rounding: (double)map["rounding"],
+            decimalDigits: Convert.ToInt64(map["decimalDigits"]),
+            rounding: Convert.ToDouble(map["rounding"]),
             code: (string)map["code"],
             namePlural: (string)map["namePlural"]
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "symbol", Symbol },
             { "name", Name },

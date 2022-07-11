@@ -13,14 +13,23 @@ namespace Appwrite.Models
         [JsonProperty("$id")]
         public string Id { get; set; }
 
-        [JsonProperty("$permissions")]
-        public Permissions Permissions { get; set; }
+        [JsonProperty("bucketId")]
+        public string BucketId { get; set; }
+
+        [JsonProperty("$createdAt")]
+        public long CreatedAt { get; set; }
+
+        [JsonProperty("$updatedAt")]
+        public long UpdatedAt { get; set; }
+
+        [JsonProperty("$read")]
+        public List<object> Read { get; set; }
+
+        [JsonProperty("$write")]
+        public List<object> Write { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
-
-        [JsonProperty("dateCreated")]
-        public int DateCreated { get; set; }
 
         [JsonProperty("signature")]
         public string Signature { get; set; }
@@ -29,46 +38,72 @@ namespace Appwrite.Models
         public string MimeType { get; set; }
 
         [JsonProperty("sizeOriginal")]
-        public int SizeOriginal { get; set; }
+        public long SizeOriginal { get; set; }
+
+        [JsonProperty("chunksTotal")]
+        public long ChunksTotal { get; set; }
+
+        [JsonProperty("chunksUploaded")]
+        public long ChunksUploaded { get; set; }
 
 
         public File(
             string id,
-            Permissions permissions,
+            string bucketId,
+            long createdAt,
+            long updatedAt,
+            List<object> read,
+            List<object> write,
             string name,
-            int dateCreated,
             string signature,
             string mimeType,
-            int sizeOriginal
+            long sizeOriginal,
+            long chunksTotal,
+            long chunksUploaded
         ) {
             Id = id;
-            Permissions = permissions;
+            BucketId = bucketId;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Read = read;
+            Write = write;
             Name = name;
-            DateCreated = dateCreated;
             Signature = signature;
             MimeType = mimeType;
             SizeOriginal = sizeOriginal;
+            ChunksTotal = chunksTotal;
+            ChunksUploaded = chunksUploaded;
         }
 
         public static File From(Dictionary<string, object> map) => new File(
             id: (string)map["$id"],
-            permissions: Permissions.From(map: ((JObject)map["$permissions"]).ToObject<Dictionary<string, object>>()!),
+            bucketId: (string)map["bucketId"],
+            createdAt: Convert.ToInt64(map["$createdAt"]),
+            updatedAt: Convert.ToInt64(map["$updatedAt"]),
+            read: ((JArray)map["$read"]).ToObject<List<object>>(),
+            write: ((JArray)map["$write"]).ToObject<List<object>>(),
             name: (string)map["name"],
-            dateCreated: (int)map["dateCreated"],
             signature: (string)map["signature"],
             mimeType: (string)map["mimeType"],
-            sizeOriginal: (int)map["sizeOriginal"]
+            sizeOriginal: Convert.ToInt64(map["sizeOriginal"]),
+            chunksTotal: Convert.ToInt64(map["chunksTotal"]),
+            chunksUploaded: Convert.ToInt64(map["chunksUploaded"])
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "$id", Id },
-            { "$permissions", Permissions.ToMap() },
+            { "bucketId", BucketId },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
+            { "$read", Read },
+            { "$write", Write },
             { "name", Name },
-            { "dateCreated", DateCreated },
             { "signature", Signature },
             { "mimeType", MimeType },
-            { "sizeOriginal", SizeOriginal }
+            { "sizeOriginal", SizeOriginal },
+            { "chunksTotal", ChunksTotal },
+            { "chunksUploaded", ChunksUploaded }
         };
     }
 }

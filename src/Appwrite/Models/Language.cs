@@ -36,7 +36,7 @@ namespace Appwrite.Models
             nativeName: (string)map["nativeName"]
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "name", Name },
             { "code", Code },

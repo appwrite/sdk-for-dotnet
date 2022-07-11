@@ -13,55 +13,90 @@ namespace Appwrite.Models
         [JsonProperty("$id")]
         public string Id { get; set; }
 
-        [JsonProperty("$permissions")]
-        public Permissions Permissions { get; set; }
+        [JsonProperty("$createdAt")]
+        public long CreatedAt { get; set; }
+
+        [JsonProperty("$updatedAt")]
+        public long UpdatedAt { get; set; }
+
+        [JsonProperty("$read")]
+        public List<object> Read { get; set; }
+
+        [JsonProperty("$write")]
+        public List<object> Write { get; set; }
+
+        [JsonProperty("databaseId")]
+        public string DatabaseId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("dateCreated")]
-        public int DateCreated { get; set; }
+        [JsonProperty("enabled")]
+        public bool Enabled { get; set; }
 
-        [JsonProperty("dateUpdated")]
-        public int DateUpdated { get; set; }
+        [JsonProperty("permission")]
+        public string Permission { get; set; }
 
-        [JsonProperty("rules")]
-        public List<Rule> Rules { get; set; }
+        [JsonProperty("attributes")]
+        public List<object> Attributes { get; set; }
+
+        [JsonProperty("indexes")]
+        public List<Index> Indexes { get; set; }
 
 
         public Collection(
             string id,
-            Permissions permissions,
+            long createdAt,
+            long updatedAt,
+            List<object> read,
+            List<object> write,
+            string databaseId,
             string name,
-            int dateCreated,
-            int dateUpdated,
-            List<Rule> rules
+            bool enabled,
+            string permission,
+            List<object> attributes,
+            List<Index> indexes
         ) {
             Id = id;
-            Permissions = permissions;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Read = read;
+            Write = write;
+            DatabaseId = databaseId;
             Name = name;
-            DateCreated = dateCreated;
-            DateUpdated = dateUpdated;
-            Rules = rules;
+            Enabled = enabled;
+            Permission = permission;
+            Attributes = attributes;
+            Indexes = indexes;
         }
 
         public static Collection From(Dictionary<string, object> map) => new Collection(
             id: (string)map["$id"],
-            permissions: Permissions.From(map: ((JObject)map["$permissions"]).ToObject<Dictionary<string, object>>()!),
+            createdAt: Convert.ToInt64(map["$createdAt"]),
+            updatedAt: Convert.ToInt64(map["$updatedAt"]),
+            read: ((JArray)map["$read"]).ToObject<List<object>>(),
+            write: ((JArray)map["$write"]).ToObject<List<object>>(),
+            databaseId: (string)map["databaseId"],
             name: (string)map["name"],
-            dateCreated: (int)map["dateCreated"],
-            dateUpdated: (int)map["dateUpdated"],
-            rules: ((JArray)map["rules"]).ToObject<List<Rule>>()!
+            enabled: (bool)map["enabled"],
+            permission: (string)map["permission"],
+            attributes: ((JArray)map["attributes"]).ToObject<List<object>>(),
+            indexes: ((JArray)map["indexes"]).ToObject<List<Dictionary<string, object>>>().Select(it => Index.From(map: it)).ToList()
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "$id", Id },
-            { "$permissions", Permissions.ToMap() },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
+            { "$read", Read },
+            { "$write", Write },
+            { "databaseId", DatabaseId },
             { "name", Name },
-            { "dateCreated", DateCreated },
-            { "dateUpdated", DateUpdated },
-            { "rules", Rules.Select(it => it.ToMap()) }
+            { "enabled", Enabled },
+            { "permission", Permission },
+            { "attributes", Attributes },
+            { "indexes", Indexes.Select(it => it.ToMap()) }
         };
     }
 }

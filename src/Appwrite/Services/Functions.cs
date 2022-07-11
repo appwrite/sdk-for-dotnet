@@ -5,11 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Appwrite.Models;
 
 namespace Appwrite
 {
     public class Functions : Service
     {
+
         public Functions(Client client) : base(client) { }
 
         /// <summary>
@@ -19,7 +21,7 @@ namespace Appwrite
         /// filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.FunctionList> List(string? search = null, int? limit = null, int? offset = null, OrderType orderType = OrderType.ASC)
+        public Task<Models.FunctionList> List(string? search = null, long? limit = null, long? offset = null, string? cursor = null, string? cursorDirection = null, OrderType orderType = OrderType.ASC)
         {
             var path = "/functions";
 
@@ -28,6 +30,8 @@ namespace Appwrite
                 { "search", search },
                 { "limit", limit },
                 { "offset", offset },
+                { "cursor", cursor },
+                { "cursorDirection", cursorDirection },
                 { "orderType", orderType.ToString() }
             };
 
@@ -37,18 +41,16 @@ namespace Appwrite
             };
 
 
-            static Models.FunctionList convert(Dictionary<string, object> it)
-            {
-                return Models.FunctionList.From(map: it);
-            }
+            static Models.FunctionList Convert(Dictionary<string, object> it) =>
+                Models.FunctionList.From(map: it);
+
 
             return _client.Call<Models.FunctionList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.FunctionList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -59,12 +61,13 @@ namespace Appwrite
         /// with access to execute the function using the client API.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Create(string name, List<object> execute, string runtime, object? vars = null, List<object>? events = null, string? schedule = null, int? timeout = null)
+        public Task<Models.Function> Create(string functionId, string name, List<object> execute, string runtime, object? vars = null, List<object>? events = null, string? schedule = null, long? timeout = null)
         {
             var path = "/functions";
 
             var parameters = new Dictionary<string, object?>()
             {
+                { "functionId", functionId },
                 { "name", name },
                 { "execute", execute },
                 { "runtime", runtime },
@@ -80,18 +83,48 @@ namespace Appwrite
             };
 
 
-            static Models.Function convert(Dictionary<string, object> it)
-            {
-                return Models.Function.From(map: it);
-            }
+            static Models.Function Convert(Dictionary<string, object> it) =>
+                Models.Function.From(map: it);
+
 
             return _client.Call<Models.Function>(
                 method: "POST",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Function));
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// List runtimes
+        /// <para>
+        /// Get a list of all runtimes that are currently active on your instance.
+        /// </para>
+        /// </summary>
+        public Task<Models.RuntimeList> ListRuntimes()
+        {
+            var path = "/functions/runtimes";
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.RuntimeList Convert(Dictionary<string, object> it) =>
+                Models.RuntimeList.From(map: it);
+
+
+            return _client.Call<Models.RuntimeList>(
+                method: "GET",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
         }
 
         /// <summary>
@@ -115,18 +148,16 @@ namespace Appwrite
             };
 
 
-            static Models.Function convert(Dictionary<string, object> it)
-            {
-                return Models.Function.From(map: it);
-            }
+            static Models.Function Convert(Dictionary<string, object> it) =>
+                Models.Function.From(map: it);
+
 
             return _client.Call<Models.Function>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Function));
+                convert: Convert);
         }
 
         /// <summary>
@@ -135,7 +166,7 @@ namespace Appwrite
         /// Update function by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Update(string functionId, string name, List<object> execute, object? vars = null, List<object>? events = null, string? schedule = null, int? timeout = null)
+        public Task<Models.Function> Update(string functionId, string name, List<object> execute, object? vars = null, List<object>? events = null, string? schedule = null, long? timeout = null)
         {
             var path = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
@@ -156,18 +187,16 @@ namespace Appwrite
             };
 
 
-            static Models.Function convert(Dictionary<string, object> it)
-            {
-                return Models.Function.From(map: it);
-            }
+            static Models.Function Convert(Dictionary<string, object> it) =>
+                Models.Function.From(map: it);
+
 
             return _client.Call<Models.Function>(
                 method: "PUT",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Function));
+                convert: Convert);
         }
 
         /// <summary>
@@ -192,8 +221,229 @@ namespace Appwrite
 
 
 
+
             return _client.Call<object>(
                 method: "DELETE",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+        }
+
+        /// <summary>
+        /// List Deployments
+        /// <para>
+        /// Get a list of all the project's code deployments. You can use the query
+        /// params to filter your results.
+        /// </para>
+        /// </summary>
+        public Task<Models.DeploymentList> ListDeployments(string functionId, string? search = null, long? limit = null, long? offset = null, string? cursor = null, string? cursorDirection = null, OrderType orderType = OrderType.ASC)
+        {
+            var path = "/functions/{functionId}/deployments"
+                .Replace("{functionId}", functionId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "search", search },
+                { "limit", limit },
+                { "offset", offset },
+                { "cursor", cursor },
+                { "cursorDirection", cursorDirection },
+                { "orderType", orderType.ToString() }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.DeploymentList Convert(Dictionary<string, object> it) =>
+                Models.DeploymentList.From(map: it);
+
+
+            return _client.Call<Models.DeploymentList>(
+                method: "GET",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Create Deployment
+        /// <para>
+        /// Create a new function code deployment. Use this endpoint to upload a new
+        /// version of your code function. To execute your newly uploaded code, you'll
+        /// need to update the function's deployment to use your new deployment UID.
+        /// 
+        /// This endpoint accepts a tar.gz file compressed with your code. Make sure to
+        /// include any dependencies your code has within the compressed file. You can
+        /// learn more about code packaging in the [Appwrite Cloud Functions
+        /// tutorial](/docs/functions).
+        /// 
+        /// Use the "command" param to set the entry point used to execute your code.
+        /// </para>
+        /// </summary>
+        public Task<Models.Deployment> CreateDeployment(string functionId, string entrypoint, InputFile code, bool activate, Action<UploadProgress>? onProgress = null)
+        {
+            var path = "/functions/{functionId}/deployments"
+                .Replace("{functionId}", functionId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "entrypoint", entrypoint },
+                { "code", code },
+                { "activate", activate }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "multipart/form-data" }
+            };
+
+
+            static Models.Deployment Convert(Dictionary<string, object> it) =>
+                Models.Deployment.From(map: it);
+
+            string? idParamName = null;
+
+            var paramName = "code";
+
+            return _client.ChunkedUpload(
+                path,
+                headers,
+                parameters,
+                Convert,
+                paramName,
+                idParamName,
+                onProgress);
+        }
+
+        /// <summary>
+        /// Get Deployment
+        /// <para>
+        /// Get a code deployment by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.DeploymentList> GetDeployment(string functionId, string deploymentId)
+        {
+            var path = "/functions/{functionId}/deployments/{deploymentId}"
+                .Replace("{functionId}", functionId)
+                .Replace("{deploymentId}", deploymentId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.DeploymentList Convert(Dictionary<string, object> it) =>
+                Models.DeploymentList.From(map: it);
+
+
+            return _client.Call<Models.DeploymentList>(
+                method: "GET",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Update Function Deployment
+        /// <para>
+        /// Update the function code deployment ID using the unique function ID. Use
+        /// this endpoint to switch the code deployment that should be executed by the
+        /// execution endpoint.
+        /// </para>
+        /// </summary>
+        public Task<Models.Function> UpdateDeployment(string functionId, string deploymentId)
+        {
+            var path = "/functions/{functionId}/deployments/{deploymentId}"
+                .Replace("{functionId}", functionId)
+                .Replace("{deploymentId}", deploymentId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Function Convert(Dictionary<string, object> it) =>
+                Models.Function.From(map: it);
+
+
+            return _client.Call<Models.Function>(
+                method: "PATCH",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Delete Deployment
+        /// <para>
+        /// Delete a code deployment by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteDeployment(string functionId, string deploymentId)
+        {
+            var path = "/functions/{functionId}/deployments/{deploymentId}"
+                .Replace("{functionId}", functionId)
+                .Replace("{deploymentId}", deploymentId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+        }
+
+        /// <summary>
+        /// Retry Build
+        /// </summary>
+        public Task<object> RetryBuild(string functionId, string deploymentId, string buildId)
+        {
+            var path = "/functions/{functionId}/deployments/{deploymentId}/builds/{buildId}"
+                .Replace("{functionId}", functionId)
+                .Replace("{deploymentId}", deploymentId)
+                .Replace("{buildId}", buildId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+
+            return _client.Call<object>(
+                method: "POST",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
@@ -208,17 +458,18 @@ namespace Appwrite
         /// different API modes](/docs/admin).
         /// </para>
         /// </summary>
-        public Task<Models.ExecutionList> ListExecutions(string functionId, string? search = null, int? limit = null, int? offset = null, OrderType orderType = OrderType.ASC)
+        public Task<Models.ExecutionList> ListExecutions(string functionId, long? limit = null, long? offset = null, string? search = null, string? cursor = null, string? cursorDirection = null)
         {
             var path = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
             {
-                { "search", search },
                 { "limit", limit },
                 { "offset", offset },
-                { "orderType", orderType.ToString() }
+                { "search", search },
+                { "cursor", cursor },
+                { "cursorDirection", cursorDirection }
             };
 
             var headers = new Dictionary<string, string>()
@@ -227,18 +478,16 @@ namespace Appwrite
             };
 
 
-            static Models.ExecutionList convert(Dictionary<string, object> it)
-            {
-                return Models.ExecutionList.From(map: it);
-            }
+            static Models.ExecutionList Convert(Dictionary<string, object> it) =>
+                Models.ExecutionList.From(map: it);
+
 
             return _client.Call<Models.ExecutionList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.ExecutionList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -250,14 +499,15 @@ namespace Appwrite
         /// function execution process will start asynchronously.
         /// </para>
         /// </summary>
-        public Task<Models.Execution> CreateExecution(string functionId, string? data = null)
+        public Task<Models.Execution> CreateExecution(string functionId, string? data = null, bool? xasync = null)
         {
             var path = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
             {
-                { "data", data }
+                { "data", data },
+                { "async", xasync }
             };
 
             var headers = new Dictionary<string, string>()
@@ -266,18 +516,16 @@ namespace Appwrite
             };
 
 
-            static Models.Execution convert(Dictionary<string, object> it)
-            {
-                return Models.Execution.From(map: it);
-            }
+            static Models.Execution Convert(Dictionary<string, object> it) =>
+                Models.Execution.From(map: it);
+
 
             return _client.Call<Models.Execution>(
                 method: "POST",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Execution));
+                convert: Convert);
         }
 
         /// <summary>
@@ -302,208 +550,16 @@ namespace Appwrite
             };
 
 
-            static Models.Execution convert(Dictionary<string, object> it)
-            {
-                return Models.Execution.From(map: it);
-            }
+            static Models.Execution Convert(Dictionary<string, object> it) =>
+                Models.Execution.From(map: it);
+
 
             return _client.Call<Models.Execution>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Execution));
+                convert: Convert);
         }
-
-        /// <summary>
-        /// Update Function Tag
-        /// <para>
-        /// Update the function code tag ID using the unique function ID. Use this
-        /// endpoint to switch the code tag that should be executed by the execution
-        /// endpoint.
-        /// </para>
-        /// </summary>
-        public Task<Models.Function> UpdateTag(string functionId, string tag)
-        {
-            var path = "/functions/{functionId}/tag"
-                .Replace("{functionId}", functionId);
-
-            var parameters = new Dictionary<string, object?>()
-            {
-                { "tag", tag }
-            };
-
-            var headers = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.Function convert(Dictionary<string, object> it)
-            {
-                return Models.Function.From(map: it);
-            }
-
-            return _client.Call<Models.Function>(
-                method: "PATCH",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Function));
-        }
-
-        /// <summary>
-        /// List Tags
-        /// <para>
-        /// Get a list of all the project's code tags. You can use the query params to
-        /// filter your results.
-        /// </para>
-        /// </summary>
-        public Task<Models.TagList> ListTags(string functionId, string? search = null, int? limit = null, int? offset = null, OrderType orderType = OrderType.ASC)
-        {
-            var path = "/functions/{functionId}/tags"
-                .Replace("{functionId}", functionId);
-
-            var parameters = new Dictionary<string, object?>()
-            {
-                { "search", search },
-                { "limit", limit },
-                { "offset", offset },
-                { "orderType", orderType.ToString() }
-            };
-
-            var headers = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.TagList convert(Dictionary<string, object> it)
-            {
-                return Models.TagList.From(map: it);
-            }
-
-            return _client.Call<Models.TagList>(
-                method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.TagList));
-        }
-
-        /// <summary>
-        /// Create Tag
-        /// <para>
-        /// Create a new function code tag. Use this endpoint to upload a new version
-        /// of your code function. To execute your newly uploaded code, you'll need to
-        /// update the function's tag to use your new tag UID.
-        /// 
-        /// This endpoint accepts a tar.gz file compressed with your code. Make sure to
-        /// include any dependencies your code has within the compressed file. You can
-        /// learn more about code packaging in the [Appwrite Cloud Functions
-        /// tutorial](/docs/functions).
-        /// 
-        /// Use the "command" param to set the entry point used to execute your code.
-        /// </para>
-        /// </summary>
-        public Task<Models.Tag> CreateTag(string functionId, string command, FileInfo code)
-        {
-            var path = "/functions/{functionId}/tags"
-                .Replace("{functionId}", functionId);
-
-            var parameters = new Dictionary<string, object?>()
-            {
-                { "command", command },
-                { "code", code }
-            };
-
-            var headers = new Dictionary<string, string>()
-            {
-                { "content-type", "multipart/form-data" }
-            };
-
-
-            static Models.Tag convert(Dictionary<string, object> it)
-            {
-                return Models.Tag.From(map: it);
-            }
-
-            return _client.Call<Models.Tag>(
-                method: "POST",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Tag));
-        }
-
-        /// <summary>
-        /// Get Tag
-        /// <para>
-        /// Get a code tag by its unique ID.
-        /// </para>
-        /// </summary>
-        public Task<Models.Tag> GetTag(string functionId, string tagId)
-        {
-            var path = "/functions/{functionId}/tags/{tagId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{tagId}", tagId);
-
-            var parameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var headers = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.Tag convert(Dictionary<string, object> it)
-            {
-                return Models.Tag.From(map: it);
-            }
-
-            return _client.Call<Models.Tag>(
-                method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Tag));
-        }
-
-        /// <summary>
-        /// Delete Tag
-        /// <para>
-        /// Delete a code tag by its unique ID.
-        /// </para>
-        /// </summary>
-        public Task<object> DeleteTag(string functionId, string tagId)
-        {
-            var path = "/functions/{functionId}/tags/{tagId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{tagId}", tagId);
-
-            var parameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var headers = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            return _client.Call<object>(
-                method: "DELETE",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
-        }
-    };
+    }
 }

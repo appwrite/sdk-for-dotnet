@@ -60,7 +60,7 @@ namespace Appwrite.Models
             currency: (string)map["currency"]
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "ip", Ip },
             { "countryCode", CountryCode },

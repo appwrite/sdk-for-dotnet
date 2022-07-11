@@ -1,12 +1,12 @@
 # Appwrite .NET SDK
 
 ![License](https://img.shields.io/github/license/appwrite/sdk-for-dotnet.svg?style=flat-square)
-![Version](https://img.shields.io/badge/api%20version-0.11.0-blue.svg?style=flat-square)
+![Version](https://img.shields.io/badge/api%20version-0.15.1-blue.svg?style=flat-square)
 [![Build Status](https://img.shields.io/travis/com/appwrite/sdk-generator?style=flat-square)](https://travis-ci.com/appwrite/sdk-generator)
-[![Twitter Account](https://img.shields.io/twitter/follow/appwrite_io?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite_io)
+[![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
 
-**This SDK is compatible with Appwrite server version 0.11.x. For older versions, please check [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases).**
+**This SDK is compatible with Appwrite server version latest. For older versions, please check [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases).**
 
 Appwrite is an open-source backend as a service server that abstract and simplify complex and repetitive development tasks behind a very simple to use REST API. Appwrite aims to help you develop your apps faster and in a more secure way. Use the .NET SDK to integrate your app with the Appwrite server to easily start interacting with all of Appwrite backend APIs and tools. For full API documentation and tutorials go to [https://appwrite.io/docs](https://appwrite.io/docs)
 
@@ -17,17 +17,17 @@ Appwrite is an open-source backend as a service server that abstract and simplif
 Add this reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="0.3.0" />
+<PackageReference Include="Appwrite" Version="0.3.0-alpha02" />
 ```
 
 You can install packages from the command line:
 
 ```powershell
 # Package Manager
-Install-Package Appwrite -Version 0.3.0
+Install-Package Appwrite -Version 0.3.0-alpha02
 
 # or .NET CLI
-dotnet add package Appwrite --version 0.3.0
+dotnet add package Appwrite --version 0.3.0-alpha02
 ```
 
 
@@ -54,7 +54,7 @@ static async Task Main(string[] args)
   var users = Users(client);
 
   try {
-    var request = await users.create('email@example.com', 'password', 'name');
+    var request = await users.create('[USER_ID]', 'email@example.com', 'password', 'name');
     var response = await request.Content.ReadAsStringAsync();
     Console.WriteLine(response);
   } catch (AppwriteException e) {
@@ -70,7 +70,7 @@ The Appwrite .NET SDK raises `AppwriteException` object with `message`, `code` a
 var users = Users(client);
 
 try {
-  var request = await users.create('email@example.com', 'password', 'name');
+  var request = await users.create('[USER_ID]', 'email@example.com', 'password', 'name');
   var response = await request.Content.ReadAsStringAsync();
   Console.WriteLine(response);
 } catch (AppwriteException e) {

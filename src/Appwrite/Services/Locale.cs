@@ -5,11 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Appwrite.Models;
 
 namespace Appwrite
 {
     public class Locale : Service
     {
+
         public Locale(Client client) : base(client) { }
 
         /// <summary>
@@ -37,18 +39,16 @@ namespace Appwrite
             };
 
 
-            static Models.Locale convert(Dictionary<string, object> it)
-            {
-                return Models.Locale.From(map: it);
-            }
+            static Models.Locale Convert(Dictionary<string, object> it) =>
+                Models.Locale.From(map: it);
+
 
             return _client.Call<Models.Locale>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Locale));
+                convert: Convert);
         }
 
         /// <summary>
@@ -72,18 +72,16 @@ namespace Appwrite
             };
 
 
-            static Models.ContinentList convert(Dictionary<string, object> it)
-            {
-                return Models.ContinentList.From(map: it);
-            }
+            static Models.ContinentList Convert(Dictionary<string, object> it) =>
+                Models.ContinentList.From(map: it);
+
 
             return _client.Call<Models.ContinentList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.ContinentList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -107,18 +105,16 @@ namespace Appwrite
             };
 
 
-            static Models.CountryList convert(Dictionary<string, object> it)
-            {
-                return Models.CountryList.From(map: it);
-            }
+            static Models.CountryList Convert(Dictionary<string, object> it) =>
+                Models.CountryList.From(map: it);
+
 
             return _client.Call<Models.CountryList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.CountryList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -142,18 +138,16 @@ namespace Appwrite
             };
 
 
-            static Models.CountryList convert(Dictionary<string, object> it)
-            {
-                return Models.CountryList.From(map: it);
-            }
+            static Models.CountryList Convert(Dictionary<string, object> it) =>
+                Models.CountryList.From(map: it);
+
 
             return _client.Call<Models.CountryList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.CountryList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -177,18 +171,16 @@ namespace Appwrite
             };
 
 
-            static Models.PhoneList convert(Dictionary<string, object> it)
-            {
-                return Models.PhoneList.From(map: it);
-            }
+            static Models.PhoneList Convert(Dictionary<string, object> it) =>
+                Models.PhoneList.From(map: it);
+
 
             return _client.Call<Models.PhoneList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.PhoneList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -213,18 +205,16 @@ namespace Appwrite
             };
 
 
-            static Models.CurrencyList convert(Dictionary<string, object> it)
-            {
-                return Models.CurrencyList.From(map: it);
-            }
+            static Models.CurrencyList Convert(Dictionary<string, object> it) =>
+                Models.CurrencyList.From(map: it);
+
 
             return _client.Call<Models.CurrencyList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.CurrencyList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -248,18 +238,16 @@ namespace Appwrite
             };
 
 
-            static Models.LanguageList convert(Dictionary<string, object> it)
-            {
-                return Models.LanguageList.From(map: it);
-            }
+            static Models.LanguageList Convert(Dictionary<string, object> it) =>
+                Models.LanguageList.From(map: it);
+
 
             return _client.Call<Models.LanguageList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.LanguageList));
+                convert: Convert);
         }
-    };
+    }
 }

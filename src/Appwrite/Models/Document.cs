@@ -16,37 +16,56 @@ namespace Appwrite.Models
         [JsonProperty("$collection")]
         public string Collection { get; set; }
 
-        [JsonProperty("$permissions")]
-        public Permissions Permissions { get; set; }
+        [JsonProperty("$createdAt")]
+        public long CreatedAt { get; set; }
+
+        [JsonProperty("$updatedAt")]
+        public long UpdatedAt { get; set; }
+
+        [JsonProperty("$read")]
+        public List<object> Read { get; set; }
+
+        [JsonProperty("$write")]
+        public List<object> Write { get; set; }
 
         public Dictionary<string, object> Data { get; set; }
 
         public Document(
             string id,
             string collection,
-            Permissions permissions,
+            long createdAt,
+            long updatedAt,
+            List<object> read,
+            List<object> write,
             Dictionary<string, object> data
         ) {
             Id = id;
             Collection = collection;
-            Permissions = permissions;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Read = read;
+            Write = write;
             Data = data;
         }
 
         public static Document From(Dictionary<string, object> map) => new Document(
             id: (string)map["$id"],
             collection: (string)map["$collection"],
-            permissions: Permissions.From(map: ((JObject)map["$permissions"]).ToObject<Dictionary<string, object>>()!),
-            data: map.ContainsKey("data")
-                ? ((JObject)map["data"]).ToObject<Dictionary<string, object>>()!
-                : new Dictionary<string, object>()
+            createdAt: Convert.ToInt64(map["$createdAt"]),
+            updatedAt: Convert.ToInt64(map["$updatedAt"]),
+            read: ((JArray)map["$read"]).ToObject<List<object>>(),
+            write: ((JArray)map["$write"]).ToObject<List<object>>(),
+            data: map
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "$id", Id },
             { "$collection", Collection },
-            { "$permissions", Permissions.ToMap() },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
+            { "$read", Read },
+            { "$write", Write },
             { "data", Data }
         };
 

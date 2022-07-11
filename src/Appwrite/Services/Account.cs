@@ -5,11 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Appwrite.Models;
 
 namespace Appwrite
 {
     public class Account : Service
     {
+
         public Account(Client client) : base(client) { }
 
         /// <summary>
@@ -32,61 +34,29 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
-        }
-
-        /// <summary>
-        /// Delete Account
-        /// <para>
-        /// Delete a currently logged in user account. Behind the scene, the user
-        /// record is not deleted but permanently blocked from any access. This is done
-        /// to avoid deleted accounts being overtaken by new users with the same email
-        /// address. Any user-related resources like documents or storage files should
-        /// be deleted separately.
-        /// </para>
-        /// </summary>
-        public Task<object> Delete()
-        {
-            var path = "/account";
-
-            var parameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var headers = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            return _client.Call<object>(
-                method: "DELETE",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                convert: Convert);
         }
 
         /// <summary>
         /// Update Account Email
         /// <para>
         /// Update currently logged in user account email address. After changing user
-        /// address, user confirmation status is being reset and a new confirmation
-        /// mail is sent. For security measures, user password is required to complete
-        /// this request.
+        /// address, the user confirmation status will get reset. A new confirmation
+        /// email is not sent automatically however you can use the send confirmation
+        /// email endpoint again to send the confirmation email. For security measures,
+        /// user password is required to complete this request.
         /// This endpoint can also be used to convert an anonymous account to a normal
         /// one, by passing an email address and a new password.
+        /// 
         /// </para>
         /// </summary>
         public Task<Models.User> UpdateEmail(string email, string password)
@@ -105,18 +75,16 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
         }
 
         /// <summary>
@@ -126,12 +94,14 @@ namespace Appwrite
         /// log returns user IP address, location and date and time of log.
         /// </para>
         /// </summary>
-        public Task<Models.LogList> GetLogs()
+        public Task<Models.LogList> GetLogs(long? limit = null, long? offset = null)
         {
             var path = "/account/logs";
 
             var parameters = new Dictionary<string, object?>()
             {
+                { "limit", limit },
+                { "offset", offset }
             };
 
             var headers = new Dictionary<string, string>()
@@ -140,18 +110,16 @@ namespace Appwrite
             };
 
 
-            static Models.LogList convert(Dictionary<string, object> it)
-            {
-                return Models.LogList.From(map: it);
-            }
+            static Models.LogList Convert(Dictionary<string, object> it) =>
+                Models.LogList.From(map: it);
+
 
             return _client.Call<Models.LogList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.LogList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -175,18 +143,16 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
         }
 
         /// <summary>
@@ -194,7 +160,7 @@ namespace Appwrite
         /// <para>
         /// Update currently logged in user password. For validation, user is required
         /// to pass in the new password, and the old password. For users created with
-        /// OAuth and Team Invites, oldPassword is optional.
+        /// OAuth, Team Invites and Magic URL, oldPassword is optional.
         /// </para>
         /// </summary>
         public Task<Models.User> UpdatePassword(string password, string? oldPassword = null)
@@ -213,18 +179,54 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Update Account Phone
+        /// <para>
+        /// Update the currently logged in user's phone number. After updating the
+        /// phone number, the phone verification status will be reset. A confirmation
+        /// SMS is not sent automatically, however you can use the [POST
+        /// /account/verification/phone](/docs/client/account#accountCreatePhoneVerification)
+        /// endpoint to send a confirmation SMS.
+        /// </para>
+        /// </summary>
+        public Task<Models.User> UpdatePhone(string number, string password)
+        {
+            var path = "/account/phone";
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "number", number },
+                { "password", password }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+
+            return _client.Call<Models.User>(
+                method: "PATCH",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
         }
 
         /// <summary>
@@ -247,25 +249,24 @@ namespace Appwrite
             };
 
 
-            static Models.Preferences convert(Dictionary<string, object> it)
-            {
-                return Models.Preferences.From(map: it);
-            }
+            static Models.Preferences Convert(Dictionary<string, object> it) =>
+                Models.Preferences.From(map: it);
+
 
             return _client.Call<Models.Preferences>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Preferences));
+                convert: Convert);
         }
 
         /// <summary>
         /// Update Account Preferences
         /// <para>
-        /// Update currently logged in user account preferences. You can pass only the
-        /// specific settings you wish to update.
+        /// Update currently logged in user account preferences. The object you pass is
+        /// stored as is, and replaces any previous value. The maximum allowed prefs
+        /// size is 64kB and throws error if exceeded.
         /// </para>
         /// </summary>
         public Task<Models.User> UpdatePrefs(object prefs)
@@ -283,18 +284,16 @@ namespace Appwrite
             };
 
 
-            static Models.User convert(Dictionary<string, object> it)
-            {
-                return Models.User.From(map: it);
-            }
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
 
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.User));
+                convert: Convert);
         }
 
         /// <summary>
@@ -326,18 +325,16 @@ namespace Appwrite
             };
 
 
-            static Models.Token convert(Dictionary<string, object> it)
-            {
-                return Models.Token.From(map: it);
-            }
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
 
             return _client.Call<Models.Token>(
                 method: "POST",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Token));
+                convert: Convert);
         }
 
         /// <summary>
@@ -372,18 +369,16 @@ namespace Appwrite
             };
 
 
-            static Models.Token convert(Dictionary<string, object> it)
-            {
-                return Models.Token.From(map: it);
-            }
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
 
             return _client.Call<Models.Token>(
                 method: "PUT",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Token));
+                convert: Convert);
         }
 
         /// <summary>
@@ -407,18 +402,16 @@ namespace Appwrite
             };
 
 
-            static Models.SessionList convert(Dictionary<string, object> it)
-            {
-                return Models.SessionList.From(map: it);
-            }
+            static Models.SessionList Convert(Dictionary<string, object> it) =>
+                Models.SessionList.From(map: it);
+
 
             return _client.Call<Models.SessionList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.SessionList));
+                convert: Convert);
         }
 
         /// <summary>
@@ -440,6 +433,7 @@ namespace Appwrite
             {
                 { "content-type", "application/json" }
             };
+
 
 
 
@@ -472,18 +466,51 @@ namespace Appwrite
             };
 
 
-            static Models.Session convert(Dictionary<string, object> it)
-            {
-                return Models.Session.From(map: it);
-            }
+            static Models.Session Convert(Dictionary<string, object> it) =>
+                Models.Session.From(map: it);
+
 
             return _client.Call<Models.Session>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Session));
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Update Session (Refresh Tokens)
+        /// <para>
+        /// Access tokens have limited lifespan and expire to mitigate security risks.
+        /// If session was created using an OAuth provider, this route can be used to
+        /// "refresh" the access token.
+        /// </para>
+        /// </summary>
+        public Task<Models.Session> UpdateSession(string sessionId)
+        {
+            var path = "/account/sessions/{sessionId}"
+                .Replace("{sessionId}", sessionId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Session Convert(Dictionary<string, object> it) =>
+                Models.Session.From(map: it);
+
+
+            return _client.Call<Models.Session>(
+                method: "PATCH",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
         }
 
         /// <summary>
@@ -491,7 +518,8 @@ namespace Appwrite
         /// <para>
         /// Use this endpoint to log out the currently logged in user from all their
         /// account sessions across all of their different devices. When using the
-        /// option id argument, only the session unique ID provider will be deleted.
+        /// Session ID argument, only the unique session ID provided is deleted.
+        /// 
         /// </para>
         /// </summary>
         public Task<object> DeleteSession(string sessionId)
@@ -510,11 +538,46 @@ namespace Appwrite
 
 
 
+
             return _client.Call<object>(
                 method: "DELETE",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+        }
+
+        /// <summary>
+        /// Update Account Status
+        /// <para>
+        /// Block the currently logged in user account. Behind the scene, the user
+        /// record is not deleted but permanently blocked from any access. To
+        /// completely delete a user, use the Users API instead.
+        /// </para>
+        /// </summary>
+        public Task<Models.User> UpdateStatus()
+        {
+            var path = "/account/status";
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+
+            return _client.Call<Models.User>(
+                method: "PATCH",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
         }
 
         /// <summary>
@@ -527,8 +590,8 @@ namespace Appwrite
         /// should redirect the user back to your app and allow you to complete the
         /// verification process by verifying both the **userId** and **secret**
         /// parameters. Learn more about how to [complete the verification
-        /// process](/docs/client/account#accountUpdateVerification). The verification
-        /// link sent to the user's email address is valid for 7 days.
+        /// process](/docs/client/account#accountUpdateEmailVerification). The
+        /// verification link sent to the user's email address is valid for 7 days.
         /// 
         /// Please note that in order to avoid a [Redirect
         /// Attack](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md),
@@ -552,18 +615,16 @@ namespace Appwrite
             };
 
 
-            static Models.Token convert(Dictionary<string, object> it)
-            {
-                return Models.Token.From(map: it);
-            }
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
 
             return _client.Call<Models.Token>(
                 method: "POST",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Token));
+                convert: Convert);
         }
 
         /// <summary>
@@ -591,18 +652,90 @@ namespace Appwrite
             };
 
 
-            static Models.Token convert(Dictionary<string, object> it)
-            {
-                return Models.Token.From(map: it);
-            }
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
 
             return _client.Call<Models.Token>(
                 method: "PUT",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Token));
+                convert: Convert);
         }
-    };
+
+        /// <summary>
+        /// Create Phone Verification
+        /// <para>
+        /// Use this endpoint to send a verification SMS to the currently logged in
+        /// user. This endpoint is meant for use after updating a user's phone number
+        /// using the [accountUpdatePhone](/docs/client/account#accountUpdatePhone)
+        /// endpoint. Learn more about how to [complete the verification
+        /// process](/docs/client/account#accountUpdatePhoneVerification). The
+        /// verification code sent to the user's phone number is valid for 15 minutes.
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> CreatePhoneVerification()
+        {
+            var path = "/account/verification/phone";
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
+
+            return _client.Call<Models.Token>(
+                method: "POST",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Create Phone Verification (confirmation)
+        /// <para>
+        /// Use this endpoint to complete the user phone verification process. Use the
+        /// **userId** and **secret** that were sent to your user's phone number to
+        /// verify the user email ownership. If confirmed this route will return a 200
+        /// status code.
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> UpdatePhoneVerification(string userId, string secret)
+        {
+            var path = "/account/verification/phone";
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "secret", secret }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
+
+            return _client.Call<Models.Token>(
+                method: "PUT",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+        }
+    }
 }

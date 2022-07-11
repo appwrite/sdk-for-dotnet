@@ -10,29 +10,29 @@ namespace Appwrite.Models
 {
     public class FileList
     {
-        [JsonProperty("sum")]
-        public int Sum { get; set; }
+        [JsonProperty("total")]
+        public long Total { get; set; }
 
         [JsonProperty("files")]
         public List<File> Files { get; set; }
 
 
         public FileList(
-            int sum,
+            long total,
             List<File> files
         ) {
-            Sum = sum;
+            Total = total;
             Files = files;
         }
 
         public static FileList From(Dictionary<string, object> map) => new FileList(
-            sum: (int)map["sum"],
-            files: ((JArray)map["files"]).ToObject<List<File>>()!
+            total: Convert.ToInt64(map["total"]),
+            files: ((JArray)map["files"]).ToObject<List<Dictionary<string, object>>>().Select(it => File.From(map: it)).ToList()
         );
 
-        public Dictionary<string, object> ToMap() => new Dictionary<string, object>()
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "sum", Sum },
+            { "total", Total },
             { "files", Files.Select(it => it.ToMap()) }
         };
     }

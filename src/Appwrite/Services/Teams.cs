@@ -5,23 +5,26 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Appwrite.Models;
 
 namespace Appwrite
 {
     public class Teams : Service
     {
+
         public Teams(Client client) : base(client) { }
 
         /// <summary>
         /// List Teams
         /// <para>
-        /// Get a list of all the current user teams. You can use the query params to
-        /// filter your results. On admin mode, this endpoint will return a list of all
-        /// of the project's teams. [Learn more about different API
-        /// modes](/docs/admin).
+        /// Get a list of all the teams in which the current user is a member. You can
+        /// use the parameters to filter your results.
+        /// 
+        /// In admin mode, this endpoint returns a list of all the teams in the current
+        /// project. [Learn more about different API modes](/docs/admin).
         /// </para>
         /// </summary>
-        public Task<Models.TeamList> List(string? search = null, int? limit = null, int? offset = null, OrderType orderType = OrderType.ASC)
+        public Task<Models.TeamList> List(string? search = null, long? limit = null, long? offset = null, string? cursor = null, string? cursorDirection = null, OrderType orderType = OrderType.ASC)
         {
             var path = "/teams";
 
@@ -30,6 +33,8 @@ namespace Appwrite
                 { "search", search },
                 { "limit", limit },
                 { "offset", offset },
+                { "cursor", cursor },
+                { "cursorDirection", cursorDirection },
                 { "orderType", orderType.ToString() }
             };
 
@@ -39,35 +44,33 @@ namespace Appwrite
             };
 
 
-            static Models.TeamList convert(Dictionary<string, object> it)
-            {
-                return Models.TeamList.From(map: it);
-            }
+            static Models.TeamList Convert(Dictionary<string, object> it) =>
+                Models.TeamList.From(map: it);
+
 
             return _client.Call<Models.TeamList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.TeamList));
+                convert: Convert);
         }
 
         /// <summary>
         /// Create Team
         /// <para>
         /// Create a new team. The user who creates the team will automatically be
-        /// assigned as the owner of the team. The team owner can invite new members,
-        /// who will be able add new owners and update or delete the team from your
-        /// project.
+        /// assigned as the owner of the team. Only the users with the owner role can
+        /// invite new members, add new owners and delete or update the team.
         /// </para>
         /// </summary>
-        public Task<Models.Team> Create(string name, List<object>? roles = null)
+        public Task<Models.Team> Create(string teamId, string name, List<object>? roles = null)
         {
             var path = "/teams";
 
             var parameters = new Dictionary<string, object?>()
             {
+                { "teamId", teamId },
                 { "name", name },
                 { "roles", roles }
             };
@@ -78,25 +81,22 @@ namespace Appwrite
             };
 
 
-            static Models.Team convert(Dictionary<string, object> it)
-            {
-                return Models.Team.From(map: it);
-            }
+            static Models.Team Convert(Dictionary<string, object> it) =>
+                Models.Team.From(map: it);
+
 
             return _client.Call<Models.Team>(
                 method: "POST",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Team));
+                convert: Convert);
         }
 
         /// <summary>
         /// Get Team
         /// <para>
-        /// Get a team by its unique ID. All team members have read access for this
-        /// resource.
+        /// Get a team by its ID. All team members have read access for this resource.
         /// </para>
         /// </summary>
         public Task<Models.Team> Get(string teamId)
@@ -114,25 +114,23 @@ namespace Appwrite
             };
 
 
-            static Models.Team convert(Dictionary<string, object> it)
-            {
-                return Models.Team.From(map: it);
-            }
+            static Models.Team Convert(Dictionary<string, object> it) =>
+                Models.Team.From(map: it);
+
 
             return _client.Call<Models.Team>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Team));
+                convert: Convert);
         }
 
         /// <summary>
         /// Update Team
         /// <para>
-        /// Update a team by its unique ID. Only team owners have write access for this
-        /// resource.
+        /// Update a team using its ID. Only members with the owner role can update the
+        /// team.
         /// </para>
         /// </summary>
         public Task<Models.Team> Update(string teamId, string name)
@@ -151,25 +149,23 @@ namespace Appwrite
             };
 
 
-            static Models.Team convert(Dictionary<string, object> it)
-            {
-                return Models.Team.From(map: it);
-            }
+            static Models.Team Convert(Dictionary<string, object> it) =>
+                Models.Team.From(map: it);
+
 
             return _client.Call<Models.Team>(
                 method: "PUT",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Team));
+                convert: Convert);
         }
 
         /// <summary>
         /// Delete Team
         /// <para>
-        /// Delete a team by its unique ID. Only team owners have write access for this
-        /// resource.
+        /// Delete a team using its ID. Only team members with the owner role can
+        /// delete the team.
         /// </para>
         /// </summary>
         public Task<object> Delete(string teamId)
@@ -188,6 +184,7 @@ namespace Appwrite
 
 
 
+
             return _client.Call<object>(
                 method: "DELETE",
                 path: path,
@@ -198,11 +195,11 @@ namespace Appwrite
         /// <summary>
         /// Get Team Memberships
         /// <para>
-        /// Get a team members by the team unique ID. All team members have read access
-        /// for this list of resources.
+        /// Use this endpoint to list a team's members using the team's ID. All team
+        /// members have read access to this endpoint.
         /// </para>
         /// </summary>
-        public Task<Models.MembershipList> GetMemberships(string teamId, string? search = null, int? limit = null, int? offset = null, OrderType orderType = OrderType.ASC)
+        public Task<Models.MembershipList> GetMemberships(string teamId, string? search = null, long? limit = null, long? offset = null, string? cursor = null, string? cursorDirection = null, OrderType orderType = OrderType.ASC)
         {
             var path = "/teams/{teamId}/memberships"
                 .Replace("{teamId}", teamId);
@@ -212,6 +209,8 @@ namespace Appwrite
                 { "search", search },
                 { "limit", limit },
                 { "offset", offset },
+                { "cursor", cursor },
+                { "cursorDirection", cursorDirection },
                 { "orderType", orderType.ToString() }
             };
 
@@ -221,39 +220,36 @@ namespace Appwrite
             };
 
 
-            static Models.MembershipList convert(Dictionary<string, object> it)
-            {
-                return Models.MembershipList.From(map: it);
-            }
+            static Models.MembershipList Convert(Dictionary<string, object> it) =>
+                Models.MembershipList.From(map: it);
+
 
             return _client.Call<Models.MembershipList>(
                 method: "GET",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.MembershipList));
+                convert: Convert);
         }
 
         /// <summary>
         /// Create Team Membership
         /// <para>
-        /// Use this endpoint to invite a new member to join your team. If initiated
-        /// from Client SDK, an email with a link to join the team will be sent to the
-        /// new member's email address if the member doesn't exist in the project it
-        /// will be created automatically. If initiated from server side SDKs, new
-        /// member will automatically be added to the team.
+        /// Invite a new member to join your team. If initiated from the client SDK, an
+        /// email with a link to join the team will be sent to the member's email
+        /// address and an account will be created for them should they not be signed
+        /// up already. If initiated from server-side SDKs, the new member will
+        /// automatically be added to the team.
         /// 
-        /// Use the 'URL' parameter to redirect the user from the invitation email back
+        /// Use the 'url' parameter to redirect the user from the invitation email back
         /// to your app. When the user is redirected, use the [Update Team Membership
         /// Status](/docs/client/teams#teamsUpdateMembershipStatus) endpoint to allow
-        /// the user to accept the invitation to the team.  While calling from side
-        /// SDKs the redirect url can be empty string.
+        /// the user to accept the invitation to the team. 
         /// 
-        /// Please note that in order to avoid a [Redirect
-        /// Attacks](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md)
+        /// Please note that to avoid a [Redirect
+        /// Attack](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md)
         /// the only valid redirect URL's are the once from domains you have set when
-        /// added your platforms in the console interface.
+        /// adding your platforms in the console interface.
         /// </para>
         /// </summary>
         public Task<Models.Membership> CreateMembership(string teamId, string email, List<object> roles, string url, string? name = null)
@@ -275,22 +271,60 @@ namespace Appwrite
             };
 
 
-            static Models.Membership convert(Dictionary<string, object> it)
-            {
-                return Models.Membership.From(map: it);
-            }
+            static Models.Membership Convert(Dictionary<string, object> it) =>
+                Models.Membership.From(map: it);
+
 
             return _client.Call<Models.Membership>(
                 method: "POST",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Membership));
+                convert: Convert);
+        }
+
+        /// <summary>
+        /// Get Team Membership
+        /// <para>
+        /// Get a team member by the membership unique id. All team members have read
+        /// access for this resource.
+        /// </para>
+        /// </summary>
+        public Task<Models.MembershipList> GetMembership(string teamId, string membershipId)
+        {
+            var path = "/teams/{teamId}/memberships/{membershipId}"
+                .Replace("{teamId}", teamId)
+                .Replace("{membershipId}", membershipId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MembershipList Convert(Dictionary<string, object> it) =>
+                Models.MembershipList.From(map: it);
+
+
+            return _client.Call<Models.MembershipList>(
+                method: "GET",
+                path: path,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
         }
 
         /// <summary>
         /// Update Membership Roles
+        /// <para>
+        /// Modify the roles of a team member. Only team members with the owner role
+        /// have access to this endpoint. Learn more about [roles and
+        /// permissions](/docs/permissions).
+        /// </para>
         /// </summary>
         public Task<Models.Membership> UpdateMembershipRoles(string teamId, string membershipId, List<object> roles)
         {
@@ -309,18 +343,16 @@ namespace Appwrite
             };
 
 
-            static Models.Membership convert(Dictionary<string, object> it)
-            {
-                return Models.Membership.From(map: it);
-            }
+            static Models.Membership Convert(Dictionary<string, object> it) =>
+                Models.Membership.From(map: it);
+
 
             return _client.Call<Models.Membership>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Membership));
+                convert: Convert);
         }
 
         /// <summary>
@@ -348,6 +380,7 @@ namespace Appwrite
 
 
 
+
             return _client.Call<object>(
                 method: "DELETE",
                 path: path,
@@ -359,8 +392,12 @@ namespace Appwrite
         /// Update Team Membership Status
         /// <para>
         /// Use this endpoint to allow a user to accept an invitation to join a team
-        /// after being redirected back to your app from the invitation email recieved
+        /// after being redirected back to your app from the invitation email received
         /// by the user.
+        /// 
+        /// If the request is successful, a session for the user is automatically
+        /// created.
+        /// 
         /// </para>
         /// </summary>
         public Task<Models.Membership> UpdateMembershipStatus(string teamId, string membershipId, string userId, string secret)
@@ -381,18 +418,16 @@ namespace Appwrite
             };
 
 
-            static Models.Membership convert(Dictionary<string, object> it)
-            {
-                return Models.Membership.From(map: it);
-            }
+            static Models.Membership Convert(Dictionary<string, object> it) =>
+                Models.Membership.From(map: it);
+
 
             return _client.Call<Models.Membership>(
                 method: "PATCH",
                 path: path,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: convert,
-                responseType: typeof(Models.Membership));
+                convert: Convert);
         }
-    };
+    }
 }
