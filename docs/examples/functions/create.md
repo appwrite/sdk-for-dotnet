@@ -1,15 +1,13 @@
 using Appwrite;
-using Appwrite.Models;
 
-Client client = new Client()
-    .SetEndPoint("https://[HOSTNAME_OR_IP]/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2") // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+Client client = new Client();
+
+client
+  .SetEndPoint("https://[HOSTNAME_OR_IP]/v1") // Your API Endpoint
+  .SetProject("5df5acd0d48c2") // Your project ID
+  .SetKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+;
 
 Functions functions = new Functions(client);
 
-Function result = await functions.Create(
-    functionId: "[FUNCTION_ID]",
-    name: "[NAME]",
-    execute: [List<object>],
-    runtime: "node-14.5");
+HttpResponseMessage result = await functions.Create("[FUNCTION_ID]", "[NAME]", "node-14.5");

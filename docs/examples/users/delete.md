@@ -1,12 +1,13 @@
 using Appwrite;
-using Appwrite.Models;
 
-Client client = new Client()
-    .SetEndPoint("https://[HOSTNAME_OR_IP]/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2") // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+Client client = new Client();
+
+client
+  .SetEndPoint("https://[HOSTNAME_OR_IP]/v1") // Your API Endpoint
+  .SetProject("5df5acd0d48c2") // Your project ID
+  .SetKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+;
 
 Users users = new Users(client);
 
- result = await users.Delete(
-    userId: "[USER_ID]");
+HttpResponseMessage result = await users.Delete("[USER_ID]");
