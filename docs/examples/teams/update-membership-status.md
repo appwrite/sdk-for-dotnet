@@ -1,13 +1,15 @@
 using Appwrite;
+using Appwrite.Models;
 
-Client client = new Client();
+var client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("5df5acd0d48c2") // Your project ID
+    .SetJWT("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ..."); // Your secret JSON Web Token
 
-client
-  .SetEndPoint("https://[HOSTNAME_OR_IP]/v1") // Your API Endpoint
-  .SetProject("5df5acd0d48c2") // Your project ID
-  .SetJWT("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...") // Your secret JSON Web Token
-;
+var teams = new Teams(client);
 
-Teams teams = new Teams(client);
-
-HttpResponseMessage result = await teams.UpdateMembershipStatus("[TEAM_ID]", "[MEMBERSHIP_ID]", "[USER_ID]", "[SECRET]");
+Membership result = await teams.UpdateMembershipStatus(
+    teamId: "[TEAM_ID]",
+    membershipId: "[MEMBERSHIP_ID]",
+    userId: "[USER_ID]",
+    secret: "[SECRET]");

@@ -1,13 +1,14 @@
 using Appwrite;
+using Appwrite.Models;
 
-Client client = new Client();
+var client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("5df5acd0d48c2") // Your project ID
+    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-client
-  .SetEndPoint("https://[HOSTNAME_OR_IP]/v1") // Your API Endpoint
-  .SetProject("5df5acd0d48c2") // Your project ID
-  .SetKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
-;
+var functions = new Functions(client);
 
-Functions functions = new Functions(client);
-
-HttpResponseMessage result = await functions.UpdateVariable("[FUNCTION_ID]", "[VARIABLE_ID]", "[KEY]");
+Variable result = await functions.UpdateVariable(
+    functionId: "[FUNCTION_ID]",
+    variableId: "[VARIABLE_ID]",
+    key: "[KEY]");
