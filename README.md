@@ -1,12 +1,12 @@
 # Appwrite .NET SDK
 
 ![License](https://img.shields.io/github/license/appwrite/sdk-for-dotnet.svg?style=flat-square)
-![Version](https://img.shields.io/badge/api%20version-0.9.0-blue.svg?style=flat-square)
+![Version](https://img.shields.io/badge/api%20version-1.3.2-blue.svg?style=flat-square)
 [![Build Status](https://img.shields.io/travis/com/appwrite/sdk-generator?style=flat-square)](https://travis-ci.com/appwrite/sdk-generator)
-[![Twitter Account](https://img.shields.io/twitter/follow/appwrite_io?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite_io)
+[![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
 
-**This SDK is compatible with Appwrite server version 0.9.x. For older versions, please check [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases).**
+**This SDK is compatible with Appwrite server version 1.3.x. For older versions, please check [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases).**
 
 Appwrite is an open-source backend as a service server that abstract and simplify complex and repetitive development tasks behind a very simple to use REST API. Appwrite aims to help you develop your apps faster and in a more secure way. Use the .NET SDK to integrate your app with the Appwrite server to easily start interacting with all of Appwrite backend APIs and tools. For full API documentation and tutorials go to [https://appwrite.io/docs](https://appwrite.io/docs)
 
@@ -17,17 +17,17 @@ Appwrite is an open-source backend as a service server that abstract and simplif
 Add this reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="0.3.0" />
+<PackageReference Include="Appwrite" Version="0.4.0" />
 ```
 
 You can install packages from the command line:
 
 ```powershell
 # Package Manager
-Install-Package Appwrite -Version 0.3.0
+Install-Package Appwrite -Version 0.4.0
 
 # or .NET CLI
-dotnet add package Appwrite --version 0.3.0
+dotnet add package Appwrite --version 0.4.0
 ```
 
 
@@ -35,51 +35,47 @@ dotnet add package Appwrite --version 0.3.0
 ## Getting Started
 
 ### Initialize & Make API Request
-Once you add the dependencies, its extremely easy to get started with the SDK; All you need to do is import the package in your code, set your Appwrite credentials, and start making API calls. Below is a simple example:
+Once you have installed the package, it is extremely easy to get started with the SDK; all you need to do is import the package in your code, set your Appwrite credentials, and start making API calls. Below is a simple example:
 
 ```csharp
 using Appwrite;
 
-static async Task Main(string[] args)
-{
-  var client = Client();
+var client = new Client()
+  .SetEndpoint("http://cloud.appwrite.io/v1")  // Make sure your endpoint is accessible
+  .SetProject("5ff3379a01d25")                 // Your project ID
+  .SetKey("cd868db89")                         // Your secret API key
+  .SetSelfSigned();                            // Use only on dev mode with a self-signed SSL cert
 
-  client
-    .setEndpoint('http://[HOSTNAME_OR_IP]/v1') // Make sure your endpoint is accessible
-    .setProject('5ff3379a01d25') // Your project ID
-    .setKey('cd868c7af8bdc893b4...93b7535db89')
-    .setSelfSigned() // Use only on dev mode with a self-signed SSL cert
-  ;
+var users = new Users(client);
 
-  var users = Users(client);
+var user = await users.Create(
+    userId: ID.Unique(),
+    email: "email@example.com",
+    password: "password",
+    name: "name");
 
-  try {
-    var request = await users.create('email@example.com', 'password', 'name');
-    var response = await request.Content.ReadAsStringAsync();
-    Console.WriteLine(response);
-  } catch (AppwriteException e) {
-    Console.WriteLine(e.Message);
-  }
-}
+Console.WriteLine(user.ToMap());
 ```
 
 ### Error Handling
-The Appwrite .NET SDK raises `AppwriteException` object with `message`, `code` and `response` properties. You can handle any errors by catching `AppwriteException` and present the `message` to the user or handle it yourself based on the provided error information. Below is an example.
+The Appwrite .NET SDK raises an `AppwriteException` object with `message`, `code` and `response` properties. You can handle any errors by catching `AppwriteException` and present the `message` to the user or handle it yourself based on the provided error information. Below is an example.
 
 ```csharp
-var users = Users(client);
+var users = new Users(client);
 
 try {
-  var request = await users.create('email@example.com', 'password', 'name');
-  var response = await request.Content.ReadAsStringAsync();
-  Console.WriteLine(response);
+    var user = await users.Create(
+        userId: ID.Unique(),
+        email: "email@example.com",
+        password: "password",
+        name: "name");
 } catch (AppwriteException e) {
-  Console.WriteLine(e.Message);
+    Console.WriteLine(e.Message);
 }
 ```
 
 ### Learn more
-You can use following resources to learn more and get help
+You can use the following resources to learn more and get help
 - 🚀 [Getting Started Tutorial](https://appwrite.io/docs/getting-started-for-server)
 - 📜 [Appwrite Docs](https://appwrite.io/docs)
 - 💬 [Discord Community](https://appwrite.io/discord)
