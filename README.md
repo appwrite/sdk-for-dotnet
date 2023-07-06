@@ -17,17 +17,17 @@ Appwrite is an open-source backend as a service server that abstract and simplif
 Add this reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="0.4.0" />
+<PackageReference Include="Appwrite" Version="0.4.1" />
 ```
 
 You can install packages from the command line:
 
 ```powershell
 # Package Manager
-Install-Package Appwrite -Version 0.4.0
+Install-Package Appwrite -Version 0.4.1
 
 # or .NET CLI
-dotnet add package Appwrite --version 0.4.0
+dotnet add package Appwrite --version 0.4.1
 ```
 
 
@@ -80,7 +80,6 @@ You can use the following resources to learn more and get help
 - 📜 [Appwrite Docs](https://appwrite.io/docs)
 - 💬 [Discord Community](https://appwrite.io/discord)
 - 🚂 [Appwrite Dart Playground](https://github.com/appwrite/playground-for-dotnet)
-
 
 ## Contribution
 
