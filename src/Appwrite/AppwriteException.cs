@@ -15,7 +15,7 @@ namespace Appwrite
             string? response = null) : base(message)
         {
             this.Code = code;
-            this.Type = type
+            this.Type = type;
             this.Response = response;
         }
         public AppwriteException(string message, Exception inner)
