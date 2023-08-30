@@ -7,9 +7,7 @@ var client = new Client()
     .SetProject("5df5acd0d48c2") // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-var functions = new Functions(client);
+var proxy = new Proxy(client);
 
-Function result = await functions.Update(
-    functionId: "[FUNCTION_ID]",
-    name: "[NAME]",
-    runtime: "node-14.5");
+ProxyRule result = await proxy.GetRule(
+    ruleId: "[RULE_ID]");

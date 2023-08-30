@@ -26,7 +26,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Locale> Get()
         {
-            var path = "/locale";
+            var apiPath = "/locale";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -45,7 +45,42 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Locale>(
                 method: "GET",
-                path: path,
+                path: apiPath,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// List Locale Codes
+        /// <para>
+        /// List of all locale codes in [ISO
+        /// 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+        /// </para>
+        /// </summary>
+        public Task<Models.LocaleCodeList> ListCodes()
+        {
+            var apiPath = "/locale/codes";
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.LocaleCodeList Convert(Dictionary<string, object> it) =>
+                Models.LocaleCodeList.From(map: it);
+
+
+            return _client.Call<Models.LocaleCodeList>(
+                method: "GET",
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -61,7 +96,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ContinentList> ListContinents()
         {
-            var path = "/locale/continents";
+            var apiPath = "/locale/continents";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -80,7 +115,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.ContinentList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -96,7 +131,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.CountryList> ListCountries()
         {
-            var path = "/locale/countries";
+            var apiPath = "/locale/countries";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -115,7 +150,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.CountryList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -131,7 +166,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.CountryList> ListCountriesEU()
         {
-            var path = "/locale/countries/eu";
+            var apiPath = "/locale/countries/eu";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -150,7 +185,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.CountryList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -166,7 +201,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.PhoneList> ListCountriesPhones()
         {
-            var path = "/locale/countries/phones";
+            var apiPath = "/locale/countries/phones";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -185,7 +220,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.PhoneList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -202,7 +237,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.CurrencyList> ListCurrencies()
         {
-            var path = "/locale/currencies";
+            var apiPath = "/locale/currencies";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -221,7 +256,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.CurrencyList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -237,7 +272,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.LanguageList> ListLanguages()
         {
-            var path = "/locale/languages";
+            var apiPath = "/locale/languages";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -256,7 +291,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.LanguageList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);

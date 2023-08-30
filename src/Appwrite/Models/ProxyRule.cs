@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Appwrite.Models
 {
-    public class Variable
+    public class ProxyRule
     {
         [JsonProperty("$id")]
         public string Id { get; private set; }
@@ -19,11 +19,8 @@ namespace Appwrite.Models
         [JsonProperty("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("key")]
-        public string Key { get; private set; }
-
-        [JsonProperty("value")]
-        public string Value { get; private set; }
+        [JsonProperty("domain")]
+        public string Domain { get; private set; }
 
         [JsonProperty("resourceType")]
         public string ResourceType { get; private set; }
@@ -31,32 +28,47 @@ namespace Appwrite.Models
         [JsonProperty("resourceId")]
         public string ResourceId { get; private set; }
 
-        public Variable(
+        [JsonProperty("status")]
+        public string Status { get; private set; }
+
+        [JsonProperty("logs")]
+        public string Logs { get; private set; }
+
+        [JsonProperty("renewAt")]
+        public string RenewAt { get; private set; }
+
+        public ProxyRule(
             string id,
             string createdAt,
             string updatedAt,
-            string key,
-            string xvalue,
+            string domain,
             string resourceType,
-            string resourceId
+            string resourceId,
+            string status,
+            string logs,
+            string renewAt
         ) {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
-            Key = key;
-            Value = xvalue;
+            Domain = domain;
             ResourceType = resourceType;
             ResourceId = resourceId;
+            Status = status;
+            Logs = logs;
+            RenewAt = renewAt;
         }
 
-        public static Variable From(Dictionary<string, object> map) => new Variable(
+        public static ProxyRule From(Dictionary<string, object> map) => new ProxyRule(
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            key: map["key"].ToString(),
-            xvalue: map["value"].ToString(),
+            domain: map["domain"].ToString(),
             resourceType: map["resourceType"].ToString(),
-            resourceId: map["resourceId"].ToString()
+            resourceId: map["resourceId"].ToString(),
+            status: map["status"].ToString(),
+            logs: map["logs"].ToString(),
+            renewAt: map["renewAt"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -64,10 +76,12 @@ namespace Appwrite.Models
             { "$id", Id },
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
-            { "key", Key },
-            { "value", Value },
+            { "domain", Domain },
             { "resourceType", ResourceType },
-            { "resourceId", ResourceId }
+            { "resourceId", ResourceId },
+            { "status", Status },
+            { "logs", Logs },
+            { "renewAt", RenewAt }
         };
     }
 }

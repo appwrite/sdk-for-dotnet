@@ -19,6 +19,9 @@ namespace Appwrite.Models
         [JsonProperty("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
+        [JsonProperty("type")]
+        public string Type { get; private set; }
+
         [JsonProperty("resourceId")]
         public string ResourceId { get; private set; }
 
@@ -40,19 +43,47 @@ namespace Appwrite.Models
         [JsonProperty("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("buildStdout")]
-        public string BuildStdout { get; private set; }
-
-        [JsonProperty("buildStderr")]
-        public string BuildStderr { get; private set; }
+        [JsonProperty("buildLogs")]
+        public string BuildLogs { get; private set; }
 
         [JsonProperty("buildTime")]
         public long BuildTime { get; private set; }
+
+        [JsonProperty("providerRepositoryName")]
+        public string ProviderRepositoryName { get; private set; }
+
+        [JsonProperty("providerRepositoryOwner")]
+        public string ProviderRepositoryOwner { get; private set; }
+
+        [JsonProperty("providerRepositoryUrl")]
+        public string ProviderRepositoryUrl { get; private set; }
+
+        [JsonProperty("providerBranch")]
+        public string ProviderBranch { get; private set; }
+
+        [JsonProperty("providerCommitHash")]
+        public string ProviderCommitHash { get; private set; }
+
+        [JsonProperty("providerCommitAuthorUrl")]
+        public string ProviderCommitAuthorUrl { get; private set; }
+
+        [JsonProperty("providerCommitAuthor")]
+        public string ProviderCommitAuthor { get; private set; }
+
+        [JsonProperty("providerCommitMessage")]
+        public string ProviderCommitMessage { get; private set; }
+
+        [JsonProperty("providerCommitUrl")]
+        public string ProviderCommitUrl { get; private set; }
+
+        [JsonProperty("providerBranchUrl")]
+        public string ProviderBranchUrl { get; private set; }
 
         public Deployment(
             string id,
             string createdAt,
             string updatedAt,
+            string type,
             string resourceId,
             string resourceType,
             string entrypoint,
@@ -60,13 +91,23 @@ namespace Appwrite.Models
             string buildId,
             bool activate,
             string status,
-            string buildStdout,
-            string buildStderr,
-            long buildTime
+            string buildLogs,
+            long buildTime,
+            string providerRepositoryName,
+            string providerRepositoryOwner,
+            string providerRepositoryUrl,
+            string providerBranch,
+            string providerCommitHash,
+            string providerCommitAuthorUrl,
+            string providerCommitAuthor,
+            string providerCommitMessage,
+            string providerCommitUrl,
+            string providerBranchUrl
         ) {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
+            Type = type;
             ResourceId = resourceId;
             ResourceType = resourceType;
             Entrypoint = entrypoint;
@@ -74,15 +115,25 @@ namespace Appwrite.Models
             BuildId = buildId;
             Activate = activate;
             Status = status;
-            BuildStdout = buildStdout;
-            BuildStderr = buildStderr;
+            BuildLogs = buildLogs;
             BuildTime = buildTime;
+            ProviderRepositoryName = providerRepositoryName;
+            ProviderRepositoryOwner = providerRepositoryOwner;
+            ProviderRepositoryUrl = providerRepositoryUrl;
+            ProviderBranch = providerBranch;
+            ProviderCommitHash = providerCommitHash;
+            ProviderCommitAuthorUrl = providerCommitAuthorUrl;
+            ProviderCommitAuthor = providerCommitAuthor;
+            ProviderCommitMessage = providerCommitMessage;
+            ProviderCommitUrl = providerCommitUrl;
+            ProviderBranchUrl = providerBranchUrl;
         }
 
         public static Deployment From(Dictionary<string, object> map) => new Deployment(
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
+            type: map["type"].ToString(),
             resourceId: map["resourceId"].ToString(),
             resourceType: map["resourceType"].ToString(),
             entrypoint: map["entrypoint"].ToString(),
@@ -90,9 +141,18 @@ namespace Appwrite.Models
             buildId: map["buildId"].ToString(),
             activate: (bool)map["activate"],
             status: map["status"].ToString(),
-            buildStdout: map["buildStdout"].ToString(),
-            buildStderr: map["buildStderr"].ToString(),
-            buildTime: Convert.ToInt64(map["buildTime"])
+            buildLogs: map["buildLogs"].ToString(),
+            buildTime: Convert.ToInt64(map["buildTime"]),
+            providerRepositoryName: map["providerRepositoryName"].ToString(),
+            providerRepositoryOwner: map["providerRepositoryOwner"].ToString(),
+            providerRepositoryUrl: map["providerRepositoryUrl"].ToString(),
+            providerBranch: map["providerBranch"].ToString(),
+            providerCommitHash: map["providerCommitHash"].ToString(),
+            providerCommitAuthorUrl: map["providerCommitAuthorUrl"].ToString(),
+            providerCommitAuthor: map["providerCommitAuthor"].ToString(),
+            providerCommitMessage: map["providerCommitMessage"].ToString(),
+            providerCommitUrl: map["providerCommitUrl"].ToString(),
+            providerBranchUrl: map["providerBranchUrl"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -100,6 +160,7 @@ namespace Appwrite.Models
             { "$id", Id },
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
+            { "type", Type },
             { "resourceId", ResourceId },
             { "resourceType", ResourceType },
             { "entrypoint", Entrypoint },
@@ -107,9 +168,18 @@ namespace Appwrite.Models
             { "buildId", BuildId },
             { "activate", Activate },
             { "status", Status },
-            { "buildStdout", BuildStdout },
-            { "buildStderr", BuildStderr },
-            { "buildTime", BuildTime }
+            { "buildLogs", BuildLogs },
+            { "buildTime", BuildTime },
+            { "providerRepositoryName", ProviderRepositoryName },
+            { "providerRepositoryOwner", ProviderRepositoryOwner },
+            { "providerRepositoryUrl", ProviderRepositoryUrl },
+            { "providerBranch", ProviderBranch },
+            { "providerCommitHash", ProviderCommitHash },
+            { "providerCommitAuthorUrl", ProviderCommitAuthorUrl },
+            { "providerCommitAuthor", ProviderCommitAuthor },
+            { "providerCommitMessage", ProviderCommitMessage },
+            { "providerCommitUrl", ProviderCommitUrl },
+            { "providerBranchUrl", ProviderBranchUrl }
         };
     }
 }

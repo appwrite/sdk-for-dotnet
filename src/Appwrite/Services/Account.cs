@@ -16,12 +16,12 @@ namespace Appwrite.Services
         /// <summary>
         /// Get Account
         /// <para>
-        /// Get currently logged in user data as JSON object.
+        /// Get the currently logged in user.
         /// </para>
         /// </summary>
         public Task<Models.User> Get()
         {
-            var path = "/account";
+            var apiPath = "/account";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -40,7 +40,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -62,7 +62,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdateEmail(string email, string password)
         {
-            var path = "/account/email";
+            var apiPath = "/account/email";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -83,7 +83,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "PATCH",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -91,15 +91,82 @@ namespace Appwrite.Services
         }
 
         /// <summary>
+        /// List Identities
+        /// <para>
+        /// Get the list of identities for the currently logged in user.
+        /// </para>
+        /// </summary>
+        public Task<Models.IdentityList> ListIdentities(string? queries = null)
+        {
+            var apiPath = "/account/identities";
+
+            var parameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries }
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.IdentityList Convert(Dictionary<string, object> it) =>
+                Models.IdentityList.From(map: it);
+
+
+            return _client.Call<Models.IdentityList>(
+                method: "GET",
+                path: apiPath,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Delete Identity
+        /// <para>
+        /// Delete an identity by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteIdentity(string identityId)
+        {
+            var apiPath = "/account/identities/{identityId}"
+                .Replace("{identityId}", identityId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <summary>
         /// List Logs
         /// <para>
-        /// Get currently logged in user list of latest security activity logs. Each
-        /// log returns user IP address, location and date and time of log.
+        /// Get the list of latest security activity logs for the currently logged in
+        /// user. Each log returns user IP address, location and date and time of log.
         /// </para>
         /// </summary>
         public Task<Models.LogList> ListLogs(List<string>? queries = null)
         {
-            var path = "/account/logs";
+            var apiPath = "/account/logs";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -119,7 +186,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.LogList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -134,7 +201,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdateName(string name)
         {
-            var path = "/account/name";
+            var apiPath = "/account/name";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -154,7 +221,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "PATCH",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -171,7 +238,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdatePassword(string password, string? oldPassword = null)
         {
-            var path = "/account/password";
+            var apiPath = "/account/password";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -192,7 +259,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "PATCH",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -211,7 +278,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdatePhone(string phone, string password)
         {
-            var path = "/account/phone";
+            var apiPath = "/account/phone";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -232,7 +299,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "PATCH",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -242,12 +309,12 @@ namespace Appwrite.Services
         /// <summary>
         /// Get Account Preferences
         /// <para>
-        /// Get currently logged in user preferences as a key-value object.
+        /// Get the preferences as a key-value object for the currently logged in user.
         /// </para>
         /// </summary>
         public Task<Models.Preferences> GetPrefs()
         {
-            var path = "/account/prefs";
+            var apiPath = "/account/prefs";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -266,7 +333,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Preferences>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -283,7 +350,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdatePrefs(object prefs)
         {
-            var path = "/account/prefs";
+            var apiPath = "/account/prefs";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -303,7 +370,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "PATCH",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -325,7 +392,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Token> CreateRecovery(string email, string url)
         {
-            var path = "/account/recovery";
+            var apiPath = "/account/recovery";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -346,7 +413,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Token>(
                 method: "POST",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -369,7 +436,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Token> UpdateRecovery(string userId, string secret, string password, string passwordAgain)
         {
-            var path = "/account/recovery";
+            var apiPath = "/account/recovery";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -392,7 +459,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Token>(
                 method: "PUT",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -402,13 +469,13 @@ namespace Appwrite.Services
         /// <summary>
         /// List Sessions
         /// <para>
-        /// Get currently logged in user list of active sessions across different
-        /// devices.
+        /// Get the list of active sessions across different devices for the currently
+        /// logged in user.
         /// </para>
         /// </summary>
         public Task<Models.SessionList> ListSessions()
         {
-            var path = "/account/sessions";
+            var apiPath = "/account/sessions";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -427,7 +494,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.SessionList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -443,7 +510,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteSessions()
         {
-            var path = "/account/sessions";
+            var apiPath = "/account/sessions";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -460,7 +527,7 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "DELETE",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
@@ -475,7 +542,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Session> GetSession(string sessionId)
         {
-            var path = "/account/sessions/{sessionId}"
+            var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
             var parameters = new Dictionary<string, object?>()
@@ -495,7 +562,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Session>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -512,7 +579,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Session> UpdateSession(string sessionId)
         {
-            var path = "/account/sessions/{sessionId}"
+            var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
             var parameters = new Dictionary<string, object?>()
@@ -532,7 +599,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Session>(
                 method: "PATCH",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -542,15 +609,15 @@ namespace Appwrite.Services
         /// <summary>
         /// Delete Session
         /// <para>
-        /// Use this endpoint to log out the currently logged in user from all their
-        /// account sessions across all of their different devices. When using the
-        /// Session ID argument, only the unique session ID provided is deleted.
-        /// 
+        /// Logout the user. Use 'current' as the session ID to logout on this device,
+        /// use a session ID to logout on another device. If you're looking to logout
+        /// the user on all devices, use [Delete
+        /// Sessions](/docs/client/account#accountDeleteSessions) instead.
         /// </para>
         /// </summary>
         public Task<object> DeleteSession(string sessionId)
         {
-            var path = "/account/sessions/{sessionId}"
+            var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
             var parameters = new Dictionary<string, object?>()
@@ -568,7 +635,7 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "DELETE",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
@@ -584,7 +651,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdateStatus()
         {
-            var path = "/account/status";
+            var apiPath = "/account/status";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -603,7 +670,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "PATCH",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -632,7 +699,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Token> CreateVerification(string url)
         {
-            var path = "/account/verification";
+            var apiPath = "/account/verification";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -652,7 +719,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Token>(
                 method: "POST",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -670,7 +737,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Token> UpdateVerification(string userId, string secret)
         {
-            var path = "/account/verification";
+            var apiPath = "/account/verification";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -691,7 +758,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Token>(
                 method: "PUT",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -711,7 +778,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Token> CreatePhoneVerification()
         {
-            var path = "/account/verification/phone";
+            var apiPath = "/account/verification/phone";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -730,7 +797,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Token>(
                 method: "POST",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -748,7 +815,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Token> UpdatePhoneVerification(string userId, string secret)
         {
-            var path = "/account/verification/phone";
+            var apiPath = "/account/verification/phone";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -769,7 +836,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Token>(
                 method: "PUT",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);

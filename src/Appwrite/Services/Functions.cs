@@ -22,7 +22,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.FunctionList> List(List<string>? queries = null, string? search = null)
         {
-            var path = "/functions";
+            var apiPath = "/functions";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -43,7 +43,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.FunctionList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -58,20 +58,32 @@ namespace Appwrite.Services
         /// with access to execute the function using the client API.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Create(string functionId, string name, string runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null)
+        public Task<Models.Function> Create(string functionId, string name, string runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? templateRepository = null, string? templateOwner = null, string? templateRootDirectory = null, string? templateBranch = null)
         {
-            var path = "/functions";
+            var apiPath = "/functions";
 
             var parameters = new Dictionary<string, object?>()
             {
                 { "functionId", functionId },
                 { "name", name },
-                { "execute", execute },
                 { "runtime", runtime },
+                { "execute", execute },
                 { "events", events },
                 { "schedule", schedule },
                 { "timeout", timeout },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "logging", logging },
+                { "entrypoint", entrypoint },
+                { "commands", commands },
+                { "installationId", installationId },
+                { "providerRepositoryId", providerRepositoryId },
+                { "providerBranch", providerBranch },
+                { "providerSilentMode", providerSilentMode },
+                { "providerRootDirectory", providerRootDirectory },
+                { "templateRepository", templateRepository },
+                { "templateOwner", templateOwner },
+                { "templateRootDirectory", templateRootDirectory },
+                { "templateBranch", templateBranch }
             };
 
             var headers = new Dictionary<string, string>()
@@ -87,7 +99,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Function>(
                 method: "POST",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -102,7 +114,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.RuntimeList> ListRuntimes()
         {
-            var path = "/functions/runtimes";
+            var apiPath = "/functions/runtimes";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -121,7 +133,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.RuntimeList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -136,7 +148,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Function> Get(string functionId)
         {
-            var path = "/functions/{functionId}"
+            var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
@@ -156,7 +168,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Function>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -169,19 +181,28 @@ namespace Appwrite.Services
         /// Update function by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Update(string functionId, string name, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null)
+        public Task<Models.Function> Update(string functionId, string name, string runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null)
         {
-            var path = "/functions/{functionId}"
+            var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
             {
                 { "name", name },
+                { "runtime", runtime },
                 { "execute", execute },
                 { "events", events },
                 { "schedule", schedule },
                 { "timeout", timeout },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "logging", logging },
+                { "entrypoint", entrypoint },
+                { "commands", commands },
+                { "installationId", installationId },
+                { "providerRepositoryId", providerRepositoryId },
+                { "providerBranch", providerBranch },
+                { "providerSilentMode", providerSilentMode },
+                { "providerRootDirectory", providerRootDirectory }
             };
 
             var headers = new Dictionary<string, string>()
@@ -197,7 +218,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Function>(
                 method: "PUT",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -212,7 +233,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string functionId)
         {
-            var path = "/functions/{functionId}"
+            var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
@@ -230,7 +251,7 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "DELETE",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
@@ -245,7 +266,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DeploymentList> ListDeployments(string functionId, List<string>? queries = null, string? search = null)
         {
-            var path = "/functions/{functionId}/deployments"
+            var apiPath = "/functions/{functionId}/deployments"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
@@ -267,7 +288,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.DeploymentList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -286,17 +307,18 @@ namespace Appwrite.Services
         /// learn more about code packaging in the [Appwrite Cloud Functions
         /// tutorial](/docs/functions).
         /// 
-        /// Use the "command" param to set the entry point used to execute your code.
+        /// Use the "command" param to set the entrypoint used to execute your code.
         /// </para>
         /// </summary>
-        public Task<Models.Deployment> CreateDeployment(string functionId, string entrypoint, InputFile code, bool activate, Action<UploadProgress>? onProgress = null)
+        public Task<Models.Deployment> CreateDeployment(string functionId, InputFile code, bool activate, string? entrypoint = null, string? commands = null, Action<UploadProgress>? onProgress = null)
         {
-            var path = "/functions/{functionId}/deployments"
+            var apiPath = "/functions/{functionId}/deployments"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
             {
                 { "entrypoint", entrypoint },
+                { "commands", commands },
                 { "code", code },
                 { "activate", activate }
             };
@@ -316,7 +338,7 @@ namespace Appwrite.Services
             var paramName = "code";
 
             return _client.ChunkedUpload(
-                path,
+                apiPath,
                 headers,
                 parameters,
                 Convert,
@@ -333,7 +355,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> GetDeployment(string functionId, string deploymentId)
         {
-            var path = "/functions/{functionId}/deployments/{deploymentId}"
+            var apiPath = "/functions/{functionId}/deployments/{deploymentId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{deploymentId}", deploymentId);
 
@@ -354,7 +376,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Deployment>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -371,7 +393,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Function> UpdateDeployment(string functionId, string deploymentId)
         {
-            var path = "/functions/{functionId}/deployments/{deploymentId}"
+            var apiPath = "/functions/{functionId}/deployments/{deploymentId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{deploymentId}", deploymentId);
 
@@ -392,7 +414,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Function>(
                 method: "PATCH",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -407,7 +429,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteDeployment(string functionId, string deploymentId)
         {
-            var path = "/functions/{functionId}/deployments/{deploymentId}"
+            var apiPath = "/functions/{functionId}/deployments/{deploymentId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{deploymentId}", deploymentId);
 
@@ -426,7 +448,7 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "DELETE",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
@@ -434,10 +456,14 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create Build
+        /// <para>
+        /// Create a new build for an Appwrite Function deployment. This endpoint can
+        /// be used to retry a failed build.
+        /// </para>
         /// </summary>
         public Task<object> CreateBuild(string functionId, string deploymentId, string buildId)
         {
-            var path = "/functions/{functionId}/deployments/{deploymentId}/builds/{buildId}"
+            var apiPath = "/functions/{functionId}/deployments/{deploymentId}/builds/{buildId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{deploymentId}", deploymentId)
                 .Replace("{buildId}", buildId);
@@ -457,10 +483,36 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "POST",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
+        }
+
+        /// <summary>
+        /// Download Deployment
+        /// </summary>
+        public Task<byte[]> DownloadDeployment(string functionId, string deploymentId)
+        {
+            var apiPath = "/functions/{functionId}/deployments/{deploymentId}/download"
+                .Replace("{functionId}", functionId)
+                .Replace("{deploymentId}", deploymentId);
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            return _client.Call<byte[]>(
+                method: "GET",
+                path: apiPath,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
         }
 
         /// <summary>
@@ -472,7 +524,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ExecutionList> ListExecutions(string functionId, List<string>? queries = null, string? search = null)
         {
-            var path = "/functions/{functionId}/executions"
+            var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
@@ -494,7 +546,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.ExecutionList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -510,15 +562,18 @@ namespace Appwrite.Services
         /// function execution process will start asynchronously.
         /// </para>
         /// </summary>
-        public Task<Models.Execution> CreateExecution(string functionId, string? data = null, bool? xasync = null)
+        public Task<Models.Execution> CreateExecution(string functionId, string? body = null, bool? xasync = null, string? xpath = null, string? method = null, object? headers = null)
         {
-            var path = "/functions/{functionId}/executions"
+            var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
             {
-                { "data", data },
-                { "async", xasync }
+                { "body", body },
+                { "async", xasync },
+                { "path", xpath },
+                { "method", method },
+                { "headers", headers }
             };
 
             var headers = new Dictionary<string, string>()
@@ -534,7 +589,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Execution>(
                 method: "POST",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -549,7 +604,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Execution> GetExecution(string functionId, string executionId)
         {
-            var path = "/functions/{functionId}/executions/{executionId}"
+            var apiPath = "/functions/{functionId}/executions/{executionId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{executionId}", executionId);
 
@@ -570,7 +625,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Execution>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -585,7 +640,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.VariableList> ListVariables(string functionId)
         {
-            var path = "/functions/{functionId}/variables"
+            var apiPath = "/functions/{functionId}/variables"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
@@ -605,7 +660,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.VariableList>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -615,13 +670,13 @@ namespace Appwrite.Services
         /// <summary>
         /// Create Variable
         /// <para>
-        /// Create a new function variable. These variables can be accessed within
-        /// function in the `env` object under the request variable.
+        /// Create a new function environment variable. These variables can be accessed
+        /// in the function at runtime as environment variables.
         /// </para>
         /// </summary>
         public Task<Models.Variable> CreateVariable(string functionId, string key, string xvalue)
         {
-            var path = "/functions/{functionId}/variables"
+            var apiPath = "/functions/{functionId}/variables"
                 .Replace("{functionId}", functionId);
 
             var parameters = new Dictionary<string, object?>()
@@ -643,7 +698,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Variable>(
                 method: "POST",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -658,7 +713,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> GetVariable(string functionId, string variableId)
         {
-            var path = "/functions/{functionId}/variables/{variableId}"
+            var apiPath = "/functions/{functionId}/variables/{variableId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{variableId}", variableId);
 
@@ -679,7 +734,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Variable>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -694,7 +749,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> UpdateVariable(string functionId, string variableId, string key, string? xvalue = null)
         {
-            var path = "/functions/{functionId}/variables/{variableId}"
+            var apiPath = "/functions/{functionId}/variables/{variableId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{variableId}", variableId);
 
@@ -717,7 +772,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Variable>(
                 method: "PUT",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -732,7 +787,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteVariable(string functionId, string variableId)
         {
-            var path = "/functions/{functionId}/variables/{variableId}"
+            var apiPath = "/functions/{functionId}/variables/{variableId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{variableId}", variableId);
 
@@ -751,7 +806,7 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "DELETE",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 

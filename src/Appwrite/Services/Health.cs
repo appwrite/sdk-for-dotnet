@@ -21,7 +21,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.HealthStatus> Get()
         {
-            var path = "/health";
+            var apiPath = "/health";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -40,7 +40,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -55,7 +55,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.HealthAntivirus> GetAntivirus()
         {
-            var path = "/health/anti-virus";
+            var apiPath = "/health/anti-virus";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -74,7 +74,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthAntivirus>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -84,13 +84,13 @@ namespace Appwrite.Services
         /// <summary>
         /// Get Cache
         /// <para>
-        /// Check the Appwrite in-memory cache server is up and connection is
+        /// Check the Appwrite in-memory cache servers are up and connection is
         /// successful.
         /// </para>
         /// </summary>
         public Task<Models.HealthStatus> GetCache()
         {
-            var path = "/health/cache";
+            var apiPath = "/health/cache";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -109,7 +109,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -119,12 +119,12 @@ namespace Appwrite.Services
         /// <summary>
         /// Get DB
         /// <para>
-        /// Check the Appwrite database server is up and connection is successful.
+        /// Check the Appwrite database servers are up and connection is successful.
         /// </para>
         /// </summary>
         public Task<Models.HealthStatus> GetDB()
         {
-            var path = "/health/db";
+            var apiPath = "/health/db";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -143,7 +143,76 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
-                path: path,
+                path: apiPath,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get PubSub
+        /// <para>
+        /// Check the Appwrite pub-sub servers are up and connection is successful.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthStatus> GetPubSub()
+        {
+            var apiPath = "/health/pubsub";
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.HealthStatus Convert(Dictionary<string, object> it) =>
+                Models.HealthStatus.From(map: it);
+
+
+            return _client.Call<Models.HealthStatus>(
+                method: "GET",
+                path: apiPath,
+                headers: headers,
+                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get Queue
+        /// <para>
+        /// Check the Appwrite queue messaging servers are up and connection is
+        /// successful.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthStatus> GetQueue()
+        {
+            var apiPath = "/health/queue";
+
+            var parameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var headers = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.HealthStatus Convert(Dictionary<string, object> it) =>
+                Models.HealthStatus.From(map: it);
+
+
+            return _client.Call<Models.HealthStatus>(
+                method: "GET",
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -160,7 +229,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.HealthQueue> GetQueueCertificates()
         {
-            var path = "/health/queue/certificates";
+            var apiPath = "/health/queue/certificates";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -179,7 +248,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -191,7 +260,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.HealthQueue> GetQueueFunctions()
         {
-            var path = "/health/queue/functions";
+            var apiPath = "/health/queue/functions";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -210,7 +279,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -226,7 +295,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.HealthQueue> GetQueueLogs()
         {
-            var path = "/health/queue/logs";
+            var apiPath = "/health/queue/logs";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -245,7 +314,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -261,7 +330,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.HealthQueue> GetQueueWebhooks()
         {
-            var path = "/health/queue/webhooks";
+            var apiPath = "/health/queue/webhooks";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -280,7 +349,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -295,7 +364,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.HealthStatus> GetStorageLocal()
         {
-            var path = "/health/storage/local";
+            var apiPath = "/health/storage/local";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -314,7 +383,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -335,7 +404,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.HealthTime> GetTime()
         {
-            var path = "/health/time";
+            var apiPath = "/health/time";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -354,7 +423,7 @@ namespace Appwrite.Services
 
             return _client.Call<Models.HealthTime>(
                 method: "GET",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);

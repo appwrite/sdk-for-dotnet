@@ -21,7 +21,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Query(object query)
         {
-            var path = "/graphql";
+            var apiPath = "/graphql";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -42,7 +42,7 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "POST",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
@@ -57,7 +57,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Mutation(object query)
         {
-            var path = "/graphql/mutation";
+            var apiPath = "/graphql/mutation";
 
             var parameters = new Dictionary<string, object?>()
             {
@@ -78,7 +78,7 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "POST",
-                path: path,
+                path: apiPath,
                 headers: headers,
                 parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
