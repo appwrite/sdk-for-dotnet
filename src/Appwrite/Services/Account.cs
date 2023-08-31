@@ -23,11 +23,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/account";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -41,8 +41,8 @@ namespace Appwrite.Services
             return _client.Call<Models.User>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -64,13 +64,13 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/email";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "email", email },
                 { "password", password }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -84,8 +84,8 @@ namespace Appwrite.Services
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -100,12 +100,12 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/identities";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -119,8 +119,8 @@ namespace Appwrite.Services
             return _client.Call<Models.IdentityList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -136,11 +136,11 @@ namespace Appwrite.Services
             var apiPath = "/account/identities/{identityId}"
                 .Replace("{identityId}", identityId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -152,8 +152,8 @@ namespace Appwrite.Services
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 
@@ -168,12 +168,12 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/logs";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -187,8 +187,8 @@ namespace Appwrite.Services
             return _client.Call<Models.LogList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -203,12 +203,12 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/name";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -222,8 +222,8 @@ namespace Appwrite.Services
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -240,13 +240,13 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/password";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "password", password },
                 { "oldPassword", oldPassword }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -260,8 +260,8 @@ namespace Appwrite.Services
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -280,13 +280,13 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/phone";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "phone", phone },
                 { "password", password }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -300,8 +300,8 @@ namespace Appwrite.Services
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -316,11 +316,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/prefs";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -334,8 +334,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Preferences>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -352,12 +352,12 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/prefs";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "prefs", prefs }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -371,8 +371,8 @@ namespace Appwrite.Services
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -394,13 +394,13 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/recovery";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "email", email },
                 { "url", url }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -414,8 +414,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Token>(
                 method: "POST",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -438,7 +438,7 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/recovery";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "userId", userId },
                 { "secret", secret },
@@ -446,7 +446,7 @@ namespace Appwrite.Services
                 { "passwordAgain", passwordAgain }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -460,8 +460,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Token>(
                 method: "PUT",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -477,11 +477,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/sessions";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -495,8 +495,8 @@ namespace Appwrite.Services
             return _client.Call<Models.SessionList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -512,11 +512,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/sessions";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -528,8 +528,8 @@ namespace Appwrite.Services
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 
@@ -545,11 +545,11 @@ namespace Appwrite.Services
             var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -563,8 +563,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Session>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -582,11 +582,11 @@ namespace Appwrite.Services
             var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -600,8 +600,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Session>(
                 method: "PATCH",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -620,11 +620,11 @@ namespace Appwrite.Services
             var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -636,8 +636,8 @@ namespace Appwrite.Services
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 
@@ -653,11 +653,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/status";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -671,8 +671,8 @@ namespace Appwrite.Services
             return _client.Call<Models.User>(
                 method: "PATCH",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -701,12 +701,12 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/verification";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "url", url }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -720,8 +720,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Token>(
                 method: "POST",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -739,13 +739,13 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/verification";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "userId", userId },
                 { "secret", secret }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -759,8 +759,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Token>(
                 method: "PUT",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -780,11 +780,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/verification/phone";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -798,8 +798,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Token>(
                 method: "POST",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -817,13 +817,13 @@ namespace Appwrite.Services
         {
             var apiPath = "/account/verification/phone";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "userId", userId },
                 { "secret", secret }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -837,8 +837,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Token>(
                 method: "PUT",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }

@@ -24,13 +24,13 @@ namespace Appwrite.Services
         {
             var apiPath = "/storage/buckets";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
                 { "search", search }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -44,8 +44,8 @@ namespace Appwrite.Services
             return _client.Call<Models.BucketList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -60,7 +60,7 @@ namespace Appwrite.Services
         {
             var apiPath = "/storage/buckets";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "bucketId", bucketId },
                 { "name", name },
@@ -74,7 +74,7 @@ namespace Appwrite.Services
                 { "antivirus", antivirus }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -88,8 +88,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Bucket>(
                 method: "POST",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -106,11 +106,11 @@ namespace Appwrite.Services
             var apiPath = "/storage/buckets/{bucketId}"
                 .Replace("{bucketId}", bucketId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -124,8 +124,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Bucket>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -141,7 +141,7 @@ namespace Appwrite.Services
             var apiPath = "/storage/buckets/{bucketId}"
                 .Replace("{bucketId}", bucketId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name },
                 { "permissions", permissions },
@@ -154,7 +154,7 @@ namespace Appwrite.Services
                 { "antivirus", antivirus }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -168,8 +168,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Bucket>(
                 method: "PUT",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -185,11 +185,11 @@ namespace Appwrite.Services
             var apiPath = "/storage/buckets/{bucketId}"
                 .Replace("{bucketId}", bucketId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -201,8 +201,8 @@ namespace Appwrite.Services
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 
@@ -218,13 +218,13 @@ namespace Appwrite.Services
             var apiPath = "/storage/buckets/{bucketId}/files"
                 .Replace("{bucketId}", bucketId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
                 { "search", search }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -238,8 +238,8 @@ namespace Appwrite.Services
             return _client.Call<Models.FileList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -272,14 +272,14 @@ namespace Appwrite.Services
             var apiPath = "/storage/buckets/{bucketId}/files"
                 .Replace("{bucketId}", bucketId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "fileId", fileId },
                 { "file", file },
                 { "permissions", permissions }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "multipart/form-data" }
             };
@@ -295,8 +295,8 @@ namespace Appwrite.Services
 
             return _client.ChunkedUpload(
                 apiPath,
-                headers,
-                parameters,
+                apiHeaders,
+                apiParameters,
                 Convert,
                 paramName,
                 idParamName,
@@ -316,11 +316,11 @@ namespace Appwrite.Services
                 .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -334,8 +334,8 @@ namespace Appwrite.Services
             return _client.Call<Models.File>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -353,13 +353,13 @@ namespace Appwrite.Services
                 .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name },
                 { "permissions", permissions }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -373,8 +373,8 @@ namespace Appwrite.Services
             return _client.Call<Models.File>(
                 method: "PUT",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -392,11 +392,11 @@ namespace Appwrite.Services
                 .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -408,8 +408,8 @@ namespace Appwrite.Services
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 
@@ -427,11 +427,11 @@ namespace Appwrite.Services
                 .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -440,8 +440,9 @@ namespace Appwrite.Services
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
         /// <summary>
@@ -460,7 +461,7 @@ namespace Appwrite.Services
                 .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "width", width },
                 { "height", height },
@@ -475,7 +476,7 @@ namespace Appwrite.Services
                 { "output", output }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -484,8 +485,9 @@ namespace Appwrite.Services
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
         /// <summary>
@@ -502,11 +504,11 @@ namespace Appwrite.Services
                 .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -515,8 +517,9 @@ namespace Appwrite.Services
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
     }

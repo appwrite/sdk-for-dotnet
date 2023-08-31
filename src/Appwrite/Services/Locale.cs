@@ -28,11 +28,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/locale";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -46,8 +46,8 @@ namespace Appwrite.Services
             return _client.Call<Models.Locale>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -63,11 +63,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/locale/codes";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -81,8 +81,8 @@ namespace Appwrite.Services
             return _client.Call<Models.LocaleCodeList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -98,11 +98,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/locale/continents";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -116,8 +116,8 @@ namespace Appwrite.Services
             return _client.Call<Models.ContinentList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -133,11 +133,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/locale/countries";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -151,8 +151,8 @@ namespace Appwrite.Services
             return _client.Call<Models.CountryList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -168,11 +168,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/locale/countries/eu";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -186,8 +186,8 @@ namespace Appwrite.Services
             return _client.Call<Models.CountryList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -203,11 +203,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/locale/countries/phones";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -221,8 +221,8 @@ namespace Appwrite.Services
             return _client.Call<Models.PhoneList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -239,11 +239,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/locale/currencies";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -257,8 +257,8 @@ namespace Appwrite.Services
             return _client.Call<Models.CurrencyList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -274,11 +274,11 @@ namespace Appwrite.Services
         {
             var apiPath = "/locale/languages";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -292,8 +292,8 @@ namespace Appwrite.Services
             return _client.Call<Models.LanguageList>(
                 method: "GET",
                 path: apiPath,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
