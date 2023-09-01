@@ -37,6 +37,9 @@ namespace Appwrite.Models
         [JsonProperty("status")]
         public bool Status { get; private set; }
 
+        [JsonProperty("labels")]
+        public List<object> Labels { get; private set; }
+
         [JsonProperty("passwordUpdate")]
         public string PasswordUpdate { get; private set; }
 
@@ -55,6 +58,9 @@ namespace Appwrite.Models
         [JsonProperty("prefs")]
         public Preferences Prefs { get; private set; }
 
+        [JsonProperty("accessedAt")]
+        public string AccessedAt { get; private set; }
+
         public User(
             string id,
             string createdAt,
@@ -65,12 +71,14 @@ namespace Appwrite.Models
             object? hashOptions,
             string registration,
             bool status,
+            List<object> labels,
             string passwordUpdate,
             string email,
             string phone,
             bool emailVerification,
             bool phoneVerification,
-            Preferences prefs
+            Preferences prefs,
+            string accessedAt
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -81,12 +89,14 @@ namespace Appwrite.Models
             HashOptions = hashOptions;
             Registration = registration;
             Status = status;
+            Labels = labels;
             PasswordUpdate = passwordUpdate;
             Email = email;
             Phone = phone;
             EmailVerification = emailVerification;
             PhoneVerification = phoneVerification;
             Prefs = prefs;
+            AccessedAt = accessedAt;
         }
 
         public static User From(Dictionary<string, object> map) => new User(
@@ -99,12 +109,14 @@ namespace Appwrite.Models
             hashOptions: map["hashOptions"]?.ToString(),
             registration: map["registration"].ToString(),
             status: (bool)map["status"],
+            labels: ((JArray)map["labels"]).ToObject<List<object>>(),
             passwordUpdate: map["passwordUpdate"].ToString(),
             email: map["email"].ToString(),
             phone: map["phone"].ToString(),
             emailVerification: (bool)map["emailVerification"],
             phoneVerification: (bool)map["phoneVerification"],
-            prefs: Preferences.From(map: ((JObject)map["prefs"]).ToObject<Dictionary<string, object>>()!)
+            prefs: Preferences.From(map: ((JObject)map["prefs"]).ToObject<Dictionary<string, object>>()!),
+            accessedAt: map["accessedAt"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -118,12 +130,14 @@ namespace Appwrite.Models
             { "hashOptions", HashOptions },
             { "registration", Registration },
             { "status", Status },
+            { "labels", Labels },
             { "passwordUpdate", PasswordUpdate },
             { "email", Email },
             { "phone", Phone },
             { "emailVerification", EmailVerification },
             { "phoneVerification", PhoneVerification },
-            { "prefs", Prefs.ToMap() }
+            { "prefs", Prefs.ToMap() },
+            { "accessedAt", AccessedAt }
         };
     }
 }

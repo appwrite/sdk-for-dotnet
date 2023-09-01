@@ -25,8 +25,11 @@ namespace Appwrite.Models
         [JsonProperty("value")]
         public string Value { get; private set; }
 
-        [JsonProperty("functionId")]
-        public string FunctionId { get; private set; }
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; private set; }
+
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; private set; }
 
         public Variable(
             string id,
@@ -34,14 +37,16 @@ namespace Appwrite.Models
             string updatedAt,
             string key,
             string xvalue,
-            string functionId
+            string resourceType,
+            string resourceId
         ) {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Key = key;
             Value = xvalue;
-            FunctionId = functionId;
+            ResourceType = resourceType;
+            ResourceId = resourceId;
         }
 
         public static Variable From(Dictionary<string, object> map) => new Variable(
@@ -50,7 +55,8 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             key: map["key"].ToString(),
             xvalue: map["value"].ToString(),
-            functionId: map["functionId"].ToString()
+            resourceType: map["resourceType"].ToString(),
+            resourceId: map["resourceId"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -60,7 +66,8 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "key", Key },
             { "value", Value },
-            { "functionId", FunctionId }
+            { "resourceType", ResourceType },
+            { "resourceId", ResourceId }
         };
     }
 }

@@ -19,6 +19,9 @@ namespace Appwrite.Models
         [JsonProperty("status")]
         public string Status { get; private set; }
 
+        [JsonProperty("error")]
+        public string Error { get; private set; }
+
         [JsonProperty("required")]
         public bool Required { get; private set; }
 
@@ -47,6 +50,7 @@ namespace Appwrite.Models
             string key,
             string type,
             string status,
+            string error,
             bool required,
             bool? array,
             string relatedCollection,
@@ -59,6 +63,7 @@ namespace Appwrite.Models
             Key = key;
             Type = type;
             Status = status;
+            Error = error;
             Required = required;
             Array = array;
             RelatedCollection = relatedCollection;
@@ -73,6 +78,7 @@ namespace Appwrite.Models
             key: map["key"].ToString(),
             type: map["type"].ToString(),
             status: map["status"].ToString(),
+            error: map["error"].ToString(),
             required: (bool)map["required"],
             array: (bool?)map["array"],
             relatedCollection: map["relatedCollection"].ToString(),
@@ -88,6 +94,7 @@ namespace Appwrite.Models
             { "key", Key },
             { "type", Type },
             { "status", Status },
+            { "error", Error },
             { "required", Required },
             { "array", Array },
             { "relatedCollection", RelatedCollection },

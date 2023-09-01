@@ -31,17 +31,29 @@ namespace Appwrite.Models
         [JsonProperty("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("statusCode")]
-        public long StatusCode { get; private set; }
+        [JsonProperty("requestMethod")]
+        public string RequestMethod { get; private set; }
 
-        [JsonProperty("response")]
-        public string Response { get; private set; }
+        [JsonProperty("requestPath")]
+        public string RequestPath { get; private set; }
 
-        [JsonProperty("stdout")]
-        public string Stdout { get; private set; }
+        [JsonProperty("requestHeaders")]
+        public List<Headers> RequestHeaders { get; private set; }
 
-        [JsonProperty("stderr")]
-        public string Stderr { get; private set; }
+        [JsonProperty("responseStatusCode")]
+        public long ResponseStatusCode { get; private set; }
+
+        [JsonProperty("responseBody")]
+        public string ResponseBody { get; private set; }
+
+        [JsonProperty("responseHeaders")]
+        public List<Headers> ResponseHeaders { get; private set; }
+
+        [JsonProperty("logs")]
+        public string Logs { get; private set; }
+
+        [JsonProperty("errors")]
+        public string Errors { get; private set; }
 
         [JsonProperty("duration")]
         public double Duration { get; private set; }
@@ -54,10 +66,14 @@ namespace Appwrite.Models
             string functionId,
             string trigger,
             string status,
-            long statusCode,
-            string response,
-            string stdout,
-            string stderr,
+            string requestMethod,
+            string requestPath,
+            List<Headers> requestHeaders,
+            long responseStatusCode,
+            string responseBody,
+            List<Headers> responseHeaders,
+            string logs,
+            string errors,
             double duration
         ) {
             Id = id;
@@ -67,10 +83,14 @@ namespace Appwrite.Models
             FunctionId = functionId;
             Trigger = trigger;
             Status = status;
-            StatusCode = statusCode;
-            Response = response;
-            Stdout = stdout;
-            Stderr = stderr;
+            RequestMethod = requestMethod;
+            RequestPath = requestPath;
+            RequestHeaders = requestHeaders;
+            ResponseStatusCode = responseStatusCode;
+            ResponseBody = responseBody;
+            ResponseHeaders = responseHeaders;
+            Logs = logs;
+            Errors = errors;
             Duration = duration;
         }
 
@@ -82,10 +102,14 @@ namespace Appwrite.Models
             functionId: map["functionId"].ToString(),
             trigger: map["trigger"].ToString(),
             status: map["status"].ToString(),
-            statusCode: Convert.ToInt64(map["statusCode"]),
-            response: map["response"].ToString(),
-            stdout: map["stdout"].ToString(),
-            stderr: map["stderr"].ToString(),
+            requestMethod: map["requestMethod"].ToString(),
+            requestPath: map["requestPath"].ToString(),
+            requestHeaders: ((JArray)map["requestHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
+            responseStatusCode: Convert.ToInt64(map["responseStatusCode"]),
+            responseBody: map["responseBody"].ToString(),
+            responseHeaders: ((JArray)map["responseHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
+            logs: map["logs"].ToString(),
+            errors: map["errors"].ToString(),
             duration: Convert.ToDouble(map["duration"])
         );
 
@@ -98,10 +122,14 @@ namespace Appwrite.Models
             { "functionId", FunctionId },
             { "trigger", Trigger },
             { "status", Status },
-            { "statusCode", StatusCode },
-            { "response", Response },
-            { "stdout", Stdout },
-            { "stderr", Stderr },
+            { "requestMethod", RequestMethod },
+            { "requestPath", RequestPath },
+            { "requestHeaders", RequestHeaders.Select(it => it.ToMap()) },
+            { "responseStatusCode", ResponseStatusCode },
+            { "responseBody", ResponseBody },
+            { "responseHeaders", ResponseHeaders.Select(it => it.ToMap()) },
+            { "logs", Logs },
+            { "errors", Errors },
             { "duration", Duration }
         };
     }

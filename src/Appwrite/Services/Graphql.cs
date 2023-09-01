@@ -21,14 +21,14 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Query(object query)
         {
-            var path = "/graphql";
+            var apiPath = "/graphql";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "query", query }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "x-sdk-graphql", "true" },
                 { "content-type", "application/json" }
@@ -42,9 +42,9 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "POST",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -57,14 +57,14 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Mutation(object query)
         {
-            var path = "/graphql/mutation";
+            var apiPath = "/graphql/mutation";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "query", query }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "x-sdk-graphql", "true" },
                 { "content-type", "application/json" }
@@ -78,9 +78,9 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "POST",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }

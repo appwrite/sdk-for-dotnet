@@ -22,15 +22,15 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.TeamList> List(List<string>? queries = null, string? search = null)
         {
-            var path = "/teams";
+            var apiPath = "/teams";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
                 { "search", search }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -43,9 +43,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.TeamList>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -60,16 +60,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Team> Create(string teamId, string name, List<string>? roles = null)
         {
-            var path = "/teams";
+            var apiPath = "/teams";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "teamId", teamId },
                 { "name", name },
                 { "roles", roles }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -82,9 +82,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Team>(
                 method: "POST",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -97,14 +97,14 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Team> Get(string teamId)
         {
-            var path = "/teams/{teamId}"
+            var apiPath = "/teams/{teamId}"
                 .Replace("{teamId}", teamId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -117,9 +117,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Team>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -132,15 +132,15 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Team> UpdateName(string teamId, string name)
         {
-            var path = "/teams/{teamId}"
+            var apiPath = "/teams/{teamId}"
                 .Replace("{teamId}", teamId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -153,9 +153,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Team>(
                 method: "PUT",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -169,14 +169,14 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string teamId)
         {
-            var path = "/teams/{teamId}"
+            var apiPath = "/teams/{teamId}"
                 .Replace("{teamId}", teamId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -187,9 +187,9 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "DELETE",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 
@@ -202,16 +202,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.MembershipList> ListMemberships(string teamId, List<string>? queries = null, string? search = null)
         {
-            var path = "/teams/{teamId}/memberships"
+            var apiPath = "/teams/{teamId}/memberships"
                 .Replace("{teamId}", teamId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
                 { "search", search }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -224,9 +224,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.MembershipList>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -259,10 +259,10 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Membership> CreateMembership(string teamId, List<string> roles, string url, string? email = null, string? userId = null, string? phone = null, string? name = null)
         {
-            var path = "/teams/{teamId}/memberships"
+            var apiPath = "/teams/{teamId}/memberships"
                 .Replace("{teamId}", teamId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "email", email },
                 { "userId", userId },
@@ -272,7 +272,7 @@ namespace Appwrite.Services
                 { "name", name }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -285,9 +285,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Membership>(
                 method: "POST",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -301,15 +301,15 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Membership> GetMembership(string teamId, string membershipId)
         {
-            var path = "/teams/{teamId}/memberships/{membershipId}"
+            var apiPath = "/teams/{teamId}/memberships/{membershipId}"
                 .Replace("{teamId}", teamId)
                 .Replace("{membershipId}", membershipId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -322,33 +322,34 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Membership>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
 
         /// <summary>
-        /// Update Membership Roles
+        /// Update Membership
         /// <para>
         /// Modify the roles of a team member. Only team members with the owner role
         /// have access to this endpoint. Learn more about [roles and
         /// permissions](/docs/permissions).
+        /// 
         /// </para>
         /// </summary>
-        public Task<Models.Membership> UpdateMembershipRoles(string teamId, string membershipId, List<string> roles)
+        public Task<Models.Membership> UpdateMembership(string teamId, string membershipId, List<string> roles)
         {
-            var path = "/teams/{teamId}/memberships/{membershipId}"
+            var apiPath = "/teams/{teamId}/memberships/{membershipId}"
                 .Replace("{teamId}", teamId)
                 .Replace("{membershipId}", membershipId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "roles", roles }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -361,9 +362,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Membership>(
                 method: "PATCH",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -378,15 +379,15 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteMembership(string teamId, string membershipId)
         {
-            var path = "/teams/{teamId}/memberships/{membershipId}"
+            var apiPath = "/teams/{teamId}/memberships/{membershipId}"
                 .Replace("{teamId}", teamId)
                 .Replace("{membershipId}", membershipId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -397,9 +398,9 @@ namespace Appwrite.Services
 
             return _client.Call<object>(
                 method: "DELETE",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 
@@ -417,17 +418,17 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Membership> UpdateMembershipStatus(string teamId, string membershipId, string userId, string secret)
         {
-            var path = "/teams/{teamId}/memberships/{membershipId}/status"
+            var apiPath = "/teams/{teamId}/memberships/{membershipId}/status"
                 .Replace("{teamId}", teamId)
                 .Replace("{membershipId}", membershipId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "userId", userId },
                 { "secret", secret }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -440,9 +441,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Membership>(
                 method: "PATCH",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -457,14 +458,14 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Preferences> GetPrefs(string teamId)
         {
-            var path = "/teams/{teamId}/prefs"
+            var apiPath = "/teams/{teamId}/prefs"
                 .Replace("{teamId}", teamId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -477,9 +478,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Preferences>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }
@@ -494,15 +495,15 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Preferences> UpdatePrefs(string teamId, object prefs)
         {
-            var path = "/teams/{teamId}/prefs"
+            var apiPath = "/teams/{teamId}/prefs"
                 .Replace("{teamId}", teamId);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "prefs", prefs }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -515,9 +516,9 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Preferences>(
                 method: "PUT",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
 
         }

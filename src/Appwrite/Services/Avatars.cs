@@ -29,17 +29,17 @@ namespace Appwrite.Services
         /// </summary>
         public Task<byte[]> GetBrowser(string code, long? width = null, long? height = null, long? quality = null)
         {
-            var path = "/avatars/browsers/{code}"
+            var apiPath = "/avatars/browsers/{code}"
                 .Replace("{code}", code);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "width", width },
                 { "height", height },
                 { "quality", quality }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -47,9 +47,10 @@ namespace Appwrite.Services
 
             return _client.Call<byte[]>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
         /// <summary>
@@ -68,17 +69,17 @@ namespace Appwrite.Services
         /// </summary>
         public Task<byte[]> GetCreditCard(string code, long? width = null, long? height = null, long? quality = null)
         {
-            var path = "/avatars/credit-cards/{code}"
+            var apiPath = "/avatars/credit-cards/{code}"
                 .Replace("{code}", code);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "width", width },
                 { "height", height },
                 { "quality", quality }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -86,9 +87,10 @@ namespace Appwrite.Services
 
             return _client.Call<byte[]>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
         /// <summary>
@@ -101,14 +103,14 @@ namespace Appwrite.Services
         /// </summary>
         public Task<byte[]> GetFavicon(string url)
         {
-            var path = "/avatars/favicon";
+            var apiPath = "/avatars/favicon";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "url", url }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -116,9 +118,10 @@ namespace Appwrite.Services
 
             return _client.Call<byte[]>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
         /// <summary>
@@ -138,17 +141,17 @@ namespace Appwrite.Services
         /// </summary>
         public Task<byte[]> GetFlag(string code, long? width = null, long? height = null, long? quality = null)
         {
-            var path = "/avatars/flags/{code}"
+            var apiPath = "/avatars/flags/{code}"
                 .Replace("{code}", code);
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "width", width },
                 { "height", height },
                 { "quality", quality }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -156,9 +159,10 @@ namespace Appwrite.Services
 
             return _client.Call<byte[]>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
         /// <summary>
@@ -178,16 +182,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<byte[]> GetImage(string url, long? width = null, long? height = null)
         {
-            var path = "/avatars/image";
+            var apiPath = "/avatars/image";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "url", url },
                 { "width", width },
                 { "height", height }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -195,9 +199,10 @@ namespace Appwrite.Services
 
             return _client.Call<byte[]>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
         /// <summary>
@@ -223,9 +228,9 @@ namespace Appwrite.Services
         /// </summary>
         public Task<byte[]> GetInitials(string? name = null, long? width = null, long? height = null, string? background = null)
         {
-            var path = "/avatars/initials";
+            var apiPath = "/avatars/initials";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name },
                 { "width", width },
@@ -233,7 +238,7 @@ namespace Appwrite.Services
                 { "background", background }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -241,9 +246,10 @@ namespace Appwrite.Services
 
             return _client.Call<byte[]>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
         /// <summary>
@@ -256,9 +262,9 @@ namespace Appwrite.Services
         /// </summary>
         public Task<byte[]> GetQR(string text, long? size = null, long? margin = null, bool? download = null)
         {
-            var path = "/avatars/qr";
+            var apiPath = "/avatars/qr";
 
-            var parameters = new Dictionary<string, object?>()
+            var apiParameters = new Dictionary<string, object?>()
             {
                 { "text", text },
                 { "size", size },
@@ -266,7 +272,7 @@ namespace Appwrite.Services
                 { "download", download }
             };
 
-            var headers = new Dictionary<string, string>()
+            var apiHeaders = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" }
             };
@@ -274,9 +280,10 @@ namespace Appwrite.Services
 
             return _client.Call<byte[]>(
                 method: "GET",
-                path: path,
-                headers: headers,
-                parameters: parameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
         }
 
     }

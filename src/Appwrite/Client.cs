@@ -58,11 +58,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , "AppwriteDotNetSDK/0.4.2 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
+                { "user-agent" , "AppwriteDotNetSDK/0.5.0 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.4.2"},                { "X-Appwrite-Response-Format", "1.0.0" }
+                { "x-sdk-version", "0.5.0"},                { "X-Appwrite-Response-Format", "1.4.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -369,7 +369,7 @@ namespace Appwrite
                 parameters[paramName] = content;
 
                 headers["Content-Range"] =
-                    $"bytes {offset}-{Math.Min(offset + ChunkSize - 1, size)}/{size}";
+                    $"bytes {offset}-{Math.Min(offset + ChunkSize - 1, size - 1)}/{size}";
 
                 result = await Call<Dictionary<string, object?>>(
                     method: "POST",

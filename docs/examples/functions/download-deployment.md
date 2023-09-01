@@ -9,7 +9,6 @@ var client = new Client()
 
 var functions = new Functions(client);
 
-Function result = await functions.Update(
+byte[] result = await functions.DownloadDeployment(
     functionId: "[FUNCTION_ID]",
-    name: "[NAME]",
-    runtime: "node-14.5");
+    deploymentId: "[DEPLOYMENT_ID]");

@@ -11,6 +11,5 @@ var functions = new Functions(client);
 
 Deployment result = await functions.CreateDeployment(
     functionId: "[FUNCTION_ID]",
-    entrypoint: "[ENTRYPOINT]",
     code: InputFile.FromPath("./path-to-files/image.jpg"),
     activate: false);

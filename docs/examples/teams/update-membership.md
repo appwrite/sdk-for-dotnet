@@ -7,9 +7,9 @@ var client = new Client()
     .SetProject("5df5acd0d48c2") // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-var functions = new Functions(client);
+var teams = new Teams(client);
 
-Function result = await functions.Update(
-    functionId: "[FUNCTION_ID]",
-    name: "[NAME]",
-    runtime: "node-14.5");
+Membership result = await teams.UpdateMembership(
+    teamId: "[TEAM_ID]",
+    membershipId: "[MEMBERSHIP_ID]",
+    roles: new List<string> {});
