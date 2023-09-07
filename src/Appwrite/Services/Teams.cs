@@ -257,7 +257,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Membership> CreateMembership(string teamId, List<string> roles, string url, string? email = null, string? userId = null, string? phone = null, string? name = null)
+        public Task<Models.Membership> CreateMembership(string teamId, List<string> roles, string? email = null, string? userId = null, string? phone = null, string? url = null, string? name = null)
         {
             var apiPath = "/teams/{teamId}/memberships"
                 .Replace("{teamId}", teamId);
