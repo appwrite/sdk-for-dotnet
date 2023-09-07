@@ -181,7 +181,7 @@ namespace Appwrite.Services
         /// Update function by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Update(string functionId, string name, string runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null)
+        public Task<Models.Function> Update(string functionId, string name, string? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null)
         {
             var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
