@@ -14,7 +14,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Users
+        /// List users
         /// <para>
         /// Get a list of all the project's users. You can use the query params to
         /// filter your results.
@@ -51,7 +51,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create User
+        /// Create user
         /// <para>
         /// Create a new user.
         /// </para>
@@ -90,12 +90,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create User with Argon2 Password
+        /// Create user with Argon2 password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [Argon2](https://en.wikipedia.org/wiki/Argon2) algorithm. Use the [POST
-        /// /users](/docs/server/users#usersCreate) endpoint to create users with a
-        /// plain text password.
+        /// /users](https://appwrite.io/docs/server/users#usersCreate) endpoint to
+        /// create users with a plain text password.
         /// </para>
         /// </summary>
         public Task<Models.User> CreateArgon2User(string userId, string email, string password, string? name = null)
@@ -131,12 +131,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create User with Bcrypt Password
+        /// Create user with bcrypt password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) algorithm. Use the [POST
-        /// /users](/docs/server/users#usersCreate) endpoint to create users with a
-        /// plain text password.
+        /// /users](https://appwrite.io/docs/server/users#usersCreate) endpoint to
+        /// create users with a plain text password.
         /// </para>
         /// </summary>
         public Task<Models.User> CreateBcryptUser(string userId, string email, string password, string? name = null)
@@ -240,12 +240,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create User with MD5 Password
+        /// Create user with MD5 password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [MD5](https://en.wikipedia.org/wiki/MD5) algorithm. Use the [POST
-        /// /users](/docs/server/users#usersCreate) endpoint to create users with a
-        /// plain text password.
+        /// /users](https://appwrite.io/docs/server/users#usersCreate) endpoint to
+        /// create users with a plain text password.
         /// </para>
         /// </summary>
         public Task<Models.User> CreateMD5User(string userId, string email, string password, string? name = null)
@@ -281,12 +281,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create User with PHPass Password
+        /// Create user with PHPass password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [PHPass](https://www.openwall.com/phpass/) algorithm. Use the [POST
-        /// /users](/docs/server/users#usersCreate) endpoint to create users with a
-        /// plain text password.
+        /// /users](https://appwrite.io/docs/server/users#usersCreate) endpoint to
+        /// create users with a plain text password.
         /// </para>
         /// </summary>
         public Task<Models.User> CreatePHPassUser(string userId, string email, string password, string? name = null)
@@ -322,12 +322,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create User with Scrypt Password
+        /// Create user with Scrypt password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [Scrypt](https://github.com/Tarsnap/scrypt) algorithm. Use the [POST
-        /// /users](/docs/server/users#usersCreate) endpoint to create users with a
-        /// plain text password.
+        /// /users](https://appwrite.io/docs/server/users#usersCreate) endpoint to
+        /// create users with a plain text password.
         /// </para>
         /// </summary>
         public Task<Models.User> CreateScryptUser(string userId, string email, string password, string passwordSalt, long passwordCpu, long passwordMemory, long passwordParallel, long passwordLength, string? name = null)
@@ -368,12 +368,13 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create User with Scrypt Modified Password
+        /// Create user with Scrypt modified password
         /// <para>
         /// Create a new user. Password provided must be hashed with the [Scrypt
         /// Modified](https://gist.github.com/Meldiron/eecf84a0225eccb5a378d45bb27462cc)
-        /// algorithm. Use the [POST /users](/docs/server/users#usersCreate) endpoint
-        /// to create users with a plain text password.
+        /// algorithm. Use the [POST
+        /// /users](https://appwrite.io/docs/server/users#usersCreate) endpoint to
+        /// create users with a plain text password.
         /// </para>
         /// </summary>
         public Task<Models.User> CreateScryptModifiedUser(string userId, string email, string password, string passwordSalt, string passwordSaltSeparator, string passwordSignerKey, string? name = null)
@@ -412,12 +413,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create User with SHA Password
+        /// Create user with SHA password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [SHA](https://en.wikipedia.org/wiki/Secure_Hash_Algorithm) algorithm. Use
-        /// the [POST /users](/docs/server/users#usersCreate) endpoint to create users
-        /// with a plain text password.
+        /// the [POST /users](https://appwrite.io/docs/server/users#usersCreate)
+        /// endpoint to create users with a plain text password.
         /// </para>
         /// </summary>
         public Task<Models.User> CreateSHAUser(string userId, string email, string password, string? passwordVersion = null, string? name = null)
@@ -454,7 +455,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get User
+        /// Get user
         /// <para>
         /// Get a user by its unique ID.
         /// </para>
@@ -489,12 +490,13 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete User
+        /// Delete user
         /// <para>
         /// Delete a user by its unique ID, thereby releasing it's ID. Since ID is
         /// released and can be reused, all user-related resources like documents or
         /// storage files should be deleted before user deletion. If you want to keep
-        /// ID reserved, use the [updateStatus](/docs/server/users#usersUpdateStatus)
+        /// ID reserved, use the
+        /// [updateStatus](https://appwrite.io/docs/server/users#usersUpdateStatus)
         /// endpoint instead.
         /// </para>
         /// </summary>
@@ -525,7 +527,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Email
+        /// Update email
         /// <para>
         /// Update the user email by its unique ID.
         /// </para>
@@ -561,14 +563,14 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update User Labels
+        /// Update user labels
         /// <para>
         /// Update the user labels by its unique ID. 
         /// 
         /// Labels can be used to grant access to resources. While teams are a way for
         /// user's to share access to a resource, labels can be defined by the
         /// developer to grant access without an invitation. See the [Permissions
-        /// docs](/docs/permissions) for more info.
+        /// docs](https://appwrite.io/docs/permissions) for more info.
         /// </para>
         /// </summary>
         public Task<Models.User> UpdateLabels(string userId, List<string> labels)
@@ -602,7 +604,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List User Logs
+        /// List user logs
         /// <para>
         /// Get the user activity logs list by its unique ID.
         /// </para>
@@ -638,7 +640,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List User Memberships
+        /// List user memberships
         /// <para>
         /// Get the user membership list by its unique ID.
         /// </para>
@@ -673,7 +675,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Name
+        /// Update name
         /// <para>
         /// Update the user name by its unique ID.
         /// </para>
@@ -709,7 +711,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Password
+        /// Update password
         /// <para>
         /// Update the user password by its unique ID.
         /// </para>
@@ -745,7 +747,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Phone
+        /// Update phone
         /// <para>
         /// Update the user phone by its unique ID.
         /// </para>
@@ -781,7 +783,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get User Preferences
+        /// Get user preferences
         /// <para>
         /// Get the user preferences by its unique ID.
         /// </para>
@@ -816,7 +818,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update User Preferences
+        /// Update user preferences
         /// <para>
         /// Update the user preferences by its unique ID. The object you pass is stored
         /// as is, and replaces any previous value. The maximum allowed prefs size is
@@ -854,7 +856,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List User Sessions
+        /// List user sessions
         /// <para>
         /// Get the user sessions list by its unique ID.
         /// </para>
@@ -889,7 +891,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete User Sessions
+        /// Delete user sessions
         /// <para>
         /// Delete all user's sessions by using the user's unique ID.
         /// </para>
@@ -921,7 +923,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete User Session
+        /// Delete user session
         /// <para>
         /// Delete a user sessions by its unique ID.
         /// </para>
@@ -954,7 +956,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update User Status
+        /// Update user status
         /// <para>
         /// Update the user status by its unique ID. Use this endpoint as an
         /// alternative to deleting a user if you want to keep user's ID reserved.
@@ -991,7 +993,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Email Verification
+        /// Update email verification
         /// <para>
         /// Update the user email verification status by its unique ID.
         /// </para>
@@ -1027,7 +1029,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Phone Verification
+        /// Update phone verification
         /// <para>
         /// Update the user phone verification status by its unique ID.
         /// </para>

@@ -14,7 +14,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Teams
+        /// List teams
         /// <para>
         /// Get a list of all the teams in which the current user is a member. You can
         /// use the parameters to filter your results.
@@ -51,7 +51,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Team
+        /// Create team
         /// <para>
         /// Create a new team. The user who creates the team will automatically be
         /// assigned as the owner of the team. Only the users with the owner role can
@@ -90,7 +90,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Team
+        /// Get team
         /// <para>
         /// Get a team by its ID. All team members have read access for this resource.
         /// </para>
@@ -125,7 +125,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Name
+        /// Update name
         /// <para>
         /// Update the team's name by its unique ID.
         /// </para>
@@ -161,7 +161,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Team
+        /// Delete team
         /// <para>
         /// Delete a team using its ID. Only team members with the owner role can
         /// delete the team.
@@ -194,7 +194,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Team Memberships
+        /// List team memberships
         /// <para>
         /// Use this endpoint to list a team's members using the team's ID. All team
         /// members have read access to this endpoint.
@@ -232,7 +232,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Team Membership
+        /// Create team membership
         /// <para>
         /// Invite a new member to join your team. Provide an ID for existing users, or
         /// invite unregistered users using an email or phone number. If initiated from
@@ -247,8 +247,8 @@ namespace Appwrite.Services
         /// 
         /// Use the `url` parameter to redirect the user from the invitation email to
         /// your app. After the user is redirected, use the [Update Team Membership
-        /// Status](/docs/client/teams#teamsUpdateMembershipStatus) endpoint to allow
-        /// the user to accept the invitation to the team. 
+        /// Status](https://appwrite.io/docs/references/cloud/client-web/teams#updateMembershipStatus)
+        /// endpoint to allow the user to accept the invitation to the team. 
         /// 
         /// Please note that to avoid a [Redirect
         /// Attack](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md)
@@ -293,7 +293,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Team Membership
+        /// Get team membership
         /// <para>
         /// Get a team member by the membership unique id. All team members have read
         /// access for this resource.
@@ -330,11 +330,11 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Membership
+        /// Update membership
         /// <para>
         /// Modify the roles of a team member. Only team members with the owner role
         /// have access to this endpoint. Learn more about [roles and
-        /// permissions](/docs/permissions).
+        /// permissions](https://appwrite.io/docs/permissions).
         /// 
         /// </para>
         /// </summary>
@@ -370,7 +370,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Team Membership
+        /// Delete team membership
         /// <para>
         /// This endpoint allows a user to leave a team or for a team owner to delete
         /// the membership of any other team member. You can also use this endpoint to
@@ -405,7 +405,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Team Membership Status
+        /// Update team membership status
         /// <para>
         /// Use this endpoint to allow a user to accept an invitation to join a team
         /// after being redirected back to your app from the invitation email received
@@ -449,11 +449,11 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Team Preferences
+        /// Get team preferences
         /// <para>
         /// Get the team's shared preferences by its unique ID. If a preference doesn't
         /// need to be shared by all team members, prefer storing them in [user
-        /// preferences](/docs/client/account#accountGetPrefs).
+        /// preferences](https://appwrite.io/docs/references/cloud/client-web/account#getPrefs).
         /// </para>
         /// </summary>
         public Task<Models.Preferences> GetPrefs(string teamId)
@@ -486,7 +486,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Preferences
+        /// Update preferences
         /// <para>
         /// Update the team's preferences by its unique ID. The object you pass is
         /// stored as is and replaces any previous value. The maximum allowed prefs
