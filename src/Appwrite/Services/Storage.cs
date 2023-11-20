@@ -95,7 +95,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Bucket
+        /// Get bucket
         /// <para>
         /// Get a storage bucket by its unique ID. This endpoint response returns a
         /// JSON object with the storage bucket metadata.
@@ -131,7 +131,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Bucket
+        /// Update bucket
         /// <para>
         /// Update a storage bucket by its unique ID.
         /// </para>
@@ -175,7 +175,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Bucket
+        /// Delete bucket
         /// <para>
         /// Delete a storage bucket by its unique ID.
         /// </para>
@@ -207,7 +207,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Files
+        /// List files
         /// <para>
         /// Get a list of all the user files. You can use the query params to filter
         /// your results.
@@ -245,12 +245,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create File
+        /// Create file
         /// <para>
         /// Create a new file. Before using this route, you should create a new bucket
         /// resource using either a [server
-        /// integration](/docs/server/storage#storageCreateBucket) API or directly from
-        /// your Appwrite console.
+        /// integration](https://appwrite.io/docs/server/storage#storageCreateBucket)
+        /// API or directly from your Appwrite console.
         /// 
         /// Larger files should be uploaded using multiple requests with the
         /// [content-range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Range)
@@ -304,7 +304,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get File
+        /// Get file
         /// <para>
         /// Get a file by its unique ID. This endpoint response returns a JSON object
         /// with the file metadata.
@@ -341,7 +341,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update File
+        /// Update file
         /// <para>
         /// Update a file by its unique ID. Only users with write permissions have
         /// access to update this resource.
@@ -414,7 +414,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get File for Download
+        /// Get file for download
         /// <para>
         /// Get a file content by its unique ID. The endpoint response return with a
         /// 'Content-Disposition: attachment' header that tells the browser to start
@@ -446,7 +446,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get File Preview
+        /// Get file preview
         /// <para>
         /// Get a file preview image. Currently, this method supports preview for image
         /// files (jpg, png, and gif), other supported formats, like pdf, docs, slides,
@@ -491,7 +491,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get File for View
+        /// Get file for view
         /// <para>
         /// Get a file content by its unique ID. This endpoint is similar to the
         /// download method but returns with no  'Content-Disposition: attachment'

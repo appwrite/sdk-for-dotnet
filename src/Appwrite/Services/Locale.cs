@@ -14,7 +14,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get User Locale
+        /// Get user locale
         /// <para>
         /// Get the current user location based on IP. Returns an object with user
         /// country code, country name, continent name, continent code, ip address and
@@ -88,7 +88,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Continents
+        /// List continents
         /// <para>
         /// List of all continents. You can use the locale header to get the data in a
         /// supported language.
@@ -123,7 +123,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Countries
+        /// List countries
         /// <para>
         /// List of all countries. You can use the locale header to get the data in a
         /// supported language.
@@ -158,7 +158,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List EU Countries
+        /// List EU countries
         /// <para>
         /// List of all countries that are currently members of the EU. You can use the
         /// locale header to get the data in a supported language.
@@ -193,7 +193,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Countries Phone Codes
+        /// List countries phone codes
         /// <para>
         /// List of all countries phone codes. You can use the locale header to get the
         /// data in a supported language.
@@ -228,7 +228,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Currencies
+        /// List currencies
         /// <para>
         /// List of all currencies, including currency symbol, name, plural, and
         /// decimal digits for all major and minor currencies. You can use the locale
@@ -264,7 +264,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Languages
+        /// List languages
         /// <para>
         /// List of all languages classified by ISO 639-1 including 2-letter code, name
         /// in English, and name in the respective language.

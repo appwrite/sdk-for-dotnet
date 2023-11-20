@@ -14,7 +14,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Databases
+        /// List databases
         /// <para>
         /// Get a list of all databases from the current Appwrite project. You can use
         /// the search parameter to filter your results.
@@ -51,7 +51,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Database
+        /// Create database
         /// <para>
         /// Create a new Database.
         /// 
@@ -89,7 +89,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Database
+        /// Get database
         /// <para>
         /// Get a database by its unique ID. This endpoint response returns a JSON
         /// object with the database metadata.
@@ -125,7 +125,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Database
+        /// Update database
         /// <para>
         /// Update a database by its unique ID.
         /// </para>
@@ -162,7 +162,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Database
+        /// Delete database
         /// <para>
         /// Delete a database by its unique ID. Only API keys with with databases.write
         /// scope can delete a database.
@@ -195,7 +195,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Collections
+        /// List collections
         /// <para>
         /// Get a list of all collections that belong to the provided databaseId. You
         /// can use the search parameter to filter your results.
@@ -233,12 +233,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Collection
+        /// Create collection
         /// <para>
         /// Create a new Collection. Before using this route, you should create a new
         /// database resource using either a [server
-        /// integration](/docs/server/databases#databasesCreateCollection) API or
-        /// directly from your database console.
+        /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
+        /// API or directly from your database console.
         /// </para>
         /// </summary>
         public Task<Models.Collection> CreateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
@@ -276,7 +276,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Collection
+        /// Get collection
         /// <para>
         /// Get a collection by its unique ID. This endpoint response returns a JSON
         /// object with the collection metadata.
@@ -313,7 +313,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Collection
+        /// Update collection
         /// <para>
         /// Update a collection by its unique ID.
         /// </para>
@@ -353,7 +353,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Collection
+        /// Delete collection
         /// <para>
         /// Delete a collection by its unique ID. Only users with write permissions
         /// have access to delete this resource.
@@ -387,7 +387,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Attributes
+        /// List attributes
         /// </summary>
         public Task<Models.AttributeList> ListAttributes(string databaseId, string collectionId, List<string>? queries = null)
         {
@@ -421,7 +421,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Boolean Attribute
+        /// Create boolean attribute
         /// <para>
         /// Create a boolean attribute.
         /// 
@@ -462,7 +462,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Boolean Attribute
+        /// Update boolean attribute
         /// </summary>
         public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool xdefault)
         {
@@ -498,7 +498,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create DateTime Attribute
+        /// Create datetime attribute
         /// </summary>
         public Task<Models.AttributeDatetime> CreateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
         {
@@ -535,7 +535,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update DateTime Attribute
+        /// Update dateTime attribute
         /// </summary>
         public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
         {
@@ -571,7 +571,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Email Attribute
+        /// Create email attribute
         /// <para>
         /// Create an email attribute.
         /// 
@@ -612,7 +612,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Email Attribute
+        /// Update email attribute
         /// <para>
         /// Update an email attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -653,7 +653,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Enum Attribute
+        /// Create enum attribute
         /// </summary>
         public Task<Models.AttributeEnum> CreateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? xdefault = null, bool? array = null)
         {
@@ -691,7 +691,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Enum Attribute
+        /// Update enum attribute
         /// <para>
         /// Update an enum attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -733,7 +733,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Float Attribute
+        /// Create float attribute
         /// <para>
         /// Create a float attribute. Optionally, minimum and maximum values can be
         /// provided.
@@ -777,7 +777,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Float Attribute
+        /// Update float attribute
         /// <para>
         /// Update a float attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -820,7 +820,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Integer Attribute
+        /// Create integer attribute
         /// <para>
         /// Create an integer attribute. Optionally, minimum and maximum values can be
         /// provided.
@@ -864,7 +864,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Integer Attribute
+        /// Update integer attribute
         /// <para>
         /// Update an integer attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -907,7 +907,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create IP Address Attribute
+        /// Create IP address attribute
         /// <para>
         /// Create IP address attribute.
         /// 
@@ -948,7 +948,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update IP Address Attribute
+        /// Update IP address attribute
         /// <para>
         /// Update an ip attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -989,10 +989,10 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Relationship Attribute
+        /// Create relationship attribute
         /// <para>
         /// Create relationship attribute. [Learn more about relationship
-        /// attributes](/docs/databases-relationships#relationship-attributes).
+        /// attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
         /// 
         /// </para>
         /// </summary>
@@ -1033,7 +1033,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create String Attribute
+        /// Create string attribute
         /// <para>
         /// Create a string attribute.
         /// 
@@ -1076,7 +1076,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update String Attribute
+        /// Update string attribute
         /// <para>
         /// Update a string attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -1117,7 +1117,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create URL Attribute
+        /// Create URL attribute
         /// <para>
         /// Create a URL attribute.
         /// 
@@ -1158,7 +1158,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update URL Attribute
+        /// Update URL attribute
         /// <para>
         /// Update an url attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -1199,7 +1199,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Attribute
+        /// Get attribute
         /// </summary>
         public Task<object> GetAttribute(string databaseId, string collectionId, string key)
         {
@@ -1230,7 +1230,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Attribute
+        /// Delete attribute
         /// </summary>
         public Task<object> DeleteAttribute(string databaseId, string collectionId, string key)
         {
@@ -1261,10 +1261,10 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Relationship Attribute
+        /// Update relationship attribute
         /// <para>
         /// Update relationship attribute. [Learn more about relationship
-        /// attributes](/docs/databases-relationships#relationship-attributes).
+        /// attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
         /// 
         /// </para>
         /// </summary>
@@ -1301,7 +1301,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Documents
+        /// List documents
         /// <para>
         /// Get a list of all the user's documents in a given collection. You can use
         /// the query params to filter your results.
@@ -1339,12 +1339,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Document
+        /// Create document
         /// <para>
         /// Create a new Document. Before using this route, you should create a new
         /// collection resource using either a [server
-        /// integration](/docs/server/databases#databasesCreateCollection) API or
-        /// directly from your database console.
+        /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
+        /// API or directly from your database console.
         /// </para>
         /// </summary>
         public Task<Models.Document> CreateDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null)
@@ -1381,7 +1381,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Document
+        /// Get document
         /// <para>
         /// Get a document by its unique ID. This endpoint response returns a JSON
         /// object with the document data.
@@ -1420,7 +1420,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Document
+        /// Update document
         /// <para>
         /// Update a document by its unique ID. Using the patch method you can pass
         /// only specific fields that will get updated.
@@ -1460,7 +1460,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Document
+        /// Delete document
         /// <para>
         /// Delete a document by its unique ID.
         /// </para>
@@ -1494,7 +1494,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Indexes
+        /// List indexes
         /// </summary>
         public Task<Models.IndexList> ListIndexes(string databaseId, string collectionId, List<string>? queries = null)
         {
@@ -1528,7 +1528,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Index
+        /// Create index
         /// </summary>
         public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, string type, List<string> attributes, List<string>? orders = null)
         {
@@ -1565,7 +1565,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Index
+        /// Get index
         /// </summary>
         public Task<Models.Index> GetIndex(string databaseId, string collectionId, string key)
         {
@@ -1599,7 +1599,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Index
+        /// Delete index
         /// </summary>
         public Task<object> DeleteIndex(string databaseId, string collectionId, string key)
         {

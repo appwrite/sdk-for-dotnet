@@ -14,7 +14,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Functions
+        /// List functions
         /// <para>
         /// Get a list of all the project's functions. You can use the query params to
         /// filter your results.
@@ -51,11 +51,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Function
+        /// Create function
         /// <para>
         /// Create a new function. You can pass a list of
-        /// [permissions](/docs/permissions) to allow different project users or team
-        /// with access to execute the function using the client API.
+        /// [permissions](https://appwrite.io/docs/permissions) to allow different
+        /// project users or team with access to execute the function using the client
+        /// API.
         /// </para>
         /// </summary>
         public Task<Models.Function> Create(string functionId, string name, string runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? templateRepository = null, string? templateOwner = null, string? templateRootDirectory = null, string? templateBranch = null)
@@ -141,7 +142,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Function
+        /// Get function
         /// <para>
         /// Get a function by its unique ID.
         /// </para>
@@ -176,7 +177,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Function
+        /// Update function
         /// <para>
         /// Update function by its unique ID.
         /// </para>
@@ -226,7 +227,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Function
+        /// Delete function
         /// <para>
         /// Delete a function by its unique ID.
         /// </para>
@@ -258,7 +259,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Deployments
+        /// List deployments
         /// <para>
         /// Get a list of all the project's code deployments. You can use the query
         /// params to filter your results.
@@ -296,7 +297,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Deployment
+        /// Create deployment
         /// <para>
         /// Create a new function code deployment. Use this endpoint to upload a new
         /// version of your code function. To execute your newly uploaded code, you'll
@@ -305,7 +306,7 @@ namespace Appwrite.Services
         /// This endpoint accepts a tar.gz file compressed with your code. Make sure to
         /// include any dependencies your code has within the compressed file. You can
         /// learn more about code packaging in the [Appwrite Cloud Functions
-        /// tutorial](/docs/functions).
+        /// tutorial](https://appwrite.io/docs/functions).
         /// 
         /// Use the "command" param to set the entrypoint used to execute your code.
         /// </para>
@@ -348,7 +349,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Deployment
+        /// Get deployment
         /// <para>
         /// Get a code deployment by its unique ID.
         /// </para>
@@ -384,7 +385,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Function Deployment
+        /// Update function deployment
         /// <para>
         /// Update the function code deployment ID using the unique function ID. Use
         /// this endpoint to switch the code deployment that should be executed by the
@@ -422,7 +423,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Deployment
+        /// Delete deployment
         /// <para>
         /// Delete a code deployment by its unique ID.
         /// </para>
@@ -455,7 +456,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Build
+        /// Create build
         /// <para>
         /// Create a new build for an Appwrite Function deployment. This endpoint can
         /// be used to retry a failed build.
@@ -491,6 +492,10 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Download Deployment
+        /// <para>
+        /// Get a Deployment's contents by its unique ID. This endpoint supports range
+        /// requests for partial or streaming file download.
+        /// </para>
         /// </summary>
         public Task<byte[]> DownloadDeployment(string functionId, string deploymentId)
         {
@@ -517,7 +522,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Executions
+        /// List executions
         /// <para>
         /// Get a list of all the current user function execution logs. You can use the
         /// query params to filter your results.
@@ -555,7 +560,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Execution
+        /// Create execution
         /// <para>
         /// Trigger a function execution. The returned object will return you the
         /// current execution status. You can ping the `Get Execution` endpoint to get
@@ -598,7 +603,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Execution
+        /// Get execution
         /// <para>
         /// Get a function execution log by its unique ID.
         /// </para>
@@ -634,7 +639,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Variables
+        /// List variables
         /// <para>
         /// Get a list of all variables of a specific function.
         /// </para>
@@ -669,7 +674,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Variable
+        /// Create variable
         /// <para>
         /// Create a new function environment variable. These variables can be accessed
         /// in the function at runtime as environment variables.
@@ -707,7 +712,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get Variable
+        /// Get variable
         /// <para>
         /// Get a variable by its unique ID.
         /// </para>
@@ -743,7 +748,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update Variable
+        /// Update variable
         /// <para>
         /// Update variable by its unique ID.
         /// </para>
@@ -781,7 +786,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Variable
+        /// Delete variable
         /// <para>
         /// Delete a variable by its unique ID.
         /// </para>

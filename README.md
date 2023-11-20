@@ -1,7 +1,7 @@
 # Appwrite .NET SDK
 
 ![License](https://img.shields.io/github/license/appwrite/sdk-for-dotnet.svg?style=flat-square)
-![Version](https://img.shields.io/badge/api%20version-1.4.2-blue.svg?style=flat-square)
+![Version](https://img.shields.io/badge/api%20version-1.4.12-blue.svg?style=flat-square)
 [![Build Status](https://img.shields.io/travis/com/appwrite/sdk-generator?style=flat-square)](https://travis-ci.com/appwrite/sdk-generator)
 [![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
@@ -17,17 +17,17 @@ Appwrite is an open-source backend as a service server that abstract and simplif
 Add this reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="0.6.0" />
+<PackageReference Include="Appwrite" Version="0.7.0" />
 ```
 
 You can install packages from the command line:
 
 ```powershell
 # Package Manager
-Install-Package Appwrite -Version 0.6.0
+Install-Package Appwrite -Version 0.7.0
 
 # or .NET CLI
-dotnet add package Appwrite --version 0.6.0
+dotnet add package Appwrite --version 0.7.0
 ```
 
 
@@ -85,6 +85,27 @@ You can use the following resources to learn more and get help
 - 💬 [Discord Community](https://appwrite.io/discord)
 - 🚂 [Appwrite .NET Playground](https://github.com/appwrite/playground-for-dotnet)
 
+
+### Preparing Models for Databases API
+
+For the .NET SDK, we use the `Newtonsoft.Json` library for serialization/deserialization support. The default behavior converts property names from `PascalCase` to `camelCase` on serializing to JSON. In case the names of attributes in your Appwrite collection are not created in `camelCase`, this serializer behavior can cause errors due to mismatches in the names in the serialized JSON and the actual attribute names in your collection.
+
+The way to fix this is to add the `JsonProperty` attribute to the properties in the POCO class you create for your model.
+
+For e.g., if you have two attributes, `name` (`string` type) and `release_date` (`DateTime` type), your POCO class would be created as follows:
+
+```csharp
+public class TestModel
+{
+  [JsonProperty("name")]
+  public string Name { get; set; }
+
+  [JsonProperty("release_date")]
+  public DateTime ReleaseDate { get; set; }
+}
+```
+
+The `JsonProperty` attribute will ensure that your data object for the Appwrite database is serialized with the correct names.
 
 ## Contribution
 
