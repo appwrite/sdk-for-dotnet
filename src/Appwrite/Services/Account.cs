@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
+using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -40,6 +41,50 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create account
+        /// <para>
+        /// Use this endpoint to allow a new user to register a new account in your
+        /// project. After the user registration completes successfully, you can use
+        /// the
+        /// [/account/verfication](https://appwrite.io/docs/references/cloud/client-web/account#createVerification)
+        /// route to start verifying the user email address. To allow the new user to
+        /// login to their new account, you need to create a new [account
+        /// session](https://appwrite.io/docs/references/cloud/client-web/account#createEmailSession).
+        /// </para>
+        /// </summary>
+        public Task<Models.User> Create(string userId, string email, string password, string? name = null)
+        {
+            var apiPath = "/account";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "email", email },
+                { "password", password },
+                { "name", name }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+
+            return _client.Call<Models.User>(
+                method: "POST",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -96,7 +141,7 @@ namespace Appwrite.Services
         /// Get the list of identities for the currently logged in user.
         /// </para>
         /// </summary>
-        public Task<Models.IdentityList> ListIdentities(string? queries = null)
+        public Task<Models.IdentityList> ListIdentities(List<string>? queries = null)
         {
             var apiPath = "/account/identities";
 
@@ -126,7 +171,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Identity
+        /// Delete identity
         /// <para>
         /// Delete an identity by its unique ID.
         /// </para>
@@ -154,6 +199,44 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <summary>
+        /// Create JWT
+        /// <para>
+        /// Use this endpoint to create a JSON Web Token. You can use the resulting JWT
+        /// to authenticate on behalf of the current user when working with the
+        /// Appwrite server-side API and SDKs. The JWT secret is valid for 15 minutes
+        /// from its creation and will be invalid if the user will logout in that time
+        /// frame.
+        /// </para>
+        /// </summary>
+        public Task<Models.JWT> CreateJWT()
+        {
+            var apiPath = "/account/jwt";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.JWT Convert(Dictionary<string, object> it) =>
+                Models.JWT.From(map: it);
+
+
+            return _client.Call<Models.JWT>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 
@@ -186,6 +269,232 @@ namespace Appwrite.Services
 
             return _client.Call<Models.LogList>(
                 method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Update MFA
+        /// </summary>
+        public Task<Models.User> UpdateMFA(bool mfa)
+        {
+            var apiPath = "/account/mfa";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "mfa", mfa }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+
+            return _client.Call<Models.User>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create MFA Challenge
+        /// </summary>
+        public Task<Models.MfaChallenge> CreateChallenge(AuthenticatorProvider provider)
+        {
+            var apiPath = "/account/mfa/challenge";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "provider", provider }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.MfaChallenge Convert(Dictionary<string, object> it) =>
+                Models.MfaChallenge.From(map: it);
+
+
+            return _client.Call<Models.MfaChallenge>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create MFA Challenge (confirmation)
+        /// </summary>
+        public Task<object> UpdateChallenge(string challengeId, string otp)
+        {
+            var apiPath = "/account/mfa/challenge";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "challengeId", challengeId },
+                { "otp", otp }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+
+
+            return _client.Call<object>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <summary>
+        /// List Factors
+        /// <para>
+        /// Get the currently logged in user.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaProviders> ListFactors()
+        {
+            var apiPath = "/account/mfa/factors";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.MfaProviders Convert(Dictionary<string, object> it) =>
+                Models.MfaProviders.From(map: it);
+
+
+            return _client.Call<Models.MfaProviders>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Add Authenticator
+        /// </summary>
+        public Task<Models.MfaProvider> AddAuthenticator(AuthenticatorFactor factor)
+        {
+            var apiPath = "/account/mfa/{factor}"
+                .Replace("{factor}", factor.Value);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.MfaProvider Convert(Dictionary<string, object> it) =>
+                Models.MfaProvider.From(map: it);
+
+
+            return _client.Call<Models.MfaProvider>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Verify Authenticator
+        /// </summary>
+        public Task<Models.User> VerifyAuthenticator(AuthenticatorFactor factor, string otp)
+        {
+            var apiPath = "/account/mfa/{factor}"
+                .Replace("{factor}", factor.Value);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "otp", otp }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+
+            return _client.Call<Models.User>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Delete Authenticator
+        /// </summary>
+        public Task<Models.User> DeleteAuthenticator(AuthenticatorProvider provider, string otp)
+        {
+            var apiPath = "/account/mfa/{provider}"
+                .Replace("{provider}", provider.Value);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "otp", otp }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+
+            return _client.Call<Models.User>(
+                method: "DELETE",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -435,7 +744,7 @@ namespace Appwrite.Services
         /// adding your platforms in the console interface.
         /// </para>
         /// </summary>
-        public Task<Models.Token> UpdateRecovery(string userId, string secret, string password, string passwordAgain)
+        public Task<Models.Token> UpdateRecovery(string userId, string secret, string password)
         {
             var apiPath = "/account/recovery";
 
@@ -443,8 +752,7 @@ namespace Appwrite.Services
             {
                 { "userId", userId },
                 { "secret", secret },
-                { "password", password },
-                { "passwordAgain", passwordAgain }
+                { "password", password }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -535,6 +843,214 @@ namespace Appwrite.Services
         }
 
         /// <summary>
+        /// Create anonymous session
+        /// <para>
+        /// Use this endpoint to allow a new user to register an anonymous account in
+        /// your project. This route will also create a new session for the user. To
+        /// allow the new user to convert an anonymous account to a normal account, you
+        /// need to update its [email and
+        /// password](https://appwrite.io/docs/references/cloud/client-web/account#updateEmail)
+        /// or create an [OAuth2
+        /// session](https://appwrite.io/docs/references/cloud/client-web/account#CreateOAuth2Session).
+        /// </para>
+        /// </summary>
+        public Task<Models.Session> CreateAnonymousSession()
+        {
+            var apiPath = "/account/sessions/anonymous";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.Session Convert(Dictionary<string, object> it) =>
+                Models.Session.From(map: it);
+
+
+            return _client.Call<Models.Session>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create email password session
+        /// <para>
+        /// Allow the user to login into their account by providing a valid email and
+        /// password combination. This route will create a new session for the user.
+        /// 
+        /// A user is limited to 10 active sessions at a time by default. [Learn more
+        /// about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// </para>
+        /// </summary>
+        public Task<Models.Session> CreateEmailPasswordSession(string email, string password)
+        {
+            var apiPath = "/account/sessions/email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "email", email },
+                { "password", password }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.Session Convert(Dictionary<string, object> it) =>
+                Models.Session.From(map: it);
+
+
+            return _client.Call<Models.Session>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create session (deprecated)
+        /// <para>
+        /// Use this endpoint to create a session from token. Provide the **userId**
+        /// and **secret** parameters from the successful response of authentication
+        /// flows initiated by token creation. For example, magic URL and phone login.
+        /// </para>
+        /// </summary>
+        public Task<Models.Session> UpdateMagicURLSession(string userId, string secret)
+        {
+            var apiPath = "/account/sessions/magic-url";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "secret", secret }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.Session Convert(Dictionary<string, object> it) =>
+                Models.Session.From(map: it);
+
+
+            return _client.Call<Models.Session>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create OAuth2 session
+        /// <para>
+        /// Allow the user to login to their account using the OAuth2 provider of their
+        /// choice. Each OAuth2 provider should be enabled from the Appwrite console
+        /// first. Use the success and failure arguments to provide a redirect URL's
+        /// back to your app when login is completed.
+        /// 
+        /// If there is already an active session, the new session will be attached to
+        /// the logged-in account. If there are no active sessions, the server will
+        /// attempt to look for a user with the same email address as the email
+        /// received from the OAuth2 provider and attach the new session to the
+        /// existing user. If no matching user is found - the server will create a new
+        /// user.
+        /// 
+        /// A user is limited to 10 active sessions at a time by default. [Learn more
+        /// about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// 
+        /// </para>
+        /// </summary>
+        public Task CreateOAuth2Session(OAuthProvider provider, string? success = null, string? failure = null, bool? token = null, List<string>? scopes = null)
+        {
+            var apiPath = "/account/sessions/oauth2/{provider}"
+                .Replace("{provider}", provider.Value);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "success", success },
+                { "failure", failure },
+                { "token", token },
+                { "scopes", scopes }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+
+
+            return _client.Call(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <summary>
+        /// Create session
+        /// <para>
+        /// Use this endpoint to create a session from token. Provide the **userId**
+        /// and **secret** parameters from the successful response of authentication
+        /// flows initiated by token creation. For example, magic URL and phone login.
+        /// </para>
+        /// </summary>
+        public Task<Models.Session> CreateSession(string userId, string secret)
+        {
+            var apiPath = "/account/sessions/token";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "secret", secret }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.Session Convert(Dictionary<string, object> it) =>
+                Models.Session.From(map: it);
+
+
+            return _client.Call<Models.Session>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
         /// Get session
         /// <para>
         /// Use this endpoint to get a logged in user's session using a Session ID.
@@ -571,11 +1087,10 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update OAuth session (refresh tokens)
+        /// Update (or renew) a session
         /// <para>
-        /// Access tokens have limited lifespan and expire to mitigate security risks.
-        /// If session was created using an OAuth provider, this route can be used to
-        /// "refresh" the access token.
+        /// Extend session's expiry to increase it's lifespan. Extending a session is
+        /// useful when session length is short such as 5 minutes.
         /// </para>
         /// </summary>
         public Task<Models.Session> UpdateSession(string sessionId)
@@ -672,6 +1187,150 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create email token (OTP)
+        /// <para>
+        /// Sends the user an email with a secret key for creating a session. If the
+        /// provided user ID has not be registered, a new user will be created. Use the
+        /// returned user ID and secret and submit a request to the [POST
+        /// /v1/account/sessions/token](https://appwrite.io/docs/references/cloud/client-web/account#createSession)
+        /// endpoint to complete the login process. The secret sent to the user's email
+        /// is valid for 15 minutes.
+        /// 
+        /// A user is limited to 10 active sessions at a time by default. [Learn more
+        /// about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> CreateEmailToken(string userId, string email, bool? phrase = null)
+        {
+            var apiPath = "/account/tokens/email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "email", email },
+                { "phrase", phrase }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
+
+            return _client.Call<Models.Token>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create magic URL token
+        /// <para>
+        /// Sends the user an email with a secret key for creating a session. If the
+        /// provided user ID has not been registered, a new user will be created. When
+        /// the user clicks the link in the email, the user is redirected back to the
+        /// URL you provided with the secret key and userId values attached to the URL
+        /// query string. Use the query string parameters to submit a request to the
+        /// [POST
+        /// /v1/account/sessions/token](https://appwrite.io/docs/references/cloud/client-web/account#createSession)
+        /// endpoint to complete the login process. The link sent to the user's email
+        /// address is valid for 1 hour. If you are on a mobile device you can leave
+        /// the URL parameter empty, so that the login completion will be handled by
+        /// your Appwrite instance by default.
+        /// 
+        /// A user is limited to 10 active sessions at a time by default. [Learn more
+        /// about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> CreateMagicURLToken(string userId, string email, string? url = null, bool? phrase = null)
+        {
+            var apiPath = "/account/tokens/magic-url";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "email", email },
+                { "url", url },
+                { "phrase", phrase }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
+
+            return _client.Call<Models.Token>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create phone token
+        /// <para>
+        /// Sends the user an SMS with a secret key for creating a session. If the
+        /// provided user ID has not be registered, a new user will be created. Use the
+        /// returned user ID and secret and submit a request to the [POST
+        /// /v1/account/sessions/token](https://appwrite.io/docs/references/cloud/client-web/account#createSession)
+        /// endpoint to complete the login process. The secret sent to the user's phone
+        /// is valid for 15 minutes.
+        /// 
+        /// A user is limited to 10 active sessions at a time by default. [Learn more
+        /// about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> CreatePhoneToken(string userId, string phone)
+        {
+            var apiPath = "/account/tokens/phone";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "phone", phone }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
+
+            return _client.Call<Models.Token>(
+                method: "POST",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,

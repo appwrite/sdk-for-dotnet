@@ -85,6 +85,12 @@ namespace Appwrite.Models
         [JsonProperty("current")]
         public bool Current { get; private set; }
 
+        [JsonProperty("factors")]
+        public long Factors { get; private set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; private set; }
+
         public Session(
             string id,
             string createdAt,
@@ -110,7 +116,9 @@ namespace Appwrite.Models
             string deviceModel,
             string countryCode,
             string countryName,
-            bool current
+            bool current,
+            long factors,
+            string secret
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -137,6 +145,8 @@ namespace Appwrite.Models
             CountryCode = countryCode;
             CountryName = countryName;
             Current = current;
+            Factors = factors;
+            Secret = secret;
         }
 
         public static Session From(Dictionary<string, object> map) => new Session(
@@ -164,7 +174,9 @@ namespace Appwrite.Models
             deviceModel: map["deviceModel"].ToString(),
             countryCode: map["countryCode"].ToString(),
             countryName: map["countryName"].ToString(),
-            current: (bool)map["current"]
+            current: (bool)map["current"],
+            factors: Convert.ToInt64(map["factors"]),
+            secret: map["secret"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -193,7 +205,9 @@ namespace Appwrite.Models
             { "deviceModel", DeviceModel },
             { "countryCode", CountryCode },
             { "countryName", CountryName },
-            { "current", Current }
+            { "current", Current },
+            { "factors", Factors },
+            { "secret", Secret }
         };
     }
 }
