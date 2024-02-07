@@ -25,23 +25,18 @@ namespace Appwrite.Models
         [JsonProperty("total")]
         public long Total { get; private set; }
 
-        [JsonProperty("description")]
-        public string? Description { get; private set; }
-
         public Topic(
             string id,
             string createdAt,
             string updatedAt,
             string name,
-            long total,
-            string? description
+            long total
         ) {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Name = name;
             Total = total;
-            Description = description;
         }
 
         public static Topic From(Dictionary<string, object> map) => new Topic(
@@ -49,8 +44,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
-            total: Convert.ToInt64(map["total"]),
-            description: map["description"]?.ToString()
+            total: Convert.ToInt64(map["total"])
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -59,8 +53,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "name", Name },
-            { "total", Total },
-            { "description", Description }
+            { "total", Total }
         };
     }
 }

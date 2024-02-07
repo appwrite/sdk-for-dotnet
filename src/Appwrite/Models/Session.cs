@@ -86,7 +86,7 @@ namespace Appwrite.Models
         public bool Current { get; private set; }
 
         [JsonProperty("factors")]
-        public long Factors { get; private set; }
+        public List<object> Factors { get; private set; }
 
         [JsonProperty("secret")]
         public string Secret { get; private set; }
@@ -117,7 +117,7 @@ namespace Appwrite.Models
             string countryCode,
             string countryName,
             bool current,
-            long factors,
+            List<object> factors,
             string secret
         ) {
             Id = id;
@@ -175,7 +175,7 @@ namespace Appwrite.Models
             countryCode: map["countryCode"].ToString(),
             countryName: map["countryName"].ToString(),
             current: (bool)map["current"],
-            factors: Convert.ToInt64(map["factors"]),
+            factors: ((JArray)map["factors"]).ToObject<List<object>>(),
             secret: map["secret"].ToString()
         );
 

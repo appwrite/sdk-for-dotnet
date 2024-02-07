@@ -49,9 +49,6 @@ namespace Appwrite.Models
         [JsonProperty("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("description")]
-        public string? Description { get; private set; }
-
         public Message(
             string id,
             string createdAt,
@@ -65,8 +62,7 @@ namespace Appwrite.Models
             List<object>? deliveryErrors,
             long deliveredTotal,
             object data,
-            string status,
-            string? description
+            string status
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -81,7 +77,6 @@ namespace Appwrite.Models
             DeliveredTotal = deliveredTotal;
             Data = data;
             Status = status;
-            Description = description;
         }
 
         public static Message From(Dictionary<string, object> map) => new Message(
@@ -97,8 +92,7 @@ namespace Appwrite.Models
             deliveryErrors: ((JArray)map["deliveryErrors"]).ToObject<List<object>>(),
             deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
             data: map["data"].ToString(),
-            status: map["status"].ToString(),
-            description: map["description"]?.ToString()
+            status: map["status"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -115,8 +109,7 @@ namespace Appwrite.Models
             { "deliveryErrors", DeliveryErrors },
             { "deliveredTotal", DeliveredTotal },
             { "data", Data },
-            { "status", Status },
-            { "description", Description }
+            { "status", Status }
         };
     }
 }
