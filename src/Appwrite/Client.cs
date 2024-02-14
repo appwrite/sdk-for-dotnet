@@ -58,11 +58,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , "AppwriteDotNetSDK/0.7.0 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
+                { "user-agent" , "AppwriteDotNetSDK/0.7.1 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.7.0"},                { "X-Appwrite-Response-Format", "1.4.0" }
+                { "x-sdk-version", "0.7.1"},                { "X-Appwrite-Response-Format", "1.4.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -236,7 +236,6 @@ namespace Appwrite
                 .FirstOrDefault() ?? string.Empty;
 
             var isJson = contentType.Contains("application/json");
-            var isBytes = contentType.Contains("application/octet-stream");
 
             if (code >= 400) {
                 var message = await response.Content.ReadAsStringAsync();
@@ -263,13 +262,9 @@ namespace Appwrite
 
                 return (dict as T)!;
             }
-            else if (isBytes)
-            {
-                return ((await response.Content.ReadAsByteArrayAsync()) as T)!;
-            }
             else
             {
-                return default!;
+                return ((await response.Content.ReadAsByteArrayAsync()) as T)!;
             }
         }
 
