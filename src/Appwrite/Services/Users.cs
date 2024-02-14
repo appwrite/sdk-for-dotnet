@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
-using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -178,7 +177,7 @@ namespace Appwrite.Services
         /// Get identities for all users.
         /// </para>
         /// </summary>
-        public Task<Models.IdentityList> ListIdentities(List<string>? queries = null, string? search = null)
+        public Task<Models.IdentityList> ListIdentities(string? queries = null, string? search = null)
         {
             var apiPath = "/users/identities";
 
@@ -209,7 +208,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete identity
+        /// Delete Identity
         /// <para>
         /// Delete an identity by its unique ID.
         /// </para>
@@ -422,7 +421,7 @@ namespace Appwrite.Services
         /// endpoint to create users with a plain text password.
         /// </para>
         /// </summary>
-        public Task<Models.User> CreateSHAUser(string userId, string email, string password, PasswordVersion? passwordVersion = null, string? name = null)
+        public Task<Models.User> CreateSHAUser(string userId, string email, string password, string? passwordVersion = null, string? name = null)
         {
             var apiPath = "/users/sha";
 
@@ -676,73 +675,6 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update MFA
-        /// </summary>
-        public Task<Models.User> UpdateMfa(string userId, bool mfa)
-        {
-            var apiPath = "/users/{userId}/mfa"
-                .Replace("{userId}", userId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "mfa", mfa }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            static Models.User Convert(Dictionary<string, object> it) =>
-                Models.User.From(map: it);
-
-
-            return _client.Call<Models.User>(
-                method: "PATCH",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// Delete Authenticator
-        /// </summary>
-        public Task<Models.User> DeleteAuthenticator(string userId, AuthenticatorProvider provider, string otp)
-        {
-            var apiPath = "/users/{userId}/mfa/{provider}"
-                .Replace("{userId}", userId)
-                .Replace("{provider}", provider.Value);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "otp", otp }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            static Models.User Convert(Dictionary<string, object> it) =>
-                Models.User.From(map: it);
-
-
-            return _client.Call<Models.User>(
-                method: "DELETE",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
         /// Update name
         /// <para>
         /// Update the user name by its unique ID.
@@ -924,38 +856,6 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Providers
-        /// </summary>
-        public Task<Models.MfaProviders> ListProviders(string userId)
-        {
-            var apiPath = "/users/{userId}/providers"
-                .Replace("{userId}", userId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            static Models.MfaProviders Convert(Dictionary<string, object> it) =>
-                Models.MfaProviders.From(map: it);
-
-
-            return _client.Call<Models.MfaProviders>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
         /// List user sessions
         /// <para>
         /// Get the user sessions list by its unique ID.
@@ -983,46 +883,6 @@ namespace Appwrite.Services
 
             return _client.Call<Models.SessionList>(
                 method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// Create session
-        /// <para>
-        /// Creates a session for a user. Returns an immediately usable session object.
-        /// 
-        /// If you want to generate a token for a custom authentication flow, use the
-        /// [POST
-        /// /users/{userId}/tokens](https://appwrite.io/docs/server/users#createToken)
-        /// endpoint.
-        /// </para>
-        /// </summary>
-        public Task<Models.Session> CreateSession(string userId)
-        {
-            var apiPath = "/users/{userId}/sessions"
-                .Replace("{userId}", userId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            static Models.Session Convert(Dictionary<string, object> it) =>
-                Models.Session.From(map: it);
-
-
-            return _client.Call<Models.Session>(
-                method: "POST",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -1125,216 +985,6 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "PATCH",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// List User Targets
-        /// </summary>
-        public Task<Models.TargetList> ListTargets(string userId, List<string>? queries = null)
-        {
-            var apiPath = "/users/{userId}/targets"
-                .Replace("{userId}", userId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "queries", queries }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            static Models.TargetList Convert(Dictionary<string, object> it) =>
-                Models.TargetList.From(map: it);
-
-
-            return _client.Call<Models.TargetList>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// Create User Target
-        /// </summary>
-        public Task<Models.Target> CreateTarget(string userId, string targetId, MessagingProviderType providerType, string identifier, string? providerId = null, string? name = null)
-        {
-            var apiPath = "/users/{userId}/targets"
-                .Replace("{userId}", userId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "targetId", targetId },
-                { "providerType", providerType },
-                { "identifier", identifier },
-                { "providerId", providerId },
-                { "name", name }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            static Models.Target Convert(Dictionary<string, object> it) =>
-                Models.Target.From(map: it);
-
-
-            return _client.Call<Models.Target>(
-                method: "POST",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// Get User Target
-        /// </summary>
-        public Task<Models.Target> GetTarget(string userId, string targetId)
-        {
-            var apiPath = "/users/{userId}/targets/{targetId}"
-                .Replace("{userId}", userId)
-                .Replace("{targetId}", targetId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            static Models.Target Convert(Dictionary<string, object> it) =>
-                Models.Target.From(map: it);
-
-
-            return _client.Call<Models.Target>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// Update User target
-        /// </summary>
-        public Task<Models.Target> UpdateTarget(string userId, string targetId, string? identifier = null, string? providerId = null, string? name = null)
-        {
-            var apiPath = "/users/{userId}/targets/{targetId}"
-                .Replace("{userId}", userId)
-                .Replace("{targetId}", targetId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "identifier", identifier },
-                { "providerId", providerId },
-                { "name", name }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            static Models.Target Convert(Dictionary<string, object> it) =>
-                Models.Target.From(map: it);
-
-
-            return _client.Call<Models.Target>(
-                method: "PATCH",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// Delete user target
-        /// </summary>
-        public Task<object> DeleteTarget(string userId, string targetId)
-        {
-            var apiPath = "/users/{userId}/targets/{targetId}"
-                .Replace("{userId}", userId)
-                .Replace("{targetId}", targetId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-
-
-            return _client.Call<object>(
-                method: "DELETE",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
-
-        }
-
-        /// <summary>
-        /// Create token
-        /// <para>
-        /// Returns a token with a secret key for creating a session. If the provided
-        /// user ID has not be registered, a new user will be created. Use the returned
-        /// user ID and secret and submit a request to the [PUT
-        /// /account/sessions/custom](https://appwrite.io/docs/references/cloud/client-web/account#updateCustomSession)
-        /// endpoint to complete the login process.
-        /// </para>
-        /// </summary>
-        public Task<Models.Token> CreateToken(string userId, long? length = null, long? expire = null)
-        {
-            var apiPath = "/users/{userId}/tokens"
-                .Replace("{userId}", userId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "length", length },
-                { "expire", expire }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            static Models.Token Convert(Dictionary<string, object> it) =>
-                Models.Token.From(map: it);
-
-
-            return _client.Call<Models.Token>(
-                method: "POST",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
-using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -997,7 +996,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, RelationMutate? onDelete = null)
+        public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, string type, bool? twoWay = null, string? key = null, string? twoWayKey = null, string? onDelete = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/relationship"
                 .Replace("{databaseId}", databaseId)
@@ -1269,7 +1268,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, RelationMutate? onDelete = null)
+        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, string? onDelete = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}/relationship"
                 .Replace("{databaseId}", databaseId)
@@ -1531,7 +1530,7 @@ namespace Appwrite.Services
         /// <summary>
         /// Create index
         /// </summary>
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, IndexType type, List<string> attributes, List<string>? orders = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, string type, List<string> attributes, List<string>? orders = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)

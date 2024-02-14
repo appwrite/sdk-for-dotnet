@@ -25,23 +25,18 @@ namespace Appwrite.Models
         [JsonProperty("expire")]
         public string Expire { get; private set; }
 
-        [JsonProperty("phrase")]
-        public string Phrase { get; private set; }
-
         public Token(
             string id,
             string createdAt,
             string userId,
             string secret,
-            string expire,
-            string phrase
+            string expire
         ) {
             Id = id;
             CreatedAt = createdAt;
             UserId = userId;
             Secret = secret;
             Expire = expire;
-            Phrase = phrase;
         }
 
         public static Token From(Dictionary<string, object> map) => new Token(
@@ -49,8 +44,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             userId: map["userId"].ToString(),
             secret: map["secret"].ToString(),
-            expire: map["expire"].ToString(),
-            phrase: map["phrase"].ToString()
+            expire: map["expire"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -59,8 +53,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "userId", UserId },
             { "secret", Secret },
-            { "expire", Expire },
-            { "phrase", Phrase }
+            { "expire", Expire }
         };
     }
 }

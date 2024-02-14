@@ -43,9 +43,6 @@ namespace Appwrite.Models
         [JsonProperty("confirm")]
         public bool Confirm { get; private set; }
 
-        [JsonProperty("mfa")]
-        public bool Mfa { get; private set; }
-
         [JsonProperty("roles")]
         public List<object> Roles { get; private set; }
 
@@ -61,7 +58,6 @@ namespace Appwrite.Models
             string invited,
             string joined,
             bool confirm,
-            bool mfa,
             List<object> roles
         ) {
             Id = id;
@@ -75,7 +71,6 @@ namespace Appwrite.Models
             Invited = invited;
             Joined = joined;
             Confirm = confirm;
-            Mfa = mfa;
             Roles = roles;
         }
 
@@ -91,7 +86,6 @@ namespace Appwrite.Models
             invited: map["invited"].ToString(),
             joined: map["joined"].ToString(),
             confirm: (bool)map["confirm"],
-            mfa: (bool)map["mfa"],
             roles: ((JArray)map["roles"]).ToObject<List<object>>()
         );
 
@@ -108,7 +102,6 @@ namespace Appwrite.Models
             { "invited", Invited },
             { "joined", Joined },
             { "confirm", Confirm },
-            { "mfa", Mfa },
             { "roles", Roles }
         };
     }

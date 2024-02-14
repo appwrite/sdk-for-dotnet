@@ -1,145 +1,139 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
-
 
 namespace Appwrite
 {
-    public class Query
+    public static class Query
     {
-        public string method;
-        public string? attribute;
-        public List<object>? values;
-
-        public Query(string method, string? attribute, object? values)
-        {
-            this.method = method;
-            this.attribute = attribute;
-
-            if (values == null || values is IList)
-            {
-                this.values = (List<object>?)values;
-            } else {
-                this.values = new List<object> { values };
-            }
-        }
-
-        override public string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
-
         public static string Equal(string attribute, object value)
         {
-            return new Query("equal", attribute, value).ToString();
+            return AddQuery(attribute, "equal", value);
         }
 
         public static string NotEqual(string attribute, object value)
         {
-            return new Query("notEqual", attribute, value).ToString();
+            return AddQuery(attribute, "notEqual", value);
         }
 
         public static string LessThan(string attribute, object value)
         {
-            return new Query("lessThan", attribute, value).ToString();
+            return AddQuery(attribute, "lessThan", value);
         }
 
         public static string LessThanEqual(string attribute, object value)
         {
-            return new Query("lessThanEqual", attribute, value).ToString();
+            return AddQuery(attribute, "lessThanEqual", value);
         }
 
         public static string GreaterThan(string attribute, object value)
         {
-            return new Query("greaterThan", attribute, value).ToString();
+            return AddQuery(attribute, "greaterThan", value);
         }
 
         public static string GreaterThanEqual(string attribute, object value)
         {
-            return new Query("greaterThanEqual", attribute, value).ToString();
+            return AddQuery(attribute, "greaterThanEqual", value);
         }
 
         public static string Search(string attribute, string value)
         {
-            return new Query("search", attribute, value).ToString();
+            return AddQuery(attribute, "search", value);
         }
 
         public static string IsNull(string attribute)
         {
-            return new Query("isNull", attribute, null).ToString();
+            return $"isNull(\"{attribute}\")";
         }
 
         public static string IsNotNull(string attribute)
         {
-            return new Query("isNotNull", attribute, null).ToString();
+            return $"isNotNull(\"{attribute}\")";
         }
 
         public static string StartsWith(string attribute, string value)
         {
-            return new Query("startsWith", attribute, value).ToString();
+            return AddQuery(attribute, "startsWith", value);
         }
 
         public static string EndsWith(string attribute, string value)
         {
-            return new Query("endsWith", attribute, value).ToString();
+            return AddQuery(attribute, "endsWith", value);
         }
 
         public static string Between(string attribute, string start, string end)
         {
-            return new Query("between", attribute, new List<string> { start, end }).ToString();
+            return $"between(\"{attribute}\", \"{start}\", \"{end}\")";
         }
 
         public static string Between(string attribute, int start, int end)
         {
-            return new Query("between", attribute, new List<int> { start, end }).ToString();
+            return $"between(\"{attribute}\", {start}, {end})";
         }
 
         public static string Between(string attribute, double start, double end)
         {
-            return new Query("between", attribute, new List<double> { start, end }).ToString();
+            return $"between(\"{attribute}\", {start}, {end})";
         }
 
         public static string Select(List<string> attributes)
         {
-            return new Query("select", null, attributes).ToString();
+            return $"select([{string.Join(",", attributes.Select(attribute => $"\"{attribute}\""))}])";
         }
 
         public static string CursorAfter(string documentId)
         {
-            return new Query("cursorAfter", null, documentId).ToString();
+            return $"cursorAfter(\"{documentId}\")";
         }
 
         public static string CursorBefore(string documentId) {
-            return new Query("cursorBefore", null, documentId).ToString();
+            return $"cursorBefore(\"{documentId}\")";
         }
 
         public static string OrderAsc(string attribute) {
-            return new Query("orderAsc", attribute, null).ToString();
+            return $"orderAsc(\"{attribute}\")";
         }
 
         public static string OrderDesc(string attribute) {
-            return new Query("orderDesc", attribute, null).ToString();
+            return $"orderDesc(\"{attribute}\")";
         }
 
         public static string Limit(int limit) {
-            return new Query("limit", null, limit).ToString();
+            return $"limit({limit})";
         }
 
         public static string Offset(int offset) {
-            return new Query("offset", null, offset).ToString();
+            return $"offset({offset})";
         }
 
-        public static string Contains(string attribute, object value) {
-            return new Query("contains", attribute, value).ToString();
+        private static string AddQuery(string attribute, string method, object value)
+        {
+            if (value is IList list)
+            {
+                var parsed = new List<object>();
+                foreach (var item in list)
+                {
+                    parsed.Add(ParseValues(item));
+                }
+                return $"{method}(\"{attribute}\", [{string.Join(",", parsed)}])";
+            }
+            else
+            {
+                return $"{method}(\"{attribute}\", [{ParseValues(value)}])";
+            }
         }
 
-        public static string Or(List<string> queries) {
-            return new Query("or", null, queries.Select(q => JsonConvert.DeserializeObject<Query>(q)).ToList()).ToString();
-        }
-
-        public static string And(List<string> queries) {
-            return new Query("and", null, queries.Select(q => JsonConvert.DeserializeObject<Query>(q)).ToList()).ToString();
+        private static string ParseValues(object value)
+        {
+            switch (value)
+            {
+                case string str:
+                    return $"\"{str}\"";
+                case bool boolean:
+                    return boolean.ToString().ToLower();
+                default:
+                    return value.ToString();
+            }
         }
     }
 }

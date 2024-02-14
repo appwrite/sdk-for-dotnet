@@ -1,11 +1,6 @@
 using Appwrite;
 using Appwrite.Services;
 using Appwrite.Models;
-using Appwrite.Enums;
-using Appwrite.Enums;
-using Appwrite.Enums;
-using Appwrite.Enums;
-using Appwrite.Enums;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
@@ -18,5 +13,5 @@ Index result = await databases.CreateIndex(
     databaseId: "[DATABASE_ID]",
     collectionId: "[COLLECTION_ID]",
     key: "",
-    type: IndexType.Key,
+    type: "key",
     attributes: new List<string> {});
