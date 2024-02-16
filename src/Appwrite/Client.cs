@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Appwrite.Converters;
 using Appwrite.Extensions;
 using Appwrite.Models;
 
@@ -34,7 +35,8 @@ namespace Appwrite
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Converters = new List<JsonConverter>
             {
-                new StringEnumConverter()
+                new StringEnumConverter(new CamelCaseNamingStrategy()),
+                new ValueClassConverter()
             }
         };
 
@@ -44,12 +46,13 @@ namespace Appwrite
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Converters = new List<JsonConverter>
             {
-                new StringEnumConverter()
+                new StringEnumConverter(new CamelCaseNamingStrategy()),
+                new ValueClassConverter()
             }
         };
 
         public Client(
-            string endpoint = "https://HOSTNAME/v1",
+            string endpoint = "https://cloud.appwrite.io/v1",
             bool selfSigned = false,
             HttpClient? http = null)
         {
@@ -58,11 +61,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , "AppwriteDotNetSDK/0.7.1 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
+                { "user-agent" , "AppwriteDotNetSDK/0.8.0-rc.2 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.7.1"},                { "X-Appwrite-Response-Format", "1.4.0" }
+                { "x-sdk-version", "0.8.0-rc.2"},                { "X-Appwrite-Response-Format", "1.4.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -123,6 +126,30 @@ namespace Appwrite
         public Client SetLocale(string value) {
             _config.Add("locale", value);
             AddHeader("X-Appwrite-Locale", value);
+
+            return this;
+        }
+
+        /// <summary>The user session to authenticate with</summary>
+        public Client SetSession(string value) {
+            _config.Add("session", value);
+            AddHeader("X-Appwrite-Session", value);
+
+            return this;
+        }
+
+        /// <summary>The IP address of the client that made the request</summary>
+        public Client SetForwardedFor(string value) {
+            _config.Add("forwardedFor", value);
+            AddHeader("X-Forwarded-For", value);
+
+            return this;
+        }
+
+        /// <summary>The user agent string of the client that made the request</summary>
+        public Client SetForwardedUserAgent(string value) {
+            _config.Add("forwardedUserAgent", value);
+            AddHeader("X-Forwarded-User-Agent", value);
 
             return this;
         }
@@ -336,7 +363,7 @@ namespace Appwrite
                     parameters = new Dictionary<string, object?>()
                 );
                 var chunksUploaded = (long)current["chunksUploaded"];
-                offset = Math.Min(chunksUploaded * ChunkSize, size);
+                offset = chunksUploaded * ChunkSize;
             }
 
             while (offset < size)
@@ -352,7 +379,7 @@ namespace Appwrite
                     case "bytes":
                         buffer = ((byte[])input.Data)
                             .Skip((int)offset)
-                            .Take((int)Math.Min(size - offset, ChunkSize))
+                            .Take((int)Math.Min(size - offset, ChunkSize - 1))
                             .ToArray();
                         break;
                 }

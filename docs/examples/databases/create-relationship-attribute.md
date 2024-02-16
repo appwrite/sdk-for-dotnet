@@ -1,6 +1,10 @@
 using Appwrite;
 using Appwrite.Services;
 using Appwrite.Models;
+using Appwrite.Enums;
+using Appwrite.Enums;
+using Appwrite.Enums;
+using Appwrite.Enums;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
@@ -13,4 +17,4 @@ AttributeRelationship result = await databases.CreateRelationshipAttribute(
     databaseId: "[DATABASE_ID]",
     collectionId: "[COLLECTION_ID]",
     relatedCollectionId: "[RELATED_COLLECTION_ID]",
-    type: "oneToOne");
+    type: RelationshipType.OneToOne);

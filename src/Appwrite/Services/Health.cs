@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
+using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -108,6 +109,41 @@ namespace Appwrite.Services
 
 
             return _client.Call<Models.HealthStatus>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get the SSL certificate for a domain
+        /// <para>
+        /// Get the SSL certificate for a domain
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthCertificate> GetCertificate(string? domain = null)
+        {
+            var apiPath = "/health/certificate";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "domain", domain }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.HealthCertificate Convert(Dictionary<string, object> it) =>
+                Models.HealthCertificate.From(map: it);
+
+
+            return _client.Call<Models.HealthCertificate>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -339,6 +375,43 @@ namespace Appwrite.Services
         public Task<Models.HealthQueue> GetQueueDeletes(long? threshold = null)
         {
             var apiPath = "/health/queue/deletes";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
+
+
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get number of failed queue jobs
+        /// <para>
+        /// Returns the amount of failed jobs in a given queue.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetFailedJobs(Name name, long? threshold = null)
+        {
+            var apiPath = "/health/queue/failed/{name}"
+                .Replace("{name}", name.Value);
 
             var apiParameters = new Dictionary<string, object?>()
             {

@@ -1,6 +1,9 @@
 using Appwrite;
 using Appwrite.Services;
 using Appwrite.Models;
+using Appwrite.Enums;
+using Appwrite.Enums;
+using Appwrite.Enums;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
@@ -12,4 +15,4 @@ var functions = new Functions(client);
 Function result = await functions.Create(
     functionId: "[FUNCTION_ID]",
     name: "[NAME]",
-    runtime: "node-18.0");
+    runtime: .Node180);
