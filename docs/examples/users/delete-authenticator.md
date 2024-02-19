@@ -14,5 +14,5 @@ var users = new Users(client);
 
 await users.DeleteAuthenticator(
     userId: "[USER_ID]",
-    type: .Totp,
+    type: AuthenticatorType.Totp,
     otp: "[OTP]");

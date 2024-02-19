@@ -743,7 +743,7 @@ namespace Appwrite.Services
         /// <summary>
         /// Delete Authenticator
         /// </summary>
-        public Task<Models.User> DeleteAuthenticator(string userId, Type type, string otp)
+        public Task<Models.User> DeleteAuthenticator(string userId, AuthenticatorType type, string otp)
         {
             var apiPath = "/users/{userId}/mfa/{type}"
                 .Replace("{userId}", userId)

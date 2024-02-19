@@ -311,7 +311,7 @@ namespace Appwrite.Services
         /// <summary>
         /// Create 2FA Challenge
         /// </summary>
-        public Task<Models.MfaChallenge> Create2FAChallenge(Factor factor)
+        public Task<Models.MfaChallenge> Create2FAChallenge(AuthenticationFactor factor)
         {
             var apiPath = "/account/mfa/challenge";
 
@@ -404,7 +404,7 @@ namespace Appwrite.Services
         /// <summary>
         /// Add Authenticator
         /// </summary>
-        public Task<Models.MfaType> AddAuthenticator(Type type)
+        public Task<Models.MfaType> AddAuthenticator(AuthenticatorType type)
         {
             var apiPath = "/account/mfa/{type}"
                 .Replace("{type}", type.Value);
@@ -436,7 +436,7 @@ namespace Appwrite.Services
         /// <summary>
         /// Verify Authenticator
         /// </summary>
-        public Task<Models.User> VerifyAuthenticator(Type type, string otp)
+        public Task<Models.User> VerifyAuthenticator(AuthenticatorType type, string otp)
         {
             var apiPath = "/account/mfa/{type}"
                 .Replace("{type}", type.Value);
@@ -469,7 +469,7 @@ namespace Appwrite.Services
         /// <summary>
         /// Delete Authenticator
         /// </summary>
-        public Task<Models.User> DeleteAuthenticator(Type type, string otp)
+        public Task<Models.User> DeleteAuthenticator(AuthenticatorType type, string otp)
         {
             var apiPath = "/account/mfa/{type}"
                 .Replace("{type}", type.Value);

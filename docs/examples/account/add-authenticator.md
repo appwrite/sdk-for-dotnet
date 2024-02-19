@@ -11,4 +11,4 @@ var client = new Client()
 var account = new Account(client);
 
 MfaType result = await account.AddAuthenticator(
-    type: .Totp);
+    type: AuthenticatorType.Totp);

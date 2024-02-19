@@ -10,4 +10,4 @@ var client = new Client()
 var account = new Account(client);
 
 MfaChallenge result = await account.Create2FAChallenge(
-    factor: .Totp);
+    factor: AuthenticationFactor.Totp);
