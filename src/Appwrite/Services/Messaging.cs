@@ -16,6 +16,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List messages
+        /// <para>
+        /// Get a list of all messages from the current Appwrite project.
+        /// </para>
         /// </summary>
         public Task<Models.MessageList> ListMessages(List<string>? queries = null, string? search = null)
         {
@@ -48,9 +51,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create an email.
+        /// Create an email
+        /// <para>
+        /// Create a new email message.
+        /// </para>
         /// </summary>
-        public Task<Models.Message> CreateEmail(string messageId, string subject, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, List<string>? cc = null, List<string>? bcc = null, MessageStatus? status = null, bool? html = null, string? scheduledAt = null)
+        public Task<Models.Message> CreateEmail(string messageId, string subject, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, List<string>? cc = null, List<string>? bcc = null, List<string>? attachments = null, MessageStatus? status = null, bool? html = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/email";
 
@@ -64,6 +70,7 @@ namespace Appwrite.Services
                 { "targets", targets },
                 { "cc", cc },
                 { "bcc", bcc },
+                { "attachments", attachments },
                 { "status", status },
                 { "html", html },
                 { "scheduledAt", scheduledAt }
@@ -90,7 +97,11 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update an email.
+        /// Update an email
+        /// <para>
+        /// Update an email message by its unique ID.
+        /// 
+        /// </para>
         /// </summary>
         public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, MessageStatus? status = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null)
         {
@@ -132,9 +143,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create a push notification.
+        /// Create a push notification
+        /// <para>
+        /// Create a new push notification.
+        /// </para>
         /// </summary>
-        public Task<Models.Message> CreatePush(string messageId, string title, string body, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, object? data = null, string? action = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, string? badge = null, MessageStatus? status = null, string? scheduledAt = null)
+        public Task<Models.Message> CreatePush(string messageId, string title, string body, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, string? badge = null, MessageStatus? status = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/push";
 
@@ -148,6 +162,7 @@ namespace Appwrite.Services
                 { "targets", targets },
                 { "data", data },
                 { "action", action },
+                { "image", image },
                 { "icon", icon },
                 { "sound", sound },
                 { "color", color },
@@ -178,9 +193,13 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update a push notification.
+        /// Update a push notification
+        /// <para>
+        /// Update a push notification by its unique ID.
+        /// 
+        /// </para>
         /// </summary>
-        public Task<Models.Message> UpdatePush(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? title = null, string? body = null, object? data = null, string? action = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, MessageStatus? status = null, string? scheduledAt = null)
+        public Task<Models.Message> UpdatePush(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? title = null, string? body = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, MessageStatus? status = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/push/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -194,6 +213,7 @@ namespace Appwrite.Services
                 { "body", body },
                 { "data", data },
                 { "action", action },
+                { "image", image },
                 { "icon", icon },
                 { "sound", sound },
                 { "color", color },
@@ -224,9 +244,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create an SMS.
+        /// Create an SMS
+        /// <para>
+        /// Create a new SMS message.
+        /// </para>
         /// </summary>
-        public Task<Models.Message> CreateSMS(string messageId, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, MessageStatus? status = null, string? scheduledAt = null)
+        public Task<Models.Message> CreateSms(string messageId, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, MessageStatus? status = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/sms";
 
@@ -262,9 +285,13 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update an SMS.
+        /// Update an SMS
+        /// <para>
+        /// Update an email message by its unique ID.
+        /// 
+        /// </para>
         /// </summary>
-        public Task<Models.Message> UpdateSMS(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? content = null, MessageStatus? status = null, string? scheduledAt = null)
+        public Task<Models.Message> UpdateSms(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? content = null, MessageStatus? status = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/sms/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -301,6 +328,10 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Get a message
+        /// <para>
+        /// Get a message by its unique ID.
+        /// 
+        /// </para>
         /// </summary>
         public Task<Models.Message> GetMessage(string messageId)
         {
@@ -362,6 +393,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List message logs
+        /// <para>
+        /// Get the message activity logs listed by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.LogList> ListMessageLogs(string messageId, List<string>? queries = null)
         {
@@ -396,8 +430,7 @@ namespace Appwrite.Services
         /// <summary>
         /// List message targets
         /// <para>
-        /// List the targets associated with a message as set via the targets
-        /// attribute.
+        /// Get a list of the targets associated with a message.
         /// </para>
         /// </summary>
         public Task<Models.TargetList> ListTargets(string messageId, List<string>? queries = null)
@@ -432,6 +465,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List providers
+        /// <para>
+        /// Get a list of all providers from the current Appwrite project.
+        /// </para>
         /// </summary>
         public Task<Models.ProviderList> ListProviders(List<string>? queries = null, string? search = null)
         {
@@ -465,8 +501,11 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create APNS provider
+        /// <para>
+        /// Create a new Apple Push Notification service provider.
+        /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateAPNSProvider(string providerId, string name, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? enabled = null)
+        public Task<Models.Provider> CreateApnsProvider(string providerId, string name, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/apns";
 
@@ -503,6 +542,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update APNS provider
+        /// <para>
+        /// Update a Apple Push Notification service provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> UpdateAPNSProvider(string providerId, string? name = null, bool? enabled = null, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null)
         {
@@ -541,8 +583,11 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create FCM provider
+        /// <para>
+        /// Create a new Firebase Cloud Messaging provider.
+        /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateFCMProvider(string providerId, string name, object? serviceAccountJSON = null, bool? enabled = null)
+        public Task<Models.Provider> CreateFcmProvider(string providerId, string name, object? serviceAccountJSON = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/fcm";
 
@@ -576,6 +621,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update FCM provider
+        /// <para>
+        /// Update a Firebase Cloud Messaging provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> UpdateFCMProvider(string providerId, string? name = null, bool? enabled = null, object? serviceAccountJSON = null)
         {
@@ -611,6 +659,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create Mailgun provider
+        /// <para>
+        /// Create a new Mailgun provider.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> CreateMailgunProvider(string providerId, string name, string? apiKey = null, string? domain = null, bool? isEuRegion = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
@@ -652,6 +703,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update Mailgun provider
+        /// <para>
+        /// Update a Mailgun provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> UpdateMailgunProvider(string providerId, string? name = null, string? apiKey = null, string? domain = null, bool? isEuRegion = null, bool? enabled = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null)
         {
@@ -693,6 +747,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create Msg91 provider
+        /// <para>
+        /// Create a new MSG91 provider.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> CreateMsg91Provider(string providerId, string name, string? xfrom = null, string? senderId = null, string? authKey = null, bool? enabled = null)
         {
@@ -730,6 +787,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update Msg91 provider
+        /// <para>
+        /// Update a MSG91 provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> UpdateMsg91Provider(string providerId, string? name = null, bool? enabled = null, string? senderId = null, string? authKey = null, string? xfrom = null)
         {
@@ -806,6 +866,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update Sendgrid provider
+        /// <para>
+        /// Update a Sendgrid provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> UpdateSendgridProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null)
         {
@@ -845,8 +908,11 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create SMTP provider
+        /// <para>
+        /// Create a new SMTP provider.
+        /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateSMTPProvider(string providerId, string name, string host, long? port = null, string? username = null, string? password = null, SMTPEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        public Task<Models.Provider> CreateSmtpProvider(string providerId, string name, string host, long? port = null, string? username = null, string? password = null, Encryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp";
 
@@ -890,8 +956,11 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update SMTP provider
+        /// <para>
+        /// Update a SMTP provider by its unique ID.
+        /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateSMTPProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, SMTPEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        public Task<Models.Provider> UpdateSmtpProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, Encryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -935,6 +1004,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create Telesign provider
+        /// <para>
+        /// Create a new Telesign provider.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> CreateTelesignProvider(string providerId, string name, string? xfrom = null, string? customerId = null, string? apiKey = null, bool? enabled = null)
         {
@@ -972,6 +1044,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update Telesign provider
+        /// <para>
+        /// Update a Telesign provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> UpdateTelesignProvider(string providerId, string? name = null, bool? enabled = null, string? customerId = null, string? apiKey = null, string? xfrom = null)
         {
@@ -1009,6 +1084,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create Textmagic provider
+        /// <para>
+        /// Create a new Textmagic provider.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> CreateTextmagicProvider(string providerId, string name, string? xfrom = null, string? username = null, string? apiKey = null, bool? enabled = null)
         {
@@ -1046,6 +1124,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update Textmagic provider
+        /// <para>
+        /// Update a Textmagic provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> UpdateTextmagicProvider(string providerId, string? name = null, bool? enabled = null, string? username = null, string? apiKey = null, string? xfrom = null)
         {
@@ -1083,6 +1164,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create Twilio provider
+        /// <para>
+        /// Create a new Twilio provider.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> CreateTwilioProvider(string providerId, string name, string? xfrom = null, string? accountSid = null, string? authToken = null, bool? enabled = null)
         {
@@ -1120,6 +1204,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update Twilio provider
+        /// <para>
+        /// Update a Twilio provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> UpdateTwilioProvider(string providerId, string? name = null, bool? enabled = null, string? accountSid = null, string? authToken = null, string? xfrom = null)
         {
@@ -1157,6 +1244,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create Vonage provider
+        /// <para>
+        /// Create a new Vonage provider.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> CreateVonageProvider(string providerId, string name, string? xfrom = null, string? apiKey = null, string? apiSecret = null, bool? enabled = null)
         {
@@ -1194,6 +1284,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update Vonage provider
+        /// <para>
+        /// Update a Vonage provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> UpdateVonageProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? apiSecret = null, string? xfrom = null)
         {
@@ -1231,6 +1324,10 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Get provider
+        /// <para>
+        /// Get a provider by its unique ID.
+        /// 
+        /// </para>
         /// </summary>
         public Task<Models.Provider> GetProvider(string providerId)
         {
@@ -1263,6 +1360,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Delete provider
+        /// <para>
+        /// Delete a provider by its unique ID.
+        /// </para>
         /// </summary>
         public Task<object> DeleteProvider(string providerId)
         {
@@ -1292,6 +1392,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List provider logs
+        /// <para>
+        /// Get the provider activity logs listed by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.LogList> ListProviderLogs(string providerId, List<string>? queries = null)
         {
@@ -1325,6 +1428,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List subscriber logs
+        /// <para>
+        /// Get the subscriber activity logs listed by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.LogList> ListSubscriberLogs(string subscriberId, List<string>? queries = null)
         {
@@ -1357,7 +1463,10 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List topics.
+        /// List topics
+        /// <para>
+        /// Get a list of all topics from the current Appwrite project.
+        /// </para>
         /// </summary>
         public Task<Models.TopicList> ListTopics(List<string>? queries = null, string? search = null)
         {
@@ -1390,7 +1499,10 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create a topic.
+        /// Create a topic
+        /// <para>
+        /// Create a new topic.
+        /// </para>
         /// </summary>
         public Task<Models.Topic> CreateTopic(string topicId, string name, List<string>? subscribe = null)
         {
@@ -1424,7 +1536,11 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get a topic.
+        /// Get a topic
+        /// <para>
+        /// Get a topic by its unique ID.
+        /// 
+        /// </para>
         /// </summary>
         public Task<Models.Topic> GetTopic(string topicId)
         {
@@ -1456,7 +1572,11 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update a topic.
+        /// Update a topic
+        /// <para>
+        /// Update a topic by its unique ID.
+        /// 
+        /// </para>
         /// </summary>
         public Task<Models.Topic> UpdateTopic(string topicId, string? name = null)
         {
@@ -1489,7 +1609,10 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete a topic.
+        /// Delete a topic
+        /// <para>
+        /// Delete a topic by its unique ID.
+        /// </para>
         /// </summary>
         public Task<object> DeleteTopic(string topicId)
         {
@@ -1519,6 +1642,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List topic logs
+        /// <para>
+        /// Get the topic activity logs listed by its unique ID.
+        /// </para>
         /// </summary>
         public Task<Models.LogList> ListTopicLogs(string topicId, List<string>? queries = null)
         {
@@ -1551,7 +1677,10 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List subscribers.
+        /// List subscribers
+        /// <para>
+        /// Get a list of all subscribers from the current Appwrite project.
+        /// </para>
         /// </summary>
         public Task<Models.SubscriberList> ListSubscribers(string topicId, List<string>? queries = null, string? search = null)
         {
@@ -1585,7 +1714,10 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create a subscriber.
+        /// Create a subscriber
+        /// <para>
+        /// Create a new subscriber.
+        /// </para>
         /// </summary>
         public Task<Models.Subscriber> CreateSubscriber(string topicId, string subscriberId, string targetId)
         {
@@ -1619,7 +1751,11 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get a subscriber.
+        /// Get a subscriber
+        /// <para>
+        /// Get a subscriber by its unique ID.
+        /// 
+        /// </para>
         /// </summary>
         public Task<Models.Subscriber> GetSubscriber(string topicId, string subscriberId)
         {
@@ -1652,7 +1788,10 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete a subscriber.
+        /// Delete a subscriber
+        /// <para>
+        /// Delete a subscriber by its unique ID.
+        /// </para>
         /// </summary>
         public Task<object> DeleteSubscriber(string topicId, string subscriberId)
         {
