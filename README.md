@@ -17,17 +17,17 @@ Appwrite is an open-source backend as a service server that abstract and simplif
 Add this reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="0.8.0-rc.4" />
+<PackageReference Include="Appwrite" Version="0.8.0-rc.5" />
 ```
 
 You can install packages from the command line:
 
 ```powershell
 # Package Manager
-Install-Package Appwrite -Version 0.8.0-rc.4
+Install-Package Appwrite -Version 0.8.0-rc.5
 
 # or .NET CLI
-dotnet add package Appwrite --version 0.8.0-rc.4
+dotnet add package Appwrite --version 0.8.0-rc.5
 ```
 
 
@@ -52,8 +52,9 @@ var users = new Users(client);
 var user = await users.Create(
     userId: ID.Unique(),
     email: "email@example.com",
+    phone: "+123456789",
     password: "password",
-    name: "name");
+    name: "Walter O'Brien");
 
 Console.WriteLine(user.ToMap());
 ```
@@ -69,8 +70,9 @@ try
     var user = await users.Create(
         userId: ID.Unique(),
         email: "email@example.com",
+        phone: "+123456789",
         password: "password",
-        name: "name");
+        name: "Walter O'Brien");
 } 
 catch (AppwriteException e)
 {

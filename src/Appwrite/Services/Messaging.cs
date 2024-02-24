@@ -36,10 +36,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.MessageList Convert(Dictionary<string, object> it) =>
                 Models.MessageList.From(map: it);
-
 
             return _client.Call<Models.MessageList>(
                 method: "GET",
@@ -82,10 +80,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Message Convert(Dictionary<string, object> it) =>
                 Models.Message.From(map: it);
-
 
             return _client.Call<Models.Message>(
                 method: "POST",
@@ -128,10 +124,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Message Convert(Dictionary<string, object> it) =>
                 Models.Message.From(map: it);
-
 
             return _client.Call<Models.Message>(
                 method: "PATCH",
@@ -178,10 +172,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Message Convert(Dictionary<string, object> it) =>
                 Models.Message.From(map: it);
-
 
             return _client.Call<Models.Message>(
                 method: "POST",
@@ -229,10 +221,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Message Convert(Dictionary<string, object> it) =>
                 Models.Message.From(map: it);
-
 
             return _client.Call<Models.Message>(
                 method: "PATCH",
@@ -270,10 +260,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Message Convert(Dictionary<string, object> it) =>
                 Models.Message.From(map: it);
-
 
             return _client.Call<Models.Message>(
                 method: "POST",
@@ -312,10 +300,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Message Convert(Dictionary<string, object> it) =>
                 Models.Message.From(map: it);
-
 
             return _client.Call<Models.Message>(
                 method: "PATCH",
@@ -348,10 +334,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Message Convert(Dictionary<string, object> it) =>
                 Models.Message.From(map: it);
-
 
             return _client.Call<Models.Message>(
                 method: "GET",
@@ -378,8 +362,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -413,10 +395,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.LogList Convert(Dictionary<string, object> it) =>
                 Models.LogList.From(map: it);
-
 
             return _client.Call<Models.LogList>(
                 method: "GET",
@@ -449,10 +429,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.TargetList Convert(Dictionary<string, object> it) =>
                 Models.TargetList.From(map: it);
-
 
             return _client.Call<Models.TargetList>(
                 method: "GET",
@@ -485,10 +463,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.ProviderList Convert(Dictionary<string, object> it) =>
                 Models.ProviderList.From(map: it);
-
 
             return _client.Call<Models.ProviderList>(
                 method: "GET",
@@ -505,7 +481,7 @@ namespace Appwrite.Services
         /// Create a new Apple Push Notification service provider.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateApnsProvider(string providerId, string name, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? enabled = null)
+        public Task<Models.Provider> CreateApnsProvider(string providerId, string name, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/apns";
 
@@ -517,6 +493,7 @@ namespace Appwrite.Services
                 { "authKeyId", authKeyId },
                 { "teamId", teamId },
                 { "bundleId", bundleId },
+                { "sandbox", sandbox },
                 { "enabled", enabled }
             };
 
@@ -526,10 +503,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -546,7 +521,7 @@ namespace Appwrite.Services
         /// Update a Apple Push Notification service provider by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateAPNSProvider(string providerId, string? name = null, bool? enabled = null, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null)
+        public Task<Models.Provider> UpdateApnsProvider(string providerId, string? name = null, bool? enabled = null, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null)
         {
             var apiPath = "/messaging/providers/apns/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -558,7 +533,8 @@ namespace Appwrite.Services
                 { "authKey", authKey },
                 { "authKeyId", authKeyId },
                 { "teamId", teamId },
-                { "bundleId", bundleId }
+                { "bundleId", bundleId },
+                { "sandbox", sandbox }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -567,10 +543,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -605,10 +579,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -625,7 +597,7 @@ namespace Appwrite.Services
         /// Update a Firebase Cloud Messaging provider by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateFCMProvider(string providerId, string? name = null, bool? enabled = null, object? serviceAccountJSON = null)
+        public Task<Models.Provider> UpdateFcmProvider(string providerId, string? name = null, bool? enabled = null, object? serviceAccountJSON = null)
         {
             var apiPath = "/messaging/providers/fcm/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -643,10 +615,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -687,10 +657,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -731,10 +699,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -771,10 +737,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -811,10 +775,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -850,10 +812,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -892,10 +852,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -912,7 +870,7 @@ namespace Appwrite.Services
         /// Create a new SMTP provider.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateSmtpProvider(string providerId, string name, string host, long? port = null, string? username = null, string? password = null, Encryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        public Task<Models.Provider> CreateSmtpProvider(string providerId, string name, string host, long? port = null, string? username = null, string? password = null, SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp";
 
@@ -940,10 +898,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -960,7 +916,7 @@ namespace Appwrite.Services
         /// Update a SMTP provider by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateSmtpProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, Encryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        public Task<Models.Provider> UpdateSmtpProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -988,10 +944,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -1028,10 +982,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -1068,10 +1020,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -1108,10 +1058,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -1148,10 +1096,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -1188,10 +1134,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -1228,10 +1172,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -1268,10 +1210,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "POST",
@@ -1308,10 +1248,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "PATCH",
@@ -1344,10 +1282,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Provider Convert(Dictionary<string, object> it) =>
                 Models.Provider.From(map: it);
-
 
             return _client.Call<Models.Provider>(
                 method: "GET",
@@ -1377,8 +1313,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -1412,10 +1346,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.LogList Convert(Dictionary<string, object> it) =>
                 Models.LogList.From(map: it);
-
 
             return _client.Call<Models.LogList>(
                 method: "GET",
@@ -1448,10 +1380,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.LogList Convert(Dictionary<string, object> it) =>
                 Models.LogList.From(map: it);
-
 
             return _client.Call<Models.LogList>(
                 method: "GET",
@@ -1484,10 +1414,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.TopicList Convert(Dictionary<string, object> it) =>
                 Models.TopicList.From(map: it);
-
 
             return _client.Call<Models.TopicList>(
                 method: "GET",
@@ -1521,10 +1449,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Topic Convert(Dictionary<string, object> it) =>
                 Models.Topic.From(map: it);
-
 
             return _client.Call<Models.Topic>(
                 method: "POST",
@@ -1557,10 +1483,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Topic Convert(Dictionary<string, object> it) =>
                 Models.Topic.From(map: it);
-
 
             return _client.Call<Models.Topic>(
                 method: "GET",
@@ -1578,14 +1502,15 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Topic> UpdateTopic(string topicId, string? name = null)
+        public Task<Models.Topic> UpdateTopic(string topicId, string? name = null, List<string>? subscribe = null)
         {
             var apiPath = "/messaging/topics/{topicId}"
                 .Replace("{topicId}", topicId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "name", name }
+                { "name", name },
+                { "subscribe", subscribe }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1594,10 +1519,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Topic Convert(Dictionary<string, object> it) =>
                 Models.Topic.From(map: it);
-
 
             return _client.Call<Models.Topic>(
                 method: "PATCH",
@@ -1627,8 +1550,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -1662,10 +1583,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.LogList Convert(Dictionary<string, object> it) =>
                 Models.LogList.From(map: it);
-
 
             return _client.Call<Models.LogList>(
                 method: "GET",
@@ -1699,10 +1618,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.SubscriberList Convert(Dictionary<string, object> it) =>
                 Models.SubscriberList.From(map: it);
-
 
             return _client.Call<Models.SubscriberList>(
                 method: "GET",
@@ -1736,10 +1653,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Subscriber Convert(Dictionary<string, object> it) =>
                 Models.Subscriber.From(map: it);
-
 
             return _client.Call<Models.Subscriber>(
                 method: "POST",
@@ -1773,10 +1688,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Subscriber Convert(Dictionary<string, object> it) =>
                 Models.Subscriber.From(map: it);
-
 
             return _client.Call<Models.Subscriber>(
                 method: "GET",
@@ -1807,8 +1720,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 

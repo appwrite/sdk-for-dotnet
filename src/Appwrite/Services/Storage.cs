@@ -37,10 +37,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.BucketList Convert(Dictionary<string, object> it) =>
                 Models.BucketList.From(map: it);
-
 
             return _client.Call<Models.BucketList>(
                 method: "GET",
@@ -81,10 +79,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Bucket Convert(Dictionary<string, object> it) =>
                 Models.Bucket.From(map: it);
-
 
             return _client.Call<Models.Bucket>(
                 method: "POST",
@@ -117,10 +113,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Bucket Convert(Dictionary<string, object> it) =>
                 Models.Bucket.From(map: it);
-
 
             return _client.Call<Models.Bucket>(
                 method: "GET",
@@ -161,10 +155,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Bucket Convert(Dictionary<string, object> it) =>
                 Models.Bucket.From(map: it);
-
 
             return _client.Call<Models.Bucket>(
                 method: "PUT",
@@ -194,8 +186,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -231,10 +221,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.FileList Convert(Dictionary<string, object> it) =>
                 Models.FileList.From(map: it);
-
 
             return _client.Call<Models.FileList>(
                 method: "GET",
@@ -286,7 +274,6 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.File Convert(Dictionary<string, object> it) =>
                 Models.File.From(map: it);
 
@@ -327,10 +314,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.File Convert(Dictionary<string, object> it) =>
                 Models.File.From(map: it);
-
 
             return _client.Call<Models.File>(
                 method: "GET",
@@ -366,10 +351,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.File Convert(Dictionary<string, object> it) =>
                 Models.File.From(map: it);
-
 
             return _client.Call<Models.File>(
                 method: "PUT",
@@ -404,8 +387,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
@@ -436,6 +417,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(
@@ -483,6 +465,7 @@ namespace Appwrite.Services
             };
 
 
+
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
@@ -513,6 +496,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(

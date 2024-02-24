@@ -37,10 +37,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.TeamList Convert(Dictionary<string, object> it) =>
                 Models.TeamList.From(map: it);
-
 
             return _client.Call<Models.TeamList>(
                 method: "GET",
@@ -76,10 +74,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Team Convert(Dictionary<string, object> it) =>
                 Models.Team.From(map: it);
-
 
             return _client.Call<Models.Team>(
                 method: "POST",
@@ -111,10 +107,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Team Convert(Dictionary<string, object> it) =>
                 Models.Team.From(map: it);
-
 
             return _client.Call<Models.Team>(
                 method: "GET",
@@ -147,10 +141,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Team Convert(Dictionary<string, object> it) =>
                 Models.Team.From(map: it);
-
 
             return _client.Call<Models.Team>(
                 method: "PUT",
@@ -181,8 +173,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -218,10 +208,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.MembershipList Convert(Dictionary<string, object> it) =>
                 Models.MembershipList.From(map: it);
-
 
             return _client.Call<Models.MembershipList>(
                 method: "GET",
@@ -279,10 +267,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Membership Convert(Dictionary<string, object> it) =>
                 Models.Membership.From(map: it);
-
 
             return _client.Call<Models.Membership>(
                 method: "POST",
@@ -316,10 +302,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Membership Convert(Dictionary<string, object> it) =>
                 Models.Membership.From(map: it);
-
 
             return _client.Call<Models.Membership>(
                 method: "GET",
@@ -356,10 +340,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Membership Convert(Dictionary<string, object> it) =>
                 Models.Membership.From(map: it);
-
 
             return _client.Call<Models.Membership>(
                 method: "PATCH",
@@ -392,8 +374,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -435,10 +415,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Membership Convert(Dictionary<string, object> it) =>
                 Models.Membership.From(map: it);
-
 
             return _client.Call<Models.Membership>(
                 method: "PATCH",
@@ -472,10 +450,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Preferences Convert(Dictionary<string, object> it) =>
                 Models.Preferences.From(map: it);
-
 
             return _client.Call<Models.Preferences>(
                 method: "GET",
@@ -510,10 +486,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Preferences Convert(Dictionary<string, object> it) =>
                 Models.Preferences.From(map: it);
-
 
             return _client.Call<Models.Preferences>(
                 method: "PUT",

@@ -9,6 +9,6 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-MfaChallenge result = await account.Create2FAChallenge(
+MfaChallenge result = await account.CreateChallenge(
     factor: AuthenticationFactor.Totp
 );

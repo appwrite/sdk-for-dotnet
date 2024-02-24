@@ -9,7 +9,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-await account.CreateOAuth2Session(
+await account.CreateOAuth2Token(
     provider: OAuthProvider.Amazon,
     success: "https://example.com", // optional
     failure: "https://example.com", // optional

@@ -34,10 +34,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "GET",
@@ -78,10 +76,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "POST",
@@ -121,10 +117,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -156,10 +150,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.IdentityList Convert(Dictionary<string, object> it) =>
                 Models.IdentityList.From(map: it);
-
 
             return _client.Call<Models.IdentityList>(
                 method: "GET",
@@ -189,8 +181,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -226,10 +216,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.JWT Convert(Dictionary<string, object> it) =>
                 Models.JWT.From(map: it);
-
 
             return _client.Call<Models.JWT>(
                 method: "POST",
@@ -262,10 +250,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.LogList Convert(Dictionary<string, object> it) =>
                 Models.LogList.From(map: it);
-
 
             return _client.Call<Models.LogList>(
                 method: "GET",
@@ -294,10 +280,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -311,7 +295,7 @@ namespace Appwrite.Services
         /// <summary>
         /// Create 2FA Challenge
         /// </summary>
-        public Task<Models.MfaChallenge> Create2FAChallenge(AuthenticationFactor factor)
+        public Task<Models.MfaChallenge> CreateChallenge(AuthenticationFactor factor)
         {
             var apiPath = "/account/mfa/challenge";
 
@@ -326,10 +310,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.MfaChallenge Convert(Dictionary<string, object> it) =>
                 Models.MfaChallenge.From(map: it);
-
 
             return _client.Call<Models.MfaChallenge>(
                 method: "POST",
@@ -360,8 +342,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "PUT",
                 path: apiPath,
@@ -387,10 +367,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.MfaFactors Convert(Dictionary<string, object> it) =>
                 Models.MfaFactors.From(map: it);
-
 
             return _client.Call<Models.MfaFactors>(
                 method: "GET",
@@ -419,10 +397,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.MfaType Convert(Dictionary<string, object> it) =>
                 Models.MfaType.From(map: it);
-
 
             return _client.Call<Models.MfaType>(
                 method: "POST",
@@ -452,10 +428,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PUT",
@@ -485,10 +459,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "DELETE",
@@ -520,10 +492,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -558,10 +528,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -598,10 +566,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -632,10 +598,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Preferences Convert(Dictionary<string, object> it) =>
                 Models.Preferences.From(map: it);
-
 
             return _client.Call<Models.Preferences>(
                 method: "GET",
@@ -669,10 +633,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -712,10 +674,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "POST",
@@ -758,10 +718,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "PUT",
@@ -793,10 +751,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.SessionList Convert(Dictionary<string, object> it) =>
                 Models.SessionList.From(map: it);
-
 
             return _client.Call<Models.SessionList>(
                 method: "GET",
@@ -826,8 +782,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -865,10 +819,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Session Convert(Dictionary<string, object> it) =>
                 Models.Session.From(map: it);
-
 
             return _client.Call<Models.Session>(
                 method: "POST",
@@ -906,10 +858,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Session Convert(Dictionary<string, object> it) =>
                 Models.Session.From(map: it);
-
 
             return _client.Call<Models.Session>(
                 method: "POST",
@@ -944,10 +894,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Session Convert(Dictionary<string, object> it) =>
                 Models.Session.From(map: it);
-
 
             return _client.Call<Models.Session>(
                 method: "PUT",
@@ -979,7 +927,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task CreateOAuth2Session(OAuthProvider provider, string? success = null, string? failure = null, bool? token = null, List<string>? scopes = null)
+        public Task<String> CreateOAuth2Session(OAuthProvider provider, string? success = null, string? failure = null, List<string>? scopes = null)
         {
             var apiPath = "/account/sessions/oauth2/{provider}"
                 .Replace("{provider}", provider.Value);
@@ -988,7 +936,6 @@ namespace Appwrite.Services
             {
                 { "success", success },
                 { "failure", failure },
-                { "token", token },
                 { "scopes", scopes }
             };
 
@@ -999,9 +946,7 @@ namespace Appwrite.Services
 
 
 
-
-
-            return _client.Call(
+            return _client.Redirect(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -1033,10 +978,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Session Convert(Dictionary<string, object> it) =>
                 Models.Session.From(map: it);
-
 
             return _client.Call<Models.Session>(
                 method: "POST",
@@ -1069,10 +1012,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Session Convert(Dictionary<string, object> it) =>
                 Models.Session.From(map: it);
-
 
             return _client.Call<Models.Session>(
                 method: "GET",
@@ -1105,10 +1046,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Session Convert(Dictionary<string, object> it) =>
                 Models.Session.From(map: it);
-
 
             return _client.Call<Models.Session>(
                 method: "PATCH",
@@ -1145,8 +1084,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
@@ -1177,10 +1114,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -1223,10 +1158,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "POST",
@@ -1276,10 +1209,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "POST",
@@ -1287,6 +1218,52 @@ namespace Appwrite.Services
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create OAuth2 token
+        /// <para>
+        /// Allow the user to login to their account using the OAuth2 provider of their
+        /// choice. Each OAuth2 provider should be enabled from the Appwrite console
+        /// first. Use the success and failure arguments to provide a redirect URL's
+        /// back to your app when login is completed. 
+        /// 
+        /// If authentication succeeds, `userId` and `secret` of a token will be
+        /// appended to the success URL as query parameters. These can be used to
+        /// create a new session using the [Create
+        /// session](https://appwrite.io/docs/references/cloud/client-web/account#createSession)
+        /// endpoint.
+        /// 
+        /// A user is limited to 10 active sessions at a time by default. [Learn more
+        /// about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// </para>
+        /// </summary>
+        public Task<String> CreateOAuth2Token(OAuthProvider provider, string? success = null, string? failure = null, List<string>? scopes = null)
+        {
+            var apiPath = "/account/tokens/oauth2/{provider}"
+                .Replace("{provider}", provider.Value);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "success", success },
+                { "failure", failure },
+                { "scopes", scopes }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            return _client.Redirect(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 
@@ -1321,10 +1298,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "POST",
@@ -1370,10 +1345,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "POST",
@@ -1409,10 +1382,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "PUT",
@@ -1450,10 +1421,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "POST",
@@ -1489,10 +1458,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "PUT",

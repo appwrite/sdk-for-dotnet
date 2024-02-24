@@ -37,10 +37,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.UserList Convert(Dictionary<string, object> it) =>
                 Models.UserList.From(map: it);
-
 
             return _client.Call<Models.UserList>(
                 method: "GET",
@@ -76,10 +74,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "POST",
@@ -117,10 +113,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "POST",
@@ -158,10 +152,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "POST",
@@ -194,10 +186,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.IdentityList Convert(Dictionary<string, object> it) =>
                 Models.IdentityList.From(map: it);
-
 
             return _client.Call<Models.IdentityList>(
                 method: "GET",
@@ -227,8 +217,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -267,10 +255,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "POST",
@@ -308,10 +294,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "POST",
@@ -354,10 +338,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "POST",
@@ -399,10 +381,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "POST",
@@ -441,10 +421,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "POST",
@@ -476,10 +454,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "GET",
@@ -517,8 +493,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
@@ -549,10 +523,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -590,10 +562,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PUT",
@@ -626,10 +596,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.LogList Convert(Dictionary<string, object> it) =>
                 Models.LogList.From(map: it);
-
 
             return _client.Call<Models.LogList>(
                 method: "GET",
@@ -661,10 +629,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.MembershipList Convert(Dictionary<string, object> it) =>
                 Models.MembershipList.From(map: it);
-
 
             return _client.Call<Models.MembershipList>(
                 method: "GET",
@@ -694,10 +660,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -726,10 +690,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.MfaFactors Convert(Dictionary<string, object> it) =>
                 Models.MfaFactors.From(map: it);
-
 
             return _client.Call<Models.MfaFactors>(
                 method: "GET",
@@ -760,10 +722,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "DELETE",
@@ -796,10 +756,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -832,10 +790,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -868,10 +824,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -903,10 +857,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Preferences Convert(Dictionary<string, object> it) =>
                 Models.Preferences.From(map: it);
-
 
             return _client.Call<Models.Preferences>(
                 method: "GET",
@@ -941,10 +893,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Preferences Convert(Dictionary<string, object> it) =>
                 Models.Preferences.From(map: it);
-
 
             return _client.Call<Models.Preferences>(
                 method: "PATCH",
@@ -976,10 +926,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.SessionList Convert(Dictionary<string, object> it) =>
                 Models.SessionList.From(map: it);
-
 
             return _client.Call<Models.SessionList>(
                 method: "GET",
@@ -1016,10 +964,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Session Convert(Dictionary<string, object> it) =>
                 Models.Session.From(map: it);
-
 
             return _client.Call<Models.Session>(
                 method: "POST",
@@ -1049,8 +995,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -1085,8 +1029,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
@@ -1118,10 +1060,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -1151,10 +1091,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.TargetList Convert(Dictionary<string, object> it) =>
                 Models.TargetList.From(map: it);
-
 
             return _client.Call<Models.TargetList>(
                 method: "GET",
@@ -1188,10 +1126,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Target Convert(Dictionary<string, object> it) =>
                 Models.Target.From(map: it);
-
 
             return _client.Call<Models.Target>(
                 method: "POST",
@@ -1221,10 +1157,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Target Convert(Dictionary<string, object> it) =>
                 Models.Target.From(map: it);
-
 
             return _client.Call<Models.Target>(
                 method: "GET",
@@ -1257,10 +1191,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Target Convert(Dictionary<string, object> it) =>
                 Models.Target.From(map: it);
-
 
             return _client.Call<Models.Target>(
                 method: "PATCH",
@@ -1288,8 +1220,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -1328,10 +1258,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Token Convert(Dictionary<string, object> it) =>
                 Models.Token.From(map: it);
-
 
             return _client.Call<Models.Token>(
                 method: "POST",
@@ -1364,10 +1292,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",
@@ -1400,10 +1326,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.User Convert(Dictionary<string, object> it) =>
                 Models.User.From(map: it);
-
 
             return _client.Call<Models.User>(
                 method: "PATCH",

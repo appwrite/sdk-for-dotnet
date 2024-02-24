@@ -47,6 +47,7 @@ namespace Appwrite.Services
             };
 
 
+
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
@@ -87,6 +88,7 @@ namespace Appwrite.Services
             };
 
 
+
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
@@ -116,6 +118,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(
@@ -159,6 +162,7 @@ namespace Appwrite.Services
             };
 
 
+
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
@@ -197,6 +201,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(
@@ -246,6 +251,7 @@ namespace Appwrite.Services
             };
 
 
+
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
@@ -278,6 +284,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(

@@ -34,10 +34,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -68,10 +66,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthAntivirus Convert(Dictionary<string, object> it) =>
                 Models.HealthAntivirus.From(map: it);
-
 
             return _client.Call<Models.HealthAntivirus>(
                 method: "GET",
@@ -103,10 +99,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -138,10 +132,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthCertificate Convert(Dictionary<string, object> it) =>
                 Models.HealthCertificate.From(map: it);
-
 
             return _client.Call<Models.HealthCertificate>(
                 method: "GET",
@@ -172,10 +164,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -206,10 +196,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -241,10 +229,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -277,10 +263,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -314,10 +298,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -351,10 +333,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -387,10 +367,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -424,10 +402,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -456,10 +432,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -492,10 +466,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -528,10 +500,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -564,10 +534,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -600,10 +568,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -636,10 +602,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -670,10 +634,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -710,10 +672,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthTime Convert(Dictionary<string, object> it) =>
                 Models.HealthTime.From(map: it);
-
 
             return _client.Call<Models.HealthTime>(
                 method: "GET",

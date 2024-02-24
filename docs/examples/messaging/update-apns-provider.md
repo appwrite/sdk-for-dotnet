@@ -10,9 +10,13 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateFCMProvider(
-    providerId: "[PROVIDER_ID]",
-    name: "[NAME]", // optional
+Provider result = await messaging.UpdateApnsProvider(
+    providerId: "<PROVIDER_ID>",
+    name: "<NAME>", // optional
     enabled: false, // optional
-    serviceAccountJSON: [object] // optional
+    authKey: "<AUTH_KEY>", // optional
+    authKeyId: "<AUTH_KEY_ID>", // optional
+    teamId: "<TEAM_ID>", // optional
+    bundleId: "<BUNDLE_ID>", // optional
+    sandbox: false // optional
 );
