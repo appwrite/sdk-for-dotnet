@@ -643,6 +643,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update MFA
+        /// <para>
+        /// Enable or disable MFA on a user account.
+        /// </para>
         /// </summary>
         public Task<Models.User> UpdateMfa(string userId, bool mfa)
         {
@@ -674,6 +677,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List Factors
+        /// <para>
+        /// List the factors available on the account to be used as a MFA challange.
+        /// </para>
         /// </summary>
         public Task<Models.MfaFactors> ListFactors(string userId)
         {
@@ -704,8 +710,11 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Delete Authenticator
+        /// <para>
+        /// Delete an authenticator app.
+        /// </para>
         /// </summary>
-        public Task<Models.User> DeleteAuthenticator(string userId, AuthenticatorType type, string otp)
+        public Task<Models.User> DeleteAuthenticator(string userId, AuthenticatorType type)
         {
             var apiPath = "/users/{userId}/mfa/{type}"
                 .Replace("{userId}", userId)
@@ -713,7 +722,6 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "otp", otp }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1074,6 +1082,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List User Targets
+        /// <para>
+        /// List the messaging targets that are associated with a user.
+        /// </para>
         /// </summary>
         public Task<Models.TargetList> ListTargets(string userId, List<string>? queries = null)
         {
@@ -1105,6 +1116,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create User Target
+        /// <para>
+        /// Create a messaging target.
+        /// </para>
         /// </summary>
         public Task<Models.Target> CreateTarget(string userId, string targetId, MessagingProviderType providerType, string identifier, string? providerId = null, string? name = null)
         {
@@ -1140,6 +1154,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Get User Target
+        /// <para>
+        /// Get a user's push notification target by ID.
+        /// </para>
         /// </summary>
         public Task<Models.Target> GetTarget(string userId, string targetId)
         {
@@ -1171,6 +1188,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update User target
+        /// <para>
+        /// Update a messaging target.
+        /// </para>
         /// </summary>
         public Task<Models.Target> UpdateTarget(string userId, string targetId, string? identifier = null, string? providerId = null, string? name = null)
         {
@@ -1205,6 +1225,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Delete user target
+        /// <para>
+        /// Delete a messaging target.
+        /// </para>
         /// </summary>
         public Task<object> DeleteTarget(string userId, string targetId)
         {

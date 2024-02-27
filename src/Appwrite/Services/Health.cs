@@ -416,6 +416,10 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Get functions queue
+        /// <para>
+        /// Get the number of function executions that are waiting to be processed in
+        /// the Appwrite internal queue server.
+        /// </para>
         /// </summary>
         public Task<Models.HealthQueue> GetQueueFunctions(long? threshold = null)
         {

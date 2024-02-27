@@ -49,12 +49,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create an email
+        /// Create email
         /// <para>
         /// Create a new email message.
         /// </para>
         /// </summary>
-        public Task<Models.Message> CreateEmail(string messageId, string subject, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, List<string>? cc = null, List<string>? bcc = null, List<string>? attachments = null, MessageStatus? status = null, bool? html = null, string? scheduledAt = null)
+        public Task<Models.Message> CreateEmail(string messageId, string subject, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, List<string>? cc = null, List<string>? bcc = null, List<string>? attachments = null, bool? draft = null, bool? html = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/email";
 
@@ -69,7 +69,7 @@ namespace Appwrite.Services
                 { "cc", cc },
                 { "bcc", bcc },
                 { "attachments", attachments },
-                { "status", status },
+                { "draft", draft },
                 { "html", html },
                 { "scheduledAt", scheduledAt }
             };
@@ -93,13 +93,13 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update an email
+        /// Update email
         /// <para>
         /// Update an email message by its unique ID.
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, MessageStatus? status = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null)
+        public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, bool? draft = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/email/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -111,7 +111,7 @@ namespace Appwrite.Services
                 { "targets", targets },
                 { "subject", subject },
                 { "content", content },
-                { "status", status },
+                { "draft", draft },
                 { "html", html },
                 { "cc", cc },
                 { "bcc", bcc },
@@ -137,12 +137,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create a push notification
+        /// Create push notification
         /// <para>
         /// Create a new push notification.
         /// </para>
         /// </summary>
-        public Task<Models.Message> CreatePush(string messageId, string title, string body, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, string? badge = null, MessageStatus? status = null, string? scheduledAt = null)
+        public Task<Models.Message> CreatePush(string messageId, string title, string body, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, string? badge = null, bool? draft = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/push";
 
@@ -162,7 +162,7 @@ namespace Appwrite.Services
                 { "color", color },
                 { "tag", tag },
                 { "badge", badge },
-                { "status", status },
+                { "draft", draft },
                 { "scheduledAt", scheduledAt }
             };
 
@@ -185,13 +185,13 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update a push notification
+        /// Update push notification
         /// <para>
         /// Update a push notification by its unique ID.
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Message> UpdatePush(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? title = null, string? body = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, MessageStatus? status = null, string? scheduledAt = null)
+        public Task<Models.Message> UpdatePush(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? title = null, string? body = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, bool? draft = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/push/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -211,7 +211,7 @@ namespace Appwrite.Services
                 { "color", color },
                 { "tag", tag },
                 { "badge", badge },
-                { "status", status },
+                { "draft", draft },
                 { "scheduledAt", scheduledAt }
             };
 
@@ -234,12 +234,12 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create an SMS
+        /// Create SMS
         /// <para>
         /// Create a new SMS message.
         /// </para>
         /// </summary>
-        public Task<Models.Message> CreateSms(string messageId, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, MessageStatus? status = null, string? scheduledAt = null)
+        public Task<Models.Message> CreateSms(string messageId, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, bool? draft = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/sms";
 
@@ -250,7 +250,7 @@ namespace Appwrite.Services
                 { "topics", topics },
                 { "users", users },
                 { "targets", targets },
-                { "status", status },
+                { "draft", draft },
                 { "scheduledAt", scheduledAt }
             };
 
@@ -273,13 +273,13 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update an SMS
+        /// Update SMS
         /// <para>
         /// Update an email message by its unique ID.
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Message> UpdateSms(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? content = null, MessageStatus? status = null, string? scheduledAt = null)
+        public Task<Models.Message> UpdateSms(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? content = null, bool? draft = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/sms/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -290,7 +290,7 @@ namespace Appwrite.Services
                 { "users", users },
                 { "targets", targets },
                 { "content", content },
-                { "status", status },
+                { "draft", draft },
                 { "scheduledAt", scheduledAt }
             };
 
@@ -313,7 +313,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get a message
+        /// Get message
         /// <para>
         /// Get a message by its unique ID.
         /// 
@@ -347,7 +347,11 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete a message
+        /// Delete message
+        /// <para>
+        /// Delete a message. If the message is not a draft or scheduled, but has been
+        /// sent, this will not recall the message.
+        /// </para>
         /// </summary>
         public Task<object> Delete(string messageId)
         {
@@ -789,6 +793,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create Sendgrid provider
+        /// <para>
+        /// Create a new Sendgrid provider.
+        /// </para>
         /// </summary>
         public Task<Models.Provider> CreateSendgridProvider(string providerId, string name, string? apiKey = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
@@ -1427,7 +1434,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create a topic
+        /// Create topic
         /// <para>
         /// Create a new topic.
         /// </para>
@@ -1462,7 +1469,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get a topic
+        /// Get topic
         /// <para>
         /// Get a topic by its unique ID.
         /// 
@@ -1496,7 +1503,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update a topic
+        /// Update topic
         /// <para>
         /// Update a topic by its unique ID.
         /// 
@@ -1532,7 +1539,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete a topic
+        /// Delete topic
         /// <para>
         /// Delete a topic by its unique ID.
         /// </para>
@@ -1631,7 +1638,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create a subscriber
+        /// Create subscriber
         /// <para>
         /// Create a new subscriber.
         /// </para>
@@ -1666,7 +1673,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get a subscriber
+        /// Get subscriber
         /// <para>
         /// Get a subscriber by its unique ID.
         /// 
@@ -1701,7 +1708,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete a subscriber
+        /// Delete subscriber
         /// <para>
         /// Delete a subscriber by its unique ID.
         /// </para>

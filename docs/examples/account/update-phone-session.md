@@ -4,9 +4,11 @@ using Appwrite.Services;
 
 Client client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2") // Your project ID
-    .SetSession(""); // The user session to authenticate with
+    .SetProject("5df5acd0d48c2"); // Your project ID
 
 Account account = new Account(client);
 
-User result = await account.UpdateStatus();
+Session result = await account.UpdatePhoneSession(
+    userId: "<USER_ID>",
+    secret: "<SECRET>"
+);

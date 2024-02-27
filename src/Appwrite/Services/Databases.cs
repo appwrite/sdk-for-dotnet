@@ -369,6 +369,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List attributes
+        /// <para>
+        /// List attributes in the collection.
+        /// </para>
         /// </summary>
         public Task<Models.AttributeList> ListAttributes(string databaseId, string collectionId, List<string>? queries = null)
         {
@@ -440,6 +443,10 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update boolean attribute
+        /// <para>
+        /// Update a boolean attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// </para>
         /// </summary>
         public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool xdefault)
         {
@@ -474,6 +481,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create datetime attribute
+        /// <para>
+        /// Create a date time attribute according to the ISO 8601 standard.
+        /// </para>
         /// </summary>
         public Task<Models.AttributeDatetime> CreateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
         {
@@ -509,6 +519,10 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update dateTime attribute
+        /// <para>
+        /// Update a date time attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// </para>
         /// </summary>
         public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
         {
@@ -621,6 +635,11 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create enum attribute
+        /// <para>
+        /// Create an enumeration attribute. The `elements` param acts as a white-list
+        /// of accepted values for this attribute. 
+        /// 
+        /// </para>
         /// </summary>
         public Task<Models.AttributeEnum> CreateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? xdefault = null, bool? array = null)
         {
@@ -1141,6 +1160,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Get attribute
+        /// <para>
+        /// Get attribute by ID.
+        /// </para>
         /// </summary>
         public Task<object> GetAttribute(string databaseId, string collectionId, string key)
         {
@@ -1170,6 +1192,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Delete attribute
+        /// <para>
+        /// Deletes an attribute.
+        /// </para>
         /// </summary>
         public Task<object> DeleteAttribute(string databaseId, string collectionId, string key)
         {
@@ -1420,6 +1445,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List indexes
+        /// <para>
+        /// List indexes in the collection.
+        /// </para>
         /// </summary>
         public Task<Models.IndexList> ListIndexes(string databaseId, string collectionId, List<string>? queries = null)
         {
@@ -1452,6 +1480,11 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create index
+        /// <para>
+        /// Creates an index on the attributes listed. Your index should include all
+        /// the attributes you will query in a single request.
+        /// Attributes can be `key`, `fulltext`, and `unique`.
+        /// </para>
         /// </summary>
         public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, IndexType type, List<string> attributes, List<string>? orders = null)
         {
@@ -1487,6 +1520,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Get index
+        /// <para>
+        /// Get index by ID.
+        /// </para>
         /// </summary>
         public Task<Models.Index> GetIndex(string databaseId, string collectionId, string key)
         {
@@ -1519,6 +1555,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Delete index
+        /// <para>
+        /// Delete an index.
+        /// </para>
         /// </summary>
         public Task<object> DeleteIndex(string databaseId, string collectionId, string key)
         {

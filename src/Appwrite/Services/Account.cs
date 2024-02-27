@@ -264,6 +264,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update MFA
+        /// <para>
+        /// Enable or disable MFA on an account.
+        /// </para>
         /// </summary>
         public Task<Models.User> UpdateMFA(bool mfa)
         {
@@ -324,6 +327,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create MFA Challenge (confirmation)
+        /// <para>
+        /// Complete the MFA challenge by providing the one-time password.
+        /// </para>
         /// </summary>
         public Task<object> UpdateChallenge(string challengeId, string otp)
         {
@@ -352,6 +358,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List Factors
+        /// <para>
+        /// List the factors available on the account to be used as a MFA challange.
+        /// </para>
         /// </summary>
         public Task<Models.MfaFactors> ListFactors()
         {
@@ -381,6 +390,12 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Add Authenticator
+        /// <para>
+        /// Add an authenticator app to be used as an MFA factor. Verify the
+        /// authenticator using the [verify
+        /// authenticator](/docs/references/cloud/client-web/account#verifyAuthenticator)
+        /// method.
+        /// </para>
         /// </summary>
         public Task<Models.MfaType> AddAuthenticator(AuthenticatorType type)
         {
@@ -411,6 +426,11 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Verify Authenticator
+        /// <para>
+        /// Verify an authenticator app after adding it using the [add
+        /// authenticator](/docs/references/cloud/client-web/account#addAuthenticator)
+        /// method.
+        /// </para>
         /// </summary>
         public Task<Models.User> VerifyAuthenticator(AuthenticatorType type, string otp)
         {
@@ -442,6 +462,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Delete Authenticator
+        /// <para>
+        /// Delete an authenticator for a user by ID.
+        /// </para>
         /// </summary>
         public Task<Models.User> DeleteAuthenticator(AuthenticatorType type, string otp)
         {
@@ -871,7 +894,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create session (deprecated)
+        /// Update magic URL session
         /// <para>
         /// Use this endpoint to create a session from token. Provide the **userId**
         /// and **secret** parameters from the successful response of authentication
@@ -907,36 +930,21 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create OAuth2 session
+        /// Update phone session
         /// <para>
-        /// Allow the user to login to their account using the OAuth2 provider of their
-        /// choice. Each OAuth2 provider should be enabled from the Appwrite console
-        /// first. Use the success and failure arguments to provide a redirect URL's
-        /// back to your app when login is completed.
-        /// 
-        /// If there is already an active session, the new session will be attached to
-        /// the logged-in account. If there are no active sessions, the server will
-        /// attempt to look for a user with the same email address as the email
-        /// received from the OAuth2 provider and attach the new session to the
-        /// existing user. If no matching user is found - the server will create a new
-        /// user.
-        /// 
-        /// A user is limited to 10 active sessions at a time by default. [Learn more
-        /// about session
-        /// limits](https://appwrite.io/docs/authentication-security#limits).
-        /// 
+        /// Use this endpoint to create a session from token. Provide the **userId**
+        /// and **secret** parameters from the successful response of authentication
+        /// flows initiated by token creation. For example, magic URL and phone login.
         /// </para>
         /// </summary>
-        public Task<String> CreateOAuth2Session(OAuthProvider provider, string? success = null, string? failure = null, List<string>? scopes = null)
+        public Task<Models.Session> UpdatePhoneSession(string userId, string secret)
         {
-            var apiPath = "/account/sessions/oauth2/{provider}"
-                .Replace("{provider}", provider.Value);
+            var apiPath = "/account/sessions/phone";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "success", success },
-                { "failure", failure },
-                { "scopes", scopes }
+                { "userId", userId },
+                { "secret", secret }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -945,12 +953,15 @@ namespace Appwrite.Services
             };
 
 
+            static Models.Session Convert(Dictionary<string, object> it) =>
+                Models.Session.From(map: it);
 
-            return _client.Redirect(
-                method: "GET",
+            return _client.Call<Models.Session>(
+                method: "PUT",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 
@@ -1025,7 +1036,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update (or renew) a session
+        /// Update (or renew) session
         /// <para>
         /// Extend session's expiry to increase it's lifespan. Extending a session is
         /// useful when session length is short such as 5 minutes.
