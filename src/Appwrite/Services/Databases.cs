@@ -966,7 +966,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, RelationMutate? onDelete = null)
+        public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, Appwrite.Enums.RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, Appwrite.Enums.RelationMutate? onDelete = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/relationship"
                 .Replace("{databaseId}", databaseId)
@@ -1230,7 +1230,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, RelationMutate? onDelete = null)
+        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}/relationship"
                 .Replace("{databaseId}", databaseId)
@@ -1486,7 +1486,7 @@ namespace Appwrite.Services
         /// Attributes can be `key`, `fulltext`, and `unique`.
         /// </para>
         /// </summary>
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, IndexType type, List<string> attributes, List<string>? orders = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<string>? orders = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)

@@ -304,7 +304,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        public Task<Models.MfaType> CreateMfaAuthenticator(AuthenticatorType type)
+        public Task<Models.MfaType> CreateMfaAuthenticator(Appwrite.Enums.AuthenticatorType type)
         {
             var apiPath = "/account/mfa/authenticators/{type}"
                 .Replace("{type}", type.Value);
@@ -339,7 +339,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        public Task<Models.User> UpdateMfaAuthenticator(AuthenticatorType type, string otp)
+        public Task<Models.User> UpdateMfaAuthenticator(Appwrite.Enums.AuthenticatorType type, string otp)
         {
             var apiPath = "/account/mfa/authenticators/{type}"
                 .Replace("{type}", type.Value);
@@ -373,7 +373,7 @@ namespace Appwrite.Services
         /// Delete an authenticator for a user by ID.
         /// </para>
         /// </summary>
-        public Task<Models.User> DeleteMfaAuthenticator(AuthenticatorType type, string otp)
+        public Task<Models.User> DeleteMfaAuthenticator(Appwrite.Enums.AuthenticatorType type, string otp)
         {
             var apiPath = "/account/mfa/authenticators/{type}"
                 .Replace("{type}", type.Value);
@@ -409,7 +409,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        public Task<Models.MfaChallenge> CreateMfaChallenge(AuthenticationFactor factor)
+        public Task<Models.MfaChallenge> CreateMfaChallenge(Appwrite.Enums.AuthenticationFactor factor)
         {
             var apiPath = "/account/mfa/challenge";
 
@@ -1367,7 +1367,7 @@ namespace Appwrite.Services
         /// limits](https://appwrite.io/docs/authentication-security#limits).
         /// </para>
         /// </summary>
-        public Task<String> CreateOAuth2Token(OAuthProvider provider, string? success = null, string? failure = null, List<string>? scopes = null)
+        public Task<String> CreateOAuth2Token(Appwrite.Enums.OAuthProvider provider, string? success = null, string? failure = null, List<string>? scopes = null)
         {
             var apiPath = "/account/tokens/oauth2/{provider}"
                 .Replace("{provider}", provider.Value);

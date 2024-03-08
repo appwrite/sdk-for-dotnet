@@ -402,7 +402,7 @@ namespace Appwrite.Services
         /// endpoint to create users with a plain text password.
         /// </para>
         /// </summary>
-        public Task<Models.User> CreateSHAUser(string userId, string email, string password, PasswordHash? passwordVersion = null, string? name = null)
+        public Task<Models.User> CreateSHAUser(string userId, string email, string password, Appwrite.Enums.PasswordHash? passwordVersion = null, string? name = null)
         {
             var apiPath = "/users/sha";
 
@@ -681,7 +681,7 @@ namespace Appwrite.Services
         /// Delete an authenticator app.
         /// </para>
         /// </summary>
-        public Task<Models.User> DeleteMfaAuthenticator(string userId, AuthenticatorType type)
+        public Task<Models.User> DeleteMfaAuthenticator(string userId, Appwrite.Enums.AuthenticatorType type)
         {
             var apiPath = "/users/{userId}/mfa/authenticators/{type}"
                 .Replace("{userId}", userId)
@@ -1228,7 +1228,7 @@ namespace Appwrite.Services
         /// Create a messaging target.
         /// </para>
         /// </summary>
-        public Task<Models.Target> CreateTarget(string userId, string targetId, MessagingProviderType providerType, string identifier, string? providerId = null, string? name = null)
+        public Task<Models.Target> CreateTarget(string userId, string targetId, Appwrite.Enums.MessagingProviderType providerType, string identifier, string? providerId = null, string? name = null)
         {
             var apiPath = "/users/{userId}/targets"
                 .Replace("{userId}", userId);

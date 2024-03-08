@@ -55,7 +55,7 @@ namespace Appwrite.Services
         /// Create a new storage bucket.
         /// </para>
         /// </summary>
-        public Task<Models.Bucket> CreateBucket(string bucketId, string name, List<string>? permissions = null, bool? fileSecurity = null, bool? enabled = null, long? maximumFileSize = null, List<string>? allowedFileExtensions = null, Compression? compression = null, bool? encryption = null, bool? antivirus = null)
+        public Task<Models.Bucket> CreateBucket(string bucketId, string name, List<string>? permissions = null, bool? fileSecurity = null, bool? enabled = null, long? maximumFileSize = null, List<string>? allowedFileExtensions = null, Appwrite.Enums.Compression? compression = null, bool? encryption = null, bool? antivirus = null)
         {
             var apiPath = "/storage/buckets";
 
@@ -131,7 +131,7 @@ namespace Appwrite.Services
         /// Update a storage bucket by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Bucket> UpdateBucket(string bucketId, string name, List<string>? permissions = null, bool? fileSecurity = null, bool? enabled = null, long? maximumFileSize = null, List<string>? allowedFileExtensions = null, Compression? compression = null, bool? encryption = null, bool? antivirus = null)
+        public Task<Models.Bucket> UpdateBucket(string bucketId, string name, List<string>? permissions = null, bool? fileSecurity = null, bool? enabled = null, long? maximumFileSize = null, List<string>? allowedFileExtensions = null, Appwrite.Enums.Compression? compression = null, bool? encryption = null, bool? antivirus = null)
         {
             var apiPath = "/storage/buckets/{bucketId}"
                 .Replace("{bucketId}", bucketId);
@@ -438,7 +438,7 @@ namespace Appwrite.Services
         /// supported only for image files smaller than 10MB.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetFilePreview(string bucketId, string fileId, long? width = null, long? height = null, ImageGravity? gravity = null, long? quality = null, long? borderWidth = null, string? borderColor = null, long? borderRadius = null, double? opacity = null, long? rotation = null, string? background = null, ImageFormat? output = null)
+        public Task<byte[]> GetFilePreview(string bucketId, string fileId, long? width = null, long? height = null, Appwrite.Enums.ImageGravity? gravity = null, long? quality = null, long? borderWidth = null, string? borderColor = null, long? borderRadius = null, double? opacity = null, long? rotation = null, string? background = null, Appwrite.Enums.ImageFormat? output = null)
         {
             var apiPath = "/storage/buckets/{bucketId}/files/{fileId}/preview"
                 .Replace("{bucketId}", bucketId)

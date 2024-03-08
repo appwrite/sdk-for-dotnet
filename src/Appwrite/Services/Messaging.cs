@@ -877,7 +877,7 @@ namespace Appwrite.Services
         /// Create a new SMTP provider.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateSmtpProvider(string providerId, string name, string host, long? port = null, string? username = null, string? password = null, SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        public Task<Models.Provider> CreateSmtpProvider(string providerId, string name, string host, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp";
 
@@ -923,7 +923,7 @@ namespace Appwrite.Services
         /// Update a SMTP provider by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateSmtpProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        public Task<Models.Provider> UpdateSmtpProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp/{providerId}"
                 .Replace("{providerId}", providerId);

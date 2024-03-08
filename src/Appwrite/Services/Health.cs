@@ -386,7 +386,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.HealthQueue> GetFailedJobs(Name name, long? threshold = null)
+        public Task<Models.HealthQueue> GetFailedJobs(Appwrite.Enums.Name name, long? threshold = null)
         {
             var apiPath = "/health/queue/failed/{name}"
                 .Replace("{name}", name.Value);
