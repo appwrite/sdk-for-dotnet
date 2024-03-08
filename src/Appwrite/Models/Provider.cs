@@ -23,7 +23,7 @@ namespace Appwrite.Models
         public string Name { get; private set; }
 
         [JsonProperty("provider")]
-        public string Provider { get; private set; }
+        public string MessagingProvider { get; private set; }
 
         [JsonProperty("enabled")]
         public bool Enabled { get; private set; }
@@ -52,7 +52,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Name = name;
-            Provider = provider;
+            MessagingProvider = provider;
             Enabled = enabled;
             Type = type;
             Credentials = credentials;
@@ -77,7 +77,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "name", Name },
-            { "provider", Provider },
+            { "provider", MessagingProvider },
             { "enabled", Enabled },
             { "type", Type },
             { "credentials", Credentials },
