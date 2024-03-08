@@ -625,7 +625,7 @@ namespace Appwrite.Services
         /// processed in the Appwrite internal queue server.
         /// </para>
         /// </summary>
-        public Task<Models.HealthQueue> GetQueueUsage(long? threshold = null)
+        public Task<Models.HealthQueue> GetQueueUsageDump(long? threshold = null)
         {
             var apiPath = "/health/queue/usage-dump";
 
