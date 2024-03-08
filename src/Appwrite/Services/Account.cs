@@ -296,99 +296,6 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create 2FA Challenge
-        /// </summary>
-        public Task<Models.MfaChallenge> CreateChallenge(AuthenticationFactor factor)
-        {
-            var apiPath = "/account/mfa/challenge";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "factor", factor }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.MfaChallenge Convert(Dictionary<string, object> it) =>
-                Models.MfaChallenge.From(map: it);
-
-            return _client.Call<Models.MfaChallenge>(
-                method: "POST",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// Create MFA Challenge (confirmation)
-        /// <para>
-        /// Complete the MFA challenge by providing the one-time password.
-        /// </para>
-        /// </summary>
-        public Task<object> UpdateChallenge(string challengeId, string otp)
-        {
-            var apiPath = "/account/mfa/challenge";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "challengeId", challengeId },
-                { "otp", otp }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            return _client.Call<object>(
-                method: "PUT",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
-
-        }
-
-        /// <summary>
-        /// List Factors
-        /// <para>
-        /// List the factors available on the account to be used as a MFA challange.
-        /// </para>
-        /// </summary>
-        public Task<Models.MfaFactors> ListFactors()
-        {
-            var apiPath = "/account/mfa/factors";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.MfaFactors Convert(Dictionary<string, object> it) =>
-                Models.MfaFactors.From(map: it);
-
-            return _client.Call<Models.MfaFactors>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
         /// Add Authenticator
         /// <para>
         /// Add an authenticator app to be used as an MFA factor. Verify the
@@ -397,9 +304,9 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        public Task<Models.MfaType> AddAuthenticator(AuthenticatorType type)
+        public Task<Models.MfaType> CreateMfaAuthenticator(AuthenticatorType type)
         {
-            var apiPath = "/account/mfa/{type}"
+            var apiPath = "/account/mfa/authenticators/{type}"
                 .Replace("{type}", type.Value);
 
             var apiParameters = new Dictionary<string, object?>()
@@ -432,9 +339,9 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        public Task<Models.User> VerifyAuthenticator(AuthenticatorType type, string otp)
+        public Task<Models.User> UpdateMfaAuthenticator(AuthenticatorType type, string otp)
         {
-            var apiPath = "/account/mfa/{type}"
+            var apiPath = "/account/mfa/authenticators/{type}"
                 .Replace("{type}", type.Value);
 
             var apiParameters = new Dictionary<string, object?>()
@@ -466,9 +373,9 @@ namespace Appwrite.Services
         /// Delete an authenticator for a user by ID.
         /// </para>
         /// </summary>
-        public Task<Models.User> DeleteAuthenticator(AuthenticatorType type, string otp)
+        public Task<Models.User> DeleteMfaAuthenticator(AuthenticatorType type, string otp)
         {
-            var apiPath = "/account/mfa/{type}"
+            var apiPath = "/account/mfa/authenticators/{type}"
                 .Replace("{type}", type.Value);
 
             var apiParameters = new Dictionary<string, object?>()
@@ -487,6 +394,214 @@ namespace Appwrite.Services
 
             return _client.Call<Models.User>(
                 method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create 2FA Challenge
+        /// <para>
+        /// Begin the process of MFA verification after sign-in. Finish the flow with
+        /// [updateMfaChallenge](/docs/references/cloud/client-web/account#updateMfaChallenge)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaChallenge> CreateMfaChallenge(AuthenticationFactor factor)
+        {
+            var apiPath = "/account/mfa/challenge";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "factor", factor }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MfaChallenge Convert(Dictionary<string, object> it) =>
+                Models.MfaChallenge.From(map: it);
+
+            return _client.Call<Models.MfaChallenge>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create MFA Challenge (confirmation)
+        /// <para>
+        /// Complete the MFA challenge by providing the one-time password. Finish the
+        /// process of MFA verification by providing the one-time password. To begin
+        /// the flow, use
+        /// [createMfaChallenge](/docs/references/cloud/client-web/account#createMfaChallenge)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<object> UpdateMfaChallenge(string challengeId, string otp)
+        {
+            var apiPath = "/account/mfa/challenge";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "challengeId", challengeId },
+                { "otp", otp }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <summary>
+        /// List Factors
+        /// <para>
+        /// List the factors available on the account to be used as a MFA challange.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaFactors> ListMfaFactors()
+        {
+            var apiPath = "/account/mfa/factors";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MfaFactors Convert(Dictionary<string, object> it) =>
+                Models.MfaFactors.From(map: it);
+
+            return _client.Call<Models.MfaFactors>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get MFA Recovery Codes
+        /// <para>
+        /// Get recovery codes that can be used as backup for MFA flow. Before getting
+        /// codes, they must be generated using
+        /// [createMfaRecoveryCodes](/docs/references/cloud/client-web/account#createMfaRecoveryCodes)
+        /// method. An OTP challenge is required to read recovery codes.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaRecoveryCodes> GetMfaRecoveryCodes()
+        {
+            var apiPath = "/account/mfa/recovery-codes";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
+                Models.MfaRecoveryCodes.From(map: it);
+
+            return _client.Call<Models.MfaRecoveryCodes>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create MFA Recovery Codes
+        /// <para>
+        /// Generate recovery codes as backup for MFA flow. It's recommended to
+        /// generate and show then immediately after user successfully adds their
+        /// authehticator. Recovery codes can be used as a MFA verification type in
+        /// [createMfaChallenge](/docs/references/cloud/client-web/account#createMfaChallenge)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaRecoveryCodes> CreateMfaRecoveryCodes()
+        {
+            var apiPath = "/account/mfa/recovery-codes";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
+                Models.MfaRecoveryCodes.From(map: it);
+
+            return _client.Call<Models.MfaRecoveryCodes>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Regenerate MFA Recovery Codes
+        /// <para>
+        /// Regenerate recovery codes that can be used as backup for MFA flow. Before
+        /// regenerating codes, they must be first generated using
+        /// [createMfaRecoveryCodes](/docs/references/cloud/client-web/account#createMfaRecoveryCodes)
+        /// method. An OTP challenge is required to regenreate recovery codes.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaRecoveryCodes> UpdateMfaRecoveryCodes()
+        {
+            var apiPath = "/account/mfa/recovery-codes";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
+                Models.MfaRecoveryCodes.From(map: it);
+
+            return _client.Call<Models.MfaRecoveryCodes>(
+                method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -1036,10 +1151,11 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update (or renew) session
+        /// Update session
         /// <para>
-        /// Extend session's expiry to increase it's lifespan. Extending a session is
-        /// useful when session length is short such as 5 minutes.
+        /// Use this endpoint to extend a session's length. Extending a session is
+        /// useful when session expiry is short. If the session was created using an
+        /// OAuth provider, this endpoint refreshes the access token from the provider.
         /// </para>
         /// </summary>
         public Task<Models.Session> UpdateSession(string sessionId)

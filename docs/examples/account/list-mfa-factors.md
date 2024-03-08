@@ -1,5 +1,4 @@
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -10,6 +9,4 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-MfaType result = await account.AddAuthenticator(
-    type: AuthenticatorType.Totp
-);
+MfaFactors result = await account.ListMfaFactors();

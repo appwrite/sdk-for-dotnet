@@ -1,5 +1,4 @@
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -10,7 +9,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-User result = await account.VerifyAuthenticator(
-    type: AuthenticatorType.Totp,
+ result = await account.UpdateMfaChallenge(
+    challengeId: "<CHALLENGE_ID>",
     otp: "<OTP>"
 );

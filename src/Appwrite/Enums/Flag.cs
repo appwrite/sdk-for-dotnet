@@ -44,7 +44,7 @@ namespace Appwrite.Enums
         public static Flag Switzerland => new Flag("ch");
         public static Flag Chile => new Flag("cl");
         public static Flag China => new Flag("cn");
-        public static Flag CTeDIvoire => new Flag("ci");
+        public static Flag CoteDIvoire => new Flag("ci");
         public static Flag Cameroon => new Flag("cm");
         public static Flag DemocraticRepublicOfTheCongo => new Flag("cd");
         public static Flag RepublicOfTheCongo => new Flag("cg");

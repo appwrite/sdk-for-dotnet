@@ -11,8 +11,9 @@ namespace Appwrite.Enums
             Value = value;
         }
 
-        public static AuthenticationFactor Totp => new AuthenticationFactor("totp");
-        public static AuthenticationFactor Phone => new AuthenticationFactor("phone");
         public static AuthenticationFactor Email => new AuthenticationFactor("email");
+        public static AuthenticationFactor Phone => new AuthenticationFactor("phone");
+        public static AuthenticationFactor Totp => new AuthenticationFactor("totp");
+        public static AuthenticationFactor Recoverycode => new AuthenticationFactor("recoverycode");
     }
 }

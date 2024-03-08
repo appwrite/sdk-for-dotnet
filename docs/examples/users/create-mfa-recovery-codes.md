@@ -9,6 +9,6 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-MfaFactors result = await users.ListFactors(
+MfaRecoveryCodes result = await users.CreateMfaRecoveryCodes(
     userId: "<USER_ID>"
 );

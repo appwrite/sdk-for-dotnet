@@ -1,5 +1,4 @@
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -10,7 +9,6 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-await users.DeleteAuthenticator(
-    userId: "<USER_ID>",
-    type: AuthenticatorType.Totp
+MfaRecoveryCodes result = await users.GetMfaRecoveryCodes(
+    userId: "<USER_ID>"
 );

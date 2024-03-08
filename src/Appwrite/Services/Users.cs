@@ -676,12 +676,46 @@ namespace Appwrite.Services
         }
 
         /// <summary>
+        /// Delete Authenticator
+        /// <para>
+        /// Delete an authenticator app.
+        /// </para>
+        /// </summary>
+        public Task<Models.User> DeleteMfaAuthenticator(string userId, AuthenticatorType type)
+        {
+            var apiPath = "/users/{userId}/mfa/authenticators/{type}"
+                .Replace("{userId}", userId)
+                .Replace("{type}", type.Value);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+            return _client.Call<Models.User>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
         /// List Factors
         /// <para>
         /// List the factors available on the account to be used as a MFA challange.
         /// </para>
         /// </summary>
-        public Task<Models.MfaFactors> ListFactors(string userId)
+        public Task<Models.MfaFactors> ListMfaFactors(string userId)
         {
             var apiPath = "/users/{userId}/mfa/factors"
                 .Replace("{userId}", userId);
@@ -709,16 +743,18 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Authenticator
+        /// Get MFA Recovery Codes
         /// <para>
-        /// Delete an authenticator app.
+        /// Get recovery codes that can be used as backup for MFA flow by User ID.
+        /// Before getting codes, they must be generated using
+        /// [createMfaRecoveryCodes](/docs/references/cloud/client-web/account#createMfaRecoveryCodes)
+        /// method.
         /// </para>
         /// </summary>
-        public Task<Models.User> DeleteAuthenticator(string userId, AuthenticatorType type)
+        public Task<Models.MfaRecoveryCodes> GetMfaRecoveryCodes(string userId)
         {
-            var apiPath = "/users/{userId}/mfa/{type}"
-                .Replace("{userId}", userId)
-                .Replace("{type}", type.Value);
+            var apiPath = "/users/{userId}/mfa/recovery-codes"
+                .Replace("{userId}", userId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -730,11 +766,83 @@ namespace Appwrite.Services
             };
 
 
-            static Models.User Convert(Dictionary<string, object> it) =>
-                Models.User.From(map: it);
+            static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
+                Models.MfaRecoveryCodes.From(map: it);
 
-            return _client.Call<Models.User>(
-                method: "DELETE",
+            return _client.Call<Models.MfaRecoveryCodes>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Regenerate MFA Recovery Codes
+        /// <para>
+        /// Regenerate recovery codes that can be used as backup for MFA flow by User
+        /// ID. Before regenerating codes, they must be first generated using
+        /// [createMfaRecoveryCodes](/docs/references/cloud/client-web/account#createMfaRecoveryCodes)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaRecoveryCodes> UpdateMfaRecoveryCodes(string userId)
+        {
+            var apiPath = "/users/{userId}/mfa/recovery-codes"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
+                Models.MfaRecoveryCodes.From(map: it);
+
+            return _client.Call<Models.MfaRecoveryCodes>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Create MFA Recovery Codes
+        /// <para>
+        /// Generate recovery codes used as backup for MFA flow for User ID. Recovery
+        /// codes can be used as a MFA verification type in
+        /// [createMfaChallenge](/docs/references/cloud/client-web/account#createMfaChallenge)
+        /// method by client SDK.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaRecoveryCodes> CreateMfaRecoveryCodes(string userId)
+        {
+            var apiPath = "/users/{userId}/mfa/recovery-codes"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
+                Models.MfaRecoveryCodes.From(map: it);
+
+            return _client.Call<Models.MfaRecoveryCodes>(
+                method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,

@@ -58,9 +58,6 @@ namespace Appwrite.Models
         [JsonProperty("mfa")]
         public bool Mfa { get; private set; }
 
-        [JsonProperty("totp")]
-        public bool Totp { get; private set; }
-
         [JsonProperty("prefs")]
         public Preferences Prefs { get; private set; }
 
@@ -87,7 +84,6 @@ namespace Appwrite.Models
             bool emailVerification,
             bool phoneVerification,
             bool mfa,
-            bool totp,
             Preferences prefs,
             List<Target> targets,
             string accessedAt
@@ -108,7 +104,6 @@ namespace Appwrite.Models
             EmailVerification = emailVerification;
             PhoneVerification = phoneVerification;
             Mfa = mfa;
-            Totp = totp;
             Prefs = prefs;
             Targets = targets;
             AccessedAt = accessedAt;
@@ -131,7 +126,6 @@ namespace Appwrite.Models
             emailVerification: (bool)map["emailVerification"],
             phoneVerification: (bool)map["phoneVerification"],
             mfa: (bool)map["mfa"],
-            totp: (bool)map["totp"],
             prefs: Preferences.From(map: ((JObject)map["prefs"]).ToObject<Dictionary<string, object>>()!),
             targets: ((JArray)map["targets"]).ToObject<List<Dictionary<string, object>>>().Select(it => Target.From(map: it)).ToList(),
             accessedAt: map["accessedAt"].ToString()
@@ -155,7 +149,6 @@ namespace Appwrite.Models
             { "emailVerification", EmailVerification },
             { "phoneVerification", PhoneVerification },
             { "mfa", Mfa },
-            { "totp", Totp },
             { "prefs", Prefs.ToMap() },
             { "targets", Targets.Select(it => it.ToMap()) },
             { "accessedAt", AccessedAt }
