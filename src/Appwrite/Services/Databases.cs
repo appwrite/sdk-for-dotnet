@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
+using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -36,10 +37,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.DatabaseList Convert(Dictionary<string, object> it) =>
                 Models.DatabaseList.From(map: it);
-
 
             return _client.Call<Models.DatabaseList>(
                 method: "GET",
@@ -74,10 +73,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Database Convert(Dictionary<string, object> it) =>
                 Models.Database.From(map: it);
-
 
             return _client.Call<Models.Database>(
                 method: "POST",
@@ -110,10 +107,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Database Convert(Dictionary<string, object> it) =>
                 Models.Database.From(map: it);
-
 
             return _client.Call<Models.Database>(
                 method: "GET",
@@ -147,10 +142,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Database Convert(Dictionary<string, object> it) =>
                 Models.Database.From(map: it);
-
 
             return _client.Call<Models.Database>(
                 method: "PUT",
@@ -181,8 +174,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -218,10 +209,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.CollectionList Convert(Dictionary<string, object> it) =>
                 Models.CollectionList.From(map: it);
-
 
             return _client.Call<Models.CollectionList>(
                 method: "GET",
@@ -261,10 +250,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Collection Convert(Dictionary<string, object> it) =>
                 Models.Collection.From(map: it);
-
 
             return _client.Call<Models.Collection>(
                 method: "POST",
@@ -298,10 +285,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Collection Convert(Dictionary<string, object> it) =>
                 Models.Collection.From(map: it);
-
 
             return _client.Call<Models.Collection>(
                 method: "GET",
@@ -338,10 +323,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Collection Convert(Dictionary<string, object> it) =>
                 Models.Collection.From(map: it);
-
 
             return _client.Call<Models.Collection>(
                 method: "PUT",
@@ -376,8 +359,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
@@ -388,6 +369,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List attributes
+        /// <para>
+        /// List attributes in the collection.
+        /// </para>
         /// </summary>
         public Task<Models.AttributeList> ListAttributes(string databaseId, string collectionId, List<string>? queries = null)
         {
@@ -406,10 +390,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeList Convert(Dictionary<string, object> it) =>
                 Models.AttributeList.From(map: it);
-
 
             return _client.Call<Models.AttributeList>(
                 method: "GET",
@@ -447,10 +429,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeBoolean Convert(Dictionary<string, object> it) =>
                 Models.AttributeBoolean.From(map: it);
-
 
             return _client.Call<Models.AttributeBoolean>(
                 method: "POST",
@@ -463,6 +443,10 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update boolean attribute
+        /// <para>
+        /// Update a boolean attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// </para>
         /// </summary>
         public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool xdefault)
         {
@@ -483,10 +467,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeBoolean Convert(Dictionary<string, object> it) =>
                 Models.AttributeBoolean.From(map: it);
-
 
             return _client.Call<Models.AttributeBoolean>(
                 method: "PATCH",
@@ -499,6 +481,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create datetime attribute
+        /// <para>
+        /// Create a date time attribute according to the ISO 8601 standard.
+        /// </para>
         /// </summary>
         public Task<Models.AttributeDatetime> CreateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
         {
@@ -520,10 +505,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeDatetime Convert(Dictionary<string, object> it) =>
                 Models.AttributeDatetime.From(map: it);
-
 
             return _client.Call<Models.AttributeDatetime>(
                 method: "POST",
@@ -536,6 +519,10 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Update dateTime attribute
+        /// <para>
+        /// Update a date time attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// </para>
         /// </summary>
         public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
         {
@@ -556,10 +543,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeDatetime Convert(Dictionary<string, object> it) =>
                 Models.AttributeDatetime.From(map: it);
-
 
             return _client.Call<Models.AttributeDatetime>(
                 method: "PATCH",
@@ -597,10 +582,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeEmail Convert(Dictionary<string, object> it) =>
                 Models.AttributeEmail.From(map: it);
-
 
             return _client.Call<Models.AttributeEmail>(
                 method: "POST",
@@ -638,10 +621,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeEmail Convert(Dictionary<string, object> it) =>
                 Models.AttributeEmail.From(map: it);
-
 
             return _client.Call<Models.AttributeEmail>(
                 method: "PATCH",
@@ -654,6 +635,11 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create enum attribute
+        /// <para>
+        /// Create an enumeration attribute. The `elements` param acts as a white-list
+        /// of accepted values for this attribute. 
+        /// 
+        /// </para>
         /// </summary>
         public Task<Models.AttributeEnum> CreateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? xdefault = null, bool? array = null)
         {
@@ -676,10 +662,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeEnum Convert(Dictionary<string, object> it) =>
                 Models.AttributeEnum.From(map: it);
-
 
             return _client.Call<Models.AttributeEnum>(
                 method: "POST",
@@ -718,10 +702,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeEnum Convert(Dictionary<string, object> it) =>
                 Models.AttributeEnum.From(map: it);
-
 
             return _client.Call<Models.AttributeEnum>(
                 method: "PATCH",
@@ -762,10 +744,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeFloat Convert(Dictionary<string, object> it) =>
                 Models.AttributeFloat.From(map: it);
-
 
             return _client.Call<Models.AttributeFloat>(
                 method: "POST",
@@ -805,10 +785,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeFloat Convert(Dictionary<string, object> it) =>
                 Models.AttributeFloat.From(map: it);
-
 
             return _client.Call<Models.AttributeFloat>(
                 method: "PATCH",
@@ -849,10 +827,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeInteger Convert(Dictionary<string, object> it) =>
                 Models.AttributeInteger.From(map: it);
-
 
             return _client.Call<Models.AttributeInteger>(
                 method: "POST",
@@ -892,10 +868,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeInteger Convert(Dictionary<string, object> it) =>
                 Models.AttributeInteger.From(map: it);
-
 
             return _client.Call<Models.AttributeInteger>(
                 method: "PATCH",
@@ -933,10 +907,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeIp Convert(Dictionary<string, object> it) =>
                 Models.AttributeIp.From(map: it);
-
 
             return _client.Call<Models.AttributeIp>(
                 method: "POST",
@@ -974,10 +946,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeIp Convert(Dictionary<string, object> it) =>
                 Models.AttributeIp.From(map: it);
-
 
             return _client.Call<Models.AttributeIp>(
                 method: "PATCH",
@@ -996,7 +966,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, string type, bool? twoWay = null, string? key = null, string? twoWayKey = null, string? onDelete = null)
+        public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, Appwrite.Enums.RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, Appwrite.Enums.RelationMutate? onDelete = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/relationship"
                 .Replace("{databaseId}", databaseId)
@@ -1018,10 +988,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeRelationship Convert(Dictionary<string, object> it) =>
                 Models.AttributeRelationship.From(map: it);
-
 
             return _client.Call<Models.AttributeRelationship>(
                 method: "POST",
@@ -1061,10 +1029,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeString Convert(Dictionary<string, object> it) =>
                 Models.AttributeString.From(map: it);
-
 
             return _client.Call<Models.AttributeString>(
                 method: "POST",
@@ -1102,10 +1068,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeString Convert(Dictionary<string, object> it) =>
                 Models.AttributeString.From(map: it);
-
 
             return _client.Call<Models.AttributeString>(
                 method: "PATCH",
@@ -1143,10 +1107,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeUrl Convert(Dictionary<string, object> it) =>
                 Models.AttributeUrl.From(map: it);
-
 
             return _client.Call<Models.AttributeUrl>(
                 method: "POST",
@@ -1184,10 +1146,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeUrl Convert(Dictionary<string, object> it) =>
                 Models.AttributeUrl.From(map: it);
-
 
             return _client.Call<Models.AttributeUrl>(
                 method: "PATCH",
@@ -1200,6 +1160,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Get attribute
+        /// <para>
+        /// Get attribute by ID.
+        /// </para>
         /// </summary>
         public Task<object> GetAttribute(string databaseId, string collectionId, string key)
         {
@@ -1219,8 +1182,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "GET",
                 path: apiPath,
@@ -1231,6 +1192,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Delete attribute
+        /// <para>
+        /// Deletes an attribute.
+        /// </para>
         /// </summary>
         public Task<object> DeleteAttribute(string databaseId, string collectionId, string key)
         {
@@ -1250,8 +1214,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
@@ -1268,7 +1230,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, string? onDelete = null)
+        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}/relationship"
                 .Replace("{databaseId}", databaseId)
@@ -1286,10 +1248,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.AttributeRelationship Convert(Dictionary<string, object> it) =>
                 Models.AttributeRelationship.From(map: it);
-
 
             return _client.Call<Models.AttributeRelationship>(
                 method: "PATCH",
@@ -1324,10 +1284,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.DocumentList Convert(Dictionary<string, object> it) =>
                 Models.DocumentList.From(map: it);
-
 
             return _client.Call<Models.DocumentList>(
                 method: "GET",
@@ -1366,10 +1324,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Document Convert(Dictionary<string, object> it) =>
                 Models.Document.From(map: it);
-
 
             return _client.Call<Models.Document>(
                 method: "POST",
@@ -1405,10 +1361,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Document Convert(Dictionary<string, object> it) =>
                 Models.Document.From(map: it);
-
 
             return _client.Call<Models.Document>(
                 method: "GET",
@@ -1445,10 +1399,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Document Convert(Dictionary<string, object> it) =>
                 Models.Document.From(map: it);
-
 
             return _client.Call<Models.Document>(
                 method: "PATCH",
@@ -1483,8 +1435,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
@@ -1495,6 +1445,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// List indexes
+        /// <para>
+        /// List indexes in the collection.
+        /// </para>
         /// </summary>
         public Task<Models.IndexList> ListIndexes(string databaseId, string collectionId, List<string>? queries = null)
         {
@@ -1513,10 +1466,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.IndexList Convert(Dictionary<string, object> it) =>
                 Models.IndexList.From(map: it);
-
 
             return _client.Call<Models.IndexList>(
                 method: "GET",
@@ -1529,8 +1480,13 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Create index
+        /// <para>
+        /// Creates an index on the attributes listed. Your index should include all
+        /// the attributes you will query in a single request.
+        /// Attributes can be `key`, `fulltext`, and `unique`.
+        /// </para>
         /// </summary>
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, string type, List<string> attributes, List<string>? orders = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<string>? orders = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)
@@ -1550,10 +1506,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Index Convert(Dictionary<string, object> it) =>
                 Models.Index.From(map: it);
-
 
             return _client.Call<Models.Index>(
                 method: "POST",
@@ -1566,6 +1520,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Get index
+        /// <para>
+        /// Get index by ID.
+        /// </para>
         /// </summary>
         public Task<Models.Index> GetIndex(string databaseId, string collectionId, string key)
         {
@@ -1584,10 +1541,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Index Convert(Dictionary<string, object> it) =>
                 Models.Index.From(map: it);
-
 
             return _client.Call<Models.Index>(
                 method: "GET",
@@ -1600,6 +1555,9 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Delete index
+        /// <para>
+        /// Delete an index.
+        /// </para>
         /// </summary>
         public Task<object> DeleteIndex(string databaseId, string collectionId, string key)
         {
@@ -1616,8 +1574,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 

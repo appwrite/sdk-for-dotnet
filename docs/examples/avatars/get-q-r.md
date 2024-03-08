@@ -1,13 +1,17 @@
 using Appwrite;
-using Appwrite.Services;
 using Appwrite.Models;
+using Appwrite.Services;
 
-var client = new Client()
+Client client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("5df5acd0d48c2") // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetSession(""); // The user session to authenticate with
 
-var avatars = new Avatars(client);
+Avatars avatars = new Avatars(client);
 
 byte[] result = await avatars.GetQR(
-    text: "[TEXT]");
+    text: "<TEXT>",
+    size: 1, // optional
+    margin: 0, // optional
+    download: false // optional
+);

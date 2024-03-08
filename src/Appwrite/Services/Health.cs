@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
+using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -33,10 +34,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -67,10 +66,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthAntivirus Convert(Dictionary<string, object> it) =>
                 Models.HealthAntivirus.From(map: it);
-
 
             return _client.Call<Models.HealthAntivirus>(
                 method: "GET",
@@ -102,12 +99,43 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
 
-
             return _client.Call<Models.HealthStatus>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get the SSL certificate for a domain
+        /// <para>
+        /// Get the SSL certificate for a domain
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthCertificate> GetCertificate(string? domain = null)
+        {
+            var apiPath = "/health/certificate";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "domain", domain }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.HealthCertificate Convert(Dictionary<string, object> it) =>
+                Models.HealthCertificate.From(map: it);
+
+            return _client.Call<Models.HealthCertificate>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -136,10 +164,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -170,10 +196,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -205,10 +229,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -241,10 +263,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -278,10 +298,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -315,10 +333,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -351,10 +367,43 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
 
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get number of failed queue jobs
+        /// <para>
+        /// Returns the amount of failed jobs in a given queue.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetFailedJobs(Appwrite.Enums.Name name, long? threshold = null)
+        {
+            var apiPath = "/health/queue/failed/{name}"
+                .Replace("{name}", name.Value);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -367,6 +416,10 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Get functions queue
+        /// <para>
+        /// Get the number of function executions that are waiting to be processed in
+        /// the Appwrite internal queue server.
+        /// </para>
         /// </summary>
         public Task<Models.HealthQueue> GetQueueFunctions(long? threshold = null)
         {
@@ -383,10 +436,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -419,10 +470,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -455,10 +504,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -491,10 +538,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
-
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -527,10 +572,76 @@ namespace Appwrite.Services
             };
 
 
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
+
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get usage queue
+        /// <para>
+        /// Get the number of metrics that are waiting to be processed in the Appwrite
+        /// internal queue server.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetQueueUsage(long? threshold = null)
+        {
+            var apiPath = "/health/queue/usage";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
 
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get usage dump queue
+        /// <para>
+        /// Get the number of projects containing metrics that are waiting to be
+        /// processed in the Appwrite internal queue server.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetQueueUsageDump(long? threshold = null)
+        {
+            var apiPath = "/health/queue/usage-dump";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
 
             return _client.Call<Models.HealthQueue>(
                 method: "GET",
@@ -563,12 +674,42 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
                 Models.HealthQueue.From(map: it);
 
-
             return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get storage
+        /// <para>
+        /// Check the Appwrite storage device is up and connection is successful.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthStatus> GetStorage()
+        {
+            var apiPath = "/health/storage";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.HealthStatus Convert(Dictionary<string, object> it) =>
+                Models.HealthStatus.From(map: it);
+
+            return _client.Call<Models.HealthStatus>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -597,10 +738,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
                 Models.HealthStatus.From(map: it);
-
 
             return _client.Call<Models.HealthStatus>(
                 method: "GET",
@@ -637,10 +776,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.HealthTime Convert(Dictionary<string, object> it) =>
                 Models.HealthTime.From(map: it);
-
 
             return _client.Call<Models.HealthTime>(
                 method: "GET",

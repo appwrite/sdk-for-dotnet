@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
+using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -38,10 +39,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Locale Convert(Dictionary<string, object> it) =>
                 Models.Locale.From(map: it);
-
 
             return _client.Call<Models.Locale>(
                 method: "GET",
@@ -73,10 +72,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.LocaleCodeList Convert(Dictionary<string, object> it) =>
                 Models.LocaleCodeList.From(map: it);
-
 
             return _client.Call<Models.LocaleCodeList>(
                 method: "GET",
@@ -108,10 +105,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.ContinentList Convert(Dictionary<string, object> it) =>
                 Models.ContinentList.From(map: it);
-
 
             return _client.Call<Models.ContinentList>(
                 method: "GET",
@@ -143,10 +138,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.CountryList Convert(Dictionary<string, object> it) =>
                 Models.CountryList.From(map: it);
-
 
             return _client.Call<Models.CountryList>(
                 method: "GET",
@@ -178,10 +171,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.CountryList Convert(Dictionary<string, object> it) =>
                 Models.CountryList.From(map: it);
-
 
             return _client.Call<Models.CountryList>(
                 method: "GET",
@@ -213,10 +204,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.PhoneList Convert(Dictionary<string, object> it) =>
                 Models.PhoneList.From(map: it);
-
 
             return _client.Call<Models.PhoneList>(
                 method: "GET",
@@ -249,10 +238,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.CurrencyList Convert(Dictionary<string, object> it) =>
                 Models.CurrencyList.From(map: it);
-
 
             return _client.Call<Models.CurrencyList>(
                 method: "GET",
@@ -284,10 +271,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.LanguageList Convert(Dictionary<string, object> it) =>
                 Models.LanguageList.From(map: it);
-
 
             return _client.Call<Models.LanguageList>(
                 method: "GET",

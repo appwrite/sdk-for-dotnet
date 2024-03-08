@@ -55,8 +55,14 @@ namespace Appwrite.Models
         [JsonProperty("phoneVerification")]
         public bool PhoneVerification { get; private set; }
 
+        [JsonProperty("mfa")]
+        public bool Mfa { get; private set; }
+
         [JsonProperty("prefs")]
         public Preferences Prefs { get; private set; }
+
+        [JsonProperty("targets")]
+        public List<Target> Targets { get; private set; }
 
         [JsonProperty("accessedAt")]
         public string AccessedAt { get; private set; }
@@ -77,7 +83,9 @@ namespace Appwrite.Models
             string phone,
             bool emailVerification,
             bool phoneVerification,
+            bool mfa,
             Preferences prefs,
+            List<Target> targets,
             string accessedAt
         ) {
             Id = id;
@@ -95,7 +103,9 @@ namespace Appwrite.Models
             Phone = phone;
             EmailVerification = emailVerification;
             PhoneVerification = phoneVerification;
+            Mfa = mfa;
             Prefs = prefs;
+            Targets = targets;
             AccessedAt = accessedAt;
         }
 
@@ -115,7 +125,9 @@ namespace Appwrite.Models
             phone: map["phone"].ToString(),
             emailVerification: (bool)map["emailVerification"],
             phoneVerification: (bool)map["phoneVerification"],
+            mfa: (bool)map["mfa"],
             prefs: Preferences.From(map: ((JObject)map["prefs"]).ToObject<Dictionary<string, object>>()!),
+            targets: ((JArray)map["targets"]).ToObject<List<Dictionary<string, object>>>().Select(it => Target.From(map: it)).ToList(),
             accessedAt: map["accessedAt"].ToString()
         );
 
@@ -136,7 +148,9 @@ namespace Appwrite.Models
             { "phone", Phone },
             { "emailVerification", EmailVerification },
             { "phoneVerification", PhoneVerification },
+            { "mfa", Mfa },
             { "prefs", Prefs.ToMap() },
+            { "targets", Targets.Select(it => it.ToMap()) },
             { "accessedAt", AccessedAt }
         };
     }

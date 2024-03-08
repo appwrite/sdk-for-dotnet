@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
+using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -35,10 +36,8 @@ namespace Appwrite.Services
             };
 
 
-
             static object Convert(Dictionary<string, object> it) =>
                 it;
-
 
             return _client.Call<object>(
                 method: "POST",
@@ -71,10 +70,8 @@ namespace Appwrite.Services
             };
 
 
-
             static object Convert(Dictionary<string, object> it) =>
                 it;
-
 
             return _client.Call<object>(
                 method: "POST",

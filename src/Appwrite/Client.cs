@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Appwrite.Converters;
 using Appwrite.Extensions;
 using Appwrite.Models;
 
@@ -21,6 +22,7 @@ namespace Appwrite
         public Dictionary<string, string> Config => _config;
 
         private HttpClient _http;
+        private HttpClient _httpForRedirect;
         private readonly Dictionary<string, string> _headers;
         private readonly Dictionary<string, string> _config;
         private string _endpoint;
@@ -34,7 +36,8 @@ namespace Appwrite
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Converters = new List<JsonConverter>
             {
-                new StringEnumConverter()
+                new StringEnumConverter(new CamelCaseNamingStrategy()),
+                new ValueClassConverter()
             }
         };
 
@@ -44,25 +47,33 @@ namespace Appwrite
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Converters = new List<JsonConverter>
             {
-                new StringEnumConverter()
+                new StringEnumConverter(new CamelCaseNamingStrategy()),
+                new ValueClassConverter()
             }
         };
 
         public Client(
-            string endpoint = "https://HOSTNAME/v1",
+            string endpoint = "https://cloud.appwrite.io/v1",
             bool selfSigned = false,
-            HttpClient? http = null)
+            HttpClient? http = null,
+            HttpClient? httpForRedirect = null)
         {
             _endpoint = endpoint;
             _http = http ?? new HttpClient();
+            
+            _httpForRedirect = httpForRedirect ?? new HttpClient(
+                new HttpClientHandler(){
+                    AllowAutoRedirect = false
+                });
+
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , "AppwriteDotNetSDK/0.7.1 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
+                { "user-agent" , "AppwriteDotNetSDK/0.8.0 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.7.1"},                { "X-Appwrite-Response-Format", "1.4.0" }
+                { "x-sdk-version", "0.8.0"},                { "X-Appwrite-Response-Format", "1.5.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -127,6 +138,22 @@ namespace Appwrite
             return this;
         }
 
+        /// <summary>The user session to authenticate with</summary>
+        public Client SetSession(string value) {
+            _config.Add("session", value);
+            AddHeader("X-Appwrite-Session", value);
+
+            return this;
+        }
+
+        /// <summary>The user agent string of the client that made the request</summary>
+        public Client SetForwardedUserAgent(string value) {
+            _config.Add("forwardedUserAgent", value);
+            AddHeader("X-Forwarded-User-Agent", value);
+
+            return this;
+        }
+
         public Client AddHeader(string key, string value)
         {
             _headers.Add(key, value);
@@ -134,21 +161,11 @@ namespace Appwrite
             return this;
         }
 
-        public Task<Dictionary<string, object?>> Call(
+        private HttpRequestMessage PrepareRequest(
             string method,
             string path,
             Dictionary<string, string> headers,
             Dictionary<string, object?> parameters)
-        {
-            return Call<Dictionary<string, object?>>(method, path, headers, parameters);
-        }
-
-        public async Task<T> Call<T>(
-            string method,
-            string path,
-            Dictionary<string, string> headers,
-            Dictionary<string, object?> parameters,
-            Func<Dictionary<string, object>, T>? convert = null) where T : class
         {
             var methodGet = "GET".Equals(method, StringComparison.OrdinalIgnoreCase);
 
@@ -229,8 +246,58 @@ namespace Appwrite
                 }
             }
 
+            return request;
+        }
+
+        public async Task<String> Redirect(
+            string method,
+            string path, 
+            Dictionary<string, string> headers,
+            Dictionary<string, object?> parameters)
+        {
+            var request = this.PrepareRequest(method, path, headers, parameters);
+
+            var response = await _httpForRedirect.SendAsync(request);
+            var code = (int)response.StatusCode;
+
+            if (code >= 400) {
+                var message = await response.Content.ReadAsStringAsync();
+
+                var contentType = response.Content.Headers
+                    .GetValues("Content-Type")
+                    .FirstOrDefault() ?? string.Empty;
+
+                if (contentType.Contains("application/json")) {
+                    message = JObject.Parse(message)["message"]!.ToString();
+                }
+
+                throw new AppwriteException(message, code);
+            }
+
+            return response.Headers.Location.OriginalString;
+        }
+
+        public Task<Dictionary<string, object?>> Call(
+            string method,
+            string path,
+            Dictionary<string, string> headers,
+            Dictionary<string, object?> parameters)
+        {
+            return Call<Dictionary<string, object?>>(method, path, headers, parameters);
+        }
+
+        public async Task<T> Call<T>(
+            string method,
+            string path,
+            Dictionary<string, string> headers,
+            Dictionary<string, object?> parameters,
+            Func<Dictionary<string, object>, T>? convert = null) where T : class
+        {
+            var request = this.PrepareRequest(method, path, headers, parameters);
+
             var response = await _http.SendAsync(request);
             var code = (int)response.StatusCode;
+
             var contentType = response.Content.Headers
                 .GetValues("Content-Type")
                 .FirstOrDefault() ?? string.Empty;
@@ -336,7 +403,7 @@ namespace Appwrite
                     parameters = new Dictionary<string, object?>()
                 );
                 var chunksUploaded = (long)current["chunksUploaded"];
-                offset = Math.Min(chunksUploaded * ChunkSize, size);
+                offset = chunksUploaded * ChunkSize;
             }
 
             while (offset < size)
@@ -352,7 +419,7 @@ namespace Appwrite
                     case "bytes":
                         buffer = ((byte[])input.Data)
                             .Skip((int)offset)
-                            .Take((int)Math.Min(size - offset, ChunkSize))
+                            .Take((int)Math.Min(size - offset, ChunkSize - 1))
                             .ToArray();
                         break;
                 }

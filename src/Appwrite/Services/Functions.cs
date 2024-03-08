@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
+using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -36,10 +37,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.FunctionList Convert(Dictionary<string, object> it) =>
                 Models.FunctionList.From(map: it);
-
 
             return _client.Call<Models.FunctionList>(
                 method: "GET",
@@ -59,7 +58,7 @@ namespace Appwrite.Services
         /// API.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Create(string functionId, string name, string runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? templateRepository = null, string? templateOwner = null, string? templateRootDirectory = null, string? templateBranch = null)
+        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? templateRepository = null, string? templateOwner = null, string? templateRootDirectory = null, string? templateBranch = null)
         {
             var apiPath = "/functions";
 
@@ -93,10 +92,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Function Convert(Dictionary<string, object> it) =>
                 Models.Function.From(map: it);
-
 
             return _client.Call<Models.Function>(
                 method: "POST",
@@ -127,10 +124,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.RuntimeList Convert(Dictionary<string, object> it) =>
                 Models.RuntimeList.From(map: it);
-
 
             return _client.Call<Models.RuntimeList>(
                 method: "GET",
@@ -162,10 +157,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Function Convert(Dictionary<string, object> it) =>
                 Models.Function.From(map: it);
-
 
             return _client.Call<Models.Function>(
                 method: "GET",
@@ -182,7 +175,7 @@ namespace Appwrite.Services
         /// Update function by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Update(string functionId, string name, string? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null)
+        public Task<Models.Function> Update(string functionId, string name, Appwrite.Enums.Runtime? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null)
         {
             var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
@@ -212,10 +205,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Function Convert(Dictionary<string, object> it) =>
                 Models.Function.From(map: it);
-
 
             return _client.Call<Models.Function>(
                 method: "PUT",
@@ -245,8 +236,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -282,10 +271,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.DeploymentList Convert(Dictionary<string, object> it) =>
                 Models.DeploymentList.From(map: it);
-
 
             return _client.Call<Models.DeploymentList>(
                 method: "GET",
@@ -330,7 +317,6 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Deployment Convert(Dictionary<string, object> it) =>
                 Models.Deployment.From(map: it);
 
@@ -370,10 +356,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Deployment Convert(Dictionary<string, object> it) =>
                 Models.Deployment.From(map: it);
-
 
             return _client.Call<Models.Deployment>(
                 method: "GET",
@@ -408,10 +392,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Function Convert(Dictionary<string, object> it) =>
                 Models.Function.From(map: it);
-
 
             return _client.Call<Models.Function>(
                 method: "PATCH",
@@ -442,8 +424,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 
@@ -480,8 +460,6 @@ namespace Appwrite.Services
 
 
 
-
-
             return _client.Call<object>(
                 method: "POST",
                 path: apiPath,
@@ -511,6 +489,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(
@@ -545,10 +524,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.ExecutionList Convert(Dictionary<string, object> it) =>
                 Models.ExecutionList.From(map: it);
-
 
             return _client.Call<Models.ExecutionList>(
                 method: "GET",
@@ -568,7 +545,7 @@ namespace Appwrite.Services
         /// function execution process will start asynchronously.
         /// </para>
         /// </summary>
-        public Task<Models.Execution> CreateExecution(string functionId, string? body = null, bool? xasync = null, string? xpath = null, string? method = null, object? headers = null)
+        public Task<Models.Execution> CreateExecution(string functionId, string? body = null, bool? xasync = null, string? xpath = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null)
         {
             var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
@@ -588,10 +565,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Execution Convert(Dictionary<string, object> it) =>
                 Models.Execution.From(map: it);
-
 
             return _client.Call<Models.Execution>(
                 method: "POST",
@@ -624,10 +599,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Execution Convert(Dictionary<string, object> it) =>
                 Models.Execution.From(map: it);
-
 
             return _client.Call<Models.Execution>(
                 method: "GET",
@@ -659,10 +632,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.VariableList Convert(Dictionary<string, object> it) =>
                 Models.VariableList.From(map: it);
-
 
             return _client.Call<Models.VariableList>(
                 method: "GET",
@@ -697,10 +668,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Variable Convert(Dictionary<string, object> it) =>
                 Models.Variable.From(map: it);
-
 
             return _client.Call<Models.Variable>(
                 method: "POST",
@@ -733,10 +702,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Variable Convert(Dictionary<string, object> it) =>
                 Models.Variable.From(map: it);
-
 
             return _client.Call<Models.Variable>(
                 method: "GET",
@@ -771,10 +738,8 @@ namespace Appwrite.Services
             };
 
 
-
             static Models.Variable Convert(Dictionary<string, object> it) =>
                 Models.Variable.From(map: it);
-
 
             return _client.Call<Models.Variable>(
                 method: "PUT",
@@ -805,8 +770,6 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
-
-
 
 
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appwrite.Models;
+using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
@@ -28,10 +29,10 @@ namespace Appwrite.Services
         /// of image returned is 100x100px.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetBrowser(string code, long? width = null, long? height = null, long? quality = null)
+        public Task<byte[]> GetBrowser(Appwrite.Enums.Browser code, long? width = null, long? height = null, long? quality = null)
         {
             var apiPath = "/avatars/browsers/{code}"
-                .Replace("{code}", code);
+                .Replace("{code}", code.Value);
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -44,6 +45,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(
@@ -68,10 +70,10 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<byte[]> GetCreditCard(string code, long? width = null, long? height = null, long? quality = null)
+        public Task<byte[]> GetCreditCard(Appwrite.Enums.CreditCard code, long? width = null, long? height = null, long? quality = null)
         {
             var apiPath = "/avatars/credit-cards/{code}"
-                .Replace("{code}", code);
+                .Replace("{code}", code.Value);
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -84,6 +86,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(
@@ -117,6 +120,7 @@ namespace Appwrite.Services
             };
 
 
+
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
@@ -140,10 +144,10 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<byte[]> GetFlag(string code, long? width = null, long? height = null, long? quality = null)
+        public Task<byte[]> GetFlag(Appwrite.Enums.Flag code, long? width = null, long? height = null, long? quality = null)
         {
             var apiPath = "/avatars/flags/{code}"
-                .Replace("{code}", code);
+                .Replace("{code}", code.Value);
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -156,6 +160,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(
@@ -196,6 +201,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(
@@ -245,6 +251,7 @@ namespace Appwrite.Services
             };
 
 
+
             return _client.Call<byte[]>(
                 method: "GET",
                 path: apiPath,
@@ -277,6 +284,7 @@ namespace Appwrite.Services
             {
                 { "content-type", "application/json" }
             };
+
 
 
             return _client.Call<byte[]>(
