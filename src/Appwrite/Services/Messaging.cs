@@ -721,7 +721,7 @@ namespace Appwrite.Services
         /// Create a new MSG91 provider.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateMsg91Provider(string providerId, string name, string? xfrom = null, string? senderId = null, string? authKey = null, bool? enabled = null)
+        public Task<Models.Provider> CreateMsg91Provider(string providerId, string name, string? templateId = null, string? senderId = null, string? authKey = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/msg91";
 
@@ -729,7 +729,7 @@ namespace Appwrite.Services
             {
                 { "providerId", providerId },
                 { "name", name },
-                { "from", xfrom },
+                { "templateId", templateId },
                 { "senderId", senderId },
                 { "authKey", authKey },
                 { "enabled", enabled }
@@ -759,7 +759,7 @@ namespace Appwrite.Services
         /// Update a MSG91 provider by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateMsg91Provider(string providerId, string? name = null, bool? enabled = null, string? senderId = null, string? authKey = null, string? xfrom = null)
+        public Task<Models.Provider> UpdateMsg91Provider(string providerId, string? name = null, bool? enabled = null, string? templateId = null, string? senderId = null, string? authKey = null)
         {
             var apiPath = "/messaging/providers/msg91/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -768,9 +768,9 @@ namespace Appwrite.Services
             {
                 { "name", name },
                 { "enabled", enabled },
+                { "templateId", templateId },
                 { "senderId", senderId },
-                { "authKey", authKey },
-                { "from", xfrom }
+                { "authKey", authKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
