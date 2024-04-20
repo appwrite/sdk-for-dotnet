@@ -79,7 +79,8 @@ namespace Appwrite.Models
             bool phoneVerification,
             Preferences prefs,
             string accessedAt
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
@@ -100,13 +101,13 @@ namespace Appwrite.Models
         }
 
         public static User From(Dictionary<string, object> map) => new User(
-            id: map["$id"].ToString(),
+             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
-            password: map["password"]?.ToString(),
-            hash: map["hash"]?.ToString(),
-            hashOptions: map["hashOptions"]?.ToString(),
+            password: GetFromMap(map, "password")?.ToString(),
+            hash: GetFromMap(map, "hash")?.ToString(),
+            hashOptions: GetFromMap(map, "hashOptions")?.ToString(),
             registration: map["registration"].ToString(),
             status: (bool)map["status"],
             labels: ((JArray)map["labels"]).ToObject<List<object>>(),
@@ -139,5 +140,10 @@ namespace Appwrite.Models
             { "prefs", Prefs.ToMap() },
             { "accessedAt", AccessedAt }
         };
+
+        private static object? GetFromMap(Dictionary<string, object?> map, string key)
+        {
+            return map.TryGetValue(key, out var value) ? value : null;
+        }
     }
 }

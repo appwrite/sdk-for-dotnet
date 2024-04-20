@@ -31,7 +31,6 @@ namespace Appwrite
         {
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
-            ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Converters = new List<JsonConverter>
             {
                 new StringEnumConverter()
@@ -41,7 +40,6 @@ namespace Appwrite
         public static JsonSerializerSettings SerializerSettings { get; set; } = new JsonSerializerSettings
         {
             NullValueHandling = NullValueHandling.Ignore,
-            ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Converters = new List<JsonConverter>
             {
                 new StringEnumConverter()
@@ -97,7 +95,8 @@ namespace Appwrite
         }
 
         /// <summary>Your project ID</summary>
-        public Client SetProject(string value) {
+        public Client SetProject(string value)
+        {
             _config.Add("project", value);
             AddHeader("X-Appwrite-Project", value);
 
@@ -105,7 +104,8 @@ namespace Appwrite
         }
 
         /// <summary>Your secret API key</summary>
-        public Client SetKey(string value) {
+        public Client SetKey(string value)
+        {
             _config.Add("key", value);
             AddHeader("X-Appwrite-Key", value);
 
@@ -113,14 +113,16 @@ namespace Appwrite
         }
 
         /// <summary>Your secret JSON Web Token</summary>
-        public Client SetJWT(string value) {
+        public Client SetJWT(string value)
+        {
             _config.Add("jWT", value);
             AddHeader("X-Appwrite-JWT", value);
 
             return this;
         }
 
-        public Client SetLocale(string value) {
+        public Client SetLocale(string value)
+        {
             _config.Add("locale", value);
             AddHeader("X-Appwrite-Locale", value);
 
@@ -203,7 +205,8 @@ namespace Appwrite
                 }
                 else
                 {
-                    if (_http.DefaultRequestHeaders.Contains(header.Key)) {
+                    if (_http.DefaultRequestHeaders.Contains(header.Key))
+                    {
                         _http.DefaultRequestHeaders.Remove(header.Key);
                     }
                     _http.DefaultRequestHeaders.Add(header.Key, header.Value);
@@ -222,7 +225,8 @@ namespace Appwrite
                 }
                 else
                 {
-                    if (request.Headers.Contains(header.Key)) {
+                    if (request.Headers.Contains(header.Key))
+                    {
                         request.Headers.Remove(header.Key);
                     }
                     request.Headers.Add(header.Key, header.Value);
@@ -237,10 +241,12 @@ namespace Appwrite
 
             var isJson = contentType.Contains("application/json");
 
-            if (code >= 400) {
+            if (code >= 400)
+            {
                 var message = await response.Content.ReadAsStringAsync();
 
-                if (isJson) {
+                if (isJson)
+                {
                     message = JObject.Parse(message)["message"]!.ToString();
                 }
 
@@ -279,7 +285,7 @@ namespace Appwrite
         {
             var input = parameters[paramName] as InputFile;
             var size = 0L;
-            switch(input.SourceType)
+            switch (input.SourceType)
             {
                 case "path":
                     var info = new FileInfo(input.Path);
@@ -300,7 +306,7 @@ namespace Appwrite
 
             if (size < ChunkSize)
             {
-                switch(input.SourceType)
+                switch (input.SourceType)
                 {
                     case "path":
                     case "stream":
@@ -341,7 +347,7 @@ namespace Appwrite
 
             while (offset < size)
             {
-                switch(input.SourceType)
+                switch (input.SourceType)
                 {
                     case "path":
                     case "stream":
