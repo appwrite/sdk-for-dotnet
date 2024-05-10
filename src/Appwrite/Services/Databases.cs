@@ -448,7 +448,7 @@ namespace Appwrite.Services
         /// already existing documents.
         /// </para>
         /// </summary>
-        public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool xdefault)
+        public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool? xdefault)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -524,7 +524,7 @@ namespace Appwrite.Services
         /// already existing documents.
         /// </para>
         /// </summary>
-        public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -602,7 +602,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -682,7 +682,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string xdefault)
+        public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? xdefault)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -764,7 +764,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double min, double max, double xdefault)
+        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double? min, double? max, double? xdefault)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -847,7 +847,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long min, long max, long xdefault)
+        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long? min, long? max, long? xdefault)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -927,7 +927,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1049,7 +1049,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1127,7 +1127,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url/{key}"
                 .Replace("{databaseId}", databaseId)
