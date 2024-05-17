@@ -152,6 +152,7 @@ namespace Appwrite.Enums
         public static Flag Palau => new Flag("pw");
         public static Flag PapuaNewGuinea => new Flag("pg");
         public static Flag Poland => new Flag("pl");
+        public static Flag FrenchPolynesia => new Flag("pf");
         public static Flag NorthKorea => new Flag("kp");
         public static Flag Portugal => new Flag("pt");
         public static Flag Paraguay => new Flag("py");

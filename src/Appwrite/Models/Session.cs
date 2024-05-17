@@ -16,6 +16,9 @@ namespace Appwrite.Models
         [JsonProperty("$createdAt")]
         public string CreatedAt { get; private set; }
 
+        [JsonProperty("$updatedAt")]
+        public string UpdatedAt { get; private set; }
+
         [JsonProperty("userId")]
         public string UserId { get; private set; }
 
@@ -97,6 +100,7 @@ namespace Appwrite.Models
         public Session(
             string id,
             string createdAt,
+            string updatedAt,
             string userId,
             string expire,
             string provider,
@@ -126,6 +130,7 @@ namespace Appwrite.Models
         ) {
             Id = id;
             CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             UserId = userId;
             Expire = expire;
             Provider = provider;
@@ -157,6 +162,7 @@ namespace Appwrite.Models
         public static Session From(Dictionary<string, object> map) => new Session(
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
+            updatedAt: map["$updatedAt"].ToString(),
             userId: map["userId"].ToString(),
             expire: map["expire"].ToString(),
             provider: map["provider"].ToString(),
@@ -189,6 +195,7 @@ namespace Appwrite.Models
         {
             { "$id", Id },
             { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "userId", UserId },
             { "expire", Expire },
             { "provider", Provider },
