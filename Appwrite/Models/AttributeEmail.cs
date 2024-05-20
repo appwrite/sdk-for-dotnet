@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Appwrite.Models
 {
-    public class AttributeUrl
+    public class AttributeEmail
     {
         [JsonProperty("key")]
         public string Key { get; private set; }
@@ -34,7 +34,7 @@ namespace Appwrite.Models
         [JsonProperty("default")]
         public string? Default { get; private set; }
 
-        public AttributeUrl(
+        public AttributeEmail(
             string key,
             string type,
             string status,
@@ -54,7 +54,7 @@ namespace Appwrite.Models
             Default = xdefault;
         }
 
-        public static AttributeUrl From(Dictionary<string, object> map) => new AttributeUrl(
+        public static AttributeEmail From(Dictionary<string, object> map) => new AttributeEmail(
             key: map["key"].ToString(),
             type: map["type"].ToString(),
             status: map["status"].ToString(),
@@ -62,7 +62,7 @@ namespace Appwrite.Models
             required: (bool)map["required"],
             array: (bool?)map["array"],
             format: map["format"].ToString(),
-            xdefault: map.TryGetValue("default", out var default) ? default.ToString() : null
+            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

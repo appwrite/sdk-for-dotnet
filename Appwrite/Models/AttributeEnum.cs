@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Appwrite.Models
 {
-    public class AttributeString
+    public class AttributeEnum
     {
         [JsonProperty("key")]
         public string Key { get; private set; }
@@ -28,20 +28,24 @@ namespace Appwrite.Models
         [JsonProperty("array")]
         public bool? Array { get; private set; }
 
-        [JsonProperty("size")]
-        public long Size { get; private set; }
+        [JsonProperty("elements")]
+        public List<object> Elements { get; private set; }
+
+        [JsonProperty("format")]
+        public string Format { get; private set; }
 
         [JsonProperty("default")]
         public string? Default { get; private set; }
 
-        public AttributeString(
+        public AttributeEnum(
             string key,
             string type,
             string status,
             string error,
             bool required,
             bool? array,
-            long size,
+            List<object> elements,
+            string format,
             string? xdefault
         ) {
             Key = key;
@@ -50,19 +54,21 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            Size = size;
+            Elements = elements;
+            Format = format;
             Default = xdefault;
         }
 
-        public static AttributeString From(Dictionary<string, object> map) => new AttributeString(
+        public static AttributeEnum From(Dictionary<string, object> map) => new AttributeEnum(
             key: map["key"].ToString(),
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: (bool?)map["array"],
-            size: Convert.ToInt64(map["size"]),
-            xdefault: map.TryGetValue("default", out var default) ? default.ToString() : null
+            elements: ((JArray)map["elements"]).ToObject<List<object>>(),
+            format: map["format"].ToString(),
+            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -73,7 +79,8 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "size", Size },
+            { "elements", Elements },
+            { "format", Format },
             { "default", Default }
         };
     }
