@@ -99,7 +99,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, bool? draft = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null)
+        public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, bool? draft = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null, List<string>? attachments = null)
         {
             var apiPath = "/messaging/messages/email/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -115,7 +115,8 @@ namespace Appwrite.Services
                 { "html", html },
                 { "cc", cc },
                 { "bcc", bcc },
-                { "scheduledAt", scheduledAt }
+                { "scheduledAt", scheduledAt },
+                { "attachments", attachments }
             };
 
             var apiHeaders = new Dictionary<string, string>()

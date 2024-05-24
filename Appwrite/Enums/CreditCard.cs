@@ -14,7 +14,7 @@ namespace Appwrite.Enums
         public static CreditCard AmericanExpress => new CreditCard("amex");
         public static CreditCard Argencard => new CreditCard("argencard");
         public static CreditCard Cabal => new CreditCard("cabal");
-        public static CreditCard Consosud => new CreditCard("censosud");
+        public static CreditCard Cencosud => new CreditCard("cencosud");
         public static CreditCard DinersClub => new CreditCard("diners");
         public static CreditCard Discover => new CreditCard("discover");
         public static CreditCard Elo => new CreditCard("elo");

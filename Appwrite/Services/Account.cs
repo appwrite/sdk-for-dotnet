@@ -300,7 +300,7 @@ namespace Appwrite.Services
         /// <para>
         /// Add an authenticator app to be used as an MFA factor. Verify the
         /// authenticator using the [verify
-        /// authenticator](/docs/references/cloud/client-web/account#verifyAuthenticator)
+        /// authenticator](/docs/references/cloud/client-web/account#updateMfaAuthenticator)
         /// method.
         /// </para>
         /// </summary>
@@ -335,8 +335,8 @@ namespace Appwrite.Services
         /// Verify Authenticator
         /// <para>
         /// Verify an authenticator app after adding it using the [add
-        /// authenticator](/docs/references/cloud/client-web/account#addAuthenticator)
-        /// method.
+        /// authenticator](/docs/references/cloud/client-web/account#createMfaAuthenticator)
+        /// method. add 
         /// </para>
         /// </summary>
         public Task<Models.User> UpdateMfaAuthenticator(Appwrite.Enums.AuthenticatorType type, string otp)
@@ -373,7 +373,7 @@ namespace Appwrite.Services
         /// Delete an authenticator for a user by ID.
         /// </para>
         /// </summary>
-        public Task<Models.User> DeleteMfaAuthenticator(Appwrite.Enums.AuthenticatorType type, string otp)
+        public Task<object> DeleteMfaAuthenticator(Appwrite.Enums.AuthenticatorType type, string otp)
         {
             var apiPath = "/account/mfa/authenticators/{type}"
                 .Replace("{type}", type.Value);
@@ -389,15 +389,12 @@ namespace Appwrite.Services
             };
 
 
-            static Models.User Convert(Dictionary<string, object> it) =>
-                Models.User.From(map: it);
 
-            return _client.Call<Models.User>(
+            return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 

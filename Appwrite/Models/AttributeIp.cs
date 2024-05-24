@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Appwrite.Models
 {
-    public class AttributeDatetime
+    public class AttributeIp
     {
         [JsonProperty("key")]
         public string Key { get; private set; }
@@ -34,7 +34,7 @@ namespace Appwrite.Models
         [JsonProperty("default")]
         public string? Default { get; private set; }
 
-        public AttributeDatetime(
+        public AttributeIp(
             string key,
             string type,
             string status,
@@ -54,7 +54,7 @@ namespace Appwrite.Models
             Default = xdefault;
         }
 
-        public static AttributeDatetime From(Dictionary<string, object> map) => new AttributeDatetime(
+        public static AttributeIp From(Dictionary<string, object> map) => new AttributeIp(
             key: map["key"].ToString(),
             type: map["type"].ToString(),
             status: map["status"].ToString(),
@@ -62,7 +62,7 @@ namespace Appwrite.Models
             required: (bool)map["required"],
             array: (bool?)map["array"],
             format: map["format"].ToString(),
-            xdefault: map["default"]?.ToString()
+            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -1365,11 +1365,11 @@ namespace Appwrite.Services
         /// <summary>
         /// Create token
         /// <para>
-        /// Returns a token with a secret key for creating a session. If the provided
-        /// user ID has not be registered, a new user will be created. Use the returned
-        /// user ID and secret and submit a request to the [PUT
-        /// /account/sessions/custom](https://appwrite.io/docs/references/cloud/client-web/account#updateCustomSession)
+        /// Returns a token with a secret key for creating a session. Use the user ID
+        /// and secret and submit a request to the [PUT
+        /// /account/sessions/token](https://appwrite.io/docs/references/cloud/client-web/account#createSession)
         /// endpoint to complete the login process.
+        /// 
         /// </para>
         /// </summary>
         public Task<Models.Token> CreateToken(string userId, long? length = null, long? expire = null)
