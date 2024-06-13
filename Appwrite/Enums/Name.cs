@@ -23,6 +23,5 @@ namespace Appwrite.Enums
         public static Name V1Builds => new Name("v1-builds");
         public static Name V1Messaging => new Name("v1-messaging");
         public static Name V1Migrations => new Name("v1-migrations");
-        public static Name Hamsterv1 => new Name("hamsterv1");
     }
 }
