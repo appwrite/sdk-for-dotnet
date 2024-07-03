@@ -18,7 +18,7 @@ namespace Appwrite.Enums
         public static Name V1Functions => new Name("v1-functions");
         public static Name V1Usage => new Name("v1-usage");
         public static Name V1UsageDump => new Name("v1-usage-dump");
-        public static Name Webhooksv1 => new Name("webhooksv1");
+        public static Name V1Webhooks => new Name("v1-webhooks");
         public static Name V1Certificates => new Name("v1-certificates");
         public static Name V1Builds => new Name("v1-builds");
         public static Name V1Messaging => new Name("v1-messaging");

@@ -40,6 +40,9 @@ namespace Appwrite.Models
         [JsonProperty("deployment")]
         public string Deployment { get; private set; }
 
+        [JsonProperty("scopes")]
+        public List<object> Scopes { get; private set; }
+
         [JsonProperty("vars")]
         public List<Variable> Vars { get; private set; }
 
@@ -87,6 +90,7 @@ namespace Appwrite.Models
             bool logging,
             string runtime,
             string deployment,
+            List<object> scopes,
             List<Variable> vars,
             List<object> events,
             string schedule,
@@ -110,6 +114,7 @@ namespace Appwrite.Models
             Logging = logging;
             Runtime = runtime;
             Deployment = deployment;
+            Scopes = scopes;
             Vars = vars;
             Events = events;
             Schedule = schedule;
@@ -135,6 +140,7 @@ namespace Appwrite.Models
             logging: (bool)map["logging"],
             runtime: map["runtime"].ToString(),
             deployment: map["deployment"].ToString(),
+            scopes: ((JArray)map["scopes"]).ToObject<List<object>>(),
             vars: ((JArray)map["vars"]).ToObject<List<Dictionary<string, object>>>().Select(it => Variable.From(map: it)).ToList(),
             events: ((JArray)map["events"]).ToObject<List<object>>(),
             schedule: map["schedule"].ToString(),
@@ -161,6 +167,7 @@ namespace Appwrite.Models
             { "logging", Logging },
             { "runtime", Runtime },
             { "deployment", Deployment },
+            { "scopes", Scopes },
             { "vars", Vars.Select(it => it.ToMap()) },
             { "events", Events },
             { "schedule", Schedule },

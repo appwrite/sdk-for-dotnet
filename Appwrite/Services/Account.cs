@@ -204,7 +204,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.JWT> CreateJWT()
         {
-            var apiPath = "/account/jwt";
+            var apiPath = "/account/jwts";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -336,7 +336,7 @@ namespace Appwrite.Services
         /// <para>
         /// Verify an authenticator app after adding it using the [add
         /// authenticator](/docs/references/cloud/client-web/account#createMfaAuthenticator)
-        /// method. add 
+        /// method.
         /// </para>
         /// </summary>
         public Task<Models.User> UpdateMfaAuthenticator(Appwrite.Enums.AuthenticatorType type, string otp)
