@@ -58,7 +58,7 @@ namespace Appwrite.Services
         /// API.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? templateRepository = null, string? templateOwner = null, string? templateRootDirectory = null, string? templateBranch = null)
+        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? templateRepository = null, string? templateOwner = null, string? templateRootDirectory = null, string? templateVersion = null)
         {
             var apiPath = "/functions";
 
@@ -84,7 +84,7 @@ namespace Appwrite.Services
                 { "templateRepository", templateRepository },
                 { "templateOwner", templateOwner },
                 { "templateRootDirectory", templateRootDirectory },
-                { "templateBranch", templateBranch }
+                { "templateVersion", templateVersion }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -129,6 +129,79 @@ namespace Appwrite.Services
                 Models.RuntimeList.From(map: it);
 
             return _client.Call<Models.RuntimeList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// List function templates
+        /// <para>
+        /// List available function templates. You can use template details in
+        /// [createFunction](/docs/references/cloud/server-nodejs/functions#create)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<Models.TemplateFunctionList> ListTemplates(List<string>? runtimes = null, List<string>? useCases = null, long? limit = null, long? offset = null)
+        {
+            var apiPath = "/functions/templates";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "runtimes", runtimes },
+                { "useCases", useCases },
+                { "limit", limit },
+                { "offset", offset }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.TemplateFunctionList Convert(Dictionary<string, object> it) =>
+                Models.TemplateFunctionList.From(map: it);
+
+            return _client.Call<Models.TemplateFunctionList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// Get function template
+        /// <para>
+        /// Get a function template using ID. You can use template details in
+        /// [createFunction](/docs/references/cloud/server-nodejs/functions#create)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<Models.TemplateFunction> GetTemplate(string templateId)
+        {
+            var apiPath = "/functions/templates/{templateId}"
+                .Replace("{templateId}", templateId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.TemplateFunction Convert(Dictionary<string, object> it) =>
+                Models.TemplateFunction.From(map: it);
+
+            return _client.Call<Models.TemplateFunction>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -371,7 +444,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update function deployment
+        /// Update deployment
         /// <para>
         /// Update the function code deployment ID using the unique function ID. Use
         /// this endpoint to switch the code deployment that should be executed by the
@@ -498,13 +571,13 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Download Deployment
+        /// Download deployment
         /// <para>
         /// Get a Deployment's contents by its unique ID. This endpoint supports range
         /// requests for partial or streaming file download.
         /// </para>
         /// </summary>
-        public Task<byte[]> DownloadDeployment(string functionId, string deploymentId)
+        public Task<byte[]> GetDeploymentDownload(string functionId, string deploymentId)
         {
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}/download"
                 .Replace("{functionId}", functionId)
@@ -574,7 +647,7 @@ namespace Appwrite.Services
         /// function execution process will start asynchronously.
         /// </para>
         /// </summary>
-        public Task<Models.Execution> CreateExecution(string functionId, string? body = null, bool? xasync = null, string? xpath = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null, string? scheduledAt = null)
+        public Task<Models.Execution> CreateExecution(string functionId, string? body = null, bool? xasync = null, string? xpath = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null, string? scheduledAt = null, Action<UploadProgress>? onProgress = null)
         {
             var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
@@ -591,20 +664,24 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
+                { "content-type", "multipart/form-data" }
             };
 
 
             static Models.Execution Convert(Dictionary<string, object> it) =>
                 Models.Execution.From(map: it);
 
-            return _client.Call<Models.Execution>(
-                method: "POST",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
+            string? idParamName = null;
 
+
+            return _client.ChunkedUpload(
+                apiPath,
+                apiHeaders,
+                apiParameters,
+                Convert,
+                paramName,
+                idParamName,
+                onProgress);
         }
 
         /// <summary>

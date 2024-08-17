@@ -58,6 +58,9 @@ namespace Appwrite.Models
         [JsonProperty("duration")]
         public double Duration { get; private set; }
 
+        [JsonProperty("scheduledAt")]
+        public string? ScheduledAt { get; private set; }
+
         public Execution(
             string id,
             string createdAt,
@@ -74,7 +77,8 @@ namespace Appwrite.Models
             List<Headers> responseHeaders,
             string logs,
             string errors,
-            double duration
+            double duration,
+            string? scheduledAt
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -92,6 +96,7 @@ namespace Appwrite.Models
             Logs = logs;
             Errors = errors;
             Duration = duration;
+            ScheduledAt = scheduledAt;
         }
 
         public static Execution From(Dictionary<string, object> map) => new Execution(
@@ -110,7 +115,8 @@ namespace Appwrite.Models
             responseHeaders: ((JArray)map["responseHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
             logs: map["logs"].ToString(),
             errors: map["errors"].ToString(),
-            duration: Convert.ToDouble(map["duration"])
+            duration: Convert.ToDouble(map["duration"]),
+            scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -130,7 +136,8 @@ namespace Appwrite.Models
             { "responseHeaders", ResponseHeaders.Select(it => it.ToMap()) },
             { "logs", Logs },
             { "errors", Errors },
-            { "duration", Duration }
+            { "duration", Duration },
+            { "scheduledAt", ScheduledAt }
         };
     }
 }
