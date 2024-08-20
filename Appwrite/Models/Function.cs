@@ -79,6 +79,9 @@ namespace Appwrite.Models
         [JsonProperty("providerSilentMode")]
         public bool ProviderSilentMode { get; private set; }
 
+        [JsonProperty("specification")]
+        public string Specification { get; private set; }
+
         public Function(
             string id,
             string createdAt,
@@ -102,7 +105,8 @@ namespace Appwrite.Models
             string providerRepositoryId,
             string providerBranch,
             string providerRootDirectory,
-            bool providerSilentMode
+            bool providerSilentMode,
+            string specification
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -127,6 +131,7 @@ namespace Appwrite.Models
             ProviderBranch = providerBranch;
             ProviderRootDirectory = providerRootDirectory;
             ProviderSilentMode = providerSilentMode;
+            Specification = specification;
         }
 
         public static Function From(Dictionary<string, object> map) => new Function(
@@ -152,7 +157,8 @@ namespace Appwrite.Models
             providerRepositoryId: map["providerRepositoryId"].ToString(),
             providerBranch: map["providerBranch"].ToString(),
             providerRootDirectory: map["providerRootDirectory"].ToString(),
-            providerSilentMode: (bool)map["providerSilentMode"]
+            providerSilentMode: (bool)map["providerSilentMode"],
+            specification: map["specification"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -179,7 +185,8 @@ namespace Appwrite.Models
             { "providerRepositoryId", ProviderRepositoryId },
             { "providerBranch", ProviderBranch },
             { "providerRootDirectory", ProviderRootDirectory },
-            { "providerSilentMode", ProviderSilentMode }
+            { "providerSilentMode", ProviderSilentMode },
+            { "specification", Specification }
         };
     }
 }

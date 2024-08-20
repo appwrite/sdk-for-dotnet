@@ -58,7 +58,7 @@ namespace Appwrite.Services
         /// API.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? templateRepository = null, string? templateOwner = null, string? templateRootDirectory = null, string? templateVersion = null)
+        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? templateRepository = null, string? templateOwner = null, string? templateRootDirectory = null, string? templateVersion = null, string? specification = null)
         {
             var apiPath = "/functions";
 
@@ -84,7 +84,8 @@ namespace Appwrite.Services
                 { "templateRepository", templateRepository },
                 { "templateOwner", templateOwner },
                 { "templateRootDirectory", templateRootDirectory },
-                { "templateVersion", templateVersion }
+                { "templateVersion", templateVersion },
+                { "specification", specification }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -129,6 +130,39 @@ namespace Appwrite.Services
                 Models.RuntimeList.From(map: it);
 
             return _client.Call<Models.RuntimeList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
+        /// List available function runtime specifications
+        /// <para>
+        /// List allowed function specifications for this instance.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.SpecificationList> ListSpecifications()
+        {
+            var apiPath = "/functions/specifications";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.SpecificationList Convert(Dictionary<string, object> it) =>
+                Models.SpecificationList.From(map: it);
+
+            return _client.Call<Models.SpecificationList>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -249,7 +283,7 @@ namespace Appwrite.Services
         /// Update function by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Update(string functionId, string name, Appwrite.Enums.Runtime? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null)
+        public Task<Models.Function> Update(string functionId, string name, Appwrite.Enums.Runtime? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? specification = null)
         {
             var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
@@ -271,7 +305,8 @@ namespace Appwrite.Services
                 { "providerRepositoryId", providerRepositoryId },
                 { "providerBranch", providerBranch },
                 { "providerSilentMode", providerSilentMode },
-                { "providerRootDirectory", providerRootDirectory }
+                { "providerRootDirectory", providerRootDirectory },
+                { "specification", specification }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -647,7 +682,7 @@ namespace Appwrite.Services
         /// function execution process will start asynchronously.
         /// </para>
         /// </summary>
-        public Task<Models.Execution> CreateExecution(string functionId, string? body = null, bool? xasync = null, string? xpath = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null, string? scheduledAt = null, Action<UploadProgress>? onProgress = null)
+        public Task<Models.Execution> CreateExecution(string functionId, string? body = null, bool? xasync = null, string? xpath = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null, string? scheduledAt = null)
         {
             var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
@@ -664,24 +699,20 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "multipart/form-data" }
+                { "content-type", "application/json" }
             };
 
 
             static Models.Execution Convert(Dictionary<string, object> it) =>
                 Models.Execution.From(map: it);
 
-            string? idParamName = null;
+            return _client.Call<Models.Execution>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
-
-            return _client.ChunkedUpload(
-                apiPath,
-                apiHeaders,
-                apiParameters,
-                Convert,
-                paramName,
-                idParamName,
-                onProgress);
         }
 
         /// <summary>
