@@ -34,6 +34,9 @@ namespace Appwrite.Models
         [JsonProperty("size")]
         public long Size { get; private set; }
 
+        [JsonProperty("buildSize")]
+        public long BuildSize { get; private set; }
+
         [JsonProperty("buildId")]
         public string BuildId { get; private set; }
 
@@ -88,6 +91,7 @@ namespace Appwrite.Models
             string resourceType,
             string entrypoint,
             long size,
+            long buildSize,
             string buildId,
             bool activate,
             string status,
@@ -112,6 +116,7 @@ namespace Appwrite.Models
             ResourceType = resourceType;
             Entrypoint = entrypoint;
             Size = size;
+            BuildSize = buildSize;
             BuildId = buildId;
             Activate = activate;
             Status = status;
@@ -138,6 +143,7 @@ namespace Appwrite.Models
             resourceType: map["resourceType"].ToString(),
             entrypoint: map["entrypoint"].ToString(),
             size: Convert.ToInt64(map["size"]),
+            buildSize: Convert.ToInt64(map["buildSize"]),
             buildId: map["buildId"].ToString(),
             activate: (bool)map["activate"],
             status: map["status"].ToString(),
@@ -165,6 +171,7 @@ namespace Appwrite.Models
             { "resourceType", ResourceType },
             { "entrypoint", Entrypoint },
             { "size", Size },
+            { "buildSize", BuildSize },
             { "buildId", BuildId },
             { "activate", Activate },
             { "status", Status },

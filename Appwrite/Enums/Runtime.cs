@@ -56,6 +56,6 @@ namespace Appwrite.Enums
         public static Runtime Cpp17 => new Runtime("cpp-17");
         public static Runtime Cpp20 => new Runtime("cpp-20");
         public static Runtime Bun10 => new Runtime("bun-1.0");
-        public static Runtime Go122 => new Runtime("go-1.22");
+        public static Runtime Go123 => new Runtime("go-1.23");
     }
 }
