@@ -172,41 +172,6 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get function template
-        /// <para>
-        /// Get a function template using ID. You can use template details in
-        /// [createFunction](/docs/references/cloud/server-nodejs/functions#create)
-        /// method.
-        /// </para>
-        /// </summary>
-        public Task<Models.TemplateFunction> GetTemplate(string templateId)
-        {
-            var apiPath = "/functions/templates/{templateId}"
-                .Replace("{templateId}", templateId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.TemplateFunction Convert(Dictionary<string, object> it) =>
-                Models.TemplateFunction.From(map: it);
-
-            return _client.Call<Models.TemplateFunction>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
         /// Get function
         /// <para>
         /// Get a function by its unique ID.
