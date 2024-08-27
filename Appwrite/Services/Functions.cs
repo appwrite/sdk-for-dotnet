@@ -172,44 +172,6 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List function templates
-        /// <para>
-        /// List available function templates. You can use template details in
-        /// [createFunction](/docs/references/cloud/server-nodejs/functions#create)
-        /// method.
-        /// </para>
-        /// </summary>
-        public Task<Models.TemplateFunctionList> ListTemplates(List<string>? runtimes = null, List<string>? useCases = null, long? limit = null, long? offset = null)
-        {
-            var apiPath = "/functions/templates";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "runtimes", runtimes },
-                { "useCases", useCases },
-                { "limit", limit },
-                { "offset", offset }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.TemplateFunctionList Convert(Dictionary<string, object> it) =>
-                Models.TemplateFunctionList.From(map: it);
-
-            return _client.Call<Models.TemplateFunctionList>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
         /// Get function template
         /// <para>
         /// Get a function template using ID. You can use template details in
