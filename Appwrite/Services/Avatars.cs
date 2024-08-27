@@ -103,6 +103,7 @@ namespace Appwrite.Services
         /// Use this endpoint to fetch the favorite icon (AKA favicon) of any remote
         /// website URL.
         /// 
+        /// This endpoint does not follow HTTP redirects.
         /// </para>
         /// </summary>
         public Task<byte[]> GetFavicon(string url)
@@ -184,6 +185,7 @@ namespace Appwrite.Services
         /// image at source quality. If dimensions are not specified, the default size
         /// of image returned is 400x400px.
         /// 
+        /// This endpoint does not follow HTTP redirects.
         /// </para>
         /// </summary>
         public Task<byte[]> GetImage(string url, long? width = null, long? height = null)

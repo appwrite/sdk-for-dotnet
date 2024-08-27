@@ -40,6 +40,9 @@ namespace Appwrite.Models
         [JsonProperty("deployment")]
         public string Deployment { get; private set; }
 
+        [JsonProperty("scopes")]
+        public List<object> Scopes { get; private set; }
+
         [JsonProperty("vars")]
         public List<Variable> Vars { get; private set; }
 
@@ -76,6 +79,9 @@ namespace Appwrite.Models
         [JsonProperty("providerSilentMode")]
         public bool ProviderSilentMode { get; private set; }
 
+        [JsonProperty("specification")]
+        public string Specification { get; private set; }
+
         public Function(
             string id,
             string createdAt,
@@ -87,6 +93,7 @@ namespace Appwrite.Models
             bool logging,
             string runtime,
             string deployment,
+            List<object> scopes,
             List<Variable> vars,
             List<object> events,
             string schedule,
@@ -98,7 +105,8 @@ namespace Appwrite.Models
             string providerRepositoryId,
             string providerBranch,
             string providerRootDirectory,
-            bool providerSilentMode
+            bool providerSilentMode,
+            string specification
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -110,6 +118,7 @@ namespace Appwrite.Models
             Logging = logging;
             Runtime = runtime;
             Deployment = deployment;
+            Scopes = scopes;
             Vars = vars;
             Events = events;
             Schedule = schedule;
@@ -122,6 +131,7 @@ namespace Appwrite.Models
             ProviderBranch = providerBranch;
             ProviderRootDirectory = providerRootDirectory;
             ProviderSilentMode = providerSilentMode;
+            Specification = specification;
         }
 
         public static Function From(Dictionary<string, object> map) => new Function(
@@ -135,6 +145,7 @@ namespace Appwrite.Models
             logging: (bool)map["logging"],
             runtime: map["runtime"].ToString(),
             deployment: map["deployment"].ToString(),
+            scopes: ((JArray)map["scopes"]).ToObject<List<object>>(),
             vars: ((JArray)map["vars"]).ToObject<List<Dictionary<string, object>>>().Select(it => Variable.From(map: it)).ToList(),
             events: ((JArray)map["events"]).ToObject<List<object>>(),
             schedule: map["schedule"].ToString(),
@@ -146,7 +157,8 @@ namespace Appwrite.Models
             providerRepositoryId: map["providerRepositoryId"].ToString(),
             providerBranch: map["providerBranch"].ToString(),
             providerRootDirectory: map["providerRootDirectory"].ToString(),
-            providerSilentMode: (bool)map["providerSilentMode"]
+            providerSilentMode: (bool)map["providerSilentMode"],
+            specification: map["specification"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -161,6 +173,7 @@ namespace Appwrite.Models
             { "logging", Logging },
             { "runtime", Runtime },
             { "deployment", Deployment },
+            { "scopes", Scopes },
             { "vars", Vars.Select(it => it.ToMap()) },
             { "events", Events },
             { "schedule", Schedule },
@@ -172,7 +185,8 @@ namespace Appwrite.Models
             { "providerRepositoryId", ProviderRepositoryId },
             { "providerBranch", ProviderBranch },
             { "providerRootDirectory", ProviderRootDirectory },
-            { "providerSilentMode", ProviderSilentMode }
+            { "providerSilentMode", ProviderSilentMode },
+            { "specification", Specification }
         };
     }
 }
