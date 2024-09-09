@@ -536,6 +536,43 @@ namespace Appwrite.Services
         }
 
         /// <summary>
+        /// Create user JWT
+        /// <para>
+        /// Use this endpoint to create a JSON Web Token for user by its unique ID. You
+        /// can use the resulting JWT to authenticate on behalf of the user. The JWT
+        /// secret will become invalid if the session it uses gets deleted.
+        /// </para>
+        /// </summary>
+        public Task<Models.JWT> CreateJWT(string userId, string? sessionId = null, long? duration = null)
+        {
+            var apiPath = "/users/{userId}/jwts"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "sessionId", sessionId },
+                { "duration", duration }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.JWT Convert(Dictionary<string, object> it) =>
+                Models.JWT.From(map: it);
+
+            return _client.Call<Models.JWT>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <summary>
         /// Update user labels
         /// <para>
         /// Update the user labels by its unique ID. 

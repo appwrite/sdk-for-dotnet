@@ -69,11 +69,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , "AppwriteDotNetSDK/0.8.3 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
+                { "user-agent" , "AppwriteDotNetSDK/0.9.0 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.8.3"},                { "X-Appwrite-Response-Format", "1.5.0" }
+                { "x-sdk-version", "0.9.0"},                { "X-Appwrite-Response-Format", "1.6.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -299,6 +299,14 @@ namespace Appwrite
 
             var response = await _http.SendAsync(request);
             var code = (int)response.StatusCode;
+
+            if (response.Headers.TryGetValues("x-appwrite-warning", out var warnings)) 
+            {
+                foreach (var warning in warnings)
+                {
+                    Console.WriteLine("Warning: " + warning);
+                }
+            }
 
             string contentType = string.Empty;
             if (response.Content.Headers.TryGetValues("Content-Type", out var contentTypes))

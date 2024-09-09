@@ -204,7 +204,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.JWT> CreateJWT()
         {
-            var apiPath = "/account/jwt";
+            var apiPath = "/account/jwts";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -296,7 +296,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Add Authenticator
+        /// Create Authenticator
         /// <para>
         /// Add an authenticator app to be used as an MFA factor. Verify the
         /// authenticator using the [verify
@@ -336,7 +336,7 @@ namespace Appwrite.Services
         /// <para>
         /// Verify an authenticator app after adding it using the [add
         /// authenticator](/docs/references/cloud/client-web/account#createMfaAuthenticator)
-        /// method. add 
+        /// method.
         /// </para>
         /// </summary>
         public Task<Models.User> UpdateMfaAuthenticator(Appwrite.Enums.AuthenticatorType type, string otp)
@@ -373,14 +373,13 @@ namespace Appwrite.Services
         /// Delete an authenticator for a user by ID.
         /// </para>
         /// </summary>
-        public Task<object> DeleteMfaAuthenticator(Appwrite.Enums.AuthenticatorType type, string otp)
+        public Task<object> DeleteMfaAuthenticator(Appwrite.Enums.AuthenticatorType type)
         {
             var apiPath = "/account/mfa/authenticators/{type}"
                 .Replace("{type}", type.Value);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "otp", otp }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -399,7 +398,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create 2FA Challenge
+        /// Create MFA Challenge
         /// <para>
         /// Begin the process of MFA verification after sign-in. Finish the flow with
         /// [updateMfaChallenge](/docs/references/cloud/client-web/account#updateMfaChallenge)
@@ -1558,7 +1557,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create phone verification (confirmation)
+        /// Update phone verification (confirmation)
         /// <para>
         /// Use this endpoint to complete the user phone verification process. Use the
         /// **userId** and **secret** that were sent to your user's phone number to
