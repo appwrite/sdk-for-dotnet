@@ -448,7 +448,7 @@ namespace Appwrite.Services
         /// already existing documents.
         /// </para>
         /// </summary>
-        public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool xdefault)
+        public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -458,7 +458,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault }
+                { "default", xdefault },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -524,7 +525,7 @@ namespace Appwrite.Services
         /// already existing documents.
         /// </para>
         /// </summary>
-        public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -534,7 +535,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault }
+                { "default", xdefault },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -602,7 +604,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -612,7 +614,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault }
+                { "default", xdefault },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -682,7 +685,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string xdefault)
+        public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -693,7 +696,8 @@ namespace Appwrite.Services
             {
                 { "elements", elements },
                 { "required", required },
-                { "default", xdefault }
+                { "default", xdefault },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -764,7 +768,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double min, double max, double xdefault)
+        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double min, double max, double xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -776,7 +780,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "min", min },
                 { "max", max },
-                { "default", xdefault }
+                { "default", xdefault },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -847,7 +852,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long min, long max, long xdefault)
+        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long min, long max, long xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -859,7 +864,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "min", min },
                 { "max", max },
-                { "default", xdefault }
+                { "default", xdefault },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -927,7 +933,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -937,7 +943,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault }
+                { "default", xdefault },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1049,7 +1056,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, long? size = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1059,7 +1066,9 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault }
+                { "default", xdefault },
+                { "size", size },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1127,7 +1136,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string xdefault)
+        public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1137,7 +1146,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault }
+                { "default", xdefault },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1230,7 +1240,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null)
+        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}/relationship"
                 .Replace("{databaseId}", databaseId)
@@ -1239,7 +1249,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "onDelete", onDelete }
+                { "onDelete", onDelete },
+                { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
