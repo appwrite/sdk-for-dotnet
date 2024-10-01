@@ -165,7 +165,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Identities
+        /// List identities
         /// <para>
         /// Get identities for all users.
         /// </para>
@@ -713,7 +713,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Authenticator
+        /// Delete authenticator
         /// <para>
         /// Delete an authenticator app.
         /// </para>
@@ -747,7 +747,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Factors
+        /// List factors
         /// <para>
         /// List the factors available on the account to be used as a MFA challange.
         /// </para>
@@ -780,7 +780,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get MFA Recovery Codes
+        /// Get MFA recovery codes
         /// <para>
         /// Get recovery codes that can be used as backup for MFA flow by User ID.
         /// Before getting codes, they must be generated using
@@ -816,7 +816,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Regenerate MFA Recovery Codes
+        /// Regenerate MFA recovery codes
         /// <para>
         /// Regenerate recovery codes that can be used as backup for MFA flow by User
         /// ID. Before regenerating codes, they must be first generated using
@@ -852,7 +852,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create MFA Recovery Codes
+        /// Create MFA recovery codes
         /// <para>
         /// Generate recovery codes used as backup for MFA flow for User ID. Recovery
         /// codes can be used as a MFA verification type in
@@ -1226,7 +1226,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List User Targets
+        /// List user targets
         /// <para>
         /// List the messaging targets that are associated with a user.
         /// </para>
@@ -1260,7 +1260,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create User Target
+        /// Create user target
         /// <para>
         /// Create a messaging target.
         /// </para>
@@ -1298,7 +1298,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get User Target
+        /// Get user target
         /// <para>
         /// Get a user's push notification target by ID.
         /// </para>
@@ -1332,7 +1332,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Update User target
+        /// Update user target
         /// <para>
         /// Update a messaging target.
         /// </para>

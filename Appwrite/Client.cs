@@ -60,7 +60,7 @@ namespace Appwrite
         {
             _endpoint = endpoint;
             _http = http ?? new HttpClient();
-            
+
             _httpForRedirect = httpForRedirect ?? new HttpClient(
                 new HttpClientHandler(){
                     AllowAutoRedirect = false
@@ -69,12 +69,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , "AppwriteDotNetSDK/0.10.0 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
+                { "user-agent" , "AppwriteDotNetSDK/0.10.1 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.10.0"},
-                { "X-Appwrite-Response-Format", "1.6.0" }
+                { "x-sdk-version", "0.10.1"},                { "X-Appwrite-Response-Format", "1.6.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -252,7 +251,7 @@ namespace Appwrite
 
         public async Task<String> Redirect(
             string method,
-            string path, 
+            string path,
             Dictionary<string, string> headers,
             Dictionary<string, object?> parameters)
         {
@@ -301,7 +300,7 @@ namespace Appwrite
             var response = await _http.SendAsync(request);
             var code = (int)response.StatusCode;
 
-            if (response.Headers.TryGetValues("x-appwrite-warning", out var warnings)) 
+            if (response.Headers.TryGetValues("x-appwrite-warning", out var warnings))
             {
                 foreach (var warning in warnings)
                 {
@@ -408,15 +407,22 @@ namespace Appwrite
 
             if (!string.IsNullOrEmpty(idParamName) && (string)parameters[idParamName] != "unique()")
             {
+                try
+                {
                 // Make a request to check if a file already exists
                 var current = await Call<Dictionary<string, object?>>(
                     method: "GET",
-                    path: "$path/${params[idParamName]}",
-                    headers,
-                    parameters = new Dictionary<string, object?>()
+                    path: $"{path}/{parameters[idParamName]}",
+                    new Dictionary<string, string> { { "content-type", "application/json" } },
+                    parameters: new Dictionary<string, object?>()
                 );
                 var chunksUploaded = (long)current["chunksUploaded"];
                 offset = chunksUploaded * ChunkSize;
+            }
+                catch (Exception ex)
+                {
+                    // ignored as it mostly means file not found
+                }
             }
 
             while (offset < size)

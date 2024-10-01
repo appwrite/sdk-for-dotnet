@@ -609,7 +609,7 @@ namespace Appwrite.Services
         /// function execution process will start asynchronously.
         /// </para>
         /// </summary>
-        public Task<Models.Execution> CreateExecution(string functionId, string? body = null, bool? xasync = null, string? xpath = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null, string? scheduledAt = null)
+        public Task<Models.Execution> CreateExecution(string functionId, payload? body = null, bool? xasync = null, string? xpath = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null, string? scheduledAt = null, Action<UploadProgress>? onProgress = null)
         {
             var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
@@ -626,20 +626,24 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
+                { "content-type", "multipart/form-data" }
             };
 
 
             static Models.Execution Convert(Dictionary<string, object> it) =>
                 Models.Execution.From(map: it);
 
-            return _client.Call<Models.Execution>(
-                method: "POST",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
+            string? idParamName = null;
 
+
+            return _client.ChunkedUpload(
+                apiPath,
+                apiHeaders,
+                apiParameters,
+                Convert,
+                paramName,
+                idParamName,
+                onProgress);
         }
 
         /// <summary>
