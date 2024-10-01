@@ -10,6 +10,6 @@ Client client = new Client()
 Users users = new Users(client);
 
 TargetList result = await users.ListTargets(
-    userId: "<USER_ID>",
+    userId: "{$example}",
     queries: new List<string>() // optional
 );

@@ -35,8 +35,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Locale Convert(Dictionary<string, object> it) =>
@@ -68,8 +67,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.LocaleCodeList Convert(Dictionary<string, object> it) =>
@@ -101,8 +99,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.ContinentList Convert(Dictionary<string, object> it) =>
@@ -134,8 +131,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.CountryList Convert(Dictionary<string, object> it) =>
@@ -167,8 +163,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.CountryList Convert(Dictionary<string, object> it) =>
@@ -200,8 +195,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.PhoneList Convert(Dictionary<string, object> it) =>
@@ -234,8 +228,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.CurrencyList Convert(Dictionary<string, object> it) =>
@@ -267,8 +260,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.LanguageList Convert(Dictionary<string, object> it) =>

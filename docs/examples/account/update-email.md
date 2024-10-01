@@ -10,6 +10,6 @@ Client client = new Client()
 Account account = new Account(client);
 
 User result = await account.UpdateEmail(
-    email: "email@example.com",
-    password: "password"
+    email: "{$example}",
+    password: "{$example}"
 );

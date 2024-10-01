@@ -9,7 +9,7 @@ Client client = new Client()
 Account account = new Account(client);
 
 Token result = await account.CreateEmailToken(
-    userId: "<USER_ID>",
-    email: "email@example.com",
+    userId: "{$example}",
+    email: "{$example}",
     phrase: false // optional
 );

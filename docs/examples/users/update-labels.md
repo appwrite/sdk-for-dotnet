@@ -10,6 +10,6 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.UpdateLabels(
-    userId: "<USER_ID>",
+    userId: "{$example}",
     labels: new List<string>()
 );

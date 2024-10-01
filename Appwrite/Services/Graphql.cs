@@ -31,9 +31,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "x-sdk-graphql", "true" },
-                { "content-type", "application/json" }
-            };
+                { "x-sdk-graphql", "true" },                { "content-type", "application/json" }            };
 
 
             static object Convert(Dictionary<string, object> it) =>
@@ -65,9 +63,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "x-sdk-graphql", "true" },
-                { "content-type", "application/json" }
-            };
+                { "x-sdk-graphql", "true" },                { "content-type", "application/json" }            };
 
 
             static object Convert(Dictionary<string, object> it) =>

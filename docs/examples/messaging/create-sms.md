@@ -10,8 +10,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Message result = await messaging.CreateSms(
-    messageId: "<MESSAGE_ID>",
-    content: "<CONTENT>",
+    messageId: "{$example}",
+    content: "{$example}",
     topics: new List<string>(), // optional
     users: new List<string>(), // optional
     targets: new List<string>(), // optional

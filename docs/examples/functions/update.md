@@ -11,8 +11,8 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 Function result = await functions.Update(
-    functionId: "<FUNCTION_ID>",
-    name: "<NAME>",
+    functionId: "{$example}",
+    name: "{$example}",
     runtime: .Node145, // optional
     execute: ["any"], // optional
     events: new List<string>(), // optional
@@ -20,13 +20,13 @@ Function result = await functions.Update(
     timeout: 1, // optional
     enabled: false, // optional
     logging: false, // optional
-    entrypoint: "<ENTRYPOINT>", // optional
-    commands: "<COMMANDS>", // optional
+    entrypoint: "{$example}", // optional
+    commands: "{$example}", // optional
     scopes: new List<string>(), // optional
-    installationId: "<INSTALLATION_ID>", // optional
-    providerRepositoryId: "<PROVIDER_REPOSITORY_ID>", // optional
-    providerBranch: "<PROVIDER_BRANCH>", // optional
+    installationId: "{$example}", // optional
+    providerRepositoryId: "{$example}", // optional
+    providerBranch: "{$example}", // optional
     providerSilentMode: false, // optional
-    providerRootDirectory: "<PROVIDER_ROOT_DIRECTORY>", // optional
+    providerRootDirectory: "{$example}", // optional
     specification: "" // optional
 );

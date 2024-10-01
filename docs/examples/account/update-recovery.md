@@ -10,7 +10,7 @@ Client client = new Client()
 Account account = new Account(client);
 
 Token result = await account.UpdateRecovery(
-    userId: "<USER_ID>",
-    secret: "<SECRET>",
+    userId: "{$example}",
+    secret: "{$example}",
     password: ""
 );

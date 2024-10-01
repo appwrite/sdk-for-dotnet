@@ -10,6 +10,6 @@ Client client = new Client()
 Account account = new Account(client);
 
  result = await account.UpdateMfaChallenge(
-    challengeId: "<CHALLENGE_ID>",
-    otp: "<OTP>"
+    challengeId: "{$example}",
+    otp: "{$example}"
 );

@@ -33,8 +33,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.FunctionList Convert(Dictionary<string, object> it) =>
@@ -90,8 +89,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Function Convert(Dictionary<string, object> it) =>
@@ -122,8 +120,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.RuntimeList Convert(Dictionary<string, object> it) =>
@@ -155,8 +152,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.SpecificationList Convert(Dictionary<string, object> it) =>
@@ -188,8 +184,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Function Convert(Dictionary<string, object> it) =>
@@ -238,8 +233,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Function Convert(Dictionary<string, object> it) =>
@@ -271,8 +265,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -304,8 +297,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.DeploymentList Convert(Dictionary<string, object> it) =>
@@ -335,7 +327,7 @@ namespace Appwrite.Services
         /// Use the "command" param to set the entrypoint used to execute your code.
         /// </para>
         /// </summary>
-        public Task<Models.Deployment> CreateDeployment(string functionId, InputFile code, bool activate, string? entrypoint = null, string? commands = null, Action<UploadProgress>? onProgress = null)
+        public Task<Models.Deployment> CreateDeployment(string functionId, Payload code, bool activate, string? entrypoint = null, string? commands = null, Action<UploadProgress>? onProgress = null)
         {
             var apiPath = "/functions/{functionId}/deployments"
                 .Replace("{functionId}", functionId);
@@ -350,8 +342,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "multipart/form-data" }
-            };
+                { "content-type", "multipart/form-data" }            };
 
 
             static Models.Deployment Convert(Dictionary<string, object> it) =>
@@ -389,8 +380,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Deployment Convert(Dictionary<string, object> it) =>
@@ -425,8 +415,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Function Convert(Dictionary<string, object> it) =>
@@ -459,8 +448,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -488,8 +476,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -516,8 +503,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Build Convert(Dictionary<string, object> it) =>
@@ -551,8 +537,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -584,8 +569,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.ExecutionList Convert(Dictionary<string, object> it) =>
@@ -609,7 +593,7 @@ namespace Appwrite.Services
         /// function execution process will start asynchronously.
         /// </para>
         /// </summary>
-        public Task<Models.Execution> CreateExecution(string functionId, payload? body = null, bool? xasync = null, string? xpath = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null, string? scheduledAt = null, Action<UploadProgress>? onProgress = null)
+        public Task<Models.Execution> CreateExecution(string functionId, Payload? body = null, bool? xasync = null, string? xpath = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null, string? scheduledAt = null, Action<UploadProgress>? onProgress = null)
         {
             var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
@@ -626,24 +610,38 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "multipart/form-data" }
-            };
+                {"accept", "multipart/form-data"},
+                { "content-type", "multipart/form-data" }            };
 
 
             static Models.Execution Convert(Dictionary<string, object> it) =>
-                Models.Execution.From(map: it);
+                new Execution(
+                    id: it["$id"].ToString(),
+                    createdAt: it["$createdAt"].ToString(),
+                    updatedAt: it["$updatedAt"].ToString(),
+                    permissions: it["$permissions"] as List<object>,
+                    functionId: it["functionId"].ToString(),
+                    trigger: it["trigger"].ToString(),
+                    status: it["status"].ToString(),
+                    requestMethod: it["requestMethod"].ToString(),
+                    requestPath: it["requestPath"].ToString(),
+                    requestHeaders: it["requestHeaders"] as List<Headers>,
+                    responseStatusCode: System.Convert.ToInt64(it["responseStatusCode"]),
+                    responseBody: it["responseBody"] as Payload,
+                    responseHeaders: it["responseHeaders"] as List<Headers>,
+                    logs: it["logs"].ToString(),
+                    errors: it["errors"].ToString(),
+                    duration: System.Convert.ToDouble(it["duration"]),
+                    scheduledAt: it.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt.ToString() : null
+                );
 
-            string? idParamName = null;
+            return _client.Call<Models.Execution>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
-
-            return _client.ChunkedUpload(
-                apiPath,
-                apiHeaders,
-                apiParameters,
-                Convert,
-                paramName,
-                idParamName,
-                onProgress);
         }
 
         /// <summary>
@@ -664,8 +662,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Execution Convert(Dictionary<string, object> it) =>
@@ -699,8 +696,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -729,8 +725,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.VariableList Convert(Dictionary<string, object> it) =>
@@ -765,8 +760,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Variable Convert(Dictionary<string, object> it) =>
@@ -799,8 +793,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Variable Convert(Dictionary<string, object> it) =>
@@ -835,8 +828,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Variable Convert(Dictionary<string, object> it) =>
@@ -869,8 +861,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 

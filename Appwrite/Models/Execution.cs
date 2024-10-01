@@ -44,7 +44,7 @@ namespace Appwrite.Models
         public long ResponseStatusCode { get; private set; }
 
         [JsonProperty("responseBody")]
-        public string ResponseBody { get; private set; }
+        public Payload ResponseBody { get; private set; }
 
         [JsonProperty("responseHeaders")]
         public List<Headers> ResponseHeaders { get; private set; }
@@ -73,7 +73,7 @@ namespace Appwrite.Models
             string requestPath,
             List<Headers> requestHeaders,
             long responseStatusCode,
-            string responseBody,
+            Payload responseBody,
             List<Headers> responseHeaders,
             string logs,
             string errors,
@@ -111,12 +111,12 @@ namespace Appwrite.Models
             requestPath: map["requestPath"].ToString(),
             requestHeaders: ((JArray)map["requestHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
             responseStatusCode: Convert.ToInt64(map["responseStatusCode"]),
-            responseBody: map["responseBody"].ToString(),
+            responseBody: map["responseBody"] as Payload,
             responseHeaders: ((JArray)map["responseHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
             logs: map["logs"].ToString(),
             errors: map["errors"].ToString(),
             duration: Convert.ToDouble(map["duration"]),
-            scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null
+            scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ?  scheduledAt?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -10,10 +10,10 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeEmail result = await databases.UpdateEmailAttribute(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    databaseId: "{$example}",
+    collectionId: "{$example}",
     key: "",
     required: false,
-    default: "email@example.com",
+    default: "{$example}",
     newKey: "" // optional
 );

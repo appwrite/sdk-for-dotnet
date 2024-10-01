@@ -10,6 +10,6 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.UpdateEmail(
-    userId: "<USER_ID>",
-    email: "email@example.com"
+    userId: "{$example}",
+    email: "{$example}"
 );

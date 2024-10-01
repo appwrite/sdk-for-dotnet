@@ -10,5 +10,5 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.GetProvider(
-    providerId: "<PROVIDER_ID>"
+    providerId: "{$example}"
 );

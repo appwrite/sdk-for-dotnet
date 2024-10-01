@@ -10,6 +10,6 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 Variable result = await functions.GetVariable(
-    functionId: "<FUNCTION_ID>",
-    variableId: "<VARIABLE_ID>"
+    functionId: "{$example}",
+    variableId: "{$example}"
 );

@@ -10,5 +10,5 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 Database result = await databases.Get(
-    databaseId: "<DATABASE_ID>"
+    databaseId: "{$example}"
 );

@@ -10,11 +10,11 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeString result = await databases.UpdateStringAttribute(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    databaseId: "{$example}",
+    collectionId: "{$example}",
     key: "",
     required: false,
-    default: "<DEFAULT>",
+    default: "{$example}",
     size: 0, // optional
     newKey: "" // optional
 );

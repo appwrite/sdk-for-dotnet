@@ -10,6 +10,6 @@ Client client = new Client()
 Users users = new Users(client);
 
 await users.DeleteTarget(
-    userId: "<USER_ID>",
-    targetId: "<TARGET_ID>"
+    userId: "{$example}",
+    targetId: "{$example}"
 );

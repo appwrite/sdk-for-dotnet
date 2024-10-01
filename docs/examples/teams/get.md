@@ -10,5 +10,5 @@ Client client = new Client()
 Teams teams = new Teams(client);
 
 Team result = await teams.Get(
-    teamId: "<TEAM_ID>"
+    teamId: "{$example}"
 );

@@ -9,6 +9,6 @@ Client client = new Client()
 Account account = new Account(client);
 
 Session result = await account.CreateEmailPasswordSession(
-    email: "email@example.com",
-    password: "password"
+    email: "{$example}",
+    password: "{$example}"
 );

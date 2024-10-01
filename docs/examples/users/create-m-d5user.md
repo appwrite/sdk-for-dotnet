@@ -10,8 +10,8 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.CreateMD5User(
-    userId: "<USER_ID>",
-    email: "email@example.com",
-    password: "password",
-    name: "<NAME>" // optional
+    userId: "{$example}",
+    email: "{$example}",
+    password: "{$example}",
+    name: "{$example}" // optional
 );

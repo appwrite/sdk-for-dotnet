@@ -11,9 +11,9 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.CreateSHAUser(
-    userId: "<USER_ID>",
-    email: "email@example.com",
-    password: "password",
+    userId: "{$example}",
+    email: "{$example}",
+    password: "{$example}",
     passwordVersion: PasswordHash.Sha1, // optional
-    name: "<NAME>" // optional
+    name: "{$example}" // optional
 );

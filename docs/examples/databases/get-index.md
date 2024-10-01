@@ -10,7 +10,7 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 Index result = await databases.GetIndex(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    databaseId: "{$example}",
+    collectionId: "{$example}",
     key: ""
 );

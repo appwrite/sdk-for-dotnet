@@ -10,6 +10,6 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.UpdatePassword(
-    userId: "<USER_ID>",
+    userId: "{$example}",
     password: ""
 );

@@ -11,8 +11,8 @@ Client client = new Client()
 Storage storage = new Storage(client);
 
 Bucket result = await storage.UpdateBucket(
-    bucketId: "<BUCKET_ID>",
-    name: "<NAME>",
+    bucketId: "{$example}",
+    name: "{$example}",
     permissions: ["read("any")"], // optional
     fileSecurity: false, // optional
     enabled: false, // optional

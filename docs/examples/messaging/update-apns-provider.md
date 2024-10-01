@@ -10,12 +10,12 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateApnsProvider(
-    providerId: "<PROVIDER_ID>",
-    name: "<NAME>", // optional
+    providerId: "{$example}",
+    name: "{$example}", // optional
     enabled: false, // optional
-    authKey: "<AUTH_KEY>", // optional
-    authKeyId: "<AUTH_KEY_ID>", // optional
-    teamId: "<TEAM_ID>", // optional
-    bundleId: "<BUNDLE_ID>", // optional
+    authKey: "{$example}", // optional
+    authKeyId: "{$example}", // optional
+    teamId: "{$example}", // optional
+    bundleId: "{$example}", // optional
     sandbox: false // optional
 );

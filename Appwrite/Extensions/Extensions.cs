@@ -603,25 +603,5 @@ namespace Appwrite.Extensions
                 #endregion
 
         };
-
-        public static string GetMimeTypeFromExtension(string extension)
-        {
-            if (extension == null)
-            {
-                throw new ArgumentNullException("extension");
-            }
-
-            if (!extension.StartsWith("."))
-            {
-                extension = "." + extension;
-            }
-
-            return _mappings.TryGetValue(extension, out var mime) ? mime : "application/octet-stream";
-        }
-
-        public static string GetMimeType(this string path)
-        {
-            return GetMimeTypeFromExtension(System.IO.Path.GetExtension(path));
-        }
     }
 }

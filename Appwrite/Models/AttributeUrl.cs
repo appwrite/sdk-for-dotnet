@@ -62,7 +62,7 @@ namespace Appwrite.Models
             required: (bool)map["required"],
             array: (bool?)map["array"],
             format: map["format"].ToString(),
-            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
+            xdefault: map.TryGetValue("default", out var xdefault) ?  xdefault?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

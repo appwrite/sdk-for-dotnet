@@ -10,7 +10,7 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeList result = await databases.ListAttributes(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    databaseId: "{$example}",
+    collectionId: "{$example}",
     queries: new List<string>() // optional
 );
