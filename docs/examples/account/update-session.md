@@ -10,5 +10,5 @@ Client client = new Client()
 Account account = new Account(client);
 
 Session result = await account.UpdateSession(
-    sessionId: "<SESSION_ID>"
+    sessionId: "{$example}"
 );

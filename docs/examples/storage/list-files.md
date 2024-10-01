@@ -10,7 +10,7 @@ Client client = new Client()
 Storage storage = new Storage(client);
 
 FileList result = await storage.ListFiles(
-    bucketId: "<BUCKET_ID>",
+    bucketId: "{$example}",
     queries: new List<string>(), // optional
-    search: "<SEARCH>" // optional
+    search: "{$example}" // optional
 );

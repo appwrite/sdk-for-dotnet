@@ -10,8 +10,8 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeBoolean result = await databases.UpdateBooleanAttribute(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    databaseId: "{$example}",
+    collectionId: "{$example}",
     key: "",
     required: false,
     default: false,

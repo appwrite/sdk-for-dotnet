@@ -10,9 +10,9 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.Create(
-    userId: "<USER_ID>",
-    email: "email@example.com", // optional
-    phone: "+12065550100", // optional
+    userId: "{$example}",
+    email: "{$example}", // optional
+    phone: "{$example}", // optional
     password: "", // optional
-    name: "<NAME>" // optional
+    name: "{$example}" // optional
 );

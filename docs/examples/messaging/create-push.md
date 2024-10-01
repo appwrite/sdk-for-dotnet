@@ -10,20 +10,20 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Message result = await messaging.CreatePush(
-    messageId: "<MESSAGE_ID>",
-    title: "<TITLE>",
-    body: "<BODY>",
+    messageId: "{$example}",
+    title: "{$example}",
+    body: "{$example}",
     topics: new List<string>(), // optional
     users: new List<string>(), // optional
     targets: new List<string>(), // optional
     data: [object], // optional
-    action: "<ACTION>", // optional
-    image: "[ID1:ID2]", // optional
-    icon: "<ICON>", // optional
-    sound: "<SOUND>", // optional
-    color: "<COLOR>", // optional
-    tag: "<TAG>", // optional
-    badge: "<BADGE>", // optional
+    action: "{$example}", // optional
+    image: "{$example}", // optional
+    icon: "{$example}", // optional
+    sound: "{$example}", // optional
+    color: "{$example}", // optional
+    tag: "{$example}", // optional
+    badge: "{$example}", // optional
     draft: false, // optional
     scheduledAt: "" // optional
 );

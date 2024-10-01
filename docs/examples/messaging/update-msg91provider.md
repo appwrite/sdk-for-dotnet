@@ -10,10 +10,10 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateMsg91Provider(
-    providerId: "<PROVIDER_ID>",
-    name: "<NAME>", // optional
+    providerId: "{$example}",
+    name: "{$example}", // optional
     enabled: false, // optional
-    templateId: "<TEMPLATE_ID>", // optional
-    senderId: "<SENDER_ID>", // optional
-    authKey: "<AUTH_KEY>" // optional
+    templateId: "{$example}", // optional
+    senderId: "{$example}", // optional
+    authKey: "{$example}" // optional
 );

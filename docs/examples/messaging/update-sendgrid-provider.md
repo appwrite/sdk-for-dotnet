@@ -10,12 +10,12 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateSendgridProvider(
-    providerId: "<PROVIDER_ID>",
-    name: "<NAME>", // optional
+    providerId: "{$example}",
+    name: "{$example}", // optional
     enabled: false, // optional
-    apiKey: "<API_KEY>", // optional
-    fromName: "<FROM_NAME>", // optional
-    fromEmail: "email@example.com", // optional
-    replyToName: "<REPLY_TO_NAME>", // optional
-    replyToEmail: "<REPLY_TO_EMAIL>" // optional
+    apiKey: "{$example}", // optional
+    fromName: "{$example}", // optional
+    fromEmail: "{$example}", // optional
+    replyToName: "{$example}", // optional
+    replyToEmail: "{$example}" // optional
 );

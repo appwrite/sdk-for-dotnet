@@ -10,6 +10,6 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 LogList result = await messaging.ListTopicLogs(
-    topicId: "<TOPIC_ID>",
+    topicId: "{$example}",
     queries: new List<string>() // optional
 );

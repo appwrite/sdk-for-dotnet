@@ -10,5 +10,5 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 await functions.Delete(
-    functionId: "<FUNCTION_ID>"
+    functionId: "{$example}"
 );

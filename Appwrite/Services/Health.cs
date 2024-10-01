@@ -30,8 +30,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
@@ -62,8 +61,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthAntivirus Convert(Dictionary<string, object> it) =>
@@ -95,8 +93,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
@@ -128,8 +125,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthCertificate Convert(Dictionary<string, object> it) =>
@@ -160,8 +156,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
@@ -192,8 +187,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
@@ -225,8 +219,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
@@ -259,8 +252,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -294,8 +286,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -329,8 +320,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -363,8 +353,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -398,8 +387,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -432,8 +420,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -466,8 +453,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -500,8 +486,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -534,8 +519,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -568,8 +552,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -602,8 +585,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -636,8 +618,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -670,8 +651,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthQueue Convert(Dictionary<string, object> it) =>
@@ -702,8 +682,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
@@ -734,8 +713,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthStatus Convert(Dictionary<string, object> it) =>
@@ -772,8 +750,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.HealthTime Convert(Dictionary<string, object> it) =>

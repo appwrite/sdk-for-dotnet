@@ -12,5 +12,5 @@ Account account = new Account(client);
 
 User result = await account.UpdateMfaAuthenticator(
     type: AuthenticatorType.Totp,
-    otp: "<OTP>"
+    otp: "{$example}"
 );

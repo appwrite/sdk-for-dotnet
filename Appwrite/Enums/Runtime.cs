@@ -31,6 +31,9 @@ namespace Appwrite.Enums
         public static Runtime Python311 => new Runtime("python-3.11");
         public static Runtime Python312 => new Runtime("python-3.12");
         public static Runtime PythonMl311 => new Runtime("python-ml-3.11");
+        public static Runtime Deno121 => new Runtime("deno-1.21");
+        public static Runtime Deno124 => new Runtime("deno-1.24");
+        public static Runtime Deno135 => new Runtime("deno-1.35");
         public static Runtime Deno140 => new Runtime("deno-1.40");
         public static Runtime Dart215 => new Runtime("dart-2.15");
         public static Runtime Dart216 => new Runtime("dart-2.16");

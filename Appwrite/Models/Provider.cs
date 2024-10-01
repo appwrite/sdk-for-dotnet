@@ -68,7 +68,7 @@ namespace Appwrite.Models
             enabled: (bool)map["enabled"],
             type: map["type"].ToString(),
             credentials: map["credentials"].ToString(),
-            options: map.TryGetValue("options", out var options) ? options?.ToString() : null
+            options: map.TryGetValue("options", out var options) ?  options?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

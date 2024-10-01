@@ -10,9 +10,9 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 Document result = await databases.CreateDocument(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
-    documentId: "<DOCUMENT_ID>",
+    databaseId: "{$example}",
+    collectionId: "{$example}",
+    documentId: "{$example}",
     data: [object],
     permissions: ["read("any")"] // optional
 );

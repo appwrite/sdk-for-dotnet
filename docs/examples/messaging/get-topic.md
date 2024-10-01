@@ -10,5 +10,5 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Topic result = await messaging.GetTopic(
-    topicId: "<TOPIC_ID>"
+    topicId: "{$example}"
 );

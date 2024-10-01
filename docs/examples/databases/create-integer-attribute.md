@@ -10,8 +10,8 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeInteger result = await databases.CreateIntegerAttribute(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    databaseId: "{$example}",
+    collectionId: "{$example}",
     key: "",
     required: false,
     min: 0, // optional

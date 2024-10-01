@@ -10,12 +10,12 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeString result = await databases.CreateStringAttribute(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    databaseId: "{$example}",
+    collectionId: "{$example}",
     key: "",
     size: 1,
     required: false,
-    default: "<DEFAULT>", // optional
+    default: "{$example}", // optional
     array: false, // optional
     encrypt: false // optional
 );

@@ -10,7 +10,7 @@ Client client = new Client()
 Teams teams = new Teams(client);
 
 Membership result = await teams.UpdateMembership(
-    teamId: "<TEAM_ID>",
-    membershipId: "<MEMBERSHIP_ID>",
+    teamId: "{$example}",
+    membershipId: "{$example}",
     roles: new List<string>()
 );

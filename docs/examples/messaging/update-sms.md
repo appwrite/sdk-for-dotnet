@@ -10,11 +10,11 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Message result = await messaging.UpdateSms(
-    messageId: "<MESSAGE_ID>",
+    messageId: "{$example}",
     topics: new List<string>(), // optional
     users: new List<string>(), // optional
     targets: new List<string>(), // optional
-    content: "<CONTENT>", // optional
+    content: "{$example}", // optional
     draft: false, // optional
     scheduledAt: "" // optional
 );

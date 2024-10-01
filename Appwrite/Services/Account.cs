@@ -30,8 +30,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -72,8 +71,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -113,8 +111,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -130,7 +127,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Identities
+        /// List identities
         /// <para>
         /// Get the list of identities for the currently logged in user.
         /// </para>
@@ -146,8 +143,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.IdentityList Convert(Dictionary<string, object> it) =>
@@ -179,8 +175,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -212,8 +207,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.JWT Convert(Dictionary<string, object> it) =>
@@ -246,8 +240,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.LogList Convert(Dictionary<string, object> it) =>
@@ -279,8 +272,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -296,7 +288,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create Authenticator
+        /// Create authenticator
         /// <para>
         /// Add an authenticator app to be used as an MFA factor. Verify the
         /// authenticator using the [verify
@@ -315,8 +307,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.MfaType Convert(Dictionary<string, object> it) =>
@@ -332,7 +323,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Verify Authenticator
+        /// Verify authenticator
         /// <para>
         /// Verify an authenticator app after adding it using the [add
         /// authenticator](/docs/references/cloud/client-web/account#createMfaAuthenticator)
@@ -351,8 +342,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -368,7 +358,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Delete Authenticator
+        /// Delete authenticator
         /// <para>
         /// Delete an authenticator for a user by ID.
         /// </para>
@@ -384,8 +374,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -398,7 +387,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create MFA Challenge
+        /// Create MFA challenge
         /// <para>
         /// Begin the process of MFA verification after sign-in. Finish the flow with
         /// [updateMfaChallenge](/docs/references/cloud/client-web/account#updateMfaChallenge)
@@ -416,8 +405,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.MfaChallenge Convert(Dictionary<string, object> it) =>
@@ -433,7 +421,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create MFA Challenge (confirmation)
+        /// Create MFA challenge (confirmation)
         /// <para>
         /// Complete the MFA challenge by providing the one-time password. Finish the
         /// process of MFA verification by providing the one-time password. To begin
@@ -454,8 +442,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -468,7 +455,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// List Factors
+        /// List factors
         /// <para>
         /// List the factors available on the account to be used as a MFA challange.
         /// </para>
@@ -483,8 +470,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.MfaFactors Convert(Dictionary<string, object> it) =>
@@ -500,7 +486,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Get MFA Recovery Codes
+        /// Get MFA recovery codes
         /// <para>
         /// Get recovery codes that can be used as backup for MFA flow. Before getting
         /// codes, they must be generated using
@@ -518,8 +504,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
@@ -535,7 +520,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Create MFA Recovery Codes
+        /// Create MFA recovery codes
         /// <para>
         /// Generate recovery codes as backup for MFA flow. It's recommended to
         /// generate and show then immediately after user successfully adds their
@@ -554,8 +539,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
@@ -571,7 +555,7 @@ namespace Appwrite.Services
         }
 
         /// <summary>
-        /// Regenerate MFA Recovery Codes
+        /// Regenerate MFA recovery codes
         /// <para>
         /// Regenerate recovery codes that can be used as backup for MFA flow. Before
         /// regenerating codes, they must be first generated using
@@ -589,8 +573,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
@@ -622,8 +605,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -658,8 +640,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -696,8 +677,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -728,8 +708,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Preferences Convert(Dictionary<string, object> it) =>
@@ -763,8 +742,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -804,8 +782,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Token Convert(Dictionary<string, object> it) =>
@@ -848,8 +825,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Token Convert(Dictionary<string, object> it) =>
@@ -881,8 +857,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.SessionList Convert(Dictionary<string, object> it) =>
@@ -914,8 +889,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -949,8 +923,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Session Convert(Dictionary<string, object> it) =>
@@ -988,8 +961,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Session Convert(Dictionary<string, object> it) =>
@@ -1024,8 +996,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Session Convert(Dictionary<string, object> it) =>
@@ -1060,8 +1031,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Session Convert(Dictionary<string, object> it) =>
@@ -1096,8 +1066,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Session Convert(Dictionary<string, object> it) =>
@@ -1130,8 +1099,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Session Convert(Dictionary<string, object> it) =>
@@ -1165,8 +1133,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Session Convert(Dictionary<string, object> it) =>
@@ -1202,8 +1169,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -1233,8 +1199,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.User Convert(Dictionary<string, object> it) =>
@@ -1277,8 +1242,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Token Convert(Dictionary<string, object> it) =>
@@ -1328,8 +1292,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Token Convert(Dictionary<string, object> it) =>
@@ -1377,8 +1340,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -1417,8 +1379,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Token Convert(Dictionary<string, object> it) =>
@@ -1464,8 +1425,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Token Convert(Dictionary<string, object> it) =>
@@ -1501,8 +1461,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Token Convert(Dictionary<string, object> it) =>
@@ -1540,8 +1499,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Token Convert(Dictionary<string, object> it) =>
@@ -1577,8 +1535,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Token Convert(Dictionary<string, object> it) =>

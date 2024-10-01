@@ -10,6 +10,6 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 await functions.DeleteExecution(
-    functionId: "<FUNCTION_ID>",
-    executionId: "<EXECUTION_ID>"
+    functionId: "{$example}",
+    executionId: "{$example}"
 );

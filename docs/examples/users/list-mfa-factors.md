@@ -10,5 +10,5 @@ Client client = new Client()
 Users users = new Users(client);
 
 MfaFactors result = await users.ListMfaFactors(
-    userId: "<USER_ID>"
+    userId: "{$example}"
 );

@@ -33,8 +33,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.TeamList Convert(Dictionary<string, object> it) =>
@@ -70,8 +69,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Team Convert(Dictionary<string, object> it) =>
@@ -103,8 +101,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Team Convert(Dictionary<string, object> it) =>
@@ -137,8 +134,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Team Convert(Dictionary<string, object> it) =>
@@ -171,8 +167,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -204,8 +199,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.MembershipList Convert(Dictionary<string, object> it) =>
@@ -263,8 +257,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Membership Convert(Dictionary<string, object> it) =>
@@ -298,8 +291,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Membership Convert(Dictionary<string, object> it) =>
@@ -336,8 +328,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Membership Convert(Dictionary<string, object> it) =>
@@ -372,8 +363,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
 
@@ -411,8 +401,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Membership Convert(Dictionary<string, object> it) =>
@@ -446,8 +435,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Preferences Convert(Dictionary<string, object> it) =>
@@ -482,8 +470,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
-            };
+                { "content-type", "application/json" }            };
 
 
             static Models.Preferences Convert(Dictionary<string, object> it) =>

@@ -10,6 +10,6 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 TargetList result = await messaging.ListTargets(
-    messageId: "<MESSAGE_ID>",
+    messageId: "{$example}",
     queries: new List<string>() // optional
 );

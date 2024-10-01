@@ -10,5 +10,5 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Message result = await messaging.GetMessage(
-    messageId: "<MESSAGE_ID>"
+    messageId: "{$example}"
 );

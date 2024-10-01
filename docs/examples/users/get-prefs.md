@@ -10,5 +10,5 @@ Client client = new Client()
 Users users = new Users(client);
 
 Preferences result = await users.GetPrefs(
-    userId: "<USER_ID>"
+    userId: "{$example}"
 );

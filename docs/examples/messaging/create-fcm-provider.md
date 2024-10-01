@@ -10,8 +10,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.CreateFcmProvider(
-    providerId: "<PROVIDER_ID>",
-    name: "<NAME>",
+    providerId: "{$example}",
+    name: "{$example}",
     serviceAccountJSON: [object], // optional
     enabled: false // optional
 );

@@ -11,9 +11,9 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeRelationship result = await databases.CreateRelationshipAttribute(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
-    relatedCollectionId: "<RELATED_COLLECTION_ID>",
+    databaseId: "{$example}",
+    collectionId: "{$example}",
+    relatedCollectionId: "{$example}",
     type: RelationshipType.OneToOne,
     twoWay: false, // optional
     key: "", // optional
