@@ -28,6 +28,12 @@ namespace Appwrite.Models
         [JsonProperty("array")]
         public bool? Array { get; private set; }
 
+        [JsonProperty("$createdAt")]
+        public string CreatedAt { get; private set; }
+
+        [JsonProperty("$updatedAt")]
+        public string UpdatedAt { get; private set; }
+
         [JsonProperty("size")]
         public long Size { get; private set; }
 
@@ -41,6 +47,8 @@ namespace Appwrite.Models
             string error,
             bool required,
             bool? array,
+            string createdAt,
+            string updatedAt,
             long size,
             string? xdefault
         ) {
@@ -50,6 +58,8 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Size = size;
             Default = xdefault;
         }
@@ -61,6 +71,8 @@ namespace Appwrite.Models
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: (bool?)map["array"],
+            createdAt: map["$createdAt"].ToString(),
+            updatedAt: map["$updatedAt"].ToString(),
             size: Convert.ToInt64(map["size"]),
             xdefault: map.TryGetValue("default", out var xdefault) ?  xdefault?.ToString() : null
         );
@@ -73,6 +85,8 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "size", Size },
             { "default", Default }
         };

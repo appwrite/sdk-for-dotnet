@@ -28,6 +28,12 @@ namespace Appwrite.Models
         [JsonProperty("array")]
         public bool? Array { get; private set; }
 
+        [JsonProperty("$createdAt")]
+        public string CreatedAt { get; private set; }
+
+        [JsonProperty("$updatedAt")]
+        public string UpdatedAt { get; private set; }
+
         [JsonProperty("relatedCollection")]
         public string RelatedCollection { get; private set; }
 
@@ -53,6 +59,8 @@ namespace Appwrite.Models
             string error,
             bool required,
             bool? array,
+            string createdAt,
+            string updatedAt,
             string relatedCollection,
             string relationType,
             bool twoWay,
@@ -66,6 +74,8 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             RelatedCollection = relatedCollection;
             RelationType = relationType;
             TwoWay = twoWay;
@@ -81,6 +91,8 @@ namespace Appwrite.Models
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: (bool?)map["array"],
+            createdAt: map["$createdAt"].ToString(),
+            updatedAt: map["$updatedAt"].ToString(),
             relatedCollection: map["relatedCollection"].ToString(),
             relationType: map["relationType"].ToString(),
             twoWay: (bool)map["twoWay"],
@@ -97,6 +109,8 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "relatedCollection", RelatedCollection },
             { "relationType", RelationType },
             { "twoWay", TwoWay },

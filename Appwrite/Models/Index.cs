@@ -28,13 +28,21 @@ namespace Appwrite.Models
         [JsonProperty("orders")]
         public List<object>? Orders { get; private set; }
 
+        [JsonProperty("$createdAt")]
+        public string CreatedAt { get; private set; }
+
+        [JsonProperty("$updatedAt")]
+        public string UpdatedAt { get; private set; }
+
         public Index(
             string key,
             string type,
             string status,
             string error,
             List<object> attributes,
-            List<object>? orders
+            List<object>? orders,
+            string createdAt,
+            string updatedAt
         ) {
             Key = key;
             Type = type;
@@ -42,6 +50,8 @@ namespace Appwrite.Models
             Error = error;
             Attributes = attributes;
             Orders = orders;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
         }
 
         public static Index From(Dictionary<string, object> map) => new Index(
@@ -50,7 +60,9 @@ namespace Appwrite.Models
             status: map["status"].ToString(),
             error: map["error"].ToString(),
             attributes: ((JArray)map["attributes"]).ToObject<List<object>>(),
-            orders: ((JArray)map["orders"]).ToObject<List<object>>()
+            orders: ((JArray)map["orders"]).ToObject<List<object>>(),
+            createdAt: map["$createdAt"].ToString(),
+            updatedAt: map["$updatedAt"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -60,7 +72,9 @@ namespace Appwrite.Models
             { "status", Status },
             { "error", Error },
             { "attributes", Attributes },
-            { "orders", Orders }
+            { "orders", Orders },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt }
         };
     }
 }
