@@ -20,7 +20,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonProperty("$permissions")]
-        public List<object> Permissions { get; private set; }
+        public List<string> Permissions { get; private set; }
 
         [JsonProperty("functionId")]
         public string FunctionId { get; private set; }
@@ -44,7 +44,7 @@ namespace Appwrite.Models
         public long ResponseStatusCode { get; private set; }
 
         [JsonProperty("responseBody")]
-        public Payload ResponseBody { get; private set; }
+        public string ResponseBody { get; private set; }
 
         [JsonProperty("responseHeaders")]
         public List<Headers> ResponseHeaders { get; private set; }
@@ -65,7 +65,7 @@ namespace Appwrite.Models
             string id,
             string createdAt,
             string updatedAt,
-            List<object> permissions,
+            List<string> permissions,
             string functionId,
             string trigger,
             string status,
@@ -73,7 +73,7 @@ namespace Appwrite.Models
             string requestPath,
             List<Headers> requestHeaders,
             long responseStatusCode,
-            Payload responseBody,
+            string responseBody,
             List<Headers> responseHeaders,
             string logs,
             string errors,
@@ -103,7 +103,7 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<object>>(),
+            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
             functionId: map["functionId"].ToString(),
             trigger: map["trigger"].ToString(),
             status: map["status"].ToString(),
@@ -111,12 +111,12 @@ namespace Appwrite.Models
             requestPath: map["requestPath"].ToString(),
             requestHeaders: ((JArray)map["requestHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
             responseStatusCode: Convert.ToInt64(map["responseStatusCode"]),
-            responseBody: map["responseBody"] as Payload,
+            responseBody: map["responseBody"].ToString(),
             responseHeaders: ((JArray)map["responseHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
             logs: map["logs"].ToString(),
             errors: map["errors"].ToString(),
             duration: Convert.ToDouble(map["duration"]),
-            scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ?  scheduledAt?.ToString() : null
+            scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -32,7 +32,7 @@ namespace Appwrite.Models
         public long PushTotal { get; private set; }
 
         [JsonProperty("subscribe")]
-        public List<object> Subscribe { get; private set; }
+        public List<string> Subscribe { get; private set; }
 
         public Topic(
             string id,
@@ -42,7 +42,7 @@ namespace Appwrite.Models
             long emailTotal,
             long smsTotal,
             long pushTotal,
-            List<object> subscribe
+            List<string> subscribe
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -62,7 +62,7 @@ namespace Appwrite.Models
             emailTotal: Convert.ToInt64(map["emailTotal"]),
             smsTotal: Convert.ToInt64(map["smsTotal"]),
             pushTotal: Convert.ToInt64(map["pushTotal"]),
-            subscribe: ((JArray)map["subscribe"]).ToObject<List<object>>()
+            subscribe: ((JArray)map["subscribe"]).ToObject<List<string>>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

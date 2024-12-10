@@ -10,6 +10,6 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 byte[] result = await functions.GetDeploymentDownload(
-    functionId: "{$example}",
-    deploymentId: "{$example}"
+    functionId: "<FUNCTION_ID>",
+    deploymentId: "<DEPLOYMENT_ID>"
 );

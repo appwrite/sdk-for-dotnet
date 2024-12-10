@@ -10,6 +10,6 @@ Client client = new Client()
 Teams teams = new Teams(client);
 
 Team result = await teams.UpdateName(
-    teamId: "{$example}",
-    name: "{$example}"
+    teamId: "<TEAM_ID>",
+    name: "<NAME>"
 );

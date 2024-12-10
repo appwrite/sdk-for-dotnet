@@ -10,8 +10,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateFcmProvider(
-    providerId: "{$example}",
-    name: "{$example}", // optional
+    providerId: "<PROVIDER_ID>",
+    name: "<NAME>", // optional
     enabled: false, // optional
     serviceAccountJSON: [object] // optional
 );

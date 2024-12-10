@@ -10,6 +10,6 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.UpdateMfa(
-    userId: "{$example}",
+    userId: "<USER_ID>",
     mfa: false
 );

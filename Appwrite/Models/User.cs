@@ -38,7 +38,7 @@ namespace Appwrite.Models
         public bool Status { get; private set; }
 
         [JsonProperty("labels")]
-        public List<object> Labels { get; private set; }
+        public List<string> Labels { get; private set; }
 
         [JsonProperty("passwordUpdate")]
         public string PasswordUpdate { get; private set; }
@@ -77,7 +77,7 @@ namespace Appwrite.Models
             object? hashOptions,
             string registration,
             bool status,
-            List<object> labels,
+            List<string> labels,
             string passwordUpdate,
             string email,
             string phone,
@@ -114,12 +114,12 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
-            password: map.TryGetValue("password", out var password) ?  password?.ToString() : null,
-            hash: map.TryGetValue("hash", out var hash) ?  hash?.ToString() : null,
-            hashOptions: map.TryGetValue("hashOptions", out var hashOptions) ?  hashOptions?.ToString() : null,
+            password: map.TryGetValue("password", out var password) ? password?.ToString() : null,
+            hash: map.TryGetValue("hash", out var hash) ? hash?.ToString() : null,
+            hashOptions: map.TryGetValue("hashOptions", out var hashOptions) ? hashOptions?.ToString() : null,
             registration: map["registration"].ToString(),
             status: (bool)map["status"],
-            labels: ((JArray)map["labels"]).ToObject<List<object>>(),
+            labels: ((JArray)map["labels"]).ToObject<List<string>>(),
             passwordUpdate: map["passwordUpdate"].ToString(),
             email: map["email"].ToString(),
             phone: map["phone"].ToString(),

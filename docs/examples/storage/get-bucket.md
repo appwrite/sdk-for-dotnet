@@ -10,5 +10,5 @@ Client client = new Client()
 Storage storage = new Storage(client);
 
 Bucket result = await storage.GetBucket(
-    bucketId: "{$example}"
+    bucketId: "<BUCKET_ID>"
 );

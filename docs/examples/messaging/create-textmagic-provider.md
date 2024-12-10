@@ -10,10 +10,10 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.CreateTextmagicProvider(
-    providerId: "{$example}",
-    name: "{$example}",
-    from: "{$example}", // optional
-    username: "{$example}", // optional
-    apiKey: "{$example}", // optional
+    providerId: "<PROVIDER_ID>",
+    name: "<NAME>",
+    from: "+12065550100", // optional
+    username: "<USERNAME>", // optional
+    apiKey: "<API_KEY>", // optional
     enabled: false // optional
 );

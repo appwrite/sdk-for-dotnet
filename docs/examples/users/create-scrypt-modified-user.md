@@ -10,11 +10,11 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.CreateScryptModifiedUser(
-    userId: "{$example}",
-    email: "{$example}",
-    password: "{$example}",
-    passwordSalt: "{$example}",
-    passwordSaltSeparator: "{$example}",
-    passwordSignerKey: "{$example}",
-    name: "{$example}" // optional
+    userId: "<USER_ID>",
+    email: "email@example.com",
+    password: "password",
+    passwordSalt: "<PASSWORD_SALT>",
+    passwordSaltSeparator: "<PASSWORD_SALT_SEPARATOR>",
+    passwordSignerKey: "<PASSWORD_SIGNER_KEY>",
+    name: "<NAME>" // optional
 );

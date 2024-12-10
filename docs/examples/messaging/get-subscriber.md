@@ -10,6 +10,6 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Subscriber result = await messaging.GetSubscriber(
-    topicId: "{$example}",
-    subscriberId: "{$example}"
+    topicId: "<TOPIC_ID>",
+    subscriberId: "<SUBSCRIBER_ID>"
 );

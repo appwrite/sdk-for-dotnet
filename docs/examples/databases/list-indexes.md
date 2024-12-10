@@ -10,7 +10,7 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 IndexList result = await databases.ListIndexes(
-    databaseId: "{$example}",
-    collectionId: "{$example}",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
     queries: new List<string>() // optional
 );

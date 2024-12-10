@@ -10,10 +10,10 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeUrl result = await databases.UpdateUrlAttribute(
-    databaseId: "{$example}",
-    collectionId: "{$example}",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
     key: "",
     required: false,
-    default: "{$example}",
+    default: "https://example.com",
     newKey: "" // optional
 );

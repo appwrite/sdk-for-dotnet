@@ -10,7 +10,7 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 SubscriberList result = await messaging.ListSubscribers(
-    topicId: "{$example}",
+    topicId: "<TOPIC_ID>",
     queries: new List<string>(), // optional
-    search: "{$example}" // optional
+    search: "<SEARCH>" // optional
 );

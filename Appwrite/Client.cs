@@ -10,7 +10,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 using Appwrite.Converters;
 using Appwrite.Extensions;
 using Appwrite.Models;
@@ -70,11 +69,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , "AppwriteDotNetSDK/0.10.1 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
+                { "user-agent" , "AppwriteDotNetSDK/0.11.0 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.10.1"},                { "X-Appwrite-Response-Format", "1.6.0" }
+                { "x-sdk-version", "0.11.0"},                { "X-Appwrite-Response-Format", "1.6.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -316,7 +315,6 @@ namespace Appwrite
             }
 
             var isJson = contentType.Contains("application/json");
-            var isFormData = contentType.Contains("multipart/form-data");
 
             if (code >= 400) {
                 var message = await response.Content.ReadAsStringAsync();
@@ -343,12 +341,10 @@ namespace Appwrite
 
                 return (dict as T)!;
             }
-
-            if (!isFormData) return ((await response.Content.ReadAsByteArrayAsync()) as T)!;
-
-            var data = HandleMultipart<Dictionary<string, object>>(await response.Content.ReadAsByteArrayAsync());
-
-            return convert != null ? convert(data as Dictionary<string, object>) : data as T;
+            else
+            {
+                return ((await response.Content.ReadAsByteArrayAsync()) as T)!;
+            }
         }
 
         public async Task<T> ChunkedUpload<T>(
@@ -360,7 +356,7 @@ namespace Appwrite
             string? idParamName = null,
             Action<UploadProgress>? onProgress = null) where T : class
         {
-            var input = parameters[paramName] as Payload;
+            var input = parameters[paramName] as InputFile;
             var size = 0L;
             switch(input.SourceType)
             {
@@ -487,82 +483,6 @@ namespace Appwrite
             }
 
             return converter(result);
-        }
-
-        public static T HandleMultipart<T>(byte[] multipart) where T : class
-        {
-            var str = Encoding.UTF8.GetString(multipart);
-            var data = new Dictionary<string, object>();
-            var boundarySearch = new Regex(@"(-+\w+)--").Match(str);
-
-            if (boundarySearch.Groups.Count != 2)
-            {
-                return new object() as T;
-            }
-
-            var boundary = boundarySearch.Groups[1].Value;
-            var parts = str.Split(new string[] { boundary }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (var part in parts)
-            {
-                var lines = part.Split(new string[]{"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
-                var nameMatch = new Regex(@"name=""?(\w+)").Match(part);
-
-                if (lines.Length <= 1 || nameMatch.Groups.Count != 2)
-                {
-                    continue;
-                }
-                lines = lines.Skip(1).ToArray();
-                var name = nameMatch.Groups[1].Value;
-                if (lines[0] == "Content-Type: application/json")
-                {
-                    lines = lines.Skip(1).ToArray();
-                    data.Add(name, JsonConvert.DeserializeObject<List<dynamic>>(string.Join("\r\n", lines)) ?? new List<dynamic>());
-                    continue;
-                }
-                if (name == "responseBody")
-                {
-                    const string needle = "name=\"responseBody\"\r\n\r\n";
-                    var indexOf = str.IndexOf(needle, StringComparison.Ordinal) + needle.Length;
-                    var endBytes = Encoding.UTF8.GetBytes("\r\n-------");
-                    multipart = multipart.Skip(indexOf).ToArray();
-
-                    data.Add(name, Payload.FromBinary(multipart.TakeWhile((t, i) => !DidFinishedBinaryData(multipart, endBytes, i)).ToArray()));
-
-                    continue;
-                }
-                var value = string.Join("\r\n", lines);
-
-                data.Add(name, value);
-            }
-            // Adding to match Execution model
-            data.Add("$id","");
-            data.Add("$createdAt","");
-            data.Add("$updatedAt","");
-            data.Add("logs","");
-            data.Add("errors","");
-            data.Add("scheduledAt","");
-            data.Add("$permissions",new List<Object>());
-            return data as T;
-        }
-
-        private static bool DidFinishedBinaryData(byte[] multipart, byte[] endBytes, int i)
-        {
-            if (multipart.Length > i + endBytes.Length)
-            {
-                for (var j = 0; j < endBytes.Length; j++)
-                {
-                    if (multipart[i + j] != endBytes[j])
-                    {
-                        break;
-                    }
-
-                    if (j != endBytes.Length - 1) continue;
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }

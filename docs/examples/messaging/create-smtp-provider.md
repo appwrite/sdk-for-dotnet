@@ -11,18 +11,18 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.CreateSmtpProvider(
-    providerId: "{$example}",
-    name: "{$example}",
-    host: "{$example}",
+    providerId: "<PROVIDER_ID>",
+    name: "<NAME>",
+    host: "<HOST>",
     port: 1, // optional
-    username: "{$example}", // optional
-    password: "{$example}", // optional
+    username: "<USERNAME>", // optional
+    password: "<PASSWORD>", // optional
     encryption: SmtpEncryption.None, // optional
     autoTLS: false, // optional
-    mailer: "{$example}", // optional
-    fromName: "{$example}", // optional
-    fromEmail: "{$example}", // optional
-    replyToName: "{$example}", // optional
-    replyToEmail: "{$example}", // optional
+    mailer: "<MAILER>", // optional
+    fromName: "<FROM_NAME>", // optional
+    fromEmail: "email@example.com", // optional
+    replyToName: "<REPLY_TO_NAME>", // optional
+    replyToEmail: "email@example.com", // optional
     enabled: false // optional
 );

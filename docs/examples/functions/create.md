@@ -11,8 +11,8 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 Function result = await functions.Create(
-    functionId: "{$example}",
-    name: "{$example}",
+    functionId: "<FUNCTION_ID>",
+    name: "<NAME>",
     runtime: .Node145,
     execute: ["any"], // optional
     events: new List<string>(), // optional
@@ -20,17 +20,17 @@ Function result = await functions.Create(
     timeout: 1, // optional
     enabled: false, // optional
     logging: false, // optional
-    entrypoint: "{$example}", // optional
-    commands: "{$example}", // optional
+    entrypoint: "<ENTRYPOINT>", // optional
+    commands: "<COMMANDS>", // optional
     scopes: new List<string>(), // optional
-    installationId: "{$example}", // optional
-    providerRepositoryId: "{$example}", // optional
-    providerBranch: "{$example}", // optional
+    installationId: "<INSTALLATION_ID>", // optional
+    providerRepositoryId: "<PROVIDER_REPOSITORY_ID>", // optional
+    providerBranch: "<PROVIDER_BRANCH>", // optional
     providerSilentMode: false, // optional
-    providerRootDirectory: "{$example}", // optional
-    templateRepository: "{$example}", // optional
-    templateOwner: "{$example}", // optional
-    templateRootDirectory: "{$example}", // optional
-    templateVersion: "{$example}", // optional
+    providerRootDirectory: "<PROVIDER_ROOT_DIRECTORY>", // optional
+    templateRepository: "<TEMPLATE_REPOSITORY>", // optional
+    templateOwner: "<TEMPLATE_OWNER>", // optional
+    templateRootDirectory: "<TEMPLATE_ROOT_DIRECTORY>", // optional
+    templateVersion: "<TEMPLATE_VERSION>", // optional
     specification: "" // optional
 );

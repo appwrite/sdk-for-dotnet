@@ -43,7 +43,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -83,7 +84,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -115,7 +117,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -156,7 +159,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -197,7 +201,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -244,7 +249,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -278,7 +284,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 

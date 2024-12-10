@@ -10,10 +10,10 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateVonageProvider(
-    providerId: "{$example}",
-    name: "{$example}", // optional
+    providerId: "<PROVIDER_ID>",
+    name: "<NAME>", // optional
     enabled: false, // optional
-    apiKey: "{$example}", // optional
-    apiSecret: "{$example}", // optional
-    from: "{$example}" // optional
+    apiKey: "<API_KEY>", // optional
+    apiSecret: "<API_SECRET>", // optional
+    from: "<FROM>" // optional
 );

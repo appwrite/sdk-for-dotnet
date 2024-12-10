@@ -10,10 +10,10 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeEmail result = await databases.CreateEmailAttribute(
-    databaseId: "{$example}",
-    collectionId: "{$example}",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
     key: "",
     required: false,
-    default: "{$example}", // optional
+    default: "email@example.com", // optional
     array: false // optional
 );

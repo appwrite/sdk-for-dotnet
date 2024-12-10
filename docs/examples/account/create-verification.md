@@ -10,5 +10,5 @@ Client client = new Client()
 Account account = new Account(client);
 
 Token result = await account.CreateVerification(
-    url: "{$example}"
+    url: "https://example.com"
 );

@@ -10,6 +10,6 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.UpdatePhone(
-    userId: "{$example}",
-    number: "{$example}"
+    userId: "<USER_ID>",
+    number: "+12065550100"
 );

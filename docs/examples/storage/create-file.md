@@ -10,8 +10,8 @@ Client client = new Client()
 Storage storage = new Storage(client);
 
 File result = await storage.CreateFile(
-    bucketId: "{$example}",
-    fileId: "{$example}",
-    file: Payload.FromFile("/path/to/file.png"),
+    bucketId: "<BUCKET_ID>",
+    fileId: "<FILE_ID>",
+    file: InputFile.FromPath("./path-to-files/image.jpg"),
     permissions: ["read("any")"] // optional
 );

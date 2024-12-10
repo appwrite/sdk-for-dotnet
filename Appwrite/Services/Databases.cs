@@ -33,7 +33,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.DatabaseList Convert(Dictionary<string, object> it) =>
@@ -68,7 +69,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Database Convert(Dictionary<string, object> it) =>
@@ -101,7 +103,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Database Convert(Dictionary<string, object> it) =>
@@ -135,7 +138,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Database Convert(Dictionary<string, object> it) =>
@@ -168,7 +172,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -200,7 +205,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.CollectionList Convert(Dictionary<string, object> it) =>
@@ -240,7 +246,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Collection Convert(Dictionary<string, object> it) =>
@@ -274,7 +281,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Collection Convert(Dictionary<string, object> it) =>
@@ -311,7 +319,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Collection Convert(Dictionary<string, object> it) =>
@@ -345,7 +354,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -376,7 +386,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeList Convert(Dictionary<string, object> it) =>
@@ -414,7 +425,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeBoolean Convert(Dictionary<string, object> it) =>
@@ -452,7 +464,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeBoolean Convert(Dictionary<string, object> it) =>
@@ -489,7 +502,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeDatetime Convert(Dictionary<string, object> it) =>
@@ -527,7 +541,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeDatetime Convert(Dictionary<string, object> it) =>
@@ -565,7 +580,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeEmail Convert(Dictionary<string, object> it) =>
@@ -604,7 +620,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeEmail Convert(Dictionary<string, object> it) =>
@@ -644,7 +661,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeEnum Convert(Dictionary<string, object> it) =>
@@ -684,7 +702,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeEnum Convert(Dictionary<string, object> it) =>
@@ -725,7 +744,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeFloat Convert(Dictionary<string, object> it) =>
@@ -766,7 +786,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeFloat Convert(Dictionary<string, object> it) =>
@@ -807,7 +828,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeInteger Convert(Dictionary<string, object> it) =>
@@ -848,7 +870,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeInteger Convert(Dictionary<string, object> it) =>
@@ -886,7 +909,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeIp Convert(Dictionary<string, object> it) =>
@@ -925,7 +949,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeIp Convert(Dictionary<string, object> it) =>
@@ -966,7 +991,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeRelationship Convert(Dictionary<string, object> it) =>
@@ -1006,7 +1032,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeString Convert(Dictionary<string, object> it) =>
@@ -1046,7 +1073,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeString Convert(Dictionary<string, object> it) =>
@@ -1084,7 +1112,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeUrl Convert(Dictionary<string, object> it) =>
@@ -1123,7 +1152,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeUrl Convert(Dictionary<string, object> it) =>
@@ -1157,7 +1187,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -1188,7 +1219,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -1223,7 +1255,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.AttributeRelationship Convert(Dictionary<string, object> it) =>
@@ -1258,7 +1291,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.DocumentList Convert(Dictionary<string, object> it) =>
@@ -1297,7 +1331,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Document Convert(Dictionary<string, object> it) =>
@@ -1333,7 +1368,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Document Convert(Dictionary<string, object> it) =>
@@ -1370,7 +1406,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Document Convert(Dictionary<string, object> it) =>
@@ -1404,7 +1441,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 
@@ -1435,7 +1473,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.IndexList Convert(Dictionary<string, object> it) =>
@@ -1474,7 +1513,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Index Convert(Dictionary<string, object> it) =>
@@ -1508,7 +1548,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
             static Models.Index Convert(Dictionary<string, object> it) =>
@@ -1542,7 +1583,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }            };
+                { "content-type", "application/json" }
+            };
 
 
 

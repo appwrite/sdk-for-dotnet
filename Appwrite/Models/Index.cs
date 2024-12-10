@@ -23,10 +23,10 @@ namespace Appwrite.Models
         public string Error { get; private set; }
 
         [JsonProperty("attributes")]
-        public List<object> Attributes { get; private set; }
+        public List<string> Attributes { get; private set; }
 
         [JsonProperty("orders")]
-        public List<object>? Orders { get; private set; }
+        public List<string>? Orders { get; private set; }
 
         [JsonProperty("$createdAt")]
         public string CreatedAt { get; private set; }
@@ -39,8 +39,8 @@ namespace Appwrite.Models
             string type,
             string status,
             string error,
-            List<object> attributes,
-            List<object>? orders,
+            List<string> attributes,
+            List<string>? orders,
             string createdAt,
             string updatedAt
         ) {
@@ -59,8 +59,8 @@ namespace Appwrite.Models
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
-            attributes: ((JArray)map["attributes"]).ToObject<List<object>>(),
-            orders: ((JArray)map["orders"]).ToObject<List<object>>(),
+            attributes: ((JArray)map["attributes"]).ToObject<List<string>>(),
+            orders: ((JArray)map["orders"]).ToObject<List<string>>(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString()
         );

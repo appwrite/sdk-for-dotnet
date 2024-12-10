@@ -10,6 +10,6 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.UpdateName(
-    userId: "{$example}",
-    name: "{$example}"
+    userId: "<USER_ID>",
+    name: "<NAME>"
 );

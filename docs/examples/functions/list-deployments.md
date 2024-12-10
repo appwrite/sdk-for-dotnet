@@ -10,7 +10,7 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 DeploymentList result = await functions.ListDeployments(
-    functionId: "{$example}",
+    functionId: "<FUNCTION_ID>",
     queries: new List<string>(), // optional
-    search: "{$example}" // optional
+    search: "<SEARCH>" // optional
 );

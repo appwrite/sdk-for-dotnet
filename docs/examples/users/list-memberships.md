@@ -10,5 +10,5 @@ Client client = new Client()
 Users users = new Users(client);
 
 MembershipList result = await users.ListMemberships(
-    userId: "{$example}"
+    userId: "<USER_ID>"
 );

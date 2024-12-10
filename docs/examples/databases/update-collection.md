@@ -10,9 +10,9 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 Collection result = await databases.UpdateCollection(
-    databaseId: "{$example}",
-    collectionId: "{$example}",
-    name: "{$example}",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    name: "<NAME>",
     permissions: ["read("any")"], // optional
     documentSecurity: false, // optional
     enabled: false // optional

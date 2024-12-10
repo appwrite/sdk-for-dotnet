@@ -10,6 +10,6 @@ Client client = new Client()
 Users users = new Users(client);
 
 await users.DeleteSession(
-    userId: "{$example}",
-    sessionId: "{$example}"
+    userId: "<USER_ID>",
+    sessionId: "<SESSION_ID>"
 );

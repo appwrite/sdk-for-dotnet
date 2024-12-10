@@ -10,7 +10,7 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 Variable result = await functions.CreateVariable(
-    functionId: "{$example}",
-    key: "{$example}",
-    value: "{$example}"
+    functionId: "<FUNCTION_ID>",
+    key: "<KEY>",
+    value: "<VALUE>"
 );

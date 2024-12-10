@@ -10,7 +10,7 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Topic result = await messaging.CreateTopic(
-    topicId: "{$example}",
-    name: "{$example}",
+    topicId: "<TOPIC_ID>",
+    name: "<NAME>",
     subscribe: ["any"] // optional
 );

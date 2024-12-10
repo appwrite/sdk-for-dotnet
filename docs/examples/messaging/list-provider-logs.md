@@ -10,6 +10,6 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 LogList result = await messaging.ListProviderLogs(
-    providerId: "{$example}",
+    providerId: "<PROVIDER_ID>",
     queries: new List<string>() // optional
 );

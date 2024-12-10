@@ -11,5 +11,5 @@ Databases databases = new Databases(client);
 
 DatabaseList result = await databases.List(
     queries: new List<string>(), // optional
-    search: "{$example}" // optional
+    search: "<SEARCH>" // optional
 );

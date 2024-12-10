@@ -10,5 +10,5 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 await messaging.Delete(
-    messageId: "{$example}"
+    messageId: "<MESSAGE_ID>"
 );

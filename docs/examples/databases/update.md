@@ -10,7 +10,7 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 Database result = await databases.Update(
-    databaseId: "{$example}",
-    name: "{$example}",
+    databaseId: "<DATABASE_ID>",
+    name: "<NAME>",
     enabled: false // optional
 );

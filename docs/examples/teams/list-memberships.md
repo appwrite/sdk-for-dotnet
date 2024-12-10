@@ -10,7 +10,7 @@ Client client = new Client()
 Teams teams = new Teams(client);
 
 MembershipList result = await teams.ListMemberships(
-    teamId: "{$example}",
+    teamId: "<TEAM_ID>",
     queries: new List<string>(), // optional
-    search: "{$example}" // optional
+    search: "<SEARCH>" // optional
 );

@@ -10,6 +10,6 @@ Client client = new Client()
 Account account = new Account(client);
 
 User result = await account.UpdatePhone(
-    phone: "{$example}",
-    password: "{$example}"
+    phone: "+12065550100",
+    password: "password"
 );

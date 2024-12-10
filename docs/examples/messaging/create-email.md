@@ -10,9 +10,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Message result = await messaging.CreateEmail(
-    messageId: "{$example}",
-    subject: "{$example}",
-    content: "{$example}",
+    messageId: "<MESSAGE_ID>",
+    subject: "<SUBJECT>",
+    content: "<CONTENT>",
     topics: new List<string>(), // optional
     users: new List<string>(), // optional
     targets: new List<string>(), // optional

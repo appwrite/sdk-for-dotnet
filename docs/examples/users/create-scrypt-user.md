@@ -10,13 +10,13 @@ Client client = new Client()
 Users users = new Users(client);
 
 User result = await users.CreateScryptUser(
-    userId: "{$example}",
-    email: "{$example}",
-    password: "{$example}",
-    passwordSalt: "{$example}",
+    userId: "<USER_ID>",
+    email: "email@example.com",
+    password: "password",
+    passwordSalt: "<PASSWORD_SALT>",
     passwordCpu: 0,
     passwordMemory: 0,
     passwordParallel: 0,
     passwordLength: 0,
-    name: "{$example}" // optional
+    name: "<NAME>" // optional
 );

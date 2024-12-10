@@ -20,7 +20,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonProperty("execute")]
-        public List<object> Execute { get; private set; }
+        public List<string> Execute { get; private set; }
 
         [JsonProperty("name")]
         public string Name { get; private set; }
@@ -41,13 +41,13 @@ namespace Appwrite.Models
         public string Deployment { get; private set; }
 
         [JsonProperty("scopes")]
-        public List<object> Scopes { get; private set; }
+        public List<string> Scopes { get; private set; }
 
         [JsonProperty("vars")]
         public List<Variable> Vars { get; private set; }
 
         [JsonProperty("events")]
-        public List<object> Events { get; private set; }
+        public List<string> Events { get; private set; }
 
         [JsonProperty("schedule")]
         public string Schedule { get; private set; }
@@ -86,16 +86,16 @@ namespace Appwrite.Models
             string id,
             string createdAt,
             string updatedAt,
-            List<object> execute,
+            List<string> execute,
             string name,
             bool enabled,
             bool live,
             bool logging,
             string runtime,
             string deployment,
-            List<object> scopes,
+            List<string> scopes,
             List<Variable> vars,
-            List<object> events,
+            List<string> events,
             string schedule,
             long timeout,
             string entrypoint,
@@ -138,16 +138,16 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            execute: ((JArray)map["execute"]).ToObject<List<object>>(),
+            execute: ((JArray)map["execute"]).ToObject<List<string>>(),
             name: map["name"].ToString(),
             enabled: (bool)map["enabled"],
             live: (bool)map["live"],
             logging: (bool)map["logging"],
             runtime: map["runtime"].ToString(),
             deployment: map["deployment"].ToString(),
-            scopes: ((JArray)map["scopes"]).ToObject<List<object>>(),
+            scopes: ((JArray)map["scopes"]).ToObject<List<string>>(),
             vars: ((JArray)map["vars"]).ToObject<List<Dictionary<string, object>>>().Select(it => Variable.From(map: it)).ToList(),
-            events: ((JArray)map["events"]).ToObject<List<object>>(),
+            events: ((JArray)map["events"]).ToObject<List<string>>(),
             schedule: map["schedule"].ToString(),
             timeout: Convert.ToInt64(map["timeout"]),
             entrypoint: map["entrypoint"].ToString(),

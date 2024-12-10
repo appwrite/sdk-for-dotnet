@@ -35,7 +35,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonProperty("elements")]
-        public List<object> Elements { get; private set; }
+        public List<string> Elements { get; private set; }
 
         [JsonProperty("format")]
         public string Format { get; private set; }
@@ -52,7 +52,7 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            List<object> elements,
+            List<string> elements,
             string format,
             string? xdefault
         ) {
@@ -78,9 +78,9 @@ namespace Appwrite.Models
             array: (bool?)map["array"],
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            elements: ((JArray)map["elements"]).ToObject<List<object>>(),
+            elements: ((JArray)map["elements"]).ToObject<List<string>>(),
             format: map["format"].ToString(),
-            xdefault: map.TryGetValue("default", out var xdefault) ?  xdefault?.ToString() : null
+            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

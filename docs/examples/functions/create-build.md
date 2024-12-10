@@ -10,7 +10,7 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
  result = await functions.CreateBuild(
-    functionId: "{$example}",
-    deploymentId: "{$example}",
-    buildId: "{$example}" // optional
+    functionId: "<FUNCTION_ID>",
+    deploymentId: "<DEPLOYMENT_ID>",
+    buildId: "<BUILD_ID>" // optional
 );

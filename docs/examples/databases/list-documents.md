@@ -10,7 +10,7 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 DocumentList result = await databases.ListDocuments(
-    databaseId: "{$example}",
-    collectionId: "{$example}",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
     queries: new List<string>() // optional
 );

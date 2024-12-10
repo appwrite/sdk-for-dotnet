@@ -10,8 +10,8 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeFloat result = await databases.UpdateFloatAttribute(
-    databaseId: "{$example}",
-    collectionId: "{$example}",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
     key: "",
     required: false,
     min: 0,

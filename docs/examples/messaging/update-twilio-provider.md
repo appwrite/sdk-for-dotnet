@@ -10,10 +10,10 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateTwilioProvider(
-    providerId: "{$example}",
-    name: "{$example}", // optional
+    providerId: "<PROVIDER_ID>",
+    name: "<NAME>", // optional
     enabled: false, // optional
-    accountSid: "{$example}", // optional
-    authToken: "{$example}", // optional
-    from: "{$example}" // optional
+    accountSid: "<ACCOUNT_SID>", // optional
+    authToken: "<AUTH_TOKEN>", // optional
+    from: "<FROM>" // optional
 );

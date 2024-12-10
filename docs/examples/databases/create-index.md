@@ -11,8 +11,8 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 Index result = await databases.CreateIndex(
-    databaseId: "{$example}",
-    collectionId: "{$example}",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
     key: "",
     type: IndexType.Key,
     attributes: new List<string>(),

@@ -10,6 +10,6 @@ Client client = new Client()
 Storage storage = new Storage(client);
 
 byte[] result = await storage.GetFileDownload(
-    bucketId: "{$example}",
-    fileId: "{$example}"
+    bucketId: "<BUCKET_ID>",
+    fileId: "<FILE_ID>"
 );

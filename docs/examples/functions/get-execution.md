@@ -10,6 +10,6 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 Execution result = await functions.GetExecution(
-    functionId: "{$example}",
-    executionId: "{$example}"
+    functionId: "<FUNCTION_ID>",
+    executionId: "<EXECUTION_ID>"
 );

@@ -10,7 +10,7 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 ExecutionList result = await functions.ListExecutions(
-    functionId: "{$example}",
+    functionId: "<FUNCTION_ID>",
     queries: new List<string>(), // optional
-    search: "{$example}" // optional
+    search: "<SEARCH>" // optional
 );

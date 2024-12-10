@@ -34,6 +34,9 @@ namespace Appwrite.Models
         [JsonProperty("identifier")]
         public string Identifier { get; private set; }
 
+        [JsonProperty("expired")]
+        public bool Expired { get; private set; }
+
         public Target(
             string id,
             string createdAt,
@@ -42,7 +45,8 @@ namespace Appwrite.Models
             string userId,
             string? providerId,
             string providerType,
-            string identifier
+            string identifier,
+            bool expired
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -52,6 +56,7 @@ namespace Appwrite.Models
             ProviderId = providerId;
             ProviderType = providerType;
             Identifier = identifier;
+            Expired = expired;
         }
 
         public static Target From(Dictionary<string, object> map) => new Target(
@@ -60,9 +65,10 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
             userId: map["userId"].ToString(),
-            providerId: map.TryGetValue("providerId", out var providerId) ?  providerId?.ToString() : null,
+            providerId: map.TryGetValue("providerId", out var providerId) ? providerId?.ToString() : null,
             providerType: map["providerType"].ToString(),
-            identifier: map["identifier"].ToString()
+            identifier: map["identifier"].ToString(),
+            expired: (bool)map["expired"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -74,7 +80,8 @@ namespace Appwrite.Models
             { "userId", UserId },
             { "providerId", ProviderId },
             { "providerType", ProviderType },
-            { "identifier", Identifier }
+            { "identifier", Identifier },
+            { "expired", Expired }
         };
     }
 }

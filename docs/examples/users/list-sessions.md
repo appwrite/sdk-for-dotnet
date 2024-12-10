@@ -10,5 +10,5 @@ Client client = new Client()
 Users users = new Users(client);
 
 SessionList result = await users.ListSessions(
-    userId: "{$example}"
+    userId: "<USER_ID>"
 );

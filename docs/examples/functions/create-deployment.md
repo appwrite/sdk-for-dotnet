@@ -10,9 +10,9 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 Deployment result = await functions.CreateDeployment(
-    functionId: "{$example}",
-    code: Payload.FromFile("/path/to/file.png"),
+    functionId: "<FUNCTION_ID>",
+    code: InputFile.FromPath("./path-to-files/image.jpg"),
     activate: false,
-    entrypoint: "{$example}", // optional
-    commands: "{$example}" // optional
+    entrypoint: "<ENTRYPOINT>", // optional
+    commands: "<COMMANDS>" // optional
 );

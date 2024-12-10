@@ -10,6 +10,6 @@ Client client = new Client()
 Storage storage = new Storage(client);
 
 await storage.DeleteFile(
-    bucketId: "{$example}",
-    fileId: "{$example}"
+    bucketId: "<BUCKET_ID>",
+    fileId: "<FILE_ID>"
 );

@@ -10,6 +10,6 @@ Client client = new Client()
 Teams teams = new Teams(client);
 
 Membership result = await teams.GetMembership(
-    teamId: "{$example}",
-    membershipId: "{$example}"
+    teamId: "<TEAM_ID>",
+    membershipId: "<MEMBERSHIP_ID>"
 );

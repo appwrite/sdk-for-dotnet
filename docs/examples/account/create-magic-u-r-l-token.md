@@ -9,8 +9,8 @@ Client client = new Client()
 Account account = new Account(client);
 
 Token result = await account.CreateMagicURLToken(
-    userId: "{$example}",
-    email: "{$example}",
-    url: "{$example}", // optional
+    userId: "<USER_ID>",
+    email: "email@example.com",
+    url: "https://example.com", // optional
     phrase: false // optional
 );

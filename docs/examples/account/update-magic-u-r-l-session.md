@@ -9,6 +9,6 @@ Client client = new Client()
 Account account = new Account(client);
 
 Session result = await account.UpdateMagicURLSession(
-    userId: "{$example}",
-    secret: "{$example}"
+    userId: "<USER_ID>",
+    secret: "<SECRET>"
 );

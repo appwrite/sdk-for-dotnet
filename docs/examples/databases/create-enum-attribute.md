@@ -10,11 +10,11 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 AttributeEnum result = await databases.CreateEnumAttribute(
-    databaseId: "{$example}",
-    collectionId: "{$example}",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
     key: "",
     elements: new List<string>(),
     required: false,
-    default: "{$example}", // optional
+    default: "<DEFAULT>", // optional
     array: false // optional
 );

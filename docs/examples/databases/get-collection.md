@@ -10,6 +10,6 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 Collection result = await databases.GetCollection(
-    databaseId: "{$example}",
-    collectionId: "{$example}"
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>"
 );

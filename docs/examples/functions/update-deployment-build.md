@@ -10,6 +10,6 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 Build result = await functions.UpdateDeploymentBuild(
-    functionId: "{$example}",
-    deploymentId: "{$example}"
+    functionId: "<FUNCTION_ID>",
+    deploymentId: "<DEPLOYMENT_ID>"
 );

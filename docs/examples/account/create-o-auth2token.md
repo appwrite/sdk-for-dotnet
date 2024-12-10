@@ -11,7 +11,7 @@ Account account = new Account(client);
 
 await account.CreateOAuth2Token(
     provider: OAuthProvider.Amazon,
-    success: "{$example}", // optional
-    failure: "{$example}", // optional
+    success: "https://example.com", // optional
+    failure: "https://example.com", // optional
     scopes: new List<string>() // optional
 );

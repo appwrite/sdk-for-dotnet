@@ -10,14 +10,14 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateMailgunProvider(
-    providerId: "{$example}",
-    name: "{$example}", // optional
-    apiKey: "{$example}", // optional
-    domain: "{$example}", // optional
+    providerId: "<PROVIDER_ID>",
+    name: "<NAME>", // optional
+    apiKey: "<API_KEY>", // optional
+    domain: "<DOMAIN>", // optional
     isEuRegion: false, // optional
     enabled: false, // optional
-    fromName: "{$example}", // optional
-    fromEmail: "{$example}", // optional
-    replyToName: "{$example}", // optional
-    replyToEmail: "{$example}" // optional
+    fromName: "<FROM_NAME>", // optional
+    fromEmail: "email@example.com", // optional
+    replyToName: "<REPLY_TO_NAME>", // optional
+    replyToEmail: "<REPLY_TO_EMAIL>" // optional
 );

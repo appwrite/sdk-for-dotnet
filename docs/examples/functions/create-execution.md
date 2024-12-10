@@ -11,10 +11,10 @@ Client client = new Client()
 Functions functions = new Functions(client);
 
 Execution result = await functions.CreateExecution(
-    functionId: "{$example}",
-    body: Payload.fromJson(new KeyValuePair<string, string>("x", "y")), // optional
+    functionId: "<FUNCTION_ID>",
+    body: "<BODY>", // optional
     async: false, // optional
-    path: "{$example}", // optional
+    path: "<PATH>", // optional
     method: ExecutionMethod.GET, // optional
     headers: [object], // optional
     scheduledAt: "" // optional
