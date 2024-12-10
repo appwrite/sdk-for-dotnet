@@ -20,7 +20,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonProperty("$permissions")]
-        public List<object> Permissions { get; private set; }
+        public List<string> Permissions { get; private set; }
 
         [JsonProperty("databaseId")]
         public string DatabaseId { get; private set; }
@@ -44,7 +44,7 @@ namespace Appwrite.Models
             string id,
             string createdAt,
             string updatedAt,
-            List<object> permissions,
+            List<string> permissions,
             string databaseId,
             string name,
             bool enabled,
@@ -68,7 +68,7 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<object>>(),
+            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
             databaseId: map["databaseId"].ToString(),
             name: map["name"].ToString(),
             enabled: (bool)map["enabled"],

@@ -11,16 +11,16 @@ namespace Appwrite.Models
     public class MfaRecoveryCodes
     {
         [JsonProperty("recoveryCodes")]
-        public List<object> RecoveryCodes { get; private set; }
+        public List<string> RecoveryCodes { get; private set; }
 
         public MfaRecoveryCodes(
-            List<object> recoveryCodes
+            List<string> recoveryCodes
         ) {
             RecoveryCodes = recoveryCodes;
         }
 
         public static MfaRecoveryCodes From(Dictionary<string, object> map) => new MfaRecoveryCodes(
-            recoveryCodes: ((JArray)map["recoveryCodes"]).ToObject<List<object>>()
+            recoveryCodes: ((JArray)map["recoveryCodes"]).ToObject<List<string>>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

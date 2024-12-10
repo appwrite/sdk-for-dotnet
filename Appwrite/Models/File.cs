@@ -23,7 +23,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonProperty("$permissions")]
-        public List<object> Permissions { get; private set; }
+        public List<string> Permissions { get; private set; }
 
         [JsonProperty("name")]
         public string Name { get; private set; }
@@ -48,7 +48,7 @@ namespace Appwrite.Models
             string bucketId,
             string createdAt,
             string updatedAt,
-            List<object> permissions,
+            List<string> permissions,
             string name,
             string signature,
             string mimeType,
@@ -74,7 +74,7 @@ namespace Appwrite.Models
             bucketId: map["bucketId"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<object>>(),
+            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
             name: map["name"].ToString(),
             signature: map["signature"].ToString(),
             mimeType: map["mimeType"].ToString(),

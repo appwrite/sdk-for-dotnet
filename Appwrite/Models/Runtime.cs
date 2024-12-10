@@ -32,7 +32,7 @@ namespace Appwrite.Models
         public string Logo { get; private set; }
 
         [JsonProperty("supports")]
-        public List<object> Supports { get; private set; }
+        public List<string> Supports { get; private set; }
 
         public Runtime(
             string id,
@@ -42,7 +42,7 @@ namespace Appwrite.Models
             string xbase,
             string image,
             string logo,
-            List<object> supports
+            List<string> supports
         ) {
             Id = id;
             Key = key;
@@ -62,7 +62,7 @@ namespace Appwrite.Models
             xbase: map["base"].ToString(),
             image: map["image"].ToString(),
             logo: map["logo"].ToString(),
-            supports: ((JArray)map["supports"]).ToObject<List<object>>()
+            supports: ((JArray)map["supports"]).ToObject<List<string>>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

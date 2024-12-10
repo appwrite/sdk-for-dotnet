@@ -20,7 +20,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonProperty("$permissions")]
-        public List<object> Permissions { get; private set; }
+        public List<string> Permissions { get; private set; }
 
         [JsonProperty("fileSecurity")]
         public bool FileSecurity { get; private set; }
@@ -35,7 +35,7 @@ namespace Appwrite.Models
         public long MaximumFileSize { get; private set; }
 
         [JsonProperty("allowedFileExtensions")]
-        public List<object> AllowedFileExtensions { get; private set; }
+        public List<string> AllowedFileExtensions { get; private set; }
 
         [JsonProperty("compression")]
         public string Compression { get; private set; }
@@ -50,12 +50,12 @@ namespace Appwrite.Models
             string id,
             string createdAt,
             string updatedAt,
-            List<object> permissions,
+            List<string> permissions,
             bool fileSecurity,
             string name,
             bool enabled,
             long maximumFileSize,
-            List<object> allowedFileExtensions,
+            List<string> allowedFileExtensions,
             string compression,
             bool encryption,
             bool antivirus
@@ -78,12 +78,12 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<object>>(),
+            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
             fileSecurity: (bool)map["fileSecurity"],
             name: map["name"].ToString(),
             enabled: (bool)map["enabled"],
             maximumFileSize: Convert.ToInt64(map["maximumFileSize"]),
-            allowedFileExtensions: ((JArray)map["allowedFileExtensions"]).ToObject<List<object>>(),
+            allowedFileExtensions: ((JArray)map["allowedFileExtensions"]).ToObject<List<string>>(),
             compression: map["compression"].ToString(),
             encryption: (bool)map["encryption"],
             antivirus: (bool)map["antivirus"]
