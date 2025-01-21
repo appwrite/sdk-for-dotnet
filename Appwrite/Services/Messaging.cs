@@ -143,7 +143,7 @@ namespace Appwrite.Services
         /// Create a new push notification.
         /// </para>
         /// </summary>
-        public Task<Models.Message> CreatePush(string messageId, string title, string body, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, string? badge = null, bool? draft = null, string? scheduledAt = null)
+        public Task<Models.Message> CreatePush(string messageId, string? title = null, string? body = null, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, bool? draft = null, string? scheduledAt = null, bool? contentAvailable = null, bool? critical = null, Appwrite.Enums.MessagePriority? priority = null)
         {
             var apiPath = "/messaging/messages/push";
 
@@ -164,7 +164,10 @@ namespace Appwrite.Services
                 { "tag", tag },
                 { "badge", badge },
                 { "draft", draft },
-                { "scheduledAt", scheduledAt }
+                { "scheduledAt", scheduledAt },
+                { "contentAvailable", contentAvailable },
+                { "critical", critical },
+                { "priority", priority }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -192,7 +195,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Message> UpdatePush(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? title = null, string? body = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, bool? draft = null, string? scheduledAt = null)
+        public Task<Models.Message> UpdatePush(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? title = null, string? body = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, bool? draft = null, string? scheduledAt = null, bool? contentAvailable = null, bool? critical = null, Appwrite.Enums.MessagePriority? priority = null)
         {
             var apiPath = "/messaging/messages/push/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -213,7 +216,10 @@ namespace Appwrite.Services
                 { "tag", tag },
                 { "badge", badge },
                 { "draft", draft },
-                { "scheduledAt", scheduledAt }
+                { "scheduledAt", scheduledAt },
+                { "contentAvailable", contentAvailable },
+                { "critical", critical },
+                { "priority", priority }
             };
 
             var apiHeaders = new Dictionary<string, string>()

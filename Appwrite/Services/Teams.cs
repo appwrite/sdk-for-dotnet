@@ -188,7 +188,8 @@ namespace Appwrite.Services
         /// List team memberships
         /// <para>
         /// Use this endpoint to list a team's members using the team's ID. All team
-        /// members have read access to this endpoint.
+        /// members have read access to this endpoint. Hide sensitive attributes from
+        /// the response by toggling membership privacy in the Console.
         /// </para>
         /// </summary>
         public Task<Models.MembershipList> ListMemberships(string teamId, List<string>? queries = null, string? search = null)
@@ -283,7 +284,8 @@ namespace Appwrite.Services
         /// Get team membership
         /// <para>
         /// Get a team member by the membership unique id. All team members have read
-        /// access for this resource.
+        /// access for this resource. Hide sensitive attributes from the response by
+        /// toggling membership privacy in the Console.
         /// </para>
         /// </summary>
         public Task<Models.Membership> GetMembership(string teamId, string membershipId)

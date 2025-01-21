@@ -47,7 +47,7 @@ namespace Appwrite.Models
         public bool Mfa { get; private set; }
 
         [JsonProperty("roles")]
-        public List<object> Roles { get; private set; }
+        public List<string> Roles { get; private set; }
 
         public Membership(
             string id,
@@ -62,7 +62,7 @@ namespace Appwrite.Models
             string joined,
             bool confirm,
             bool mfa,
-            List<object> roles
+            List<string> roles
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -92,7 +92,7 @@ namespace Appwrite.Models
             joined: map["joined"].ToString(),
             confirm: (bool)map["confirm"],
             mfa: (bool)map["mfa"],
-            roles: ((JArray)map["roles"]).ToObject<List<object>>()
+            roles: ((JArray)map["roles"]).ToObject<List<string>>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

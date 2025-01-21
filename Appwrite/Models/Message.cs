@@ -23,13 +23,13 @@ namespace Appwrite.Models
         public string ProviderType { get; private set; }
 
         [JsonProperty("topics")]
-        public List<object> Topics { get; private set; }
+        public List<string> Topics { get; private set; }
 
         [JsonProperty("users")]
-        public List<object> Users { get; private set; }
+        public List<string> Users { get; private set; }
 
         [JsonProperty("targets")]
-        public List<object> Targets { get; private set; }
+        public List<string> Targets { get; private set; }
 
         [JsonProperty("scheduledAt")]
         public string? ScheduledAt { get; private set; }
@@ -38,7 +38,7 @@ namespace Appwrite.Models
         public string? DeliveredAt { get; private set; }
 
         [JsonProperty("deliveryErrors")]
-        public List<object>? DeliveryErrors { get; private set; }
+        public List<string>? DeliveryErrors { get; private set; }
 
         [JsonProperty("deliveredTotal")]
         public long DeliveredTotal { get; private set; }
@@ -54,12 +54,12 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string providerType,
-            List<object> topics,
-            List<object> users,
-            List<object> targets,
+            List<string> topics,
+            List<string> users,
+            List<string> targets,
             string? scheduledAt,
             string? deliveredAt,
-            List<object>? deliveryErrors,
+            List<string>? deliveryErrors,
             long deliveredTotal,
             object data,
             string status
@@ -84,12 +84,12 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             providerType: map["providerType"].ToString(),
-            topics: ((JArray)map["topics"]).ToObject<List<object>>(),
-            users: ((JArray)map["users"]).ToObject<List<object>>(),
-            targets: ((JArray)map["targets"]).ToObject<List<object>>(),
+            topics: ((JArray)map["topics"]).ToObject<List<string>>(),
+            users: ((JArray)map["users"]).ToObject<List<string>>(),
+            targets: ((JArray)map["targets"]).ToObject<List<string>>(),
             scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null,
             deliveredAt: map.TryGetValue("deliveredAt", out var deliveredAt) ? deliveredAt?.ToString() : null,
-            deliveryErrors: ((JArray)map["deliveryErrors"]).ToObject<List<object>>(),
+            deliveryErrors: ((JArray)map["deliveryErrors"]).ToObject<List<string>>(),
             deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
             data: map["data"].ToString(),
             status: map["status"].ToString()

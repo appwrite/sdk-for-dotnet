@@ -28,8 +28,14 @@ namespace Appwrite.Models
         [JsonProperty("array")]
         public bool? Array { get; private set; }
 
+        [JsonProperty("$createdAt")]
+        public string CreatedAt { get; private set; }
+
+        [JsonProperty("$updatedAt")]
+        public string UpdatedAt { get; private set; }
+
         [JsonProperty("elements")]
-        public List<object> Elements { get; private set; }
+        public List<string> Elements { get; private set; }
 
         [JsonProperty("format")]
         public string Format { get; private set; }
@@ -44,7 +50,9 @@ namespace Appwrite.Models
             string error,
             bool required,
             bool? array,
-            List<object> elements,
+            string createdAt,
+            string updatedAt,
+            List<string> elements,
             string format,
             string? xdefault
         ) {
@@ -54,6 +62,8 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Elements = elements;
             Format = format;
             Default = xdefault;
@@ -66,7 +76,9 @@ namespace Appwrite.Models
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: (bool?)map["array"],
-            elements: ((JArray)map["elements"]).ToObject<List<object>>(),
+            createdAt: map["$createdAt"].ToString(),
+            updatedAt: map["$updatedAt"].ToString(),
+            elements: ((JArray)map["elements"]).ToObject<List<string>>(),
             format: map["format"].ToString(),
             xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
         );
@@ -79,6 +91,8 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "elements", Elements },
             { "format", Format },
             { "default", Default }
