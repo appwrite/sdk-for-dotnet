@@ -89,13 +89,16 @@ namespace Appwrite.Models
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
-            required: (bool)map["required"],
-            array: (bool?)map["array"],
+            required:                                (bool)map["required"]
+,
+            array:                                (bool?)map["array"]
+,
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             relatedCollection: map["relatedCollection"].ToString(),
             relationType: map["relationType"].ToString(),
-            twoWay: (bool)map["twoWay"],
+            twoWay:                                (bool)map["twoWay"]
+,
             twoWayKey: map["twoWayKey"].ToString(),
             onDelete: map["onDelete"].ToString(),
             side: map["side"].ToString()

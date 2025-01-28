@@ -718,7 +718,7 @@ namespace Appwrite.Services
         /// Delete an authenticator app.
         /// </para>
         /// </summary>
-        public Task<Models.User> DeleteMfaAuthenticator(string userId, Appwrite.Enums.AuthenticatorType type)
+        public Task<object> DeleteMfaAuthenticator(string userId, Appwrite.Enums.AuthenticatorType type)
         {
             var apiPath = "/users/{userId}/mfa/authenticators/{type}"
                 .Replace("{userId}", userId)
@@ -734,15 +734,12 @@ namespace Appwrite.Services
             };
 
 
-            static Models.User Convert(Dictionary<string, object> it) =>
-                Models.User.From(map: it);
 
-            return _client.Call<Models.User>(
+            return _client.Call<object>(
                 method: "DELETE",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 

@@ -282,7 +282,7 @@ namespace Appwrite.Services
         /// <summary>
         /// Update SMS
         /// <para>
-        /// Update an email message by its unique ID.
+        /// Update an SMS message by its unique ID.
         /// 
         /// </para>
         /// </summary>

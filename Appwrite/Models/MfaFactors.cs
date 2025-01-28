@@ -35,10 +35,14 @@ namespace Appwrite.Models
         }
 
         public static MfaFactors From(Dictionary<string, object> map) => new MfaFactors(
-            totp: (bool)map["totp"],
-            phone: (bool)map["phone"],
-            email: (bool)map["email"],
-            recoveryCode: (bool)map["recoveryCode"]
+            totp:                                (bool)map["totp"]
+,
+            phone:                                (bool)map["phone"]
+,
+            email:                                (bool)map["email"]
+,
+            recoveryCode:                                (bool)map["recoveryCode"]
+
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

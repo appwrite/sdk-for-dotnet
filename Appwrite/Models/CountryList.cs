@@ -25,8 +25,13 @@ namespace Appwrite.Models
         }
 
         public static CountryList From(Dictionary<string, object> map) => new CountryList(
-            total: Convert.ToInt64(map["total"]),
-            countries: ((JArray)map["countries"]).ToObject<List<Dictionary<string, object>>>().Select(it => Country.From(map: it)).ToList()
+            total: Convert.ToInt64(map["total"])
+,
+            countries: 
+                        ((JArray)map["countries"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Country.From(map: it))
+                            .ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

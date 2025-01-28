@@ -49,8 +49,13 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
-            total: Convert.ToInt64(map["total"]),
-            prefs: Preferences.From(map: ((JObject)map["prefs"]).ToObject<Dictionary<string, object>>()!)
+            total: Convert.ToInt64(map["total"])
+,
+            prefs: 
+                        Preferences.From(
+                            map: ((JObject)map["prefs"])
+                                .ToObject<Dictionary<string, object>>()!
+                        )
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

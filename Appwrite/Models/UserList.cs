@@ -25,8 +25,13 @@ namespace Appwrite.Models
         }
 
         public static UserList From(Dictionary<string, object> map) => new UserList(
-            total: Convert.ToInt64(map["total"]),
-            users: ((JArray)map["users"]).ToObject<List<Dictionary<string, object>>>().Select(it => User.From(map: it)).ToList()
+            total: Convert.ToInt64(map["total"])
+,
+            users: 
+                        ((JArray)map["users"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => User.From(map: it))
+                            .ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

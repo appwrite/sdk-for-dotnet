@@ -84,13 +84,20 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             providerType: map["providerType"].ToString(),
-            topics: ((JArray)map["topics"]).ToObject<List<string>>(),
-            users: ((JArray)map["users"]).ToObject<List<string>>(),
-            targets: ((JArray)map["targets"]).ToObject<List<string>>(),
-            scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null,
-            deliveredAt: map.TryGetValue("deliveredAt", out var deliveredAt) ? deliveredAt?.ToString() : null,
-            deliveryErrors: ((JArray)map["deliveryErrors"]).ToObject<List<string>>(),
-            deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
+            topics:                        ((JArray)map["topics"]).ToObject<List<string>>()
+,
+            users:                        ((JArray)map["users"]).ToObject<List<string>>()
+,
+            targets:                        ((JArray)map["targets"]).ToObject<List<string>>()
+,
+            scheduledAt:map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null
+,
+            deliveredAt:map.TryGetValue("deliveredAt", out var deliveredAt) ? deliveredAt?.ToString() : null
+,
+            deliveryErrors:                        ((JArray)map["deliveryErrors"]).ToObject<List<string>>()
+,
+            deliveredTotal: Convert.ToInt64(map["deliveredTotal"])
+,
             data: map["data"].ToString(),
             status: map["status"].ToString()
         );

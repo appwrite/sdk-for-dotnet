@@ -74,13 +74,18 @@ namespace Appwrite.Models
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
-            required: (bool)map["required"],
-            array: (bool?)map["array"],
+            required:                                (bool)map["required"]
+,
+            array:                                (bool?)map["array"]
+,
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            min: map["min"] == null ? null : Convert.ToDouble(map["min"]),
-            max: map["max"] == null ? null : Convert.ToDouble(map["max"]),
-            xdefault: map["default"] == null ? null : Convert.ToDouble(map["default"])
+            min:map["min"] == null ? null :  Convert.ToDouble(map["min"])
+,
+            max:map["max"] == null ? null :  Convert.ToDouble(map["max"])
+,
+            xdefault:map["default"] == null ? null :  Convert.ToDouble(map["default"])
+
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

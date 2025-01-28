@@ -474,6 +474,13 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Rebuild deployment
+        /// <para>
+        /// Create a new build for an existing function deployment. This endpoint
+        /// allows you to rebuild a deployment with the updated function configuration,
+        /// including its entrypoint and build commands if they have been modified The
+        /// build process will be queued and executed asynchronously. The original
+        /// deployment's code will be preserved and used for the new build.
+        /// </para>
         /// </summary>
         public Task<object> CreateBuild(string functionId, string deploymentId, string? buildId = null)
         {
@@ -503,6 +510,13 @@ namespace Appwrite.Services
 
         /// <summary>
         /// Cancel deployment
+        /// <para>
+        /// Cancel an ongoing function deployment build. If the build is already in
+        /// progress, it will be stopped and marked as canceled. If the build hasn't
+        /// started yet, it will be marked as canceled without executing. You cannot
+        /// cancel builds that have already completed (status 'ready') or failed. The
+        /// response includes the final build status and details.
+        /// </para>
         /// </summary>
         public Task<Models.Build> UpdateDeploymentBuild(string functionId, string deploymentId)
         {

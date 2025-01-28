@@ -103,20 +103,32 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
+            permissions:                        ((JArray)map["$permissions"]).ToObject<List<string>>()
+,
             functionId: map["functionId"].ToString(),
             trigger: map["trigger"].ToString(),
             status: map["status"].ToString(),
             requestMethod: map["requestMethod"].ToString(),
             requestPath: map["requestPath"].ToString(),
-            requestHeaders: ((JArray)map["requestHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
-            responseStatusCode: Convert.ToInt64(map["responseStatusCode"]),
+            requestHeaders: 
+                        ((JArray)map["requestHeaders"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Headers.From(map: it))
+                            .ToList(),
+            responseStatusCode: Convert.ToInt64(map["responseStatusCode"])
+,
             responseBody: map["responseBody"].ToString(),
-            responseHeaders: ((JArray)map["responseHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
+            responseHeaders: 
+                        ((JArray)map["responseHeaders"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Headers.From(map: it))
+                            .ToList(),
             logs: map["logs"].ToString(),
             errors: map["errors"].ToString(),
-            duration: Convert.ToDouble(map["duration"]),
-            scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null
+            duration: Convert.ToDouble(map["duration"])
+,
+            scheduledAt:map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null
+
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

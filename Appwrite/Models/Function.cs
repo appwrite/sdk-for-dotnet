@@ -138,18 +138,29 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            execute: ((JArray)map["execute"]).ToObject<List<string>>(),
+            execute:                        ((JArray)map["execute"]).ToObject<List<string>>()
+,
             name: map["name"].ToString(),
-            enabled: (bool)map["enabled"],
-            live: (bool)map["live"],
-            logging: (bool)map["logging"],
+            enabled:                                (bool)map["enabled"]
+,
+            live:                                (bool)map["live"]
+,
+            logging:                                (bool)map["logging"]
+,
             runtime: map["runtime"].ToString(),
             deployment: map["deployment"].ToString(),
-            scopes: ((JArray)map["scopes"]).ToObject<List<string>>(),
-            vars: ((JArray)map["vars"]).ToObject<List<Dictionary<string, object>>>().Select(it => Variable.From(map: it)).ToList(),
-            events: ((JArray)map["events"]).ToObject<List<string>>(),
+            scopes:                        ((JArray)map["scopes"]).ToObject<List<string>>()
+,
+            vars: 
+                        ((JArray)map["vars"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Variable.From(map: it))
+                            .ToList(),
+            events:                        ((JArray)map["events"]).ToObject<List<string>>()
+,
             schedule: map["schedule"].ToString(),
-            timeout: Convert.ToInt64(map["timeout"]),
+            timeout: Convert.ToInt64(map["timeout"])
+,
             entrypoint: map["entrypoint"].ToString(),
             commands: map["commands"].ToString(),
             version: map["version"].ToString(),
@@ -157,7 +168,8 @@ namespace Appwrite.Models
             providerRepositoryId: map["providerRepositoryId"].ToString(),
             providerBranch: map["providerBranch"].ToString(),
             providerRootDirectory: map["providerRootDirectory"].ToString(),
-            providerSilentMode: (bool)map["providerSilentMode"],
+            providerSilentMode:                                (bool)map["providerSilentMode"]
+,
             specification: map["specification"].ToString()
         );
 

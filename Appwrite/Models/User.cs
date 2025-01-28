@@ -114,20 +114,36 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
-            password: map.TryGetValue("password", out var password) ? password?.ToString() : null,
-            hash: map.TryGetValue("hash", out var hash) ? hash?.ToString() : null,
-            hashOptions: map.TryGetValue("hashOptions", out var hashOptions) ? hashOptions?.ToString() : null,
+            password:map.TryGetValue("password", out var password) ? password?.ToString() : null
+,
+            hash:map.TryGetValue("hash", out var hash) ? hash?.ToString() : null
+,
+            hashOptions:map.TryGetValue("hashOptions", out var hashOptions) ? hashOptions?.ToString() : null
+,
             registration: map["registration"].ToString(),
-            status: (bool)map["status"],
-            labels: ((JArray)map["labels"]).ToObject<List<string>>(),
+            status:                                (bool)map["status"]
+,
+            labels:                        ((JArray)map["labels"]).ToObject<List<string>>()
+,
             passwordUpdate: map["passwordUpdate"].ToString(),
             email: map["email"].ToString(),
             phone: map["phone"].ToString(),
-            emailVerification: (bool)map["emailVerification"],
-            phoneVerification: (bool)map["phoneVerification"],
-            mfa: (bool)map["mfa"],
-            prefs: Preferences.From(map: ((JObject)map["prefs"]).ToObject<Dictionary<string, object>>()!),
-            targets: ((JArray)map["targets"]).ToObject<List<Dictionary<string, object>>>().Select(it => Target.From(map: it)).ToList(),
+            emailVerification:                                (bool)map["emailVerification"]
+,
+            phoneVerification:                                (bool)map["phoneVerification"]
+,
+            mfa:                                (bool)map["mfa"]
+,
+            prefs: 
+                        Preferences.From(
+                            map: ((JObject)map["prefs"])
+                                .ToObject<Dictionary<string, object>>()!
+                        ),
+            targets: 
+                        ((JArray)map["targets"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Target.From(map: it))
+                            .ToList(),
             accessedAt: map["accessedAt"].ToString()
         );
 
