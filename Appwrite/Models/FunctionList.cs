@@ -25,8 +25,13 @@ namespace Appwrite.Models
         }
 
         public static FunctionList From(Dictionary<string, object> map) => new FunctionList(
-            total: Convert.ToInt64(map["total"]),
-            functions: ((JArray)map["functions"]).ToObject<List<Dictionary<string, object>>>().Select(it => Function.From(map: it)).ToList()
+            total: Convert.ToInt64(map["total"])
+,
+            functions: 
+                        ((JArray)map["functions"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Function.From(map: it))
+                            .ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

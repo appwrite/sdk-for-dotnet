@@ -69,12 +69,16 @@ namespace Appwrite.Models
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
-            required: (bool)map["required"],
-            array: (bool?)map["array"],
+            required:                                (bool)map["required"]
+,
+            array:                                (bool?)map["array"]
+,
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            size: Convert.ToInt64(map["size"]),
-            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
+            size: Convert.ToInt64(map["size"])
+,
+            xdefault:map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
+
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

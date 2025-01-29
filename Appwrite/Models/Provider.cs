@@ -65,10 +65,12 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
             provider: map["provider"].ToString(),
-            enabled: (bool)map["enabled"],
+            enabled:                                (bool)map["enabled"]
+,
             type: map["type"].ToString(),
             credentials: map["credentials"].ToString(),
-            options: map.TryGetValue("options", out var options) ? options?.ToString() : null
+            options:map.TryGetValue("options", out var options) ? options?.ToString() : null
+
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

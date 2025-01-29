@@ -25,8 +25,13 @@ namespace Appwrite.Models
         }
 
         public static SpecificationList From(Dictionary<string, object> map) => new SpecificationList(
-            total: Convert.ToInt64(map["total"]),
-            specifications: ((JArray)map["specifications"]).ToObject<List<Dictionary<string, object>>>().Select(it => Specification.From(map: it)).ToList()
+            total: Convert.ToInt64(map["total"])
+,
+            specifications: 
+                        ((JArray)map["specifications"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Specification.From(map: it))
+                            .ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

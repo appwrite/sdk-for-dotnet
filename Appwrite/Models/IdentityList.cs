@@ -25,8 +25,13 @@ namespace Appwrite.Models
         }
 
         public static IdentityList From(Dictionary<string, object> map) => new IdentityList(
-            total: Convert.ToInt64(map["total"]),
-            identities: ((JArray)map["identities"]).ToObject<List<Dictionary<string, object>>>().Select(it => Identity.From(map: it)).ToList()
+            total: Convert.ToInt64(map["total"])
+,
+            identities: 
+                        ((JArray)map["identities"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Identity.From(map: it))
+                            .ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

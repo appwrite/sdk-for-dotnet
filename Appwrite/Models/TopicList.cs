@@ -25,8 +25,13 @@ namespace Appwrite.Models
         }
 
         public static TopicList From(Dictionary<string, object> map) => new TopicList(
-            total: Convert.ToInt64(map["total"]),
-            topics: ((JArray)map["topics"]).ToObject<List<Dictionary<string, object>>>().Select(it => Topic.From(map: it)).ToList()
+            total: Convert.ToInt64(map["total"])
+,
+            topics: 
+                        ((JArray)map["topics"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Topic.From(map: it))
+                            .ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

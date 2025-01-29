@@ -25,8 +25,13 @@ namespace Appwrite.Models
         }
 
         public static TargetList From(Dictionary<string, object> map) => new TargetList(
-            total: Convert.ToInt64(map["total"]),
-            targets: ((JArray)map["targets"]).ToObject<List<Dictionary<string, object>>>().Select(it => Target.From(map: it)).ToList()
+            total: Convert.ToInt64(map["total"])
+,
+            targets: 
+                        ((JArray)map["targets"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Target.From(map: it))
+                            .ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

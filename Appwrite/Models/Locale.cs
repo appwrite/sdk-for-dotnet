@@ -55,7 +55,8 @@ namespace Appwrite.Models
             country: map["country"].ToString(),
             continentCode: map["continentCode"].ToString(),
             continent: map["continent"].ToString(),
-            eu: (bool)map["eu"],
+            eu:                                (bool)map["eu"]
+,
             currency: map["currency"].ToString()
         );
 

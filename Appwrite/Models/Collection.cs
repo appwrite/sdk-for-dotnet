@@ -68,13 +68,21 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
+            permissions:                        ((JArray)map["$permissions"]).ToObject<List<string>>()
+,
             databaseId: map["databaseId"].ToString(),
             name: map["name"].ToString(),
-            enabled: (bool)map["enabled"],
-            documentSecurity: (bool)map["documentSecurity"],
-            attributes: ((JArray)map["attributes"]).ToObject<List<object>>(),
-            indexes: ((JArray)map["indexes"]).ToObject<List<Dictionary<string, object>>>().Select(it => Index.From(map: it)).ToList()
+            enabled:                                (bool)map["enabled"]
+,
+            documentSecurity:                                (bool)map["documentSecurity"]
+,
+            attributes:                        ((JArray)map["attributes"]).ToObject<List<object>>()
+,
+            indexes: 
+                        ((JArray)map["indexes"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Index.From(map: it))
+                            .ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -442,7 +442,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        public Task<object> UpdateMfaChallenge(string challengeId, string otp)
+        public Task<Models.Session> UpdateMfaChallenge(string challengeId, string otp)
         {
             var apiPath = "/account/mfa/challenge";
 
@@ -458,12 +458,15 @@ namespace Appwrite.Services
             };
 
 
+            static Models.Session Convert(Dictionary<string, object> it) =>
+                Models.Session.From(map: it);
 
-            return _client.Call<object>(
+            return _client.Call<Models.Session>(
                 method: "PUT",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 

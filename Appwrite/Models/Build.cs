@@ -67,8 +67,10 @@ namespace Appwrite.Models
             stderr: map["stderr"].ToString(),
             startTime: map["startTime"].ToString(),
             endTime: map["endTime"].ToString(),
-            duration: Convert.ToInt64(map["duration"]),
+            duration: Convert.ToInt64(map["duration"])
+,
             size: Convert.ToInt64(map["size"])
+
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

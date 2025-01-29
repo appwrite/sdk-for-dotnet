@@ -25,8 +25,13 @@ namespace Appwrite.Models
         }
 
         public static IndexList From(Dictionary<string, object> map) => new IndexList(
-            total: Convert.ToInt64(map["total"]),
-            indexes: ((JArray)map["indexes"]).ToObject<List<Dictionary<string, object>>>().Select(it => Index.From(map: it)).ToList()
+            total: Convert.ToInt64(map["total"])
+,
+            indexes: 
+                        ((JArray)map["indexes"])
+                            .ToObject<List<Dictionary<string, object>>>()
+                            .Select(it => Index.From(map: it))
+                            .ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -74,13 +74,17 @@ namespace Appwrite.Models
             bucketId: map["bucketId"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
+            permissions:                        ((JArray)map["$permissions"]).ToObject<List<string>>()
+,
             name: map["name"].ToString(),
             signature: map["signature"].ToString(),
             mimeType: map["mimeType"].ToString(),
-            sizeOriginal: Convert.ToInt64(map["sizeOriginal"]),
-            chunksTotal: Convert.ToInt64(map["chunksTotal"]),
+            sizeOriginal: Convert.ToInt64(map["sizeOriginal"])
+,
+            chunksTotal: Convert.ToInt64(map["chunksTotal"])
+,
             chunksUploaded: Convert.ToInt64(map["chunksUploaded"])
+
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

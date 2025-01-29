@@ -142,13 +142,17 @@ namespace Appwrite.Models
             resourceId: map["resourceId"].ToString(),
             resourceType: map["resourceType"].ToString(),
             entrypoint: map["entrypoint"].ToString(),
-            size: Convert.ToInt64(map["size"]),
-            buildSize: Convert.ToInt64(map["buildSize"]),
+            size: Convert.ToInt64(map["size"])
+,
+            buildSize: Convert.ToInt64(map["buildSize"])
+,
             buildId: map["buildId"].ToString(),
-            activate: (bool)map["activate"],
+            activate:                                (bool)map["activate"]
+,
             status: map["status"].ToString(),
             buildLogs: map["buildLogs"].ToString(),
-            buildTime: Convert.ToInt64(map["buildTime"]),
+            buildTime: Convert.ToInt64(map["buildTime"])
+,
             providerRepositoryName: map["providerRepositoryName"].ToString(),
             providerRepositoryOwner: map["providerRepositoryOwner"].ToString(),
             providerRepositoryUrl: map["providerRepositoryUrl"].ToString(),
