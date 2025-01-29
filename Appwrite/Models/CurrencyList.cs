@@ -25,13 +25,8 @@ namespace Appwrite.Models
         }
 
         public static CurrencyList From(Dictionary<string, object> map) => new CurrencyList(
-            total: Convert.ToInt64(map["total"])
-,
-            currencies: 
-                        ((JArray)map["currencies"])
-                            .ToObject<List<Dictionary<string, object>>>()
-                            .Select(it => Currency.From(map: it))
-                            .ToList()
+            total: Convert.ToInt64(map["total"]),
+            currencies: ((JArray)map["currencies"]).ToObject<List<Dictionary<string, object>>>().Select(it => Currency.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -62,8 +62,7 @@ namespace Appwrite.Models
             xbase: map["base"].ToString(),
             image: map["image"].ToString(),
             logo: map["logo"].ToString(),
-            supports:                        ((JArray)map["supports"]).ToObject<List<string>>()
-
+            supports: ((JArray)map["supports"]).ToObject<List<string>>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

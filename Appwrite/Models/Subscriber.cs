@@ -64,11 +64,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             targetId: map["targetId"].ToString(),
-            target: 
-                        Target.From(
-                            map: ((JObject)map["target"])
-                                .ToObject<Dictionary<string, object>>()!
-                        ),
+            target: Target.From(map: ((JObject)map["target"]).ToObject<Dictionary<string, object>>()!),
             userId: map["userId"].ToString(),
             userName: map["userName"].ToString(),
             topicId: map["topicId"].ToString(),

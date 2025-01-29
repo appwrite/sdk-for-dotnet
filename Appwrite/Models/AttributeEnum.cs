@@ -74,17 +74,13 @@ namespace Appwrite.Models
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
-            required:                                (bool)map["required"]
-,
-            array:                                (bool?)map["array"]
-,
+            required: (bool)map["required"],
+            array: (bool?)map["array"],
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            elements:                        ((JArray)map["elements"]).ToObject<List<string>>()
-,
+            elements: ((JArray)map["elements"]).ToObject<List<string>>(),
             format: map["format"].ToString(),
-            xdefault:map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
-
+            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -59,14 +59,10 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
-            emailTotal: Convert.ToInt64(map["emailTotal"])
-,
-            smsTotal: Convert.ToInt64(map["smsTotal"])
-,
-            pushTotal: Convert.ToInt64(map["pushTotal"])
-,
-            subscribe:                        ((JArray)map["subscribe"]).ToObject<List<string>>()
-
+            emailTotal: Convert.ToInt64(map["emailTotal"]),
+            smsTotal: Convert.ToInt64(map["smsTotal"]),
+            pushTotal: Convert.ToInt64(map["pushTotal"]),
+            subscribe: ((JArray)map["subscribe"]).ToObject<List<string>>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

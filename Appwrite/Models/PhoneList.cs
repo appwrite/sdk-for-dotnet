@@ -25,13 +25,8 @@ namespace Appwrite.Models
         }
 
         public static PhoneList From(Dictionary<string, object> map) => new PhoneList(
-            total: Convert.ToInt64(map["total"])
-,
-            phones: 
-                        ((JArray)map["phones"])
-                            .ToObject<List<Dictionary<string, object>>>()
-                            .Select(it => Phone.From(map: it))
-                            .ToList()
+            total: Convert.ToInt64(map["total"]),
+            phones: ((JArray)map["phones"]).ToObject<List<Dictionary<string, object>>>().Select(it => Phone.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

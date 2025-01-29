@@ -25,13 +25,8 @@ namespace Appwrite.Models
         }
 
         public static SessionList From(Dictionary<string, object> map) => new SessionList(
-            total: Convert.ToInt64(map["total"])
-,
-            sessions: 
-                        ((JArray)map["sessions"])
-                            .ToObject<List<Dictionary<string, object>>>()
-                            .Select(it => Session.From(map: it))
-                            .ToList()
+            total: Convert.ToInt64(map["total"]),
+            sessions: ((JArray)map["sessions"]).ToObject<List<Dictionary<string, object>>>().Select(it => Session.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

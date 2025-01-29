@@ -21,7 +21,6 @@ namespace Appwrite.Models
 
         public static HealthQueue From(Dictionary<string, object> map) => new HealthQueue(
             size: Convert.ToInt64(map["size"])
-
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

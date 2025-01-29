@@ -25,13 +25,8 @@ namespace Appwrite.Models
         }
 
         public static LanguageList From(Dictionary<string, object> map) => new LanguageList(
-            total: Convert.ToInt64(map["total"])
-,
-            languages: 
-                        ((JArray)map["languages"])
-                            .ToObject<List<Dictionary<string, object>>>()
-                            .Select(it => Language.From(map: it))
-                            .ToList()
+            total: Convert.ToInt64(map["total"]),
+            languages: ((JArray)map["languages"]).ToObject<List<Dictionary<string, object>>>().Select(it => Language.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -44,8 +44,7 @@ namespace Appwrite.Models
             name: map["name"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            enabled:                                (bool)map["enabled"]
-
+            enabled: (bool)map["enabled"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

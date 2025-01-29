@@ -31,8 +31,7 @@ namespace Appwrite.Models
 
         public static HealthStatus From(Dictionary<string, object> map) => new HealthStatus(
             name: map["name"].ToString(),
-            ping: Convert.ToInt64(map["ping"])
-,
+            ping: Convert.ToInt64(map["ping"]),
             status: map["status"].ToString()
         );
 

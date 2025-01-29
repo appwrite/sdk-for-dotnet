@@ -53,10 +53,8 @@ namespace Appwrite.Models
             symbol: map["symbol"].ToString(),
             name: map["name"].ToString(),
             symbolNative: map["symbolNative"].ToString(),
-            decimalDigits: Convert.ToInt64(map["decimalDigits"])
-,
-            rounding: Convert.ToDouble(map["rounding"])
-,
+            decimalDigits: Convert.ToInt64(map["decimalDigits"]),
+            rounding: Convert.ToDouble(map["rounding"]),
             code: map["code"].ToString(),
             namePlural: map["namePlural"].ToString()
         );

@@ -185,10 +185,8 @@ namespace Appwrite.Models
             deviceModel: map["deviceModel"].ToString(),
             countryCode: map["countryCode"].ToString(),
             countryName: map["countryName"].ToString(),
-            current:                                (bool)map["current"]
-,
-            factors:                        ((JArray)map["factors"]).ToObject<List<string>>()
-,
+            current: (bool)map["current"],
+            factors: ((JArray)map["factors"]).ToObject<List<string>>(),
             secret: map["secret"].ToString(),
             mfaUpdatedAt: map["mfaUpdatedAt"].ToString()
         );

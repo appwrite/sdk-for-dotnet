@@ -90,12 +90,9 @@ namespace Appwrite.Models
             teamName: map["teamName"].ToString(),
             invited: map["invited"].ToString(),
             joined: map["joined"].ToString(),
-            confirm:                                (bool)map["confirm"]
-,
-            mfa:                                (bool)map["mfa"]
-,
-            roles:                        ((JArray)map["roles"]).ToObject<List<string>>()
-
+            confirm: (bool)map["confirm"],
+            mfa: (bool)map["mfa"],
+            roles: ((JArray)map["roles"]).ToObject<List<string>>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

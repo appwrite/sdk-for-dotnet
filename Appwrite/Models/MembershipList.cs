@@ -25,13 +25,8 @@ namespace Appwrite.Models
         }
 
         public static MembershipList From(Dictionary<string, object> map) => new MembershipList(
-            total: Convert.ToInt64(map["total"])
-,
-            memberships: 
-                        ((JArray)map["memberships"])
-                            .ToObject<List<Dictionary<string, object>>>()
-                            .Select(it => Membership.From(map: it))
-                            .ToList()
+            total: Convert.ToInt64(map["total"]),
+            memberships: ((JArray)map["memberships"]).ToObject<List<Dictionary<string, object>>>().Select(it => Membership.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

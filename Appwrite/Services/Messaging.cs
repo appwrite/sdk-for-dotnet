@@ -95,7 +95,9 @@ namespace Appwrite.Services
         /// <summary>
         /// Update email
         /// <para>
-        /// Update an email message by its unique ID.
+        /// Update an email message by its unique ID. This endpoint only works on
+        /// messages that are in draft status. Messages that are already processing,
+        /// sent, or failed cannot be updated.
         /// 
         /// </para>
         /// </summary>
@@ -191,7 +193,9 @@ namespace Appwrite.Services
         /// <summary>
         /// Update push notification
         /// <para>
-        /// Update a push notification by its unique ID.
+        /// Update a push notification by its unique ID. This endpoint only works on
+        /// messages that are in draft status. Messages that are already processing,
+        /// sent, or failed cannot be updated.
         /// 
         /// </para>
         /// </summary>
@@ -282,7 +286,9 @@ namespace Appwrite.Services
         /// <summary>
         /// Update SMS
         /// <para>
-        /// Update an SMS message by its unique ID.
+        /// Update an SMS message by its unique ID. This endpoint only works on
+        /// messages that are in draft status. Messages that are already processing,
+        /// sent, or failed cannot be updated.
         /// 
         /// </para>
         /// </summary>

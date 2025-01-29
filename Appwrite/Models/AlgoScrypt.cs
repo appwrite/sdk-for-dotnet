@@ -41,14 +41,10 @@ namespace Appwrite.Models
 
         public static AlgoScrypt From(Dictionary<string, object> map) => new AlgoScrypt(
             type: map["type"].ToString(),
-            costCpu: Convert.ToInt64(map["costCpu"])
-,
-            costMemory: Convert.ToInt64(map["costMemory"])
-,
-            costParallel: Convert.ToInt64(map["costParallel"])
-,
+            costCpu: Convert.ToInt64(map["costCpu"]),
+            costMemory: Convert.ToInt64(map["costMemory"]),
+            costParallel: Convert.ToInt64(map["costParallel"]),
             length: Convert.ToInt64(map["length"])
-
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

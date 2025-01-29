@@ -30,12 +30,9 @@ namespace Appwrite.Models
         }
 
         public static HealthTime From(Dictionary<string, object> map) => new HealthTime(
-            remoteTime: Convert.ToInt64(map["remoteTime"])
-,
-            localTime: Convert.ToInt64(map["localTime"])
-,
+            remoteTime: Convert.ToInt64(map["remoteTime"]),
+            localTime: Convert.ToInt64(map["localTime"]),
             diff: Convert.ToInt64(map["diff"])
-
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

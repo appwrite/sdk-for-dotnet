@@ -78,22 +78,15 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions:                        ((JArray)map["$permissions"]).ToObject<List<string>>()
-,
-            fileSecurity:                                (bool)map["fileSecurity"]
-,
+            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
+            fileSecurity: (bool)map["fileSecurity"],
             name: map["name"].ToString(),
-            enabled:                                (bool)map["enabled"]
-,
-            maximumFileSize: Convert.ToInt64(map["maximumFileSize"])
-,
-            allowedFileExtensions:                        ((JArray)map["allowedFileExtensions"]).ToObject<List<string>>()
-,
+            enabled: (bool)map["enabled"],
+            maximumFileSize: Convert.ToInt64(map["maximumFileSize"]),
+            allowedFileExtensions: ((JArray)map["allowedFileExtensions"]).ToObject<List<string>>(),
             compression: map["compression"].ToString(),
-            encryption:                                (bool)map["encryption"]
-,
-            antivirus:                                (bool)map["antivirus"]
-
+            encryption: (bool)map["encryption"],
+            antivirus: (bool)map["antivirus"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

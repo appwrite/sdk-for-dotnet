@@ -20,8 +20,7 @@ namespace Appwrite.Models
         }
 
         public static MfaRecoveryCodes From(Dictionary<string, object> map) => new MfaRecoveryCodes(
-            recoveryCodes:                        ((JArray)map["recoveryCodes"]).ToObject<List<string>>()
-
+            recoveryCodes: ((JArray)map["recoveryCodes"]).ToObject<List<string>>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -25,13 +25,8 @@ namespace Appwrite.Models
         }
 
         public static ExecutionList From(Dictionary<string, object> map) => new ExecutionList(
-            total: Convert.ToInt64(map["total"])
-,
-            executions: 
-                        ((JArray)map["executions"])
-                            .ToObject<List<Dictionary<string, object>>>()
-                            .Select(it => Execution.From(map: it))
-                            .ToList()
+            total: Convert.ToInt64(map["total"]),
+            executions: ((JArray)map["executions"]).ToObject<List<Dictionary<string, object>>>().Select(it => Execution.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

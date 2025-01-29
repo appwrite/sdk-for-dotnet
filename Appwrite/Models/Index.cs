@@ -59,10 +59,8 @@ namespace Appwrite.Models
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
-            attributes:                        ((JArray)map["attributes"]).ToObject<List<string>>()
-,
-            orders:                        ((JArray)map["orders"]).ToObject<List<string>>()
-,
+            attributes: ((JArray)map["attributes"]).ToObject<List<string>>(),
+            orders: ((JArray)map["orders"]).ToObject<List<string>>(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString()
         );
