@@ -14,8 +14,6 @@ namespace Appwrite.Services
         {
         }
 
-        /// <summary>
-        /// List users
         /// <para>
         /// Get a list of all the project's users. You can use the query params to
         /// filter your results.
@@ -33,7 +31,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -49,8 +46,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user
         /// <para>
         /// Create a new user.
         /// </para>
@@ -86,8 +81,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user with Argon2 password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [Argon2](https://en.wikipedia.org/wiki/Argon2) algorithm. Use the [POST
@@ -125,8 +118,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user with bcrypt password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) algorithm. Use the [POST
@@ -164,8 +155,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List identities
         /// <para>
         /// Get identities for all users.
         /// </para>
@@ -182,7 +171,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -198,8 +186,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete identity
         /// <para>
         /// Delete an identity by its unique ID.
         /// </para>
@@ -228,8 +214,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user with MD5 password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [MD5](https://en.wikipedia.org/wiki/MD5) algorithm. Use the [POST
@@ -267,8 +251,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user with PHPass password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [PHPass](https://www.openwall.com/phpass/) algorithm. Use the [POST
@@ -306,8 +288,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user with Scrypt password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [Scrypt](https://github.com/Tarsnap/scrypt) algorithm. Use the [POST
@@ -350,8 +330,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user with Scrypt modified password
         /// <para>
         /// Create a new user. Password provided must be hashed with the [Scrypt
         /// Modified](https://gist.github.com/Meldiron/eecf84a0225eccb5a378d45bb27462cc)
@@ -393,8 +371,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user with SHA password
         /// <para>
         /// Create a new user. Password provided must be hashed with the
         /// [SHA](https://en.wikipedia.org/wiki/Secure_Hash_Algorithm) algorithm. Use
@@ -433,8 +409,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get user
         /// <para>
         /// Get a user by its unique ID.
         /// </para>
@@ -450,7 +424,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -466,8 +439,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete user
         /// <para>
         /// Delete a user by its unique ID, thereby releasing it's ID. Since ID is
         /// released and can be reused, all user-related resources like documents or
@@ -501,8 +472,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update email
         /// <para>
         /// Update the user email by its unique ID.
         /// </para>
@@ -535,8 +504,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user JWT
         /// <para>
         /// Use this endpoint to create a JSON Web Token for user by its unique ID. You
         /// can use the resulting JWT to authenticate on behalf of the user. The JWT
@@ -572,8 +539,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update user labels
         /// <para>
         /// Update the user labels by its unique ID. 
         /// 
@@ -611,8 +576,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List user logs
         /// <para>
         /// Get the user activity logs list by its unique ID.
         /// </para>
@@ -629,7 +592,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -645,8 +607,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List user memberships
         /// <para>
         /// Get the user membership list by its unique ID.
         /// </para>
@@ -662,7 +622,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -678,8 +637,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update MFA
         /// <para>
         /// Enable or disable MFA on a user account.
         /// </para>
@@ -712,8 +669,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete authenticator
         /// <para>
         /// Delete an authenticator app.
         /// </para>
@@ -743,8 +698,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List factors
         /// <para>
         /// List the factors available on the account to be used as a MFA challange.
         /// </para>
@@ -760,7 +713,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -776,8 +728,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get MFA recovery codes
         /// <para>
         /// Get recovery codes that can be used as backup for MFA flow by User ID.
         /// Before getting codes, they must be generated using
@@ -796,7 +746,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -812,8 +761,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Regenerate MFA recovery codes
         /// <para>
         /// Regenerate recovery codes that can be used as backup for MFA flow by User
         /// ID. Before regenerating codes, they must be first generated using
@@ -848,8 +795,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create MFA recovery codes
         /// <para>
         /// Generate recovery codes used as backup for MFA flow for User ID. Recovery
         /// codes can be used as a MFA verification type in
@@ -884,8 +829,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update name
         /// <para>
         /// Update the user name by its unique ID.
         /// </para>
@@ -918,8 +861,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update password
         /// <para>
         /// Update the user password by its unique ID.
         /// </para>
@@ -952,8 +893,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update phone
         /// <para>
         /// Update the user phone by its unique ID.
         /// </para>
@@ -986,8 +925,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get user preferences
         /// <para>
         /// Get the user preferences by its unique ID.
         /// </para>
@@ -1003,7 +940,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1019,8 +955,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update user preferences
         /// <para>
         /// Update the user preferences by its unique ID. The object you pass is stored
         /// as is, and replaces any previous value. The maximum allowed prefs size is
@@ -1055,8 +989,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List user sessions
         /// <para>
         /// Get the user sessions list by its unique ID.
         /// </para>
@@ -1072,7 +1004,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1088,8 +1019,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create session
         /// <para>
         /// Creates a session for a user. Returns an immediately usable session object.
         /// 
@@ -1126,8 +1055,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete user sessions
         /// <para>
         /// Delete all user's sessions by using the user's unique ID.
         /// </para>
@@ -1156,8 +1083,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete user session
         /// <para>
         /// Delete a user sessions by its unique ID.
         /// </para>
@@ -1187,8 +1112,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update user status
         /// <para>
         /// Update the user status by its unique ID. Use this endpoint as an
         /// alternative to deleting a user if you want to keep user's ID reserved.
@@ -1222,8 +1145,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List user targets
         /// <para>
         /// List the messaging targets that are associated with a user.
         /// </para>
@@ -1240,7 +1161,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1256,8 +1176,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create user target
         /// <para>
         /// Create a messaging target.
         /// </para>
@@ -1294,8 +1212,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get user target
         /// <para>
         /// Get a user's push notification target by ID.
         /// </para>
@@ -1312,7 +1228,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1328,8 +1243,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update user target
         /// <para>
         /// Update a messaging target.
         /// </para>
@@ -1365,8 +1278,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete user target
         /// <para>
         /// Delete a messaging target.
         /// </para>
@@ -1396,8 +1307,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create token
         /// <para>
         /// Returns a token with a secret key for creating a session. Use the user ID
         /// and secret and submit a request to the [PUT
@@ -1435,8 +1344,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update email verification
         /// <para>
         /// Update the user email verification status by its unique ID.
         /// </para>
@@ -1469,8 +1376,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update phone verification
         /// <para>
         /// Update the user phone verification status by its unique ID.
         /// </para>

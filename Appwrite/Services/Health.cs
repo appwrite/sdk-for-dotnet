@@ -14,8 +14,6 @@ namespace Appwrite.Services
         {
         }
 
-        /// <summary>
-        /// Get HTTP
         /// <para>
         /// Check the Appwrite HTTP server is up and responsive.
         /// </para>
@@ -30,7 +28,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -46,8 +43,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get antivirus
         /// <para>
         /// Check the Appwrite Antivirus server is up and connection is successful.
         /// </para>
@@ -62,7 +57,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -78,8 +72,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get cache
         /// <para>
         /// Check the Appwrite in-memory cache servers are up and connection is
         /// successful.
@@ -95,7 +87,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -111,8 +102,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get the SSL certificate for a domain
         /// <para>
         /// Get the SSL certificate for a domain
         /// </para>
@@ -128,7 +117,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -144,8 +132,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get DB
         /// <para>
         /// Check the Appwrite database servers are up and connection is successful.
         /// </para>
@@ -160,7 +146,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -176,8 +161,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get pubsub
         /// <para>
         /// Check the Appwrite pub-sub servers are up and connection is successful.
         /// </para>
@@ -192,7 +175,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -208,41 +190,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get queue
-        /// <para>
-        /// Check the Appwrite queue messaging servers are up and connection is
-        /// successful.
-        /// </para>
-        /// </summary>
-        public Task<Models.HealthStatus> GetQueue()
-        {
-            var apiPath = "/health/queue";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.HealthStatus Convert(Dictionary<string, object> it) =>
-                Models.HealthStatus.From(map: it);
-
-            return _client.Call<Models.HealthStatus>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// Get builds queue
         /// <para>
         /// Get the number of builds that are waiting to be processed in the Appwrite
         /// internal queue server.
@@ -259,7 +206,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -275,8 +221,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get certificates queue
         /// <para>
         /// Get the number of certificates that are waiting to be issued against
         /// [Letsencrypt](https://letsencrypt.org/) in the Appwrite internal queue
@@ -294,7 +238,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -310,8 +253,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get databases queue
         /// <para>
         /// Get the number of database changes that are waiting to be processed in the
         /// Appwrite internal queue server.
@@ -329,7 +270,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -345,8 +285,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get deletes queue
         /// <para>
         /// Get the number of background destructive changes that are waiting to be
         /// processed in the Appwrite internal queue server.
@@ -363,7 +301,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -379,8 +316,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get number of failed queue jobs
         /// <para>
         /// Returns the amount of failed jobs in a given queue.
         /// 
@@ -398,7 +333,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -414,8 +348,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get functions queue
         /// <para>
         /// Get the number of function executions that are waiting to be processed in
         /// the Appwrite internal queue server.
@@ -432,7 +364,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -448,8 +379,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get logs queue
         /// <para>
         /// Get the number of logs that are waiting to be processed in the Appwrite
         /// internal queue server.
@@ -466,7 +395,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -482,8 +410,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get mails queue
         /// <para>
         /// Get the number of mails that are waiting to be processed in the Appwrite
         /// internal queue server.
@@ -500,7 +426,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -516,8 +441,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get messaging queue
         /// <para>
         /// Get the number of messages that are waiting to be processed in the Appwrite
         /// internal queue server.
@@ -534,7 +457,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -550,8 +472,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get migrations queue
         /// <para>
         /// Get the number of migrations that are waiting to be processed in the
         /// Appwrite internal queue server.
@@ -568,7 +488,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -584,8 +503,37 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get usage queue
+        /// <para>
+        /// Get the number of metrics that are waiting to be processed in the Appwrite
+        /// stats resources queue.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetQueueStatsResources(long? threshold = null)
+        {
+            var apiPath = "/health/queue/stats-resources";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
+
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
         /// <para>
         /// Get the number of metrics that are waiting to be processed in the Appwrite
         /// internal queue server.
@@ -593,7 +541,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.HealthQueue> GetQueueUsage(long? threshold = null)
         {
-            var apiPath = "/health/queue/usage";
+            var apiPath = "/health/queue/stats-usage";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -602,7 +550,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -618,42 +565,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get usage dump queue
-        /// <para>
-        /// Get the number of projects containing metrics that are waiting to be
-        /// processed in the Appwrite internal queue server.
-        /// </para>
-        /// </summary>
-        public Task<Models.HealthQueue> GetQueueUsageDump(long? threshold = null)
-        {
-            var apiPath = "/health/queue/usage-dump";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "threshold", threshold }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
-                Models.HealthQueue.From(map: it);
-
-            return _client.Call<Models.HealthQueue>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <summary>
-        /// Get webhooks queue
         /// <para>
         /// Get the number of webhooks that are waiting to be processed in the Appwrite
         /// internal queue server.
@@ -670,7 +581,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -686,8 +596,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get storage
         /// <para>
         /// Check the Appwrite storage device is up and connection is successful.
         /// </para>
@@ -702,7 +610,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -718,8 +625,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get local storage
         /// <para>
         /// Check the Appwrite local storage device is up and connection is successful.
         /// </para>
@@ -734,7 +639,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -750,8 +654,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get time
         /// <para>
         /// Check the Appwrite server time is synced with Google remote NTP server. We
         /// use this technology to smoothly handle leap seconds with no disruptive
@@ -772,7 +674,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 

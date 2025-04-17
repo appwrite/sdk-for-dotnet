@@ -14,8 +14,6 @@ namespace Appwrite.Services
         {
         }
 
-        /// <summary>
-        /// Get account
         /// <para>
         /// Get the currently logged in user.
         /// </para>
@@ -30,7 +28,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -46,8 +43,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create account
         /// <para>
         /// Use this endpoint to allow a new user to register a new account in your
         /// project. After the user registration completes successfully, you can use
@@ -88,8 +83,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update email
         /// <para>
         /// Update currently logged in user account email address. After changing user
         /// address, the user confirmation status will get reset. A new confirmation
@@ -129,8 +122,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List identities
         /// <para>
         /// Get the list of identities for the currently logged in user.
         /// </para>
@@ -146,7 +137,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -162,8 +152,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete identity
         /// <para>
         /// Delete an identity by its unique ID.
         /// </para>
@@ -192,8 +180,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create JWT
         /// <para>
         /// Use this endpoint to create a JSON Web Token. You can use the resulting JWT
         /// to authenticate on behalf of the current user when working with the
@@ -228,8 +214,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List logs
         /// <para>
         /// Get the list of latest security activity logs for the currently logged in
         /// user. Each log returns user IP address, location and date and time of log.
@@ -246,7 +230,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -262,8 +245,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update MFA
         /// <para>
         /// Enable or disable MFA on an account.
         /// </para>
@@ -295,8 +276,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create authenticator
         /// <para>
         /// Add an authenticator app to be used as an MFA factor. Verify the
         /// authenticator using the [verify
@@ -331,8 +310,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Verify authenticator
         /// <para>
         /// Verify an authenticator app after adding it using the [add
         /// authenticator](/docs/references/cloud/client-web/account#createMfaAuthenticator)
@@ -367,8 +344,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete authenticator
         /// <para>
         /// Delete an authenticator for a user by ID.
         /// </para>
@@ -397,8 +372,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create MFA challenge
         /// <para>
         /// Begin the process of MFA verification after sign-in. Finish the flow with
         /// [updateMfaChallenge](/docs/references/cloud/client-web/account#updateMfaChallenge)
@@ -432,8 +405,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create MFA challenge (confirmation)
         /// <para>
         /// Complete the MFA challenge by providing the one-time password. Finish the
         /// process of MFA verification by providing the one-time password. To begin
@@ -470,8 +441,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List factors
         /// <para>
         /// List the factors available on the account to be used as a MFA challange.
         /// </para>
@@ -486,7 +455,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -502,8 +470,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get MFA recovery codes
         /// <para>
         /// Get recovery codes that can be used as backup for MFA flow. Before getting
         /// codes, they must be generated using
@@ -521,7 +487,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -537,8 +502,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create MFA recovery codes
         /// <para>
         /// Generate recovery codes as backup for MFA flow. It's recommended to
         /// generate and show then immediately after user successfully adds their
@@ -573,8 +536,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Regenerate MFA recovery codes
         /// <para>
         /// Regenerate recovery codes that can be used as backup for MFA flow. Before
         /// regenerating codes, they must be first generated using
@@ -608,8 +569,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update name
         /// <para>
         /// Update currently logged in user account name.
         /// </para>
@@ -641,8 +600,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update password
         /// <para>
         /// Update currently logged in user password. For validation, user is required
         /// to pass in the new password, and the old password. For users created with
@@ -677,8 +634,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update phone
         /// <para>
         /// Update the currently logged in user's phone number. After updating the
         /// phone number, the phone verification status will be reset. A confirmation
@@ -715,8 +670,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get account preferences
         /// <para>
         /// Get the preferences as a key-value object for the currently logged in user.
         /// </para>
@@ -731,7 +684,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -747,8 +699,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update preferences
         /// <para>
         /// Update currently logged in user account preferences. The object you pass is
         /// stored as is, and replaces any previous value. The maximum allowed prefs
@@ -782,8 +732,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create password recovery
         /// <para>
         /// Sends the user an email with a temporary secret key for password reset.
         /// When the user clicks the confirmation link he is redirected back to your
@@ -823,8 +771,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create password recovery (confirmation)
         /// <para>
         /// Use this endpoint to complete the user account password reset. Both the
         /// **userId** and **secret** arguments will be passed as query parameters to
@@ -867,8 +813,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List sessions
         /// <para>
         /// Get the list of active sessions across different devices for the currently
         /// logged in user.
@@ -884,7 +828,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -900,8 +843,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete sessions
         /// <para>
         /// Delete all sessions from the user account and remove any sessions cookies
         /// from the end client.
@@ -930,8 +871,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create anonymous session
         /// <para>
         /// Use this endpoint to allow a new user to register an anonymous account in
         /// your project. This route will also create a new session for the user. To
@@ -968,8 +907,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create email password session
         /// <para>
         /// Allow the user to login into their account by providing a valid email and
         /// password combination. This route will create a new session for the user.
@@ -1007,8 +944,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update magic URL session
         /// <para>
         /// Use this endpoint to create a session from token. Provide the **userId**
         /// and **secret** parameters from the successful response of authentication
@@ -1043,8 +978,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update phone session
         /// <para>
         /// Use this endpoint to create a session from token. Provide the **userId**
         /// and **secret** parameters from the successful response of authentication
@@ -1079,8 +1012,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create session
         /// <para>
         /// Use this endpoint to create a session from token. Provide the **userId**
         /// and **secret** parameters from the successful response of authentication
@@ -1115,8 +1046,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get session
         /// <para>
         /// Use this endpoint to get a logged in user's session using a Session ID.
         /// Inputting 'current' will return the current session being used.
@@ -1133,7 +1062,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1149,8 +1077,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update session
         /// <para>
         /// Use this endpoint to extend a session's length. Extending a session is
         /// useful when session expiry is short. If the session was created using an
@@ -1184,8 +1110,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete session
         /// <para>
         /// Logout the user. Use 'current' as the session ID to logout on this device,
         /// use a session ID to logout on another device. If you're looking to logout
@@ -1218,8 +1142,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update status
         /// <para>
         /// Block the currently logged in user account. Behind the scene, the user
         /// record is not deleted but permanently blocked from any access. To
@@ -1252,8 +1174,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create email token (OTP)
         /// <para>
         /// Sends the user an email with a secret key for creating a session. If the
         /// provided user ID has not be registered, a new user will be created. Use the
@@ -1296,8 +1216,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create magic URL token
         /// <para>
         /// Sends the user an email with a secret key for creating a session. If the
         /// provided user ID has not been registered, a new user will be created. When
@@ -1345,8 +1263,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create OAuth2 token
         /// <para>
         /// Allow the user to login to their account using the OAuth2 provider of their
         /// choice. Each OAuth2 provider should be enabled from the Appwrite console
@@ -1378,7 +1294,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1391,8 +1306,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create phone token
         /// <para>
         /// Sends the user an SMS with a secret key for creating a session. If the
         /// provided user ID has not be registered, a new user will be created. Use the
@@ -1434,8 +1347,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create email verification
         /// <para>
         /// Use this endpoint to send a verification message to your user email address
         /// to confirm they are the valid owners of that address. Both the **userId**
@@ -1481,8 +1392,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create email verification (confirmation)
         /// <para>
         /// Use this endpoint to complete the user email verification process. Use both
         /// the **userId** and **secret** parameters that were attached to your app URL
@@ -1518,8 +1427,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create phone verification
         /// <para>
         /// Use this endpoint to send a verification SMS to the currently logged in
         /// user. This endpoint is meant for use after updating a user's phone number
@@ -1557,8 +1464,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update phone verification (confirmation)
         /// <para>
         /// Use this endpoint to complete the user phone verification process. Use the
         /// **userId** and **secret** that were sent to your user's phone number to
