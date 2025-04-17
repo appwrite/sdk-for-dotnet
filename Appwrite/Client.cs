@@ -69,11 +69,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , "AppwriteDotNetSDK/0.11.0 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
+                { "user-agent" , "AppwriteDotNetSDK/0.12.0 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.11.0"},                { "X-Appwrite-Response-Format", "1.6.0" }
+                { "x-sdk-version", "0.12.0"},                { "X-Appwrite-Response-Format", "1.6.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -102,8 +102,11 @@ namespace Appwrite
 
         public Client SetEndpoint(string endpoint)
         {
-            _endpoint = endpoint;
+            if (!endpoint.StartsWith("http://") && !endpoint.StartsWith("https://")) {
+                throw new AppwriteException("Invalid endpoint URL: " + endpoint);
+            }
 
+            _endpoint = endpoint;
             return this;
         }
 
@@ -261,7 +264,9 @@ namespace Appwrite
             var code = (int)response.StatusCode;
 
             if (code >= 400) {
-                var message = await response.Content.ReadAsStringAsync();
+                var text = await response.Content.ReadAsStringAsync();
+                var message = "";
+                var type = "";
 
                 string contentType = string.Empty;
                 if (response.Content.Headers.TryGetValues("Content-Type", out var contentTypes))
@@ -270,10 +275,13 @@ namespace Appwrite
                 }
 
                 if (contentType.Contains("application/json")) {
-                    message = JObject.Parse(message)["message"]!.ToString();
+                    message = JObject.Parse(text)["message"]!.ToString();
+                    type = JObject.Parse(text)["type"]?.ToString() ?? string.Empty;
+                } else {
+                    message = text;
                 }
 
-                throw new AppwriteException(message, code);
+                throw new AppwriteException(message, code, type, text);
             }
 
             return response.Headers.Location.OriginalString;
@@ -317,13 +325,18 @@ namespace Appwrite
             var isJson = contentType.Contains("application/json");
 
             if (code >= 400) {
-                var message = await response.Content.ReadAsStringAsync();
+                var text = await response.Content.ReadAsStringAsync();
+                var message = "";
+                var type = "";
 
                 if (isJson) {
-                    message = JObject.Parse(message)["message"]!.ToString();
+                    message = JObject.Parse(text)["message"]!.ToString();
+                    type = JObject.Parse(text)["type"]?.ToString() ?? string.Empty;
+                } else {
+                    message = text;
                 }
 
-                throw new AppwriteException(message, code);
+                throw new AppwriteException(message, code, type, text);
             }
 
             if (isJson)
@@ -405,7 +418,7 @@ namespace Appwrite
                 );
             }
 
-            if (!string.IsNullOrEmpty(idParamName) && (string)parameters[idParamName] != "unique()")
+            if (!string.IsNullOrEmpty(idParamName))
             {
                 try
                 {

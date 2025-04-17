@@ -25,6 +25,7 @@ namespace Appwrite.Enums
         public static OAuthProvider Dropbox => new OAuthProvider("dropbox");
         public static OAuthProvider Etsy => new OAuthProvider("etsy");
         public static OAuthProvider Facebook => new OAuthProvider("facebook");
+        public static OAuthProvider Figma => new OAuthProvider("figma");
         public static OAuthProvider Github => new OAuthProvider("github");
         public static OAuthProvider Gitlab => new OAuthProvider("gitlab");
         public static OAuthProvider Google => new OAuthProvider("google");

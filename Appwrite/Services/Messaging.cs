@@ -14,8 +14,6 @@ namespace Appwrite.Services
         {
         }
 
-        /// <summary>
-        /// List messages
         /// <para>
         /// Get a list of all messages from the current Appwrite project.
         /// </para>
@@ -32,7 +30,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -48,8 +45,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create email
         /// <para>
         /// Create a new email message.
         /// </para>
@@ -92,10 +87,10 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update email
         /// <para>
-        /// Update an email message by its unique ID.
+        /// Update an email message by its unique ID. This endpoint only works on
+        /// messages that are in draft status. Messages that are already processing,
+        /// sent, or failed cannot be updated.
         /// 
         /// </para>
         /// </summary>
@@ -137,8 +132,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create push notification
         /// <para>
         /// Create a new push notification.
         /// </para>
@@ -188,10 +181,10 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update push notification
         /// <para>
-        /// Update a push notification by its unique ID.
+        /// Update a push notification by its unique ID. This endpoint only works on
+        /// messages that are in draft status. Messages that are already processing,
+        /// sent, or failed cannot be updated.
         /// 
         /// </para>
         /// </summary>
@@ -240,8 +233,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create SMS
         /// <para>
         /// Create a new SMS message.
         /// </para>
@@ -279,10 +270,10 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update SMS
         /// <para>
-        /// Update an email message by its unique ID.
+        /// Update an SMS message by its unique ID. This endpoint only works on
+        /// messages that are in draft status. Messages that are already processing,
+        /// sent, or failed cannot be updated.
         /// 
         /// </para>
         /// </summary>
@@ -319,8 +310,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get message
         /// <para>
         /// Get a message by its unique ID.
         /// 
@@ -337,7 +326,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -353,8 +341,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete message
         /// <para>
         /// Delete a message. If the message is not a draft or scheduled, but has been
         /// sent, this will not recall the message.
@@ -384,8 +370,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List message logs
         /// <para>
         /// Get the message activity logs listed by its unique ID.
         /// </para>
@@ -402,7 +386,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -418,8 +401,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List message targets
         /// <para>
         /// Get a list of the targets associated with a message.
         /// </para>
@@ -436,7 +417,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -452,8 +432,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List providers
         /// <para>
         /// Get a list of all providers from the current Appwrite project.
         /// </para>
@@ -470,7 +448,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -486,8 +463,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create APNS provider
         /// <para>
         /// Create a new Apple Push Notification service provider.
         /// </para>
@@ -526,8 +501,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update APNS provider
         /// <para>
         /// Update a Apple Push Notification service provider by its unique ID.
         /// </para>
@@ -566,8 +539,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create FCM provider
         /// <para>
         /// Create a new Firebase Cloud Messaging provider.
         /// </para>
@@ -602,8 +573,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update FCM provider
         /// <para>
         /// Update a Firebase Cloud Messaging provider by its unique ID.
         /// </para>
@@ -638,8 +607,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create Mailgun provider
         /// <para>
         /// Create a new Mailgun provider.
         /// </para>
@@ -680,8 +647,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update Mailgun provider
         /// <para>
         /// Update a Mailgun provider by its unique ID.
         /// </para>
@@ -722,8 +687,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create Msg91 provider
         /// <para>
         /// Create a new MSG91 provider.
         /// </para>
@@ -760,8 +723,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update Msg91 provider
         /// <para>
         /// Update a MSG91 provider by its unique ID.
         /// </para>
@@ -798,8 +759,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create Sendgrid provider
         /// <para>
         /// Create a new Sendgrid provider.
         /// </para>
@@ -838,8 +797,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update Sendgrid provider
         /// <para>
         /// Update a Sendgrid provider by its unique ID.
         /// </para>
@@ -878,8 +835,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create SMTP provider
         /// <para>
         /// Create a new SMTP provider.
         /// </para>
@@ -924,8 +879,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update SMTP provider
         /// <para>
         /// Update a SMTP provider by its unique ID.
         /// </para>
@@ -970,8 +923,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create Telesign provider
         /// <para>
         /// Create a new Telesign provider.
         /// </para>
@@ -1008,8 +959,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update Telesign provider
         /// <para>
         /// Update a Telesign provider by its unique ID.
         /// </para>
@@ -1046,8 +995,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create Textmagic provider
         /// <para>
         /// Create a new Textmagic provider.
         /// </para>
@@ -1084,8 +1031,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update Textmagic provider
         /// <para>
         /// Update a Textmagic provider by its unique ID.
         /// </para>
@@ -1122,8 +1067,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create Twilio provider
         /// <para>
         /// Create a new Twilio provider.
         /// </para>
@@ -1160,8 +1103,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update Twilio provider
         /// <para>
         /// Update a Twilio provider by its unique ID.
         /// </para>
@@ -1198,8 +1139,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create Vonage provider
         /// <para>
         /// Create a new Vonage provider.
         /// </para>
@@ -1236,8 +1175,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update Vonage provider
         /// <para>
         /// Update a Vonage provider by its unique ID.
         /// </para>
@@ -1274,8 +1211,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get provider
         /// <para>
         /// Get a provider by its unique ID.
         /// 
@@ -1292,7 +1227,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1308,8 +1242,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete provider
         /// <para>
         /// Delete a provider by its unique ID.
         /// </para>
@@ -1338,8 +1270,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List provider logs
         /// <para>
         /// Get the provider activity logs listed by its unique ID.
         /// </para>
@@ -1356,7 +1286,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1372,8 +1301,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List subscriber logs
         /// <para>
         /// Get the subscriber activity logs listed by its unique ID.
         /// </para>
@@ -1390,7 +1317,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1406,8 +1332,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List topics
         /// <para>
         /// Get a list of all topics from the current Appwrite project.
         /// </para>
@@ -1424,7 +1348,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1440,8 +1363,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create topic
         /// <para>
         /// Create a new topic.
         /// </para>
@@ -1475,8 +1396,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get topic
         /// <para>
         /// Get a topic by its unique ID.
         /// 
@@ -1493,7 +1412,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1509,8 +1427,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update topic
         /// <para>
         /// Update a topic by its unique ID.
         /// 
@@ -1545,8 +1461,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete topic
         /// <para>
         /// Delete a topic by its unique ID.
         /// </para>
@@ -1575,8 +1489,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List topic logs
         /// <para>
         /// Get the topic activity logs listed by its unique ID.
         /// </para>
@@ -1593,7 +1505,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1609,8 +1520,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List subscribers
         /// <para>
         /// Get a list of all subscribers from the current Appwrite project.
         /// </para>
@@ -1628,7 +1537,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1644,8 +1552,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create subscriber
         /// <para>
         /// Create a new subscriber.
         /// </para>
@@ -1679,8 +1585,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get subscriber
         /// <para>
         /// Get a subscriber by its unique ID.
         /// 
@@ -1698,7 +1602,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1714,8 +1617,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete subscriber
         /// <para>
         /// Delete a subscriber by its unique ID.
         /// </para>

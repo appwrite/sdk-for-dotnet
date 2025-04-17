@@ -14,8 +14,6 @@ namespace Appwrite.Services
         {
         }
 
-        /// <summary>
-        /// Get browser icon
         /// <para>
         /// You can use this endpoint to show different browser icons to your users.
         /// The code argument receives the browser code as it appears in your user [GET
@@ -43,7 +41,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -56,8 +53,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get credit card icon
         /// <para>
         /// The credit card endpoint will return you the icon of the credit card
         /// provider you need. Use width, height and quality arguments to change the
@@ -84,7 +79,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -97,8 +91,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get favicon
         /// <para>
         /// Use this endpoint to fetch the favorite icon (AKA favicon) of any remote
         /// website URL.
@@ -117,7 +109,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -130,8 +121,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get country flag
         /// <para>
         /// You can use this endpoint to show different country flags icons to your
         /// users. The code argument receives the 2 letter country code. Use width,
@@ -159,7 +148,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -172,8 +160,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get image from URL
         /// <para>
         /// Use this endpoint to fetch a remote image URL and crop it to any image size
         /// you want. This endpoint is very useful if you need to crop and display
@@ -201,7 +187,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -214,8 +199,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get user initials
         /// <para>
         /// Use this endpoint to show your user initials avatar icon on your website or
         /// app. By default, this route will try to print your logged-in user name or
@@ -249,7 +232,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -262,8 +244,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get QR code
         /// <para>
         /// Converts a given plain text to a QR code image. You can use the query
         /// parameters to change the size and style of the resulting image.
@@ -284,7 +264,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 

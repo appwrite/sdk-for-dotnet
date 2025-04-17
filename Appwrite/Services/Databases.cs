@@ -14,8 +14,6 @@ namespace Appwrite.Services
         {
         }
 
-        /// <summary>
-        /// List databases
         /// <para>
         /// Get a list of all databases from the current Appwrite project. You can use
         /// the search parameter to filter your results.
@@ -33,7 +31,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -49,8 +46,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create database
         /// <para>
         /// Create a new Database.
         /// 
@@ -85,8 +80,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get database
         /// <para>
         /// Get a database by its unique ID. This endpoint response returns a JSON
         /// object with the database metadata.
@@ -103,7 +96,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -119,8 +111,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update database
         /// <para>
         /// Update a database by its unique ID.
         /// </para>
@@ -154,8 +144,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete database
         /// <para>
         /// Delete a database by its unique ID. Only API keys with with databases.write
         /// scope can delete a database.
@@ -185,8 +173,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List collections
         /// <para>
         /// Get a list of all collections that belong to the provided databaseId. You
         /// can use the search parameter to filter your results.
@@ -205,7 +191,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -221,8 +206,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create collection
         /// <para>
         /// Create a new Collection. Before using this route, you should create a new
         /// database resource using either a [server
@@ -262,8 +245,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get collection
         /// <para>
         /// Get a collection by its unique ID. This endpoint response returns a JSON
         /// object with the collection metadata.
@@ -281,7 +262,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -297,8 +277,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update collection
         /// <para>
         /// Update a collection by its unique ID.
         /// </para>
@@ -335,8 +313,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete collection
         /// <para>
         /// Delete a collection by its unique ID. Only users with write permissions
         /// have access to delete this resource.
@@ -367,8 +343,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List attributes
         /// <para>
         /// List attributes in the collection.
         /// </para>
@@ -386,7 +360,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -402,8 +375,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create boolean attribute
         /// <para>
         /// Create a boolean attribute.
         /// 
@@ -441,8 +412,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update boolean attribute
         /// <para>
         /// Update a boolean attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -480,8 +449,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create datetime attribute
         /// <para>
         /// Create a date time attribute according to the ISO 8601 standard.
         /// </para>
@@ -518,8 +485,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update dateTime attribute
         /// <para>
         /// Update a date time attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -557,8 +522,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create email attribute
         /// <para>
         /// Create an email attribute.
         /// 
@@ -596,8 +559,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update email attribute
         /// <para>
         /// Update an email attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -636,8 +597,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create enum attribute
         /// <para>
         /// Create an enumeration attribute. The `elements` param acts as a white-list
         /// of accepted values for this attribute. 
@@ -677,8 +636,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update enum attribute
         /// <para>
         /// Update an enum attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -718,8 +675,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create float attribute
         /// <para>
         /// Create a float attribute. Optionally, minimum and maximum values can be
         /// provided.
@@ -760,15 +715,13 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update float attribute
         /// <para>
         /// Update a float attribute. Changing the `default` value will not update
         /// already existing documents.
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double min, double max, double xdefault, string? newKey = null)
+        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double xdefault, double? min = null, double? max = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -802,8 +755,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create integer attribute
         /// <para>
         /// Create an integer attribute. Optionally, minimum and maximum values can be
         /// provided.
@@ -844,15 +795,13 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update integer attribute
         /// <para>
         /// Update an integer attribute. Changing the `default` value will not update
         /// already existing documents.
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long min, long max, long xdefault, string? newKey = null)
+        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long xdefault, long? min = null, long? max = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -886,8 +835,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create IP address attribute
         /// <para>
         /// Create IP address attribute.
         /// 
@@ -925,8 +872,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update IP address attribute
         /// <para>
         /// Update an ip attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -965,8 +910,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create relationship attribute
         /// <para>
         /// Create relationship attribute. [Learn more about relationship
         /// attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
@@ -1007,8 +950,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create string attribute
         /// <para>
         /// Create a string attribute.
         /// 
@@ -1048,8 +989,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update string attribute
         /// <para>
         /// Update a string attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -1089,8 +1028,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create URL attribute
         /// <para>
         /// Create a URL attribute.
         /// 
@@ -1128,8 +1065,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update URL attribute
         /// <para>
         /// Update an url attribute. Changing the `default` value will not update
         /// already existing documents.
@@ -1168,8 +1103,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get attribute
         /// <para>
         /// Get attribute by ID.
         /// </para>
@@ -1187,7 +1120,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1200,8 +1132,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete attribute
         /// <para>
         /// Deletes an attribute.
         /// </para>
@@ -1232,8 +1162,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update relationship attribute
         /// <para>
         /// Update relationship attribute. [Learn more about relationship
         /// attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
@@ -1271,8 +1199,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List documents
         /// <para>
         /// Get a list of all the user's documents in a given collection. You can use
         /// the query params to filter your results.
@@ -1291,7 +1217,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1307,13 +1232,12 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create document
         /// <para>
         /// Create a new Document. Before using this route, you should create a new
         /// collection resource using either a [server
         /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
         /// API or directly from your database console.
+        /// 
         /// </para>
         /// </summary>
         public Task<Models.Document> CreateDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null)
@@ -1347,8 +1271,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get document
         /// <para>
         /// Get a document by its unique ID. This endpoint response returns a JSON
         /// object with the document data.
@@ -1368,7 +1290,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1384,8 +1305,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update document
         /// <para>
         /// Update a document by its unique ID. Using the patch method you can pass
         /// only specific fields that will get updated.
@@ -1422,8 +1341,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete document
         /// <para>
         /// Delete a document by its unique ID.
         /// </para>
@@ -1454,8 +1371,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List indexes
         /// <para>
         /// List indexes in the collection.
         /// </para>
@@ -1473,7 +1388,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1489,8 +1403,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create index
         /// <para>
         /// Creates an index on the attributes listed. Your index should include all
         /// the attributes you will query in a single request.
@@ -1529,8 +1441,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get index
         /// <para>
         /// Get index by ID.
         /// </para>
@@ -1548,7 +1458,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -1564,8 +1473,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete index
         /// <para>
         /// Delete an index.
         /// </para>

@@ -78,9 +78,9 @@ namespace Appwrite.Models
             array: (bool?)map["array"],
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            min: map["min"] == null ? null : Convert.ToInt64(map["min"]),
-            max: map["max"] == null ? null : Convert.ToInt64(map["max"]),
-            xdefault: map["default"] == null ? null : Convert.ToInt64(map["default"])
+            min: map["min"] == null ? null :Convert.ToInt64(map["min"]),
+            max: map["max"] == null ? null :Convert.ToInt64(map["max"]),
+            xdefault: map["default"] == null ? null :Convert.ToInt64(map["default"])
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

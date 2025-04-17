@@ -14,8 +14,6 @@ namespace Appwrite.Services
         {
         }
 
-        /// <summary>
-        /// GraphQL endpoint
         /// <para>
         /// Execute a GraphQL mutation.
         /// </para>
@@ -48,8 +46,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// GraphQL endpoint
         /// <para>
         /// Execute a GraphQL mutation.
         /// </para>

@@ -14,8 +14,6 @@ namespace Appwrite.Services
         {
         }
 
-        /// <summary>
-        /// Get user locale
         /// <para>
         /// Get the current user location based on IP. Returns an object with user
         /// country code, country name, continent name, continent code, ip address and
@@ -35,7 +33,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -51,8 +48,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List locale codes
         /// <para>
         /// List of all locale codes in [ISO
         /// 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
@@ -68,7 +63,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -84,8 +78,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List continents
         /// <para>
         /// List of all continents. You can use the locale header to get the data in a
         /// supported language.
@@ -101,7 +93,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -117,8 +108,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List countries
         /// <para>
         /// List of all countries. You can use the locale header to get the data in a
         /// supported language.
@@ -134,7 +123,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -150,8 +138,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List EU countries
         /// <para>
         /// List of all countries that are currently members of the EU. You can use the
         /// locale header to get the data in a supported language.
@@ -167,7 +153,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -183,8 +168,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List countries phone codes
         /// <para>
         /// List of all countries phone codes. You can use the locale header to get the
         /// data in a supported language.
@@ -200,7 +183,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -216,8 +198,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List currencies
         /// <para>
         /// List of all currencies, including currency symbol, name, plural, and
         /// decimal digits for all major and minor currencies. You can use the locale
@@ -234,7 +214,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -250,8 +229,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List languages
         /// <para>
         /// List of all languages classified by ISO 639-1 including 2-letter code, name
         /// in English, and name in the respective language.
@@ -267,7 +244,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 

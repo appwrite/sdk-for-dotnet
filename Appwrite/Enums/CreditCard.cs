@@ -27,5 +27,6 @@ namespace Appwrite.Enums
         public static CreditCard Visa => new CreditCard("visa");
         public static CreditCard MIR => new CreditCard("mir");
         public static CreditCard Maestro => new CreditCard("maestro");
+        public static CreditCard Rupay => new CreditCard("rupay");
     }
 }

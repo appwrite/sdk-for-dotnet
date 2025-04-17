@@ -9,4 +9,6 @@ Client client = new Client()
 
 Health health = new Health(client);
 
-HealthStatus result = await health.GetQueue();
+HealthQueue result = await health.GetQueueStatsResources(
+    threshold: 0 // optional
+);

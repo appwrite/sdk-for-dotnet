@@ -14,8 +14,6 @@ namespace Appwrite.Services
         {
         }
 
-        /// <summary>
-        /// List functions
         /// <para>
         /// Get a list of all the project's functions. You can use the query params to
         /// filter your results.
@@ -33,7 +31,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -49,8 +46,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create function
         /// <para>
         /// Create a new function. You can pass a list of
         /// [permissions](https://appwrite.io/docs/permissions) to allow different
@@ -106,8 +101,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List runtimes
         /// <para>
         /// Get a list of all runtimes that are currently active on your instance.
         /// </para>
@@ -122,7 +115,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -138,8 +130,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List available function runtime specifications
         /// <para>
         /// List allowed function specifications for this instance.
         /// 
@@ -155,7 +145,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -171,8 +160,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get function
         /// <para>
         /// Get a function by its unique ID.
         /// </para>
@@ -188,7 +175,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -204,8 +190,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update function
         /// <para>
         /// Update function by its unique ID.
         /// </para>
@@ -254,8 +238,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete function
         /// <para>
         /// Delete a function by its unique ID.
         /// </para>
@@ -284,8 +266,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List deployments
         /// <para>
         /// Get a list of all the project's code deployments. You can use the query
         /// params to filter your results.
@@ -304,7 +284,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -320,8 +299,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create deployment
         /// <para>
         /// Create a new function code deployment. Use this endpoint to upload a new
         /// version of your code function. To execute your newly uploaded code, you'll
@@ -371,8 +348,6 @@ namespace Appwrite.Services
                 onProgress);
         }
 
-        /// <summary>
-        /// Get deployment
         /// <para>
         /// Get a code deployment by its unique ID.
         /// </para>
@@ -389,7 +364,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -405,8 +379,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update deployment
         /// <para>
         /// Update the function code deployment ID using the unique function ID. Use
         /// this endpoint to switch the code deployment that should be executed by the
@@ -441,8 +413,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete deployment
         /// <para>
         /// Delete a code deployment by its unique ID.
         /// </para>
@@ -472,8 +442,13 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Rebuild deployment
+        /// <para>
+        /// Create a new build for an existing function deployment. This endpoint
+        /// allows you to rebuild a deployment with the updated function configuration,
+        /// including its entrypoint and build commands if they have been modified The
+        /// build process will be queued and executed asynchronously. The original
+        /// deployment's code will be preserved and used for the new build.
+        /// </para>
         /// </summary>
         public Task<object> CreateBuild(string functionId, string deploymentId, string? buildId = null)
         {
@@ -501,8 +476,13 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Cancel deployment
+        /// <para>
+        /// Cancel an ongoing function deployment build. If the build is already in
+        /// progress, it will be stopped and marked as canceled. If the build hasn't
+        /// started yet, it will be marked as canceled without executing. You cannot
+        /// cancel builds that have already completed (status 'ready') or failed. The
+        /// response includes the final build status and details.
+        /// </para>
         /// </summary>
         public Task<Models.Build> UpdateDeploymentBuild(string functionId, string deploymentId)
         {
@@ -532,8 +512,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Download deployment
         /// <para>
         /// Get a Deployment's contents by its unique ID. This endpoint supports range
         /// requests for partial or streaming file download.
@@ -551,7 +529,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -564,8 +541,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List executions
         /// <para>
         /// Get a list of all the current user function execution logs. You can use the
         /// query params to filter your results.
@@ -584,7 +559,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -600,8 +574,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create execution
         /// <para>
         /// Trigger a function execution. The returned object will return you the
         /// current execution status. You can ping the `Get Execution` endpoint to get
@@ -642,8 +614,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get execution
         /// <para>
         /// Get a function execution log by its unique ID.
         /// </para>
@@ -660,7 +630,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -676,8 +645,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete execution
         /// <para>
         /// Delete a function execution by its unique ID.
         /// 
@@ -708,8 +675,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// List variables
         /// <para>
         /// Get a list of all variables of a specific function.
         /// </para>
@@ -725,7 +690,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -741,8 +705,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Create variable
         /// <para>
         /// Create a new function environment variable. These variables can be accessed
         /// in the function at runtime as environment variables.
@@ -777,8 +739,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Get variable
         /// <para>
         /// Get a variable by its unique ID.
         /// </para>
@@ -795,7 +755,6 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "content-type", "application/json" }
             };
 
 
@@ -811,8 +770,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Update variable
         /// <para>
         /// Update variable by its unique ID.
         /// </para>
@@ -847,8 +804,6 @@ namespace Appwrite.Services
 
         }
 
-        /// <summary>
-        /// Delete variable
         /// <para>
         /// Delete a variable by its unique ID.
         /// </para>
