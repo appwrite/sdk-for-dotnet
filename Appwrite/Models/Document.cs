@@ -55,7 +55,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
-                , data: map
+            data: map
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
