@@ -1237,7 +1237,6 @@ namespace Appwrite.Services
         /// collection resource using either a [server
         /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
         /// API or directly from your database console.
-        /// 
         /// </para>
         /// </summary>
         public Task<Models.Document> CreateDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null)
@@ -1264,6 +1263,150 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Document>(
                 method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create new Documents. Before using this route, you should create a new
+        /// collection resource using either a [server
+        /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
+        /// API or directly from your database console.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.DocumentList> CreateDocuments(string databaseId, string collectionId, List<object> documents)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "documents", documents }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.DocumentList Convert(Dictionary<string, object> it) =>
+                Models.DocumentList.From(map: it);
+
+            return _client.Call<Models.DocumentList>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create or update Documents. Before using this route, you should create a
+        /// new collection resource using either a [server
+        /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
+        /// API or directly from your database console.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.DocumentList> UpsertDocuments(string databaseId, string collectionId, List<object>? documents = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "documents", documents }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.DocumentList Convert(Dictionary<string, object> it) =>
+                Models.DocumentList.From(map: it);
+
+            return _client.Call<Models.DocumentList>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update all documents that match your queries, if no queries are submitted
+        /// then all documents are updated. You can pass only specific fields to be
+        /// updated.
+        /// </para>
+        /// </summary>
+        public Task<Models.DocumentList> UpdateDocuments(string databaseId, string collectionId, object? data = null, List<string>? queries = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "data", data },
+                { "queries", queries }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.DocumentList Convert(Dictionary<string, object> it) =>
+                Models.DocumentList.From(map: it);
+
+            return _client.Call<Models.DocumentList>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Bulk delete documents using queries, if no queries are passed then all
+        /// documents are deleted.
+        /// </para>
+        /// </summary>
+        public Task<Models.DocumentList> DeleteDocuments(string databaseId, string collectionId, List<string>? queries = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.DocumentList Convert(Dictionary<string, object> it) =>
+                Models.DocumentList.From(map: it);
+
+            return _client.Call<Models.DocumentList>(
+                method: "DELETE",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
