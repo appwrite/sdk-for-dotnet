@@ -25,6 +25,9 @@ namespace Appwrite.Models
         [JsonProperty("attributes")]
         public List<string> Attributes { get; private set; }
 
+        [JsonProperty("lengths")]
+        public List<long> Lengths { get; private set; }
+
         [JsonProperty("orders")]
         public List<string>? Orders { get; private set; }
 
@@ -40,6 +43,7 @@ namespace Appwrite.Models
             string status,
             string error,
             List<string> attributes,
+            List<long> lengths,
             List<string>? orders,
             string createdAt,
             string updatedAt
@@ -49,6 +53,7 @@ namespace Appwrite.Models
             Status = status;
             Error = error;
             Attributes = attributes;
+            Lengths = lengths;
             Orders = orders;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
@@ -60,6 +65,7 @@ namespace Appwrite.Models
             status: map["status"].ToString(),
             error: map["error"].ToString(),
             attributes: ((JArray)map["attributes"]).ToObject<List<string>>(),
+            lengths: ((JArray)map["lengths"]).ToObject<List<long>>(),
             orders: ((JArray)map["orders"]).ToObject<List<string>>(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString()
@@ -72,6 +78,7 @@ namespace Appwrite.Models
             { "status", Status },
             { "error", Error },
             { "attributes", Attributes },
+            { "lengths", Lengths },
             { "orders", Orders },
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt }

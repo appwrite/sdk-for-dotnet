@@ -377,7 +377,7 @@ namespace Appwrite.Services
         /// downloading the file to user downloads directory.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetFileDownload(string bucketId, string fileId)
+        public Task<byte[]> GetFileDownload(string bucketId, string fileId, string? token = null)
         {
             var apiPath = "/storage/buckets/{bucketId}/files/{fileId}/download"
                 .Replace("{bucketId}", bucketId)
@@ -385,6 +385,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "token", token }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -409,7 +410,7 @@ namespace Appwrite.Services
         /// supported only for image files smaller than 10MB.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetFilePreview(string bucketId, string fileId, long? width = null, long? height = null, Appwrite.Enums.ImageGravity? gravity = null, long? quality = null, long? borderWidth = null, string? borderColor = null, long? borderRadius = null, double? opacity = null, long? rotation = null, string? background = null, Appwrite.Enums.ImageFormat? output = null)
+        public Task<byte[]> GetFilePreview(string bucketId, string fileId, long? width = null, long? height = null, Appwrite.Enums.ImageGravity? gravity = null, long? quality = null, long? borderWidth = null, string? borderColor = null, long? borderRadius = null, double? opacity = null, long? rotation = null, string? background = null, Appwrite.Enums.ImageFormat? output = null, string? token = null)
         {
             var apiPath = "/storage/buckets/{bucketId}/files/{fileId}/preview"
                 .Replace("{bucketId}", bucketId)
@@ -427,7 +428,8 @@ namespace Appwrite.Services
                 { "opacity", opacity },
                 { "rotation", rotation },
                 { "background", background },
-                { "output", output }
+                { "output", output },
+                { "token", token }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -450,7 +452,7 @@ namespace Appwrite.Services
         /// header.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetFileView(string bucketId, string fileId)
+        public Task<byte[]> GetFileView(string bucketId, string fileId, string? token = null)
         {
             var apiPath = "/storage/buckets/{bucketId}/files/{fileId}/view"
                 .Replace("{bucketId}", bucketId)
@@ -458,6 +460,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "token", token }
             };
 
             var apiHeaders = new Dictionary<string, string>()

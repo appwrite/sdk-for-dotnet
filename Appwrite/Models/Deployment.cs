@@ -31,11 +31,14 @@ namespace Appwrite.Models
         [JsonProperty("entrypoint")]
         public string Entrypoint { get; private set; }
 
-        [JsonProperty("size")]
-        public long Size { get; private set; }
+        [JsonProperty("sourceSize")]
+        public long SourceSize { get; private set; }
 
         [JsonProperty("buildSize")]
         public long BuildSize { get; private set; }
+
+        [JsonProperty("totalSize")]
+        public long TotalSize { get; private set; }
 
         [JsonProperty("buildId")]
         public string BuildId { get; private set; }
@@ -43,14 +46,20 @@ namespace Appwrite.Models
         [JsonProperty("activate")]
         public bool Activate { get; private set; }
 
+        [JsonProperty("screenshotLight")]
+        public string ScreenshotLight { get; private set; }
+
+        [JsonProperty("screenshotDark")]
+        public string ScreenshotDark { get; private set; }
+
         [JsonProperty("status")]
         public string Status { get; private set; }
 
         [JsonProperty("buildLogs")]
         public string BuildLogs { get; private set; }
 
-        [JsonProperty("buildTime")]
-        public long BuildTime { get; private set; }
+        [JsonProperty("buildDuration")]
+        public long BuildDuration { get; private set; }
 
         [JsonProperty("providerRepositoryName")]
         public string ProviderRepositoryName { get; private set; }
@@ -90,13 +99,16 @@ namespace Appwrite.Models
             string resourceId,
             string resourceType,
             string entrypoint,
-            long size,
+            long sourceSize,
             long buildSize,
+            long totalSize,
             string buildId,
             bool activate,
+            string screenshotLight,
+            string screenshotDark,
             string status,
             string buildLogs,
-            long buildTime,
+            long buildDuration,
             string providerRepositoryName,
             string providerRepositoryOwner,
             string providerRepositoryUrl,
@@ -115,13 +127,16 @@ namespace Appwrite.Models
             ResourceId = resourceId;
             ResourceType = resourceType;
             Entrypoint = entrypoint;
-            Size = size;
+            SourceSize = sourceSize;
             BuildSize = buildSize;
+            TotalSize = totalSize;
             BuildId = buildId;
             Activate = activate;
+            ScreenshotLight = screenshotLight;
+            ScreenshotDark = screenshotDark;
             Status = status;
             BuildLogs = buildLogs;
-            BuildTime = buildTime;
+            BuildDuration = buildDuration;
             ProviderRepositoryName = providerRepositoryName;
             ProviderRepositoryOwner = providerRepositoryOwner;
             ProviderRepositoryUrl = providerRepositoryUrl;
@@ -142,13 +157,16 @@ namespace Appwrite.Models
             resourceId: map["resourceId"].ToString(),
             resourceType: map["resourceType"].ToString(),
             entrypoint: map["entrypoint"].ToString(),
-            size: Convert.ToInt64(map["size"]),
+            sourceSize: Convert.ToInt64(map["sourceSize"]),
             buildSize: Convert.ToInt64(map["buildSize"]),
+            totalSize: Convert.ToInt64(map["totalSize"]),
             buildId: map["buildId"].ToString(),
             activate: (bool)map["activate"],
+            screenshotLight: map["screenshotLight"].ToString(),
+            screenshotDark: map["screenshotDark"].ToString(),
             status: map["status"].ToString(),
             buildLogs: map["buildLogs"].ToString(),
-            buildTime: Convert.ToInt64(map["buildTime"]),
+            buildDuration: Convert.ToInt64(map["buildDuration"]),
             providerRepositoryName: map["providerRepositoryName"].ToString(),
             providerRepositoryOwner: map["providerRepositoryOwner"].ToString(),
             providerRepositoryUrl: map["providerRepositoryUrl"].ToString(),
@@ -170,13 +188,16 @@ namespace Appwrite.Models
             { "resourceId", ResourceId },
             { "resourceType", ResourceType },
             { "entrypoint", Entrypoint },
-            { "size", Size },
+            { "sourceSize", SourceSize },
             { "buildSize", BuildSize },
+            { "totalSize", TotalSize },
             { "buildId", BuildId },
             { "activate", Activate },
+            { "screenshotLight", ScreenshotLight },
+            { "screenshotDark", ScreenshotDark },
             { "status", Status },
             { "buildLogs", BuildLogs },
-            { "buildTime", BuildTime },
+            { "buildDuration", BuildDuration },
             { "providerRepositoryName", ProviderRepositoryName },
             { "providerRepositoryOwner", ProviderRepositoryOwner },
             { "providerRepositoryUrl", ProviderRepositoryUrl },

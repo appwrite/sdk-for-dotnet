@@ -1275,7 +1275,6 @@ namespace Appwrite.Services
         /// collection resource using either a [server
         /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
         /// API or directly from your database console.
-        /// 
         /// </para>
         /// </summary>
         public Task<Models.DocumentList> CreateDocuments(string databaseId, string collectionId, List<object> documents)
@@ -1552,7 +1551,7 @@ namespace Appwrite.Services
         /// Attributes can be `key`, `fulltext`, and `unique`.
         /// </para>
         /// </summary>
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<string>? orders = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<string>? orders = null, List<long>? lengths = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)
@@ -1563,7 +1562,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "type", type },
                 { "attributes", attributes },
-                { "orders", orders }
+                { "orders", orders },
+                { "lengths", lengths }
             };
 
             var apiHeaders = new Dictionary<string, string>()

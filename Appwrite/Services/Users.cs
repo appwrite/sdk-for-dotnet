@@ -611,13 +611,15 @@ namespace Appwrite.Services
         /// Get the user membership list by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.MembershipList> ListMemberships(string userId)
+        public Task<Models.MembershipList> ListMemberships(string userId, List<string>? queries = null, string? search = null)
         {
             var apiPath = "/users/{userId}/memberships"
                 .Replace("{userId}", userId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "queries", queries },
+                { "search", search }
             };
 
             var apiHeaders = new Dictionary<string, string>()

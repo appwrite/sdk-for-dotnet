@@ -13,7 +13,6 @@ namespace Appwrite.Enums
 
         public static ImageFormat Jpg => new ImageFormat("jpg");
         public static ImageFormat Jpeg => new ImageFormat("jpeg");
-        public static ImageFormat Gif => new ImageFormat("gif");
         public static ImageFormat Png => new ImageFormat("png");
         public static ImageFormat Webp => new ImageFormat("webp");
         public static ImageFormat Heic => new ImageFormat("heic");
