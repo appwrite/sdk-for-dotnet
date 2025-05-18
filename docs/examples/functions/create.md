@@ -28,9 +28,5 @@ Function result = await functions.Create(
     providerBranch: "<PROVIDER_BRANCH>", // optional
     providerSilentMode: false, // optional
     providerRootDirectory: "<PROVIDER_ROOT_DIRECTORY>", // optional
-    templateRepository: "<TEMPLATE_REPOSITORY>", // optional
-    templateOwner: "<TEMPLATE_OWNER>", // optional
-    templateRootDirectory: "<TEMPLATE_ROOT_DIRECTORY>", // optional
-    templateVersion: "<TEMPLATE_VERSION>", // optional
     specification: "" // optional
 );

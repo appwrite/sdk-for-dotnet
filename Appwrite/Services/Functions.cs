@@ -53,7 +53,7 @@ namespace Appwrite.Services
         /// API.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? templateRepository = null, string? templateOwner = null, string? templateRootDirectory = null, string? templateVersion = null, string? specification = null)
+        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? specification = null)
         {
             var apiPath = "/functions";
 
@@ -76,10 +76,6 @@ namespace Appwrite.Services
                 { "providerBranch", providerBranch },
                 { "providerSilentMode", providerSilentMode },
                 { "providerRootDirectory", providerRootDirectory },
-                { "templateRepository", templateRepository },
-                { "templateOwner", templateOwner },
-                { "templateRootDirectory", templateRootDirectory },
-                { "templateVersion", templateVersion },
                 { "specification", specification }
             };
 
@@ -132,7 +128,6 @@ namespace Appwrite.Services
 
         /// <para>
         /// List allowed function specifications for this instance.
-        /// 
         /// </para>
         /// </summary>
         public Task<Models.SpecificationList> ListSpecifications()
@@ -267,7 +262,40 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Get a list of all the project's code deployments. You can use the query
+        /// Update the function active deployment. Use this endpoint to switch the code
+        /// deployment that should be used when visitor opens your function.
+        /// </para>
+        /// </summary>
+        public Task<Models.Function> UpdateFunctionDeployment(string functionId, string deploymentId)
+        {
+            var apiPath = "/functions/{functionId}/deployment"
+                .Replace("{functionId}", functionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "deploymentId", deploymentId }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Function Convert(Dictionary<string, object> it) =>
+                Models.Function.From(map: it);
+
+            return _client.Call<Models.Function>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a list of all the function's code deployments. You can use the query
         /// params to filter your results.
         /// </para>
         /// </summary>
@@ -349,7 +377,120 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Get a code deployment by its unique ID.
+        /// Create a new build for an existing function deployment. This endpoint
+        /// allows you to rebuild a deployment with the updated function configuration,
+        /// including its entrypoint and build commands if they have been modified. The
+        /// build process will be queued and executed asynchronously. The original
+        /// deployment's code will be preserved and used for the new build.
+        /// </para>
+        /// </summary>
+        public Task<Models.Deployment> CreateDuplicateDeployment(string functionId, string deploymentId, string? buildId = null)
+        {
+            var apiPath = "/functions/{functionId}/deployments/duplicate"
+                .Replace("{functionId}", functionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "deploymentId", deploymentId },
+                { "buildId", buildId }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Deployment Convert(Dictionary<string, object> it) =>
+                Models.Deployment.From(map: it);
+
+            return _client.Call<Models.Deployment>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a deployment based on a template.
+        /// 
+        /// Use this endpoint with combination of
+        /// [listTemplates](https://appwrite.io/docs/server/functions#listTemplates) to
+        /// find the template details.
+        /// </para>
+        /// </summary>
+        public Task<Models.Deployment> CreateTemplateDeployment(string functionId, string repository, string owner, string rootDirectory, string version, bool? activate = null)
+        {
+            var apiPath = "/functions/{functionId}/deployments/template"
+                .Replace("{functionId}", functionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "repository", repository },
+                { "owner", owner },
+                { "rootDirectory", rootDirectory },
+                { "version", version },
+                { "activate", activate }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Deployment Convert(Dictionary<string, object> it) =>
+                Models.Deployment.From(map: it);
+
+            return _client.Call<Models.Deployment>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a deployment when a function is connected to VCS.
+        /// 
+        /// This endpoint lets you create deployment from a branch, commit, or a tag.
+        /// </para>
+        /// </summary>
+        public Task<Models.Deployment> CreateVcsDeployment(string functionId, Appwrite.Enums.VCSDeploymentType type, string reference, bool? activate = null)
+        {
+            var apiPath = "/functions/{functionId}/deployments/vcs"
+                .Replace("{functionId}", functionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "type", type },
+                { "reference", reference },
+                { "activate", activate }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Deployment Convert(Dictionary<string, object> it) =>
+                Models.Deployment.From(map: it);
+
+            return _client.Call<Models.Deployment>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a function deployment by its unique ID.
         /// </para>
         /// </summary>
         public Task<Models.Deployment> GetDeployment(string functionId, string deploymentId)
@@ -372,40 +513,6 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Deployment>(
                 method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
-        /// Update the function code deployment ID using the unique function ID. Use
-        /// this endpoint to switch the code deployment that should be executed by the
-        /// execution endpoint.
-        /// </para>
-        /// </summary>
-        public Task<Models.Function> UpdateDeployment(string functionId, string deploymentId)
-        {
-            var apiPath = "/functions/{functionId}/deployments/{deploymentId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{deploymentId}", deploymentId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.Function Convert(Dictionary<string, object> it) =>
-                Models.Function.From(map: it);
-
-            return _client.Call<Models.Function>(
-                method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -443,81 +550,12 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Create a new build for an existing function deployment. This endpoint
-        /// allows you to rebuild a deployment with the updated function configuration,
-        /// including its entrypoint and build commands if they have been modified The
-        /// build process will be queued and executed asynchronously. The original
-        /// deployment's code will be preserved and used for the new build.
+        /// Get a function deployment content by its unique ID. The endpoint response
+        /// return with a 'Content-Disposition: attachment' header that tells the
+        /// browser to start downloading the file to user downloads directory.
         /// </para>
         /// </summary>
-        public Task<object> CreateBuild(string functionId, string deploymentId, string? buildId = null)
-        {
-            var apiPath = "/functions/{functionId}/deployments/{deploymentId}/build"
-                .Replace("{functionId}", functionId)
-                .Replace("{deploymentId}", deploymentId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "buildId", buildId }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-
-            return _client.Call<object>(
-                method: "POST",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
-
-        }
-
-        /// <para>
-        /// Cancel an ongoing function deployment build. If the build is already in
-        /// progress, it will be stopped and marked as canceled. If the build hasn't
-        /// started yet, it will be marked as canceled without executing. You cannot
-        /// cancel builds that have already completed (status 'ready') or failed. The
-        /// response includes the final build status and details.
-        /// </para>
-        /// </summary>
-        public Task<Models.Build> UpdateDeploymentBuild(string functionId, string deploymentId)
-        {
-            var apiPath = "/functions/{functionId}/deployments/{deploymentId}/build"
-                .Replace("{functionId}", functionId)
-                .Replace("{deploymentId}", deploymentId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.Build Convert(Dictionary<string, object> it) =>
-                Models.Build.From(map: it);
-
-            return _client.Call<Models.Build>(
-                method: "PATCH",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
-        /// Get a Deployment's contents by its unique ID. This endpoint supports range
-        /// requests for partial or streaming file download.
-        /// </para>
-        /// </summary>
-        public Task<byte[]> GetDeploymentDownload(string functionId, string deploymentId)
+        public Task<byte[]> GetDeploymentDownload(string functionId, string deploymentId, Appwrite.Enums.DeploymentDownloadType? type = null)
         {
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}/download"
                 .Replace("{functionId}", functionId)
@@ -525,6 +563,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "type", type }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -542,19 +581,54 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Cancel an ongoing function deployment build. If the build is already in
+        /// progress, it will be stopped and marked as canceled. If the build hasn't
+        /// started yet, it will be marked as canceled without executing. You cannot
+        /// cancel builds that have already completed (status 'ready') or failed. The
+        /// response includes the final build status and details.
+        /// </para>
+        /// </summary>
+        public Task<Models.Deployment> UpdateDeploymentStatus(string functionId, string deploymentId)
+        {
+            var apiPath = "/functions/{functionId}/deployments/{deploymentId}/status"
+                .Replace("{functionId}", functionId)
+                .Replace("{deploymentId}", deploymentId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Deployment Convert(Dictionary<string, object> it) =>
+                Models.Deployment.From(map: it);
+
+            return _client.Call<Models.Deployment>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get a list of all the current user function execution logs. You can use the
         /// query params to filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.ExecutionList> ListExecutions(string functionId, List<string>? queries = null, string? search = null)
+        public Task<Models.ExecutionList> ListExecutions(string functionId, List<string>? queries = null)
         {
             var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries },
-                { "search", search }
+                { "queries", queries }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -647,7 +721,6 @@ namespace Appwrite.Services
 
         /// <para>
         /// Delete a function execution by its unique ID.
-        /// 
         /// </para>
         /// </summary>
         public Task<object> DeleteExecution(string functionId, string executionId)
@@ -710,7 +783,7 @@ namespace Appwrite.Services
         /// in the function at runtime as environment variables.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> CreateVariable(string functionId, string key, string xvalue)
+        public Task<Models.Variable> CreateVariable(string functionId, string key, string xvalue, bool? secret = null)
         {
             var apiPath = "/functions/{functionId}/variables"
                 .Replace("{functionId}", functionId);
@@ -718,7 +791,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "key", key },
-                { "value", xvalue }
+                { "value", xvalue },
+                { "secret", secret }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -774,7 +848,7 @@ namespace Appwrite.Services
         /// Update variable by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> UpdateVariable(string functionId, string variableId, string key, string? xvalue = null)
+        public Task<Models.Variable> UpdateVariable(string functionId, string variableId, string key, string? xvalue = null, bool? secret = null)
         {
             var apiPath = "/functions/{functionId}/variables/{variableId}"
                 .Replace("{functionId}", functionId)
@@ -783,7 +857,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "key", key },
-                { "value", xvalue }
+                { "value", xvalue },
+                { "secret", secret }
             };
 
             var apiHeaders = new Dictionary<string, string>()

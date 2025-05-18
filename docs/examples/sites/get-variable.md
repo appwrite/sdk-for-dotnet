@@ -7,9 +7,9 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Functions functions = new Functions(client);
+Sites sites = new Sites(client);
 
-Build result = await functions.UpdateDeploymentBuild(
-    functionId: "<FUNCTION_ID>",
-    deploymentId: "<DEPLOYMENT_ID>"
+Variable result = await sites.GetVariable(
+    siteId: "<SITE_ID>",
+    variableId: "<VARIABLE_ID>"
 );

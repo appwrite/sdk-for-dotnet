@@ -12,5 +12,6 @@ Functions functions = new Functions(client);
 Variable result = await functions.CreateVariable(
     functionId: "<FUNCTION_ID>",
     key: "<KEY>",
-    value: "<VALUE>"
+    value: "<VALUE>",
+    secret: false // optional
 );

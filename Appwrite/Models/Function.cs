@@ -37,8 +37,20 @@ namespace Appwrite.Models
         [JsonProperty("runtime")]
         public string Runtime { get; private set; }
 
-        [JsonProperty("deployment")]
-        public string Deployment { get; private set; }
+        [JsonProperty("deploymentId")]
+        public string DeploymentId { get; private set; }
+
+        [JsonProperty("deploymentCreatedAt")]
+        public string DeploymentCreatedAt { get; private set; }
+
+        [JsonProperty("latestDeploymentId")]
+        public string LatestDeploymentId { get; private set; }
+
+        [JsonProperty("latestDeploymentCreatedAt")]
+        public string LatestDeploymentCreatedAt { get; private set; }
+
+        [JsonProperty("latestDeploymentStatus")]
+        public string LatestDeploymentStatus { get; private set; }
 
         [JsonProperty("scopes")]
         public List<string> Scopes { get; private set; }
@@ -92,7 +104,11 @@ namespace Appwrite.Models
             bool live,
             bool logging,
             string runtime,
-            string deployment,
+            string deploymentId,
+            string deploymentCreatedAt,
+            string latestDeploymentId,
+            string latestDeploymentCreatedAt,
+            string latestDeploymentStatus,
             List<string> scopes,
             List<Variable> vars,
             List<string> events,
@@ -117,7 +133,11 @@ namespace Appwrite.Models
             Live = live;
             Logging = logging;
             Runtime = runtime;
-            Deployment = deployment;
+            DeploymentId = deploymentId;
+            DeploymentCreatedAt = deploymentCreatedAt;
+            LatestDeploymentId = latestDeploymentId;
+            LatestDeploymentCreatedAt = latestDeploymentCreatedAt;
+            LatestDeploymentStatus = latestDeploymentStatus;
             Scopes = scopes;
             Vars = vars;
             Events = events;
@@ -144,7 +164,11 @@ namespace Appwrite.Models
             live: (bool)map["live"],
             logging: (bool)map["logging"],
             runtime: map["runtime"].ToString(),
-            deployment: map["deployment"].ToString(),
+            deploymentId: map["deploymentId"].ToString(),
+            deploymentCreatedAt: map["deploymentCreatedAt"].ToString(),
+            latestDeploymentId: map["latestDeploymentId"].ToString(),
+            latestDeploymentCreatedAt: map["latestDeploymentCreatedAt"].ToString(),
+            latestDeploymentStatus: map["latestDeploymentStatus"].ToString(),
             scopes: ((JArray)map["scopes"]).ToObject<List<string>>(),
             vars: ((JArray)map["vars"]).ToObject<List<Dictionary<string, object>>>().Select(it => Variable.From(map: it)).ToList(),
             events: ((JArray)map["events"]).ToObject<List<string>>(),
@@ -172,7 +196,11 @@ namespace Appwrite.Models
             { "live", Live },
             { "logging", Logging },
             { "runtime", Runtime },
-            { "deployment", Deployment },
+            { "deploymentId", DeploymentId },
+            { "deploymentCreatedAt", DeploymentCreatedAt },
+            { "latestDeploymentId", LatestDeploymentId },
+            { "latestDeploymentCreatedAt", LatestDeploymentCreatedAt },
+            { "latestDeploymentStatus", LatestDeploymentStatus },
             { "scopes", Scopes },
             { "vars", Vars.Select(it => it.ToMap()) },
             { "events", Events },

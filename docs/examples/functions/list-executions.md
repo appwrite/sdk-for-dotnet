@@ -11,6 +11,5 @@ Functions functions = new Functions(client);
 
 ExecutionList result = await functions.ListExecutions(
     functionId: "<FUNCTION_ID>",
-    queries: new List<string>(), // optional
-    search: "<SEARCH>" // optional
+    queries: new List<string>() // optional
 );

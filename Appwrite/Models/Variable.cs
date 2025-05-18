@@ -25,6 +25,9 @@ namespace Appwrite.Models
         [JsonProperty("value")]
         public string Value { get; private set; }
 
+        [JsonProperty("secret")]
+        public bool Secret { get; private set; }
+
         [JsonProperty("resourceType")]
         public string ResourceType { get; private set; }
 
@@ -37,6 +40,7 @@ namespace Appwrite.Models
             string updatedAt,
             string key,
             string xvalue,
+            bool secret,
             string resourceType,
             string resourceId
         ) {
@@ -45,6 +49,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Key = key;
             Value = xvalue;
+            Secret = secret;
             ResourceType = resourceType;
             ResourceId = resourceId;
         }
@@ -55,6 +60,7 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             key: map["key"].ToString(),
             xvalue: map["value"].ToString(),
+            secret: (bool)map["secret"],
             resourceType: map["resourceType"].ToString(),
             resourceId: map["resourceId"].ToString()
         );
@@ -66,6 +72,7 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "key", Key },
             { "value", Value },
+            { "secret", Secret },
             { "resourceType", ResourceType },
             { "resourceId", ResourceId }
         };

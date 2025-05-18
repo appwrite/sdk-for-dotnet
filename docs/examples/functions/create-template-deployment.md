@@ -9,7 +9,11 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-Function result = await functions.UpdateDeployment(
+Deployment result = await functions.CreateTemplateDeployment(
     functionId: "<FUNCTION_ID>",
-    deploymentId: "<DEPLOYMENT_ID>"
+    repository: "<REPOSITORY>",
+    owner: "<OWNER>",
+    rootDirectory: "<ROOT_DIRECTORY>",
+    version: "<VERSION>",
+    activate: false // optional
 );
