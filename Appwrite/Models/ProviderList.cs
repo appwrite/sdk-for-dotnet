@@ -2,18 +2,17 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class ProviderList
     {
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; private set; }
 
-        [JsonProperty("providers")]
+        [JsonPropertyName("providers")]
         public List<Provider> Providers { get; private set; }
 
         public ProviderList(
@@ -26,7 +25,7 @@ namespace Appwrite.Models
 
         public static ProviderList From(Dictionary<string, object> map) => new ProviderList(
             total: Convert.ToInt64(map["total"]),
-            providers: ((JArray)map["providers"]).ToObject<List<Dictionary<string, object>>>().Select(it => Provider.From(map: it)).ToList()
+            providers: map["providers"] is JsonElement jsonArray2 ? jsonArray2.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Provider.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["providers"]).Select(it => Provider.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

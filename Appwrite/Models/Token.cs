@@ -2,30 +2,29 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Token
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("userId")]
+        [JsonPropertyName("userId")]
         public string UserId { get; private set; }
 
-        [JsonProperty("secret")]
+        [JsonPropertyName("secret")]
         public string Secret { get; private set; }
 
-        [JsonProperty("expire")]
+        [JsonPropertyName("expire")]
         public string Expire { get; private set; }
 
-        [JsonProperty("phrase")]
+        [JsonPropertyName("phrase")]
         public string Phrase { get; private set; }
 
         public Token(

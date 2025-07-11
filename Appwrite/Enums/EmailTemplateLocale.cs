@@ -1,0 +1,146 @@
+using System;
+
+namespace Appwrite.Enums
+{
+    public class EmailTemplateLocale : IEnum
+    {
+        public string Value { get; private set; }
+
+        public EmailTemplateLocale(string value)
+        {
+            Value = value;
+        }
+
+        public static EmailTemplateLocale Af => new EmailTemplateLocale("af");
+        public static EmailTemplateLocale ArAe => new EmailTemplateLocale("ar-ae");
+        public static EmailTemplateLocale ArBh => new EmailTemplateLocale("ar-bh");
+        public static EmailTemplateLocale ArDz => new EmailTemplateLocale("ar-dz");
+        public static EmailTemplateLocale ArEg => new EmailTemplateLocale("ar-eg");
+        public static EmailTemplateLocale ArIq => new EmailTemplateLocale("ar-iq");
+        public static EmailTemplateLocale ArJo => new EmailTemplateLocale("ar-jo");
+        public static EmailTemplateLocale ArKw => new EmailTemplateLocale("ar-kw");
+        public static EmailTemplateLocale ArLb => new EmailTemplateLocale("ar-lb");
+        public static EmailTemplateLocale ArLy => new EmailTemplateLocale("ar-ly");
+        public static EmailTemplateLocale ArMa => new EmailTemplateLocale("ar-ma");
+        public static EmailTemplateLocale ArOm => new EmailTemplateLocale("ar-om");
+        public static EmailTemplateLocale ArQa => new EmailTemplateLocale("ar-qa");
+        public static EmailTemplateLocale ArSa => new EmailTemplateLocale("ar-sa");
+        public static EmailTemplateLocale ArSy => new EmailTemplateLocale("ar-sy");
+        public static EmailTemplateLocale ArTn => new EmailTemplateLocale("ar-tn");
+        public static EmailTemplateLocale ArYe => new EmailTemplateLocale("ar-ye");
+        public static EmailTemplateLocale As => new EmailTemplateLocale("as");
+        public static EmailTemplateLocale Az => new EmailTemplateLocale("az");
+        public static EmailTemplateLocale Be => new EmailTemplateLocale("be");
+        public static EmailTemplateLocale Bg => new EmailTemplateLocale("bg");
+        public static EmailTemplateLocale Bh => new EmailTemplateLocale("bh");
+        public static EmailTemplateLocale Bn => new EmailTemplateLocale("bn");
+        public static EmailTemplateLocale Bs => new EmailTemplateLocale("bs");
+        public static EmailTemplateLocale Ca => new EmailTemplateLocale("ca");
+        public static EmailTemplateLocale Cs => new EmailTemplateLocale("cs");
+        public static EmailTemplateLocale Cy => new EmailTemplateLocale("cy");
+        public static EmailTemplateLocale Da => new EmailTemplateLocale("da");
+        public static EmailTemplateLocale De => new EmailTemplateLocale("de");
+        public static EmailTemplateLocale DeAt => new EmailTemplateLocale("de-at");
+        public static EmailTemplateLocale DeCh => new EmailTemplateLocale("de-ch");
+        public static EmailTemplateLocale DeLi => new EmailTemplateLocale("de-li");
+        public static EmailTemplateLocale DeLu => new EmailTemplateLocale("de-lu");
+        public static EmailTemplateLocale El => new EmailTemplateLocale("el");
+        public static EmailTemplateLocale En => new EmailTemplateLocale("en");
+        public static EmailTemplateLocale EnAu => new EmailTemplateLocale("en-au");
+        public static EmailTemplateLocale EnBz => new EmailTemplateLocale("en-bz");
+        public static EmailTemplateLocale EnCa => new EmailTemplateLocale("en-ca");
+        public static EmailTemplateLocale EnGb => new EmailTemplateLocale("en-gb");
+        public static EmailTemplateLocale EnIe => new EmailTemplateLocale("en-ie");
+        public static EmailTemplateLocale EnJm => new EmailTemplateLocale("en-jm");
+        public static EmailTemplateLocale EnNz => new EmailTemplateLocale("en-nz");
+        public static EmailTemplateLocale EnTt => new EmailTemplateLocale("en-tt");
+        public static EmailTemplateLocale EnUs => new EmailTemplateLocale("en-us");
+        public static EmailTemplateLocale EnZa => new EmailTemplateLocale("en-za");
+        public static EmailTemplateLocale Eo => new EmailTemplateLocale("eo");
+        public static EmailTemplateLocale Es => new EmailTemplateLocale("es");
+        public static EmailTemplateLocale EsAr => new EmailTemplateLocale("es-ar");
+        public static EmailTemplateLocale EsBo => new EmailTemplateLocale("es-bo");
+        public static EmailTemplateLocale EsCl => new EmailTemplateLocale("es-cl");
+        public static EmailTemplateLocale EsCo => new EmailTemplateLocale("es-co");
+        public static EmailTemplateLocale EsCr => new EmailTemplateLocale("es-cr");
+        public static EmailTemplateLocale EsDo => new EmailTemplateLocale("es-do");
+        public static EmailTemplateLocale EsEc => new EmailTemplateLocale("es-ec");
+        public static EmailTemplateLocale EsGt => new EmailTemplateLocale("es-gt");
+        public static EmailTemplateLocale EsHn => new EmailTemplateLocale("es-hn");
+        public static EmailTemplateLocale EsMx => new EmailTemplateLocale("es-mx");
+        public static EmailTemplateLocale EsNi => new EmailTemplateLocale("es-ni");
+        public static EmailTemplateLocale EsPa => new EmailTemplateLocale("es-pa");
+        public static EmailTemplateLocale EsPe => new EmailTemplateLocale("es-pe");
+        public static EmailTemplateLocale EsPr => new EmailTemplateLocale("es-pr");
+        public static EmailTemplateLocale EsPy => new EmailTemplateLocale("es-py");
+        public static EmailTemplateLocale EsSv => new EmailTemplateLocale("es-sv");
+        public static EmailTemplateLocale EsUy => new EmailTemplateLocale("es-uy");
+        public static EmailTemplateLocale EsVe => new EmailTemplateLocale("es-ve");
+        public static EmailTemplateLocale Et => new EmailTemplateLocale("et");
+        public static EmailTemplateLocale Eu => new EmailTemplateLocale("eu");
+        public static EmailTemplateLocale Fa => new EmailTemplateLocale("fa");
+        public static EmailTemplateLocale Fi => new EmailTemplateLocale("fi");
+        public static EmailTemplateLocale Fo => new EmailTemplateLocale("fo");
+        public static EmailTemplateLocale Fr => new EmailTemplateLocale("fr");
+        public static EmailTemplateLocale FrBe => new EmailTemplateLocale("fr-be");
+        public static EmailTemplateLocale FrCa => new EmailTemplateLocale("fr-ca");
+        public static EmailTemplateLocale FrCh => new EmailTemplateLocale("fr-ch");
+        public static EmailTemplateLocale FrLu => new EmailTemplateLocale("fr-lu");
+        public static EmailTemplateLocale Ga => new EmailTemplateLocale("ga");
+        public static EmailTemplateLocale Gd => new EmailTemplateLocale("gd");
+        public static EmailTemplateLocale He => new EmailTemplateLocale("he");
+        public static EmailTemplateLocale Hi => new EmailTemplateLocale("hi");
+        public static EmailTemplateLocale Hr => new EmailTemplateLocale("hr");
+        public static EmailTemplateLocale Hu => new EmailTemplateLocale("hu");
+        public static EmailTemplateLocale Id => new EmailTemplateLocale("id");
+        public static EmailTemplateLocale Is => new EmailTemplateLocale("is");
+        public static EmailTemplateLocale It => new EmailTemplateLocale("it");
+        public static EmailTemplateLocale ItCh => new EmailTemplateLocale("it-ch");
+        public static EmailTemplateLocale Ja => new EmailTemplateLocale("ja");
+        public static EmailTemplateLocale Ji => new EmailTemplateLocale("ji");
+        public static EmailTemplateLocale Ko => new EmailTemplateLocale("ko");
+        public static EmailTemplateLocale Ku => new EmailTemplateLocale("ku");
+        public static EmailTemplateLocale Lt => new EmailTemplateLocale("lt");
+        public static EmailTemplateLocale Lv => new EmailTemplateLocale("lv");
+        public static EmailTemplateLocale Mk => new EmailTemplateLocale("mk");
+        public static EmailTemplateLocale Ml => new EmailTemplateLocale("ml");
+        public static EmailTemplateLocale Ms => new EmailTemplateLocale("ms");
+        public static EmailTemplateLocale Mt => new EmailTemplateLocale("mt");
+        public static EmailTemplateLocale Nb => new EmailTemplateLocale("nb");
+        public static EmailTemplateLocale Ne => new EmailTemplateLocale("ne");
+        public static EmailTemplateLocale Nl => new EmailTemplateLocale("nl");
+        public static EmailTemplateLocale NlBe => new EmailTemplateLocale("nl-be");
+        public static EmailTemplateLocale Nn => new EmailTemplateLocale("nn");
+        public static EmailTemplateLocale No => new EmailTemplateLocale("no");
+        public static EmailTemplateLocale Pa => new EmailTemplateLocale("pa");
+        public static EmailTemplateLocale Pl => new EmailTemplateLocale("pl");
+        public static EmailTemplateLocale Pt => new EmailTemplateLocale("pt");
+        public static EmailTemplateLocale PtBr => new EmailTemplateLocale("pt-br");
+        public static EmailTemplateLocale Rm => new EmailTemplateLocale("rm");
+        public static EmailTemplateLocale Ro => new EmailTemplateLocale("ro");
+        public static EmailTemplateLocale RoMd => new EmailTemplateLocale("ro-md");
+        public static EmailTemplateLocale Ru => new EmailTemplateLocale("ru");
+        public static EmailTemplateLocale RuMd => new EmailTemplateLocale("ru-md");
+        public static EmailTemplateLocale Sb => new EmailTemplateLocale("sb");
+        public static EmailTemplateLocale Sk => new EmailTemplateLocale("sk");
+        public static EmailTemplateLocale Sl => new EmailTemplateLocale("sl");
+        public static EmailTemplateLocale Sq => new EmailTemplateLocale("sq");
+        public static EmailTemplateLocale Sr => new EmailTemplateLocale("sr");
+        public static EmailTemplateLocale Sv => new EmailTemplateLocale("sv");
+        public static EmailTemplateLocale SvFi => new EmailTemplateLocale("sv-fi");
+        public static EmailTemplateLocale Th => new EmailTemplateLocale("th");
+        public static EmailTemplateLocale Tn => new EmailTemplateLocale("tn");
+        public static EmailTemplateLocale Tr => new EmailTemplateLocale("tr");
+        public static EmailTemplateLocale Ts => new EmailTemplateLocale("ts");
+        public static EmailTemplateLocale Ua => new EmailTemplateLocale("ua");
+        public static EmailTemplateLocale Ur => new EmailTemplateLocale("ur");
+        public static EmailTemplateLocale Ve => new EmailTemplateLocale("ve");
+        public static EmailTemplateLocale Vi => new EmailTemplateLocale("vi");
+        public static EmailTemplateLocale Xh => new EmailTemplateLocale("xh");
+        public static EmailTemplateLocale ZhCn => new EmailTemplateLocale("zh-cn");
+        public static EmailTemplateLocale ZhHk => new EmailTemplateLocale("zh-hk");
+        public static EmailTemplateLocale ZhSg => new EmailTemplateLocale("zh-sg");
+        public static EmailTemplateLocale ZhTw => new EmailTemplateLocale("zh-tw");
+        public static EmailTemplateLocale Zu => new EmailTemplateLocale("zu");
+    }
+}

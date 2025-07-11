@@ -2,24 +2,23 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class MfaFactors
     {
-        [JsonProperty("totp")]
+        [JsonPropertyName("totp")]
         public bool Totp { get; private set; }
 
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public bool Phone { get; private set; }
 
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public bool Email { get; private set; }
 
-        [JsonProperty("recoveryCode")]
+        [JsonPropertyName("recoveryCode")]
         public bool RecoveryCode { get; private set; }
 
         public MfaFactors(

@@ -2,39 +2,38 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Index
     {
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; private set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; private set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("error")]
+        [JsonPropertyName("error")]
         public string Error { get; private set; }
 
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public List<string> Attributes { get; private set; }
 
-        [JsonProperty("lengths")]
+        [JsonPropertyName("lengths")]
         public List<long> Lengths { get; private set; }
 
-        [JsonProperty("orders")]
+        [JsonPropertyName("orders")]
         public List<string>? Orders { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
         public Index(
@@ -64,9 +63,9 @@ namespace Appwrite.Models
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
-            attributes: ((JArray)map["attributes"]).ToObject<List<string>>(),
-            lengths: ((JArray)map["lengths"]).ToObject<List<long>>(),
-            orders: ((JArray)map["orders"]).ToObject<List<string>>(),
+            attributes: map["attributes"] is JsonElement jsonArrayProp5 ? jsonArrayProp5.Deserialize<List<string>>()! : (List<string>)map["attributes"],
+            lengths: map["lengths"] is JsonElement jsonArrayProp6 ? jsonArrayProp6.Deserialize<List<long>>()! : (List<long>)map["lengths"],
+            orders: map["orders"] is JsonElement jsonArrayProp7 ? jsonArrayProp7.Deserialize<List<string>>()! : (List<string>)map["orders"],
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString()
         );

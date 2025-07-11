@@ -2,36 +2,35 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Variable
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; private set; }
 
-        [JsonProperty("value")]
+        [JsonPropertyName("value")]
         public string Value { get; private set; }
 
-        [JsonProperty("secret")]
+        [JsonPropertyName("secret")]
         public bool Secret { get; private set; }
 
-        [JsonProperty("resourceType")]
+        [JsonPropertyName("resourceType")]
         public string ResourceType { get; private set; }
 
-        [JsonProperty("resourceId")]
+        [JsonPropertyName("resourceId")]
         public string ResourceId { get; private set; }
 
         public Variable(

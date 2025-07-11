@@ -1,0 +1,146 @@
+using System;
+
+namespace Appwrite.Enums
+{
+    public class SmsTemplateLocale : IEnum
+    {
+        public string Value { get; private set; }
+
+        public SmsTemplateLocale(string value)
+        {
+            Value = value;
+        }
+
+        public static SmsTemplateLocale Af => new SmsTemplateLocale("af");
+        public static SmsTemplateLocale ArAe => new SmsTemplateLocale("ar-ae");
+        public static SmsTemplateLocale ArBh => new SmsTemplateLocale("ar-bh");
+        public static SmsTemplateLocale ArDz => new SmsTemplateLocale("ar-dz");
+        public static SmsTemplateLocale ArEg => new SmsTemplateLocale("ar-eg");
+        public static SmsTemplateLocale ArIq => new SmsTemplateLocale("ar-iq");
+        public static SmsTemplateLocale ArJo => new SmsTemplateLocale("ar-jo");
+        public static SmsTemplateLocale ArKw => new SmsTemplateLocale("ar-kw");
+        public static SmsTemplateLocale ArLb => new SmsTemplateLocale("ar-lb");
+        public static SmsTemplateLocale ArLy => new SmsTemplateLocale("ar-ly");
+        public static SmsTemplateLocale ArMa => new SmsTemplateLocale("ar-ma");
+        public static SmsTemplateLocale ArOm => new SmsTemplateLocale("ar-om");
+        public static SmsTemplateLocale ArQa => new SmsTemplateLocale("ar-qa");
+        public static SmsTemplateLocale ArSa => new SmsTemplateLocale("ar-sa");
+        public static SmsTemplateLocale ArSy => new SmsTemplateLocale("ar-sy");
+        public static SmsTemplateLocale ArTn => new SmsTemplateLocale("ar-tn");
+        public static SmsTemplateLocale ArYe => new SmsTemplateLocale("ar-ye");
+        public static SmsTemplateLocale As => new SmsTemplateLocale("as");
+        public static SmsTemplateLocale Az => new SmsTemplateLocale("az");
+        public static SmsTemplateLocale Be => new SmsTemplateLocale("be");
+        public static SmsTemplateLocale Bg => new SmsTemplateLocale("bg");
+        public static SmsTemplateLocale Bh => new SmsTemplateLocale("bh");
+        public static SmsTemplateLocale Bn => new SmsTemplateLocale("bn");
+        public static SmsTemplateLocale Bs => new SmsTemplateLocale("bs");
+        public static SmsTemplateLocale Ca => new SmsTemplateLocale("ca");
+        public static SmsTemplateLocale Cs => new SmsTemplateLocale("cs");
+        public static SmsTemplateLocale Cy => new SmsTemplateLocale("cy");
+        public static SmsTemplateLocale Da => new SmsTemplateLocale("da");
+        public static SmsTemplateLocale De => new SmsTemplateLocale("de");
+        public static SmsTemplateLocale DeAt => new SmsTemplateLocale("de-at");
+        public static SmsTemplateLocale DeCh => new SmsTemplateLocale("de-ch");
+        public static SmsTemplateLocale DeLi => new SmsTemplateLocale("de-li");
+        public static SmsTemplateLocale DeLu => new SmsTemplateLocale("de-lu");
+        public static SmsTemplateLocale El => new SmsTemplateLocale("el");
+        public static SmsTemplateLocale En => new SmsTemplateLocale("en");
+        public static SmsTemplateLocale EnAu => new SmsTemplateLocale("en-au");
+        public static SmsTemplateLocale EnBz => new SmsTemplateLocale("en-bz");
+        public static SmsTemplateLocale EnCa => new SmsTemplateLocale("en-ca");
+        public static SmsTemplateLocale EnGb => new SmsTemplateLocale("en-gb");
+        public static SmsTemplateLocale EnIe => new SmsTemplateLocale("en-ie");
+        public static SmsTemplateLocale EnJm => new SmsTemplateLocale("en-jm");
+        public static SmsTemplateLocale EnNz => new SmsTemplateLocale("en-nz");
+        public static SmsTemplateLocale EnTt => new SmsTemplateLocale("en-tt");
+        public static SmsTemplateLocale EnUs => new SmsTemplateLocale("en-us");
+        public static SmsTemplateLocale EnZa => new SmsTemplateLocale("en-za");
+        public static SmsTemplateLocale Eo => new SmsTemplateLocale("eo");
+        public static SmsTemplateLocale Es => new SmsTemplateLocale("es");
+        public static SmsTemplateLocale EsAr => new SmsTemplateLocale("es-ar");
+        public static SmsTemplateLocale EsBo => new SmsTemplateLocale("es-bo");
+        public static SmsTemplateLocale EsCl => new SmsTemplateLocale("es-cl");
+        public static SmsTemplateLocale EsCo => new SmsTemplateLocale("es-co");
+        public static SmsTemplateLocale EsCr => new SmsTemplateLocale("es-cr");
+        public static SmsTemplateLocale EsDo => new SmsTemplateLocale("es-do");
+        public static SmsTemplateLocale EsEc => new SmsTemplateLocale("es-ec");
+        public static SmsTemplateLocale EsGt => new SmsTemplateLocale("es-gt");
+        public static SmsTemplateLocale EsHn => new SmsTemplateLocale("es-hn");
+        public static SmsTemplateLocale EsMx => new SmsTemplateLocale("es-mx");
+        public static SmsTemplateLocale EsNi => new SmsTemplateLocale("es-ni");
+        public static SmsTemplateLocale EsPa => new SmsTemplateLocale("es-pa");
+        public static SmsTemplateLocale EsPe => new SmsTemplateLocale("es-pe");
+        public static SmsTemplateLocale EsPr => new SmsTemplateLocale("es-pr");
+        public static SmsTemplateLocale EsPy => new SmsTemplateLocale("es-py");
+        public static SmsTemplateLocale EsSv => new SmsTemplateLocale("es-sv");
+        public static SmsTemplateLocale EsUy => new SmsTemplateLocale("es-uy");
+        public static SmsTemplateLocale EsVe => new SmsTemplateLocale("es-ve");
+        public static SmsTemplateLocale Et => new SmsTemplateLocale("et");
+        public static SmsTemplateLocale Eu => new SmsTemplateLocale("eu");
+        public static SmsTemplateLocale Fa => new SmsTemplateLocale("fa");
+        public static SmsTemplateLocale Fi => new SmsTemplateLocale("fi");
+        public static SmsTemplateLocale Fo => new SmsTemplateLocale("fo");
+        public static SmsTemplateLocale Fr => new SmsTemplateLocale("fr");
+        public static SmsTemplateLocale FrBe => new SmsTemplateLocale("fr-be");
+        public static SmsTemplateLocale FrCa => new SmsTemplateLocale("fr-ca");
+        public static SmsTemplateLocale FrCh => new SmsTemplateLocale("fr-ch");
+        public static SmsTemplateLocale FrLu => new SmsTemplateLocale("fr-lu");
+        public static SmsTemplateLocale Ga => new SmsTemplateLocale("ga");
+        public static SmsTemplateLocale Gd => new SmsTemplateLocale("gd");
+        public static SmsTemplateLocale He => new SmsTemplateLocale("he");
+        public static SmsTemplateLocale Hi => new SmsTemplateLocale("hi");
+        public static SmsTemplateLocale Hr => new SmsTemplateLocale("hr");
+        public static SmsTemplateLocale Hu => new SmsTemplateLocale("hu");
+        public static SmsTemplateLocale Id => new SmsTemplateLocale("id");
+        public static SmsTemplateLocale Is => new SmsTemplateLocale("is");
+        public static SmsTemplateLocale It => new SmsTemplateLocale("it");
+        public static SmsTemplateLocale ItCh => new SmsTemplateLocale("it-ch");
+        public static SmsTemplateLocale Ja => new SmsTemplateLocale("ja");
+        public static SmsTemplateLocale Ji => new SmsTemplateLocale("ji");
+        public static SmsTemplateLocale Ko => new SmsTemplateLocale("ko");
+        public static SmsTemplateLocale Ku => new SmsTemplateLocale("ku");
+        public static SmsTemplateLocale Lt => new SmsTemplateLocale("lt");
+        public static SmsTemplateLocale Lv => new SmsTemplateLocale("lv");
+        public static SmsTemplateLocale Mk => new SmsTemplateLocale("mk");
+        public static SmsTemplateLocale Ml => new SmsTemplateLocale("ml");
+        public static SmsTemplateLocale Ms => new SmsTemplateLocale("ms");
+        public static SmsTemplateLocale Mt => new SmsTemplateLocale("mt");
+        public static SmsTemplateLocale Nb => new SmsTemplateLocale("nb");
+        public static SmsTemplateLocale Ne => new SmsTemplateLocale("ne");
+        public static SmsTemplateLocale Nl => new SmsTemplateLocale("nl");
+        public static SmsTemplateLocale NlBe => new SmsTemplateLocale("nl-be");
+        public static SmsTemplateLocale Nn => new SmsTemplateLocale("nn");
+        public static SmsTemplateLocale No => new SmsTemplateLocale("no");
+        public static SmsTemplateLocale Pa => new SmsTemplateLocale("pa");
+        public static SmsTemplateLocale Pl => new SmsTemplateLocale("pl");
+        public static SmsTemplateLocale Pt => new SmsTemplateLocale("pt");
+        public static SmsTemplateLocale PtBr => new SmsTemplateLocale("pt-br");
+        public static SmsTemplateLocale Rm => new SmsTemplateLocale("rm");
+        public static SmsTemplateLocale Ro => new SmsTemplateLocale("ro");
+        public static SmsTemplateLocale RoMd => new SmsTemplateLocale("ro-md");
+        public static SmsTemplateLocale Ru => new SmsTemplateLocale("ru");
+        public static SmsTemplateLocale RuMd => new SmsTemplateLocale("ru-md");
+        public static SmsTemplateLocale Sb => new SmsTemplateLocale("sb");
+        public static SmsTemplateLocale Sk => new SmsTemplateLocale("sk");
+        public static SmsTemplateLocale Sl => new SmsTemplateLocale("sl");
+        public static SmsTemplateLocale Sq => new SmsTemplateLocale("sq");
+        public static SmsTemplateLocale Sr => new SmsTemplateLocale("sr");
+        public static SmsTemplateLocale Sv => new SmsTemplateLocale("sv");
+        public static SmsTemplateLocale SvFi => new SmsTemplateLocale("sv-fi");
+        public static SmsTemplateLocale Th => new SmsTemplateLocale("th");
+        public static SmsTemplateLocale Tn => new SmsTemplateLocale("tn");
+        public static SmsTemplateLocale Tr => new SmsTemplateLocale("tr");
+        public static SmsTemplateLocale Ts => new SmsTemplateLocale("ts");
+        public static SmsTemplateLocale Ua => new SmsTemplateLocale("ua");
+        public static SmsTemplateLocale Ur => new SmsTemplateLocale("ur");
+        public static SmsTemplateLocale Ve => new SmsTemplateLocale("ve");
+        public static SmsTemplateLocale Vi => new SmsTemplateLocale("vi");
+        public static SmsTemplateLocale Xh => new SmsTemplateLocale("xh");
+        public static SmsTemplateLocale ZhCn => new SmsTemplateLocale("zh-cn");
+        public static SmsTemplateLocale ZhHk => new SmsTemplateLocale("zh-hk");
+        public static SmsTemplateLocale ZhSg => new SmsTemplateLocale("zh-sg");
+        public static SmsTemplateLocale ZhTw => new SmsTemplateLocale("zh-tw");
+        public static SmsTemplateLocale Zu => new SmsTemplateLocale("zu");
+    }
+}

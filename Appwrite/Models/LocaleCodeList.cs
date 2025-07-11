@@ -2,18 +2,17 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class LocaleCodeList
     {
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; private set; }
 
-        [JsonProperty("localeCodes")]
+        [JsonPropertyName("localeCodes")]
         public List<LocaleCode> LocaleCodes { get; private set; }
 
         public LocaleCodeList(
@@ -26,7 +25,7 @@ namespace Appwrite.Models
 
         public static LocaleCodeList From(Dictionary<string, object> map) => new LocaleCodeList(
             total: Convert.ToInt64(map["total"]),
-            localeCodes: ((JArray)map["localeCodes"]).ToObject<List<Dictionary<string, object>>>().Select(it => LocaleCode.From(map: it)).ToList()
+            localeCodes: map["localeCodes"] is JsonElement jsonArray2 ? jsonArray2.Deserialize<List<Dictionary<string, object>>>()!.Select(it => LocaleCode.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["localeCodes"]).Select(it => LocaleCode.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -2,51 +2,50 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Message
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("providerType")]
+        [JsonPropertyName("providerType")]
         public string ProviderType { get; private set; }
 
-        [JsonProperty("topics")]
+        [JsonPropertyName("topics")]
         public List<string> Topics { get; private set; }
 
-        [JsonProperty("users")]
+        [JsonPropertyName("users")]
         public List<string> Users { get; private set; }
 
-        [JsonProperty("targets")]
+        [JsonPropertyName("targets")]
         public List<string> Targets { get; private set; }
 
-        [JsonProperty("scheduledAt")]
+        [JsonPropertyName("scheduledAt")]
         public string? ScheduledAt { get; private set; }
 
-        [JsonProperty("deliveredAt")]
+        [JsonPropertyName("deliveredAt")]
         public string? DeliveredAt { get; private set; }
 
-        [JsonProperty("deliveryErrors")]
+        [JsonPropertyName("deliveryErrors")]
         public List<string>? DeliveryErrors { get; private set; }
 
-        [JsonProperty("deliveredTotal")]
+        [JsonPropertyName("deliveredTotal")]
         public long DeliveredTotal { get; private set; }
 
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public object Data { get; private set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; private set; }
 
         public Message(
@@ -84,12 +83,12 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             providerType: map["providerType"].ToString(),
-            topics: ((JArray)map["topics"]).ToObject<List<string>>(),
-            users: ((JArray)map["users"]).ToObject<List<string>>(),
-            targets: ((JArray)map["targets"]).ToObject<List<string>>(),
+            topics: map["topics"] is JsonElement jsonArrayProp5 ? jsonArrayProp5.Deserialize<List<string>>()! : (List<string>)map["topics"],
+            users: map["users"] is JsonElement jsonArrayProp6 ? jsonArrayProp6.Deserialize<List<string>>()! : (List<string>)map["users"],
+            targets: map["targets"] is JsonElement jsonArrayProp7 ? jsonArrayProp7.Deserialize<List<string>>()! : (List<string>)map["targets"],
             scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null,
             deliveredAt: map.TryGetValue("deliveredAt", out var deliveredAt) ? deliveredAt?.ToString() : null,
-            deliveryErrors: ((JArray)map["deliveryErrors"]).ToObject<List<string>>(),
+            deliveryErrors: map["deliveryErrors"] is JsonElement jsonArrayProp10 ? jsonArrayProp10.Deserialize<List<string>>()! : (List<string>)map["deliveryErrors"],
             deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
             data: map["data"].ToString(),
             status: map["status"].ToString()

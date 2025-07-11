@@ -2,43 +2,45 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class AttributeString
     {
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; private set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; private set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("error")]
+        [JsonPropertyName("error")]
         public string Error { get; private set; }
 
-        [JsonProperty("required")]
+        [JsonPropertyName("required")]
         public bool Required { get; private set; }
 
-        [JsonProperty("array")]
+        [JsonPropertyName("array")]
         public bool? Array { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("size")]
+        [JsonPropertyName("size")]
         public long Size { get; private set; }
 
-        [JsonProperty("default")]
+        [JsonPropertyName("default")]
         public string? Default { get; private set; }
+
+        [JsonPropertyName("encrypt")]
+        public bool? Encrypt { get; private set; }
 
         public AttributeString(
             string key,
@@ -50,7 +52,8 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             long size,
-            string? xdefault
+            string? xdefault,
+            bool? encrypt
         ) {
             Key = key;
             Type = type;
@@ -62,6 +65,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Size = size;
             Default = xdefault;
+            Encrypt = encrypt;
         }
 
         public static AttributeString From(Dictionary<string, object> map) => new AttributeString(
@@ -74,7 +78,8 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             size: Convert.ToInt64(map["size"]),
-            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
+            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null,
+            encrypt: (bool?)map["encrypt"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -88,7 +93,8 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "size", Size },
-            { "default", Default }
+            { "default", Default },
+            { "encrypt", Encrypt }
         };
     }
 }

@@ -2,18 +2,17 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class FileList
     {
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; private set; }
 
-        [JsonProperty("files")]
+        [JsonPropertyName("files")]
         public List<File> Files { get; private set; }
 
         public FileList(
@@ -26,7 +25,7 @@ namespace Appwrite.Models
 
         public static FileList From(Dictionary<string, object> map) => new FileList(
             total: Convert.ToInt64(map["total"]),
-            files: ((JArray)map["files"]).ToObject<List<Dictionary<string, object>>>().Select(it => File.From(map: it)).ToList()
+            files: map["files"] is JsonElement jsonArray2 ? jsonArray2.Deserialize<List<Dictionary<string, object>>>()!.Select(it => File.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["files"]).Select(it => File.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -410,6 +410,42 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get usage metrics and statistics for all users in the project. You can view
+        /// the total number of users and sessions. The response includes both current
+        /// totals and historical data over time. Use the optional range parameter to
+        /// specify the time window for historical data: 24h (last 24 hours), 30d (last
+        /// 30 days), or 90d (last 90 days). If not specified, range defaults to 30
+        /// days.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageUsers> GetUsage(Appwrite.Enums.UserUsageRange? range = null)
+        {
+            var apiPath = "/users/usage";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageUsers Convert(Dictionary<string, object> it) =>
+                Models.UsageUsers.From(map: it);
+
+            return _client.Call<Models.UsageUsers>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get a user by its unique ID.
         /// </para>
         /// </summary>

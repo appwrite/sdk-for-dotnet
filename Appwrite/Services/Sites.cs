@@ -154,6 +154,106 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// List available site templates. You can use template details in
+        /// [createSite](/docs/references/cloud/server-nodejs/sites#create) method.
+        /// </para>
+        /// </summary>
+        public Task<Models.TemplateSiteList> ListTemplates(List<string>? frameworks = null, List<string>? useCases = null, long? limit = null, long? offset = null)
+        {
+            var apiPath = "/sites/templates";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "frameworks", frameworks },
+                { "useCases", useCases },
+                { "limit", limit },
+                { "offset", offset }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.TemplateSiteList Convert(Dictionary<string, object> it) =>
+                Models.TemplateSiteList.From(map: it);
+
+            return _client.Call<Models.TemplateSiteList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a site template using ID. You can use template details in
+        /// [createSite](/docs/references/cloud/server-nodejs/sites#create) method.
+        /// </para>
+        /// </summary>
+        public Task<Models.TemplateSite> GetTemplate(string templateId)
+        {
+            var apiPath = "/sites/templates/{templateId}"
+                .Replace("{templateId}", templateId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.TemplateSite Convert(Dictionary<string, object> it) =>
+                Models.TemplateSite.From(map: it);
+
+            return _client.Call<Models.TemplateSite>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get usage metrics and statistics for all sites in the project. View
+        /// statistics including total deployments, builds, logs, storage usage, and
+        /// compute time. The response includes both current totals and historical data
+        /// for each metric. Use the optional range parameter to specify the time
+        /// window for historical data: 24h (last 24 hours), 30d (last 30 days), or 90d
+        /// (last 90 days). If not specified, defaults to 30 days.
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageSites> ListUsage(Appwrite.Enums.SiteUsageRange? range = null)
+        {
+            var apiPath = "/sites/usage";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageSites Convert(Dictionary<string, object> it) =>
+                Models.UsageSites.From(map: it);
+
+            return _client.Call<Models.UsageSites>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get a site by its unique ID.
         /// </para>
         /// </summary>
@@ -696,6 +796,42 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Get usage metrics and statistics for a for a specific site. View statistics
+        /// including total deployments, builds, executions, storage usage, and compute
+        /// time. The response includes both current totals and historical data for
+        /// each metric. Use the optional range parameter to specify the time window
+        /// for historical data: 24h (last 24 hours), 30d (last 30 days), or 90d (last
+        /// 90 days). If not specified, defaults to 30 days.
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageSite> GetUsage(string siteId, Appwrite.Enums.SiteUsageRange? range = null)
+        {
+            var apiPath = "/sites/{siteId}/usage"
+                .Replace("{siteId}", siteId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageSite Convert(Dictionary<string, object> it) =>
+                Models.UsageSite.From(map: it);
+
+            return _client.Call<Models.UsageSite>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 

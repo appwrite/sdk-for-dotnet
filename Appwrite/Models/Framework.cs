@@ -2,27 +2,26 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Framework
     {
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("buildRuntime")]
+        [JsonPropertyName("buildRuntime")]
         public string BuildRuntime { get; private set; }
 
-        [JsonProperty("runtimes")]
+        [JsonPropertyName("runtimes")]
         public List<string> Runtimes { get; private set; }
 
-        [JsonProperty("adapters")]
+        [JsonPropertyName("adapters")]
         public List<FrameworkAdapter> Adapters { get; private set; }
 
         public Framework(
@@ -43,8 +42,8 @@ namespace Appwrite.Models
             key: map["key"].ToString(),
             name: map["name"].ToString(),
             buildRuntime: map["buildRuntime"].ToString(),
-            runtimes: ((JArray)map["runtimes"]).ToObject<List<string>>(),
-            adapters: ((JArray)map["adapters"]).ToObject<List<Dictionary<string, object>>>().Select(it => FrameworkAdapter.From(map: it)).ToList()
+            runtimes: map["runtimes"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["runtimes"],
+            adapters: map["adapters"] is JsonElement jsonArray5 ? jsonArray5.Deserialize<List<Dictionary<string, object>>>()!.Select(it => FrameworkAdapter.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["adapters"]).Select(it => FrameworkAdapter.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

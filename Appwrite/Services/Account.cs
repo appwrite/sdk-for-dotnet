@@ -84,6 +84,33 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Delete the currently logged in user.
+        /// </para>
+        /// </summary>
+        public Task<object> Delete()
+        {
+            var apiPath = "/account";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
         /// Update currently logged in user account email address. After changing user
         /// address, the user confirmation status will get reset. A new confirmation
         /// email is not sent automatically however you can use the send confirmation
@@ -979,6 +1006,51 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Allow the user to login to their account using the OAuth2 provider of their
+        /// choice. Each OAuth2 provider should be enabled from the Appwrite console
+        /// first. Use the success and failure arguments to provide a redirect URL's
+        /// back to your app when login is completed.
+        /// 
+        /// If there is already an active session, the new session will be attached to
+        /// the logged-in account. If there are no active sessions, the server will
+        /// attempt to look for a user with the same email address as the email
+        /// received from the OAuth2 provider and attach the new session to the
+        /// existing user. If no matching user is found - the server will create a new
+        /// user.
+        /// 
+        /// A user is limited to 10 active sessions at a time by default. [Learn more
+        /// about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<String> CreateOAuth2Session(Appwrite.Enums.OAuthProvider provider, string? success = null, string? failure = null, List<string>? scopes = null)
+        {
+            var apiPath = "/account/sessions/oauth2/{provider}"
+                .Replace("{provider}", provider.Value);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "success", success },
+                { "failure", failure },
+                { "scopes", scopes }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+
+            return _client.Redirect(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
         /// Use this endpoint to create a session from token. Provide the **userId**
         /// and **secret** parameters from the successful response of authentication
         /// flows initiated by token creation. For example, magic URL and phone login.
@@ -1171,6 +1243,109 @@ namespace Appwrite.Services
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
+
+        }
+
+        /// <para>
+        /// Use this endpoint to register a device for push notifications. Provide a
+        /// target ID (custom or generated using ID.unique()), a device identifier
+        /// (usually a device token), and optionally specify which provider should send
+        /// notifications to this target. The target is automatically linked to the
+        /// current session and includes device information like brand and model.
+        /// </para>
+        /// </summary>
+        public Task<Models.Target> CreatePushTarget(string targetId, string identifier, string? providerId = null)
+        {
+            var apiPath = "/account/targets/push";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "targetId", targetId },
+                { "identifier", identifier },
+                { "providerId", providerId }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Target Convert(Dictionary<string, object> it) =>
+                Models.Target.From(map: it);
+
+            return _client.Call<Models.Target>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the currently logged in user's push notification target. You can
+        /// modify the target's identifier (device token) and provider ID (token,
+        /// email, phone etc.). The target must exist and belong to the current user.
+        /// If you change the provider ID, notifications will be sent through the new
+        /// messaging provider instead.
+        /// </para>
+        /// </summary>
+        public Task<Models.Target> UpdatePushTarget(string targetId, string identifier)
+        {
+            var apiPath = "/account/targets/{targetId}/push"
+                .Replace("{targetId}", targetId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "identifier", identifier }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Target Convert(Dictionary<string, object> it) =>
+                Models.Target.From(map: it);
+
+            return _client.Call<Models.Target>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete a push notification target for the currently logged in user. After
+        /// deletion, the device will no longer receive push notifications. The target
+        /// must exist and belong to the current user.
+        /// </para>
+        /// </summary>
+        public Task<object> DeletePushTarget(string targetId)
+        {
+            var apiPath = "/account/targets/{targetId}/push"
+                .Replace("{targetId}", targetId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 

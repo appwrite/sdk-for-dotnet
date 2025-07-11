@@ -2,18 +2,17 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class ExecutionList
     {
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; private set; }
 
-        [JsonProperty("executions")]
+        [JsonPropertyName("executions")]
         public List<Execution> Executions { get; private set; }
 
         public ExecutionList(
@@ -26,7 +25,7 @@ namespace Appwrite.Models
 
         public static ExecutionList From(Dictionary<string, object> map) => new ExecutionList(
             total: Convert.ToInt64(map["total"]),
-            executions: ((JArray)map["executions"]).ToObject<List<Dictionary<string, object>>>().Select(it => Execution.From(map: it)).ToList()
+            executions: map["executions"] is JsonElement jsonArray2 ? jsonArray2.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Execution.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["executions"]).Select(it => Execution.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

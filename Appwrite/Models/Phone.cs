@@ -2,21 +2,20 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Phone
     {
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; private set; }
 
-        [JsonProperty("countryCode")]
+        [JsonPropertyName("countryCode")]
         public string CountryCode { get; private set; }
 
-        [JsonProperty("countryName")]
+        [JsonPropertyName("countryName")]
         public string CountryName { get; private set; }
 
         public Phone(

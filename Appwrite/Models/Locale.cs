@@ -2,33 +2,32 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Locale
     {
-        [JsonProperty("ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; private set; }
 
-        [JsonProperty("countryCode")]
+        [JsonPropertyName("countryCode")]
         public string CountryCode { get; private set; }
 
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; private set; }
 
-        [JsonProperty("continentCode")]
+        [JsonPropertyName("continentCode")]
         public string ContinentCode { get; private set; }
 
-        [JsonProperty("continent")]
+        [JsonPropertyName("continent")]
         public string Continent { get; private set; }
 
-        [JsonProperty("eu")]
+        [JsonPropertyName("eu")]
         public bool Eu { get; private set; }
 
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; private set; }
 
         public Locale(

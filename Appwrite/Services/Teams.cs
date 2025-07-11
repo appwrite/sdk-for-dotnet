@@ -173,6 +173,37 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get the team activity logs list by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.LogList> ListLogs(string teamId, List<string>? queries = null)
+        {
+            var apiPath = "/teams/{teamId}/logs"
+                .Replace("{teamId}", teamId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.LogList Convert(Dictionary<string, object> it) =>
+                Models.LogList.From(map: it);
+
+            return _client.Call<Models.LogList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Use this endpoint to list a team's members using the team's ID. All team
         /// members have read access to this endpoint. Hide sensitive attributes from
         /// the response by toggling membership privacy in the Console.

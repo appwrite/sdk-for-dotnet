@@ -477,5 +477,78 @@ namespace Appwrite.Services
 
         }
 
+        /// <para>
+        /// Get usage metrics and statistics for all buckets in the project. You can
+        /// view the total number of buckets, files, storage usage. The response
+        /// includes both current totals and historical data over time. Use the
+        /// optional range parameter to specify the time window for historical data:
+        /// 24h (last 24 hours), 30d (last 30 days), or 90d (last 90 days). If not
+        /// specified, range defaults to 30 days.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageStorage> GetUsage(Appwrite.Enums.StorageUsageRange? range = null)
+        {
+            var apiPath = "/storage/usage";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageStorage Convert(Dictionary<string, object> it) =>
+                Models.UsageStorage.From(map: it);
+
+            return _client.Call<Models.UsageStorage>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get usage metrics and statistics a specific bucket in the project. You can
+        /// view the total number of files, storage usage. The response includes both
+        /// current totals and historical data over time. Use the optional range
+        /// parameter to specify the time window for historical data: 24h (last 24
+        /// hours), 30d (last 30 days), or 90d (last 90 days). If not specified, range
+        /// defaults to 30 days.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageBuckets> GetBucketUsage(string bucketId, Appwrite.Enums.StorageUsageRange? range = null)
+        {
+            var apiPath = "/storage/{bucketId}/usage"
+                .Replace("{bucketId}", bucketId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageBuckets Convert(Dictionary<string, object> it) =>
+                Models.UsageBuckets.From(map: it);
+
+            return _client.Call<Models.UsageBuckets>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
     }
 }

@@ -156,6 +156,108 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// List available function templates. You can use template details in
+        /// [createFunction](/docs/references/cloud/server-nodejs/functions#create)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<Models.TemplateFunctionList> ListTemplates(List<string>? runtimes = null, List<string>? useCases = null, long? limit = null, long? offset = null)
+        {
+            var apiPath = "/functions/templates";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "runtimes", runtimes },
+                { "useCases", useCases },
+                { "limit", limit },
+                { "offset", offset }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.TemplateFunctionList Convert(Dictionary<string, object> it) =>
+                Models.TemplateFunctionList.From(map: it);
+
+            return _client.Call<Models.TemplateFunctionList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a function template using ID. You can use template details in
+        /// [createFunction](/docs/references/cloud/server-nodejs/functions#create)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<Models.TemplateFunction> GetTemplate(string templateId)
+        {
+            var apiPath = "/functions/templates/{templateId}"
+                .Replace("{templateId}", templateId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.TemplateFunction Convert(Dictionary<string, object> it) =>
+                Models.TemplateFunction.From(map: it);
+
+            return _client.Call<Models.TemplateFunction>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get usage metrics and statistics for all functions in the project. View
+        /// statistics including total deployments, builds, logs, storage usage, and
+        /// compute time. The response includes both current totals and historical data
+        /// for each metric. Use the optional range parameter to specify the time
+        /// window for historical data: 24h (last 24 hours), 30d (last 30 days), or 90d
+        /// (last 90 days). If not specified, defaults to 30 days.
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageFunctions> ListUsage(Appwrite.Enums.FunctionUsageRange? range = null)
+        {
+            var apiPath = "/functions/usage";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageFunctions Convert(Dictionary<string, object> it) =>
+                Models.UsageFunctions.From(map: it);
+
+            return _client.Call<Models.UsageFunctions>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get a function by its unique ID.
         /// </para>
         /// </summary>
@@ -745,6 +847,42 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Get usage metrics and statistics for a for a specific function. View
+        /// statistics including total deployments, builds, executions, storage usage,
+        /// and compute time. The response includes both current totals and historical
+        /// data for each metric. Use the optional range parameter to specify the time
+        /// window for historical data: 24h (last 24 hours), 30d (last 30 days), or 90d
+        /// (last 90 days). If not specified, defaults to 30 days.
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageFunction> GetUsage(string functionId, Appwrite.Enums.FunctionUsageRange? range = null)
+        {
+            var apiPath = "/functions/{functionId}/usage"
+                .Replace("{functionId}", functionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageFunction Convert(Dictionary<string, object> it) =>
+                Models.UsageFunction.From(map: it);
+
+            return _client.Call<Models.UsageFunction>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 

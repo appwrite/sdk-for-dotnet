@@ -2,96 +2,95 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Function
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("execute")]
+        [JsonPropertyName("execute")]
         public List<string> Execute { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
-        [JsonProperty("live")]
+        [JsonPropertyName("live")]
         public bool Live { get; private set; }
 
-        [JsonProperty("logging")]
+        [JsonPropertyName("logging")]
         public bool Logging { get; private set; }
 
-        [JsonProperty("runtime")]
+        [JsonPropertyName("runtime")]
         public string Runtime { get; private set; }
 
-        [JsonProperty("deploymentId")]
+        [JsonPropertyName("deploymentId")]
         public string DeploymentId { get; private set; }
 
-        [JsonProperty("deploymentCreatedAt")]
+        [JsonPropertyName("deploymentCreatedAt")]
         public string DeploymentCreatedAt { get; private set; }
 
-        [JsonProperty("latestDeploymentId")]
+        [JsonPropertyName("latestDeploymentId")]
         public string LatestDeploymentId { get; private set; }
 
-        [JsonProperty("latestDeploymentCreatedAt")]
+        [JsonPropertyName("latestDeploymentCreatedAt")]
         public string LatestDeploymentCreatedAt { get; private set; }
 
-        [JsonProperty("latestDeploymentStatus")]
+        [JsonPropertyName("latestDeploymentStatus")]
         public string LatestDeploymentStatus { get; private set; }
 
-        [JsonProperty("scopes")]
+        [JsonPropertyName("scopes")]
         public List<string> Scopes { get; private set; }
 
-        [JsonProperty("vars")]
+        [JsonPropertyName("vars")]
         public List<Variable> Vars { get; private set; }
 
-        [JsonProperty("events")]
+        [JsonPropertyName("events")]
         public List<string> Events { get; private set; }
 
-        [JsonProperty("schedule")]
+        [JsonPropertyName("schedule")]
         public string Schedule { get; private set; }
 
-        [JsonProperty("timeout")]
+        [JsonPropertyName("timeout")]
         public long Timeout { get; private set; }
 
-        [JsonProperty("entrypoint")]
+        [JsonPropertyName("entrypoint")]
         public string Entrypoint { get; private set; }
 
-        [JsonProperty("commands")]
+        [JsonPropertyName("commands")]
         public string Commands { get; private set; }
 
-        [JsonProperty("version")]
+        [JsonPropertyName("version")]
         public string Version { get; private set; }
 
-        [JsonProperty("installationId")]
+        [JsonPropertyName("installationId")]
         public string InstallationId { get; private set; }
 
-        [JsonProperty("providerRepositoryId")]
+        [JsonPropertyName("providerRepositoryId")]
         public string ProviderRepositoryId { get; private set; }
 
-        [JsonProperty("providerBranch")]
+        [JsonPropertyName("providerBranch")]
         public string ProviderBranch { get; private set; }
 
-        [JsonProperty("providerRootDirectory")]
+        [JsonPropertyName("providerRootDirectory")]
         public string ProviderRootDirectory { get; private set; }
 
-        [JsonProperty("providerSilentMode")]
+        [JsonPropertyName("providerSilentMode")]
         public bool ProviderSilentMode { get; private set; }
 
-        [JsonProperty("specification")]
+        [JsonPropertyName("specification")]
         public string Specification { get; private set; }
 
         public Function(
@@ -158,7 +157,7 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            execute: ((JArray)map["execute"]).ToObject<List<string>>(),
+            execute: map["execute"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["execute"],
             name: map["name"].ToString(),
             enabled: (bool)map["enabled"],
             live: (bool)map["live"],
@@ -169,9 +168,9 @@ namespace Appwrite.Models
             latestDeploymentId: map["latestDeploymentId"].ToString(),
             latestDeploymentCreatedAt: map["latestDeploymentCreatedAt"].ToString(),
             latestDeploymentStatus: map["latestDeploymentStatus"].ToString(),
-            scopes: ((JArray)map["scopes"]).ToObject<List<string>>(),
-            vars: ((JArray)map["vars"]).ToObject<List<Dictionary<string, object>>>().Select(it => Variable.From(map: it)).ToList(),
-            events: ((JArray)map["events"]).ToObject<List<string>>(),
+            scopes: map["scopes"] is JsonElement jsonArrayProp15 ? jsonArrayProp15.Deserialize<List<string>>()! : (List<string>)map["scopes"],
+            vars: map["vars"] is JsonElement jsonArray16 ? jsonArray16.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Variable.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["vars"]).Select(it => Variable.From(map: it)).ToList(),
+            events: map["events"] is JsonElement jsonArrayProp17 ? jsonArrayProp17.Deserialize<List<string>>()! : (List<string>)map["events"],
             schedule: map["schedule"].ToString(),
             timeout: Convert.ToInt64(map["timeout"]),
             entrypoint: map["entrypoint"].ToString(),

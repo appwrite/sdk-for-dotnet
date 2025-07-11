@@ -2,45 +2,44 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class File
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("bucketId")]
+        [JsonPropertyName("bucketId")]
         public string BucketId { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("$permissions")]
+        [JsonPropertyName("$permissions")]
         public List<string> Permissions { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("signature")]
+        [JsonPropertyName("signature")]
         public string Signature { get; private set; }
 
-        [JsonProperty("mimeType")]
+        [JsonPropertyName("mimeType")]
         public string MimeType { get; private set; }
 
-        [JsonProperty("sizeOriginal")]
+        [JsonPropertyName("sizeOriginal")]
         public long SizeOriginal { get; private set; }
 
-        [JsonProperty("chunksTotal")]
+        [JsonPropertyName("chunksTotal")]
         public long ChunksTotal { get; private set; }
 
-        [JsonProperty("chunksUploaded")]
+        [JsonPropertyName("chunksUploaded")]
         public long ChunksUploaded { get; private set; }
 
         public File(
@@ -74,7 +73,7 @@ namespace Appwrite.Models
             bucketId: map["bucketId"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
+            permissions: map["$permissions"] is JsonElement jsonArrayProp5 ? jsonArrayProp5.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
             name: map["name"].ToString(),
             signature: map["signature"].ToString(),
             mimeType: map["mimeType"].ToString(),

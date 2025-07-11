@@ -81,6 +81,41 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get usage metrics and statistics for all databases in the project. You can
+        /// view the total number of databases, collections, documents, and storage
+        /// usage. The response includes both current totals and historical data over
+        /// time. Use the optional range parameter to specify the time window for
+        /// historical data: 24h (last 24 hours), 30d (last 30 days), or 90d (last 90
+        /// days). If not specified, range defaults to 30 days.
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageDatabases> GetUsage(Appwrite.Enums.DatabaseUsageRange? range = null)
+        {
+            var apiPath = "/databases/usage";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageDatabases Convert(Dictionary<string, object> it) =>
+                Models.UsageDatabases.From(map: it);
+
+            return _client.Call<Models.UsageDatabases>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get a database by its unique ID. This endpoint response returns a JSON
         /// object with the database metadata.
         /// </para>
@@ -1271,6 +1306,10 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
         /// Create new Documents. Before using this route, you should create a new
         /// collection resource using either a [server
         /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
@@ -1307,14 +1346,17 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
         /// Create or update Documents. Before using this route, you should create a
         /// new collection resource using either a [server
         /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
         /// API or directly from your database console.
-        /// 
         /// </para>
         /// </summary>
-        public Task<Models.DocumentList> UpsertDocuments(string databaseId, string collectionId, List<object>? documents = null)
+        public Task<Models.DocumentList> UpsertDocuments(string databaseId, string collectionId, List<object> documents)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
@@ -1344,6 +1386,10 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
         /// Update all documents that match your queries, if no queries are submitted
         /// then all documents are updated. You can pass only specific fields to be
         /// updated.
@@ -1380,6 +1426,10 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
         /// Bulk delete documents using queries, if no queries are passed then all
         /// documents are deleted.
         /// </para>
@@ -1440,6 +1490,48 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Document>(
                 method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
+        /// Create or update a Document. Before using this route, you should create a
+        /// new collection resource using either a [server
+        /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
+        /// API or directly from your database console.
+        /// </para>
+        /// </summary>
+        public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{documentId}", documentId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "data", data },
+                { "permissions", permissions }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Document Convert(Dictionary<string, object> it) =>
+                Models.Document.From(map: it);
+
+            return _client.Call<Models.Document>(
+                method: "PUT",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -1510,6 +1602,111 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Get the document activity logs list by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.LogList> ListDocumentLogs(string databaseId, string collectionId, string documentId, List<string>? queries = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/logs"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{documentId}", documentId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.LogList Convert(Dictionary<string, object> it) =>
+                Models.LogList.From(map: it);
+
+            return _client.Call<Models.LogList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Decrement a specific attribute of a document by a given value.
+        /// </para>
+        /// </summary>
+        public Task<Models.Document> DecrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? xvalue = null, double? min = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/decrement"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{documentId}", documentId)
+                .Replace("{attribute}", attribute);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "value", xvalue },
+                { "min", min }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Document Convert(Dictionary<string, object> it) =>
+                Models.Document.From(map: it);
+
+            return _client.Call<Models.Document>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Increment a specific attribute of a document by a given value.
+        /// </para>
+        /// </summary>
+        public Task<Models.Document> IncrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? xvalue = null, double? max = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/increment"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{documentId}", documentId)
+                .Replace("{attribute}", attribute);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "value", xvalue },
+                { "max", max }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Document Convert(Dictionary<string, object> it) =>
+                Models.Document.From(map: it);
+
+            return _client.Call<Models.Document>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 
@@ -1643,6 +1840,141 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Get the collection activity logs list by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.LogList> ListCollectionLogs(string databaseId, string collectionId, List<string>? queries = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/logs"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.LogList Convert(Dictionary<string, object> it) =>
+                Models.LogList.From(map: it);
+
+            return _client.Call<Models.LogList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get usage metrics and statistics for a collection. Returning the total
+        /// number of documents. The response includes both current totals and
+        /// historical data over time. Use the optional range parameter to specify the
+        /// time window for historical data: 24h (last 24 hours), 30d (last 30 days),
+        /// or 90d (last 90 days). If not specified, range defaults to 30 days.
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageCollection> GetCollectionUsage(string databaseId, string collectionId, Appwrite.Enums.DatabaseUsageRange? range = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/usage"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageCollection Convert(Dictionary<string, object> it) =>
+                Models.UsageCollection.From(map: it);
+
+            return _client.Call<Models.UsageCollection>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get the database activity logs list by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.LogList> ListLogs(string databaseId, List<string>? queries = null)
+        {
+            var apiPath = "/databases/{databaseId}/logs"
+                .Replace("{databaseId}", databaseId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.LogList Convert(Dictionary<string, object> it) =>
+                Models.LogList.From(map: it);
+
+            return _client.Call<Models.LogList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get usage metrics and statistics for a database. You can view the total
+        /// number of collections, documents, and storage usage. The response includes
+        /// both current totals and historical data over time. Use the optional range
+        /// parameter to specify the time window for historical data: 24h (last 24
+        /// hours), 30d (last 30 days), or 90d (last 90 days). If not specified, range
+        /// defaults to 30 days.
+        /// </para>
+        /// </summary>
+        public Task<Models.UsageDatabase> GetDatabaseUsage(string databaseId, Appwrite.Enums.DatabaseUsageRange? range = null)
+        {
+            var apiPath = "/databases/{databaseId}/usage"
+                .Replace("{databaseId}", databaseId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "range", range }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.UsageDatabase Convert(Dictionary<string, object> it) =>
+                Models.UsageDatabase.From(map: it);
+
+            return _client.Call<Models.UsageDatabase>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 

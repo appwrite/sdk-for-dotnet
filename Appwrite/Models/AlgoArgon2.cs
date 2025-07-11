@@ -2,24 +2,23 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class AlgoArgon2
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; private set; }
 
-        [JsonProperty("memoryCost")]
+        [JsonPropertyName("memoryCost")]
         public long MemoryCost { get; private set; }
 
-        [JsonProperty("timeCost")]
+        [JsonPropertyName("timeCost")]
         public long TimeCost { get; private set; }
 
-        [JsonProperty("threads")]
+        [JsonPropertyName("threads")]
         public long Threads { get; private set; }
 
         public AlgoArgon2(

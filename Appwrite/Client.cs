@@ -1,7 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +5,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Appwrite.Converters;
 using Appwrite.Extensions;
@@ -29,26 +27,28 @@ namespace Appwrite
 
         private static readonly int ChunkSize = 5 * 1024 * 1024;
 
-        public static JsonSerializerSettings DeserializerSettings { get; set; } = new JsonSerializerSettings
+        public static JsonSerializerOptions DeserializerOptions { get; set; } = new JsonSerializerOptions
         {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            NullValueHandling = NullValueHandling.Ignore,
-            ContractResolver = new CamelCasePropertyNamesContractResolver(),
-            Converters = new List<JsonConverter>
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            PropertyNameCaseInsensitive = true,
+            Converters =
             {
-                new StringEnumConverter(new CamelCaseNamingStrategy()),
-                new ValueClassConverter()
+                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
+                new ValueClassConverter(),
+                new ObjectToInferredTypesConverter()
             }
         };
 
-        public static JsonSerializerSettings SerializerSettings { get; set; } = new JsonSerializerSettings
+        public static JsonSerializerOptions SerializerOptions { get; set; } = new JsonSerializerOptions
         {
-            NullValueHandling = NullValueHandling.Ignore,
-            ContractResolver = new CamelCasePropertyNamesContractResolver(),
-            Converters = new List<JsonConverter>
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            Converters =
             {
-                new StringEnumConverter(new CamelCaseNamingStrategy()),
-                new ValueClassConverter()
+                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
+                new ValueClassConverter(),
+                new ObjectToInferredTypesConverter()
             }
         };
 
@@ -69,11 +69,12 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , "AppwriteDotNetSDK/0.13.0 (${Environment.OSVersion.Platform}; ${Environment.OSVersion.VersionString})"},
+                { "user-agent" , $"AppwriteDotNetSDK/0.14.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.13.0"},                { "X-Appwrite-Response-Format", "1.7.0" }
+                { "x-sdk-version", "0.14.0"},
+                { "X-Appwrite-Response-Format", "1.7.4" }
             };
 
             _config = new Dictionary<string, string>();
@@ -82,8 +83,6 @@ namespace Appwrite
             {
                 SetSelfSigned(true);
             }
-
-            JsonConvert.DefaultSettings = () => DeserializerSettings;
         }
 
         public Client SetSelfSigned(bool selfSigned)
@@ -141,18 +140,9 @@ namespace Appwrite
             return this;
         }
 
-        /// <summary>The user session to authenticate with</summary>
-        public Client SetSession(string value) {
-            _config.Add("session", value);
-            AddHeader("X-Appwrite-Session", value);
-
-            return this;
-        }
-
-        /// <summary>The user agent string of the client that made the request</summary>
-        public Client SetForwardedUserAgent(string value) {
-            _config.Add("forwardedUserAgent", value);
-            AddHeader("X-Forwarded-User-Agent", value);
+        public Client SetMode(string value) {
+            _config.Add("mode", value);
+            AddHeader("X-Appwrite-Mode", value);
 
             return this;
         }
@@ -189,19 +179,23 @@ namespace Appwrite
                 {
                     if (parameter.Key == "file")
                     {
-                        form.Add(((MultipartFormDataContent)parameters["file"]).First()!);
+                        var fileContent = parameters["file"] as MultipartFormDataContent;
+                        if (fileContent != null)
+                        {
+                            form.Add(fileContent.First()!);
+                        }
                     }
                     else if (parameter.Value is IEnumerable<object> enumerable)
                     {
                         var list = new List<object>(enumerable);
                         for (int index = 0; index < list.Count; index++)
                         {
-                            form.Add(new StringContent(list[index].ToString()!), $"{parameter.Key}[{index}]");
+                            form.Add(new StringContent(list[index]?.ToString() ?? string.Empty), $"{parameter.Key}[{index}]");
                         }
                     }
                     else
                     {
-                        form.Add(new StringContent(parameter.Value.ToString()!), parameter.Key);
+                        form.Add(new StringContent(parameter.Value?.ToString() ?? string.Empty), parameter.Key);
                     }
                 }
                 request.Content = form;
@@ -274,8 +268,19 @@ namespace Appwrite
                 }
 
                 if (contentType.Contains("application/json")) {
-                    message = JObject.Parse(text)["message"]!.ToString();
-                    type = JObject.Parse(text)["type"]?.ToString() ?? string.Empty;
+                    try 
+                    {
+                        using var errorDoc = JsonDocument.Parse(text);
+                        message = errorDoc.RootElement.GetProperty("message").GetString() ?? "";
+                        if (errorDoc.RootElement.TryGetProperty("type", out var typeElement))
+                        {
+                            type = typeElement.GetString() ?? "";
+                        }
+                    }
+                    catch
+                    {
+                        message = text;
+                    }
                 } else {
                     message = text;
                 }
@@ -283,7 +288,7 @@ namespace Appwrite
                 throw new AppwriteException(message, code, type, text);
             }
 
-            return response.Headers.Location.OriginalString;
+            return response.Headers.Location?.OriginalString ?? string.Empty;
         }
 
         public Task<Dictionary<string, object?>> Call(
@@ -329,8 +334,19 @@ namespace Appwrite
                 var type = "";
 
                 if (isJson) {
-                    message = JObject.Parse(text)["message"]!.ToString();
-                    type = JObject.Parse(text)["type"]?.ToString() ?? string.Empty;
+                    try 
+                    {
+                        using var errorDoc = JsonDocument.Parse(text);
+                        message = errorDoc.RootElement.GetProperty("message").GetString() ?? "";
+                        if (errorDoc.RootElement.TryGetProperty("type", out var typeElement))
+                        {
+                            type = typeElement.GetString() ?? "";
+                        }
+                    }
+                    catch
+                    {
+                        message = text;
+                    }
                 } else {
                     message = text;
                 }
@@ -342,13 +358,13 @@ namespace Appwrite
             {
                 var responseString = await response.Content.ReadAsStringAsync();
 
-                var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(
+                var dict = JsonSerializer.Deserialize<Dictionary<string, object>>(
                     responseString,
-                    DeserializerSettings);
+                    DeserializerOptions);
 
-                if (convert != null)
+                if (convert != null && dict != null)
                 {
-                    return convert(dict!);
+                    return convert(dict);
                 }
 
                 return (dict as T)!;
@@ -368,7 +384,16 @@ namespace Appwrite
             string? idParamName = null,
             Action<UploadProgress>? onProgress = null) where T : class
         {
+            if (string.IsNullOrEmpty(paramName))
+                throw new ArgumentException("Parameter name cannot be null or empty", nameof(paramName));
+                
+            if (!parameters.ContainsKey(paramName))
+                throw new ArgumentException($"Parameter {paramName} not found", nameof(paramName));
+                
             var input = parameters[paramName] as InputFile;
+            if (input == null)
+                throw new ArgumentException($"Parameter {paramName} must be an InputFile", nameof(paramName));
+                
             var size = 0L;
             switch(input.SourceType)
             {
@@ -378,10 +403,16 @@ namespace Appwrite
                     size = info.Length;
                     break;
                 case "stream":
-                    size = (input.Data as Stream).Length;
+                    var stream = input.Data as Stream;
+                    if (stream == null)
+                        throw new InvalidOperationException("Stream data is null");
+                    size = stream.Length;
                     break;
                 case "bytes":
-                    size = ((byte[])input.Data).Length;
+                    var bytes = input.Data as byte[];
+                    if (bytes == null)
+                        throw new InvalidOperationException("Byte array data is null");
+                    size = bytes.Length;
                     break;
             };
 
@@ -395,10 +426,16 @@ namespace Appwrite
                 {
                     case "path":
                     case "stream":
-                        await (input.Data as Stream).ReadAsync(buffer, 0, (int)size);
+                        var dataStream = input.Data as Stream;
+                        if (dataStream == null)
+                            throw new InvalidOperationException("Stream data is null");
+                        await dataStream.ReadAsync(buffer, 0, (int)size);
                         break;
                     case "bytes":
-                        buffer = (byte[])input.Data;
+                        var dataBytes = input.Data as byte[];
+                        if (dataBytes == null)
+                            throw new InvalidOperationException("Byte array data is null");
+                        buffer = dataBytes;
                         break;
                 }
 
@@ -424,14 +461,16 @@ namespace Appwrite
                 // Make a request to check if a file already exists
                 var current = await Call<Dictionary<string, object?>>(
                     method: "GET",
-                    path: $"{path}/{parameters[idParamName]}",
+                    path: $"{path}/{parameters[idParamName!]}",
                     new Dictionary<string, string> { { "content-type", "application/json" } },
                     parameters: new Dictionary<string, object?>()
                 );
-                var chunksUploaded = (long)current["chunksUploaded"];
-                offset = chunksUploaded * ChunkSize;
+                if (current.TryGetValue("chunksUploaded", out var chunksUploadedValue) && chunksUploadedValue != null)
+                {
+                    offset = Convert.ToInt64(chunksUploadedValue) * ChunkSize;
+                }
             }
-                catch (Exception ex)
+                catch
                 {
                     // ignored as it mostly means file not found
                 }
@@ -444,6 +483,8 @@ namespace Appwrite
                     case "path":
                     case "stream":
                         var stream = input.Data as Stream;
+                        if (stream == null)
+                            throw new InvalidOperationException("Stream data is null");
                         stream.Seek(offset, SeekOrigin.Begin);
                         await stream.ReadAsync(buffer, 0, ChunkSize);
                         break;
@@ -476,12 +517,12 @@ namespace Appwrite
                 var id = result.ContainsKey("$id")
                     ? result["$id"]?.ToString() ?? string.Empty
                     : string.Empty;
-                var chunksTotal = result.ContainsKey("chunksTotal")
-                    ? (long)result["chunksTotal"]
-                    : 0;
-                var chunksUploaded = result.ContainsKey("chunksUploaded")
-                    ? (long)result["chunksUploaded"]
-                    : 0;
+                var chunksTotal = result.TryGetValue("chunksTotal", out var chunksTotalValue) && chunksTotalValue != null
+                    ? Convert.ToInt64(chunksTotalValue)
+                    : 0L;
+                var chunksUploaded = result.TryGetValue("chunksUploaded", out var chunksUploadedValue) && chunksUploadedValue != null
+                    ? Convert.ToInt64(chunksUploadedValue)
+                    : 0L;
 
                 headers["x-appwrite-id"] = id;
 
@@ -494,7 +535,11 @@ namespace Appwrite
                         chunksUploaded: chunksUploaded));
             }
 
-            return converter(result);
+            // Convert to non-nullable dictionary for converter
+            var nonNullableResult = result.Where(kvp => kvp.Value != null)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value!);
+            
+            return converter(nonNullableResult);
         }
     }
 }

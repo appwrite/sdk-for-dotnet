@@ -2,24 +2,23 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Specification
     {
-        [JsonProperty("memory")]
+        [JsonPropertyName("memory")]
         public long Memory { get; private set; }
 
-        [JsonProperty("cpus")]
+        [JsonPropertyName("cpus")]
         public double Cpus { get; private set; }
 
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
-        [JsonProperty("slug")]
+        [JsonPropertyName("slug")]
         public string Slug { get; private set; }
 
         public Specification(

@@ -2,33 +2,32 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Currency
     {
-        [JsonProperty("symbol")]
+        [JsonPropertyName("symbol")]
         public string Symbol { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("symbolNative")]
+        [JsonPropertyName("symbolNative")]
         public string SymbolNative { get; private set; }
 
-        [JsonProperty("decimalDigits")]
+        [JsonPropertyName("decimalDigits")]
         public long DecimalDigits { get; private set; }
 
-        [JsonProperty("rounding")]
+        [JsonPropertyName("rounding")]
         public double Rounding { get; private set; }
 
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; private set; }
 
-        [JsonProperty("namePlural")]
+        [JsonPropertyName("namePlural")]
         public string NamePlural { get; private set; }
 
         public Currency(
