@@ -1,5 +1,15 @@
 # Change Log
 
+## 0.14.0
+
+* Refactor from Newtonsoft.Json to System.Text.Json for serialization/deserialization
+* Update package dependencies in `Package.csproj.twig`
+* Migrate all serialization/deserialization logic in `Client.cs.twig`, `Query.cs.twig`, and `Extensions.cs.twig`
+* Update model attributes from `[JsonProperty]` to `[JsonPropertyName]` in `Model.cs.twig`
+* Create new `ObjectToInferredTypesConverter.cs.twig` for proper object type handling
+* Replace `JsonConverter` with `JsonConverter<object>` in `ValueClassConverter.cs.twig`
+* Update error handling to use `JsonDocument` instead of `JObject`
+
 ## 0.13.0
 
 * Add `<REGION>` to doc examples due to the new multi region endpoints
