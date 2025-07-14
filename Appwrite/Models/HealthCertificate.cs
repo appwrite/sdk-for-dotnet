@@ -2,30 +2,29 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class HealthCertificate
     {
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("subjectSN")]
+        [JsonPropertyName("subjectSN")]
         public string SubjectSN { get; private set; }
 
-        [JsonProperty("issuerOrganisation")]
+        [JsonPropertyName("issuerOrganisation")]
         public string IssuerOrganisation { get; private set; }
 
-        [JsonProperty("validFrom")]
+        [JsonPropertyName("validFrom")]
         public string ValidFrom { get; private set; }
 
-        [JsonProperty("validTo")]
+        [JsonPropertyName("validTo")]
         public string ValidTo { get; private set; }
 
-        [JsonProperty("signatureTypeSN")]
+        [JsonPropertyName("signatureTypeSN")]
         public string SignatureTypeSN { get; private set; }
 
         public HealthCertificate(

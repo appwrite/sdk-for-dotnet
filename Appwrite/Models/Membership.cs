@@ -2,51 +2,50 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Membership
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("userId")]
+        [JsonPropertyName("userId")]
         public string UserId { get; private set; }
 
-        [JsonProperty("userName")]
+        [JsonPropertyName("userName")]
         public string UserName { get; private set; }
 
-        [JsonProperty("userEmail")]
+        [JsonPropertyName("userEmail")]
         public string UserEmail { get; private set; }
 
-        [JsonProperty("teamId")]
+        [JsonPropertyName("teamId")]
         public string TeamId { get; private set; }
 
-        [JsonProperty("teamName")]
+        [JsonPropertyName("teamName")]
         public string TeamName { get; private set; }
 
-        [JsonProperty("invited")]
+        [JsonPropertyName("invited")]
         public string Invited { get; private set; }
 
-        [JsonProperty("joined")]
+        [JsonPropertyName("joined")]
         public string Joined { get; private set; }
 
-        [JsonProperty("confirm")]
+        [JsonPropertyName("confirm")]
         public bool Confirm { get; private set; }
 
-        [JsonProperty("mfa")]
+        [JsonPropertyName("mfa")]
         public bool Mfa { get; private set; }
 
-        [JsonProperty("roles")]
+        [JsonPropertyName("roles")]
         public List<string> Roles { get; private set; }
 
         public Membership(
@@ -92,7 +91,7 @@ namespace Appwrite.Models
             joined: map["joined"].ToString(),
             confirm: (bool)map["confirm"],
             mfa: (bool)map["mfa"],
-            roles: ((JArray)map["roles"]).ToObject<List<string>>()
+            roles: map["roles"] is JsonElement jsonArrayProp13 ? jsonArrayProp13.Deserialize<List<string>>()! : (List<string>)map["roles"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

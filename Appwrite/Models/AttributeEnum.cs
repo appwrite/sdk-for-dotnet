@@ -2,45 +2,44 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class AttributeEnum
     {
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; private set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; private set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("error")]
+        [JsonPropertyName("error")]
         public string Error { get; private set; }
 
-        [JsonProperty("required")]
+        [JsonPropertyName("required")]
         public bool Required { get; private set; }
 
-        [JsonProperty("array")]
+        [JsonPropertyName("array")]
         public bool? Array { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("elements")]
+        [JsonPropertyName("elements")]
         public List<string> Elements { get; private set; }
 
-        [JsonProperty("format")]
+        [JsonPropertyName("format")]
         public string Format { get; private set; }
 
-        [JsonProperty("default")]
+        [JsonPropertyName("default")]
         public string? Default { get; private set; }
 
         public AttributeEnum(
@@ -78,7 +77,7 @@ namespace Appwrite.Models
             array: (bool?)map["array"],
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            elements: ((JArray)map["elements"]).ToObject<List<string>>(),
+            elements: map["elements"] is JsonElement jsonArrayProp9 ? jsonArrayProp9.Deserialize<List<string>>()! : (List<string>)map["elements"],
             format: map["format"].ToString(),
             xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
         );

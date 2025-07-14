@@ -2,36 +2,35 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Topic
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("emailTotal")]
+        [JsonPropertyName("emailTotal")]
         public long EmailTotal { get; private set; }
 
-        [JsonProperty("smsTotal")]
+        [JsonPropertyName("smsTotal")]
         public long SmsTotal { get; private set; }
 
-        [JsonProperty("pushTotal")]
+        [JsonPropertyName("pushTotal")]
         public long PushTotal { get; private set; }
 
-        [JsonProperty("subscribe")]
+        [JsonPropertyName("subscribe")]
         public List<string> Subscribe { get; private set; }
 
         public Topic(
@@ -62,7 +61,7 @@ namespace Appwrite.Models
             emailTotal: Convert.ToInt64(map["emailTotal"]),
             smsTotal: Convert.ToInt64(map["smsTotal"]),
             pushTotal: Convert.ToInt64(map["pushTotal"]),
-            subscribe: ((JArray)map["subscribe"]).ToObject<List<string>>()
+            subscribe: map["subscribe"] is JsonElement jsonArrayProp8 ? jsonArrayProp8.Deserialize<List<string>>()! : (List<string>)map["subscribe"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

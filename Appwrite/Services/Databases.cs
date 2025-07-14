@@ -1271,6 +1271,10 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
         /// Create new Documents. Before using this route, you should create a new
         /// collection resource using either a [server
         /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
@@ -1307,14 +1311,17 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
         /// Create or update Documents. Before using this route, you should create a
         /// new collection resource using either a [server
         /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
         /// API or directly from your database console.
-        /// 
         /// </para>
         /// </summary>
-        public Task<Models.DocumentList> UpsertDocuments(string databaseId, string collectionId, List<object>? documents = null)
+        public Task<Models.DocumentList> UpsertDocuments(string databaseId, string collectionId, List<object> documents)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
@@ -1344,6 +1351,10 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
         /// Update all documents that match your queries, if no queries are submitted
         /// then all documents are updated. You can pass only specific fields to be
         /// updated.
@@ -1380,6 +1391,10 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
         /// Bulk delete documents using queries, if no queries are passed then all
         /// documents are deleted.
         /// </para>
@@ -1440,6 +1455,48 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Document>(
                 method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// **WARNING: Experimental Feature** - This endpoint is experimental and not
+        /// yet officially supported. It may be subject to breaking changes or removal
+        /// in future versions.
+        /// 
+        /// Create or update a Document. Before using this route, you should create a
+        /// new collection resource using either a [server
+        /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
+        /// API or directly from your database console.
+        /// </para>
+        /// </summary>
+        public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{documentId}", documentId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "data", data },
+                { "permissions", permissions }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Document Convert(Dictionary<string, object> it) =>
+                Models.Document.From(map: it);
+
+            return _client.Call<Models.Document>(
+                method: "PUT",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,

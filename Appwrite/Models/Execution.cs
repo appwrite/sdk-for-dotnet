@@ -2,63 +2,62 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Execution
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("$permissions")]
+        [JsonPropertyName("$permissions")]
         public List<string> Permissions { get; private set; }
 
-        [JsonProperty("functionId")]
+        [JsonPropertyName("functionId")]
         public string FunctionId { get; private set; }
 
-        [JsonProperty("trigger")]
+        [JsonPropertyName("trigger")]
         public string Trigger { get; private set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("requestMethod")]
+        [JsonPropertyName("requestMethod")]
         public string RequestMethod { get; private set; }
 
-        [JsonProperty("requestPath")]
+        [JsonPropertyName("requestPath")]
         public string RequestPath { get; private set; }
 
-        [JsonProperty("requestHeaders")]
+        [JsonPropertyName("requestHeaders")]
         public List<Headers> RequestHeaders { get; private set; }
 
-        [JsonProperty("responseStatusCode")]
+        [JsonPropertyName("responseStatusCode")]
         public long ResponseStatusCode { get; private set; }
 
-        [JsonProperty("responseBody")]
+        [JsonPropertyName("responseBody")]
         public string ResponseBody { get; private set; }
 
-        [JsonProperty("responseHeaders")]
+        [JsonPropertyName("responseHeaders")]
         public List<Headers> ResponseHeaders { get; private set; }
 
-        [JsonProperty("logs")]
+        [JsonPropertyName("logs")]
         public string Logs { get; private set; }
 
-        [JsonProperty("errors")]
+        [JsonPropertyName("errors")]
         public string Errors { get; private set; }
 
-        [JsonProperty("duration")]
+        [JsonPropertyName("duration")]
         public double Duration { get; private set; }
 
-        [JsonProperty("scheduledAt")]
+        [JsonPropertyName("scheduledAt")]
         public string? ScheduledAt { get; private set; }
 
         public Execution(
@@ -103,16 +102,16 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
+            permissions: map["$permissions"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
             functionId: map["functionId"].ToString(),
             trigger: map["trigger"].ToString(),
             status: map["status"].ToString(),
             requestMethod: map["requestMethod"].ToString(),
             requestPath: map["requestPath"].ToString(),
-            requestHeaders: ((JArray)map["requestHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
+            requestHeaders: map["requestHeaders"] is JsonElement jsonArray10 ? jsonArray10.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["requestHeaders"]).Select(it => Headers.From(map: it)).ToList(),
             responseStatusCode: Convert.ToInt64(map["responseStatusCode"]),
             responseBody: map["responseBody"].ToString(),
-            responseHeaders: ((JArray)map["responseHeaders"]).ToObject<List<Dictionary<string, object>>>().Select(it => Headers.From(map: it)).ToList(),
+            responseHeaders: map["responseHeaders"] is JsonElement jsonArray13 ? jsonArray13.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["responseHeaders"]).Select(it => Headers.From(map: it)).ToList(),
             logs: map["logs"].ToString(),
             errors: map["errors"].ToString(),
             duration: Convert.ToDouble(map["duration"]),

@@ -2,42 +2,41 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Collection
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("$permissions")]
+        [JsonPropertyName("$permissions")]
         public List<string> Permissions { get; private set; }
 
-        [JsonProperty("databaseId")]
+        [JsonPropertyName("databaseId")]
         public string DatabaseId { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
-        [JsonProperty("documentSecurity")]
+        [JsonPropertyName("documentSecurity")]
         public bool DocumentSecurity { get; private set; }
 
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public List<object> Attributes { get; private set; }
 
-        [JsonProperty("indexes")]
+        [JsonPropertyName("indexes")]
         public List<Index> Indexes { get; private set; }
 
         public Collection(
@@ -68,13 +67,13 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
+            permissions: map["$permissions"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
             databaseId: map["databaseId"].ToString(),
             name: map["name"].ToString(),
             enabled: (bool)map["enabled"],
             documentSecurity: (bool)map["documentSecurity"],
-            attributes: ((JArray)map["attributes"]).ToObject<List<object>>(),
-            indexes: ((JArray)map["indexes"]).ToObject<List<Dictionary<string, object>>>().Select(it => Index.From(map: it)).ToList()
+            attributes: map["attributes"] is JsonElement jsonArrayProp9 ? jsonArrayProp9.Deserialize<List<object>>()! : (List<object>)map["attributes"],
+            indexes: map["indexes"] is JsonElement jsonArray10 ? jsonArray10.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Index.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["indexes"]).Select(it => Index.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

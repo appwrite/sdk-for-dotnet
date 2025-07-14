@@ -2,42 +2,41 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Identity
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("userId")]
+        [JsonPropertyName("userId")]
         public string UserId { get; private set; }
 
-        [JsonProperty("provider")]
+        [JsonPropertyName("provider")]
         public string Provider { get; private set; }
 
-        [JsonProperty("providerUid")]
+        [JsonPropertyName("providerUid")]
         public string ProviderUid { get; private set; }
 
-        [JsonProperty("providerEmail")]
+        [JsonPropertyName("providerEmail")]
         public string ProviderEmail { get; private set; }
 
-        [JsonProperty("providerAccessToken")]
+        [JsonPropertyName("providerAccessToken")]
         public string ProviderAccessToken { get; private set; }
 
-        [JsonProperty("providerAccessTokenExpiry")]
+        [JsonPropertyName("providerAccessTokenExpiry")]
         public string ProviderAccessTokenExpiry { get; private set; }
 
-        [JsonProperty("providerRefreshToken")]
+        [JsonPropertyName("providerRefreshToken")]
         public string ProviderRefreshToken { get; private set; }
 
         public Identity(

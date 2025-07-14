@@ -2,39 +2,38 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Subscriber
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("targetId")]
+        [JsonPropertyName("targetId")]
         public string TargetId { get; private set; }
 
-        [JsonProperty("target")]
+        [JsonPropertyName("target")]
         public Target Target { get; private set; }
 
-        [JsonProperty("userId")]
+        [JsonPropertyName("userId")]
         public string UserId { get; private set; }
 
-        [JsonProperty("userName")]
+        [JsonPropertyName("userName")]
         public string UserName { get; private set; }
 
-        [JsonProperty("topicId")]
+        [JsonPropertyName("topicId")]
         public string TopicId { get; private set; }
 
-        [JsonProperty("providerType")]
+        [JsonPropertyName("providerType")]
         public string ProviderType { get; private set; }
 
         public Subscriber(
@@ -64,7 +63,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             targetId: map["targetId"].ToString(),
-            target: Target.From(map: ((JObject)map["target"]).ToObject<Dictionary<string, object>>()!),
+            target: Target.From(map: map["target"] is JsonElement jsonObj5 ? jsonObj5.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["target"]),
             userId: map["userId"].ToString(),
             userName: map["userName"].ToString(),
             topicId: map["topicId"].ToString(),

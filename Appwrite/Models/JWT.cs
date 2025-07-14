@@ -2,15 +2,14 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class JWT
     {
-        [JsonProperty("jwt")]
+        [JsonPropertyName("jwt")]
         public string Jwt { get; private set; }
 
         public JWT(

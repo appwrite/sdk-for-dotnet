@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace Appwrite.Extensions
 {
@@ -9,7 +9,7 @@ namespace Appwrite.Extensions
     {
         public static string ToJson(this Dictionary<string, object?> dict)
         {
-            return JsonConvert.SerializeObject(dict, Client.SerializerSettings);
+            return JsonSerializer.Serialize(dict, Client.SerializerOptions);
         }
 
         public static string ToQueryString(this Dictionary<string, object?> parameters)

@@ -2,54 +2,53 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class AttributeRelationship
     {
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; private set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; private set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("error")]
+        [JsonPropertyName("error")]
         public string Error { get; private set; }
 
-        [JsonProperty("required")]
+        [JsonPropertyName("required")]
         public bool Required { get; private set; }
 
-        [JsonProperty("array")]
+        [JsonPropertyName("array")]
         public bool? Array { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("relatedCollection")]
+        [JsonPropertyName("relatedCollection")]
         public string RelatedCollection { get; private set; }
 
-        [JsonProperty("relationType")]
+        [JsonPropertyName("relationType")]
         public string RelationType { get; private set; }
 
-        [JsonProperty("twoWay")]
+        [JsonPropertyName("twoWay")]
         public bool TwoWay { get; private set; }
 
-        [JsonProperty("twoWayKey")]
+        [JsonPropertyName("twoWayKey")]
         public string TwoWayKey { get; private set; }
 
-        [JsonProperty("onDelete")]
+        [JsonPropertyName("onDelete")]
         public string OnDelete { get; private set; }
 
-        [JsonProperty("side")]
+        [JsonPropertyName("side")]
         public string Side { get; private set; }
 
         public AttributeRelationship(

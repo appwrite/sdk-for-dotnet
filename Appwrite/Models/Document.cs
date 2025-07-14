@@ -2,30 +2,29 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Document
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$collectionId")]
+        [JsonPropertyName("$collectionId")]
         public string CollectionId { get; private set; }
 
-        [JsonProperty("$databaseId")]
+        [JsonPropertyName("$databaseId")]
         public string DatabaseId { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("$permissions")]
+        [JsonPropertyName("$permissions")]
         public List<string> Permissions { get; private set; }
 
         public Dictionary<string, object> Data { get; private set; }
@@ -54,7 +53,7 @@ namespace Appwrite.Models
             databaseId: map["$databaseId"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
+            permissions: map["$permissions"] is JsonElement jsonArrayProp6 ? jsonArrayProp6.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
             data: map
         );
 

@@ -2,93 +2,92 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Deployment
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; private set; }
 
-        [JsonProperty("resourceId")]
+        [JsonPropertyName("resourceId")]
         public string ResourceId { get; private set; }
 
-        [JsonProperty("resourceType")]
+        [JsonPropertyName("resourceType")]
         public string ResourceType { get; private set; }
 
-        [JsonProperty("entrypoint")]
+        [JsonPropertyName("entrypoint")]
         public string Entrypoint { get; private set; }
 
-        [JsonProperty("sourceSize")]
+        [JsonPropertyName("sourceSize")]
         public long SourceSize { get; private set; }
 
-        [JsonProperty("buildSize")]
+        [JsonPropertyName("buildSize")]
         public long BuildSize { get; private set; }
 
-        [JsonProperty("totalSize")]
+        [JsonPropertyName("totalSize")]
         public long TotalSize { get; private set; }
 
-        [JsonProperty("buildId")]
+        [JsonPropertyName("buildId")]
         public string BuildId { get; private set; }
 
-        [JsonProperty("activate")]
+        [JsonPropertyName("activate")]
         public bool Activate { get; private set; }
 
-        [JsonProperty("screenshotLight")]
+        [JsonPropertyName("screenshotLight")]
         public string ScreenshotLight { get; private set; }
 
-        [JsonProperty("screenshotDark")]
+        [JsonPropertyName("screenshotDark")]
         public string ScreenshotDark { get; private set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("buildLogs")]
+        [JsonPropertyName("buildLogs")]
         public string BuildLogs { get; private set; }
 
-        [JsonProperty("buildDuration")]
+        [JsonPropertyName("buildDuration")]
         public long BuildDuration { get; private set; }
 
-        [JsonProperty("providerRepositoryName")]
+        [JsonPropertyName("providerRepositoryName")]
         public string ProviderRepositoryName { get; private set; }
 
-        [JsonProperty("providerRepositoryOwner")]
+        [JsonPropertyName("providerRepositoryOwner")]
         public string ProviderRepositoryOwner { get; private set; }
 
-        [JsonProperty("providerRepositoryUrl")]
+        [JsonPropertyName("providerRepositoryUrl")]
         public string ProviderRepositoryUrl { get; private set; }
 
-        [JsonProperty("providerBranch")]
+        [JsonPropertyName("providerBranch")]
         public string ProviderBranch { get; private set; }
 
-        [JsonProperty("providerCommitHash")]
+        [JsonPropertyName("providerCommitHash")]
         public string ProviderCommitHash { get; private set; }
 
-        [JsonProperty("providerCommitAuthorUrl")]
+        [JsonPropertyName("providerCommitAuthorUrl")]
         public string ProviderCommitAuthorUrl { get; private set; }
 
-        [JsonProperty("providerCommitAuthor")]
+        [JsonPropertyName("providerCommitAuthor")]
         public string ProviderCommitAuthor { get; private set; }
 
-        [JsonProperty("providerCommitMessage")]
+        [JsonPropertyName("providerCommitMessage")]
         public string ProviderCommitMessage { get; private set; }
 
-        [JsonProperty("providerCommitUrl")]
+        [JsonPropertyName("providerCommitUrl")]
         public string ProviderCommitUrl { get; private set; }
 
-        [JsonProperty("providerBranchUrl")]
+        [JsonPropertyName("providerBranchUrl")]
         public string ProviderBranchUrl { get; private set; }
 
         public Deployment(

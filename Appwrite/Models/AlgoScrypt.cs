@@ -2,27 +2,26 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class AlgoScrypt
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; private set; }
 
-        [JsonProperty("costCpu")]
+        [JsonPropertyName("costCpu")]
         public long CostCpu { get; private set; }
 
-        [JsonProperty("costMemory")]
+        [JsonPropertyName("costMemory")]
         public long CostMemory { get; private set; }
 
-        [JsonProperty("costParallel")]
+        [JsonPropertyName("costParallel")]
         public long CostParallel { get; private set; }
 
-        [JsonProperty("length")]
+        [JsonPropertyName("length")]
         public long Length { get; private set; }
 
         public AlgoScrypt(
