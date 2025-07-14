@@ -2,15 +2,14 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class MfaRecoveryCodes
     {
-        [JsonProperty("recoveryCodes")]
+        [JsonPropertyName("recoveryCodes")]
         public List<string> RecoveryCodes { get; private set; }
 
         public MfaRecoveryCodes(
@@ -20,7 +19,7 @@ namespace Appwrite.Models
         }
 
         public static MfaRecoveryCodes From(Dictionary<string, object> map) => new MfaRecoveryCodes(
-            recoveryCodes: ((JArray)map["recoveryCodes"]).ToObject<List<string>>()
+            recoveryCodes: map["recoveryCodes"] is JsonElement jsonArrayProp1 ? jsonArrayProp1.Deserialize<List<string>>()! : (List<string>)map["recoveryCodes"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

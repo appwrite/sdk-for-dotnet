@@ -2,69 +2,68 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class User
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("password")]
+        [JsonPropertyName("password")]
         public string? Password { get; private set; }
 
-        [JsonProperty("hash")]
+        [JsonPropertyName("hash")]
         public string? Hash { get; private set; }
 
-        [JsonProperty("hashOptions")]
+        [JsonPropertyName("hashOptions")]
         public object? HashOptions { get; private set; }
 
-        [JsonProperty("registration")]
+        [JsonPropertyName("registration")]
         public string Registration { get; private set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public bool Status { get; private set; }
 
-        [JsonProperty("labels")]
+        [JsonPropertyName("labels")]
         public List<string> Labels { get; private set; }
 
-        [JsonProperty("passwordUpdate")]
+        [JsonPropertyName("passwordUpdate")]
         public string PasswordUpdate { get; private set; }
 
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; private set; }
 
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public string Phone { get; private set; }
 
-        [JsonProperty("emailVerification")]
+        [JsonPropertyName("emailVerification")]
         public bool EmailVerification { get; private set; }
 
-        [JsonProperty("phoneVerification")]
+        [JsonPropertyName("phoneVerification")]
         public bool PhoneVerification { get; private set; }
 
-        [JsonProperty("mfa")]
+        [JsonPropertyName("mfa")]
         public bool Mfa { get; private set; }
 
-        [JsonProperty("prefs")]
+        [JsonPropertyName("prefs")]
         public Preferences Prefs { get; private set; }
 
-        [JsonProperty("targets")]
+        [JsonPropertyName("targets")]
         public List<Target> Targets { get; private set; }
 
-        [JsonProperty("accessedAt")]
+        [JsonPropertyName("accessedAt")]
         public string AccessedAt { get; private set; }
 
         public User(
@@ -119,15 +118,15 @@ namespace Appwrite.Models
             hashOptions: map.TryGetValue("hashOptions", out var hashOptions) ? hashOptions?.ToString() : null,
             registration: map["registration"].ToString(),
             status: (bool)map["status"],
-            labels: ((JArray)map["labels"]).ToObject<List<string>>(),
+            labels: map["labels"] is JsonElement jsonArrayProp10 ? jsonArrayProp10.Deserialize<List<string>>()! : (List<string>)map["labels"],
             passwordUpdate: map["passwordUpdate"].ToString(),
             email: map["email"].ToString(),
             phone: map["phone"].ToString(),
             emailVerification: (bool)map["emailVerification"],
             phoneVerification: (bool)map["phoneVerification"],
             mfa: (bool)map["mfa"],
-            prefs: Preferences.From(map: ((JObject)map["prefs"]).ToObject<Dictionary<string, object>>()!),
-            targets: ((JArray)map["targets"]).ToObject<List<Dictionary<string, object>>>().Select(it => Target.From(map: it)).ToList(),
+            prefs: Preferences.From(map: map["prefs"] is JsonElement jsonObj17 ? jsonObj17.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
+            targets: map["targets"] is JsonElement jsonArray18 ? jsonArray18.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Target.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["targets"]).Select(it => Target.From(map: it)).ToList(),
             accessedAt: map["accessedAt"].ToString()
         );
 

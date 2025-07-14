@@ -2,75 +2,74 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Log
     {
-        [JsonProperty("event")]
+        [JsonPropertyName("event")]
         public string Event { get; private set; }
 
-        [JsonProperty("userId")]
+        [JsonPropertyName("userId")]
         public string UserId { get; private set; }
 
-        [JsonProperty("userEmail")]
+        [JsonPropertyName("userEmail")]
         public string UserEmail { get; private set; }
 
-        [JsonProperty("userName")]
+        [JsonPropertyName("userName")]
         public string UserName { get; private set; }
 
-        [JsonProperty("mode")]
+        [JsonPropertyName("mode")]
         public string Mode { get; private set; }
 
-        [JsonProperty("ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; private set; }
 
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public string Time { get; private set; }
 
-        [JsonProperty("osCode")]
+        [JsonPropertyName("osCode")]
         public string OsCode { get; private set; }
 
-        [JsonProperty("osName")]
+        [JsonPropertyName("osName")]
         public string OsName { get; private set; }
 
-        [JsonProperty("osVersion")]
+        [JsonPropertyName("osVersion")]
         public string OsVersion { get; private set; }
 
-        [JsonProperty("clientType")]
+        [JsonPropertyName("clientType")]
         public string ClientType { get; private set; }
 
-        [JsonProperty("clientCode")]
+        [JsonPropertyName("clientCode")]
         public string ClientCode { get; private set; }
 
-        [JsonProperty("clientName")]
+        [JsonPropertyName("clientName")]
         public string ClientName { get; private set; }
 
-        [JsonProperty("clientVersion")]
+        [JsonPropertyName("clientVersion")]
         public string ClientVersion { get; private set; }
 
-        [JsonProperty("clientEngine")]
+        [JsonPropertyName("clientEngine")]
         public string ClientEngine { get; private set; }
 
-        [JsonProperty("clientEngineVersion")]
+        [JsonPropertyName("clientEngineVersion")]
         public string ClientEngineVersion { get; private set; }
 
-        [JsonProperty("deviceName")]
+        [JsonPropertyName("deviceName")]
         public string DeviceName { get; private set; }
 
-        [JsonProperty("deviceBrand")]
+        [JsonPropertyName("deviceBrand")]
         public string DeviceBrand { get; private set; }
 
-        [JsonProperty("deviceModel")]
+        [JsonPropertyName("deviceModel")]
         public string DeviceModel { get; private set; }
 
-        [JsonProperty("countryCode")]
+        [JsonPropertyName("countryCode")]
         public string CountryCode { get; private set; }
 
-        [JsonProperty("countryName")]
+        [JsonPropertyName("countryName")]
         public string CountryName { get; private set; }
 
         public Log(

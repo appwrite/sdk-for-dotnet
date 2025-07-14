@@ -2,24 +2,23 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class AlgoScryptModified
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; private set; }
 
-        [JsonProperty("salt")]
+        [JsonPropertyName("salt")]
         public string Salt { get; private set; }
 
-        [JsonProperty("saltSeparator")]
+        [JsonPropertyName("saltSeparator")]
         public string SaltSeparator { get; private set; }
 
-        [JsonProperty("signerKey")]
+        [JsonPropertyName("signerKey")]
         public string SignerKey { get; private set; }
 
         public AlgoScryptModified(

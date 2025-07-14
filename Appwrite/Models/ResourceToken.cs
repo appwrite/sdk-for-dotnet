@@ -2,33 +2,32 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class ResourceToken
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("resourceId")]
+        [JsonPropertyName("resourceId")]
         public string ResourceId { get; private set; }
 
-        [JsonProperty("resourceType")]
+        [JsonPropertyName("resourceType")]
         public string ResourceType { get; private set; }
 
-        [JsonProperty("expire")]
+        [JsonPropertyName("expire")]
         public string Expire { get; private set; }
 
-        [JsonProperty("secret")]
+        [JsonPropertyName("secret")]
         public string Secret { get; private set; }
 
-        [JsonProperty("accessedAt")]
+        [JsonPropertyName("accessedAt")]
         public string AccessedAt { get; private set; }
 
         public ResourceToken(

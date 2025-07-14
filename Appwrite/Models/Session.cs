@@ -2,99 +2,98 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Session
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("userId")]
+        [JsonPropertyName("userId")]
         public string UserId { get; private set; }
 
-        [JsonProperty("expire")]
+        [JsonPropertyName("expire")]
         public string Expire { get; private set; }
 
-        [JsonProperty("provider")]
+        [JsonPropertyName("provider")]
         public string Provider { get; private set; }
 
-        [JsonProperty("providerUid")]
+        [JsonPropertyName("providerUid")]
         public string ProviderUid { get; private set; }
 
-        [JsonProperty("providerAccessToken")]
+        [JsonPropertyName("providerAccessToken")]
         public string ProviderAccessToken { get; private set; }
 
-        [JsonProperty("providerAccessTokenExpiry")]
+        [JsonPropertyName("providerAccessTokenExpiry")]
         public string ProviderAccessTokenExpiry { get; private set; }
 
-        [JsonProperty("providerRefreshToken")]
+        [JsonPropertyName("providerRefreshToken")]
         public string ProviderRefreshToken { get; private set; }
 
-        [JsonProperty("ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; private set; }
 
-        [JsonProperty("osCode")]
+        [JsonPropertyName("osCode")]
         public string OsCode { get; private set; }
 
-        [JsonProperty("osName")]
+        [JsonPropertyName("osName")]
         public string OsName { get; private set; }
 
-        [JsonProperty("osVersion")]
+        [JsonPropertyName("osVersion")]
         public string OsVersion { get; private set; }
 
-        [JsonProperty("clientType")]
+        [JsonPropertyName("clientType")]
         public string ClientType { get; private set; }
 
-        [JsonProperty("clientCode")]
+        [JsonPropertyName("clientCode")]
         public string ClientCode { get; private set; }
 
-        [JsonProperty("clientName")]
+        [JsonPropertyName("clientName")]
         public string ClientName { get; private set; }
 
-        [JsonProperty("clientVersion")]
+        [JsonPropertyName("clientVersion")]
         public string ClientVersion { get; private set; }
 
-        [JsonProperty("clientEngine")]
+        [JsonPropertyName("clientEngine")]
         public string ClientEngine { get; private set; }
 
-        [JsonProperty("clientEngineVersion")]
+        [JsonPropertyName("clientEngineVersion")]
         public string ClientEngineVersion { get; private set; }
 
-        [JsonProperty("deviceName")]
+        [JsonPropertyName("deviceName")]
         public string DeviceName { get; private set; }
 
-        [JsonProperty("deviceBrand")]
+        [JsonPropertyName("deviceBrand")]
         public string DeviceBrand { get; private set; }
 
-        [JsonProperty("deviceModel")]
+        [JsonPropertyName("deviceModel")]
         public string DeviceModel { get; private set; }
 
-        [JsonProperty("countryCode")]
+        [JsonPropertyName("countryCode")]
         public string CountryCode { get; private set; }
 
-        [JsonProperty("countryName")]
+        [JsonPropertyName("countryName")]
         public string CountryName { get; private set; }
 
-        [JsonProperty("current")]
+        [JsonPropertyName("current")]
         public bool Current { get; private set; }
 
-        [JsonProperty("factors")]
+        [JsonPropertyName("factors")]
         public List<string> Factors { get; private set; }
 
-        [JsonProperty("secret")]
+        [JsonPropertyName("secret")]
         public string Secret { get; private set; }
 
-        [JsonProperty("mfaUpdatedAt")]
+        [JsonPropertyName("mfaUpdatedAt")]
         public string MfaUpdatedAt { get; private set; }
 
         public Session(
@@ -186,7 +185,7 @@ namespace Appwrite.Models
             countryCode: map["countryCode"].ToString(),
             countryName: map["countryName"].ToString(),
             current: (bool)map["current"],
-            factors: ((JArray)map["factors"]).ToObject<List<string>>(),
+            factors: map["factors"] is JsonElement jsonArrayProp27 ? jsonArrayProp27.Deserialize<List<string>>()! : (List<string>)map["factors"],
             secret: map["secret"].ToString(),
             mfaUpdatedAt: map["mfaUpdatedAt"].ToString()
         );

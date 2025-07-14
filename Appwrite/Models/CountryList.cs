@@ -2,18 +2,17 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class CountryList
     {
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; private set; }
 
-        [JsonProperty("countries")]
+        [JsonPropertyName("countries")]
         public List<Country> Countries { get; private set; }
 
         public CountryList(
@@ -26,7 +25,7 @@ namespace Appwrite.Models
 
         public static CountryList From(Dictionary<string, object> map) => new CountryList(
             total: Convert.ToInt64(map["total"]),
-            countries: ((JArray)map["countries"]).ToObject<List<Dictionary<string, object>>>().Select(it => Country.From(map: it)).ToList()
+            countries: map["countries"] is JsonElement jsonArray2 ? jsonArray2.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Country.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["countries"]).Select(it => Country.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

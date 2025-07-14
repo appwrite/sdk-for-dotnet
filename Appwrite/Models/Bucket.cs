@@ -2,48 +2,47 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Bucket
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("$permissions")]
+        [JsonPropertyName("$permissions")]
         public List<string> Permissions { get; private set; }
 
-        [JsonProperty("fileSecurity")]
+        [JsonPropertyName("fileSecurity")]
         public bool FileSecurity { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
-        [JsonProperty("maximumFileSize")]
+        [JsonPropertyName("maximumFileSize")]
         public long MaximumFileSize { get; private set; }
 
-        [JsonProperty("allowedFileExtensions")]
+        [JsonPropertyName("allowedFileExtensions")]
         public List<string> AllowedFileExtensions { get; private set; }
 
-        [JsonProperty("compression")]
+        [JsonPropertyName("compression")]
         public string Compression { get; private set; }
 
-        [JsonProperty("encryption")]
+        [JsonPropertyName("encryption")]
         public bool Encryption { get; private set; }
 
-        [JsonProperty("antivirus")]
+        [JsonPropertyName("antivirus")]
         public bool Antivirus { get; private set; }
 
         public Bucket(
@@ -78,12 +77,12 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: ((JArray)map["$permissions"]).ToObject<List<string>>(),
+            permissions: map["$permissions"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
             fileSecurity: (bool)map["fileSecurity"],
             name: map["name"].ToString(),
             enabled: (bool)map["enabled"],
             maximumFileSize: Convert.ToInt64(map["maximumFileSize"]),
-            allowedFileExtensions: ((JArray)map["allowedFileExtensions"]).ToObject<List<string>>(),
+            allowedFileExtensions: map["allowedFileExtensions"] is JsonElement jsonArrayProp9 ? jsonArrayProp9.Deserialize<List<string>>()! : (List<string>)map["allowedFileExtensions"],
             compression: map["compression"].ToString(),
             encryption: (bool)map["encryption"],
             antivirus: (bool)map["antivirus"]

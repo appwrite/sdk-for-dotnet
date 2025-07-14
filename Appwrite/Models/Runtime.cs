@@ -2,36 +2,35 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Runtime
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("version")]
+        [JsonPropertyName("version")]
         public string Version { get; private set; }
 
-        [JsonProperty("base")]
+        [JsonPropertyName("base")]
         public string Base { get; private set; }
 
-        [JsonProperty("image")]
+        [JsonPropertyName("image")]
         public string Image { get; private set; }
 
-        [JsonProperty("logo")]
+        [JsonPropertyName("logo")]
         public string Logo { get; private set; }
 
-        [JsonProperty("supports")]
+        [JsonPropertyName("supports")]
         public List<string> Supports { get; private set; }
 
         public Runtime(
@@ -62,7 +61,7 @@ namespace Appwrite.Models
             xbase: map["base"].ToString(),
             image: map["image"].ToString(),
             logo: map["logo"].ToString(),
-            supports: ((JArray)map["supports"]).ToObject<List<string>>()
+            supports: map["supports"] is JsonElement jsonArrayProp8 ? jsonArrayProp8.Deserialize<List<string>>()! : (List<string>)map["supports"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

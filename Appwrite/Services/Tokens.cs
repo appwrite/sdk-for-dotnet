@@ -49,7 +49,7 @@ namespace Appwrite.Services
 
         /// <para>
         /// Create a new token. A token is linked to a file. Token can be passed as a
-        /// header or request get parameter.
+        /// request URL search parameter.
         /// </para>
         /// </summary>
         public Task<Models.ResourceToken> CreateFileToken(string bucketId, string fileId, string? expire = null)

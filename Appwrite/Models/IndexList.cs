@@ -2,18 +2,17 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class IndexList
     {
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; private set; }
 
-        [JsonProperty("indexes")]
+        [JsonPropertyName("indexes")]
         public List<Index> Indexes { get; private set; }
 
         public IndexList(
@@ -26,7 +25,7 @@ namespace Appwrite.Models
 
         public static IndexList From(Dictionary<string, object> map) => new IndexList(
             total: Convert.ToInt64(map["total"]),
-            indexes: ((JArray)map["indexes"]).ToObject<List<Dictionary<string, object>>>().Select(it => Index.From(map: it)).ToList()
+            indexes: map["indexes"] is JsonElement jsonArray2 ? jsonArray2.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Index.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["indexes"]).Select(it => Index.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -2,39 +2,38 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Provider
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("provider")]
+        [JsonPropertyName("provider")]
         public string MessagingProvider { get; private set; }
 
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; private set; }
 
-        [JsonProperty("credentials")]
+        [JsonPropertyName("credentials")]
         public object Credentials { get; private set; }
 
-        [JsonProperty("options")]
+        [JsonPropertyName("options")]
         public object? Options { get; private set; }
 
         public Provider(

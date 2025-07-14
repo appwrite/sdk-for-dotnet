@@ -2,21 +2,20 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class HealthTime
     {
-        [JsonProperty("remoteTime")]
+        [JsonPropertyName("remoteTime")]
         public long RemoteTime { get; private set; }
 
-        [JsonProperty("localTime")]
+        [JsonPropertyName("localTime")]
         public long LocalTime { get; private set; }
 
-        [JsonProperty("diff")]
+        [JsonPropertyName("diff")]
         public long Diff { get; private set; }
 
         public HealthTime(

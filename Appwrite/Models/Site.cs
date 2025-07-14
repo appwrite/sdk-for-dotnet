@@ -2,99 +2,98 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class Site
     {
-        [JsonProperty("$id")]
+        [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonProperty("$createdAt")]
+        [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
-        [JsonProperty("$updatedAt")]
+        [JsonPropertyName("$updatedAt")]
         public string UpdatedAt { get; private set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; private set; }
 
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
-        [JsonProperty("live")]
+        [JsonPropertyName("live")]
         public bool Live { get; private set; }
 
-        [JsonProperty("logging")]
+        [JsonPropertyName("logging")]
         public bool Logging { get; private set; }
 
-        [JsonProperty("framework")]
+        [JsonPropertyName("framework")]
         public string Framework { get; private set; }
 
-        [JsonProperty("deploymentId")]
+        [JsonPropertyName("deploymentId")]
         public string DeploymentId { get; private set; }
 
-        [JsonProperty("deploymentCreatedAt")]
+        [JsonPropertyName("deploymentCreatedAt")]
         public string DeploymentCreatedAt { get; private set; }
 
-        [JsonProperty("deploymentScreenshotLight")]
+        [JsonPropertyName("deploymentScreenshotLight")]
         public string DeploymentScreenshotLight { get; private set; }
 
-        [JsonProperty("deploymentScreenshotDark")]
+        [JsonPropertyName("deploymentScreenshotDark")]
         public string DeploymentScreenshotDark { get; private set; }
 
-        [JsonProperty("latestDeploymentId")]
+        [JsonPropertyName("latestDeploymentId")]
         public string LatestDeploymentId { get; private set; }
 
-        [JsonProperty("latestDeploymentCreatedAt")]
+        [JsonPropertyName("latestDeploymentCreatedAt")]
         public string LatestDeploymentCreatedAt { get; private set; }
 
-        [JsonProperty("latestDeploymentStatus")]
+        [JsonPropertyName("latestDeploymentStatus")]
         public string LatestDeploymentStatus { get; private set; }
 
-        [JsonProperty("vars")]
+        [JsonPropertyName("vars")]
         public List<Variable> Vars { get; private set; }
 
-        [JsonProperty("timeout")]
+        [JsonPropertyName("timeout")]
         public long Timeout { get; private set; }
 
-        [JsonProperty("installCommand")]
+        [JsonPropertyName("installCommand")]
         public string InstallCommand { get; private set; }
 
-        [JsonProperty("buildCommand")]
+        [JsonPropertyName("buildCommand")]
         public string BuildCommand { get; private set; }
 
-        [JsonProperty("outputDirectory")]
+        [JsonPropertyName("outputDirectory")]
         public string OutputDirectory { get; private set; }
 
-        [JsonProperty("installationId")]
+        [JsonPropertyName("installationId")]
         public string InstallationId { get; private set; }
 
-        [JsonProperty("providerRepositoryId")]
+        [JsonPropertyName("providerRepositoryId")]
         public string ProviderRepositoryId { get; private set; }
 
-        [JsonProperty("providerBranch")]
+        [JsonPropertyName("providerBranch")]
         public string ProviderBranch { get; private set; }
 
-        [JsonProperty("providerRootDirectory")]
+        [JsonPropertyName("providerRootDirectory")]
         public string ProviderRootDirectory { get; private set; }
 
-        [JsonProperty("providerSilentMode")]
+        [JsonPropertyName("providerSilentMode")]
         public bool ProviderSilentMode { get; private set; }
 
-        [JsonProperty("specification")]
+        [JsonPropertyName("specification")]
         public string Specification { get; private set; }
 
-        [JsonProperty("buildRuntime")]
+        [JsonPropertyName("buildRuntime")]
         public string BuildRuntime { get; private set; }
 
-        [JsonProperty("adapter")]
+        [JsonPropertyName("adapter")]
         public string Adapter { get; private set; }
 
-        [JsonProperty("fallbackFile")]
+        [JsonPropertyName("fallbackFile")]
         public string FallbackFile { get; private set; }
 
         public Site(
@@ -175,7 +174,7 @@ namespace Appwrite.Models
             latestDeploymentId: map["latestDeploymentId"].ToString(),
             latestDeploymentCreatedAt: map["latestDeploymentCreatedAt"].ToString(),
             latestDeploymentStatus: map["latestDeploymentStatus"].ToString(),
-            vars: ((JArray)map["vars"]).ToObject<List<Dictionary<string, object>>>().Select(it => Variable.From(map: it)).ToList(),
+            vars: map["vars"] is JsonElement jsonArray16 ? jsonArray16.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Variable.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["vars"]).Select(it => Variable.From(map: it)).ToList(),
             timeout: Convert.ToInt64(map["timeout"]),
             installCommand: map["installCommand"].ToString(),
             buildCommand: map["buildCommand"].ToString(),

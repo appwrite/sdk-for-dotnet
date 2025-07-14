@@ -2,27 +2,26 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
     public class FrameworkAdapter
     {
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; private set; }
 
-        [JsonProperty("installCommand")]
+        [JsonPropertyName("installCommand")]
         public string InstallCommand { get; private set; }
 
-        [JsonProperty("buildCommand")]
+        [JsonPropertyName("buildCommand")]
         public string BuildCommand { get; private set; }
 
-        [JsonProperty("outputDirectory")]
+        [JsonPropertyName("outputDirectory")]
         public string OutputDirectory { get; private set; }
 
-        [JsonProperty("fallbackFile")]
+        [JsonPropertyName("fallbackFile")]
         public string FallbackFile { get; private set; }
 
         public FrameworkAdapter(
