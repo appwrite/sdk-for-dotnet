@@ -12,6 +12,9 @@ namespace Appwrite.Models
         [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
+        [JsonPropertyName("$sequence")]
+        public long Sequence { get; private set; }
+
         [JsonPropertyName("$collectionId")]
         public string CollectionId { get; private set; }
 
@@ -31,6 +34,7 @@ namespace Appwrite.Models
 
         public Document(
             string id,
+            long sequence,
             string collectionId,
             string databaseId,
             string createdAt,
@@ -39,6 +43,7 @@ namespace Appwrite.Models
             Dictionary<string, object> data
         ) {
             Id = id;
+            Sequence = sequence;
             CollectionId = collectionId;
             DatabaseId = databaseId;
             CreatedAt = createdAt;
@@ -49,17 +54,19 @@ namespace Appwrite.Models
 
         public static Document From(Dictionary<string, object> map) => new Document(
             id: map["$id"].ToString(),
+            sequence: Convert.ToInt64(map["$sequence"]),
             collectionId: map["$collectionId"].ToString(),
             databaseId: map["$databaseId"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: map["$permissions"] is JsonElement jsonArrayProp6 ? jsonArrayProp6.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
+            permissions: map["$permissions"] is JsonElement jsonArrayProp7 ? jsonArrayProp7.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
             data: map
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "$id", Id },
+            { "$sequence", Sequence },
             { "$collectionId", CollectionId },
             { "$databaseId", DatabaseId },
             { "$createdAt", CreatedAt },
