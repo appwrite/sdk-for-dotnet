@@ -4,12 +4,16 @@ using Appwrite.Services;
 
 Client client = new Client()
     .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .SetAdmin("") // 
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Databases databases = new Databases(client);
+Tables tables = new Tables(client);
 
-DocumentList result = await databases.UpsertDocuments(
+Row result = await tables.IncrementRowColumn(
     databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>"
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    column: "",
+    value: 0, // optional
+    max: 0 // optional
 );

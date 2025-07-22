@@ -8,10 +8,12 @@ Client client = new Client()
     .SetKey("<YOUR_API_KEY>") // Your secret API key
     .SetJWT("<YOUR_JWT>"); // Your secret JSON Web Token
 
-Databases databases = new Databases(client);
+Tables tables = new Tables(client);
 
-Document result = await databases.UpsertDocument(
+Row result = await tables.CreateRow(
     databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
-    documentId: "<DOCUMENT_ID>"
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    data: [object],
+    permissions: ["read("any")"] // optional
 );

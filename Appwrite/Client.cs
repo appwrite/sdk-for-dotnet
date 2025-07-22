@@ -74,7 +74,7 @@ namespace Appwrite
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
                 { "x-sdk-version", "0.15.0"},
-                { "X-Appwrite-Response-Format", "1.7.0" }
+                { "X-Appwrite-Response-Format", "1.8.0" }
             };
 
             _config = new Dictionary<string, string>();
