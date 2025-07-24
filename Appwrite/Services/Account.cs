@@ -950,7 +950,6 @@ namespace Appwrite.Services
         /// flows initiated by token creation. For example, magic URL and phone login.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated.")]
         public Task<Models.Session> UpdateMagicURLSession(string userId, string secret)
         {
             var apiPath = "/account/sessions/magic-url";
@@ -985,7 +984,6 @@ namespace Appwrite.Services
         /// flows initiated by token creation. For example, magic URL and phone login.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated.")]
         public Task<Models.Session> UpdatePhoneSession(string userId, string secret)
         {
             var apiPath = "/account/sessions/phone";
