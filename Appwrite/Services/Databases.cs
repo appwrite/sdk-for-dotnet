@@ -925,11 +925,11 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "relatedCollectionId", relatedCollectionId },
-                { "type", type },
+                { "type", type?.Value },
                 { "twoWay", twoWay },
                 { "key", key },
                 { "twoWayKey", twoWayKey },
-                { "onDelete", onDelete }
+                { "onDelete", onDelete?.Value }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1177,7 +1177,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "onDelete", onDelete },
+                { "onDelete", onDelete?.Value },
                 { "newKey", newKey }
             };
 
@@ -1319,6 +1319,7 @@ namespace Appwrite.Services
         /// new collection resource using either a [server
         /// integration](https://appwrite.io/docs/server/databases#databasesCreateCollection)
         /// API or directly from your database console.
+        /// 
         /// </para>
         /// </summary>
         public Task<Models.DocumentList> UpsertDocuments(string databaseId, string collectionId, List<object> documents)
@@ -1571,6 +1572,78 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Decrement a specific attribute of a document by a given value.
+        /// </para>
+        /// </summary>
+        public Task<Models.Document> DecrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? xvalue = null, double? min = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/decrement"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{documentId}", documentId)
+                .Replace("{attribute}", attribute);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "value", xvalue },
+                { "min", min }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Document Convert(Dictionary<string, object> it) =>
+                Models.Document.From(map: it);
+
+            return _client.Call<Models.Document>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Increment a specific attribute of a document by a given value.
+        /// </para>
+        /// </summary>
+        public Task<Models.Document> IncrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? xvalue = null, double? max = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/increment"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{documentId}", documentId)
+                .Replace("{attribute}", attribute);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "value", xvalue },
+                { "max", max }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Document Convert(Dictionary<string, object> it) =>
+                Models.Document.From(map: it);
+
+            return _client.Call<Models.Document>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// List indexes in the collection.
         /// </para>
         /// </summary>
@@ -1617,7 +1690,7 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "key", key },
-                { "type", type },
+                { "type", type?.Value },
                 { "attributes", attributes },
                 { "orders", orders },
                 { "lengths", lengths }

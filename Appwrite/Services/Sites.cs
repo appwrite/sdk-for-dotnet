@@ -58,15 +58,15 @@ namespace Appwrite.Services
             {
                 { "siteId", siteId },
                 { "name", name },
-                { "framework", framework },
+                { "framework", framework?.Value },
                 { "enabled", enabled },
                 { "logging", logging },
                 { "timeout", timeout },
                 { "installCommand", installCommand },
                 { "buildCommand", buildCommand },
                 { "outputDirectory", outputDirectory },
-                { "buildRuntime", buildRuntime },
-                { "adapter", adapter },
+                { "buildRuntime", buildRuntime?.Value },
+                { "adapter", adapter?.Value },
                 { "installationId", installationId },
                 { "fallbackFile", fallbackFile },
                 { "providerRepositoryId", providerRepositoryId },
@@ -195,15 +195,15 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name },
-                { "framework", framework },
+                { "framework", framework?.Value },
                 { "enabled", enabled },
                 { "logging", logging },
                 { "timeout", timeout },
                 { "installCommand", installCommand },
                 { "buildCommand", buildCommand },
                 { "outputDirectory", outputDirectory },
-                { "buildRuntime", buildRuntime },
-                { "adapter", adapter },
+                { "buildRuntime", buildRuntime?.Value },
+                { "adapter", adapter?.Value },
                 { "fallbackFile", fallbackFile },
                 { "installationId", installationId },
                 { "providerRepositoryId", providerRepositoryId },
@@ -457,7 +457,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "type", type },
+                { "type", type?.Value },
                 { "reference", reference },
                 { "activate", activate }
             };
@@ -554,7 +554,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "type", type }
+                { "type", type?.Value }
             };
 
             var apiHeaders = new Dictionary<string, string>()

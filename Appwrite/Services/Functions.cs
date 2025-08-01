@@ -61,7 +61,7 @@ namespace Appwrite.Services
             {
                 { "functionId", functionId },
                 { "name", name },
-                { "runtime", runtime },
+                { "runtime", runtime?.Value },
                 { "execute", execute },
                 { "events", events },
                 { "schedule", schedule },
@@ -197,7 +197,7 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name },
-                { "runtime", runtime },
+                { "runtime", runtime?.Value },
                 { "execute", execute },
                 { "events", events },
                 { "schedule", schedule },
@@ -466,7 +466,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "type", type },
+                { "type", type?.Value },
                 { "reference", reference },
                 { "activate", activate }
             };
@@ -563,7 +563,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "type", type }
+                { "type", type?.Value }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -665,7 +665,7 @@ namespace Appwrite.Services
                 { "body", body },
                 { "async", xasync },
                 { "path", xpath },
-                { "method", method },
+                { "method", method?.Value },
                 { "headers", headers },
                 { "scheduledAt", scheduledAt }
             };
