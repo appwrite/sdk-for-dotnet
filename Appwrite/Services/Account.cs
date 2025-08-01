@@ -384,7 +384,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "factor", factor }
+                { "factor", factor?.Value }
             };
 
             var apiHeaders = new Dictionary<string, string>()

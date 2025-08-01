@@ -387,7 +387,7 @@ namespace Appwrite.Services
                 { "userId", userId },
                 { "email", email },
                 { "password", password },
-                { "passwordVersion", passwordVersion },
+                { "passwordVersion", passwordVersion?.Value },
                 { "name", name }
             };
 
@@ -1190,7 +1190,7 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "targetId", targetId },
-                { "providerType", providerType },
+                { "providerType", providerType?.Value },
                 { "identifier", identifier },
                 { "providerId", providerId },
                 { "name", name }

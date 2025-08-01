@@ -925,11 +925,11 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "relatedCollectionId", relatedCollectionId },
-                { "type", type },
+                { "type", type?.Value },
                 { "twoWay", twoWay },
                 { "key", key },
                 { "twoWayKey", twoWayKey },
-                { "onDelete", onDelete }
+                { "onDelete", onDelete?.Value }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1177,7 +1177,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "onDelete", onDelete },
+                { "onDelete", onDelete?.Value },
                 { "newKey", newKey }
             };
 
@@ -1690,7 +1690,7 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "key", key },
-                { "type", type },
+                { "type", type?.Value },
                 { "attributes", attributes },
                 { "orders", orders },
                 { "lengths", lengths }

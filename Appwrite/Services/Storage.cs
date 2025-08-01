@@ -63,7 +63,7 @@ namespace Appwrite.Services
                 { "enabled", enabled },
                 { "maximumFileSize", maximumFileSize },
                 { "allowedFileExtensions", allowedFileExtensions },
-                { "compression", compression },
+                { "compression", compression?.Value },
                 { "encryption", encryption },
                 { "antivirus", antivirus }
             };
@@ -134,7 +134,7 @@ namespace Appwrite.Services
                 { "enabled", enabled },
                 { "maximumFileSize", maximumFileSize },
                 { "allowedFileExtensions", allowedFileExtensions },
-                { "compression", compression },
+                { "compression", compression?.Value },
                 { "encryption", encryption },
                 { "antivirus", antivirus }
             };
@@ -420,7 +420,7 @@ namespace Appwrite.Services
             {
                 { "width", width },
                 { "height", height },
-                { "gravity", gravity },
+                { "gravity", gravity?.Value },
                 { "quality", quality },
                 { "borderWidth", borderWidth },
                 { "borderColor", borderColor },
@@ -428,7 +428,7 @@ namespace Appwrite.Services
                 { "opacity", opacity },
                 { "rotation", rotation },
                 { "background", background },
-                { "output", output },
+                { "output", output?.Value },
                 { "token", token }
             };
 

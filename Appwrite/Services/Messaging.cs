@@ -160,7 +160,7 @@ namespace Appwrite.Services
                 { "scheduledAt", scheduledAt },
                 { "contentAvailable", contentAvailable },
                 { "critical", critical },
-                { "priority", priority }
+                { "priority", priority?.Value }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -212,7 +212,7 @@ namespace Appwrite.Services
                 { "scheduledAt", scheduledAt },
                 { "contentAvailable", contentAvailable },
                 { "critical", critical },
-                { "priority", priority }
+                { "priority", priority?.Value }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -851,7 +851,7 @@ namespace Appwrite.Services
                 { "port", port },
                 { "username", username },
                 { "password", password },
-                { "encryption", encryption },
+                { "encryption", encryption?.Value },
                 { "autoTLS", autoTLS },
                 { "mailer", mailer },
                 { "fromName", fromName },
@@ -895,7 +895,7 @@ namespace Appwrite.Services
                 { "port", port },
                 { "username", username },
                 { "password", password },
-                { "encryption", encryption },
+                { "encryption", encryption?.Value },
                 { "autoTLS", autoTLS },
                 { "mailer", mailer },
                 { "fromName", fromName },
