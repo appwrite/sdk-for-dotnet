@@ -1,5 +1,4 @@
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -8,11 +7,13 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Databases databases = new Databases(client);
+TablesDb tablesDb = new TablesDb(client);
 
-Database result = await databases.Create(
+ColumnUrl result = await tablesDb.UpdateUrlColumn(
     databaseId: "<DATABASE_ID>",
-    name: "<NAME>",
-    enabled: false, // optional
-    type: .Tablesdb // optional
+    tableId: "<TABLE_ID>",
+    key: "",
+    required: false,
+    default: "https://example.com",
+    newKey: "" // optional
 );

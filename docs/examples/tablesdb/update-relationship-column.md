@@ -8,11 +8,12 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Databases databases = new Databases(client);
+TablesDb tablesDb = new TablesDb(client);
 
-Database result = await databases.Create(
+ColumnRelationship result = await tablesDb.UpdateRelationshipColumn(
     databaseId: "<DATABASE_ID>",
-    name: "<NAME>",
-    enabled: false, // optional
-    type: .Tablesdb // optional
+    tableId: "<TABLE_ID>",
+    key: "",
+    onDelete: RelationMutate.Cascade, // optional
+    newKey: "" // optional
 );

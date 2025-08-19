@@ -8,11 +8,14 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Databases databases = new Databases(client);
+TablesDb tablesDb = new TablesDb(client);
 
-Database result = await databases.Create(
+ColumnIndex result = await tablesDb.CreateIndex(
     databaseId: "<DATABASE_ID>",
-    name: "<NAME>",
-    enabled: false, // optional
-    type: .Tablesdb // optional
+    tableId: "<TABLE_ID>",
+    key: "",
+    type: IndexType.Key,
+    columns: new List<string>(),
+    orders: new List<string>(), // optional
+    lengths: new List<long>() // optional
 );

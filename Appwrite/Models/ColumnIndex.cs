@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace Appwrite.Models
 {
-    public class Index
+    public class ColumnIndex
     {
         [JsonPropertyName("$id")]
         public string Id { get; private set; }
@@ -30,8 +30,8 @@ namespace Appwrite.Models
         [JsonPropertyName("error")]
         public string Error { get; private set; }
 
-        [JsonPropertyName("attributes")]
-        public List<string> Attributes { get; private set; }
+        [JsonPropertyName("columns")]
+        public List<string> Columns { get; private set; }
 
         [JsonPropertyName("lengths")]
         public List<long> Lengths { get; private set; }
@@ -39,7 +39,7 @@ namespace Appwrite.Models
         [JsonPropertyName("orders")]
         public List<string>? Orders { get; private set; }
 
-        public Index(
+        public ColumnIndex(
             string id,
             string createdAt,
             string updatedAt,
@@ -47,7 +47,7 @@ namespace Appwrite.Models
             string type,
             string status,
             string error,
-            List<string> attributes,
+            List<string> columns,
             List<long> lengths,
             List<string>? orders
         ) {
@@ -58,12 +58,12 @@ namespace Appwrite.Models
             Type = type;
             Status = status;
             Error = error;
-            Attributes = attributes;
+            Columns = columns;
             Lengths = lengths;
             Orders = orders;
         }
 
-        public static Index From(Dictionary<string, object> map) => new Index(
+        public static ColumnIndex From(Dictionary<string, object> map) => new ColumnIndex(
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
@@ -71,7 +71,7 @@ namespace Appwrite.Models
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
-            attributes: map["attributes"] is JsonElement jsonArrayProp8 ? jsonArrayProp8.Deserialize<List<string>>()! : (List<string>)map["attributes"],
+            columns: map["columns"] is JsonElement jsonArrayProp8 ? jsonArrayProp8.Deserialize<List<string>>()! : (List<string>)map["columns"],
             lengths: map["lengths"] is JsonElement jsonArrayProp9 ? jsonArrayProp9.Deserialize<List<long>>()! : (List<long>)map["lengths"],
             orders: map["orders"] is JsonElement jsonArrayProp10 ? jsonArrayProp10.Deserialize<List<string>>()! : (List<string>)map["orders"]
         );
@@ -85,7 +85,7 @@ namespace Appwrite.Models
             { "type", Type },
             { "status", Status },
             { "error", Error },
-            { "attributes", Attributes },
+            { "columns", Columns },
             { "lengths", Lengths },
             { "orders", Orders }
         };
