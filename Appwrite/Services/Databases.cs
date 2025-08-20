@@ -53,7 +53,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createDatabase` instead.")]
-        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, Appwrite.Enums.Type? type = null)
+        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null)
         {
             var apiPath = "/databases";
 
@@ -61,8 +61,7 @@ namespace Appwrite.Services
             {
                 { "databaseId", databaseId },
                 { "name", name },
-                { "enabled", enabled },
-                { "type", type?.Value }
+                { "enabled", enabled }
             };
 
             var apiHeaders = new Dictionary<string, string>()

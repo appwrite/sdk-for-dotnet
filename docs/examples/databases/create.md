@@ -1,5 +1,4 @@
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -13,6 +12,5 @@ Databases databases = new Databases(client);
 Database result = await databases.Create(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>",
-    enabled: false, // optional
-    type: .Tablesdb // optional
+    enabled: false // optional
 );

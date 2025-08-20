@@ -51,7 +51,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, Appwrite.Enums.Type? type = null)
+        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null)
         {
             var apiPath = "/tablesdb";
 
@@ -59,8 +59,7 @@ namespace Appwrite.Services
             {
                 { "databaseId", databaseId },
                 { "name", name },
-                { "enabled", enabled },
-                { "type", type?.Value }
+                { "enabled", enabled }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1200,7 +1199,7 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// List indexes in the collection.
+        /// List indexes on the table.
         /// </para>
         /// </summary>
         public Task<Models.ColumnIndexList> ListIndexes(string databaseId, string tableId, List<string>? queries = null)
@@ -1234,7 +1233,7 @@ namespace Appwrite.Services
         /// <para>
         /// Creates an index on the columns listed. Your index should include all the
         /// columns you will query in a single request.
-        /// Attributes can be `key`, `fulltext`, and `unique`.
+        /// Type can be `key`, `fulltext`, or `unique`.
         /// </para>
         /// </summary>
         public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.IndexType type, List<string> columns, List<string>? orders = null, List<long>? lengths = null)
