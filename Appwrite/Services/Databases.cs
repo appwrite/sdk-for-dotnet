@@ -19,7 +19,7 @@ namespace Appwrite.Services
         /// the search parameter to filter your results.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.list` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.list` instead.")]
         public Task<Models.DatabaseList> List(List<string>? queries = null, string? search = null)
         {
             var apiPath = "/databases";
@@ -52,7 +52,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createDatabase` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createDatabase` instead.")]
         public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null)
         {
             var apiPath = "/databases";
@@ -87,7 +87,7 @@ namespace Appwrite.Services
         /// object with the database metadata.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.get` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.get` instead.")]
         public Task<Models.Database> Get(string databaseId)
         {
             var apiPath = "/databases/{databaseId}"
@@ -118,7 +118,7 @@ namespace Appwrite.Services
         /// Update a database by its unique ID.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.update` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.update` instead.")]
         public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null)
         {
             var apiPath = "/databases/{databaseId}"
@@ -153,7 +153,7 @@ namespace Appwrite.Services
         /// scope can delete a database.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.delete` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.delete` instead.")]
         public Task<object> Delete(string databaseId)
         {
             var apiPath = "/databases/{databaseId}"
@@ -183,7 +183,7 @@ namespace Appwrite.Services
         /// can use the search parameter to filter your results.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.listTables` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listTables` instead.")]
         public Task<Models.CollectionList> ListCollections(string databaseId, List<string>? queries = null, string? search = null)
         {
             var apiPath = "/databases/{databaseId}/collections"
@@ -219,7 +219,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createTable` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createTable` instead.")]
         public Task<Models.Collection> CreateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
         {
             var apiPath = "/databases/{databaseId}/collections"
@@ -257,7 +257,7 @@ namespace Appwrite.Services
         /// object with the collection metadata.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.getTable` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getTable` instead.")]
         public Task<Models.Collection> GetCollection(string databaseId, string collectionId)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
@@ -289,7 +289,7 @@ namespace Appwrite.Services
         /// Update a collection by its unique ID.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateTable` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTable` instead.")]
         public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
@@ -327,7 +327,7 @@ namespace Appwrite.Services
         /// have access to delete this resource.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.deleteTable` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteTable` instead.")]
         public Task<object> DeleteCollection(string databaseId, string collectionId)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
@@ -357,7 +357,7 @@ namespace Appwrite.Services
         /// List attributes in the collection.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.listColumns` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listColumns` instead.")]
         public Task<Models.AttributeList> ListAttributes(string databaseId, string collectionId, List<string>? queries = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes"
@@ -391,7 +391,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createBooleanColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createBooleanColumn` instead.")]
         public Task<Models.AttributeBoolean> CreateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool? xdefault = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean"
@@ -429,7 +429,7 @@ namespace Appwrite.Services
         /// already existing documents.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateBooleanColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateBooleanColumn` instead.")]
         public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean/{key}"
@@ -466,7 +466,7 @@ namespace Appwrite.Services
         /// Create a date time attribute according to the ISO 8601 standard.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createDatetimeColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createDatetimeColumn` instead.")]
         public Task<Models.AttributeDatetime> CreateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime"
@@ -504,7 +504,7 @@ namespace Appwrite.Services
         /// already existing documents.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateDatetimeColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateDatetimeColumn` instead.")]
         public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime/{key}"
@@ -542,7 +542,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createEmailColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createEmailColumn` instead.")]
         public Task<Models.AttributeEmail> CreateEmailAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email"
@@ -581,7 +581,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateEmailColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateEmailColumn` instead.")]
         public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email/{key}"
@@ -620,7 +620,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createEnumColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createEnumColumn` instead.")]
         public Task<Models.AttributeEnum> CreateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? xdefault = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum"
@@ -660,7 +660,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateEnumColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateEnumColumn` instead.")]
         public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum/{key}"
@@ -700,7 +700,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createFloatColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createFloatColumn` instead.")]
         public Task<Models.AttributeFloat> CreateFloatAttribute(string databaseId, string collectionId, string key, bool required, double? min = null, double? max = null, double? xdefault = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float"
@@ -741,7 +741,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateFloatColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateFloatColumn` instead.")]
         public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double xdefault, double? min = null, double? max = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float/{key}"
@@ -782,7 +782,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createIntegerColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIntegerColumn` instead.")]
         public Task<Models.AttributeInteger> CreateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? xdefault = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer"
@@ -823,7 +823,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateIntegerColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateIntegerColumn` instead.")]
         public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long xdefault, long? min = null, long? max = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer/{key}"
@@ -863,7 +863,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createIpColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIpColumn` instead.")]
         public Task<Models.AttributeIp> CreateIpAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip"
@@ -902,7 +902,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateIpColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateIpColumn` instead.")]
         public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip/{key}"
@@ -941,7 +941,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createRelationshipColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createRelationshipColumn` instead.")]
         public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, Appwrite.Enums.RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, Appwrite.Enums.RelationMutate? onDelete = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/relationship"
@@ -981,7 +981,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createStringColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createStringColumn` instead.")]
         public Task<Models.AttributeString> CreateStringAttribute(string databaseId, string collectionId, string key, long size, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string"
@@ -1022,7 +1022,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateStringColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateStringColumn` instead.")]
         public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, long? size = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string/{key}"
@@ -1061,7 +1061,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createUrlColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createUrlColumn` instead.")]
         public Task<Models.AttributeUrl> CreateUrlAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url"
@@ -1100,7 +1100,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateUrlColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateUrlColumn` instead.")]
         public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url/{key}"
@@ -1137,7 +1137,7 @@ namespace Appwrite.Services
         /// Get attribute by ID.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.getColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getColumn` instead.")]
         public Task<object> GetAttribute(string databaseId, string collectionId, string key)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}"
@@ -1167,7 +1167,7 @@ namespace Appwrite.Services
         /// Deletes an attribute.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.deleteColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteColumn` instead.")]
         public Task<object> DeleteAttribute(string databaseId, string collectionId, string key)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}"
@@ -1200,7 +1200,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateRelationshipColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateRelationshipColumn` instead.")]
         public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}/relationship"
@@ -1237,7 +1237,7 @@ namespace Appwrite.Services
         /// the query params to filter your results.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.listRows` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listRows` instead.")]
         public Task<Models.DocumentList> ListDocuments(string databaseId, string collectionId, List<string>? queries = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
@@ -1273,7 +1273,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createRow` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createRow` instead.")]
         public Task<Models.Document> CreateDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
@@ -1312,7 +1312,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createRows` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createRows` instead.")]
         public Task<Models.DocumentList> CreateDocuments(string databaseId, string collectionId, List<object> documents)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
@@ -1350,7 +1350,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.upsertRows` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.upsertRows` instead.")]
         public Task<Models.DocumentList> UpsertDocuments(string databaseId, string collectionId, List<object> documents)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
@@ -1386,7 +1386,7 @@ namespace Appwrite.Services
         /// updated.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateRows` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateRows` instead.")]
         public Task<Models.DocumentList> UpdateDocuments(string databaseId, string collectionId, object? data = null, List<string>? queries = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
@@ -1422,7 +1422,7 @@ namespace Appwrite.Services
         /// documents are deleted.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.deleteRows` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteRows` instead.")]
         public Task<Models.DocumentList> DeleteDocuments(string databaseId, string collectionId, List<string>? queries = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
@@ -1457,7 +1457,7 @@ namespace Appwrite.Services
         /// object with the document data.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.getRow` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getRow` instead.")]
         public Task<Models.Document> GetDocument(string databaseId, string collectionId, string documentId, List<string>? queries = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
@@ -1494,7 +1494,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.upsertRow` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.upsertRow` instead.")]
         public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
@@ -1531,7 +1531,7 @@ namespace Appwrite.Services
         /// only specific fields that will get updated.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.updateRow` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateRow` instead.")]
         public Task<Models.Document> UpdateDocument(string databaseId, string collectionId, string documentId, object? data = null, List<string>? permissions = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
@@ -1567,7 +1567,7 @@ namespace Appwrite.Services
         /// Delete a document by its unique ID.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.deleteRow` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteRow` instead.")]
         public Task<object> DeleteDocument(string databaseId, string collectionId, string documentId)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
@@ -1598,7 +1598,7 @@ namespace Appwrite.Services
         /// Decrement a specific attribute of a document by a given value.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.decrementRowColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.decrementRowColumn` instead.")]
         public Task<Models.Document> DecrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? xvalue = null, double? min = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/decrement"
@@ -1635,7 +1635,7 @@ namespace Appwrite.Services
         /// Increment a specific attribute of a document by a given value.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.incrementRowColumn` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.incrementRowColumn` instead.")]
         public Task<Models.Document> IncrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? xvalue = null, double? max = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/increment"
@@ -1672,7 +1672,7 @@ namespace Appwrite.Services
         /// List indexes in the collection.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.listIndexes` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listIndexes` instead.")]
         public Task<Models.IndexList> ListIndexes(string databaseId, string collectionId, List<string>? queries = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
@@ -1707,7 +1707,7 @@ namespace Appwrite.Services
         /// Attributes can be `key`, `fulltext`, and `unique`.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.createIndex` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIndex` instead.")]
         public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<string>? orders = null, List<long>? lengths = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
@@ -1745,7 +1745,7 @@ namespace Appwrite.Services
         /// Get index by ID.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.getIndex` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getIndex` instead.")]
         public Task<Models.Index> GetIndex(string databaseId, string collectionId, string key)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes/{key}"
@@ -1778,7 +1778,7 @@ namespace Appwrite.Services
         /// Delete an index.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDb.deleteIndex` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteIndex` instead.")]
         public Task<object> DeleteIndex(string databaseId, string collectionId, string key)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes/{key}"

@@ -7,9 +7,9 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-TablesDb tablesDb = new TablesDb(client);
+TablesDB tablesDB = new TablesDB(client);
 
-ColumnEmail result = await tablesDb.CreateEmailColumn(
+ColumnEmail result = await tablesDB.CreateEmailColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "",

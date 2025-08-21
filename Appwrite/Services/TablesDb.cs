@@ -8,9 +8,9 @@ using Appwrite.Enums;
 
 namespace Appwrite.Services
 {
-    public class TablesDb : Service
+    public class TablesDB : Service
     {
-        public TablesDb(Client client) : base(client)
+        public TablesDB(Client client) : base(client)
         {
         }
 
@@ -209,7 +209,7 @@ namespace Appwrite.Services
         /// <para>
         /// Create a new Table. Before using this route, you should create a new
         /// database resource using either a [server
-        /// integration](https://appwrite.io/docs/server/databases#databasesCreateTable)
+        /// integration](https://appwrite.io/docs/server/tablesdb#tablesDBCreateTable)
         /// API or directly from your database console.
         /// </para>
         /// </summary>
@@ -1367,7 +1367,7 @@ namespace Appwrite.Services
         /// <para>
         /// Create a new Row. Before using this route, you should create a new table
         /// resource using either a [server
-        /// integration](https://appwrite.io/docs/server/databases#databasesCreateTable)
+        /// integration](https://appwrite.io/docs/server/tablesdb#tablesDBCreateTable)
         /// API or directly from your database console.
         /// </para>
         /// </summary>
@@ -1405,7 +1405,7 @@ namespace Appwrite.Services
         /// <para>
         /// Create new Rows. Before using this route, you should create a new table
         /// resource using either a [server
-        /// integration](https://appwrite.io/docs/server/databases#databasesCreateTable)
+        /// integration](https://appwrite.io/docs/server/tablesdb#tablesDBCreateTable)
         /// API or directly from your database console.
         /// </para>
         /// </summary>
@@ -1441,7 +1441,7 @@ namespace Appwrite.Services
         /// <para>
         /// Create or update Rows. Before using this route, you should create a new
         /// table resource using either a [server
-        /// integration](https://appwrite.io/docs/server/databases#databasesCreateTable)
+        /// integration](https://appwrite.io/docs/server/tablesdb#tablesDBCreateTable)
         /// API or directly from your database console.
         /// 
         /// </para>
@@ -1581,7 +1581,7 @@ namespace Appwrite.Services
         /// <para>
         /// Create or update a Row. Before using this route, you should create a new
         /// table resource using either a [server
-        /// integration](https://appwrite.io/docs/server/databases#databasesCreateTable)
+        /// integration](https://appwrite.io/docs/server/tablesdb#tablesDBCreateTable)
         /// API or directly from your database console.
         /// </para>
         /// </summary>

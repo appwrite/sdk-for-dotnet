@@ -237,7 +237,45 @@ namespace Appwrite.Services
         /// Create a new SMS message.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateSMS` instead.")]
         public Task<Models.Message> CreateSms(string messageId, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, bool? draft = null, string? scheduledAt = null)
+        {
+            var apiPath = "/messaging/messages/sms";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "messageId", messageId },
+                { "content", content },
+                { "topics", topics },
+                { "users", users },
+                { "targets", targets },
+                { "draft", draft },
+                { "scheduledAt", scheduledAt }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Message Convert(Dictionary<string, object> it) =>
+                Models.Message.From(map: it);
+
+            return _client.Call<Models.Message>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a new SMS message.
+        /// </para>
+        /// </summary>
+        public Task<Models.Message> CreateSMS(string messageId, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, bool? draft = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/sms";
 
@@ -277,7 +315,48 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateSMS` instead.")]
         public Task<Models.Message> UpdateSms(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? content = null, bool? draft = null, string? scheduledAt = null)
+        {
+            var apiPath = "/messaging/messages/sms/{messageId}"
+                .Replace("{messageId}", messageId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "topics", topics },
+                { "users", users },
+                { "targets", targets },
+                { "content", content },
+                { "draft", draft },
+                { "scheduledAt", scheduledAt }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Message Convert(Dictionary<string, object> it) =>
+                Models.Message.From(map: it);
+
+            return _client.Call<Models.Message>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update an SMS message by its unique ID. This endpoint only works on
+        /// messages that are in draft status. Messages that are already processing,
+        /// sent, or failed cannot be updated.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Message> UpdateSMS(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? content = null, bool? draft = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/sms/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -467,7 +546,46 @@ namespace Appwrite.Services
         /// Create a new Apple Push Notification service provider.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateAPNSProvider` instead.")]
         public Task<Models.Provider> CreateApnsProvider(string providerId, string name, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null, bool? enabled = null)
+        {
+            var apiPath = "/messaging/providers/apns";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "providerId", providerId },
+                { "name", name },
+                { "authKey", authKey },
+                { "authKeyId", authKeyId },
+                { "teamId", teamId },
+                { "bundleId", bundleId },
+                { "sandbox", sandbox },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it) =>
+                Models.Provider.From(map: it);
+
+            return _client.Call<Models.Provider>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a new Apple Push Notification service provider.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> CreateAPNSProvider(string providerId, string name, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/apns";
 
@@ -505,7 +623,46 @@ namespace Appwrite.Services
         /// Update a Apple Push Notification service provider by its unique ID.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateAPNSProvider` instead.")]
         public Task<Models.Provider> UpdateApnsProvider(string providerId, string? name = null, bool? enabled = null, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null)
+        {
+            var apiPath = "/messaging/providers/apns/{providerId}"
+                .Replace("{providerId}", providerId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "enabled", enabled },
+                { "authKey", authKey },
+                { "authKeyId", authKeyId },
+                { "teamId", teamId },
+                { "bundleId", bundleId },
+                { "sandbox", sandbox }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it) =>
+                Models.Provider.From(map: it);
+
+            return _client.Call<Models.Provider>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a Apple Push Notification service provider by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> UpdateAPNSProvider(string providerId, string? name = null, bool? enabled = null, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null)
         {
             var apiPath = "/messaging/providers/apns/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -543,7 +700,42 @@ namespace Appwrite.Services
         /// Create a new Firebase Cloud Messaging provider.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateFCMProvider` instead.")]
         public Task<Models.Provider> CreateFcmProvider(string providerId, string name, object? serviceAccountJSON = null, bool? enabled = null)
+        {
+            var apiPath = "/messaging/providers/fcm";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "providerId", providerId },
+                { "name", name },
+                { "serviceAccountJSON", serviceAccountJSON },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it) =>
+                Models.Provider.From(map: it);
+
+            return _client.Call<Models.Provider>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a new Firebase Cloud Messaging provider.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> CreateFCMProvider(string providerId, string name, object? serviceAccountJSON = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/fcm";
 
@@ -577,7 +769,42 @@ namespace Appwrite.Services
         /// Update a Firebase Cloud Messaging provider by its unique ID.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateFCMProvider` instead.")]
         public Task<Models.Provider> UpdateFcmProvider(string providerId, string? name = null, bool? enabled = null, object? serviceAccountJSON = null)
+        {
+            var apiPath = "/messaging/providers/fcm/{providerId}"
+                .Replace("{providerId}", providerId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "enabled", enabled },
+                { "serviceAccountJSON", serviceAccountJSON }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it) =>
+                Models.Provider.From(map: it);
+
+            return _client.Call<Models.Provider>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a Firebase Cloud Messaging provider by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> UpdateFCMProvider(string providerId, string? name = null, bool? enabled = null, object? serviceAccountJSON = null)
         {
             var apiPath = "/messaging/providers/fcm/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -839,7 +1066,52 @@ namespace Appwrite.Services
         /// Create a new SMTP provider.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateSMTPProvider` instead.")]
         public Task<Models.Provider> CreateSmtpProvider(string providerId, string name, string host, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        {
+            var apiPath = "/messaging/providers/smtp";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "providerId", providerId },
+                { "name", name },
+                { "host", host },
+                { "port", port },
+                { "username", username },
+                { "password", password },
+                { "encryption", encryption?.Value },
+                { "autoTLS", autoTLS },
+                { "mailer", mailer },
+                { "fromName", fromName },
+                { "fromEmail", fromEmail },
+                { "replyToName", replyToName },
+                { "replyToEmail", replyToEmail },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it) =>
+                Models.Provider.From(map: it);
+
+            return _client.Call<Models.Provider>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a new SMTP provider.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> CreateSMTPProvider(string providerId, string name, string host, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp";
 
@@ -883,7 +1155,52 @@ namespace Appwrite.Services
         /// Update a SMTP provider by its unique ID.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateSMTPProvider` instead.")]
         public Task<Models.Provider> UpdateSmtpProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        {
+            var apiPath = "/messaging/providers/smtp/{providerId}"
+                .Replace("{providerId}", providerId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "host", host },
+                { "port", port },
+                { "username", username },
+                { "password", password },
+                { "encryption", encryption?.Value },
+                { "autoTLS", autoTLS },
+                { "mailer", mailer },
+                { "fromName", fromName },
+                { "fromEmail", fromEmail },
+                { "replyToName", replyToName },
+                { "replyToEmail", replyToEmail },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it) =>
+                Models.Provider.From(map: it);
+
+            return _client.Call<Models.Provider>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a SMTP provider by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> UpdateSMTPProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp/{providerId}"
                 .Replace("{providerId}", providerId);

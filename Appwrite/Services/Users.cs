@@ -643,7 +643,40 @@ namespace Appwrite.Services
         /// Enable or disable MFA on a user account.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateMFA` instead.")]
         public Task<Models.User> UpdateMfa(string userId, bool mfa)
+        {
+            var apiPath = "/users/{userId}/mfa"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "mfa", mfa }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+            return _client.Call<Models.User>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Enable or disable MFA on a user account.
+        /// </para>
+        /// </summary>
+        public Task<Models.User> UpdateMFA(string userId, bool mfa)
         {
             var apiPath = "/users/{userId}/mfa"
                 .Replace("{userId}", userId);
@@ -675,7 +708,37 @@ namespace Appwrite.Services
         /// Delete an authenticator app.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `DeleteMFAAuthenticator` instead.")]
         public Task<object> DeleteMfaAuthenticator(string userId, Appwrite.Enums.AuthenticatorType type)
+        {
+            var apiPath = "/users/{userId}/mfa/authenticators/{type}"
+                .Replace("{userId}", userId)
+                .Replace("{type}", type.Value);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Delete an authenticator app.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteMFAAuthenticator(string userId, Appwrite.Enums.AuthenticatorType type)
         {
             var apiPath = "/users/{userId}/mfa/authenticators/{type}"
                 .Replace("{userId}", userId)
@@ -704,7 +767,38 @@ namespace Appwrite.Services
         /// List the factors available on the account to be used as a MFA challange.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `ListMFAFactors` instead.")]
         public Task<Models.MfaFactors> ListMfaFactors(string userId)
+        {
+            var apiPath = "/users/{userId}/mfa/factors"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.MfaFactors Convert(Dictionary<string, object> it) =>
+                Models.MfaFactors.From(map: it);
+
+            return _client.Call<Models.MfaFactors>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// List the factors available on the account to be used as a MFA challange.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaFactors> ListMFAFactors(string userId)
         {
             var apiPath = "/users/{userId}/mfa/factors"
                 .Replace("{userId}", userId);
@@ -737,7 +831,41 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `GetMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> GetMfaRecoveryCodes(string userId)
+        {
+            var apiPath = "/users/{userId}/mfa/recovery-codes"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
+                Models.MfaRecoveryCodes.From(map: it);
+
+            return _client.Call<Models.MfaRecoveryCodes>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get recovery codes that can be used as backup for MFA flow by User ID.
+        /// Before getting codes, they must be generated using
+        /// [createMfaRecoveryCodes](/docs/references/cloud/client-web/account#createMfaRecoveryCodes)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaRecoveryCodes> GetMFARecoveryCodes(string userId)
         {
             var apiPath = "/users/{userId}/mfa/recovery-codes"
                 .Replace("{userId}", userId);
@@ -770,7 +898,42 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> UpdateMfaRecoveryCodes(string userId)
+        {
+            var apiPath = "/users/{userId}/mfa/recovery-codes"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
+                Models.MfaRecoveryCodes.From(map: it);
+
+            return _client.Call<Models.MfaRecoveryCodes>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Regenerate recovery codes that can be used as backup for MFA flow by User
+        /// ID. Before regenerating codes, they must be first generated using
+        /// [createMfaRecoveryCodes](/docs/references/cloud/client-web/account#createMfaRecoveryCodes)
+        /// method.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaRecoveryCodes> UpdateMFARecoveryCodes(string userId)
         {
             var apiPath = "/users/{userId}/mfa/recovery-codes"
                 .Replace("{userId}", userId);
@@ -804,7 +967,42 @@ namespace Appwrite.Services
         /// method by client SDK.
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> CreateMfaRecoveryCodes(string userId)
+        {
+            var apiPath = "/users/{userId}/mfa/recovery-codes"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.MfaRecoveryCodes Convert(Dictionary<string, object> it) =>
+                Models.MfaRecoveryCodes.From(map: it);
+
+            return _client.Call<Models.MfaRecoveryCodes>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Generate recovery codes used as backup for MFA flow for User ID. Recovery
+        /// codes can be used as a MFA verification type in
+        /// [createMfaChallenge](/docs/references/cloud/client-web/account#createMfaChallenge)
+        /// method by client SDK.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaRecoveryCodes> CreateMFARecoveryCodes(string userId)
         {
             var apiPath = "/users/{userId}/mfa/recovery-codes"
                 .Replace("{userId}", userId);
