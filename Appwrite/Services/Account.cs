@@ -283,7 +283,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateMFAAuthenticator` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.createMFAAuthenticator` instead.")]
         public Task<Models.MfaType> CreateMfaAuthenticator(Appwrite.Enums.AuthenticatorType type)
         {
             var apiPath = "/account/mfa/authenticators/{type}"
@@ -351,7 +351,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateMFAAuthenticator` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.updateMFAAuthenticator` instead.")]
         public Task<Models.User> UpdateMfaAuthenticator(Appwrite.Enums.AuthenticatorType type, string otp)
         {
             var apiPath = "/account/mfa/authenticators/{type}"
@@ -418,7 +418,7 @@ namespace Appwrite.Services
         /// Delete an authenticator for a user by ID.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `DeleteMFAAuthenticator` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.deleteMFAAuthenticator` instead.")]
         public Task<object> DeleteMfaAuthenticator(Appwrite.Enums.AuthenticatorType type)
         {
             var apiPath = "/account/mfa/authenticators/{type}"
@@ -477,7 +477,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateMFAChallenge` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.createMFAChallenge` instead.")]
         public Task<Models.MfaChallenge> CreateMfaChallenge(Appwrite.Enums.AuthenticationFactor factor)
         {
             var apiPath = "/account/mfa/challenge";
@@ -546,7 +546,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateMFAChallenge` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.updateMFAChallenge` instead.")]
         public Task<Models.Session> UpdateMfaChallenge(string challengeId, string otp)
         {
             var apiPath = "/account/mfa/challenge";
@@ -615,7 +615,7 @@ namespace Appwrite.Services
         /// List the factors available on the account to be used as a MFA challange.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `ListMFAFactors` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.listMFAFactors` instead.")]
         public Task<Models.MfaFactors> ListMfaFactors()
         {
             var apiPath = "/account/mfa/factors";
@@ -677,7 +677,7 @@ namespace Appwrite.Services
         /// method. An OTP challenge is required to read recovery codes.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `GetMFARecoveryCodes` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.getMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> GetMfaRecoveryCodes()
         {
             var apiPath = "/account/mfa/recovery-codes";
@@ -743,7 +743,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateMFARecoveryCodes` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.createMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> CreateMfaRecoveryCodes()
         {
             var apiPath = "/account/mfa/recovery-codes";
@@ -811,7 +811,7 @@ namespace Appwrite.Services
         /// method. An OTP challenge is required to regenreate recovery codes.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateMFARecoveryCodes` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.updateMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> UpdateMfaRecoveryCodes()
         {
             var apiPath = "/account/mfa/recovery-codes";

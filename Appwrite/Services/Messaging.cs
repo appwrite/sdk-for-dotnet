@@ -237,7 +237,7 @@ namespace Appwrite.Services
         /// Create a new SMS message.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateSMS` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.createSMS` instead.")]
         public Task<Models.Message> CreateSms(string messageId, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, bool? draft = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/sms";
@@ -315,7 +315,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateSMS` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.updateSMS` instead.")]
         public Task<Models.Message> UpdateSms(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? content = null, bool? draft = null, string? scheduledAt = null)
         {
             var apiPath = "/messaging/messages/sms/{messageId}"
@@ -546,7 +546,7 @@ namespace Appwrite.Services
         /// Create a new Apple Push Notification service provider.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateAPNSProvider` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.createAPNSProvider` instead.")]
         public Task<Models.Provider> CreateApnsProvider(string providerId, string name, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/apns";
@@ -623,7 +623,7 @@ namespace Appwrite.Services
         /// Update a Apple Push Notification service provider by its unique ID.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateAPNSProvider` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.updateAPNSProvider` instead.")]
         public Task<Models.Provider> UpdateApnsProvider(string providerId, string? name = null, bool? enabled = null, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null)
         {
             var apiPath = "/messaging/providers/apns/{providerId}"
@@ -700,7 +700,7 @@ namespace Appwrite.Services
         /// Create a new Firebase Cloud Messaging provider.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateFCMProvider` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.createFCMProvider` instead.")]
         public Task<Models.Provider> CreateFcmProvider(string providerId, string name, object? serviceAccountJSON = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/fcm";
@@ -769,7 +769,7 @@ namespace Appwrite.Services
         /// Update a Firebase Cloud Messaging provider by its unique ID.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateFCMProvider` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.updateFCMProvider` instead.")]
         public Task<Models.Provider> UpdateFcmProvider(string providerId, string? name = null, bool? enabled = null, object? serviceAccountJSON = null)
         {
             var apiPath = "/messaging/providers/fcm/{providerId}"
@@ -1066,7 +1066,7 @@ namespace Appwrite.Services
         /// Create a new SMTP provider.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateSMTPProvider` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.createSMTPProvider` instead.")]
         public Task<Models.Provider> CreateSmtpProvider(string providerId, string name, string host, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp";
@@ -1155,7 +1155,7 @@ namespace Appwrite.Services
         /// Update a SMTP provider by its unique ID.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateSMTPProvider` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.updateSMTPProvider` instead.")]
         public Task<Models.Provider> UpdateSmtpProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/smtp/{providerId}"

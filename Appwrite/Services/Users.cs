@@ -643,7 +643,7 @@ namespace Appwrite.Services
         /// Enable or disable MFA on a user account.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateMFA` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.updateMFA` instead.")]
         public Task<Models.User> UpdateMfa(string userId, bool mfa)
         {
             var apiPath = "/users/{userId}/mfa"
@@ -708,7 +708,7 @@ namespace Appwrite.Services
         /// Delete an authenticator app.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `DeleteMFAAuthenticator` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.deleteMFAAuthenticator` instead.")]
         public Task<object> DeleteMfaAuthenticator(string userId, Appwrite.Enums.AuthenticatorType type)
         {
             var apiPath = "/users/{userId}/mfa/authenticators/{type}"
@@ -767,7 +767,7 @@ namespace Appwrite.Services
         /// List the factors available on the account to be used as a MFA challange.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `ListMFAFactors` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.listMFAFactors` instead.")]
         public Task<Models.MfaFactors> ListMfaFactors(string userId)
         {
             var apiPath = "/users/{userId}/mfa/factors"
@@ -831,7 +831,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `GetMFARecoveryCodes` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.getMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> GetMfaRecoveryCodes(string userId)
         {
             var apiPath = "/users/{userId}/mfa/recovery-codes"
@@ -898,7 +898,7 @@ namespace Appwrite.Services
         /// method.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `UpdateMFARecoveryCodes` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.updateMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> UpdateMfaRecoveryCodes(string userId)
         {
             var apiPath = "/users/{userId}/mfa/recovery-codes"
@@ -967,7 +967,7 @@ namespace Appwrite.Services
         /// method by client SDK.
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `CreateMFARecoveryCodes` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.createMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> CreateMfaRecoveryCodes(string userId)
         {
             var apiPath = "/users/{userId}/mfa/recovery-codes"
