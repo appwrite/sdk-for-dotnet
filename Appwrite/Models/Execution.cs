@@ -24,6 +24,9 @@ namespace Appwrite.Models
         [JsonPropertyName("functionId")]
         public string FunctionId { get; private set; }
 
+        [JsonPropertyName("deploymentId")]
+        public string DeploymentId { get; private set; }
+
         [JsonPropertyName("trigger")]
         public string Trigger { get; private set; }
 
@@ -66,6 +69,7 @@ namespace Appwrite.Models
             string updatedAt,
             List<string> permissions,
             string functionId,
+            string deploymentId,
             string trigger,
             string status,
             string requestMethod,
@@ -84,6 +88,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Permissions = permissions;
             FunctionId = functionId;
+            DeploymentId = deploymentId;
             Trigger = trigger;
             Status = status;
             RequestMethod = requestMethod;
@@ -104,14 +109,15 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             permissions: map["$permissions"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
             functionId: map["functionId"].ToString(),
+            deploymentId: map["deploymentId"].ToString(),
             trigger: map["trigger"].ToString(),
             status: map["status"].ToString(),
             requestMethod: map["requestMethod"].ToString(),
             requestPath: map["requestPath"].ToString(),
-            requestHeaders: map["requestHeaders"] is JsonElement jsonArray10 ? jsonArray10.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["requestHeaders"]).Select(it => Headers.From(map: it)).ToList(),
+            requestHeaders: map["requestHeaders"] is JsonElement jsonArray11 ? jsonArray11.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["requestHeaders"]).Select(it => Headers.From(map: it)).ToList(),
             responseStatusCode: Convert.ToInt64(map["responseStatusCode"]),
             responseBody: map["responseBody"].ToString(),
-            responseHeaders: map["responseHeaders"] is JsonElement jsonArray13 ? jsonArray13.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["responseHeaders"]).Select(it => Headers.From(map: it)).ToList(),
+            responseHeaders: map["responseHeaders"] is JsonElement jsonArray14 ? jsonArray14.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["responseHeaders"]).Select(it => Headers.From(map: it)).ToList(),
             logs: map["logs"].ToString(),
             errors: map["errors"].ToString(),
             duration: Convert.ToDouble(map["duration"]),
@@ -125,6 +131,7 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "$permissions", Permissions },
             { "functionId", FunctionId },
+            { "deploymentId", DeploymentId },
             { "trigger", Trigger },
             { "status", Status },
             { "requestMethod", RequestMethod },
