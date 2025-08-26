@@ -24,18 +24,23 @@ namespace Appwrite.Models
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
+        [JsonPropertyName("type")]
+        public string Type { get; private set; }
+
         public Database(
             string id,
             string name,
             string createdAt,
             string updatedAt,
-            bool enabled
+            bool enabled,
+            string type
         ) {
             Id = id;
             Name = name;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Enabled = enabled;
+            Type = type;
         }
 
         public static Database From(Dictionary<string, object> map) => new Database(
@@ -43,7 +48,8 @@ namespace Appwrite.Models
             name: map["name"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            enabled: (bool)map["enabled"]
+            enabled: (bool)map["enabled"],
+            type: map["type"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -52,7 +58,8 @@ namespace Appwrite.Models
             { "name", Name },
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
-            { "enabled", Enabled }
+            { "enabled", Enabled },
+            { "type", Type }
         };
     }
 }
