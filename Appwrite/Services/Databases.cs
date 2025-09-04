@@ -52,7 +52,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createDatabase` instead.")]
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.create` instead.")]
         public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null)
         {
             var apiPath = "/databases";
@@ -927,6 +927,228 @@ namespace Appwrite.Services
                 Models.AttributeIp.From(map: it);
 
             return _client.Call<Models.AttributeIp>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a geometric line attribute.
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createLineColumn` instead.")]
+        public Task<Models.AttributeLine> CreateLineAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeLine Convert(Dictionary<string, object> it) =>
+                Models.AttributeLine.From(map: it);
+
+            return _client.Call<Models.AttributeLine>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a line attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateLineColumn` instead.")]
+        public Task<Models.AttributeLine> UpdateLineAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, string? newKey = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeLine Convert(Dictionary<string, object> it) =>
+                Models.AttributeLine.From(map: it);
+
+            return _client.Call<Models.AttributeLine>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a geometric 2d point attribute.
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPointColumn` instead.")]
+        public Task<Models.AttributePoint> CreatePointAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributePoint Convert(Dictionary<string, object> it) =>
+                Models.AttributePoint.From(map: it);
+
+            return _client.Call<Models.AttributePoint>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a point attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePointColumn` instead.")]
+        public Task<Models.AttributePoint> UpdatePointAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, string? newKey = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributePoint Convert(Dictionary<string, object> it) =>
+                Models.AttributePoint.From(map: it);
+
+            return _client.Call<Models.AttributePoint>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a geometric polygon attribute.
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPolygonColumn` instead.")]
+        public Task<Models.AttributePolygon> CreatePolygonAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributePolygon Convert(Dictionary<string, object> it) =>
+                Models.AttributePolygon.From(map: it);
+
+            return _client.Call<Models.AttributePolygon>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a polygon attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePolygonColumn` instead.")]
+        public Task<Models.AttributePolygon> UpdatePolygonAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, string? newKey = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributePolygon Convert(Dictionary<string, object> it) =>
+                Models.AttributePolygon.From(map: it);
+
+            return _client.Call<Models.AttributePolygon>(
                 method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,

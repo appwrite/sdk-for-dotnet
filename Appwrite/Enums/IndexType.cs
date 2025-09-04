@@ -14,5 +14,6 @@ namespace Appwrite.Enums
         public static IndexType Key => new IndexType("key");
         public static IndexType Fulltext => new IndexType("fulltext");
         public static IndexType Unique => new IndexType("unique");
+        public static IndexType Spatial => new IndexType("spatial");
     }
 }

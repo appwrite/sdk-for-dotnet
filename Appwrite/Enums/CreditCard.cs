@@ -23,7 +23,7 @@ namespace Appwrite.Enums
         public static CreditCard Mastercard => new CreditCard("mastercard");
         public static CreditCard Naranja => new CreditCard("naranja");
         public static CreditCard TarjetaShopping => new CreditCard("targeta-shopping");
-        public static CreditCard UnionChinaPay => new CreditCard("union-china-pay");
+        public static CreditCard UnionPay => new CreditCard("unionpay");
         public static CreditCard Visa => new CreditCard("visa");
         public static CreditCard MIR => new CreditCard("mir");
         public static CreditCard Maestro => new CreditCard("maestro");

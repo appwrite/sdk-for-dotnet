@@ -910,6 +910,222 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a geometric line attribute.
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnLine> CreateLineColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/line"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnLine Convert(Dictionary<string, object> it) =>
+                Models.ColumnLine.From(map: it);
+
+            return _client.Call<Models.ColumnLine>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a line column. Changing the `default` value will not update already
+        /// existing documents.
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnLine> UpdateLineColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, string? newKey = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/line/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnLine Convert(Dictionary<string, object> it) =>
+                Models.ColumnLine.From(map: it);
+
+            return _client.Call<Models.ColumnLine>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a geometric point attribute.
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnPoint> CreatePointColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/point"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnPoint Convert(Dictionary<string, object> it) =>
+                Models.ColumnPoint.From(map: it);
+
+            return _client.Call<Models.ColumnPoint>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a point column. Changing the `default` value will not update already
+        /// existing documents.
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnPoint> UpdatePointColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, string? newKey = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/point/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnPoint Convert(Dictionary<string, object> it) =>
+                Models.ColumnPoint.From(map: it);
+
+            return _client.Call<Models.ColumnPoint>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a geometric polygon attribute.
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnPolygon> CreatePolygonColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/polygon"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnPolygon Convert(Dictionary<string, object> it) =>
+                Models.ColumnPolygon.From(map: it);
+
+            return _client.Call<Models.ColumnPolygon>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a polygon column. Changing the `default` value will not update
+        /// already existing documents.
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnPolygon> UpdatePolygonColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, string? newKey = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/polygon/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnPolygon Convert(Dictionary<string, object> it) =>
+                Models.ColumnPolygon.From(map: it);
+
+            return _client.Call<Models.ColumnPolygon>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Create relationship column. [Learn more about relationship
         /// columns](https://appwrite.io/docs/databases-relationships#relationship-columns).
         /// 
