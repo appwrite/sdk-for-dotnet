@@ -940,7 +940,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createLineColumn` instead.")]
-        public Task<Models.AttributeLine> CreateLineAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null)
+        public Task<Models.AttributeLine> CreateLineAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line"
                 .Replace("{databaseId}", databaseId)
@@ -977,7 +977,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateLineColumn` instead.")]
-        public Task<Models.AttributeLine> UpdateLineAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, string? newKey = null)
+        public Task<Models.AttributeLine> UpdateLineAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1014,7 +1014,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPointColumn` instead.")]
-        public Task<Models.AttributePoint> CreatePointAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null)
+        public Task<Models.AttributePoint> CreatePointAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point"
                 .Replace("{databaseId}", databaseId)
@@ -1051,7 +1051,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePointColumn` instead.")]
-        public Task<Models.AttributePoint> UpdatePointAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, string? newKey = null)
+        public Task<Models.AttributePoint> UpdatePointAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1088,7 +1088,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPolygonColumn` instead.")]
-        public Task<Models.AttributePolygon> CreatePolygonAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null)
+        public Task<Models.AttributePolygon> CreatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon"
                 .Replace("{databaseId}", databaseId)
@@ -1125,7 +1125,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePolygonColumn` instead.")]
-        public Task<Models.AttributePolygon> UpdatePolygonAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, string? newKey = null)
+        public Task<Models.AttributePolygon> UpdatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon/{key}"
                 .Replace("{databaseId}", databaseId)

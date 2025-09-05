@@ -34,7 +34,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("default")]
-        public object? Default { get; private set; }
+        public List<object>? Default { get; private set; }
 
         public AttributePoint(
             string key,
@@ -45,7 +45,7 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            object? xdefault
+            List<object>? xdefault
         ) {
             Key = key;
             Type = type;
@@ -67,7 +67,7 @@ namespace Appwrite.Models
             array: (bool?)map["array"],
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
+            xdefault: map["default"] is JsonElement jsonArrayProp9 ? jsonArrayProp9.Deserialize<List<object>>()! : (List<object>)map["default"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

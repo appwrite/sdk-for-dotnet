@@ -913,7 +913,7 @@ namespace Appwrite.Services
         /// Create a geometric line column.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnLine> CreateLineColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null)
+        public Task<Models.ColumnLine> CreateLineColumn(string databaseId, string tableId, string key, bool required, List<object>? xdefault = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/line"
                 .Replace("{databaseId}", databaseId)
@@ -949,7 +949,7 @@ namespace Appwrite.Services
         /// existing rows.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnLine> UpdateLineColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, string? newKey = null)
+        public Task<Models.ColumnLine> UpdateLineColumn(string databaseId, string tableId, string key, bool required, List<object>? xdefault = null, string? newKey = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/line/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -985,7 +985,7 @@ namespace Appwrite.Services
         /// Create a geometric point column.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnPoint> CreatePointColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null)
+        public Task<Models.ColumnPoint> CreatePointColumn(string databaseId, string tableId, string key, bool required, List<object>? xdefault = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/point"
                 .Replace("{databaseId}", databaseId)
@@ -1021,7 +1021,7 @@ namespace Appwrite.Services
         /// existing rows.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnPoint> UpdatePointColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, string? newKey = null)
+        public Task<Models.ColumnPoint> UpdatePointColumn(string databaseId, string tableId, string key, bool required, List<object>? xdefault = null, string? newKey = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/point/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1057,7 +1057,7 @@ namespace Appwrite.Services
         /// Create a geometric polygon column.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnPolygon> CreatePolygonColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null)
+        public Task<Models.ColumnPolygon> CreatePolygonColumn(string databaseId, string tableId, string key, bool required, List<object>? xdefault = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/polygon"
                 .Replace("{databaseId}", databaseId)
@@ -1093,7 +1093,7 @@ namespace Appwrite.Services
         /// already existing rows.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnPolygon> UpdatePolygonColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, string? newKey = null)
+        public Task<Models.ColumnPolygon> UpdatePolygonColumn(string databaseId, string tableId, string key, bool required, List<object>? xdefault = null, string? newKey = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/polygon/{key}"
                 .Replace("{databaseId}", databaseId)
