@@ -1010,7 +1010,7 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Create a geometric 2d point attribute.
+        /// Create a geometric point attribute.
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPointColumn` instead.")]

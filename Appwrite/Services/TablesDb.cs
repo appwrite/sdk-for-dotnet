@@ -910,7 +910,7 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Create a geometric line attribute.
+        /// Create a geometric line column.
         /// </para>
         /// </summary>
         public Task<Models.ColumnLine> CreateLineColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null)
@@ -946,7 +946,7 @@ namespace Appwrite.Services
 
         /// <para>
         /// Update a line column. Changing the `default` value will not update already
-        /// existing documents.
+        /// existing rows.
         /// </para>
         /// </summary>
         public Task<Models.ColumnLine> UpdateLineColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, string? newKey = null)
@@ -982,7 +982,7 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Create a geometric point attribute.
+        /// Create a geometric point column.
         /// </para>
         /// </summary>
         public Task<Models.ColumnPoint> CreatePointColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null)
@@ -1018,7 +1018,7 @@ namespace Appwrite.Services
 
         /// <para>
         /// Update a point column. Changing the `default` value will not update already
-        /// existing documents.
+        /// existing rows.
         /// </para>
         /// </summary>
         public Task<Models.ColumnPoint> UpdatePointColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, string? newKey = null)
@@ -1054,7 +1054,7 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Create a geometric polygon attribute.
+        /// Create a geometric polygon column.
         /// </para>
         /// </summary>
         public Task<Models.ColumnPolygon> CreatePolygonColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null)
@@ -1090,7 +1090,7 @@ namespace Appwrite.Services
 
         /// <para>
         /// Update a polygon column. Changing the `default` value will not update
-        /// already existing documents.
+        /// already existing rows.
         /// </para>
         /// </summary>
         public Task<Models.ColumnPolygon> UpdatePolygonColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, string? newKey = null)
