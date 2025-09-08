@@ -17,5 +17,6 @@ namespace Appwrite.Enums
         public static ExecutionMethod PATCH => new ExecutionMethod("PATCH");
         public static ExecutionMethod DELETE => new ExecutionMethod("DELETE");
         public static ExecutionMethod OPTIONS => new ExecutionMethod("OPTIONS");
+        public static ExecutionMethod HEAD => new ExecutionMethod("HEAD");
     }
 }
