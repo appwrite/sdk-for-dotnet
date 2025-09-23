@@ -69,9 +69,6 @@ namespace Appwrite.Models
         [JsonPropertyName("providerRepositoryUrl")]
         public string ProviderRepositoryUrl { get; private set; }
 
-        [JsonPropertyName("providerBranch")]
-        public string ProviderBranch { get; private set; }
-
         [JsonPropertyName("providerCommitHash")]
         public string ProviderCommitHash { get; private set; }
 
@@ -86,6 +83,9 @@ namespace Appwrite.Models
 
         [JsonPropertyName("providerCommitUrl")]
         public string ProviderCommitUrl { get; private set; }
+
+        [JsonPropertyName("providerBranch")]
+        public string ProviderBranch { get; private set; }
 
         [JsonPropertyName("providerBranchUrl")]
         public string ProviderBranchUrl { get; private set; }
@@ -111,12 +111,12 @@ namespace Appwrite.Models
             string providerRepositoryName,
             string providerRepositoryOwner,
             string providerRepositoryUrl,
-            string providerBranch,
             string providerCommitHash,
             string providerCommitAuthorUrl,
             string providerCommitAuthor,
             string providerCommitMessage,
             string providerCommitUrl,
+            string providerBranch,
             string providerBranchUrl
         ) {
             Id = id;
@@ -139,12 +139,12 @@ namespace Appwrite.Models
             ProviderRepositoryName = providerRepositoryName;
             ProviderRepositoryOwner = providerRepositoryOwner;
             ProviderRepositoryUrl = providerRepositoryUrl;
-            ProviderBranch = providerBranch;
             ProviderCommitHash = providerCommitHash;
             ProviderCommitAuthorUrl = providerCommitAuthorUrl;
             ProviderCommitAuthor = providerCommitAuthor;
             ProviderCommitMessage = providerCommitMessage;
             ProviderCommitUrl = providerCommitUrl;
+            ProviderBranch = providerBranch;
             ProviderBranchUrl = providerBranchUrl;
         }
 
@@ -169,12 +169,12 @@ namespace Appwrite.Models
             providerRepositoryName: map["providerRepositoryName"].ToString(),
             providerRepositoryOwner: map["providerRepositoryOwner"].ToString(),
             providerRepositoryUrl: map["providerRepositoryUrl"].ToString(),
-            providerBranch: map["providerBranch"].ToString(),
             providerCommitHash: map["providerCommitHash"].ToString(),
             providerCommitAuthorUrl: map["providerCommitAuthorUrl"].ToString(),
             providerCommitAuthor: map["providerCommitAuthor"].ToString(),
             providerCommitMessage: map["providerCommitMessage"].ToString(),
             providerCommitUrl: map["providerCommitUrl"].ToString(),
+            providerBranch: map["providerBranch"].ToString(),
             providerBranchUrl: map["providerBranchUrl"].ToString()
         );
 
@@ -200,12 +200,12 @@ namespace Appwrite.Models
             { "providerRepositoryName", ProviderRepositoryName },
             { "providerRepositoryOwner", ProviderRepositoryOwner },
             { "providerRepositoryUrl", ProviderRepositoryUrl },
-            { "providerBranch", ProviderBranch },
             { "providerCommitHash", ProviderCommitHash },
             { "providerCommitAuthorUrl", ProviderCommitAuthorUrl },
             { "providerCommitAuthor", ProviderCommitAuthor },
             { "providerCommitMessage", ProviderCommitMessage },
             { "providerCommitUrl", ProviderCommitUrl },
+            { "providerBranch", ProviderBranch },
             { "providerBranchUrl", ProviderBranchUrl }
         };
     }
