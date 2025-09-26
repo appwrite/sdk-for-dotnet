@@ -1,34 +1,34 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
     public class Message
     {
         [JsonPropertyName("$id")]
-        public string Id { get; private set; }
+        public string id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("providerType")]
         public string ProviderType { get; private set; }
 
         [JsonPropertyName("topics")]
-        public List<string> Topics { get; private set; }
+        public List&lt;string&gt; Topics { get; private set; }
 
         [JsonPropertyName("users")]
-        public List<string> Users { get; private set; }
+        public List&lt;string&gt; Users { get; private set; }
 
         [JsonPropertyName("targets")]
-        public List<string> Targets { get; private set; }
+        public List&lt;string&gt; Targets { get; private set; }
 
         [JsonPropertyName("scheduledAt")]
         public string? ScheduledAt { get; private set; }
@@ -37,7 +37,7 @@ namespace Appwrite.Models
         public string? DeliveredAt { get; private set; }
 
         [JsonPropertyName("deliveryErrors")]
-        public List<string>? DeliveryErrors { get; private set; }
+        public List&lt;string&gt;? DeliveryErrors { get; private set; }
 
         [JsonPropertyName("deliveredTotal")]
         public long DeliveredTotal { get; private set; }
@@ -46,26 +46,26 @@ namespace Appwrite.Models
         public object Data { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public MessageStatus Status { get; private set; }
 
         public Message(
             string id,
             string createdAt,
             string updatedAt,
             string providerType,
-            List<string> topics,
-            List<string> users,
-            List<string> targets,
+            List&lt;string&gt; topics,
+            List&lt;string&gt; users,
+            List&lt;string&gt; targets,
             string? scheduledAt,
             string? deliveredAt,
-            List<string>? deliveryErrors,
+            List&lt;string&gt;? deliveryErrors,
             long deliveredTotal,
             object data,
-            string status
+            MessageStatus status
         ) {
-            Id = id;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            id = id;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             ProviderType = providerType;
             Topics = topics;
             Users = users;
@@ -91,14 +91,14 @@ namespace Appwrite.Models
             deliveryErrors: map["deliveryErrors"] is JsonElement jsonArrayProp10 ? jsonArrayProp10.Deserialize<List<string>>()! : (List<string>)map["deliveryErrors"],
             deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
             data: map["data"].ToString(),
-            status: map["status"].ToString()
+            status: new MessageStatus(map["status"].ToString()!)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", Id },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$id", id },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "providerType", ProviderType },
             { "topics", Topics },
             { "users", Users },
@@ -108,7 +108,7 @@ namespace Appwrite.Models
             { "deliveryErrors", DeliveryErrors },
             { "deliveredTotal", DeliveredTotal },
             { "data", Data },
-            { "status", Status }
+            { "status", Status.Value }
         };
     }
 }

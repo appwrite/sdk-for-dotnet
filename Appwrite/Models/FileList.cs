@@ -1,9 +1,9 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -13,11 +13,11 @@ namespace Appwrite.Models
         public long Total { get; private set; }
 
         [JsonPropertyName("files")]
-        public List<File> Files { get; private set; }
+        public List&lt;File&gt; Files { get; private set; }
 
         public FileList(
             long total,
-            List<File> files
+            List&lt;File&gt; files
         ) {
             Total = total;
             Files = files;

@@ -1,9 +1,9 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -28,16 +28,16 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("size")]
         public long Size { get; private set; }
 
         [JsonPropertyName("default")]
-        public string? Default { get; private set; }
+        public string? @Default { get; private set; }
 
         [JsonPropertyName("encrypt")]
         public bool? Encrypt { get; private set; }
@@ -61,10 +61,10 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Size = size;
-            Default = xdefault;
+            @Default = xdefault;
             Encrypt = encrypt;
         }
 
@@ -90,10 +90,10 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "size", Size },
-            { "default", Default },
+            { "default", @Default },
             { "encrypt", Encrypt }
         };
     }

@@ -1,9 +1,9 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -19,17 +19,17 @@ namespace Appwrite.Models
         public string BuildRuntime { get; private set; }
 
         [JsonPropertyName("runtimes")]
-        public List<string> Runtimes { get; private set; }
+        public List&lt;string&gt; Runtimes { get; private set; }
 
         [JsonPropertyName("adapters")]
-        public List<FrameworkAdapter> Adapters { get; private set; }
+        public List&lt;FrameworkAdapter&gt; Adapters { get; private set; }
 
         public Framework(
             string key,
             string name,
             string buildRuntime,
-            List<string> runtimes,
-            List<FrameworkAdapter> adapters
+            List&lt;string&gt; runtimes,
+            List&lt;FrameworkAdapter&gt; adapters
         ) {
             Key = key;
             Name = name;

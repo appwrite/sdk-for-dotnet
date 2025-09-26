@@ -1,9 +1,9 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -28,10 +28,10 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("min")]
         public long? Min { get; private set; }
@@ -40,7 +40,7 @@ namespace Appwrite.Models
         public long? Max { get; private set; }
 
         [JsonPropertyName("default")]
-        public long? Default { get; private set; }
+        public long? @Default { get; private set; }
 
         public ColumnInteger(
             string key,
@@ -61,11 +61,11 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Min = min;
             Max = max;
-            Default = xdefault;
+            @Default = xdefault;
         }
 
         public static ColumnInteger From(Dictionary<string, object> map) => new ColumnInteger(
@@ -90,11 +90,11 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "min", Min },
             { "max", Max },
-            { "default", Default }
+            { "default", @Default }
         };
     }
 }

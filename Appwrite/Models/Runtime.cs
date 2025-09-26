@@ -1,16 +1,16 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
     public class Runtime
     {
         [JsonPropertyName("$id")]
-        public string Id { get; private set; }
+        public string id { get; private set; }
 
         [JsonPropertyName("key")]
         public string Key { get; private set; }
@@ -22,7 +22,7 @@ namespace Appwrite.Models
         public string Version { get; private set; }
 
         [JsonPropertyName("base")]
-        public string Base { get; private set; }
+        public string @Base { get; private set; }
 
         [JsonPropertyName("image")]
         public string Image { get; private set; }
@@ -31,7 +31,7 @@ namespace Appwrite.Models
         public string Logo { get; private set; }
 
         [JsonPropertyName("supports")]
-        public List<string> Supports { get; private set; }
+        public List&lt;string&gt; Supports { get; private set; }
 
         public Runtime(
             string id,
@@ -41,13 +41,13 @@ namespace Appwrite.Models
             string xbase,
             string image,
             string logo,
-            List<string> supports
+            List&lt;string&gt; supports
         ) {
-            Id = id;
+            id = id;
             Key = key;
             Name = name;
             Version = version;
-            Base = xbase;
+            @Base = xbase;
             Image = image;
             Logo = logo;
             Supports = supports;
@@ -66,11 +66,11 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", Id },
+            { "$id", id },
             { "key", Key },
             { "name", Name },
             { "version", Version },
-            { "base", Base },
+            { "base", @Base },
             { "image", Image },
             { "logo", Logo },
             { "supports", Supports }

@@ -1,22 +1,22 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
     public class Deployment
     {
         [JsonPropertyName("$id")]
-        public string Id { get; private set; }
+        public string id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("type")]
         public string Type { get; private set; }
@@ -52,7 +52,7 @@ namespace Appwrite.Models
         public string ScreenshotDark { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public DeploymentStatus Status { get; private set; }
 
         [JsonPropertyName("buildLogs")]
         public string BuildLogs { get; private set; }
@@ -105,7 +105,7 @@ namespace Appwrite.Models
             bool activate,
             string screenshotLight,
             string screenshotDark,
-            string status,
+            DeploymentStatus status,
             string buildLogs,
             long buildDuration,
             string providerRepositoryName,
@@ -119,9 +119,9 @@ namespace Appwrite.Models
             string providerBranch,
             string providerBranchUrl
         ) {
-            Id = id;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            id = id;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Type = type;
             ResourceId = resourceId;
             ResourceType = resourceType;
@@ -163,7 +163,7 @@ namespace Appwrite.Models
             activate: (bool)map["activate"],
             screenshotLight: map["screenshotLight"].ToString(),
             screenshotDark: map["screenshotDark"].ToString(),
-            status: map["status"].ToString(),
+            status: new DeploymentStatus(map["status"].ToString()!),
             buildLogs: map["buildLogs"].ToString(),
             buildDuration: Convert.ToInt64(map["buildDuration"]),
             providerRepositoryName: map["providerRepositoryName"].ToString(),
@@ -180,9 +180,9 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", Id },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$id", id },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "type", Type },
             { "resourceId", ResourceId },
             { "resourceType", ResourceType },
@@ -194,7 +194,7 @@ namespace Appwrite.Models
             { "activate", Activate },
             { "screenshotLight", ScreenshotLight },
             { "screenshotDark", ScreenshotDark },
-            { "status", Status },
+            { "status", Status.Value },
             { "buildLogs", BuildLogs },
             { "buildDuration", BuildDuration },
             { "providerRepositoryName", ProviderRepositoryName },

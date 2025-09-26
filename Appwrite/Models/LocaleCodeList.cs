@@ -1,9 +1,9 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -13,11 +13,11 @@ namespace Appwrite.Models
         public long Total { get; private set; }
 
         [JsonPropertyName("localeCodes")]
-        public List<LocaleCode> LocaleCodes { get; private set; }
+        public List&lt;LocaleCode&gt; LocaleCodes { get; private set; }
 
         public LocaleCodeList(
             long total,
-            List<LocaleCode> localeCodes
+            List&lt;LocaleCode&gt; localeCodes
         ) {
             Total = total;
             LocaleCodes = localeCodes;

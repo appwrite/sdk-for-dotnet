@@ -1,22 +1,22 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
     public class Index
     {
         [JsonPropertyName("$id")]
-        public string Id { get; private set; }
+        public string id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("key")]
         public string Key { get; private set; }
@@ -25,19 +25,19 @@ namespace Appwrite.Models
         public string Type { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public IndexStatus Status { get; private set; }
 
         [JsonPropertyName("error")]
         public string Error { get; private set; }
 
         [JsonPropertyName("attributes")]
-        public List<string> Attributes { get; private set; }
+        public List&lt;string&gt; Attributes { get; private set; }
 
         [JsonPropertyName("lengths")]
-        public List<long> Lengths { get; private set; }
+        public List&lt;long&gt; Lengths { get; private set; }
 
         [JsonPropertyName("orders")]
-        public List<string>? Orders { get; private set; }
+        public List&lt;string&gt;? Orders { get; private set; }
 
         public Index(
             string id,
@@ -45,15 +45,15 @@ namespace Appwrite.Models
             string updatedAt,
             string key,
             string type,
-            string status,
+            IndexStatus status,
             string error,
-            List<string> attributes,
-            List<long> lengths,
-            List<string>? orders
+            List&lt;string&gt; attributes,
+            List&lt;long&gt; lengths,
+            List&lt;string&gt;? orders
         ) {
-            Id = id;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            id = id;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Key = key;
             Type = type;
             Status = status;
@@ -69,7 +69,7 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             key: map["key"].ToString(),
             type: map["type"].ToString(),
-            status: map["status"].ToString(),
+            status: new IndexStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             attributes: map["attributes"] is JsonElement jsonArrayProp8 ? jsonArrayProp8.Deserialize<List<string>>()! : (List<string>)map["attributes"],
             lengths: map["lengths"] is JsonElement jsonArrayProp9 ? jsonArrayProp9.Deserialize<List<long>>()! : (List<long>)map["lengths"],
@@ -78,12 +78,12 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", Id },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$id", id },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "key", Key },
             { "type", Type },
-            { "status", Status },
+            { "status", Status.Value },
             { "error", Error },
             { "attributes", Attributes },
             { "lengths", Lengths },

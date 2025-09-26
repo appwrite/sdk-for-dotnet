@@ -1,9 +1,9 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -16,12 +16,12 @@ namespace Appwrite.Models
         public long Ping { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public HealthCheckStatus Status { get; private set; }
 
         public HealthStatus(
             string name,
             long ping,
-            string status
+            HealthCheckStatus status
         ) {
             Name = name;
             Ping = ping;
@@ -31,14 +31,14 @@ namespace Appwrite.Models
         public static HealthStatus From(Dictionary<string, object> map) => new HealthStatus(
             name: map["name"].ToString(),
             ping: Convert.ToInt64(map["ping"]),
-            status: map["status"].ToString()
+            status: new HealthCheckStatus(map["status"].ToString()!)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "name", Name },
             { "ping", Ping },
-            { "status", Status }
+            { "status", Status.Value }
         };
     }
 }

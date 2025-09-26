@@ -138,10 +138,6 @@ namespace Appwrite
             return new Query("orderDesc", attribute, null).ToString();
         }
 
-        public static string OrderRandom() {
-            return new Query("orderRandom", null, null).ToString();
-        }
-
         public static string Limit(int limit) {
             return new Query("limit", null, limit).ToString();
         }

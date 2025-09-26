@@ -1,25 +1,25 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
     public class Execution
     {
         [JsonPropertyName("$id")]
-        public string Id { get; private set; }
+        public string id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("$permissions")]
-        public List<string> Permissions { get; private set; }
+        public List&lt;string&gt; permissions { get; private set; }
 
         [JsonPropertyName("functionId")]
         public string FunctionId { get; private set; }
@@ -28,10 +28,10 @@ namespace Appwrite.Models
         public string DeploymentId { get; private set; }
 
         [JsonPropertyName("trigger")]
-        public string Trigger { get; private set; }
+        public ExecutionTrigger Trigger { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public ExecutionStatus Status { get; private set; }
 
         [JsonPropertyName("requestMethod")]
         public string RequestMethod { get; private set; }
@@ -40,7 +40,7 @@ namespace Appwrite.Models
         public string RequestPath { get; private set; }
 
         [JsonPropertyName("requestHeaders")]
-        public List<Headers> RequestHeaders { get; private set; }
+        public List&lt;Headers&gt; RequestHeaders { get; private set; }
 
         [JsonPropertyName("responseStatusCode")]
         public long ResponseStatusCode { get; private set; }
@@ -49,7 +49,7 @@ namespace Appwrite.Models
         public string ResponseBody { get; private set; }
 
         [JsonPropertyName("responseHeaders")]
-        public List<Headers> ResponseHeaders { get; private set; }
+        public List&lt;Headers&gt; ResponseHeaders { get; private set; }
 
         [JsonPropertyName("logs")]
         public string Logs { get; private set; }
@@ -67,26 +67,26 @@ namespace Appwrite.Models
             string id,
             string createdAt,
             string updatedAt,
-            List<string> permissions,
+            List&lt;string&gt; permissions,
             string functionId,
             string deploymentId,
-            string trigger,
-            string status,
+            ExecutionTrigger trigger,
+            ExecutionStatus status,
             string requestMethod,
             string requestPath,
-            List<Headers> requestHeaders,
+            List&lt;Headers&gt; requestHeaders,
             long responseStatusCode,
             string responseBody,
-            List<Headers> responseHeaders,
+            List&lt;Headers&gt; responseHeaders,
             string logs,
             string errors,
             double duration,
             string? scheduledAt
         ) {
-            Id = id;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
-            Permissions = permissions;
+            id = id;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
+            permissions = permissions;
             FunctionId = functionId;
             DeploymentId = deploymentId;
             Trigger = trigger;
@@ -110,8 +110,8 @@ namespace Appwrite.Models
             permissions: map["$permissions"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
             functionId: map["functionId"].ToString(),
             deploymentId: map["deploymentId"].ToString(),
-            trigger: map["trigger"].ToString(),
-            status: map["status"].ToString(),
+            trigger: new ExecutionTrigger(map["trigger"].ToString()!),
+            status: new ExecutionStatus(map["status"].ToString()!),
             requestMethod: map["requestMethod"].ToString(),
             requestPath: map["requestPath"].ToString(),
             requestHeaders: map["requestHeaders"] is JsonElement jsonArray11 ? jsonArray11.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["requestHeaders"]).Select(it => Headers.From(map: it)).ToList(),
@@ -126,14 +126,14 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", Id },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
-            { "$permissions", Permissions },
+            { "$id", id },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
+            { "$permissions", permissions },
             { "functionId", FunctionId },
             { "deploymentId", DeploymentId },
-            { "trigger", Trigger },
-            { "status", Status },
+            { "trigger", Trigger.Value },
+            { "status", Status.Value },
             { "requestMethod", RequestMethod },
             { "requestPath", RequestPath },
             { "requestHeaders", RequestHeaders.Select(it => it.ToMap()) },

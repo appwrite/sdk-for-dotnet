@@ -1,19 +1,19 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
     public class MfaRecoveryCodes
     {
         [JsonPropertyName("recoveryCodes")]
-        public List<string> RecoveryCodes { get; private set; }
+        public List&lt;string&gt; RecoveryCodes { get; private set; }
 
         public MfaRecoveryCodes(
-            List<string> recoveryCodes
+            List&lt;string&gt; recoveryCodes
         ) {
             RecoveryCodes = recoveryCodes;
         }

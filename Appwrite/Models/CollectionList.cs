@@ -1,9 +1,9 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -13,11 +13,11 @@ namespace Appwrite.Models
         public long Total { get; private set; }
 
         [JsonPropertyName("collections")]
-        public List<Collection> Collections { get; private set; }
+        public List&lt;Collection&gt; Collections { get; private set; }
 
         public CollectionList(
             long total,
-            List<Collection> collections
+            List&lt;Collection&gt; collections
         ) {
             Total = total;
             Collections = collections;

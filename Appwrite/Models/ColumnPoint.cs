@@ -1,9 +1,9 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -28,13 +28,13 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("default")]
-        public List<object>? Default { get; private set; }
+        public List&lt;object&gt;? @Default { get; private set; }
 
         public ColumnPoint(
             string key,
@@ -45,7 +45,7 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            List<object>? xdefault
+            List&lt;object&gt;? xdefault
         ) {
             Key = key;
             Type = type;
@@ -53,9 +53,9 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
-            Default = xdefault;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
+            @Default = xdefault;
         }
 
         public static ColumnPoint From(Dictionary<string, object> map) => new ColumnPoint(
@@ -78,9 +78,9 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
-            { "default", Default }
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
+            { "default", @Default }
         };
     }
 }
