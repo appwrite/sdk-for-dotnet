@@ -41,7 +41,7 @@ namespace Appwrite.Models
         public string Format { get; private set; }
 
         [JsonPropertyName("default")]
-        public string? @Default { get; private set; }
+        public string? Default { get; private set; }
 
         public ColumnEnum(
             string key,
@@ -66,7 +66,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Elements = elements;
             Format = format;
-            @Default = xdefault;
+            Default = xdefault;
         }
 
         public static ColumnEnum From(Dictionary<string, object> map) => new ColumnEnum(
@@ -95,7 +95,7 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "elements", Elements },
             { "format", Format },
-            { "default", @Default }
+            { "default", Default }
         };
     }
 }

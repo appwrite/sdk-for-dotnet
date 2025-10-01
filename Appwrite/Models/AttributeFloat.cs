@@ -41,7 +41,7 @@ namespace Appwrite.Models
         public double? Max { get; private set; }
 
         [JsonPropertyName("default")]
-        public double? @Default { get; private set; }
+        public double? Default { get; private set; }
 
         public AttributeFloat(
             string key,
@@ -66,7 +66,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Min = min;
             Max = max;
-            @Default = xdefault;
+            Default = xdefault;
         }
 
         public static AttributeFloat From(Dictionary<string, object> map) => new AttributeFloat(
@@ -95,7 +95,7 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "min", Min },
             { "max", Max },
-            { "default", @Default }
+            { "default", Default }
         };
     }
 }

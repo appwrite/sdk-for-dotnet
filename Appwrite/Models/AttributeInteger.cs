@@ -41,7 +41,7 @@ namespace Appwrite.Models
         public long? Max { get; private set; }
 
         [JsonPropertyName("default")]
-        public long? @Default { get; private set; }
+        public long? Default { get; private set; }
 
         public AttributeInteger(
             string key,
@@ -66,7 +66,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Min = min;
             Max = max;
-            @Default = xdefault;
+            Default = xdefault;
         }
 
         public static AttributeInteger From(Dictionary<string, object> map) => new AttributeInteger(
@@ -95,7 +95,7 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "min", Min },
             { "max", Max },
-            { "default", @Default }
+            { "default", Default }
         };
     }
 }

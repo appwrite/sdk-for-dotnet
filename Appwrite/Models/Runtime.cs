@@ -23,7 +23,7 @@ namespace Appwrite.Models
         public string Version { get; private set; }
 
         [JsonPropertyName("base")]
-        public string @Base { get; private set; }
+        public string Base { get; private set; }
 
         [JsonPropertyName("image")]
         public string Image { get; private set; }
@@ -48,7 +48,7 @@ namespace Appwrite.Models
             Key = key;
             Name = name;
             Version = version;
-            @Base = xbase;
+            Base = xbase;
             Image = image;
             Logo = logo;
             Supports = supports;
@@ -71,7 +71,7 @@ namespace Appwrite.Models
             { "key", Key },
             { "name", Name },
             { "version", Version },
-            { "base", @Base },
+            { "base", Base },
             { "image", Image },
             { "logo", Logo },
             { "supports", Supports }

@@ -38,7 +38,7 @@ namespace Appwrite.Models
         public long Size { get; private set; }
 
         [JsonPropertyName("default")]
-        public string? @Default { get; private set; }
+        public string? Default { get; private set; }
 
         [JsonPropertyName("encrypt")]
         public bool? Encrypt { get; private set; }
@@ -65,7 +65,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Size = size;
-            @Default = xdefault;
+            Default = xdefault;
             Encrypt = encrypt;
         }
 
@@ -94,7 +94,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "size", Size },
-            { "default", @Default },
+            { "default", Default },
             { "encrypt", Encrypt }
         };
     }

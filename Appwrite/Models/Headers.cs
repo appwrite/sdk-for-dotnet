@@ -14,14 +14,14 @@ namespace Appwrite.Models
         public string Name { get; private set; }
 
         [JsonPropertyName("value")]
-        public string @Value { get; private set; }
+        public string Value { get; private set; }
 
         public Headers(
             string name,
             string xvalue
         ) {
             Name = name;
-            @Value = xvalue;
+            Value = xvalue;
         }
 
         public static Headers From(Dictionary<string, object> map) => new Headers(
@@ -32,7 +32,7 @@ namespace Appwrite.Models
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "name", Name },
-            { "value", @Value }
+            { "value", Value }
         };
     }
 }

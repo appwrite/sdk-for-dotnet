@@ -38,7 +38,7 @@ namespace Appwrite.Models
         public string Format { get; private set; }
 
         [JsonPropertyName("default")]
-        public string? @Default { get; private set; }
+        public string? Default { get; private set; }
 
         public ColumnEmail(
             string key,
@@ -61,7 +61,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Format = format;
-            @Default = xdefault;
+            Default = xdefault;
         }
 
         public static ColumnEmail From(Dictionary<string, object> map) => new ColumnEmail(
@@ -88,7 +88,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "format", Format },
-            { "default", @Default }
+            { "default", Default }
         };
     }
 }

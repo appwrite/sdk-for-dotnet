@@ -35,7 +35,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("default")]
-        public bool? @Default { get; private set; }
+        public bool? Default { get; private set; }
 
         public ColumnBoolean(
             string key,
@@ -56,7 +56,7 @@ namespace Appwrite.Models
             Array = array;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
-            @Default = xdefault;
+            Default = xdefault;
         }
 
         public static ColumnBoolean From(Dictionary<string, object> map) => new ColumnBoolean(
@@ -81,7 +81,7 @@ namespace Appwrite.Models
             { "array", Array },
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
-            { "default", @Default }
+            { "default", Default }
         };
     }
 }

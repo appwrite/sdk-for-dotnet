@@ -35,7 +35,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("default")]
-        public List<object>? @Default { get; private set; }
+        public List<object>? Default { get; private set; }
 
         public ColumnPolygon(
             string key,
@@ -56,7 +56,7 @@ namespace Appwrite.Models
             Array = array;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
-            @Default = xdefault;
+            Default = xdefault;
         }
 
         public static ColumnPolygon From(Dictionary<string, object> map) => new ColumnPolygon(
@@ -81,7 +81,7 @@ namespace Appwrite.Models
             { "array", Array },
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
-            { "default", @Default }
+            { "default", Default }
         };
     }
 }

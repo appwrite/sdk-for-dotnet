@@ -23,7 +23,7 @@ namespace Appwrite.Models
         public string Key { get; private set; }
 
         [JsonPropertyName("value")]
-        public string @Value { get; private set; }
+        public string Value { get; private set; }
 
         [JsonPropertyName("secret")]
         public bool Secret { get; private set; }
@@ -48,7 +48,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Key = key;
-            @Value = xvalue;
+            Value = xvalue;
             Secret = secret;
             ResourceType = resourceType;
             ResourceId = resourceId;
@@ -71,7 +71,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "key", Key },
-            { "value", @Value },
+            { "value", Value },
             { "secret", Secret },
             { "resourceType", ResourceType },
             { "resourceId", ResourceId }
