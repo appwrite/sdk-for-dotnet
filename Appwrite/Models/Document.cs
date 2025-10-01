@@ -60,7 +60,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             permissions: map["$permissions"] is JsonElement jsonArrayProp7 ? jsonArrayProp7.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
-            data: map
+            data: map.TryGetValue("data", out var dataValue) ? (Dictionary<string, object>)dataValue : map
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -325,7 +325,7 @@ namespace Appwrite
             {
                 foreach (var warning in warnings)
                 {
-                    Console.WriteLine("Warning: " + warning);
+                    Console.Error.WriteLine("Warning: " + warning);
                 }
             }
 
