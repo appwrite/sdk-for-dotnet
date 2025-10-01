@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,16 +11,16 @@ namespace Appwrite.Models
     public class Database
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
@@ -35,10 +36,10 @@ namespace Appwrite.Models
             bool enabled,
             string type
         ) {
-            id = id;
+            Id = id;
             Name = name;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Enabled = enabled;
             Type = type;
         }
@@ -54,10 +55,10 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
+            { "$id", Id },
             { "name", Name },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "enabled", Enabled },
             { "type", Type }
         };

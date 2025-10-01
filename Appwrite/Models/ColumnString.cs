@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -28,10 +29,10 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("size")]
         public long Size { get; private set; }
@@ -61,8 +62,8 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Size = size;
             @Default = xdefault;
             Encrypt = encrypt;
@@ -90,8 +91,8 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "size", Size },
             { "default", @Default },
             { "encrypt", Encrypt }

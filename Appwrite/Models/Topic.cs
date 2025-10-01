@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,13 +11,13 @@ namespace Appwrite.Models
     public class Topic
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("name")]
         public string Name { get; private set; }
@@ -31,7 +32,7 @@ namespace Appwrite.Models
         public long PushTotal { get; private set; }
 
         [JsonPropertyName("subscribe")]
-        public List&lt;string&gt; Subscribe { get; private set; }
+        public List<string> Subscribe { get; private set; }
 
         public Topic(
             string id,
@@ -41,11 +42,11 @@ namespace Appwrite.Models
             long emailTotal,
             long smsTotal,
             long pushTotal,
-            List&lt;string&gt; subscribe
+            List<string> subscribe
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Name = name;
             EmailTotal = emailTotal;
             SmsTotal = smsTotal;
@@ -66,9 +67,9 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "name", Name },
             { "emailTotal", EmailTotal },
             { "smsTotal", SmsTotal },

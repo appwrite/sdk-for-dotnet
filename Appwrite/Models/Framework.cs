@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -19,17 +20,17 @@ namespace Appwrite.Models
         public string BuildRuntime { get; private set; }
 
         [JsonPropertyName("runtimes")]
-        public List&lt;string&gt; Runtimes { get; private set; }
+        public List<string> Runtimes { get; private set; }
 
         [JsonPropertyName("adapters")]
-        public List&lt;FrameworkAdapter&gt; Adapters { get; private set; }
+        public List<FrameworkAdapter> Adapters { get; private set; }
 
         public Framework(
             string key,
             string name,
             string buildRuntime,
-            List&lt;string&gt; runtimes,
-            List&lt;FrameworkAdapter&gt; adapters
+            List<string> runtimes,
+            List<FrameworkAdapter> adapters
         ) {
             Key = key;
             Name = name;

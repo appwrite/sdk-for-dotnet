@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,13 +11,13 @@ namespace Appwrite.Models
     public class Team
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("name")]
         public string Name { get; private set; }
@@ -35,9 +36,9 @@ namespace Appwrite.Models
             long total,
             Preferences prefs
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Name = name;
             Total = total;
             Prefs = prefs;
@@ -54,9 +55,9 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "name", Name },
             { "total", Total },
             { "prefs", Prefs.ToMap() }

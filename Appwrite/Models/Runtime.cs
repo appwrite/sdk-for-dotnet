@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Appwrite.Models
     public class Runtime
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("key")]
         public string Key { get; private set; }
@@ -31,7 +32,7 @@ namespace Appwrite.Models
         public string Logo { get; private set; }
 
         [JsonPropertyName("supports")]
-        public List&lt;string&gt; Supports { get; private set; }
+        public List<string> Supports { get; private set; }
 
         public Runtime(
             string id,
@@ -41,9 +42,9 @@ namespace Appwrite.Models
             string xbase,
             string image,
             string logo,
-            List&lt;string&gt; supports
+            List<string> supports
         ) {
-            id = id;
+            Id = id;
             Key = key;
             Name = name;
             Version = version;
@@ -66,7 +67,7 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
+            { "$id", Id },
             { "key", Key },
             { "name", Name },
             { "version", Version },

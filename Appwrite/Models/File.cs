@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,19 +11,19 @@ namespace Appwrite.Models
     public class File
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("bucketId")]
         public string BucketId { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("$permissions")]
-        public List&lt;string&gt; permissions { get; private set; }
+        public List<string> Permissions { get; private set; }
 
         [JsonPropertyName("name")]
         public string Name { get; private set; }
@@ -47,7 +48,7 @@ namespace Appwrite.Models
             string bucketId,
             string createdAt,
             string updatedAt,
-            List&lt;string&gt; permissions,
+            List<string> permissions,
             string name,
             string signature,
             string mimeType,
@@ -55,11 +56,11 @@ namespace Appwrite.Models
             long chunksTotal,
             long chunksUploaded
         ) {
-            id = id;
+            Id = id;
             BucketId = bucketId;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
-            permissions = permissions;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Permissions = permissions;
             Name = name;
             Signature = signature;
             MimeType = mimeType;
@@ -84,11 +85,11 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
+            { "$id", Id },
             { "bucketId", BucketId },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
-            { "$permissions", permissions },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
+            { "$permissions", Permissions },
             { "name", Name },
             { "signature", Signature },
             { "mimeType", MimeType },

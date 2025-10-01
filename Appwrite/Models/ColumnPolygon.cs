@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -28,13 +29,13 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("default")]
-        public List&lt;object&gt;? @Default { get; private set; }
+        public List<object>? @Default { get; private set; }
 
         public ColumnPolygon(
             string key,
@@ -45,7 +46,7 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            List&lt;object&gt;? xdefault
+            List<object>? xdefault
         ) {
             Key = key;
             Type = type;
@@ -53,8 +54,8 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             @Default = xdefault;
         }
 
@@ -78,8 +79,8 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "default", @Default }
         };
     }

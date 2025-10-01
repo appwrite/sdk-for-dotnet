@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,13 +11,13 @@ namespace Appwrite.Models
     public class Membership
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("userId")]
         public string UserId { get; private set; }
@@ -46,7 +47,7 @@ namespace Appwrite.Models
         public bool Mfa { get; private set; }
 
         [JsonPropertyName("roles")]
-        public List&lt;string&gt; Roles { get; private set; }
+        public List<string> Roles { get; private set; }
 
         public Membership(
             string id,
@@ -61,11 +62,11 @@ namespace Appwrite.Models
             string joined,
             bool confirm,
             bool mfa,
-            List&lt;string&gt; roles
+            List<string> roles
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             UserId = userId;
             UserName = userName;
             UserEmail = userEmail;
@@ -96,9 +97,9 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "userId", UserId },
             { "userName", UserName },
             { "userEmail", UserEmail },

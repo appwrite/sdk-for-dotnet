@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -13,11 +14,11 @@ namespace Appwrite.Models
         public long Total { get; private set; }
 
         [JsonPropertyName("collections")]
-        public List&lt;Collection&gt; Collections { get; private set; }
+        public List<Collection> Collections { get; private set; }
 
         public CollectionList(
             long total,
-            List&lt;Collection&gt; collections
+            List<Collection> collections
         ) {
             Total = total;
             Collections = collections;
