@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -17,7 +16,7 @@ namespace Appwrite.Models
         public string Type { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public ColumnStatus Status { get; private set; }
 
         [JsonPropertyName("error")]
         public string Error { get; private set; }
@@ -29,16 +28,16 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("size")]
         public long Size { get; private set; }
 
         [JsonPropertyName("default")]
-        public string? Default { get; private set; }
+        public string? @Default { get; private set; }
 
         [JsonPropertyName("encrypt")]
         public bool? Encrypt { get; private set; }
@@ -46,7 +45,7 @@ namespace Appwrite.Models
         public ColumnString(
             string key,
             string type,
-            string status,
+            ColumnStatus status,
             string error,
             bool required,
             bool? array,
@@ -62,17 +61,17 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Size = size;
-            Default = xdefault;
+            @Default = xdefault;
             Encrypt = encrypt;
         }
 
         public static ColumnString From(Dictionary<string, object> map) => new ColumnString(
             key: map["key"].ToString(),
             type: map["type"].ToString(),
-            status: map["status"].ToString(),
+            status: new ColumnStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: (bool?)map["array"],
@@ -87,14 +86,14 @@ namespace Appwrite.Models
         {
             { "key", Key },
             { "type", Type },
-            { "status", Status },
+            { "status", Status.Value },
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "size", Size },
-            { "default", Default },
+            { "default", @Default },
             { "encrypt", Encrypt }
         };
     }

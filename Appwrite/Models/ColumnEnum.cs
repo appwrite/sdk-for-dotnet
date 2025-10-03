@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -17,7 +16,7 @@ namespace Appwrite.Models
         public string Type { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public ColumnStatus Status { get; private set; }
 
         [JsonPropertyName("error")]
         public string Error { get; private set; }
@@ -29,30 +28,30 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("elements")]
-        public List<string> Elements { get; private set; }
+        public List&lt;string&gt; Elements { get; private set; }
 
         [JsonPropertyName("format")]
         public string Format { get; private set; }
 
         [JsonPropertyName("default")]
-        public string? Default { get; private set; }
+        public string? @Default { get; private set; }
 
         public ColumnEnum(
             string key,
             string type,
-            string status,
+            ColumnStatus status,
             string error,
             bool required,
             bool? array,
             string createdAt,
             string updatedAt,
-            List<string> elements,
+            List&lt;string&gt; elements,
             string format,
             string? xdefault
         ) {
@@ -62,17 +61,17 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Elements = elements;
             Format = format;
-            Default = xdefault;
+            @Default = xdefault;
         }
 
         public static ColumnEnum From(Dictionary<string, object> map) => new ColumnEnum(
             key: map["key"].ToString(),
             type: map["type"].ToString(),
-            status: map["status"].ToString(),
+            status: new ColumnStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: (bool?)map["array"],
@@ -87,15 +86,15 @@ namespace Appwrite.Models
         {
             { "key", Key },
             { "type", Type },
-            { "status", Status },
+            { "status", Status.Value },
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "elements", Elements },
             { "format", Format },
-            { "default", Default }
+            { "default", @Default }
         };
     }
 }

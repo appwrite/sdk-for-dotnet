@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -29,16 +28,16 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("format")]
         public string Format { get; private set; }
 
         [JsonPropertyName("default")]
-        public string? Default { get; private set; }
+        public string? @Default { get; private set; }
 
         public AttributeIp(
             string key,
@@ -58,10 +57,10 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Format = format;
-            Default = xdefault;
+            @Default = xdefault;
         }
 
         public static AttributeIp From(Dictionary<string, object> map) => new AttributeIp(
@@ -85,10 +84,10 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "format", Format },
-            { "default", Default }
+            { "default", @Default }
         };
     }
 }

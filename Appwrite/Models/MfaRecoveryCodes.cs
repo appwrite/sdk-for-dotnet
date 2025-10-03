@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -11,10 +10,10 @@ namespace Appwrite.Models
     public class MfaRecoveryCodes
     {
         [JsonPropertyName("recoveryCodes")]
-        public List<string> RecoveryCodes { get; private set; }
+        public List&lt;string&gt; RecoveryCodes { get; private set; }
 
         public MfaRecoveryCodes(
-            List<string> recoveryCodes
+            List&lt;string&gt; recoveryCodes
         ) {
             RecoveryCodes = recoveryCodes;
         }

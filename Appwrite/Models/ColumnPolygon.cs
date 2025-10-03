@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -17,7 +16,7 @@ namespace Appwrite.Models
         public string Type { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public ColumnStatus Status { get; private set; }
 
         [JsonPropertyName("error")]
         public string Error { get; private set; }
@@ -29,24 +28,24 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("default")]
-        public List<object>? Default { get; private set; }
+        public List&lt;object&gt;? @Default { get; private set; }
 
         public ColumnPolygon(
             string key,
             string type,
-            string status,
+            ColumnStatus status,
             string error,
             bool required,
             bool? array,
             string createdAt,
             string updatedAt,
-            List<object>? xdefault
+            List&lt;object&gt;? xdefault
         ) {
             Key = key;
             Type = type;
@@ -54,15 +53,15 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
-            Default = xdefault;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
+            @Default = xdefault;
         }
 
         public static ColumnPolygon From(Dictionary<string, object> map) => new ColumnPolygon(
             key: map["key"].ToString(),
             type: map["type"].ToString(),
-            status: map["status"].ToString(),
+            status: new ColumnStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: (bool?)map["array"],
@@ -75,13 +74,13 @@ namespace Appwrite.Models
         {
             { "key", Key },
             { "type", Type },
-            { "status", Status },
+            { "status", Status.Value },
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
-            { "default", Default }
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
+            { "default", @Default }
         };
     }
 }

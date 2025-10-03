@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -11,10 +10,10 @@ namespace Appwrite.Models
     public class MfaChallenge
     {
         [JsonPropertyName("$id")]
-        public string Id { get; private set; }
+        public string id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("userId")]
         public string UserId { get; private set; }
@@ -28,8 +27,8 @@ namespace Appwrite.Models
             string userId,
             string expire
         ) {
-            Id = id;
-            CreatedAt = createdAt;
+            id = id;
+            createdAt = createdAt;
             UserId = userId;
             Expire = expire;
         }
@@ -43,8 +42,8 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", Id },
-            { "$createdAt", CreatedAt },
+            { "$id", id },
+            { "$createdAt", createdAt },
             { "userId", UserId },
             { "expire", Expire }
         };

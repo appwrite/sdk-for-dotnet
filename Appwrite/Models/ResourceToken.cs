@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -11,10 +10,10 @@ namespace Appwrite.Models
     public class ResourceToken
     {
         [JsonPropertyName("$id")]
-        public string Id { get; private set; }
+        public string id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("resourceId")]
         public string ResourceId { get; private set; }
@@ -40,8 +39,8 @@ namespace Appwrite.Models
             string secret,
             string accessedAt
         ) {
-            Id = id;
-            CreatedAt = createdAt;
+            id = id;
+            createdAt = createdAt;
             ResourceId = resourceId;
             ResourceType = resourceType;
             Expire = expire;
@@ -61,8 +60,8 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", Id },
-            { "$createdAt", CreatedAt },
+            { "$id", id },
+            { "$createdAt", createdAt },
             { "resourceId", ResourceId },
             { "resourceType", ResourceType },
             { "expire", Expire },

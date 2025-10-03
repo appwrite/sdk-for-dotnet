@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -11,19 +10,19 @@ namespace Appwrite.Models
     public class Variable
     {
         [JsonPropertyName("$id")]
-        public string Id { get; private set; }
+        public string id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("key")]
         public string Key { get; private set; }
 
         [JsonPropertyName("value")]
-        public string Value { get; private set; }
+        public string @Value { get; private set; }
 
         [JsonPropertyName("secret")]
         public bool Secret { get; private set; }
@@ -44,11 +43,11 @@ namespace Appwrite.Models
             string resourceType,
             string resourceId
         ) {
-            Id = id;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            id = id;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Key = key;
-            Value = xvalue;
+            @Value = xvalue;
             Secret = secret;
             ResourceType = resourceType;
             ResourceId = resourceId;
@@ -67,11 +66,11 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", Id },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$id", id },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "key", Key },
-            { "value", Value },
+            { "value", @Value },
             { "secret", Secret },
             { "resourceType", ResourceType },
             { "resourceId", ResourceId }

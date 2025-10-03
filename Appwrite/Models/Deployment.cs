@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -11,13 +10,13 @@ namespace Appwrite.Models
     public class Deployment
     {
         [JsonPropertyName("$id")]
-        public string Id { get; private set; }
+        public string id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("type")]
         public string Type { get; private set; }
@@ -120,9 +119,9 @@ namespace Appwrite.Models
             string providerBranch,
             string providerBranchUrl
         ) {
-            Id = id;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            id = id;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Type = type;
             ResourceId = resourceId;
             ResourceType = resourceType;
@@ -181,9 +180,9 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", Id },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$id", id },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "type", Type },
             { "resourceId", ResourceId },
             { "resourceType", ResourceType },

@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -14,11 +13,11 @@ namespace Appwrite.Models
         public long Total { get; private set; }
 
         [JsonPropertyName("sessions")]
-        public List<Session> Sessions { get; private set; }
+        public List&lt;Session&gt; Sessions { get; private set; }
 
         public SessionList(
             long total,
-            List<Session> sessions
+            List&lt;Session&gt; sessions
         ) {
             Total = total;
             Sessions = sessions;

@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -29,10 +28,10 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string CreatedAt { get; private set; }
+        public string createdAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string updatedAt { get; private set; }
 
         [JsonPropertyName("min")]
         public double? Min { get; private set; }
@@ -41,7 +40,7 @@ namespace Appwrite.Models
         public double? Max { get; private set; }
 
         [JsonPropertyName("default")]
-        public double? Default { get; private set; }
+        public double? @Default { get; private set; }
 
         public AttributeFloat(
             string key,
@@ -62,11 +61,11 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
+            createdAt = createdAt;
+            updatedAt = updatedAt;
             Min = min;
             Max = max;
-            Default = xdefault;
+            @Default = xdefault;
         }
 
         public static AttributeFloat From(Dictionary<string, object> map) => new AttributeFloat(
@@ -91,11 +90,11 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", CreatedAt },
-            { "$updatedAt", UpdatedAt },
+            { "$createdAt", createdAt },
+            { "$updatedAt", updatedAt },
             { "min", Min },
             { "max", Max },
-            { "default", Default }
+            { "default", @Default }
         };
     }
 }
