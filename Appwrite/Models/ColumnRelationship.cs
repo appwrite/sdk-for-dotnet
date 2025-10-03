@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -28,10 +29,10 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("relatedTable")]
         public string RelatedTable { get; private set; }
@@ -73,8 +74,8 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             RelatedTable = relatedTable;
             RelationType = relationType;
             TwoWay = twoWay;
@@ -108,8 +109,8 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "relatedTable", RelatedTable },
             { "relationType", RelationType },
             { "twoWay", TwoWay },

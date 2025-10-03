@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -28,13 +29,13 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("default")]
-        public bool? @Default { get; private set; }
+        public bool? Default { get; private set; }
 
         public AttributeBoolean(
             string key,
@@ -53,9 +54,9 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
-            @Default = xdefault;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Default = xdefault;
         }
 
         public static AttributeBoolean From(Dictionary<string, object> map) => new AttributeBoolean(
@@ -78,9 +79,9 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
-            { "default", @Default }
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
+            { "default", Default }
         };
     }
 }

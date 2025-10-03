@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -13,11 +14,11 @@ namespace Appwrite.Models
         public long Total { get; private set; }
 
         [JsonPropertyName("runtimes")]
-        public List&lt;Runtime&gt; Runtimes { get; private set; }
+        public List<Runtime> Runtimes { get; private set; }
 
         public RuntimeList(
             long total,
-            List&lt;Runtime&gt; runtimes
+            List<Runtime> runtimes
         ) {
             Total = total;
             Runtimes = runtimes;

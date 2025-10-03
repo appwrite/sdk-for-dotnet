@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,16 +11,16 @@ namespace Appwrite.Models
     public class Bucket
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("$permissions")]
-        public List&lt;string&gt; permissions { get; private set; }
+        public List<string> Permissions { get; private set; }
 
         [JsonPropertyName("fileSecurity")]
         public bool FileSecurity { get; private set; }
@@ -34,7 +35,7 @@ namespace Appwrite.Models
         public long MaximumFileSize { get; private set; }
 
         [JsonPropertyName("allowedFileExtensions")]
-        public List&lt;string&gt; AllowedFileExtensions { get; private set; }
+        public List<string> AllowedFileExtensions { get; private set; }
 
         [JsonPropertyName("compression")]
         public string Compression { get; private set; }
@@ -49,20 +50,20 @@ namespace Appwrite.Models
             string id,
             string createdAt,
             string updatedAt,
-            List&lt;string&gt; permissions,
+            List<string> permissions,
             bool fileSecurity,
             string name,
             bool enabled,
             long maximumFileSize,
-            List&lt;string&gt; allowedFileExtensions,
+            List<string> allowedFileExtensions,
             string compression,
             bool encryption,
             bool antivirus
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
-            permissions = permissions;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Permissions = permissions;
             FileSecurity = fileSecurity;
             Name = name;
             Enabled = enabled;
@@ -90,10 +91,10 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
-            { "$permissions", permissions },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
+            { "$permissions", Permissions },
             { "fileSecurity", FileSecurity },
             { "name", Name },
             { "enabled", Enabled },

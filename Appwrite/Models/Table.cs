@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,16 +11,16 @@ namespace Appwrite.Models
     public class Table
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("$permissions")]
-        public List&lt;string&gt; permissions { get; private set; }
+        public List<string> Permissions { get; private set; }
 
         [JsonPropertyName("databaseId")]
         public string DatabaseId { get; private set; }
@@ -34,27 +35,27 @@ namespace Appwrite.Models
         public bool RowSecurity { get; private set; }
 
         [JsonPropertyName("columns")]
-        public List&lt;object&gt; Columns { get; private set; }
+        public List<object> Columns { get; private set; }
 
         [JsonPropertyName("indexes")]
-        public List&lt;ColumnIndex&gt; Indexes { get; private set; }
+        public List<ColumnIndex> Indexes { get; private set; }
 
         public Table(
             string id,
             string createdAt,
             string updatedAt,
-            List&lt;string&gt; permissions,
+            List<string> permissions,
             string databaseId,
             string name,
             bool enabled,
             bool rowSecurity,
-            List&lt;object&gt; columns,
-            List&lt;ColumnIndex&gt; indexes
+            List<object> columns,
+            List<ColumnIndex> indexes
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
-            permissions = permissions;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Permissions = permissions;
             DatabaseId = databaseId;
             Name = name;
             Enabled = enabled;
@@ -78,10 +79,10 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
-            { "$permissions", permissions },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
+            { "$permissions", Permissions },
             { "databaseId", DatabaseId },
             { "name", Name },
             { "enabled", Enabled },

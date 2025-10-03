@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,13 +11,13 @@ namespace Appwrite.Models
     public class Index
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("key")]
         public string Key { get; private set; }
@@ -31,13 +32,13 @@ namespace Appwrite.Models
         public string Error { get; private set; }
 
         [JsonPropertyName("attributes")]
-        public List&lt;string&gt; Attributes { get; private set; }
+        public List<string> Attributes { get; private set; }
 
         [JsonPropertyName("lengths")]
-        public List&lt;long&gt; Lengths { get; private set; }
+        public List<long> Lengths { get; private set; }
 
         [JsonPropertyName("orders")]
-        public List&lt;string&gt;? Orders { get; private set; }
+        public List<string>? Orders { get; private set; }
 
         public Index(
             string id,
@@ -47,13 +48,13 @@ namespace Appwrite.Models
             string type,
             IndexStatus status,
             string error,
-            List&lt;string&gt; attributes,
-            List&lt;long&gt; lengths,
-            List&lt;string&gt;? orders
+            List<string> attributes,
+            List<long> lengths,
+            List<string>? orders
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Key = key;
             Type = type;
             Status = status;
@@ -78,9 +79,9 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "key", Key },
             { "type", Type },
             { "status", Status.Value },

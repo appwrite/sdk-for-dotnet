@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -28,19 +29,19 @@ namespace Appwrite.Models
         public bool? Array { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("elements")]
-        public List&lt;string&gt; Elements { get; private set; }
+        public List<string> Elements { get; private set; }
 
         [JsonPropertyName("format")]
         public string Format { get; private set; }
 
         [JsonPropertyName("default")]
-        public string? @Default { get; private set; }
+        public string? Default { get; private set; }
 
         public ColumnEnum(
             string key,
@@ -51,7 +52,7 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            List&lt;string&gt; elements,
+            List<string> elements,
             string format,
             string? xdefault
         ) {
@@ -61,11 +62,11 @@ namespace Appwrite.Models
             Error = error;
             Required = required;
             Array = array;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Elements = elements;
             Format = format;
-            @Default = xdefault;
+            Default = xdefault;
         }
 
         public static ColumnEnum From(Dictionary<string, object> map) => new ColumnEnum(
@@ -90,11 +91,11 @@ namespace Appwrite.Models
             { "error", Error },
             { "required", Required },
             { "array", Array },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "elements", Elements },
             { "format", Format },
-            { "default", @Default }
+            { "default", Default }
         };
     }
 }

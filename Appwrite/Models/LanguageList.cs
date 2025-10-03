@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -13,11 +14,11 @@ namespace Appwrite.Models
         public long Total { get; private set; }
 
         [JsonPropertyName("languages")]
-        public List&lt;Language&gt; Languages { get; private set; }
+        public List<Language> Languages { get; private set; }
 
         public LanguageList(
             long total,
-            List&lt;Language&gt; languages
+            List<Language> languages
         ) {
             Total = total;
             Languages = languages;

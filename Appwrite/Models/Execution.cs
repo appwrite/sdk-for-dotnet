@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,16 +11,16 @@ namespace Appwrite.Models
     public class Execution
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("$permissions")]
-        public List&lt;string&gt; permissions { get; private set; }
+        public List<string> Permissions { get; private set; }
 
         [JsonPropertyName("functionId")]
         public string FunctionId { get; private set; }
@@ -40,7 +41,7 @@ namespace Appwrite.Models
         public string RequestPath { get; private set; }
 
         [JsonPropertyName("requestHeaders")]
-        public List&lt;Headers&gt; RequestHeaders { get; private set; }
+        public List<Headers> RequestHeaders { get; private set; }
 
         [JsonPropertyName("responseStatusCode")]
         public long ResponseStatusCode { get; private set; }
@@ -49,7 +50,7 @@ namespace Appwrite.Models
         public string ResponseBody { get; private set; }
 
         [JsonPropertyName("responseHeaders")]
-        public List&lt;Headers&gt; ResponseHeaders { get; private set; }
+        public List<Headers> ResponseHeaders { get; private set; }
 
         [JsonPropertyName("logs")]
         public string Logs { get; private set; }
@@ -67,26 +68,26 @@ namespace Appwrite.Models
             string id,
             string createdAt,
             string updatedAt,
-            List&lt;string&gt; permissions,
+            List<string> permissions,
             string functionId,
             string deploymentId,
             ExecutionTrigger trigger,
             ExecutionStatus status,
             string requestMethod,
             string requestPath,
-            List&lt;Headers&gt; requestHeaders,
+            List<Headers> requestHeaders,
             long responseStatusCode,
             string responseBody,
-            List&lt;Headers&gt; responseHeaders,
+            List<Headers> responseHeaders,
             string logs,
             string errors,
             double duration,
             string? scheduledAt
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
-            permissions = permissions;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Permissions = permissions;
             FunctionId = functionId;
             DeploymentId = deploymentId;
             Trigger = trigger;
@@ -126,10 +127,10 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
-            { "$permissions", permissions },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
+            { "$permissions", Permissions },
             { "functionId", FunctionId },
             { "deploymentId", DeploymentId },
             { "trigger", Trigger.Value },

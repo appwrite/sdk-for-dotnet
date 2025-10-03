@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,13 +11,13 @@ namespace Appwrite.Models
     public class Site
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("name")]
         public string Name { get; private set; }
@@ -55,7 +56,7 @@ namespace Appwrite.Models
         public string LatestDeploymentStatus { get; private set; }
 
         [JsonPropertyName("vars")]
-        public List&lt;Variable&gt; Vars { get; private set; }
+        public List<Variable> Vars { get; private set; }
 
         [JsonPropertyName("timeout")]
         public long Timeout { get; private set; }
@@ -112,7 +113,7 @@ namespace Appwrite.Models
             string latestDeploymentId,
             string latestDeploymentCreatedAt,
             string latestDeploymentStatus,
-            List&lt;Variable&gt; vars,
+            List<Variable> vars,
             long timeout,
             string installCommand,
             string buildCommand,
@@ -127,9 +128,9 @@ namespace Appwrite.Models
             string adapter,
             string fallbackFile
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Name = name;
             Enabled = enabled;
             Live = live;
@@ -192,9 +193,9 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "name", Name },
             { "enabled", Enabled },
             { "live", Live },

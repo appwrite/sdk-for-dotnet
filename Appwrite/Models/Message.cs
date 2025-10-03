@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,25 +11,25 @@ namespace Appwrite.Models
     public class Message
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("providerType")]
         public string ProviderType { get; private set; }
 
         [JsonPropertyName("topics")]
-        public List&lt;string&gt; Topics { get; private set; }
+        public List<string> Topics { get; private set; }
 
         [JsonPropertyName("users")]
-        public List&lt;string&gt; Users { get; private set; }
+        public List<string> Users { get; private set; }
 
         [JsonPropertyName("targets")]
-        public List&lt;string&gt; Targets { get; private set; }
+        public List<string> Targets { get; private set; }
 
         [JsonPropertyName("scheduledAt")]
         public string? ScheduledAt { get; private set; }
@@ -37,7 +38,7 @@ namespace Appwrite.Models
         public string? DeliveredAt { get; private set; }
 
         [JsonPropertyName("deliveryErrors")]
-        public List&lt;string&gt;? DeliveryErrors { get; private set; }
+        public List<string>? DeliveryErrors { get; private set; }
 
         [JsonPropertyName("deliveredTotal")]
         public long DeliveredTotal { get; private set; }
@@ -53,19 +54,19 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string providerType,
-            List&lt;string&gt; topics,
-            List&lt;string&gt; users,
-            List&lt;string&gt; targets,
+            List<string> topics,
+            List<string> users,
+            List<string> targets,
             string? scheduledAt,
             string? deliveredAt,
-            List&lt;string&gt;? deliveryErrors,
+            List<string>? deliveryErrors,
             long deliveredTotal,
             object data,
             MessageStatus status
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             ProviderType = providerType;
             Topics = topics;
             Users = users;
@@ -96,9 +97,9 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "providerType", ProviderType },
             { "topics", Topics },
             { "users", Users },

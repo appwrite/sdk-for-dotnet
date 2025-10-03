@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,16 +11,16 @@ namespace Appwrite.Models
     public class Function
     {
         [JsonPropertyName("$id")]
-        public string id { get; private set; }
+        public string Id { get; private set; }
 
         [JsonPropertyName("$createdAt")]
-        public string createdAt { get; private set; }
+        public string CreatedAt { get; private set; }
 
         [JsonPropertyName("$updatedAt")]
-        public string updatedAt { get; private set; }
+        public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("execute")]
-        public List&lt;string&gt; Execute { get; private set; }
+        public List<string> Execute { get; private set; }
 
         [JsonPropertyName("name")]
         public string Name { get; private set; }
@@ -52,13 +53,13 @@ namespace Appwrite.Models
         public string LatestDeploymentStatus { get; private set; }
 
         [JsonPropertyName("scopes")]
-        public List&lt;string&gt; Scopes { get; private set; }
+        public List<string> Scopes { get; private set; }
 
         [JsonPropertyName("vars")]
-        public List&lt;Variable&gt; Vars { get; private set; }
+        public List<Variable> Vars { get; private set; }
 
         [JsonPropertyName("events")]
-        public List&lt;string&gt; Events { get; private set; }
+        public List<string> Events { get; private set; }
 
         [JsonPropertyName("schedule")]
         public string Schedule { get; private set; }
@@ -97,7 +98,7 @@ namespace Appwrite.Models
             string id,
             string createdAt,
             string updatedAt,
-            List&lt;string&gt; execute,
+            List<string> execute,
             string name,
             bool enabled,
             bool live,
@@ -108,9 +109,9 @@ namespace Appwrite.Models
             string latestDeploymentId,
             string latestDeploymentCreatedAt,
             string latestDeploymentStatus,
-            List&lt;string&gt; scopes,
-            List&lt;Variable&gt; vars,
-            List&lt;string&gt; events,
+            List<string> scopes,
+            List<Variable> vars,
+            List<string> events,
             string schedule,
             long timeout,
             string entrypoint,
@@ -123,9 +124,9 @@ namespace Appwrite.Models
             bool providerSilentMode,
             string specification
         ) {
-            id = id;
-            createdAt = createdAt;
-            updatedAt = updatedAt;
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             Execute = execute;
             Name = name;
             Enabled = enabled;
@@ -186,9 +187,9 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "$id", id },
-            { "$createdAt", createdAt },
-            { "$updatedAt", updatedAt },
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
             { "execute", Execute },
             { "name", Name },
             { "enabled", Enabled },

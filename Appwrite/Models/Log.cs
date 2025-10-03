@@ -1,3 +1,4 @@
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Appwrite.Models
     public class Log
     {
         [JsonPropertyName("event")]
-        public string @Event { get; private set; }
+        public string Event { get; private set; }
 
         [JsonPropertyName("userId")]
         public string UserId { get; private set; }
@@ -95,7 +96,7 @@ namespace Appwrite.Models
             string countryCode,
             string countryName
         ) {
-            @Event = xevent;
+            Event = xevent;
             UserId = userId;
             UserEmail = userEmail;
             UserName = userName;
@@ -144,7 +145,7 @@ namespace Appwrite.Models
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "event", @Event },
+            { "event", Event },
             { "userId", UserId },
             { "userEmail", UserEmail },
             { "userName", UserName },
