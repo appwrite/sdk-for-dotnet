@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -25,7 +26,7 @@ namespace Appwrite.Models
         public bool Enabled { get; private set; }
 
         [JsonPropertyName("type")]
-        public string Type { get; private set; }
+        public DatabaseType Type { get; private set; }
 
         public Database(
             string id,
@@ -33,7 +34,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             bool enabled,
-            string type
+            DatabaseType type
         ) {
             Id = id;
             Name = name;
@@ -49,7 +50,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             enabled: (bool)map["enabled"],
-            type: map["type"].ToString()
+            type: new DatabaseType(map["type"].ToString()!)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -59,7 +60,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "enabled", Enabled },
-            { "type", Type }
+            { "type", Type.Value }
         };
     }
 }

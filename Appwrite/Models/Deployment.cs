@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -52,7 +53,7 @@ namespace Appwrite.Models
         public string ScreenshotDark { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public DeploymentStatus Status { get; private set; }
 
         [JsonPropertyName("buildLogs")]
         public string BuildLogs { get; private set; }
@@ -105,7 +106,7 @@ namespace Appwrite.Models
             bool activate,
             string screenshotLight,
             string screenshotDark,
-            string status,
+            DeploymentStatus status,
             string buildLogs,
             long buildDuration,
             string providerRepositoryName,
@@ -163,7 +164,7 @@ namespace Appwrite.Models
             activate: (bool)map["activate"],
             screenshotLight: map["screenshotLight"].ToString(),
             screenshotDark: map["screenshotDark"].ToString(),
-            status: map["status"].ToString(),
+            status: new DeploymentStatus(map["status"].ToString()!),
             buildLogs: map["buildLogs"].ToString(),
             buildDuration: Convert.ToInt64(map["buildDuration"]),
             providerRepositoryName: map["providerRepositoryName"].ToString(),
@@ -194,7 +195,7 @@ namespace Appwrite.Models
             { "activate", Activate },
             { "screenshotLight", ScreenshotLight },
             { "screenshotDark", ScreenshotDark },
-            { "status", Status },
+            { "status", Status.Value },
             { "buildLogs", BuildLogs },
             { "buildDuration", BuildDuration },
             { "providerRepositoryName", ProviderRepositoryName },

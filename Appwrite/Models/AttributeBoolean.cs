@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -16,7 +17,7 @@ namespace Appwrite.Models
         public string Type { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public AttributeStatus Status { get; private set; }
 
         [JsonPropertyName("error")]
         public string Error { get; private set; }
@@ -39,7 +40,7 @@ namespace Appwrite.Models
         public AttributeBoolean(
             string key,
             string type,
-            string status,
+            AttributeStatus status,
             string error,
             bool required,
             bool? array,
@@ -61,7 +62,7 @@ namespace Appwrite.Models
         public static AttributeBoolean From(Dictionary<string, object> map) => new AttributeBoolean(
             key: map["key"].ToString(),
             type: map["type"].ToString(),
-            status: map["status"].ToString(),
+            status: new AttributeStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: (bool?)map["array"],
@@ -74,7 +75,7 @@ namespace Appwrite.Models
         {
             { "key", Key },
             { "type", Type },
-            { "status", Status },
+            { "status", Status.Value },
             { "error", Error },
             { "required", Required },
             { "array", Array },

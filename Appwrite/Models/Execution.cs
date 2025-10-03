@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -28,10 +29,10 @@ namespace Appwrite.Models
         public string DeploymentId { get; private set; }
 
         [JsonPropertyName("trigger")]
-        public string Trigger { get; private set; }
+        public ExecutionTrigger Trigger { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public ExecutionStatus Status { get; private set; }
 
         [JsonPropertyName("requestMethod")]
         public string RequestMethod { get; private set; }
@@ -70,8 +71,8 @@ namespace Appwrite.Models
             List<string> permissions,
             string functionId,
             string deploymentId,
-            string trigger,
-            string status,
+            ExecutionTrigger trigger,
+            ExecutionStatus status,
             string requestMethod,
             string requestPath,
             List<Headers> requestHeaders,
@@ -110,8 +111,8 @@ namespace Appwrite.Models
             permissions: map["$permissions"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
             functionId: map["functionId"].ToString(),
             deploymentId: map["deploymentId"].ToString(),
-            trigger: map["trigger"].ToString(),
-            status: map["status"].ToString(),
+            trigger: new ExecutionTrigger(map["trigger"].ToString()!),
+            status: new ExecutionStatus(map["status"].ToString()!),
             requestMethod: map["requestMethod"].ToString(),
             requestPath: map["requestPath"].ToString(),
             requestHeaders: map["requestHeaders"] is JsonElement jsonArray11 ? jsonArray11.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["requestHeaders"]).Select(it => Headers.From(map: it)).ToList(),
@@ -132,8 +133,8 @@ namespace Appwrite.Models
             { "$permissions", Permissions },
             { "functionId", FunctionId },
             { "deploymentId", DeploymentId },
-            { "trigger", Trigger },
-            { "status", Status },
+            { "trigger", Trigger.Value },
+            { "status", Status.Value },
             { "requestMethod", RequestMethod },
             { "requestPath", RequestPath },
             { "requestHeaders", RequestHeaders.Select(it => it.ToMap()) },

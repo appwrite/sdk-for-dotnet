@@ -69,11 +69,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , $"AppwriteDotNetSDK/0.18.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
+                { "user-agent" , $"AppwriteDotNetSDK/0.19.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "0.18.0"},
+                { "x-sdk-version", "0.19.0"},
                 { "X-Appwrite-Response-Format", "1.8.0" }
             };
 
@@ -325,7 +325,7 @@ namespace Appwrite
             {
                 foreach (var warning in warnings)
                 {
-                    Console.WriteLine("Warning: " + warning);
+                    Console.Error.WriteLine("Warning: " + warning);
                 }
             }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Appwrite.Enums;
 
 namespace Appwrite.Models
 {
@@ -46,7 +47,7 @@ namespace Appwrite.Models
         public object Data { get; private set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; private set; }
+        public MessageStatus Status { get; private set; }
 
         public Message(
             string id,
@@ -61,7 +62,7 @@ namespace Appwrite.Models
             List<string>? deliveryErrors,
             long deliveredTotal,
             object data,
-            string status
+            MessageStatus status
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -91,7 +92,7 @@ namespace Appwrite.Models
             deliveryErrors: map["deliveryErrors"] is JsonElement jsonArrayProp10 ? jsonArrayProp10.Deserialize<List<string>>()! : (List<string>)map["deliveryErrors"],
             deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
             data: map["data"].ToString(),
-            status: map["status"].ToString()
+            status: new MessageStatus(map["status"].ToString()!)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -108,7 +109,7 @@ namespace Appwrite.Models
             { "deliveryErrors", DeliveryErrors },
             { "deliveredTotal", DeliveredTotal },
             { "data", Data },
-            { "status", Status }
+            { "status", Status.Value }
         };
     }
 }
