@@ -417,7 +417,7 @@ namespace Appwrite.Services
         /// Create a deployment based on a template.
         /// 
         /// Use this endpoint with combination of
-        /// [listTemplates](https://appwrite.io/docs/server/functions#listTemplates) to
+        /// [listTemplates](https://appwrite.io/docs/products/functions/templates) to
         /// find the template details.
         /// </para>
         /// </summary>

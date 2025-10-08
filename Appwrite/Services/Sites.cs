@@ -408,8 +408,8 @@ namespace Appwrite.Services
         /// Create a deployment based on a template.
         /// 
         /// Use this endpoint with combination of
-        /// [listTemplates](https://appwrite.io/docs/server/sites#listTemplates) to
-        /// find the template details.
+        /// [listTemplates](https://appwrite.io/docs/products/sites/templates) to find
+        /// the template details.
         /// </para>
         /// </summary>
         public Task<Models.Deployment> CreateTemplateDeployment(string siteId, string repository, string owner, string rootDirectory, string version, bool? activate = null)
