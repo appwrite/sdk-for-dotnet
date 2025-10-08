@@ -1673,9 +1673,55 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
+        public Task<Models.Token> CreateEmailVerification(string url)
+        {
+            var apiPath = "/account/verifications/email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "url", url }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
+            return _client.Call<Models.Token>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Use this endpoint to send a verification message to your user email address
+        /// to confirm they are the valid owners of that address. Both the **userId**
+        /// and **secret** arguments will be passed as query parameters to the URL you
+        /// have provided to be attached to the verification email. The provided URL
+        /// should redirect the user back to your app and allow you to complete the
+        /// verification process by verifying both the **userId** and **secret**
+        /// parameters. Learn more about how to [complete the verification
+        /// process](https://appwrite.io/docs/references/cloud/client-web/account#updateVerification).
+        /// The verification link sent to the user's email address is valid for 7 days.
+        /// 
+        /// Please note that in order to avoid a [Redirect
+        /// Attack](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md),
+        /// the only valid redirect URLs are the ones from domains you have set when
+        /// adding your platforms in the console interface.
+        /// 
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.createEmailVerification` instead.")]
         public Task<Models.Token> CreateVerification(string url)
         {
-            var apiPath = "/account/verification";
+            var apiPath = "/account/verifications/email";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1707,9 +1753,45 @@ namespace Appwrite.Services
         /// 200 status code.
         /// </para>
         /// </summary>
+        public Task<Models.Token> UpdateEmailVerification(string userId, string secret)
+        {
+            var apiPath = "/account/verifications/email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "secret", secret }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it) =>
+                Models.Token.From(map: it);
+
+            return _client.Call<Models.Token>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Use this endpoint to complete the user email verification process. Use both
+        /// the **userId** and **secret** parameters that were attached to your app URL
+        /// to verify the user email ownership. If confirmed this route will return a
+        /// 200 status code.
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.updateEmailVerification` instead.")]
         public Task<Models.Token> UpdateVerification(string userId, string secret)
         {
-            var apiPath = "/account/verification";
+            var apiPath = "/account/verifications/email";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1748,7 +1830,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Token> CreatePhoneVerification()
         {
-            var apiPath = "/account/verification/phone";
+            var apiPath = "/account/verifications/phone";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1781,7 +1863,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Token> UpdatePhoneVerification(string userId, string secret)
         {
-            var apiPath = "/account/verification/phone";
+            var apiPath = "/account/verifications/phone";
 
             var apiParameters = new Dictionary<string, object?>()
             {
