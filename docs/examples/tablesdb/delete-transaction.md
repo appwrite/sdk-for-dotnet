@@ -9,10 +9,6 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-RowList result = await tablesDB.UpdateRows(
-    databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    data: [object], // optional
-    queries: new List<string>(), // optional
-    transactionId: "<TRANSACTION_ID>" // optional
+await tablesDB.DeleteTransaction(
+    transactionId: "<TRANSACTION_ID>"
 );
