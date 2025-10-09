@@ -9,10 +9,8 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-DocumentList result = await databases.UpdateDocuments(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
-    data: [object], // optional
-    queries: new List<string>(), // optional
-    transactionId: "<TRANSACTION_ID>" // optional
+Transaction result = await databases.UpdateTransaction(
+    transactionId: "<TRANSACTION_ID>",
+    commit: false, // optional
+    rollback: false // optional
 );
