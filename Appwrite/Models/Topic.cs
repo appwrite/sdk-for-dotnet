@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -62,7 +63,7 @@ namespace Appwrite.Models
             emailTotal: Convert.ToInt64(map["emailTotal"]),
             smsTotal: Convert.ToInt64(map["smsTotal"]),
             pushTotal: Convert.ToInt64(map["pushTotal"]),
-            subscribe: map["subscribe"] is JsonElement jsonArrayProp8 ? jsonArrayProp8.Deserialize<List<string>>()! : (List<string>)map["subscribe"]
+            subscribe: map["subscribe"].ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

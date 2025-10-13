@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -26,7 +27,7 @@ namespace Appwrite.Models
 
         public static ColumnList From(Dictionary<string, object> map) => new ColumnList(
             total: Convert.ToInt64(map["total"]),
-            columns: map["columns"] is JsonElement jsonArrayProp2 ? jsonArrayProp2.Deserialize<List<object>>()! : (List<object>)map["columns"]
+            columns: map["columns"].ConvertToList<object>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

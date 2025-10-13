@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -158,7 +159,7 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            execute: map["execute"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["execute"],
+            execute: map["execute"].ConvertToList<string>(),
             name: map["name"].ToString(),
             enabled: (bool)map["enabled"],
             live: (bool)map["live"],
@@ -169,9 +170,9 @@ namespace Appwrite.Models
             latestDeploymentId: map["latestDeploymentId"].ToString(),
             latestDeploymentCreatedAt: map["latestDeploymentCreatedAt"].ToString(),
             latestDeploymentStatus: map["latestDeploymentStatus"].ToString(),
-            scopes: map["scopes"] is JsonElement jsonArrayProp15 ? jsonArrayProp15.Deserialize<List<string>>()! : (List<string>)map["scopes"],
-            vars: map["vars"] is JsonElement jsonArray16 ? jsonArray16.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Variable.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["vars"]).Select(it => Variable.From(map: it)).ToList(),
-            events: map["events"] is JsonElement jsonArrayProp17 ? jsonArrayProp17.Deserialize<List<string>>()! : (List<string>)map["events"],
+            scopes: map["scopes"].ConvertToList<string>(),
+            vars: map["vars"].ConvertToList<Dictionary<string, object>>().Select(it => Variable.From(map: it)).ToList(),
+            events: map["events"].ConvertToList<string>(),
             schedule: map["schedule"].ToString(),
             timeout: Convert.ToInt64(map["timeout"]),
             entrypoint: map["entrypoint"].ToString(),

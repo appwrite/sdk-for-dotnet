@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -78,12 +79,12 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: map["$permissions"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
+            permissions: map["$permissions"].ConvertToList<string>(),
             fileSecurity: (bool)map["fileSecurity"],
             name: map["name"].ToString(),
             enabled: (bool)map["enabled"],
             maximumFileSize: Convert.ToInt64(map["maximumFileSize"]),
-            allowedFileExtensions: map["allowedFileExtensions"] is JsonElement jsonArrayProp9 ? jsonArrayProp9.Deserialize<List<string>>()! : (List<string>)map["allowedFileExtensions"],
+            allowedFileExtensions: map["allowedFileExtensions"].ConvertToList<string>(),
             compression: map["compression"].ToString(),
             encryption: (bool)map["encryption"],
             antivirus: (bool)map["antivirus"]

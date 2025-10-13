@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -62,7 +63,7 @@ namespace Appwrite.Models
             xbase: map["base"].ToString(),
             image: map["image"].ToString(),
             logo: map["logo"].ToString(),
-            supports: map["supports"] is JsonElement jsonArrayProp8 ? jsonArrayProp8.Deserialize<List<string>>()! : (List<string>)map["supports"]
+            supports: map["supports"].ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

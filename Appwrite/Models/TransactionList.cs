@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -26,7 +27,7 @@ namespace Appwrite.Models
 
         public static TransactionList From(Dictionary<string, object> map) => new TransactionList(
             total: Convert.ToInt64(map["total"]),
-            transactions: map["transactions"] is JsonElement jsonArray2 ? jsonArray2.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Transaction.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["transactions"]).Select(it => Transaction.From(map: it)).ToList()
+            transactions: map["transactions"].ConvertToList<Dictionary<string, object>>().Select(it => Transaction.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
