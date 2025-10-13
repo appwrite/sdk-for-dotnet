@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -74,7 +75,7 @@ namespace Appwrite.Models
             bucketId: map["bucketId"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: map["$permissions"] is JsonElement jsonArrayProp5 ? jsonArrayProp5.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
+            permissions: map["$permissions"].ConvertToList<string>(),
             name: map["name"].ToString(),
             signature: map["signature"].ToString(),
             mimeType: map["mimeType"].ToString(),

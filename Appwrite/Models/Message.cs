@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -84,12 +85,12 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             providerType: map["providerType"].ToString(),
-            topics: map["topics"] is JsonElement jsonArrayProp5 ? jsonArrayProp5.Deserialize<List<string>>()! : (List<string>)map["topics"],
-            users: map["users"] is JsonElement jsonArrayProp6 ? jsonArrayProp6.Deserialize<List<string>>()! : (List<string>)map["users"],
-            targets: map["targets"] is JsonElement jsonArrayProp7 ? jsonArrayProp7.Deserialize<List<string>>()! : (List<string>)map["targets"],
+            topics: map["topics"].ConvertToList<string>(),
+            users: map["users"].ConvertToList<string>(),
+            targets: map["targets"].ConvertToList<string>(),
             scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null,
             deliveredAt: map.TryGetValue("deliveredAt", out var deliveredAt) ? deliveredAt?.ToString() : null,
-            deliveryErrors: map["deliveryErrors"] is JsonElement jsonArrayProp10 ? jsonArrayProp10.Deserialize<List<string>>()! : (List<string>)map["deliveryErrors"],
+            deliveryErrors: map["deliveryErrors"].ConvertToList<string>(),
             deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
             data: map["data"].ToString(),
             status: new MessageStatus(map["status"].ToString()!)

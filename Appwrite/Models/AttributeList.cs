@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -26,7 +27,7 @@ namespace Appwrite.Models
 
         public static AttributeList From(Dictionary<string, object> map) => new AttributeList(
             total: Convert.ToInt64(map["total"]),
-            attributes: map["attributes"] is JsonElement jsonArrayProp2 ? jsonArrayProp2.Deserialize<List<object>>()! : (List<object>)map["attributes"]
+            attributes: map["attributes"].ConvertToList<object>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

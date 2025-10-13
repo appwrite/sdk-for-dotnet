@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -175,7 +176,7 @@ namespace Appwrite.Models
             latestDeploymentId: map["latestDeploymentId"].ToString(),
             latestDeploymentCreatedAt: map["latestDeploymentCreatedAt"].ToString(),
             latestDeploymentStatus: map["latestDeploymentStatus"].ToString(),
-            vars: map["vars"] is JsonElement jsonArray16 ? jsonArray16.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Variable.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["vars"]).Select(it => Variable.From(map: it)).ToList(),
+            vars: map["vars"].ConvertToList<Dictionary<string, object>>().Select(it => Variable.From(map: it)).ToList(),
             timeout: Convert.ToInt64(map["timeout"]),
             installCommand: map["installCommand"].ToString(),
             buildCommand: map["buildCommand"].ToString(),

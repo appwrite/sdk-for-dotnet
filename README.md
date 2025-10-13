@@ -17,17 +17,17 @@ Appwrite is an open-source backend as a service server that abstract and simplif
 Add this reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="0.21.1" />
+<PackageReference Include="Appwrite" Version="0.21.2" />
 ```
 
 You can install packages from the command line:
 
 ```powershell
 # Package Manager
-Install-Package Appwrite -Version 0.21.1
+Install-Package Appwrite -Version 0.21.2
 
 # or .NET CLI
-dotnet add package Appwrite --version 0.21.1
+dotnet add package Appwrite --version 0.21.2
 ```
 
 

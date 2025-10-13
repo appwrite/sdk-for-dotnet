@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -108,17 +109,17 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: map["$permissions"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
+            permissions: map["$permissions"].ConvertToList<string>(),
             functionId: map["functionId"].ToString(),
             deploymentId: map["deploymentId"].ToString(),
             trigger: new ExecutionTrigger(map["trigger"].ToString()!),
             status: new ExecutionStatus(map["status"].ToString()!),
             requestMethod: map["requestMethod"].ToString(),
             requestPath: map["requestPath"].ToString(),
-            requestHeaders: map["requestHeaders"] is JsonElement jsonArray11 ? jsonArray11.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["requestHeaders"]).Select(it => Headers.From(map: it)).ToList(),
+            requestHeaders: map["requestHeaders"].ConvertToList<Dictionary<string, object>>().Select(it => Headers.From(map: it)).ToList(),
             responseStatusCode: Convert.ToInt64(map["responseStatusCode"]),
             responseBody: map["responseBody"].ToString(),
-            responseHeaders: map["responseHeaders"] is JsonElement jsonArray14 ? jsonArray14.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Headers.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["responseHeaders"]).Select(it => Headers.From(map: it)).ToList(),
+            responseHeaders: map["responseHeaders"].ConvertToList<Dictionary<string, object>>().Select(it => Headers.From(map: it)).ToList(),
             logs: map["logs"].ToString(),
             errors: map["errors"].ToString(),
             duration: Convert.ToDouble(map["duration"]),

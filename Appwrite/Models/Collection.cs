@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -68,13 +69,13 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            permissions: map["$permissions"] is JsonElement jsonArrayProp4 ? jsonArrayProp4.Deserialize<List<string>>()! : (List<string>)map["$permissions"],
+            permissions: map["$permissions"].ConvertToList<string>(),
             databaseId: map["databaseId"].ToString(),
             name: map["name"].ToString(),
             enabled: (bool)map["enabled"],
             documentSecurity: (bool)map["documentSecurity"],
-            attributes: map["attributes"] is JsonElement jsonArrayProp9 ? jsonArrayProp9.Deserialize<List<object>>()! : (List<object>)map["attributes"],
-            indexes: map["indexes"] is JsonElement jsonArray10 ? jsonArray10.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Index.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["indexes"]).Select(it => Index.From(map: it)).ToList()
+            attributes: map["attributes"].ConvertToList<object>(),
+            indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Index.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

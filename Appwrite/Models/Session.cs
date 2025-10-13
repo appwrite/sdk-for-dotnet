@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -186,7 +187,7 @@ namespace Appwrite.Models
             countryCode: map["countryCode"].ToString(),
             countryName: map["countryName"].ToString(),
             current: (bool)map["current"],
-            factors: map["factors"] is JsonElement jsonArrayProp27 ? jsonArrayProp27.Deserialize<List<string>>()! : (List<string>)map["factors"],
+            factors: map["factors"].ConvertToList<string>(),
             secret: map["secret"].ToString(),
             mfaUpdatedAt: map["mfaUpdatedAt"].ToString()
         );

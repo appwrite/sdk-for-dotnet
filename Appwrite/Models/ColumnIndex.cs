@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -72,9 +73,9 @@ namespace Appwrite.Models
             type: map["type"].ToString(),
             status: map["status"].ToString(),
             error: map["error"].ToString(),
-            columns: map["columns"] is JsonElement jsonArrayProp8 ? jsonArrayProp8.Deserialize<List<string>>()! : (List<string>)map["columns"],
-            lengths: map["lengths"] is JsonElement jsonArrayProp9 ? jsonArrayProp9.Deserialize<List<long>>()! : (List<long>)map["lengths"],
-            orders: map["orders"] is JsonElement jsonArrayProp10 ? jsonArrayProp10.Deserialize<List<string>>()! : (List<string>)map["orders"]
+            columns: map["columns"].ConvertToList<string>(),
+            lengths: map["lengths"].ConvertToList<long>(),
+            orders: map["orders"].ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

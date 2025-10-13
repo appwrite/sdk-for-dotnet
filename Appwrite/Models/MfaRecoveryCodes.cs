@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -20,7 +21,7 @@ namespace Appwrite.Models
         }
 
         public static MfaRecoveryCodes From(Dictionary<string, object> map) => new MfaRecoveryCodes(
-            recoveryCodes: map["recoveryCodes"] is JsonElement jsonArrayProp1 ? jsonArrayProp1.Deserialize<List<string>>()! : (List<string>)map["recoveryCodes"]
+            recoveryCodes: map["recoveryCodes"].ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

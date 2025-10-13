@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Appwrite.Enums;
+using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
@@ -119,7 +120,7 @@ namespace Appwrite.Models
             hashOptions: map.TryGetValue("hashOptions", out var hashOptions) ? hashOptions?.ToString() : null,
             registration: map["registration"].ToString(),
             status: (bool)map["status"],
-            labels: map["labels"] is JsonElement jsonArrayProp10 ? jsonArrayProp10.Deserialize<List<string>>()! : (List<string>)map["labels"],
+            labels: map["labels"].ConvertToList<string>(),
             passwordUpdate: map["passwordUpdate"].ToString(),
             email: map["email"].ToString(),
             phone: map["phone"].ToString(),
@@ -127,7 +128,7 @@ namespace Appwrite.Models
             phoneVerification: (bool)map["phoneVerification"],
             mfa: (bool)map["mfa"],
             prefs: Preferences.From(map: map["prefs"] is JsonElement jsonObj17 ? jsonObj17.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
-            targets: map["targets"] is JsonElement jsonArray18 ? jsonArray18.Deserialize<List<Dictionary<string, object>>>()!.Select(it => Target.From(map: it)).ToList() : ((IEnumerable<Dictionary<string, object>>)map["targets"]).Select(it => Target.From(map: it)).ToList(),
+            targets: map["targets"].ConvertToList<Dictionary<string, object>>().Select(it => Target.From(map: it)).ToList(),
             accessedAt: map["accessedAt"].ToString()
         );
 
