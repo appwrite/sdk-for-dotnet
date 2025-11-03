@@ -15,5 +15,6 @@ namespace Appwrite.Enums
         public static ExecutionStatus Processing => new ExecutionStatus("processing");
         public static ExecutionStatus Completed => new ExecutionStatus("completed");
         public static ExecutionStatus Failed => new ExecutionStatus("failed");
+        public static ExecutionStatus Scheduled => new ExecutionStatus("scheduled");
     }
 }

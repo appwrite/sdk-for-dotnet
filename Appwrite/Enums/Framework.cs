@@ -19,6 +19,7 @@ namespace Appwrite.Enums
         public static Framework Vue => new Framework("vue");
         public static Framework Sveltekit => new Framework("sveltekit");
         public static Framework Astro => new Framework("astro");
+        public static Framework TanstackStart => new Framework("tanstack-start");
         public static Framework Remix => new Framework("remix");
         public static Framework Lynx => new Framework("lynx");
         public static Framework Flutter => new Framework("flutter");

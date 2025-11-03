@@ -19,14 +19,15 @@ namespace Appwrite.Services
         /// filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.FunctionList> List(List<string>? queries = null, string? search = null)
+        public Task<Models.FunctionList> List(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/functions";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -299,7 +300,7 @@ namespace Appwrite.Services
         /// params to filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.DeploymentList> ListDeployments(string functionId, List<string>? queries = null, string? search = null)
+        public Task<Models.DeploymentList> ListDeployments(string functionId, List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/functions/{functionId}/deployments"
                 .Replace("{functionId}", functionId);
@@ -307,7 +308,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -621,14 +623,15 @@ namespace Appwrite.Services
         /// query params to filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.ExecutionList> ListExecutions(string functionId, List<string>? queries = null)
+        public Task<Models.ExecutionList> ListExecutions(string functionId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

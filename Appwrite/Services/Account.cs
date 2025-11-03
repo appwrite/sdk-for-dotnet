@@ -126,13 +126,14 @@ namespace Appwrite.Services
         /// Get the list of identities for the currently logged in user.
         /// </para>
         /// </summary>
-        public Task<Models.IdentityList> ListIdentities(List<string>? queries = null)
+        public Task<Models.IdentityList> ListIdentities(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/account/identities";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -219,13 +220,14 @@ namespace Appwrite.Services
         /// user. Each log returns user IP address, location and date and time of log.
         /// </para>
         /// </summary>
-        public Task<Models.LogList> ListLogs(List<string>? queries = null)
+        public Task<Models.LogList> ListLogs(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/account/logs";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

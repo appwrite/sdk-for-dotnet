@@ -19,14 +19,15 @@ namespace Appwrite.Services
         /// filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.SiteList> List(List<string>? queries = null, string? search = null)
+        public Task<Models.SiteList> List(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/sites";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -297,7 +298,7 @@ namespace Appwrite.Services
         /// to filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.DeploymentList> ListDeployments(string siteId, List<string>? queries = null, string? search = null)
+        public Task<Models.DeploymentList> ListDeployments(string siteId, List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/sites/{siteId}/deployments"
                 .Replace("{siteId}", siteId);
@@ -305,7 +306,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -612,14 +614,15 @@ namespace Appwrite.Services
         /// results.
         /// </para>
         /// </summary>
-        public Task<Models.ExecutionList> ListLogs(string siteId, List<string>? queries = null)
+        public Task<Models.ExecutionList> ListLogs(string siteId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/sites/{siteId}/logs"
                 .Replace("{siteId}", siteId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

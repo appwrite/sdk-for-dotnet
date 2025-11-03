@@ -20,14 +20,15 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.list` instead.")]
-        public Task<Models.DatabaseList> List(List<string>? queries = null, string? search = null)
+        public Task<Models.DatabaseList> List(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/databases";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -368,7 +369,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listTables` instead.")]
-        public Task<Models.CollectionList> ListCollections(string databaseId, List<string>? queries = null, string? search = null)
+        public Task<Models.CollectionList> ListCollections(string databaseId, List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/databases/{databaseId}/collections"
                 .Replace("{databaseId}", databaseId);
@@ -376,7 +377,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -542,7 +544,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listColumns` instead.")]
-        public Task<Models.AttributeList> ListAttributes(string databaseId, string collectionId, List<string>? queries = null)
+        public Task<Models.AttributeList> ListAttributes(string databaseId, string collectionId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes"
                 .Replace("{databaseId}", databaseId)
@@ -550,7 +552,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1644,7 +1647,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listRows` instead.")]
-        public Task<Models.DocumentList> ListDocuments(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null)
+        public Task<Models.DocumentList> ListDocuments(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null, bool? total = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
@@ -1653,7 +1656,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "transactionId", transactionId }
+                { "transactionId", transactionId },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2091,7 +2095,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listIndexes` instead.")]
-        public Task<Models.IndexList> ListIndexes(string databaseId, string collectionId, List<string>? queries = null)
+        public Task<Models.IndexList> ListIndexes(string databaseId, string collectionId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)
@@ -2099,7 +2103,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
