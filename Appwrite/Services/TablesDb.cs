@@ -19,14 +19,15 @@ namespace Appwrite.Services
         /// the search parameter to filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.DatabaseList> List(List<string>? queries = null, string? search = null)
+        public Task<Models.DatabaseList> List(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/tablesdb";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -362,7 +363,7 @@ namespace Appwrite.Services
         /// use the search parameter to filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.TableList> ListTables(string databaseId, List<string>? queries = null, string? search = null)
+        public Task<Models.TableList> ListTables(string databaseId, List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables"
                 .Replace("{databaseId}", databaseId);
@@ -370,7 +371,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -531,7 +533,7 @@ namespace Appwrite.Services
         /// List columns in the table.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnList> ListColumns(string databaseId, string tableId, List<string>? queries = null)
+        public Task<Models.ColumnList> ListColumns(string databaseId, string tableId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns"
                 .Replace("{databaseId}", databaseId)
@@ -539,7 +541,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1602,7 +1605,7 @@ namespace Appwrite.Services
         /// List indexes on the table.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnIndexList> ListIndexes(string databaseId, string tableId, List<string>? queries = null)
+        public Task<Models.ColumnIndexList> ListIndexes(string databaseId, string tableId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes"
                 .Replace("{databaseId}", databaseId)
@@ -1610,7 +1613,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1736,7 +1740,7 @@ namespace Appwrite.Services
         /// params to filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.RowList> ListRows(string databaseId, string tableId, List<string>? queries = null, string? transactionId = null)
+        public Task<Models.RowList> ListRows(string databaseId, string tableId, List<string>? queries = null, string? transactionId = null, bool? total = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
                 .Replace("{databaseId}", databaseId)
@@ -1745,7 +1749,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "transactionId", transactionId }
+                { "transactionId", transactionId },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

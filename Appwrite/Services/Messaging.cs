@@ -18,14 +18,15 @@ namespace Appwrite.Services
         /// Get a list of all messages from the current Appwrite project.
         /// </para>
         /// </summary>
-        public Task<Models.MessageList> ListMessages(List<string>? queries = null, string? search = null)
+        public Task<Models.MessageList> ListMessages(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/messaging/messages";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -453,14 +454,15 @@ namespace Appwrite.Services
         /// Get the message activity logs listed by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.LogList> ListMessageLogs(string messageId, List<string>? queries = null)
+        public Task<Models.LogList> ListMessageLogs(string messageId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/messaging/messages/{messageId}/logs"
                 .Replace("{messageId}", messageId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -484,14 +486,15 @@ namespace Appwrite.Services
         /// Get a list of the targets associated with a message.
         /// </para>
         /// </summary>
-        public Task<Models.TargetList> ListTargets(string messageId, List<string>? queries = null)
+        public Task<Models.TargetList> ListTargets(string messageId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/messaging/messages/{messageId}/targets"
                 .Replace("{messageId}", messageId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -515,14 +518,15 @@ namespace Appwrite.Services
         /// Get a list of all providers from the current Appwrite project.
         /// </para>
         /// </summary>
-        public Task<Models.ProviderList> ListProviders(List<string>? queries = null, string? search = null)
+        public Task<Models.ProviderList> ListProviders(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/messaging/providers";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -966,6 +970,82 @@ namespace Appwrite.Services
                 { "templateId", templateId },
                 { "senderId", senderId },
                 { "authKey", authKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it) =>
+                Models.Provider.From(map: it);
+
+            return _client.Call<Models.Provider>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a new Resend provider.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> CreateResendProvider(string providerId, string name, string? apiKey = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        {
+            var apiPath = "/messaging/providers/resend";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "providerId", providerId },
+                { "name", name },
+                { "apiKey", apiKey },
+                { "fromName", fromName },
+                { "fromEmail", fromEmail },
+                { "replyToName", replyToName },
+                { "replyToEmail", replyToEmail },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it) =>
+                Models.Provider.From(map: it);
+
+            return _client.Call<Models.Provider>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a Resend provider by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> UpdateResendProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null)
+        {
+            var apiPath = "/messaging/providers/resend/{providerId}"
+                .Replace("{providerId}", providerId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "enabled", enabled },
+                { "apiKey", apiKey },
+                { "fromName", fromName },
+                { "fromEmail", fromEmail },
+                { "replyToName", replyToName },
+                { "replyToEmail", replyToEmail }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1591,14 +1671,15 @@ namespace Appwrite.Services
         /// Get the provider activity logs listed by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.LogList> ListProviderLogs(string providerId, List<string>? queries = null)
+        public Task<Models.LogList> ListProviderLogs(string providerId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/messaging/providers/{providerId}/logs"
                 .Replace("{providerId}", providerId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1622,14 +1703,15 @@ namespace Appwrite.Services
         /// Get the subscriber activity logs listed by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.LogList> ListSubscriberLogs(string subscriberId, List<string>? queries = null)
+        public Task<Models.LogList> ListSubscriberLogs(string subscriberId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/messaging/subscribers/{subscriberId}/logs"
                 .Replace("{subscriberId}", subscriberId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1653,14 +1735,15 @@ namespace Appwrite.Services
         /// Get a list of all topics from the current Appwrite project.
         /// </para>
         /// </summary>
-        public Task<Models.TopicList> ListTopics(List<string>? queries = null, string? search = null)
+        public Task<Models.TopicList> ListTopics(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/messaging/topics";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1810,14 +1893,15 @@ namespace Appwrite.Services
         /// Get the topic activity logs listed by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.LogList> ListTopicLogs(string topicId, List<string>? queries = null)
+        public Task<Models.LogList> ListTopicLogs(string topicId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/messaging/topics/{topicId}/logs"
                 .Replace("{topicId}", topicId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1841,7 +1925,7 @@ namespace Appwrite.Services
         /// Get a list of all subscribers from the current Appwrite project.
         /// </para>
         /// </summary>
-        public Task<Models.SubscriberList> ListSubscribers(string topicId, List<string>? queries = null, string? search = null)
+        public Task<Models.SubscriberList> ListSubscribers(string topicId, List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/messaging/topics/{topicId}/subscribers"
                 .Replace("{topicId}", topicId);
@@ -1849,7 +1933,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

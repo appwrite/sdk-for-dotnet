@@ -19,14 +19,15 @@ namespace Appwrite.Services
         /// filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.UserList> List(List<string>? queries = null, string? search = null)
+        public Task<Models.UserList> List(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/users";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -159,14 +160,15 @@ namespace Appwrite.Services
         /// Get identities for all users.
         /// </para>
         /// </summary>
-        public Task<Models.IdentityList> ListIdentities(List<string>? queries = null, string? search = null)
+        public Task<Models.IdentityList> ListIdentities(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/users/identities";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -580,14 +582,15 @@ namespace Appwrite.Services
         /// Get the user activity logs list by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.LogList> ListLogs(string userId, List<string>? queries = null)
+        public Task<Models.LogList> ListLogs(string userId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/users/{userId}/logs"
                 .Replace("{userId}", userId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -611,7 +614,7 @@ namespace Appwrite.Services
         /// Get the user membership list by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.MembershipList> ListMemberships(string userId, List<string>? queries = null, string? search = null)
+        public Task<Models.MembershipList> ListMemberships(string userId, List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/users/{userId}/memberships"
                 .Replace("{userId}", userId);
@@ -619,7 +622,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1193,13 +1197,14 @@ namespace Appwrite.Services
         /// Get the user sessions list by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.SessionList> ListSessions(string userId)
+        public Task<Models.SessionList> ListSessions(string userId, bool? total = null)
         {
             var apiPath = "/users/{userId}/sessions"
                 .Replace("{userId}", userId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1349,14 +1354,15 @@ namespace Appwrite.Services
         /// List the messaging targets that are associated with a user.
         /// </para>
         /// </summary>
-        public Task<Models.TargetList> ListTargets(string userId, List<string>? queries = null)
+        public Task<Models.TargetList> ListTargets(string userId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/users/{userId}/targets"
                 .Replace("{userId}", userId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

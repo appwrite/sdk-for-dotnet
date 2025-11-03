@@ -19,7 +19,7 @@ namespace Appwrite.Services
         /// query params to filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.ResourceTokenList> List(string bucketId, string fileId, List<string>? queries = null)
+        public Task<Models.ResourceTokenList> List(string bucketId, string fileId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/tokens/buckets/{bucketId}/files/{fileId}"
                 .Replace("{bucketId}", bucketId)
@@ -27,7 +27,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
