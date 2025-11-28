@@ -47,6 +47,9 @@ namespace Appwrite.Models
         [JsonPropertyName("antivirus")]
         public bool Antivirus { get; private set; }
 
+        [JsonPropertyName("transformations")]
+        public bool Transformations { get; private set; }
+
         public Bucket(
             string id,
             string createdAt,
@@ -59,7 +62,8 @@ namespace Appwrite.Models
             List<string> allowedFileExtensions,
             string compression,
             bool encryption,
-            bool antivirus
+            bool antivirus,
+            bool transformations
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -73,6 +77,7 @@ namespace Appwrite.Models
             Compression = compression;
             Encryption = encryption;
             Antivirus = antivirus;
+            Transformations = transformations;
         }
 
         public static Bucket From(Dictionary<string, object> map) => new Bucket(
@@ -87,7 +92,8 @@ namespace Appwrite.Models
             allowedFileExtensions: map["allowedFileExtensions"].ConvertToList<string>(),
             compression: map["compression"].ToString(),
             encryption: (bool)map["encryption"],
-            antivirus: (bool)map["antivirus"]
+            antivirus: (bool)map["antivirus"],
+            transformations: (bool)map["transformations"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -103,7 +109,8 @@ namespace Appwrite.Models
             { "allowedFileExtensions", AllowedFileExtensions },
             { "compression", Compression },
             { "encryption", Encryption },
-            { "antivirus", Antivirus }
+            { "antivirus", Antivirus },
+            { "transformations", Transformations }
         };
     }
 }
