@@ -482,7 +482,7 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.createMFAChallenge` instead.")]
         public Task<Models.MfaChallenge> CreateMfaChallenge(Appwrite.Enums.AuthenticationFactor factor)
         {
-            var apiPath = "/account/mfa/challenge";
+            var apiPath = "/account/mfa/challenges";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -515,7 +515,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.MfaChallenge> CreateMFAChallenge(Appwrite.Enums.AuthenticationFactor factor)
         {
-            var apiPath = "/account/mfa/challenge";
+            var apiPath = "/account/mfa/challenges";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -551,7 +551,7 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Account.updateMFAChallenge` instead.")]
         public Task<Models.Session> UpdateMfaChallenge(string challengeId, string otp)
         {
-            var apiPath = "/account/mfa/challenge";
+            var apiPath = "/account/mfa/challenges";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -587,7 +587,7 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Session> UpdateMFAChallenge(string challengeId, string otp)
         {
-            var apiPath = "/account/mfa/challenge";
+            var apiPath = "/account/mfa/challenges";
 
             var apiParameters = new Dictionary<string, object?>()
             {
