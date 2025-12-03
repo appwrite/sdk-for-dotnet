@@ -276,5 +276,60 @@ namespace Appwrite.Services
 
         }
 
+        /// <para>
+        /// Use this endpoint to capture a screenshot of any website URL. This endpoint
+        /// uses a headless browser to render the webpage and capture it as an image.
+        /// 
+        /// You can configure the browser viewport size, theme, user agent,
+        /// geolocation, permissions, and more. Capture either just the viewport or the
+        /// full page scroll.
+        /// 
+        /// When width and height are specified, the image is resized accordingly. If
+        /// both dimensions are 0, the API provides an image at original size. If
+        /// dimensions are not specified, the default viewport size is 1280x720px.
+        /// </para>
+        /// </summary>
+        public Task<byte[]> GetScreenshot(string url, object? headers = null, long? viewportWidth = null, long? viewportHeight = null, double? scale = null, Appwrite.Enums.Theme? theme = null, string? userAgent = null, bool? fullpage = null, string? locale = null, Appwrite.Enums.Timezone? timezone = null, double? latitude = null, double? longitude = null, double? accuracy = null, bool? touch = null, List<string>? permissions = null, long? sleep = null, long? width = null, long? height = null, long? quality = null, Appwrite.Enums.Output? output = null)
+        {
+            var apiPath = "/avatars/screenshots";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "url", url },
+                { "headers", headers },
+                { "viewportWidth", viewportWidth },
+                { "viewportHeight", viewportHeight },
+                { "scale", scale },
+                { "theme", theme?.Value },
+                { "userAgent", userAgent },
+                { "fullpage", fullpage },
+                { "locale", locale },
+                { "timezone", timezone?.Value },
+                { "latitude", latitude },
+                { "longitude", longitude },
+                { "accuracy", accuracy },
+                { "touch", touch },
+                { "permissions", permissions },
+                { "sleep", sleep },
+                { "width", width },
+                { "height", height },
+                { "quality", quality },
+                { "output", output?.Value }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+
+            return _client.Call<byte[]>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
     }
 }

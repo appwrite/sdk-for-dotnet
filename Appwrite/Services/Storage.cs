@@ -51,7 +51,7 @@ namespace Appwrite.Services
         /// Create a new storage bucket.
         /// </para>
         /// </summary>
-        public Task<Models.Bucket> CreateBucket(string bucketId, string name, List<string>? permissions = null, bool? fileSecurity = null, bool? enabled = null, long? maximumFileSize = null, List<string>? allowedFileExtensions = null, Appwrite.Enums.Compression? compression = null, bool? encryption = null, bool? antivirus = null)
+        public Task<Models.Bucket> CreateBucket(string bucketId, string name, List<string>? permissions = null, bool? fileSecurity = null, bool? enabled = null, long? maximumFileSize = null, List<string>? allowedFileExtensions = null, Appwrite.Enums.Compression? compression = null, bool? encryption = null, bool? antivirus = null, bool? transformations = null)
         {
             var apiPath = "/storage/buckets";
 
@@ -66,7 +66,8 @@ namespace Appwrite.Services
                 { "allowedFileExtensions", allowedFileExtensions },
                 { "compression", compression?.Value },
                 { "encryption", encryption },
-                { "antivirus", antivirus }
+                { "antivirus", antivirus },
+                { "transformations", transformations }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -122,7 +123,7 @@ namespace Appwrite.Services
         /// Update a storage bucket by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Bucket> UpdateBucket(string bucketId, string name, List<string>? permissions = null, bool? fileSecurity = null, bool? enabled = null, long? maximumFileSize = null, List<string>? allowedFileExtensions = null, Appwrite.Enums.Compression? compression = null, bool? encryption = null, bool? antivirus = null)
+        public Task<Models.Bucket> UpdateBucket(string bucketId, string name, List<string>? permissions = null, bool? fileSecurity = null, bool? enabled = null, long? maximumFileSize = null, List<string>? allowedFileExtensions = null, Appwrite.Enums.Compression? compression = null, bool? encryption = null, bool? antivirus = null, bool? transformations = null)
         {
             var apiPath = "/storage/buckets/{bucketId}"
                 .Replace("{bucketId}", bucketId);
@@ -137,7 +138,8 @@ namespace Appwrite.Services
                 { "allowedFileExtensions", allowedFileExtensions },
                 { "compression", compression?.Value },
                 { "encryption", encryption },
-                { "antivirus", antivirus }
+                { "antivirus", antivirus },
+                { "transformations", transformations }
             };
 
             var apiHeaders = new Dictionary<string, string>()

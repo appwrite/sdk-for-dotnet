@@ -423,7 +423,7 @@ namespace Appwrite.Services
         /// find the template details.
         /// </para>
         /// </summary>
-        public Task<Models.Deployment> CreateTemplateDeployment(string functionId, string repository, string owner, string rootDirectory, string version, bool? activate = null)
+        public Task<Models.Deployment> CreateTemplateDeployment(string functionId, string repository, string owner, string rootDirectory, Appwrite.Enums.TemplateReferenceType type, string reference, bool? activate = null)
         {
             var apiPath = "/functions/{functionId}/deployments/template"
                 .Replace("{functionId}", functionId);
@@ -433,7 +433,8 @@ namespace Appwrite.Services
                 { "repository", repository },
                 { "owner", owner },
                 { "rootDirectory", rootDirectory },
-                { "version", version },
+                { "type", type?.Value },
+                { "reference", reference },
                 { "activate", activate }
             };
 
@@ -461,7 +462,7 @@ namespace Appwrite.Services
         /// This endpoint lets you create deployment from a branch, commit, or a tag.
         /// </para>
         /// </summary>
-        public Task<Models.Deployment> CreateVcsDeployment(string functionId, Appwrite.Enums.VCSDeploymentType type, string reference, bool? activate = null)
+        public Task<Models.Deployment> CreateVcsDeployment(string functionId, Appwrite.Enums.VCSReferenceType type, string reference, bool? activate = null)
         {
             var apiPath = "/functions/{functionId}/deployments/vcs"
                 .Replace("{functionId}", functionId);

@@ -330,7 +330,7 @@ namespace Appwrite.Services
         /// <para>
         /// Create a new site code deployment. Use this endpoint to upload a new
         /// version of your site code. To activate your newly uploaded code, you'll
-        /// need to update the function's deployment to use your new deployment ID.
+        /// need to update the site's deployment to use your new deployment ID.
         /// </para>
         /// </summary>
         public Task<Models.Deployment> CreateDeployment(string siteId, InputFile code, bool activate, string? installCommand = null, string? buildCommand = null, string? outputDirectory = null, Action<UploadProgress>? onProgress = null)
@@ -414,7 +414,7 @@ namespace Appwrite.Services
         /// the template details.
         /// </para>
         /// </summary>
-        public Task<Models.Deployment> CreateTemplateDeployment(string siteId, string repository, string owner, string rootDirectory, string version, bool? activate = null)
+        public Task<Models.Deployment> CreateTemplateDeployment(string siteId, string repository, string owner, string rootDirectory, Appwrite.Enums.TemplateReferenceType type, string reference, bool? activate = null)
         {
             var apiPath = "/sites/{siteId}/deployments/template"
                 .Replace("{siteId}", siteId);
@@ -424,7 +424,8 @@ namespace Appwrite.Services
                 { "repository", repository },
                 { "owner", owner },
                 { "rootDirectory", rootDirectory },
-                { "version", version },
+                { "type", type?.Value },
+                { "reference", reference },
                 { "activate", activate }
             };
 
@@ -452,7 +453,7 @@ namespace Appwrite.Services
         /// This endpoint lets you create deployment from a branch, commit, or a tag.
         /// </para>
         /// </summary>
-        public Task<Models.Deployment> CreateVcsDeployment(string siteId, Appwrite.Enums.VCSDeploymentType type, string reference, bool? activate = null)
+        public Task<Models.Deployment> CreateVcsDeployment(string siteId, Appwrite.Enums.VCSReferenceType type, string reference, bool? activate = null)
         {
             var apiPath = "/sites/{siteId}/deployments/vcs"
                 .Replace("{siteId}", siteId);
