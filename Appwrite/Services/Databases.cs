@@ -406,7 +406,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createTable` instead.")]
-        public Task<Models.Collection> CreateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
+        public Task<Models.Collection> CreateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, List<object>? attributes = null, List<object>? indexes = null)
         {
             var apiPath = "/databases/{databaseId}/collections"
                 .Replace("{databaseId}", databaseId);
@@ -417,7 +417,9 @@ namespace Appwrite.Services
                 { "name", name },
                 { "permissions", permissions },
                 { "documentSecurity", documentSecurity },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "attributes", attributes },
+                { "indexes", indexes }
             };
 
             var apiHeaders = new Dictionary<string, string>()
