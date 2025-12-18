@@ -399,7 +399,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        public Task<Models.Table> CreateTable(string databaseId, string tableId, string name, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null)
+        public Task<Models.Table> CreateTable(string databaseId, string tableId, string name, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null, List<object>? columns = null, List<object>? indexes = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables"
                 .Replace("{databaseId}", databaseId);
@@ -410,7 +410,9 @@ namespace Appwrite.Services
                 { "name", name },
                 { "permissions", permissions },
                 { "rowSecurity", rowSecurity },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "columns", columns },
+                { "indexes", indexes }
             };
 
             var apiHeaders = new Dictionary<string, string>()
