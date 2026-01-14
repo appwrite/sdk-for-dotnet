@@ -4,6 +4,18 @@
 
 * Update SDK as per latest server specs
 
+## 0.24.0
+
+* Added ability to create columns and indexes synchronously while creating a table
+
+## 0.23.0
+
+* Rename `VCSDeploymentType` enum to `VCSReferenceType`
+* Change `CreateTemplateDeployment` method signature: replace `Version` parameter with `Type` (TemplateReferenceType)
+  and `Reference` parameters
+* Add `GetScreenshot` method to `Avatars` service
+* Add `Theme`, `Timezone` and `Output` enums
+
 ## 0.22.0
 
 * Add `total` parameter to list queries allowing skipping counting rows in a table for improved performance
@@ -84,10 +96,14 @@
 * Added `scheduledAt` parameter to `createExecution()`: Enables creating a delayed execution
 
 #### Breaking changes
-You can find the new syntax for breaking changes in the [Appwrite API references](https://appwrite.io/docs/references). Select version `1.6.x`.
+
+You can find the new syntax for breaking changes in the [Appwrite API references](https://appwrite.io/docs/references).
+Select version `1.6.x`.
+
 * Removed `otp` parameter from `deleteMFAAuthenticator`.
 * Added `scopes` parameter for create/update function.
 * Renamed `templateBranch` to `templateVersion`  in `createFunction()`.
 * Renamed `downloadDeployment()` to `getDeploymentDownload()`
 
-> **Please note: This version is compatible with Appwrite 1.6 and later only. If you do not update your Appwrite SDK, old SDKs will not break your app. Appwrite APIs are backwards compatible.**
+> **Please note: This version is compatible with Appwrite 1.6 and later only. If you do not update your Appwrite SDK,
+old SDKs will not break your app. Appwrite APIs are backwards compatible.**
