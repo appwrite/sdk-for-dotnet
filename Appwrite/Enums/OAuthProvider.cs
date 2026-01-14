@@ -51,5 +51,8 @@ namespace Appwrite.Enums
         public static OAuthProvider Zoho => new OAuthProvider("zoho");
         public static OAuthProvider Zoom => new OAuthProvider("zoom");
         public static OAuthProvider Mock => new OAuthProvider("mock");
+        public static OAuthProvider MockUnverified => new OAuthProvider("mock-unverified");
+        public static OAuthProvider GithubImagine => new OAuthProvider("githubImagine");
+        public static OAuthProvider GoogleImagine => new OAuthProvider("googleImagine");
     }
 }

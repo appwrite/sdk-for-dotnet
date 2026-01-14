@@ -7,10 +7,8 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Databases databases = new Databases(client);
+Backups backups = new Backups(client);
 
-AttributeBoolean result = await databases.GetAttribute(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
-    key: ""
+BackupRestoration result = await backups.GetRestoration(
+    restorationId: "<RESTORATION_ID>"
 );

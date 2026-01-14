@@ -7,10 +7,8 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Databases databases = new Databases(client);
+Health health = new Health(client);
 
-AttributeBoolean result = await databases.GetAttribute(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
-    key: ""
+HealthQueue result = await health.GetQueueRegionManager(
+    threshold: 0 // optional
 );

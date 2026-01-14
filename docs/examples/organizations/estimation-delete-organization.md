@@ -7,8 +7,8 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetSession(""); // The user session to authenticate with
 
-Account account = new Account(client);
+Organizations organizations = new Organizations(client);
 
-JWT result = await account.CreateJWT(
-    duration: 0 // optional
+EstimationDeleteOrganization result = await organizations.EstimationDeleteOrganization(
+    organizationId: "<ORGANIZATION_ID>"
 );

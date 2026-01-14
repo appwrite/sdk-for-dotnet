@@ -33,5 +33,5 @@ byte[] result = await avatars.GetScreenshot(
     width: 800, // optional
     height: 600, // optional
     quality: 85, // optional
-    output: Output.Jpg // optional
+    output: ImageFormat.Jpg // optional
 );

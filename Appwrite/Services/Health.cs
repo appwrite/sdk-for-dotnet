@@ -191,6 +191,66 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get billing project aggregation queue.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetQueueBillingProjectAggregation(long? threshold = null)
+        {
+            var apiPath = "/health/queue/billing-project-aggregation";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
+
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get billing team aggregation queue.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetQueueBillingTeamAggregation(long? threshold = null)
+        {
+            var apiPath = "/health/queue/billing-team-aggregation";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
+
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get the number of builds that are waiting to be processed in the Appwrite
         /// internal queue server.
         /// </para>
@@ -198,6 +258,36 @@ namespace Appwrite.Services
         public Task<Models.HealthQueue> GetQueueBuilds(long? threshold = null)
         {
             var apiPath = "/health/queue/builds";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
+
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get the priority builds queue size.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetQueuePriorityBuilds(long? threshold = null)
+        {
+            var apiPath = "/health/queue/builds-priority";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -504,6 +594,36 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get region manager queue.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetQueueRegionManager(long? threshold = null)
+        {
+            var apiPath = "/health/queue/region-manager";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
+
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get the number of metrics that are waiting to be processed in the Appwrite
         /// stats resources queue.
         /// </para>
@@ -542,6 +662,36 @@ namespace Appwrite.Services
         public Task<Models.HealthQueue> GetQueueUsage(long? threshold = null)
         {
             var apiPath = "/health/queue/stats-usage";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
+
+            return _client.Call<Models.HealthQueue>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get threats queue.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetQueueThreats(long? threshold = null)
+        {
+            var apiPath = "/health/queue/threats";
 
             var apiParameters = new Dictionary<string, object?>()
             {
