@@ -1511,7 +1511,7 @@ namespace Appwrite.Services
         /// Get column by ID.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnBoolean> GetColumn(string databaseId, string tableId, string key)
+        public Task<object> GetColumn(string databaseId, string tableId, string key)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1527,10 +1527,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ColumnBoolean Convert(Dictionary<string, object> it) =>
-                Models.ColumnBoolean.From(map: it);
+            static object Convert(Dictionary<string, object> it) =>
+                it;
 
-            return _client.Call<Models.ColumnBoolean>(
+            return _client.Call<object>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,

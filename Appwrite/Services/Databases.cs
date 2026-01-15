@@ -1549,7 +1549,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getColumn` instead.")]
-        public Task<Models.AttributeBoolean> GetAttribute(string databaseId, string collectionId, string key)
+        public Task<object> GetAttribute(string databaseId, string collectionId, string key)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1565,10 +1565,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.AttributeBoolean Convert(Dictionary<string, object> it) =>
-                Models.AttributeBoolean.From(map: it);
+            static object Convert(Dictionary<string, object> it) =>
+                it;
 
-            return _client.Call<Models.AttributeBoolean>(
+            return _client.Call<object>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,

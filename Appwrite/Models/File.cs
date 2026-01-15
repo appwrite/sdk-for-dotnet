@@ -44,6 +44,12 @@ namespace Appwrite.Models
         [JsonPropertyName("chunksUploaded")]
         public long ChunksUploaded { get; private set; }
 
+        [JsonPropertyName("encryption")]
+        public bool Encryption { get; private set; }
+
+        [JsonPropertyName("compression")]
+        public string Compression { get; private set; }
+
         public File(
             string id,
             string bucketId,
@@ -55,7 +61,9 @@ namespace Appwrite.Models
             string mimeType,
             long sizeOriginal,
             long chunksTotal,
-            long chunksUploaded
+            long chunksUploaded,
+            bool encryption,
+            string compression
         ) {
             Id = id;
             BucketId = bucketId;
@@ -68,6 +76,8 @@ namespace Appwrite.Models
             SizeOriginal = sizeOriginal;
             ChunksTotal = chunksTotal;
             ChunksUploaded = chunksUploaded;
+            Encryption = encryption;
+            Compression = compression;
         }
 
         public static File From(Dictionary<string, object> map) => new File(
@@ -81,7 +91,9 @@ namespace Appwrite.Models
             mimeType: map["mimeType"].ToString(),
             sizeOriginal: Convert.ToInt64(map["sizeOriginal"]),
             chunksTotal: Convert.ToInt64(map["chunksTotal"]),
-            chunksUploaded: Convert.ToInt64(map["chunksUploaded"])
+            chunksUploaded: Convert.ToInt64(map["chunksUploaded"]),
+            encryption: (bool)map["encryption"],
+            compression: map["compression"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -96,7 +108,9 @@ namespace Appwrite.Models
             { "mimeType", MimeType },
             { "sizeOriginal", SizeOriginal },
             { "chunksTotal", ChunksTotal },
-            { "chunksUploaded", ChunksUploaded }
+            { "chunksUploaded", ChunksUploaded },
+            { "encryption", Encryption },
+            { "compression", Compression }
         };
     }
 }
