@@ -1527,12 +1527,15 @@ namespace Appwrite.Services
             };
 
 
+            static object Convert(Dictionary<string, object> it) =>
+                it;
 
             return _client.Call<object>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 

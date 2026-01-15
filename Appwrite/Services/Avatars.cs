@@ -289,7 +289,7 @@ namespace Appwrite.Services
         /// dimensions are not specified, the default viewport size is 1280x720px.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetScreenshot(string url, object? headers = null, long? viewportWidth = null, long? viewportHeight = null, double? scale = null, Appwrite.Enums.Theme? theme = null, string? userAgent = null, bool? fullpage = null, string? locale = null, Appwrite.Enums.Timezone? timezone = null, double? latitude = null, double? longitude = null, double? accuracy = null, bool? touch = null, List<string>? permissions = null, long? sleep = null, long? width = null, long? height = null, long? quality = null, Appwrite.Enums.Output? output = null)
+        public Task<byte[]> GetScreenshot(string url, object? headers = null, long? viewportWidth = null, long? viewportHeight = null, double? scale = null, Appwrite.Enums.Theme? theme = null, string? userAgent = null, bool? fullpage = null, string? locale = null, Appwrite.Enums.Timezone? timezone = null, double? latitude = null, double? longitude = null, double? accuracy = null, bool? touch = null, List<string>? permissions = null, long? sleep = null, long? width = null, long? height = null, long? quality = null, Appwrite.Enums.ImageFormat? output = null)
         {
             var apiPath = "/avatars/screenshots";
 

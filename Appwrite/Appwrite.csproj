@@ -2,11 +2,11 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
     <PackageId>Appwrite</PackageId>
-    <Version>0.24.0</Version>
+    <Version>0.24.1</Version>
     <Authors>Appwrite Team</Authors>
     <Company>Appwrite Team</Company>
     <Description>
-      Appwrite is an open-source self-hosted backend server that abstract and simplify complex and repetitive development tasks behind a very simple REST API
+      Appwrite is an open-source self-hosted backend server that abstracts and simplifies complex and repetitive development tasks behind a very simple REST API
     </Description>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>

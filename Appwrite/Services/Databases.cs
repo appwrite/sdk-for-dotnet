@@ -1565,12 +1565,15 @@ namespace Appwrite.Services
             };
 
 
+            static object Convert(Dictionary<string, object> it) =>
+                it;
 
             return _client.Call<object>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 
@@ -1914,7 +1917,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.upsertRow` instead.")]
-        public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null, string? transactionId = null)
+        public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object? data = null, List<string>? permissions = null, string? transactionId = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)

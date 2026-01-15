@@ -50,6 +50,5 @@ namespace Appwrite.Enums
         public static OAuthProvider Yandex => new OAuthProvider("yandex");
         public static OAuthProvider Zoho => new OAuthProvider("zoho");
         public static OAuthProvider Zoom => new OAuthProvider("zoom");
-        public static OAuthProvider Mock => new OAuthProvider("mock");
     }
 }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-
 namespace Appwrite
 {
     public class Query

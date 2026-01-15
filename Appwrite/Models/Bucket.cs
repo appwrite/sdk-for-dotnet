@@ -50,6 +50,9 @@ namespace Appwrite.Models
         [JsonPropertyName("transformations")]
         public bool Transformations { get; private set; }
 
+        [JsonPropertyName("totalSize")]
+        public long TotalSize { get; private set; }
+
         public Bucket(
             string id,
             string createdAt,
@@ -63,7 +66,8 @@ namespace Appwrite.Models
             string compression,
             bool encryption,
             bool antivirus,
-            bool transformations
+            bool transformations,
+            long totalSize
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -78,6 +82,7 @@ namespace Appwrite.Models
             Encryption = encryption;
             Antivirus = antivirus;
             Transformations = transformations;
+            TotalSize = totalSize;
         }
 
         public static Bucket From(Dictionary<string, object> map) => new Bucket(
@@ -93,7 +98,8 @@ namespace Appwrite.Models
             compression: map["compression"].ToString(),
             encryption: (bool)map["encryption"],
             antivirus: (bool)map["antivirus"],
-            transformations: (bool)map["transformations"]
+            transformations: (bool)map["transformations"],
+            totalSize: Convert.ToInt64(map["totalSize"])
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -110,7 +116,8 @@ namespace Appwrite.Models
             { "compression", Compression },
             { "encryption", Encryption },
             { "antivirus", Antivirus },
-            { "transformations", Transformations }
+            { "transformations", Transformations },
+            { "totalSize", TotalSize }
         };
     }
 }
