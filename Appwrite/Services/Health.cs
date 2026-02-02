@@ -77,7 +77,7 @@ namespace Appwrite.Services
         /// successful.
         /// </para>
         /// </summary>
-        public Task<Models.HealthStatus> GetCache()
+        public Task<Models.HealthStatusList> GetCache()
         {
             var apiPath = "/health/cache";
 
@@ -90,10 +90,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.HealthStatus Convert(Dictionary<string, object> it) =>
-                Models.HealthStatus.From(map: it);
+            static Models.HealthStatusList Convert(Dictionary<string, object> it) =>
+                Models.HealthStatusList.From(map: it);
 
-            return _client.Call<Models.HealthStatus>(
+            return _client.Call<Models.HealthStatusList>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -136,7 +136,7 @@ namespace Appwrite.Services
         /// Check the Appwrite database servers are up and connection is successful.
         /// </para>
         /// </summary>
-        public Task<Models.HealthStatus> GetDB()
+        public Task<Models.HealthStatusList> GetDB()
         {
             var apiPath = "/health/db";
 
@@ -149,10 +149,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.HealthStatus Convert(Dictionary<string, object> it) =>
-                Models.HealthStatus.From(map: it);
+            static Models.HealthStatusList Convert(Dictionary<string, object> it) =>
+                Models.HealthStatusList.From(map: it);
 
-            return _client.Call<Models.HealthStatus>(
+            return _client.Call<Models.HealthStatusList>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -165,7 +165,7 @@ namespace Appwrite.Services
         /// Check the Appwrite pub-sub servers are up and connection is successful.
         /// </para>
         /// </summary>
-        public Task<Models.HealthStatus> GetPubSub()
+        public Task<Models.HealthStatusList> GetPubSub()
         {
             var apiPath = "/health/pubsub";
 
@@ -178,10 +178,41 @@ namespace Appwrite.Services
             };
 
 
-            static Models.HealthStatus Convert(Dictionary<string, object> it) =>
-                Models.HealthStatus.From(map: it);
+            static Models.HealthStatusList Convert(Dictionary<string, object> it) =>
+                Models.HealthStatusList.From(map: it);
 
-            return _client.Call<Models.HealthStatus>(
+            return _client.Call<Models.HealthStatusList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get the number of audit logs that are waiting to be processed in the
+        /// Appwrite internal queue server.
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthQueue> GetQueueAudits(long? threshold = null)
+        {
+            var apiPath = "/health/queue/audits";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.HealthQueue Convert(Dictionary<string, object> it) =>
+                Models.HealthQueue.From(map: it);
+
+            return _client.Call<Models.HealthQueue>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,

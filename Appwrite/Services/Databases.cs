@@ -304,7 +304,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.update` instead.")]
-        public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null)
+        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null)
         {
             var apiPath = "/databases/{databaseId}"
                 .Replace("{databaseId}", databaseId);
@@ -478,7 +478,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTable` instead.")]
-        public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
+        public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string? name = null, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
                 .Replace("{databaseId}", databaseId)
@@ -1199,6 +1199,156 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a longtext attribute.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.AttributeLongtext> CreateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/longtext"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeLongtext Convert(Dictionary<string, object> it) =>
+                Models.AttributeLongtext.From(map: it);
+
+            return _client.Call<Models.AttributeLongtext>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a longtext attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.AttributeLongtext> UpdateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/longtext/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeLongtext Convert(Dictionary<string, object> it) =>
+                Models.AttributeLongtext.From(map: it);
+
+            return _client.Call<Models.AttributeLongtext>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a mediumtext attribute.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.AttributeMediumtext> CreateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/mediumtext"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeMediumtext Convert(Dictionary<string, object> it) =>
+                Models.AttributeMediumtext.From(map: it);
+
+            return _client.Call<Models.AttributeMediumtext>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a mediumtext attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.AttributeMediumtext> UpdateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/mediumtext/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeMediumtext Convert(Dictionary<string, object> it) =>
+                Models.AttributeMediumtext.From(map: it);
+
+            return _client.Call<Models.AttributeMediumtext>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Create a geometric point attribute.
         /// </para>
         /// </summary>
@@ -1468,6 +1618,81 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a text attribute.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.AttributeText> CreateTextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/text"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeText Convert(Dictionary<string, object> it) =>
+                Models.AttributeText.From(map: it);
+
+            return _client.Call<Models.AttributeText>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a text attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.AttributeText> UpdateTextAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/text/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeText Convert(Dictionary<string, object> it) =>
+                Models.AttributeText.From(map: it);
+
+            return _client.Call<Models.AttributeText>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Create a URL attribute.
         /// 
         /// </para>
@@ -1545,6 +1770,83 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a varchar attribute.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.AttributeVarchar> CreateVarcharAttribute(string databaseId, string collectionId, string key, long size, bool required, string? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/varchar"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "size", size },
+                { "required", required },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeVarchar Convert(Dictionary<string, object> it) =>
+                Models.AttributeVarchar.From(map: it);
+
+            return _client.Call<Models.AttributeVarchar>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a varchar attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.AttributeVarchar> UpdateVarcharAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, long? size = null, string? newKey = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/varchar/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "size", size },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeVarchar Convert(Dictionary<string, object> it) =>
+                Models.AttributeVarchar.From(map: it);
+
+            return _client.Call<Models.AttributeVarchar>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get attribute by ID.
         /// </para>
         /// </summary>
@@ -1565,12 +1867,15 @@ namespace Appwrite.Services
             };
 
 
+            static object Convert(Dictionary<string, object> it) =>
+                it;
 
             return _client.Call<object>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 
@@ -1914,7 +2219,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.upsertRow` instead.")]
-        public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null, string? transactionId = null)
+        public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object? data = null, List<string>? permissions = null, string? transactionId = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
@@ -2133,7 +2438,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIndex` instead.")]
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<string>? orders = null, List<long>? lengths = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)
@@ -2144,7 +2449,7 @@ namespace Appwrite.Services
                 { "key", key },
                 { "type", type?.Value },
                 { "attributes", attributes },
-                { "orders", orders },
+                { "orders", orders?.Select(e => e.Value).ToList() },
                 { "lengths", lengths }
             };
 

@@ -300,7 +300,7 @@ namespace Appwrite.Services
         /// Update a database by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null)
+        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null)
         {
             var apiPath = "/tablesdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
@@ -469,7 +469,7 @@ namespace Appwrite.Services
         /// Update a table by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Table> UpdateTable(string databaseId, string tableId, string name, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null)
+        public Task<Models.Table> UpdateTable(string databaseId, string tableId, string? name = null, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}"
                 .Replace("{databaseId}", databaseId)
@@ -1171,6 +1171,156 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a longtext column.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnLongtext> CreateLongtextColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/longtext"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnLongtext Convert(Dictionary<string, object> it) =>
+                Models.ColumnLongtext.From(map: it);
+
+            return _client.Call<Models.ColumnLongtext>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a longtext column. Changing the `default` value will not update
+        /// already existing rows.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnLongtext> UpdateLongtextColumn(string databaseId, string tableId, string key, bool required, string xdefault, string? newKey = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/longtext/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnLongtext Convert(Dictionary<string, object> it) =>
+                Models.ColumnLongtext.From(map: it);
+
+            return _client.Call<Models.ColumnLongtext>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a mediumtext column.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnMediumtext> CreateMediumtextColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/mediumtext"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnMediumtext Convert(Dictionary<string, object> it) =>
+                Models.ColumnMediumtext.From(map: it);
+
+            return _client.Call<Models.ColumnMediumtext>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a mediumtext column. Changing the `default` value will not update
+        /// already existing rows.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnMediumtext> UpdateMediumtextColumn(string databaseId, string tableId, string key, bool required, string xdefault, string? newKey = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/mediumtext/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnMediumtext Convert(Dictionary<string, object> it) =>
+                Models.ColumnMediumtext.From(map: it);
+
+            return _client.Call<Models.ColumnMediumtext>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Create a geometric point column.
         /// </para>
         /// </summary>
@@ -1359,6 +1509,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.9.0. Please use `TablesDB.createTextColumn` instead.")]
         public Task<Models.ColumnString> CreateStringColumn(string databaseId, string tableId, string key, long size, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/string"
@@ -1399,6 +1550,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTextColumn` instead.")]
         public Task<Models.ColumnString> UpdateStringColumn(string databaseId, string tableId, string key, bool required, string xdefault, long? size = null, string? newKey = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/string/{key}"
@@ -1424,6 +1576,81 @@ namespace Appwrite.Services
                 Models.ColumnString.From(map: it);
 
             return _client.Call<Models.ColumnString>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a text column.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnText> CreateTextColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/text"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnText Convert(Dictionary<string, object> it) =>
+                Models.ColumnText.From(map: it);
+
+            return _client.Call<Models.ColumnText>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a text column. Changing the `default` value will not update already
+        /// existing rows.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnText> UpdateTextColumn(string databaseId, string tableId, string key, bool required, string xdefault, string? newKey = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/text/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnText Convert(Dictionary<string, object> it) =>
+                Models.ColumnText.From(map: it);
+
+            return _client.Call<Models.ColumnText>(
                 method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
@@ -1508,6 +1735,83 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a varchar column.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnVarchar> CreateVarcharColumn(string databaseId, string tableId, string key, long size, bool required, string? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/varchar"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "size", size },
+                { "required", required },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnVarchar Convert(Dictionary<string, object> it) =>
+                Models.ColumnVarchar.From(map: it);
+
+            return _client.Call<Models.ColumnVarchar>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a varchar column. Changing the `default` value will not update
+        /// already existing rows.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnVarchar> UpdateVarcharColumn(string databaseId, string tableId, string key, bool required, string xdefault, long? size = null, string? newKey = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/varchar/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "default", xdefault },
+                { "size", size },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnVarchar Convert(Dictionary<string, object> it) =>
+                Models.ColumnVarchar.From(map: it);
+
+            return _client.Call<Models.ColumnVarchar>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get column by ID.
         /// </para>
         /// </summary>
@@ -1527,12 +1831,15 @@ namespace Appwrite.Services
             };
 
 
+            static object Convert(Dictionary<string, object> it) =>
+                it;
 
             return _client.Call<object>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 
@@ -1642,7 +1949,7 @@ namespace Appwrite.Services
         /// Type can be `key`, `fulltext`, or `unique`.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.IndexType type, List<string> columns, List<string>? orders = null, List<long>? lengths = null)
+        public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.IndexType type, List<string> columns, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes"
                 .Replace("{databaseId}", databaseId)
@@ -1653,7 +1960,7 @@ namespace Appwrite.Services
                 { "key", key },
                 { "type", type?.Value },
                 { "columns", columns },
-                { "orders", orders },
+                { "orders", orders?.Select(e => e.Value).ToList() },
                 { "lengths", lengths }
             };
 

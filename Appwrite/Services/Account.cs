@@ -189,12 +189,13 @@ namespace Appwrite.Services
         /// frame.
         /// </para>
         /// </summary>
-        public Task<Models.JWT> CreateJWT()
+        public Task<Models.JWT> CreateJWT(long? duration = null)
         {
             var apiPath = "/account/jwts";
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "duration", duration }
             };
 
             var apiHeaders = new Dictionary<string, string>()

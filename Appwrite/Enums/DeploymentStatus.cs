@@ -15,6 +15,7 @@ namespace Appwrite.Enums
         public static DeploymentStatus Processing => new DeploymentStatus("processing");
         public static DeploymentStatus Building => new DeploymentStatus("building");
         public static DeploymentStatus Ready => new DeploymentStatus("ready");
+        public static DeploymentStatus Canceled => new DeploymentStatus("canceled");
         public static DeploymentStatus Failed => new DeploymentStatus("failed");
     }
 }
