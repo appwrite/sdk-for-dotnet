@@ -54,7 +54,7 @@ namespace Appwrite.Services
         /// API.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? specification = null)
+        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<Appwrite.Enums.Scopes>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? specification = null)
         {
             var apiPath = "/functions";
 
@@ -71,7 +71,7 @@ namespace Appwrite.Services
                 { "logging", logging },
                 { "entrypoint", entrypoint },
                 { "commands", commands },
-                { "scopes", scopes },
+                { "scopes", scopes?.Select(e => e.Value).ToList() },
                 { "installationId", installationId },
                 { "providerRepositoryId", providerRepositoryId },
                 { "providerBranch", providerBranch },
@@ -190,7 +190,7 @@ namespace Appwrite.Services
         /// Update function by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Update(string functionId, string name, Appwrite.Enums.Runtime? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<string>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? specification = null)
+        public Task<Models.Function> Update(string functionId, string name, Appwrite.Enums.Runtime? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<Appwrite.Enums.Scopes>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? specification = null)
         {
             var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
@@ -207,7 +207,7 @@ namespace Appwrite.Services
                 { "logging", logging },
                 { "entrypoint", entrypoint },
                 { "commands", commands },
-                { "scopes", scopes },
+                { "scopes", scopes?.Select(e => e.Value).ToList() },
                 { "installationId", installationId },
                 { "providerRepositoryId", providerRepositoryId },
                 { "providerBranch", providerBranch },

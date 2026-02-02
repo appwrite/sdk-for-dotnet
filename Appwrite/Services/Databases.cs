@@ -304,7 +304,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.update` instead.")]
-        public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null)
+        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null)
         {
             var apiPath = "/databases/{databaseId}"
                 .Replace("{databaseId}", databaseId);
@@ -478,7 +478,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTable` instead.")]
-        public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
+        public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string? name = null, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
                 .Replace("{databaseId}", databaseId)
@@ -1565,12 +1565,15 @@ namespace Appwrite.Services
             };
 
 
+            static object Convert(Dictionary<string, object> it) =>
+                it;
 
             return _client.Call<object>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 
@@ -1914,7 +1917,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.upsertRow` instead.")]
-        public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null, string? transactionId = null)
+        public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object? data = null, List<string>? permissions = null, string? transactionId = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
@@ -2133,7 +2136,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIndex` instead.")]
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<string>? orders = null, List<long>? lengths = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)
@@ -2144,7 +2147,7 @@ namespace Appwrite.Services
                 { "key", key },
                 { "type", type?.Value },
                 { "attributes", attributes },
-                { "orders", orders },
+                { "orders", orders?.Select(e => e.Value).ToList() },
                 { "lengths", lengths }
             };
 

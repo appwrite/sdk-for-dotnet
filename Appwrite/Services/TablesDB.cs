@@ -300,7 +300,7 @@ namespace Appwrite.Services
         /// Update a database by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null)
+        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null)
         {
             var apiPath = "/tablesdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
@@ -469,7 +469,7 @@ namespace Appwrite.Services
         /// Update a table by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Table> UpdateTable(string databaseId, string tableId, string name, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null)
+        public Task<Models.Table> UpdateTable(string databaseId, string tableId, string? name = null, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}"
                 .Replace("{databaseId}", databaseId)
@@ -1527,12 +1527,15 @@ namespace Appwrite.Services
             };
 
 
+            static object Convert(Dictionary<string, object> it) =>
+                it;
 
             return _client.Call<object>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 
@@ -1642,7 +1645,7 @@ namespace Appwrite.Services
         /// Type can be `key`, `fulltext`, or `unique`.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.IndexType type, List<string> columns, List<string>? orders = null, List<long>? lengths = null)
+        public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.IndexType type, List<string> columns, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes"
                 .Replace("{databaseId}", databaseId)
@@ -1653,7 +1656,7 @@ namespace Appwrite.Services
                 { "key", key },
                 { "type", type?.Value },
                 { "columns", columns },
-                { "orders", orders },
+                { "orders", orders?.Select(e => e.Value).ToList() },
                 { "lengths", lengths }
             };
 
