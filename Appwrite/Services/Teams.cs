@@ -232,7 +232,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Membership> CreateMembership(string teamId, List<Appwrite.Enums.Roles> roles, string? email = null, string? userId = null, string? phone = null, string? url = null, string? name = null)
+        public Task<Models.Membership> CreateMembership(string teamId, List<string> roles, string? email = null, string? userId = null, string? phone = null, string? url = null, string? name = null)
         {
             var apiPath = "/teams/{teamId}/memberships"
                 .Replace("{teamId}", teamId);
@@ -242,7 +242,7 @@ namespace Appwrite.Services
                 { "email", email },
                 { "userId", userId },
                 { "phone", phone },
-                { "roles", roles?.Select(e => e.Value).ToList() },
+                { "roles", roles },
                 { "url", url },
                 { "name", name }
             };
@@ -305,7 +305,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Membership> UpdateMembership(string teamId, string membershipId, List<Appwrite.Enums.Roles> roles)
+        public Task<Models.Membership> UpdateMembership(string teamId, string membershipId, List<string> roles)
         {
             var apiPath = "/teams/{teamId}/memberships/{membershipId}"
                 .Replace("{teamId}", teamId)
@@ -313,7 +313,7 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "roles", roles?.Select(e => e.Value).ToList() }
+                { "roles", roles }
             };
 
             var apiHeaders = new Dictionary<string, string>()
