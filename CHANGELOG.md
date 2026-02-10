@@ -1,22 +1,11 @@
 # Change Log
 
-## 0.25.0
+## 0.25.1
 
-* Add array-based enum parameters (e.g., `permissions: IReadOnlyList<BrowserPermission>`).
-* Breaking change: `Output` enum has been removed; use `ImageFormat` instead.
-* Add `getQueueAudits` support to `Health` service.
-* Add longtext/mediumtext/text/varchar attribute and column helpers to `Databases` and `TablesDB` services.
-
-## 0.24.0
-
-* Added ability to create columns and indexes synchronously while creating a table
-
-## 0.23.0
-
-* Rename `VCSDeploymentType` enum to `VCSReferenceType`
-* Change `CreateTemplateDeployment` method signature: replace `Version` parameter with `Type` (TemplateReferenceType) and `Reference` parameters
-* Add `GetScreenshot` method to `Avatars` service
-* Add `Theme`, `Timezone` and `Output` enums
+* Update SDK as per latest server specs, these include -
+    * Introduces Backups module for managing Database backups
+    * Introduces Organization module
+    * Introduce Account level keys, Backup Service & Models
 
 ## 0.22.0
 
@@ -98,10 +87,14 @@
 * Added `scheduledAt` parameter to `createExecution()`: Enables creating a delayed execution
 
 #### Breaking changes
-You can find the new syntax for breaking changes in the [Appwrite API references](https://appwrite.io/docs/references). Select version `1.6.x`.
+
+You can find the new syntax for breaking changes in the [Appwrite API references](https://appwrite.io/docs/references).
+Select version `1.6.x`.
+
 * Removed `otp` parameter from `deleteMFAAuthenticator`.
 * Added `scopes` parameter for create/update function.
 * Renamed `templateBranch` to `templateVersion`  in `createFunction()`.
 * Renamed `downloadDeployment()` to `getDeploymentDownload()`
 
-> **Please note: This version is compatible with Appwrite 1.6 and later only. If you do not update your Appwrite SDK, old SDKs will not break your app. Appwrite APIs are backwards compatible.**
+> **Please note: This version is compatible with Appwrite 1.6 and later only. If you do not update your Appwrite SDK,
+old SDKs will not break your app. Appwrite APIs are backwards compatible.**
