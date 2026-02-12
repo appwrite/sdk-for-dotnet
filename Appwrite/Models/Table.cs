@@ -41,6 +41,12 @@ namespace Appwrite.Models
         [JsonPropertyName("indexes")]
         public List<ColumnIndex> Indexes { get; private set; }
 
+        [JsonPropertyName("bytesMax")]
+        public long BytesMax { get; private set; }
+
+        [JsonPropertyName("bytesUsed")]
+        public long BytesUsed { get; private set; }
+
         public Table(
             string id,
             string createdAt,
@@ -51,7 +57,9 @@ namespace Appwrite.Models
             bool enabled,
             bool rowSecurity,
             List<object> columns,
-            List<ColumnIndex> indexes
+            List<ColumnIndex> indexes,
+            long bytesMax,
+            long bytesUsed
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -63,6 +71,8 @@ namespace Appwrite.Models
             RowSecurity = rowSecurity;
             Columns = columns;
             Indexes = indexes;
+            BytesMax = bytesMax;
+            BytesUsed = bytesUsed;
         }
 
         public static Table From(Dictionary<string, object> map) => new Table(
@@ -75,7 +85,9 @@ namespace Appwrite.Models
             enabled: (bool)map["enabled"],
             rowSecurity: (bool)map["rowSecurity"],
             columns: map["columns"].ConvertToList<object>(),
-            indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => ColumnIndex.From(map: it)).ToList()
+            indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => ColumnIndex.From(map: it)).ToList(),
+            bytesMax: Convert.ToInt64(map["bytesMax"]),
+            bytesUsed: Convert.ToInt64(map["bytesUsed"])
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -89,7 +101,9 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "rowSecurity", RowSecurity },
             { "columns", Columns },
-            { "indexes", Indexes.Select(it => it.ToMap()) }
+            { "indexes", Indexes.Select(it => it.ToMap()) },
+            { "bytesMax", BytesMax },
+            { "bytesUsed", BytesUsed }
         };
     }
 }

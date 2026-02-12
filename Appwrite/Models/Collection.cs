@@ -41,6 +41,12 @@ namespace Appwrite.Models
         [JsonPropertyName("indexes")]
         public List<Index> Indexes { get; private set; }
 
+        [JsonPropertyName("bytesMax")]
+        public long BytesMax { get; private set; }
+
+        [JsonPropertyName("bytesUsed")]
+        public long BytesUsed { get; private set; }
+
         public Collection(
             string id,
             string createdAt,
@@ -51,7 +57,9 @@ namespace Appwrite.Models
             bool enabled,
             bool documentSecurity,
             List<object> attributes,
-            List<Index> indexes
+            List<Index> indexes,
+            long bytesMax,
+            long bytesUsed
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -63,6 +71,8 @@ namespace Appwrite.Models
             DocumentSecurity = documentSecurity;
             Attributes = attributes;
             Indexes = indexes;
+            BytesMax = bytesMax;
+            BytesUsed = bytesUsed;
         }
 
         public static Collection From(Dictionary<string, object> map) => new Collection(
@@ -75,7 +85,9 @@ namespace Appwrite.Models
             enabled: (bool)map["enabled"],
             documentSecurity: (bool)map["documentSecurity"],
             attributes: map["attributes"].ConvertToList<object>(),
-            indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Index.From(map: it)).ToList()
+            indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Index.From(map: it)).ToList(),
+            bytesMax: Convert.ToInt64(map["bytesMax"]),
+            bytesUsed: Convert.ToInt64(map["bytesUsed"])
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -89,7 +101,9 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "documentSecurity", DocumentSecurity },
             { "attributes", Attributes },
-            { "indexes", Indexes.Select(it => it.ToMap()) }
+            { "indexes", Indexes.Select(it => it.ToMap()) },
+            { "bytesMax", BytesMax },
+            { "bytesUsed", BytesUsed }
         };
     }
 }

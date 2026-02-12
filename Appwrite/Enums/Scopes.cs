@@ -66,5 +66,13 @@ namespace Appwrite.Enums
         public static Scopes AssistantRead => new Scopes("assistant.read");
         public static Scopes TokensRead => new Scopes("tokens.read");
         public static Scopes TokensWrite => new Scopes("tokens.write");
+        public static Scopes PoliciesWrite => new Scopes("policies.write");
+        public static Scopes PoliciesRead => new Scopes("policies.read");
+        public static Scopes ArchivesRead => new Scopes("archives.read");
+        public static Scopes ArchivesWrite => new Scopes("archives.write");
+        public static Scopes RestorationsRead => new Scopes("restorations.read");
+        public static Scopes RestorationsWrite => new Scopes("restorations.write");
+        public static Scopes DomainsRead => new Scopes("domains.read");
+        public static Scopes DomainsWrite => new Scopes("domains.write");
     }
 }

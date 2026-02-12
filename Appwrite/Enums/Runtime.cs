@@ -33,9 +33,6 @@ namespace Appwrite.Enums
         public static Runtime Python312 => new Runtime("python-3.12");
         public static Runtime PythonMl311 => new Runtime("python-ml-3.11");
         public static Runtime PythonMl312 => new Runtime("python-ml-3.12");
-        public static Runtime Deno121 => new Runtime("deno-1.21");
-        public static Runtime Deno124 => new Runtime("deno-1.24");
-        public static Runtime Deno135 => new Runtime("deno-1.35");
         public static Runtime Deno140 => new Runtime("deno-1.40");
         public static Runtime Deno146 => new Runtime("deno-1.46");
         public static Runtime Deno20 => new Runtime("deno-2.0");
@@ -50,6 +47,7 @@ namespace Appwrite.Enums
         public static Runtime Dart35 => new Runtime("dart-3.5");
         public static Runtime Dart38 => new Runtime("dart-3.8");
         public static Runtime Dart39 => new Runtime("dart-3.9");
+        public static Runtime Dart310 => new Runtime("dart-3.10");
         public static Runtime Dotnet60 => new Runtime("dotnet-6.0");
         public static Runtime Dotnet70 => new Runtime("dotnet-7.0");
         public static Runtime Dotnet80 => new Runtime("dotnet-8.0");
@@ -78,5 +76,6 @@ namespace Appwrite.Enums
         public static Runtime Flutter329 => new Runtime("flutter-3.29");
         public static Runtime Flutter332 => new Runtime("flutter-3.32");
         public static Runtime Flutter335 => new Runtime("flutter-3.35");
+        public static Runtime Flutter338 => new Runtime("flutter-3.38");
     }
 }
