@@ -33,9 +33,6 @@ namespace Appwrite.Enums
         public static BuildRuntime Python312 => new BuildRuntime("python-3.12");
         public static BuildRuntime PythonMl311 => new BuildRuntime("python-ml-3.11");
         public static BuildRuntime PythonMl312 => new BuildRuntime("python-ml-3.12");
-        public static BuildRuntime Deno121 => new BuildRuntime("deno-1.21");
-        public static BuildRuntime Deno124 => new BuildRuntime("deno-1.24");
-        public static BuildRuntime Deno135 => new BuildRuntime("deno-1.35");
         public static BuildRuntime Deno140 => new BuildRuntime("deno-1.40");
         public static BuildRuntime Deno146 => new BuildRuntime("deno-1.46");
         public static BuildRuntime Deno20 => new BuildRuntime("deno-2.0");
