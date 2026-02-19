@@ -7,6 +7,30 @@
 * Encryption support added to text attributes: AttributeLongtext and AttributeMediumtext now include an optional Encrypt boolean property, with mapping to and from API payloads.
 * Minor model/serialization updates to accommodate the new encrypt field across longtext and mediumtext attributes.
 
+## 0.26.0
+
+* Add `dart-3.10` and `flutter-3.38` to `BuildRuntime` and `Runtime` enums
+* Add `bytesMax` and `bytesUsed` properties to `Collection` and `Table` models
+* Fix `Roles` enum removed from Teams service; `roles` parameter now accepts `IReadOnlyList<string>`
+
+## 0.25.0
+
+* Add array-based enum parameters (e.g., `permissions: IReadOnlyList<BrowserPermission>`).
+* Breaking change: `Output` enum has been removed; use `ImageFormat` instead.
+* Add `getQueueAudits` support to `Health` service.
+* Add longtext/mediumtext/text/varchar attribute and column helpers to `Databases` and `TablesDB` services.
+
+## 0.24.0
+
+* Added ability to create columns and indexes synchronously while creating a table
+
+## 0.23.0
+
+* Rename `VCSDeploymentType` enum to `VCSReferenceType`
+* Change `CreateTemplateDeployment` method signature: replace `Version` parameter with `Type` (TemplateReferenceType) and `Reference` parameters
+* Add `GetScreenshot` method to `Avatars` service
+* Add `Theme`, `Timezone` and `Output` enums
+
 ## 0.22.0
 
 * Add `total` parameter to list queries allowing skipping counting rows in a table for improved performance
