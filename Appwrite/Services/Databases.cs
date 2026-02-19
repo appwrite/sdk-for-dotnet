@@ -1203,7 +1203,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeLongtext> CreateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.AttributeLongtext> CreateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/longtext"
                 .Replace("{databaseId}", databaseId)
@@ -1214,7 +1214,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", xdefault },
-                { "array", array }
+                { "array", array },
+                { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1278,7 +1279,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeMediumtext> CreateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.AttributeMediumtext> CreateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/mediumtext"
                 .Replace("{databaseId}", databaseId)
@@ -1289,7 +1290,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", xdefault },
-                { "array", array }
+                { "array", array },
+                { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1622,7 +1624,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeText> CreateTextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.AttributeText> CreateTextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/text"
                 .Replace("{databaseId}", databaseId)
@@ -1633,7 +1635,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", xdefault },
-                { "array", array }
+                { "array", array },
+                { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1774,7 +1777,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeVarchar> CreateVarcharAttribute(string databaseId, string collectionId, string key, long size, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.AttributeVarchar> CreateVarcharAttribute(string databaseId, string collectionId, string key, long size, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/varchar"
                 .Replace("{databaseId}", databaseId)
@@ -1786,7 +1789,8 @@ namespace Appwrite.Services
                 { "size", size },
                 { "required", required },
                 { "default", xdefault },
-                { "array", array }
+                { "array", array },
+                { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()

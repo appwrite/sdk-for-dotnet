@@ -59,6 +59,8 @@ namespace Appwrite.Enums
         public static Scopes TargetsWrite => new Scopes("targets.write");
         public static Scopes RulesRead => new Scopes("rules.read");
         public static Scopes RulesWrite => new Scopes("rules.write");
+        public static Scopes SchedulesRead => new Scopes("schedules.read");
+        public static Scopes SchedulesWrite => new Scopes("schedules.write");
         public static Scopes MigrationsRead => new Scopes("migrations.read");
         public static Scopes MigrationsWrite => new Scopes("migrations.write");
         public static Scopes VcsRead => new Scopes("vcs.read");
@@ -74,5 +76,6 @@ namespace Appwrite.Enums
         public static Scopes RestorationsWrite => new Scopes("restorations.write");
         public static Scopes DomainsRead => new Scopes("domains.read");
         public static Scopes DomainsWrite => new Scopes("domains.write");
+        public static Scopes EventsRead => new Scopes("events.read");
     }
 }

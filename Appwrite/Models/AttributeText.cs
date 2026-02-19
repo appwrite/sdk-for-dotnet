@@ -38,6 +38,9 @@ namespace Appwrite.Models
         [JsonPropertyName("default")]
         public string? Default { get; private set; }
 
+        [JsonPropertyName("encrypt")]
+        public bool? Encrypt { get; private set; }
+
         public AttributeText(
             string key,
             string type,
@@ -47,7 +50,8 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            string? xdefault
+            string? xdefault,
+            bool? encrypt
         ) {
             Key = key;
             Type = type;
@@ -58,6 +62,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Default = xdefault;
+            Encrypt = encrypt;
         }
 
         public static AttributeText From(Dictionary<string, object> map) => new AttributeText(
@@ -69,7 +74,8 @@ namespace Appwrite.Models
             array: (bool?)map["array"],
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
+            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null,
+            encrypt: (bool?)map["encrypt"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -82,7 +88,8 @@ namespace Appwrite.Models
             { "array", Array },
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
-            { "default", Default }
+            { "default", Default },
+            { "encrypt", Encrypt }
         };
     }
 }
