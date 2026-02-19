@@ -16,5 +16,6 @@ AttributeLongtext result = await databases.CreateLongtextAttribute(
     key: "",
     required: false,
     default: "<DEFAULT>", // optional
-    array: false // optional
+    array: false, // optional
+    encrypt: false // optional
 );```

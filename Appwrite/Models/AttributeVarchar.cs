@@ -41,6 +41,9 @@ namespace Appwrite.Models
         [JsonPropertyName("default")]
         public string? Default { get; private set; }
 
+        [JsonPropertyName("encrypt")]
+        public bool? Encrypt { get; private set; }
+
         public AttributeVarchar(
             string key,
             string type,
@@ -51,7 +54,8 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             long size,
-            string? xdefault
+            string? xdefault,
+            bool? encrypt
         ) {
             Key = key;
             Type = type;
@@ -63,6 +67,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Size = size;
             Default = xdefault;
+            Encrypt = encrypt;
         }
 
         public static AttributeVarchar From(Dictionary<string, object> map) => new AttributeVarchar(
@@ -75,7 +80,8 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             size: Convert.ToInt64(map["size"]),
-            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
+            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null,
+            encrypt: (bool?)map["encrypt"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -89,7 +95,8 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "size", Size },
-            { "default", Default }
+            { "default", Default },
+            { "encrypt", Encrypt }
         };
     }
 }

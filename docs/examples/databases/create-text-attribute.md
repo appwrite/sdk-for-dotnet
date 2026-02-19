@@ -16,5 +16,6 @@ AttributeText result = await databases.CreateTextAttribute(
     key: "",
     required: false,
     default: "<DEFAULT>", // optional
-    array: false // optional
+    array: false, // optional
+    encrypt: false // optional
 );```

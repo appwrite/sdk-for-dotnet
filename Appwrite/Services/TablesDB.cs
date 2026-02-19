@@ -1175,7 +1175,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnLongtext> CreateLongtextColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.ColumnLongtext> CreateLongtextColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/longtext"
                 .Replace("{databaseId}", databaseId)
@@ -1186,7 +1186,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", xdefault },
-                { "array", array }
+                { "array", array },
+                { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1250,7 +1251,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnMediumtext> CreateMediumtextColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.ColumnMediumtext> CreateMediumtextColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/mediumtext"
                 .Replace("{databaseId}", databaseId)
@@ -1261,7 +1262,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", xdefault },
-                { "array", array }
+                { "array", array },
+                { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1589,7 +1591,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnText> CreateTextColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.ColumnText> CreateTextColumn(string databaseId, string tableId, string key, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/text"
                 .Replace("{databaseId}", databaseId)
@@ -1600,7 +1602,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", xdefault },
-                { "array", array }
+                { "array", array },
+                { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1739,7 +1742,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnVarchar> CreateVarcharColumn(string databaseId, string tableId, string key, long size, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.ColumnVarchar> CreateVarcharColumn(string databaseId, string tableId, string key, long size, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/varchar"
                 .Replace("{databaseId}", databaseId)
@@ -1751,7 +1754,8 @@ namespace Appwrite.Services
                 { "size", size },
                 { "required", required },
                 { "default", xdefault },
-                { "array", array }
+                { "array", array },
+                { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()

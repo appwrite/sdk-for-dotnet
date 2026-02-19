@@ -8,8 +8,8 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Health health = new Health(client);
+Activities activities = new Activities(client);
 
-HealthQueue result = await health.GetQueueBillingTeamAggregation(
-    threshold: 0 // optional
+ActivityEventList result = await activities.ListEvents(
+    queries: "" // optional
 );```

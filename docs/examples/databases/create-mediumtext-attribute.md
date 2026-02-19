@@ -16,5 +16,6 @@ AttributeMediumtext result = await databases.CreateMediumtextAttribute(
     key: "",
     required: false,
     default: "<DEFAULT>", // optional
-    array: false // optional
+    array: false, // optional
+    encrypt: false // optional
 );```

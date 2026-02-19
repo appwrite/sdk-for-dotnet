@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.27.0
+
+* Added broad new runtime options across multiple languages (Node 23, 24, 25; PHP 8.4; Ruby 3.4 and 4.0; Python 3.13 and 3.14; Python ML 3.13 and 3.14; Deno 2.5 and 2.6; Go 1.23–1.26; Bun 1.2 and 1.3; Java 25; Kotlin 2.3; Swift 6.2; and Dotnet 10).
+* Introduced new API access scopes: schedules.read, schedules.write, and events.read for finer-grained permissions.
+* Encryption support added to text attributes: AttributeLongtext and AttributeMediumtext now include an optional Encrypt boolean property, with mapping to and from API payloads.
+* Minor model/serialization updates to accommodate the new encrypt field across longtext and mediumtext attributes.
+
 ## 0.26.0
 
 * Add `dart-3.10` and `flutter-3.38` to `BuildRuntime` and `Runtime` enums
