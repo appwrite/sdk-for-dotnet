@@ -2053,7 +2053,7 @@ namespace Appwrite.Services
         /// params to filter your results.
         /// </para>
         /// </summary>
-        public Task<Models.RowList> ListRows(string databaseId, string tableId, List<string>? queries = null, string? transactionId = null, bool? total = null)
+        public Task<Models.RowList> ListRows(string databaseId, string tableId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
                 .Replace("{databaseId}", databaseId)
@@ -2063,7 +2063,8 @@ namespace Appwrite.Services
             {
                 { "queries", queries },
                 { "transactionId", transactionId },
-                { "total", total }
+                { "total", total },
+                { "ttl", ttl }
             };
 
             var apiHeaders = new Dictionary<string, string>()

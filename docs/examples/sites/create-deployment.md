@@ -13,8 +13,8 @@ Sites sites = new Sites(client);
 Deployment result = await sites.CreateDeployment(
     siteId: "<SITE_ID>",
     code: InputFile.FromPath("./path-to-files/image.jpg"),
-    activate: false,
     installCommand: "<INSTALL_COMMAND>", // optional
     buildCommand: "<BUILD_COMMAND>", // optional
-    outputDirectory: "<OUTPUT_DIRECTORY>" // optional
+    outputDirectory: "<OUTPUT_DIRECTORY>", // optional
+    activate: false // optional
 );```

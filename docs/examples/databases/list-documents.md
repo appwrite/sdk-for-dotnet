@@ -15,5 +15,6 @@ DocumentList result = await databases.ListDocuments(
     collectionId: "<COLLECTION_ID>",
     queries: new List<string>(), // optional
     transactionId: "<TRANSACTION_ID>", // optional
-    total: false // optional
+    total: false, // optional
+    ttl: 0 // optional
 );```

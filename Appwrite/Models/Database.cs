@@ -29,21 +29,13 @@ namespace Appwrite.Models
         [JsonPropertyName("type")]
         public DatabaseType Type { get; private set; }
 
-        [JsonPropertyName("policies")]
-        public List<Index> Policies { get; private set; }
-
-        [JsonPropertyName("archives")]
-        public List<Collection> Archives { get; private set; }
-
         public Database(
             string id,
             string name,
             string createdAt,
             string updatedAt,
             bool enabled,
-            DatabaseType type,
-            List<Index> policies,
-            List<Collection> archives
+            DatabaseType type
         ) {
             Id = id;
             Name = name;
@@ -51,8 +43,6 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Enabled = enabled;
             Type = type;
-            Policies = policies;
-            Archives = archives;
         }
 
         public static Database From(Dictionary<string, object> map) => new Database(
@@ -61,9 +51,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             enabled: (bool)map["enabled"],
-            type: new DatabaseType(map["type"].ToString()!),
-            policies: map["policies"].ConvertToList<Dictionary<string, object>>().Select(it => Index.From(map: it)).ToList(),
-            archives: map["archives"].ConvertToList<Dictionary<string, object>>().Select(it => Collection.From(map: it)).ToList()
+            type: new DatabaseType(map["type"].ToString()!)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -73,9 +61,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "enabled", Enabled },
-            { "type", Type.Value },
-            { "policies", Policies.Select(it => it.ToMap()) },
-            { "archives", Archives.Select(it => it.ToMap()) }
+            { "type", Type.Value }
         };
     }
 }

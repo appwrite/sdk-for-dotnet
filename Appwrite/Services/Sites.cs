@@ -333,7 +333,7 @@ namespace Appwrite.Services
         /// need to update the site's deployment to use your new deployment ID.
         /// </para>
         /// </summary>
-        public Task<Models.Deployment> CreateDeployment(string siteId, InputFile code, bool activate, string? installCommand = null, string? buildCommand = null, string? outputDirectory = null, Action<UploadProgress>? onProgress = null)
+        public Task<Models.Deployment> CreateDeployment(string siteId, InputFile code, string? installCommand = null, string? buildCommand = null, string? outputDirectory = null, bool? activate = null, Action<UploadProgress>? onProgress = null)
         {
             var apiPath = "/sites/{siteId}/deployments"
                 .Replace("{siteId}", siteId);

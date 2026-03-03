@@ -1540,6 +1540,44 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update relationship attribute. [Learn more about relationship
+        /// attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
+        /// 
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateRelationshipColumn` instead.")]
+        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/relationship/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "onDelete", onDelete?.Value },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeRelationship Convert(Dictionary<string, object> it) =>
+                Models.AttributeRelationship.From(map: it);
+
+            return _client.Call<Models.AttributeRelationship>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Create a string attribute.
         /// 
         /// </para>
@@ -1915,50 +1953,12 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Update relationship attribute. [Learn more about relationship
-        /// attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
-        /// 
-        /// </para>
-        /// </summary>
-        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateRelationshipColumn` instead.")]
-        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null)
-        {
-            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}/relationship"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "onDelete", onDelete?.Value },
-                { "newKey", newKey }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "content-type", "application/json" }
-            };
-
-
-            static Models.AttributeRelationship Convert(Dictionary<string, object> it) =>
-                Models.AttributeRelationship.From(map: it);
-
-            return _client.Call<Models.AttributeRelationship>(
-                method: "PATCH",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
         /// Get a list of all the user's documents in a given collection. You can use
         /// the query params to filter your results.
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listRows` instead.")]
-        public Task<Models.DocumentList> ListDocuments(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null, bool? total = null)
+        public Task<Models.DocumentList> ListDocuments(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
@@ -1968,7 +1968,8 @@ namespace Appwrite.Services
             {
                 { "queries", queries },
                 { "transactionId", transactionId },
-                { "total", total }
+                { "total", total },
+                { "ttl", ttl }
             };
 
             var apiHeaders = new Dictionary<string, string>()
