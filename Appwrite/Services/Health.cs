@@ -133,6 +133,39 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get console pausing health status. Monitors projects approaching the pause
+        /// threshold to detect potential issues with console access tracking.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthStatus> GetConsolePausing(long? threshold = null, long? inactivityDays = null)
+        {
+            var apiPath = "/health/console-pausing";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "threshold", threshold },
+                { "inactivityDays", inactivityDays }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.HealthStatus Convert(Dictionary<string, object> it) =>
+                Models.HealthStatus.From(map: it);
+
+            return _client.Call<Models.HealthStatus>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Check the Appwrite database servers are up and connection is successful.
         /// </para>
         /// </summary>

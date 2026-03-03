@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.0
+
+* Breaking: Sites.CreateDeployment signature changed; 'activate' moved after outputDirectory.
+* Breaking: Relationship API path updated; old path deprecated.
+* Added GetConsolePausing health check method.
+* Added ttl parameter to ListDocuments and ListRows.
+* Updated deployment example to show activate parameter placement.
+
 ## 0.27.0
 
 * Added broad new runtime options across multiple languages (Node 23, 24, 25; PHP 8.4; Ruby 3.4 and 4.0; Python 3.13 and 3.14; Python ML 3.13 and 3.14; Deno 2.5 and 2.6; Go 1.23–1.26; Bun 1.2 and 1.3; Java 25; Kotlin 2.3; Swift 6.2; and Dotnet 10).
