@@ -15,7 +15,7 @@ namespace Appwrite.Models
         public string Id { get; private set; }
 
         [JsonPropertyName("$sequence")]
-        public long Sequence { get; private set; }
+        public string Sequence { get; private set; }
 
         [JsonPropertyName("$tableId")]
         public string TableId { get; private set; }
@@ -36,7 +36,7 @@ namespace Appwrite.Models
 
         public Row(
             string id,
-            long sequence,
+            string sequence,
             string tableId,
             string databaseId,
             string createdAt,
@@ -56,7 +56,7 @@ namespace Appwrite.Models
 
         public static Row From(Dictionary<string, object> map) => new Row(
             id: map["$id"].ToString(),
-            sequence: Convert.ToInt64(map["$sequence"]),
+            sequence: map["$sequence"].ToString(),
             tableId: map["$tableId"].ToString(),
             databaseId: map["$databaseId"].ToString(),
             createdAt: map["$createdAt"].ToString(),

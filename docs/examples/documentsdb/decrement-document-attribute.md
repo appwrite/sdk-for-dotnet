@@ -1,0 +1,21 @@
+```csharp
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
+    .SetSession(""); // The user session to authenticate with
+
+DocumentsDB documentsDB = new DocumentsDB(client);
+
+Document result = await documentsDB.DecrementDocumentAttribute(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "",
+    value: 0, // optional
+    min: 0, // optional
+    transactionId: "<TRANSACTION_ID>" // optional
+);```

@@ -35,6 +35,9 @@ namespace Appwrite.Models
         [JsonPropertyName("framework")]
         public string Framework { get; private set; }
 
+        [JsonPropertyName("deploymentRetention")]
+        public long DeploymentRetention { get; private set; }
+
         [JsonPropertyName("deploymentId")]
         public string DeploymentId { get; private set; }
 
@@ -68,6 +71,9 @@ namespace Appwrite.Models
         [JsonPropertyName("buildCommand")]
         public string BuildCommand { get; private set; }
 
+        [JsonPropertyName("startCommand")]
+        public string StartCommand { get; private set; }
+
         [JsonPropertyName("outputDirectory")]
         public string OutputDirectory { get; private set; }
 
@@ -86,8 +92,11 @@ namespace Appwrite.Models
         [JsonPropertyName("providerSilentMode")]
         public bool ProviderSilentMode { get; private set; }
 
-        [JsonPropertyName("specification")]
-        public string Specification { get; private set; }
+        [JsonPropertyName("buildSpecification")]
+        public string BuildSpecification { get; private set; }
+
+        [JsonPropertyName("runtimeSpecification")]
+        public string RuntimeSpecification { get; private set; }
 
         [JsonPropertyName("buildRuntime")]
         public string BuildRuntime { get; private set; }
@@ -107,6 +116,7 @@ namespace Appwrite.Models
             bool live,
             bool logging,
             string framework,
+            long deploymentRetention,
             string deploymentId,
             string deploymentCreatedAt,
             string deploymentScreenshotLight,
@@ -118,13 +128,15 @@ namespace Appwrite.Models
             long timeout,
             string installCommand,
             string buildCommand,
+            string startCommand,
             string outputDirectory,
             string installationId,
             string providerRepositoryId,
             string providerBranch,
             string providerRootDirectory,
             bool providerSilentMode,
-            string specification,
+            string buildSpecification,
+            string runtimeSpecification,
             string buildRuntime,
             string adapter,
             string fallbackFile
@@ -137,6 +149,7 @@ namespace Appwrite.Models
             Live = live;
             Logging = logging;
             Framework = framework;
+            DeploymentRetention = deploymentRetention;
             DeploymentId = deploymentId;
             DeploymentCreatedAt = deploymentCreatedAt;
             DeploymentScreenshotLight = deploymentScreenshotLight;
@@ -148,13 +161,15 @@ namespace Appwrite.Models
             Timeout = timeout;
             InstallCommand = installCommand;
             BuildCommand = buildCommand;
+            StartCommand = startCommand;
             OutputDirectory = outputDirectory;
             InstallationId = installationId;
             ProviderRepositoryId = providerRepositoryId;
             ProviderBranch = providerBranch;
             ProviderRootDirectory = providerRootDirectory;
             ProviderSilentMode = providerSilentMode;
-            Specification = specification;
+            BuildSpecification = buildSpecification;
+            RuntimeSpecification = runtimeSpecification;
             BuildRuntime = buildRuntime;
             Adapter = adapter;
             FallbackFile = fallbackFile;
@@ -169,6 +184,7 @@ namespace Appwrite.Models
             live: (bool)map["live"],
             logging: (bool)map["logging"],
             framework: map["framework"].ToString(),
+            deploymentRetention: Convert.ToInt64(map["deploymentRetention"]),
             deploymentId: map["deploymentId"].ToString(),
             deploymentCreatedAt: map["deploymentCreatedAt"].ToString(),
             deploymentScreenshotLight: map["deploymentScreenshotLight"].ToString(),
@@ -180,13 +196,15 @@ namespace Appwrite.Models
             timeout: Convert.ToInt64(map["timeout"]),
             installCommand: map["installCommand"].ToString(),
             buildCommand: map["buildCommand"].ToString(),
+            startCommand: map["startCommand"].ToString(),
             outputDirectory: map["outputDirectory"].ToString(),
             installationId: map["installationId"].ToString(),
             providerRepositoryId: map["providerRepositoryId"].ToString(),
             providerBranch: map["providerBranch"].ToString(),
             providerRootDirectory: map["providerRootDirectory"].ToString(),
             providerSilentMode: (bool)map["providerSilentMode"],
-            specification: map["specification"].ToString(),
+            buildSpecification: map["buildSpecification"].ToString(),
+            runtimeSpecification: map["runtimeSpecification"].ToString(),
             buildRuntime: map["buildRuntime"].ToString(),
             adapter: map["adapter"].ToString(),
             fallbackFile: map["fallbackFile"].ToString()
@@ -202,6 +220,7 @@ namespace Appwrite.Models
             { "live", Live },
             { "logging", Logging },
             { "framework", Framework },
+            { "deploymentRetention", DeploymentRetention },
             { "deploymentId", DeploymentId },
             { "deploymentCreatedAt", DeploymentCreatedAt },
             { "deploymentScreenshotLight", DeploymentScreenshotLight },
@@ -213,13 +232,15 @@ namespace Appwrite.Models
             { "timeout", Timeout },
             { "installCommand", InstallCommand },
             { "buildCommand", BuildCommand },
+            { "startCommand", StartCommand },
             { "outputDirectory", OutputDirectory },
             { "installationId", InstallationId },
             { "providerRepositoryId", ProviderRepositoryId },
             { "providerBranch", ProviderBranch },
             { "providerRootDirectory", ProviderRootDirectory },
             { "providerSilentMode", ProviderSilentMode },
-            { "specification", Specification },
+            { "buildSpecification", BuildSpecification },
+            { "runtimeSpecification", RuntimeSpecification },
             { "buildRuntime", BuildRuntime },
             { "adapter", Adapter },
             { "fallbackFile", FallbackFile }

@@ -15,7 +15,7 @@ Index result = await databases.CreateIndex(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "",
-    type: IndexType.Key,
+    type: DatabasesIndexType.Key,
     attributes: new List<string>(),
     orders: new List&lt;OrderBy&gt; { OrderBy.Asc }, // optional
     lengths: new List<long>() // optional

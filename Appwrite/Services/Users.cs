@@ -507,6 +507,43 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Enable or disable whether a user can impersonate other users. When
+        /// impersonation headers are used, the request runs as the target user for API
+        /// behavior, while internal audit logs still attribute the action to the
+        /// original impersonator and store the impersonated target details only in
+        /// internal audit payload data.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.User> UpdateImpersonator(string userId, bool impersonator)
+        {
+            var apiPath = "/users/{userId}/impersonator"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "impersonator", impersonator }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.User Convert(Dictionary<string, object> it) =>
+                Models.User.From(map: it);
+
+            return _client.Call<Models.User>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Use this endpoint to create a JSON Web Token for user by its unique ID. You
         /// can use the resulting JWT to authenticate on behalf of the user. The JWT
         /// secret will become invalid if the session it uses gets deleted.

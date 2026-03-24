@@ -2443,7 +2443,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIndex` instead.")]
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.IndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.DatabasesIndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)

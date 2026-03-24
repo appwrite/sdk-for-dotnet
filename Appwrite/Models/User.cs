@@ -68,6 +68,12 @@ namespace Appwrite.Models
         [JsonPropertyName("accessedAt")]
         public string AccessedAt { get; private set; }
 
+        [JsonPropertyName("impersonator")]
+        public bool? Impersonator { get; private set; }
+
+        [JsonPropertyName("impersonatorUserId")]
+        public string? ImpersonatorUserId { get; private set; }
+
         public User(
             string id,
             string createdAt,
@@ -87,7 +93,9 @@ namespace Appwrite.Models
             bool mfa,
             Preferences prefs,
             List<Target> targets,
-            string accessedAt
+            string accessedAt,
+            bool? impersonator,
+            string? impersonatorUserId
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -108,6 +116,8 @@ namespace Appwrite.Models
             Prefs = prefs;
             Targets = targets;
             AccessedAt = accessedAt;
+            Impersonator = impersonator;
+            ImpersonatorUserId = impersonatorUserId;
         }
 
         public static User From(Dictionary<string, object> map) => new User(
@@ -129,7 +139,9 @@ namespace Appwrite.Models
             mfa: (bool)map["mfa"],
             prefs: Preferences.From(map: map["prefs"] is JsonElement jsonObj17 ? jsonObj17.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
             targets: map["targets"].ConvertToList<Dictionary<string, object>>().Select(it => Target.From(map: it)).ToList(),
-            accessedAt: map["accessedAt"].ToString()
+            accessedAt: map["accessedAt"].ToString(),
+            impersonator: (bool?)map["impersonator"],
+            impersonatorUserId: map.TryGetValue("impersonatorUserId", out var impersonatorUserId) ? impersonatorUserId?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -152,7 +164,9 @@ namespace Appwrite.Models
             { "mfa", Mfa },
             { "prefs", Prefs.ToMap() },
             { "targets", Targets.Select(it => it.ToMap()) },
-            { "accessedAt", AccessedAt }
+            { "accessedAt", AccessedAt },
+            { "impersonator", Impersonator },
+            { "impersonatorUserId", ImpersonatorUserId }
         };
     }
 }

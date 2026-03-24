@@ -38,6 +38,9 @@ namespace Appwrite.Models
         [JsonPropertyName("runtime")]
         public string Runtime { get; private set; }
 
+        [JsonPropertyName("deploymentRetention")]
+        public long DeploymentRetention { get; private set; }
+
         [JsonPropertyName("deploymentId")]
         public string DeploymentId { get; private set; }
 
@@ -92,8 +95,11 @@ namespace Appwrite.Models
         [JsonPropertyName("providerSilentMode")]
         public bool ProviderSilentMode { get; private set; }
 
-        [JsonPropertyName("specification")]
-        public string Specification { get; private set; }
+        [JsonPropertyName("buildSpecification")]
+        public string BuildSpecification { get; private set; }
+
+        [JsonPropertyName("runtimeSpecification")]
+        public string RuntimeSpecification { get; private set; }
 
         public Function(
             string id,
@@ -105,6 +111,7 @@ namespace Appwrite.Models
             bool live,
             bool logging,
             string runtime,
+            long deploymentRetention,
             string deploymentId,
             string deploymentCreatedAt,
             string latestDeploymentId,
@@ -123,7 +130,8 @@ namespace Appwrite.Models
             string providerBranch,
             string providerRootDirectory,
             bool providerSilentMode,
-            string specification
+            string buildSpecification,
+            string runtimeSpecification
         ) {
             Id = id;
             CreatedAt = createdAt;
@@ -134,6 +142,7 @@ namespace Appwrite.Models
             Live = live;
             Logging = logging;
             Runtime = runtime;
+            DeploymentRetention = deploymentRetention;
             DeploymentId = deploymentId;
             DeploymentCreatedAt = deploymentCreatedAt;
             LatestDeploymentId = latestDeploymentId;
@@ -152,7 +161,8 @@ namespace Appwrite.Models
             ProviderBranch = providerBranch;
             ProviderRootDirectory = providerRootDirectory;
             ProviderSilentMode = providerSilentMode;
-            Specification = specification;
+            BuildSpecification = buildSpecification;
+            RuntimeSpecification = runtimeSpecification;
         }
 
         public static Function From(Dictionary<string, object> map) => new Function(
@@ -165,6 +175,7 @@ namespace Appwrite.Models
             live: (bool)map["live"],
             logging: (bool)map["logging"],
             runtime: map["runtime"].ToString(),
+            deploymentRetention: Convert.ToInt64(map["deploymentRetention"]),
             deploymentId: map["deploymentId"].ToString(),
             deploymentCreatedAt: map["deploymentCreatedAt"].ToString(),
             latestDeploymentId: map["latestDeploymentId"].ToString(),
@@ -183,7 +194,8 @@ namespace Appwrite.Models
             providerBranch: map["providerBranch"].ToString(),
             providerRootDirectory: map["providerRootDirectory"].ToString(),
             providerSilentMode: (bool)map["providerSilentMode"],
-            specification: map["specification"].ToString()
+            buildSpecification: map["buildSpecification"].ToString(),
+            runtimeSpecification: map["runtimeSpecification"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -197,6 +209,7 @@ namespace Appwrite.Models
             { "live", Live },
             { "logging", Logging },
             { "runtime", Runtime },
+            { "deploymentRetention", DeploymentRetention },
             { "deploymentId", DeploymentId },
             { "deploymentCreatedAt", DeploymentCreatedAt },
             { "latestDeploymentId", LatestDeploymentId },
@@ -215,7 +228,8 @@ namespace Appwrite.Models
             { "providerBranch", ProviderBranch },
             { "providerRootDirectory", ProviderRootDirectory },
             { "providerSilentMode", ProviderSilentMode },
-            { "specification", Specification }
+            { "buildSpecification", BuildSpecification },
+            { "runtimeSpecification", RuntimeSpecification }
         };
     }
 }

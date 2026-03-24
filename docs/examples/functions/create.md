@@ -29,5 +29,7 @@ Function result = await functions.Create(
     providerBranch: "<PROVIDER_BRANCH>", // optional
     providerSilentMode: false, // optional
     providerRootDirectory: "<PROVIDER_ROOT_DIRECTORY>", // optional
-    specification: "" // optional
+    buildSpecification: "", // optional
+    runtimeSpecification: "", // optional
+    deploymentRetention: 0 // optional
 );```

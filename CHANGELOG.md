@@ -1,12 +1,14 @@
 # Change Log
 
-## 1.0.0
+## 0.28.0
 
-* Breaking: Sites.CreateDeployment signature changed; 'activate' moved after outputDirectory.
-* Breaking: Relationship API path updated; old path deprecated.
-* Added GetConsolePausing health check method.
-* Added ttl parameter to ListDocuments and ListRows.
-* Updated deployment example to show activate parameter placement.
+* Breaking: Removed `IndexType`; replaced with `DatabasesIndexType`, `TablesDBIndexType`, `DocumentsDBIndexType`, `VectorsDBIndexType`
+* Added `Model` class with `Embeddinggemma` value
+* Expanded runtime RCs in `BuildRuntime`/`Runtime` for multiple languages
+* Added impersonation support via `SetImpersonateUserId`, `SetImpersonateUserEmail`, `SetImpersonateUserPhone`
+* Added scopes `WebhooksRead`, `WebhooksWrite`, `ProjectRead`, `ProjectWrite`
+* Updated `Client` headers: `User-Agent` and `x-sdk-version` to 0.28.0
+* Updated `X-Appwrite-Response-Format` to `1.9.0`
 
 ## 0.27.0
 

@@ -69,12 +69,12 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , $"AppwriteDotNetSDK/1.0.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
+                { "user-agent" , $"AppwriteDotNetSDK/0.28.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "1.0.0"},
-                { "X-Appwrite-Response-Format", "1.8.0" }
+                { "x-sdk-version", "0.28.0"},
+                { "X-Appwrite-Response-Format", "1.9.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -152,6 +152,30 @@ namespace Appwrite
         public Client SetForwardedUserAgent(string value) {
             _config.Add("forwardedUserAgent", value);
             AddHeader("X-Forwarded-User-Agent", value);
+
+            return this;
+        }
+
+        /// <summary>Impersonate a user by ID on an already user-authenticated request. Requires the current request to be authenticated as a user with impersonator capability; X-Appwrite-Key alone is not sufficient. Impersonator users are intentionally granted users.read so they can discover a target before impersonation begins. Internal audit logs still attribute actions to the original impersonator and record the impersonated target only in internal audit payload data.</summary>
+        public Client SetImpersonateUserId(string value) {
+            _config.Add("impersonateUserId", value);
+            AddHeader("X-Appwrite-Impersonate-User-Id", value);
+
+            return this;
+        }
+
+        /// <summary>Impersonate a user by email on an already user-authenticated request. Requires the current request to be authenticated as a user with impersonator capability; X-Appwrite-Key alone is not sufficient. Impersonator users are intentionally granted users.read so they can discover a target before impersonation begins. Internal audit logs still attribute actions to the original impersonator and record the impersonated target only in internal audit payload data.</summary>
+        public Client SetImpersonateUserEmail(string value) {
+            _config.Add("impersonateUserEmail", value);
+            AddHeader("X-Appwrite-Impersonate-User-Email", value);
+
+            return this;
+        }
+
+        /// <summary>Impersonate a user by phone on an already user-authenticated request. Requires the current request to be authenticated as a user with impersonator capability; X-Appwrite-Key alone is not sufficient. Impersonator users are intentionally granted users.read so they can discover a target before impersonation begins. Internal audit logs still attribute actions to the original impersonator and record the impersonated target only in internal audit payload data.</summary>
+        public Client SetImpersonateUserPhone(string value) {
+            _config.Add("impersonateUserPhone", value);
+            AddHeader("X-Appwrite-Impersonate-User-Phone", value);
 
             return this;
         }
