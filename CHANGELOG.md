@@ -2,7 +2,8 @@
 
 ## 0.28.0
 
-* Breaking: Removed `IndexType`; replaced with `DatabasesIndexType`, `TablesDBIndexType`, `DocumentsDBIndexType`, `VectorsDBIndexType`
+* [BREAKING] Changed `$sequence` type from `int` to `string` for rows and documents
+* Breaking: Removed `IndexType`; replaced with `DatabasesIndexType`, `TablesDBIndexType`
 * Added `Model` class with `Embeddinggemma` value
 * Expanded runtime RCs in `BuildRuntime`/`Runtime` for multiple languages
 * Added impersonation support via `SetImpersonateUserId`, `SetImpersonateUserEmail`, `SetImpersonateUserPhone`
