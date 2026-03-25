@@ -11,8 +11,8 @@ namespace Appwrite.Enums
             Value = value;
         }
 
-        public static TemplateReferenceType Branch => new TemplateReferenceType("branch");
         public static TemplateReferenceType Commit => new TemplateReferenceType("commit");
+        public static TemplateReferenceType Branch => new TemplateReferenceType("branch");
         public static TemplateReferenceType Tag => new TemplateReferenceType("tag");
     }
 }
