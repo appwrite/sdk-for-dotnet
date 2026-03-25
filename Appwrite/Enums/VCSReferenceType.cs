@@ -13,5 +13,6 @@ namespace Appwrite.Enums
 
         public static VCSReferenceType Branch => new VCSReferenceType("branch");
         public static VCSReferenceType Commit => new VCSReferenceType("commit");
+        public static VCSReferenceType Tag => new VCSReferenceType("tag");
     }
 }
