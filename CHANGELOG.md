@@ -1,5 +1,16 @@
 # Change Log
 
+## 2.0.0
+
+* [BREAKING] Changed `$sequence` type from `int` to `string` for rows and documents
+* Breaking: Removed `IndexType`; replaced with `DatabasesIndexType`, `TablesDBIndexType`
+* Added `Model` class with `Embeddinggemma` value
+* Expanded runtime RCs in `BuildRuntime`/`Runtime` for multiple languages
+* Added impersonation support via `SetImpersonateUserId`, `SetImpersonateUserEmail`, `SetImpersonateUserPhone`
+* Added scopes `WebhooksRead`, `WebhooksWrite`, `ProjectRead`, `ProjectWrite`
+* Updated `Client` headers: `User-Agent` and `x-sdk-version` to 0.28.0
+* Updated `X-Appwrite-Response-Format` to `1.9.0`
+
 ## 1.0.0
 
 * Breaking: Sites.CreateDeployment signature changed; 'activate' moved after outputDirectory.

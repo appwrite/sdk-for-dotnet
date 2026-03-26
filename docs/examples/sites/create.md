@@ -21,6 +21,7 @@ Site result = await sites.Create(
     timeout: 1, // optional
     installCommand: "<INSTALL_COMMAND>", // optional
     buildCommand: "<BUILD_COMMAND>", // optional
+    startCommand: "<START_COMMAND>", // optional
     outputDirectory: "<OUTPUT_DIRECTORY>", // optional
     adapter: Adapter.Static, // optional
     installationId: "<INSTALLATION_ID>", // optional
@@ -29,5 +30,7 @@ Site result = await sites.Create(
     providerBranch: "<PROVIDER_BRANCH>", // optional
     providerSilentMode: false, // optional
     providerRootDirectory: "<PROVIDER_ROOT_DIRECTORY>", // optional
-    specification: "" // optional
+    buildSpecification: "", // optional
+    runtimeSpecification: "", // optional
+    deploymentRetention: 0 // optional
 );```

@@ -13,5 +13,7 @@ namespace Appwrite.Enums
 
         public static DatabaseType Legacy => new DatabaseType("legacy");
         public static DatabaseType Tablesdb => new DatabaseType("tablesdb");
+        public static DatabaseType Documentsdb => new DatabaseType("documentsdb");
+        public static DatabaseType Vectorsdb => new DatabaseType("vectorsdb");
     }
 }

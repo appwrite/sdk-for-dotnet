@@ -1953,7 +1953,7 @@ namespace Appwrite.Services
         /// Type can be `key`, `fulltext`, or `unique`.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.IndexType type, List<string> columns, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
+        public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.TablesDBIndexType type, List<string> columns, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
         {
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes"
                 .Replace("{databaseId}", databaseId)

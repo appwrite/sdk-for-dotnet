@@ -51,7 +51,7 @@ namespace Appwrite.Services
         /// Create a new site.
         /// </para>
         /// </summary>
-        public Task<Models.Site> Create(string siteId, string name, Appwrite.Enums.Framework framework, Appwrite.Enums.BuildRuntime buildRuntime, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? outputDirectory = null, Appwrite.Enums.Adapter? adapter = null, string? installationId = null, string? fallbackFile = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? specification = null)
+        public Task<Models.Site> Create(string siteId, string name, Appwrite.Enums.Framework framework, Appwrite.Enums.BuildRuntime buildRuntime, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.Adapter? adapter = null, string? installationId = null, string? fallbackFile = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
         {
             var apiPath = "/sites";
 
@@ -65,6 +65,7 @@ namespace Appwrite.Services
                 { "timeout", timeout },
                 { "installCommand", installCommand },
                 { "buildCommand", buildCommand },
+                { "startCommand", startCommand },
                 { "outputDirectory", outputDirectory },
                 { "buildRuntime", buildRuntime?.Value },
                 { "adapter", adapter?.Value },
@@ -74,7 +75,9 @@ namespace Appwrite.Services
                 { "providerBranch", providerBranch },
                 { "providerSilentMode", providerSilentMode },
                 { "providerRootDirectory", providerRootDirectory },
-                { "specification", specification }
+                { "buildSpecification", buildSpecification },
+                { "runtimeSpecification", runtimeSpecification },
+                { "deploymentRetention", deploymentRetention }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -188,7 +191,7 @@ namespace Appwrite.Services
         /// Update site by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Site> Update(string siteId, string name, Appwrite.Enums.Framework framework, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? outputDirectory = null, Appwrite.Enums.BuildRuntime? buildRuntime = null, Appwrite.Enums.Adapter? adapter = null, string? fallbackFile = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? specification = null)
+        public Task<Models.Site> Update(string siteId, string name, Appwrite.Enums.Framework framework, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.BuildRuntime? buildRuntime = null, Appwrite.Enums.Adapter? adapter = null, string? fallbackFile = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
         {
             var apiPath = "/sites/{siteId}"
                 .Replace("{siteId}", siteId);
@@ -202,6 +205,7 @@ namespace Appwrite.Services
                 { "timeout", timeout },
                 { "installCommand", installCommand },
                 { "buildCommand", buildCommand },
+                { "startCommand", startCommand },
                 { "outputDirectory", outputDirectory },
                 { "buildRuntime", buildRuntime?.Value },
                 { "adapter", adapter?.Value },
@@ -211,7 +215,9 @@ namespace Appwrite.Services
                 { "providerBranch", providerBranch },
                 { "providerSilentMode", providerSilentMode },
                 { "providerRootDirectory", providerRootDirectory },
-                { "specification", specification }
+                { "buildSpecification", buildSpecification },
+                { "runtimeSpecification", runtimeSpecification },
+                { "deploymentRetention", deploymentRetention }
             };
 
             var apiHeaders = new Dictionary<string, string>()
