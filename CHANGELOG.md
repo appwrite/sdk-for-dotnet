@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.28.0
+## 2.0.0
 
 * [BREAKING] Changed `$sequence` type from `int` to `string` for rows and documents
 * Breaking: Removed `IndexType`; replaced with `DatabasesIndexType`, `TablesDBIndexType`
@@ -10,6 +10,14 @@
 * Added scopes `WebhooksRead`, `WebhooksWrite`, `ProjectRead`, `ProjectWrite`
 * Updated `Client` headers: `User-Agent` and `x-sdk-version` to 0.28.0
 * Updated `X-Appwrite-Response-Format` to `1.9.0`
+
+## 1.0.0
+
+* Breaking: Sites.CreateDeployment signature changed; 'activate' moved after outputDirectory.
+* Breaking: Relationship API path updated; old path deprecated.
+* Added GetConsolePausing health check method.
+* Added ttl parameter to ListDocuments and ListRows.
+* Updated deployment example to show activate parameter placement.
 
 ## 0.27.0
 
