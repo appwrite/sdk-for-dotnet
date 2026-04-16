@@ -12,5 +12,5 @@ Tokens tokens = new Tokens(client);
 
 ResourceToken result = await tokens.Update(
     tokenId: "<TOKEN_ID>",
-    expire: "" // optional
+    expire: "2020-10-15T06:38:00.000+00:00" // optional
 );```

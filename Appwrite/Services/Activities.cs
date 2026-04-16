@@ -32,8 +32,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ActivityEventList Convert(Dictionary<string, object> it) =>
-                Models.ActivityEventList.From(map: it);
+            static Models.ActivityEventList Convert(Dictionary<string, object> it)
+            {
+                return Models.ActivityEventList.From(map: it);
+            }
 
             return _client.Call<Models.ActivityEventList>(
                 method: "GET",
@@ -63,8 +65,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ActivityEvent Convert(Dictionary<string, object> it) =>
-                Models.ActivityEvent.From(map: it);
+            static Models.ActivityEvent Convert(Dictionary<string, object> it)
+            {
+                return Models.ActivityEvent.From(map: it);
+            }
 
             return _client.Call<Models.ActivityEvent>(
                 method: "GET",

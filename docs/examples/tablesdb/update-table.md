@@ -16,5 +16,6 @@ Table result = await tablesDB.UpdateTable(
     name: "<NAME>", // optional
     permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
     rowSecurity: false, // optional
-    enabled: false // optional
+    enabled: false, // optional
+    purge: false // optional
 );```

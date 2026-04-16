@@ -8,8 +8,10 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Webhooks webhooks = new Webhooks(client);
+Project project = new Project(client);
 
-Webhook result = await webhooks.UpdateSignature(
-    webhookId: "<WEBHOOK_ID>"
+PlatformApple result = await project.CreateApplePlatform(
+    platformId: "<PLATFORM_ID>",
+    name: "<NAME>",
+    bundleIdentifier: "<BUNDLE_IDENTIFIER>"
 );```

@@ -35,8 +35,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BucketList Convert(Dictionary<string, object> it) =>
-                Models.BucketList.From(map: it);
+            static Models.BucketList Convert(Dictionary<string, object> it)
+            {
+                return Models.BucketList.From(map: it);
+            }
 
             return _client.Call<Models.BucketList>(
                 method: "GET",
@@ -76,8 +78,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Bucket Convert(Dictionary<string, object> it) =>
-                Models.Bucket.From(map: it);
+            static Models.Bucket Convert(Dictionary<string, object> it)
+            {
+                return Models.Bucket.From(map: it);
+            }
 
             return _client.Call<Models.Bucket>(
                 method: "POST",
@@ -107,8 +111,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Bucket Convert(Dictionary<string, object> it) =>
-                Models.Bucket.From(map: it);
+            static Models.Bucket Convert(Dictionary<string, object> it)
+            {
+                return Models.Bucket.From(map: it);
+            }
 
             return _client.Call<Models.Bucket>(
                 method: "GET",
@@ -148,8 +154,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Bucket Convert(Dictionary<string, object> it) =>
-                Models.Bucket.From(map: it);
+            static Models.Bucket Convert(Dictionary<string, object> it)
+            {
+                return Models.Bucket.From(map: it);
+            }
 
             return _client.Call<Models.Bucket>(
                 method: "PUT",
@@ -210,8 +218,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.FileList Convert(Dictionary<string, object> it) =>
-                Models.FileList.From(map: it);
+            static Models.FileList Convert(Dictionary<string, object> it)
+            {
+                return Models.FileList.From(map: it);
+            }
 
             return _client.Call<Models.FileList>(
                 method: "GET",
@@ -261,8 +271,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.File Convert(Dictionary<string, object> it) =>
-                Models.File.From(map: it);
+            static Models.File Convert(Dictionary<string, object> it)
+            {
+                return Models.File.From(map: it);
+            }
 
             string? idParamName = "fileId";
 
@@ -298,8 +310,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.File Convert(Dictionary<string, object> it) =>
-                Models.File.From(map: it);
+            static Models.File Convert(Dictionary<string, object> it)
+            {
+                return Models.File.From(map: it);
+            }
 
             return _client.Call<Models.File>(
                 method: "GET",
@@ -333,8 +347,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.File Convert(Dictionary<string, object> it) =>
-                Models.File.From(map: it);
+            static Models.File Convert(Dictionary<string, object> it)
+            {
+                return Models.File.From(map: it);
+            }
 
             return _client.Call<Models.File>(
                 method: "PUT",

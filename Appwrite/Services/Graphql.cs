@@ -34,8 +34,10 @@ namespace Appwrite.Services
             };
 
 
-            static object Convert(Dictionary<string, object> it) =>
-                it;
+            static object Convert(Dictionary<string, object> it)
+            {
+                return it;
+            }
 
             return _client.Call<object>(
                 method: "POST",
@@ -66,8 +68,10 @@ namespace Appwrite.Services
             };
 
 
-            static object Convert(Dictionary<string, object> it) =>
-                it;
+            static object Convert(Dictionary<string, object> it)
+            {
+                return it;
+            }
 
             return _client.Call<object>(
                 method: "POST",

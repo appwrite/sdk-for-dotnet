@@ -26,6 +26,9 @@ namespace Appwrite.Models
         [JsonPropertyName("mode")]
         public string Mode { get; private set; }
 
+        [JsonPropertyName("userType")]
+        public string UserType { get; private set; }
+
         [JsonPropertyName("ip")]
         public string Ip { get; private set; }
 
@@ -80,6 +83,7 @@ namespace Appwrite.Models
             string userEmail,
             string userName,
             string mode,
+            string userType,
             string ip,
             string time,
             string osCode,
@@ -102,6 +106,7 @@ namespace Appwrite.Models
             UserEmail = userEmail;
             UserName = userName;
             Mode = mode;
+            UserType = userType;
             Ip = ip;
             Time = time;
             OsCode = osCode;
@@ -126,6 +131,7 @@ namespace Appwrite.Models
             userEmail: map["userEmail"].ToString(),
             userName: map["userName"].ToString(),
             mode: map["mode"].ToString(),
+            userType: map["userType"].ToString(),
             ip: map["ip"].ToString(),
             time: map["time"].ToString(),
             osCode: map["osCode"].ToString(),
@@ -151,6 +157,7 @@ namespace Appwrite.Models
             { "userEmail", UserEmail },
             { "userName", UserName },
             { "mode", Mode },
+            { "userType", UserType },
             { "ip", Ip },
             { "time", Time },
             { "osCode", OsCode },

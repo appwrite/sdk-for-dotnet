@@ -29,17 +29,17 @@ namespace Appwrite.Models
         [JsonPropertyName("events")]
         public List<string> Events { get; private set; }
 
-        [JsonPropertyName("security")]
-        public bool Security { get; private set; }
+        [JsonPropertyName("tls")]
+        public bool Tls { get; private set; }
 
-        [JsonPropertyName("httpUser")]
-        public string HttpUser { get; private set; }
+        [JsonPropertyName("authUsername")]
+        public string AuthUsername { get; private set; }
 
-        [JsonPropertyName("httpPass")]
-        public string HttpPass { get; private set; }
+        [JsonPropertyName("authPassword")]
+        public string AuthPassword { get; private set; }
 
-        [JsonPropertyName("signatureKey")]
-        public string SignatureKey { get; private set; }
+        [JsonPropertyName("secret")]
+        public string Secret { get; private set; }
 
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
@@ -57,10 +57,10 @@ namespace Appwrite.Models
             string name,
             string url,
             List<string> events,
-            bool security,
-            string httpUser,
-            string httpPass,
-            string signatureKey,
+            bool tls,
+            string authUsername,
+            string authPassword,
+            string secret,
             bool enabled,
             string logs,
             long attempts
@@ -71,10 +71,10 @@ namespace Appwrite.Models
             Name = name;
             Url = url;
             Events = events;
-            Security = security;
-            HttpUser = httpUser;
-            HttpPass = httpPass;
-            SignatureKey = signatureKey;
+            Tls = tls;
+            AuthUsername = authUsername;
+            AuthPassword = authPassword;
+            Secret = secret;
             Enabled = enabled;
             Logs = logs;
             Attempts = attempts;
@@ -87,10 +87,10 @@ namespace Appwrite.Models
             name: map["name"].ToString(),
             url: map["url"].ToString(),
             events: map["events"].ConvertToList<string>(),
-            security: (bool)map["security"],
-            httpUser: map["httpUser"].ToString(),
-            httpPass: map["httpPass"].ToString(),
-            signatureKey: map["signatureKey"].ToString(),
+            tls: (bool)map["tls"],
+            authUsername: map["authUsername"].ToString(),
+            authPassword: map["authPassword"].ToString(),
+            secret: map["secret"].ToString(),
             enabled: (bool)map["enabled"],
             logs: map["logs"].ToString(),
             attempts: Convert.ToInt64(map["attempts"])
@@ -104,10 +104,10 @@ namespace Appwrite.Models
             { "name", Name },
             { "url", Url },
             { "events", Events },
-            { "security", Security },
-            { "httpUser", HttpUser },
-            { "httpPass", HttpPass },
-            { "signatureKey", SignatureKey },
+            { "tls", Tls },
+            { "authUsername", AuthUsername },
+            { "authPassword", AuthPassword },
+            { "secret", Secret },
             { "enabled", Enabled },
             { "logs", Logs },
             { "attempts", Attempts }

@@ -72,6 +72,10 @@ namespace Appwrite.Enums
         public static Scopes WebhooksWrite => new Scopes("webhooks.write");
         public static Scopes ProjectRead => new Scopes("project.read");
         public static Scopes ProjectWrite => new Scopes("project.write");
+        public static Scopes KeysRead => new Scopes("keys.read");
+        public static Scopes KeysWrite => new Scopes("keys.write");
+        public static Scopes PlatformsRead => new Scopes("platforms.read");
+        public static Scopes PlatformsWrite => new Scopes("platforms.write");
         public static Scopes PoliciesWrite => new Scopes("policies.write");
         public static Scopes PoliciesRead => new Scopes("policies.read");
         public static Scopes ArchivesRead => new Scopes("archives.read");

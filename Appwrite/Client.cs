@@ -69,12 +69,12 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , $"AppwriteDotNetSDK/2.0.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
+                { "user-agent" , $"AppwriteDotNetSDK/3.0.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "2.0.0"},
-                { "X-Appwrite-Response-Format", "1.9.0" }
+                { "x-sdk-version", "3.0.0"},
+                { "X-Appwrite-Response-Format", "1.9.1" }
             };
 
             _config = new Dictionary<string, string>();
@@ -185,6 +185,11 @@ namespace Appwrite
             _headers.Add(key, value);
 
             return this;
+        }
+
+        public Dictionary<string, string> GetHeaders()
+        {
+            return new Dictionary<string, string>(_headers);
         }
 
         private HttpRequestMessage PrepareRequest(

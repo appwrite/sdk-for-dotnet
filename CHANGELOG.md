@@ -1,5 +1,23 @@
 # Change Log
 
+## 3.0.0
+
+* [BREAKING] Renamed Webhook model fields: `security` → `tls`, `httpUser` → `authUsername`, `httpPass` → `authPassword`, `signatureKey` → `secret`
+* [BREAKING] Renamed Webhook service parameters to match: `security` → `tls`, `httpUser` → `authUsername`, `httpPass` → `authPassword`
+* [BREAKING] Renamed `Webhooks.UpdateSignature()` to `Webhooks.UpdateSecret()` with new optional `secret` parameter
+* Added `Client.GetHeaders()` method to retrieve request headers
+* Added `secret` parameter to Webhook create and update methods
+* Added `x` OAuth provider to `OAuthProvider` enum
+* Added `userType` field to `Log` model
+* Added `purge` parameter to `UpdateCollection` and `UpdateTable` for cache invalidation
+* Added Project service: platform CRUD, key CRUD, protocol/service status management
+* Added new models: `Key`, `KeyList`, `Project`, `DevKey`, `MockNumber`, `AuthProvider`, `PlatformAndroid`, `PlatformApple`, `PlatformLinux`, `PlatformList`, `PlatformWeb`, `PlatformWindows`, `BillingLimits`, `Block`
+* Added new enums: `PlatformType`, `ProtocolId`, `ServiceId`
+* Updated `BuildRuntime`, `Runtime` enums with `dart-3.11` and `flutter-3.41`
+* Updated `Scopes` enum with `KeysRead`, `KeysWrite`, `PlatformsRead`, `PlatformsWrite`
+* Updated `X-Appwrite-Response-Format` header to `1.9.1`
+* Updated TTL description for list caching in Databases and TablesDB
+
 ## 2.0.0
 
 * [BREAKING] Changed `$sequence` type from `int` to `string` for rows and documents

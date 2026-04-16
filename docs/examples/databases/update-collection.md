@@ -16,5 +16,6 @@ Collection result = await databases.UpdateCollection(
     name: "<NAME>", // optional
     permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
     documentSecurity: false, // optional
-    enabled: false // optional
+    enabled: false, // optional
+    purge: false // optional
 );```

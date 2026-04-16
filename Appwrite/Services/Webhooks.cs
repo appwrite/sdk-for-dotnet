@@ -34,8 +34,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.WebhookList Convert(Dictionary<string, object> it) =>
-                Models.WebhookList.From(map: it);
+            static Models.WebhookList Convert(Dictionary<string, object> it)
+            {
+                return Models.WebhookList.From(map: it);
+            }
 
             return _client.Call<Models.WebhookList>(
                 method: "GET",
@@ -51,7 +53,7 @@ namespace Appwrite.Services
         /// receive events from Appwrite when specific events occur.
         /// </para>
         /// </summary>
-        public Task<Models.Webhook> Create(string webhookId, string url, string name, List<string> events, bool? enabled = null, bool? security = null, string? httpUser = null, string? httpPass = null)
+        public Task<Models.Webhook> Create(string webhookId, string url, string name, List<string> events, bool? enabled = null, bool? tls = null, string? authUsername = null, string? authPassword = null, string? secret = null)
         {
             var apiPath = "/webhooks";
 
@@ -62,9 +64,10 @@ namespace Appwrite.Services
                 { "name", name },
                 { "events", events },
                 { "enabled", enabled },
-                { "security", security },
-                { "httpUser", httpUser },
-                { "httpPass", httpPass }
+                { "tls", tls },
+                { "authUsername", authUsername },
+                { "authPassword", authPassword },
+                { "secret", secret }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -73,8 +76,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Webhook Convert(Dictionary<string, object> it) =>
-                Models.Webhook.From(map: it);
+            static Models.Webhook Convert(Dictionary<string, object> it)
+            {
+                return Models.Webhook.From(map: it);
+            }
 
             return _client.Call<Models.Webhook>(
                 method: "POST",
@@ -104,8 +109,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Webhook Convert(Dictionary<string, object> it) =>
-                Models.Webhook.From(map: it);
+            static Models.Webhook Convert(Dictionary<string, object> it)
+            {
+                return Models.Webhook.From(map: it);
+            }
 
             return _client.Call<Models.Webhook>(
                 method: "GET",
@@ -121,7 +128,7 @@ namespace Appwrite.Services
         /// events, or status of an existing webhook.
         /// </para>
         /// </summary>
-        public Task<Models.Webhook> Update(string webhookId, string name, string url, List<string> events, bool? enabled = null, bool? security = null, string? httpUser = null, string? httpPass = null)
+        public Task<Models.Webhook> Update(string webhookId, string name, string url, List<string> events, bool? enabled = null, bool? tls = null, string? authUsername = null, string? authPassword = null)
         {
             var apiPath = "/webhooks/{webhookId}"
                 .Replace("{webhookId}", webhookId);
@@ -132,9 +139,9 @@ namespace Appwrite.Services
                 { "url", url },
                 { "events", events },
                 { "enabled", enabled },
-                { "security", security },
-                { "httpUser", httpUser },
-                { "httpPass", httpPass }
+                { "tls", tls },
+                { "authUsername", authUsername },
+                { "authPassword", authPassword }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -143,8 +150,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Webhook Convert(Dictionary<string, object> it) =>
-                Models.Webhook.From(map: it);
+            static Models.Webhook Convert(Dictionary<string, object> it)
+            {
+                return Models.Webhook.From(map: it);
+            }
 
             return _client.Call<Models.Webhook>(
                 method: "PUT",
@@ -185,18 +194,19 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Update the webhook signature key. This endpoint can be used to regenerate
-        /// the signature key used to sign and validate payload deliveries for a
-        /// specific webhook.
+        /// Update the webhook signing key. This endpoint can be used to regenerate the
+        /// signing key used to sign and validate payload deliveries for a specific
+        /// webhook.
         /// </para>
         /// </summary>
-        public Task<Models.Webhook> UpdateSignature(string webhookId)
+        public Task<Models.Webhook> UpdateSecret(string webhookId, string? secret = null)
         {
-            var apiPath = "/webhooks/{webhookId}/signature"
+            var apiPath = "/webhooks/{webhookId}/secret"
                 .Replace("{webhookId}", webhookId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "secret", secret }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -205,8 +215,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Webhook Convert(Dictionary<string, object> it) =>
-                Models.Webhook.From(map: it);
+            static Models.Webhook Convert(Dictionary<string, object> it)
+            {
+                return Models.Webhook.From(map: it);
+            }
 
             return _client.Call<Models.Webhook>(
                 method: "PATCH",

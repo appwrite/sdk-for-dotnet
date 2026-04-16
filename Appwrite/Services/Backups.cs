@@ -32,8 +32,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupArchiveList Convert(Dictionary<string, object> it) =>
-                Models.BackupArchiveList.From(map: it);
+            static Models.BackupArchiveList Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupArchiveList.From(map: it);
+            }
 
             return _client.Call<Models.BackupArchiveList>(
                 method: "GET",
@@ -64,8 +66,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupArchive Convert(Dictionary<string, object> it) =>
-                Models.BackupArchive.From(map: it);
+            static Models.BackupArchive Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupArchive.From(map: it);
+            }
 
             return _client.Call<Models.BackupArchive>(
                 method: "POST",
@@ -94,8 +98,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupArchive Convert(Dictionary<string, object> it) =>
-                Models.BackupArchive.From(map: it);
+            static Models.BackupArchive Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupArchive.From(map: it);
+            }
 
             return _client.Call<Models.BackupArchive>(
                 method: "GET",
@@ -152,8 +158,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupPolicyList Convert(Dictionary<string, object> it) =>
-                Models.BackupPolicyList.From(map: it);
+            static Models.BackupPolicyList Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupPolicyList.From(map: it);
+            }
 
             return _client.Call<Models.BackupPolicyList>(
                 method: "GET",
@@ -189,8 +197,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupPolicy Convert(Dictionary<string, object> it) =>
-                Models.BackupPolicy.From(map: it);
+            static Models.BackupPolicy Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupPolicy.From(map: it);
+            }
 
             return _client.Call<Models.BackupPolicy>(
                 method: "POST",
@@ -219,8 +229,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupPolicy Convert(Dictionary<string, object> it) =>
-                Models.BackupPolicy.From(map: it);
+            static Models.BackupPolicy Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupPolicy.From(map: it);
+            }
 
             return _client.Call<Models.BackupPolicy>(
                 method: "GET",
@@ -254,8 +266,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupPolicy Convert(Dictionary<string, object> it) =>
-                Models.BackupPolicy.From(map: it);
+            static Models.BackupPolicy Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupPolicy.From(map: it);
+            }
 
             return _client.Call<Models.BackupPolicy>(
                 method: "PATCH",
@@ -316,8 +330,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupRestoration Convert(Dictionary<string, object> it) =>
-                Models.BackupRestoration.From(map: it);
+            static Models.BackupRestoration Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupRestoration.From(map: it);
+            }
 
             return _client.Call<Models.BackupRestoration>(
                 method: "POST",
@@ -346,8 +362,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupRestorationList Convert(Dictionary<string, object> it) =>
-                Models.BackupRestorationList.From(map: it);
+            static Models.BackupRestorationList Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupRestorationList.From(map: it);
+            }
 
             return _client.Call<Models.BackupRestorationList>(
                 method: "GET",
@@ -376,8 +394,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.BackupRestoration Convert(Dictionary<string, object> it) =>
-                Models.BackupRestoration.From(map: it);
+            static Models.BackupRestoration Convert(Dictionary<string, object> it)
+            {
+                return Models.BackupRestoration.From(map: it);
+            }
 
             return _client.Call<Models.BackupRestoration>(
                 method: "GET",
