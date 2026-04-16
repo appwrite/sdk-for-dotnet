@@ -35,8 +35,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.FunctionList Convert(Dictionary<string, object> it) =>
-                Models.FunctionList.From(map: it);
+            static Models.FunctionList Convert(Dictionary<string, object> it)
+            {
+                return Models.FunctionList.From(map: it);
+            }
 
             return _client.Call<Models.FunctionList>(
                 method: "GET",
@@ -88,8 +90,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Function Convert(Dictionary<string, object> it) =>
-                Models.Function.From(map: it);
+            static Models.Function Convert(Dictionary<string, object> it)
+            {
+                return Models.Function.From(map: it);
+            }
 
             return _client.Call<Models.Function>(
                 method: "POST",
@@ -117,8 +121,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.RuntimeList Convert(Dictionary<string, object> it) =>
-                Models.RuntimeList.From(map: it);
+            static Models.RuntimeList Convert(Dictionary<string, object> it)
+            {
+                return Models.RuntimeList.From(map: it);
+            }
 
             return _client.Call<Models.RuntimeList>(
                 method: "GET",
@@ -146,8 +152,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.SpecificationList Convert(Dictionary<string, object> it) =>
-                Models.SpecificationList.From(map: it);
+            static Models.SpecificationList Convert(Dictionary<string, object> it)
+            {
+                return Models.SpecificationList.From(map: it);
+            }
 
             return _client.Call<Models.SpecificationList>(
                 method: "GET",
@@ -176,8 +184,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Function Convert(Dictionary<string, object> it) =>
-                Models.Function.From(map: it);
+            static Models.Function Convert(Dictionary<string, object> it)
+            {
+                return Models.Function.From(map: it);
+            }
 
             return _client.Call<Models.Function>(
                 method: "GET",
@@ -226,8 +236,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Function Convert(Dictionary<string, object> it) =>
-                Models.Function.From(map: it);
+            static Models.Function Convert(Dictionary<string, object> it)
+            {
+                return Models.Function.From(map: it);
+            }
 
             return _client.Call<Models.Function>(
                 method: "PUT",
@@ -287,8 +299,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Function Convert(Dictionary<string, object> it) =>
-                Models.Function.From(map: it);
+            static Models.Function Convert(Dictionary<string, object> it)
+            {
+                return Models.Function.From(map: it);
+            }
 
             return _client.Call<Models.Function>(
                 method: "PATCH",
@@ -321,8 +335,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.DeploymentList Convert(Dictionary<string, object> it) =>
-                Models.DeploymentList.From(map: it);
+            static Models.DeploymentList Convert(Dictionary<string, object> it)
+            {
+                return Models.DeploymentList.From(map: it);
+            }
 
             return _client.Call<Models.DeploymentList>(
                 method: "GET",
@@ -365,8 +381,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Deployment Convert(Dictionary<string, object> it) =>
-                Models.Deployment.From(map: it);
+            static Models.Deployment Convert(Dictionary<string, object> it)
+            {
+                return Models.Deployment.From(map: it);
+            }
 
             string? idParamName = null;
 
@@ -407,8 +425,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Deployment Convert(Dictionary<string, object> it) =>
-                Models.Deployment.From(map: it);
+            static Models.Deployment Convert(Dictionary<string, object> it)
+            {
+                return Models.Deployment.From(map: it);
+            }
 
             return _client.Call<Models.Deployment>(
                 method: "POST",
@@ -448,8 +468,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Deployment Convert(Dictionary<string, object> it) =>
-                Models.Deployment.From(map: it);
+            static Models.Deployment Convert(Dictionary<string, object> it)
+            {
+                return Models.Deployment.From(map: it);
+            }
 
             return _client.Call<Models.Deployment>(
                 method: "POST",
@@ -484,8 +506,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Deployment Convert(Dictionary<string, object> it) =>
-                Models.Deployment.From(map: it);
+            static Models.Deployment Convert(Dictionary<string, object> it)
+            {
+                return Models.Deployment.From(map: it);
+            }
 
             return _client.Call<Models.Deployment>(
                 method: "POST",
@@ -515,8 +539,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Deployment Convert(Dictionary<string, object> it) =>
-                Models.Deployment.From(map: it);
+            static Models.Deployment Convert(Dictionary<string, object> it)
+            {
+                return Models.Deployment.From(map: it);
+            }
 
             return _client.Call<Models.Deployment>(
                 method: "GET",
@@ -611,8 +637,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Deployment Convert(Dictionary<string, object> it) =>
-                Models.Deployment.From(map: it);
+            static Models.Deployment Convert(Dictionary<string, object> it)
+            {
+                return Models.Deployment.From(map: it);
+            }
 
             return _client.Call<Models.Deployment>(
                 method: "PATCH",
@@ -644,8 +672,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ExecutionList Convert(Dictionary<string, object> it) =>
-                Models.ExecutionList.From(map: it);
+            static Models.ExecutionList Convert(Dictionary<string, object> it)
+            {
+                return Models.ExecutionList.From(map: it);
+            }
 
             return _client.Call<Models.ExecutionList>(
                 method: "GET",
@@ -684,8 +714,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Execution Convert(Dictionary<string, object> it) =>
-                Models.Execution.From(map: it);
+            static Models.Execution Convert(Dictionary<string, object> it)
+            {
+                return Models.Execution.From(map: it);
+            }
 
             return _client.Call<Models.Execution>(
                 method: "POST",
@@ -715,8 +747,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Execution Convert(Dictionary<string, object> it) =>
-                Models.Execution.From(map: it);
+            static Models.Execution Convert(Dictionary<string, object> it)
+            {
+                return Models.Execution.From(map: it);
+            }
 
             return _client.Call<Models.Execution>(
                 method: "GET",
@@ -774,8 +808,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.VariableList Convert(Dictionary<string, object> it) =>
-                Models.VariableList.From(map: it);
+            static Models.VariableList Convert(Dictionary<string, object> it)
+            {
+                return Models.VariableList.From(map: it);
+            }
 
             return _client.Call<Models.VariableList>(
                 method: "GET",
@@ -809,8 +845,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Variable Convert(Dictionary<string, object> it) =>
-                Models.Variable.From(map: it);
+            static Models.Variable Convert(Dictionary<string, object> it)
+            {
+                return Models.Variable.From(map: it);
+            }
 
             return _client.Call<Models.Variable>(
                 method: "POST",
@@ -840,8 +878,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Variable Convert(Dictionary<string, object> it) =>
-                Models.Variable.From(map: it);
+            static Models.Variable Convert(Dictionary<string, object> it)
+            {
+                return Models.Variable.From(map: it);
+            }
 
             return _client.Call<Models.Variable>(
                 method: "GET",
@@ -875,8 +915,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Variable Convert(Dictionary<string, object> it) =>
-                Models.Variable.From(map: it);
+            static Models.Variable Convert(Dictionary<string, object> it)
+            {
+                return Models.Variable.From(map: it);
+            }
 
             return _client.Call<Models.Variable>(
                 method: "PUT",

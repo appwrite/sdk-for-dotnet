@@ -15,6 +15,6 @@ AttributeDatetime result = await databases.CreateDatetimeAttribute(
     collectionId: "<COLLECTION_ID>",
     key: "",
     required: false,
-    default: "", // optional
+    default: "2020-10-15T06:38:00.000+00:00", // optional
     array: false // optional
 );```

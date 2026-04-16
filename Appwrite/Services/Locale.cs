@@ -36,8 +36,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Locale Convert(Dictionary<string, object> it) =>
-                Models.Locale.From(map: it);
+            static Models.Locale Convert(Dictionary<string, object> it)
+            {
+                return Models.Locale.From(map: it);
+            }
 
             return _client.Call<Models.Locale>(
                 method: "GET",
@@ -66,8 +68,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.LocaleCodeList Convert(Dictionary<string, object> it) =>
-                Models.LocaleCodeList.From(map: it);
+            static Models.LocaleCodeList Convert(Dictionary<string, object> it)
+            {
+                return Models.LocaleCodeList.From(map: it);
+            }
 
             return _client.Call<Models.LocaleCodeList>(
                 method: "GET",
@@ -96,8 +100,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ContinentList Convert(Dictionary<string, object> it) =>
-                Models.ContinentList.From(map: it);
+            static Models.ContinentList Convert(Dictionary<string, object> it)
+            {
+                return Models.ContinentList.From(map: it);
+            }
 
             return _client.Call<Models.ContinentList>(
                 method: "GET",
@@ -126,8 +132,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.CountryList Convert(Dictionary<string, object> it) =>
-                Models.CountryList.From(map: it);
+            static Models.CountryList Convert(Dictionary<string, object> it)
+            {
+                return Models.CountryList.From(map: it);
+            }
 
             return _client.Call<Models.CountryList>(
                 method: "GET",
@@ -156,8 +164,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.CountryList Convert(Dictionary<string, object> it) =>
-                Models.CountryList.From(map: it);
+            static Models.CountryList Convert(Dictionary<string, object> it)
+            {
+                return Models.CountryList.From(map: it);
+            }
 
             return _client.Call<Models.CountryList>(
                 method: "GET",
@@ -186,8 +196,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.PhoneList Convert(Dictionary<string, object> it) =>
-                Models.PhoneList.From(map: it);
+            static Models.PhoneList Convert(Dictionary<string, object> it)
+            {
+                return Models.PhoneList.From(map: it);
+            }
 
             return _client.Call<Models.PhoneList>(
                 method: "GET",
@@ -217,8 +229,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.CurrencyList Convert(Dictionary<string, object> it) =>
-                Models.CurrencyList.From(map: it);
+            static Models.CurrencyList Convert(Dictionary<string, object> it)
+            {
+                return Models.CurrencyList.From(map: it);
+            }
 
             return _client.Call<Models.CurrencyList>(
                 method: "GET",
@@ -247,8 +261,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.LanguageList Convert(Dictionary<string, object> it) =>
-                Models.LanguageList.From(map: it);
+            static Models.LanguageList Convert(Dictionary<string, object> it)
+            {
+                return Models.LanguageList.From(map: it);
+            }
 
             return _client.Call<Models.LanguageList>(
                 method: "GET",

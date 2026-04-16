@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeBoolean result = await databases.GetAttribute(
+object result = await databases.GetAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: ""

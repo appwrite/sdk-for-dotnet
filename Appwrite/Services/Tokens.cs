@@ -36,8 +36,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ResourceTokenList Convert(Dictionary<string, object> it) =>
-                Models.ResourceTokenList.From(map: it);
+            static Models.ResourceTokenList Convert(Dictionary<string, object> it)
+            {
+                return Models.ResourceTokenList.From(map: it);
+            }
 
             return _client.Call<Models.ResourceTokenList>(
                 method: "GET",
@@ -70,8 +72,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ResourceToken Convert(Dictionary<string, object> it) =>
-                Models.ResourceToken.From(map: it);
+            static Models.ResourceToken Convert(Dictionary<string, object> it)
+            {
+                return Models.ResourceToken.From(map: it);
+            }
 
             return _client.Call<Models.ResourceToken>(
                 method: "POST",
@@ -100,8 +104,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ResourceToken Convert(Dictionary<string, object> it) =>
-                Models.ResourceToken.From(map: it);
+            static Models.ResourceToken Convert(Dictionary<string, object> it)
+            {
+                return Models.ResourceToken.From(map: it);
+            }
 
             return _client.Call<Models.ResourceToken>(
                 method: "GET",
@@ -133,8 +139,10 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ResourceToken Convert(Dictionary<string, object> it) =>
-                Models.ResourceToken.From(map: it);
+            static Models.ResourceToken Convert(Dictionary<string, object> it)
+            {
+                return Models.ResourceToken.From(map: it);
+            }
 
             return _client.Call<Models.ResourceToken>(
                 method: "PATCH",
