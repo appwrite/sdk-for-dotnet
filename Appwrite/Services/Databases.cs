@@ -2008,7 +2008,47 @@ namespace Appwrite.Services
 
             static object Convert(Dictionary<string, object> it)
             {
-                return Appwrite.Models.AttributeBoolean.From(map: it);
+                if (it.TryGetValue("type", out var typeValue1) && typeValue1?.ToString() == "string" && it.TryGetValue("format", out var formatValue1) && formatValue1?.ToString() == "email")
+                {
+                    return Appwrite.Models.AttributeEmail.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue2) && typeValue2?.ToString() == "string" && it.TryGetValue("format", out var formatValue2) && formatValue2?.ToString() == "enum")
+                {
+                    return Appwrite.Models.AttributeEnum.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue3) && typeValue3?.ToString() == "string" && it.TryGetValue("format", out var formatValue3) && formatValue3?.ToString() == "url")
+                {
+                    return Appwrite.Models.AttributeUrl.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue4) && typeValue4?.ToString() == "string" && it.TryGetValue("format", out var formatValue4) && formatValue4?.ToString() == "ip")
+                {
+                    return Appwrite.Models.AttributeIp.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue5) && typeValue5?.ToString() == "boolean")
+                {
+                    return Appwrite.Models.AttributeBoolean.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue6) && typeValue6?.ToString() == "integer")
+                {
+                    return Appwrite.Models.AttributeInteger.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue7) && typeValue7?.ToString() == "double")
+                {
+                    return Appwrite.Models.AttributeFloat.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue8) && typeValue8?.ToString() == "datetime")
+                {
+                    return Appwrite.Models.AttributeDatetime.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue9) && typeValue9?.ToString() == "relationship")
+                {
+                    return Appwrite.Models.AttributeRelationship.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue10) && typeValue10?.ToString() == "string")
+                {
+                    return Appwrite.Models.AttributeString.From(map: it);
+                }
+                throw new System.Exception("Unable to match response to any expected response model");
             }
 
             return _client.Call<object>(

@@ -636,7 +636,27 @@ namespace Appwrite.Services
 
             static object Convert(Dictionary<string, object> it)
             {
-                return Appwrite.Models.PlatformWeb.From(map: it);
+                if (it.TryGetValue("type", out var typeValue1) && typeValue1?.ToString() == "web")
+                {
+                    return Appwrite.Models.PlatformWeb.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue2) && typeValue2?.ToString() == "apple")
+                {
+                    return Appwrite.Models.PlatformApple.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue3) && typeValue3?.ToString() == "android")
+                {
+                    return Appwrite.Models.PlatformAndroid.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue4) && typeValue4?.ToString() == "windows")
+                {
+                    return Appwrite.Models.PlatformWindows.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue5) && typeValue5?.ToString() == "linux")
+                {
+                    return Appwrite.Models.PlatformLinux.From(map: it);
+                }
+                throw new System.Exception("Unable to match response to any expected response model");
             }
 
             return _client.Call<object>(
