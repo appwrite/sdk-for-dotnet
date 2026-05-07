@@ -44,7 +44,8 @@ namespace Appwrite.Models
             string image,
             string logo,
             List<string> supports
-        ) {
+        )
+        {
             Id = id;
             Key = key;
             Name = name;

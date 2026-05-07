@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public ActivityEventList(
             long total,
             List<ActivityEvent> events
-        ) {
+        )
+        {
             Total = total;
             Events = events;
         }

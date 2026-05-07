@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public LanguageList(
             long total,
             List<Language> languages
-        ) {
+        )
+        {
             Total = total;
             Languages = languages;
         }

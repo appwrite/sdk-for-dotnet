@@ -140,7 +140,8 @@ namespace Appwrite.Models
             string deviceModel,
             string countryCode,
             string countryName
-        ) {
+        )
+        {
             Id = id;
             UserType = userType;
             UserId = userId;

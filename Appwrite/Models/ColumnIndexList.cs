@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public ColumnIndexList(
             long total,
             List<ColumnIndex> indexes
-        ) {
+        )
+        {
             Total = total;
             Indexes = indexes;
         }

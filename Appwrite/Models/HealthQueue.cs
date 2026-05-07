@@ -16,7 +16,8 @@ namespace Appwrite.Models
 
         public HealthQueue(
             long size
-        ) {
+        )
+        {
             Size = size;
         }
 

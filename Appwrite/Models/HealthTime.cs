@@ -24,7 +24,8 @@ namespace Appwrite.Models
             long remoteTime,
             long localTime,
             long diff
-        ) {
+        )
+        {
             RemoteTime = remoteTime;
             LocalTime = localTime;
             Diff = diff;

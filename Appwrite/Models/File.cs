@@ -64,7 +64,8 @@ namespace Appwrite.Models
             long chunksUploaded,
             bool encryption,
             string compression
-        ) {
+        )
+        {
             Id = id;
             BucketId = bucketId;
             CreatedAt = createdAt;

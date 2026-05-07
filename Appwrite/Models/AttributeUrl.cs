@@ -52,7 +52,8 @@ namespace Appwrite.Models
             string updatedAt,
             string format,
             string? xdefault
-        ) {
+        )
+        {
             Key = key;
             Type = type;
             Status = status;

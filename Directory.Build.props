@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <NuGetAudit Condition="'$(MSBuildProjectName)' == 'Appwrite'">true</NuGetAudit>
+    <NuGetAuditMode Condition="'$(MSBuildProjectName)' == 'Appwrite'">all</NuGetAuditMode>
+
+    <!-- Fail only on high/critical -->
+    <NuGetAuditLevel Condition="'$(MSBuildProjectName)' == 'Appwrite'">high</NuGetAuditLevel>
+
+    <WarningsAsErrors Condition="'$(MSBuildProjectName)' == 'Appwrite'">$(WarningsAsErrors);NU1903;NU1904</WarningsAsErrors>
+  </PropertyGroup>
+</Project>

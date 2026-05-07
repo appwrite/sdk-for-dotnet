@@ -28,7 +28,8 @@ namespace Appwrite.Models
             bool phone,
             bool email,
             bool recoveryCode
-        ) {
+        )
+        {
             Totp = totp;
             Phone = phone;
             Email = email;

@@ -120,7 +120,8 @@ namespace Appwrite.Models
             string providerCommitUrl,
             string providerBranch,
             string providerBranchUrl
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

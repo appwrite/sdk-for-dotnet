@@ -60,7 +60,8 @@ namespace Appwrite.Models
             List<string> resources,
             string? resourceId,
             string? resourceType
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

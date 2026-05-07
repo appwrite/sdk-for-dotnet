@@ -11,5 +11,7 @@ Client client = new Client()
 Sites sites = new Sites(client);
 
 VariableList result = await sites.ListVariables(
-    siteId: "<SITE_ID>"
+    siteId: "<SITE_ID>",
+    queries: new List<string>(), // optional
+    total: false // optional
 );```

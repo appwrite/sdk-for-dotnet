@@ -56,7 +56,8 @@ namespace Appwrite.Models
             long retention,
             string schedule,
             bool enabled
-        ) {
+        )
+        {
             Id = id;
             Name = name;
             CreatedAt = createdAt;

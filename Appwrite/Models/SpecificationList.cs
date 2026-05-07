@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public SpecificationList(
             long total,
             List<Specification> specifications
-        ) {
+        )
+        {
             Total = total;
             Specifications = specifications;
         }

@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public HealthAntivirus(
             string version,
             HealthAntivirusStatus status
-        ) {
+        )
+        {
             Version = version;
             Status = status;
         }

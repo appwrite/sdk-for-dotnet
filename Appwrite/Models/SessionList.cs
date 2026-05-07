@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public SessionList(
             long total,
             List<Session> sessions
-        ) {
+        )
+        {
             Total = total;
             Sessions = sessions;
         }

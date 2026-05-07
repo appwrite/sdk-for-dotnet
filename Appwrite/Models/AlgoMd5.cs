@@ -16,7 +16,8 @@ namespace Appwrite.Models
 
         public AlgoMd5(
             string type
-        ) {
+        )
+        {
             Type = type;
         }
 

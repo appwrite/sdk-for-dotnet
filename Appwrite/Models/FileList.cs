@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public FileList(
             long total,
             List<File> files
-        ) {
+        )
+        {
             Total = total;
             Files = files;
         }

@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public LocaleCodeList(
             long total,
             List<LocaleCode> localeCodes
-        ) {
+        )
+        {
             Total = total;
             LocaleCodes = localeCodes;
         }

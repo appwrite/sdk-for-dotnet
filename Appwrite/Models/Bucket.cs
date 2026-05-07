@@ -68,7 +68,8 @@ namespace Appwrite.Models
             bool antivirus,
             bool transformations,
             long totalSize
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

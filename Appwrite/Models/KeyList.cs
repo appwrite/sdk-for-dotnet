@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public KeyList(
             long total,
             List<Key> keys
-        ) {
+        )
+        {
             Total = total;
             Keys = keys;
         }

@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public ColumnList(
             long total,
             List<object> columns
-        ) {
+        )
+        {
             Total = total;
             Columns = columns;
         }

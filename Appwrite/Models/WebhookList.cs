@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public WebhookList(
             long total,
             List<Webhook> webhooks
-        ) {
+        )
+        {
             Total = total;
             Webhooks = webhooks;
         }

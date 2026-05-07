@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public LocaleCode(
             string code,
             string name
-        ) {
+        )
+        {
             Code = code;
             Name = name;
         }

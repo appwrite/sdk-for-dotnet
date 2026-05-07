@@ -32,7 +32,8 @@ namespace Appwrite.Models
             string buildCommand,
             string outputDirectory,
             string fallbackFile
-        ) {
+        )
+        {
             Key = key;
             InstallCommand = installCommand;
             BuildCommand = buildCommand;

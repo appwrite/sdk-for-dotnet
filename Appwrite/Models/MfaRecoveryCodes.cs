@@ -16,7 +16,8 @@ namespace Appwrite.Models
 
         public MfaRecoveryCodes(
             List<string> recoveryCodes
-        ) {
+        )
+        {
             RecoveryCodes = recoveryCodes;
         }
 

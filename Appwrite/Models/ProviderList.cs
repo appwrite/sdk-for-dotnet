@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public ProviderList(
             long total,
             List<Provider> providers
-        ) {
+        )
+        {
             Total = total;
             Providers = providers;
         }
