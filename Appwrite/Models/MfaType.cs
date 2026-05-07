@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public MfaType(
             string secret,
             string uri
-        ) {
+        )
+        {
             Secret = secret;
             Uri = uri;
         }

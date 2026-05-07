@@ -36,7 +36,8 @@ namespace Appwrite.Models
             string name,
             PlatformType type,
             string bundleIdentifier
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

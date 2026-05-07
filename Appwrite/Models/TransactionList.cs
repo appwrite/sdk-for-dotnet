@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public TransactionList(
             long total,
             List<Transaction> transactions
-        ) {
+        )
+        {
             Total = total;
             Transactions = transactions;
         }

@@ -48,7 +48,8 @@ namespace Appwrite.Models
             string providerType,
             string identifier,
             bool expired
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

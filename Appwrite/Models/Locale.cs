@@ -40,7 +40,8 @@ namespace Appwrite.Models
             string continent,
             bool eu,
             string currency
-        ) {
+        )
+        {
             Ip = ip;
             CountryCode = countryCode;
             Country = country;

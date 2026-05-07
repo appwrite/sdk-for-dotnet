@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public ResourceTokenList(
             long total,
             List<ResourceToken> tokens
-        ) {
+        )
+        {
             Total = total;
             Tokens = tokens;
         }

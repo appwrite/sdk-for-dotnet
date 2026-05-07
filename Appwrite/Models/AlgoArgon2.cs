@@ -28,7 +28,8 @@ namespace Appwrite.Models
             long memoryCost,
             long timeCost,
             long threads
-        ) {
+        )
+        {
             Type = type;
             MemoryCost = memoryCost;
             TimeCost = timeCost;

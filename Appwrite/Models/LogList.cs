@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public LogList(
             long total,
             List<Log> logs
-        ) {
+        )
+        {
             Total = total;
             Logs = logs;
         }

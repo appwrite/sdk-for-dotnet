@@ -100,7 +100,8 @@ namespace Appwrite.Models
             string deviceModel,
             string countryCode,
             string countryName
-        ) {
+        )
+        {
             Event = xevent;
             UserId = userId;
             UserEmail = userEmail;

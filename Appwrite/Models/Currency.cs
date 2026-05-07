@@ -40,7 +40,8 @@ namespace Appwrite.Models
             double rounding,
             string code,
             string namePlural
-        ) {
+        )
+        {
             Symbol = symbol;
             Name = name;
             SymbolNative = symbolNative;

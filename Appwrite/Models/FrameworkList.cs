@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public FrameworkList(
             long total,
             List<Framework> frameworks
-        ) {
+        )
+        {
             Total = total;
             Frameworks = frameworks;
         }

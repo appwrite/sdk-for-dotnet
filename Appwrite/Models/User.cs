@@ -96,7 +96,8 @@ namespace Appwrite.Models
             string accessedAt,
             bool? impersonator,
             string? impersonatorUserId
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public IndexList(
             long total,
             List<Index> indexes
-        ) {
+        )
+        {
             Total = total;
             Indexes = indexes;
         }

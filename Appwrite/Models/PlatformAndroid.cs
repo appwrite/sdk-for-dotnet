@@ -36,7 +36,8 @@ namespace Appwrite.Models
             string name,
             PlatformType type,
             string applicationId
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

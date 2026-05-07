@@ -91,6 +91,7 @@ namespace Appwrite.Enums
         public static BuildRuntime Go124 => new BuildRuntime("go-1.24");
         public static BuildRuntime Go125 => new BuildRuntime("go-1.25");
         public static BuildRuntime Go126 => new BuildRuntime("go-1.26");
+        public static BuildRuntime Rust183 => new BuildRuntime("rust-1.83");
         public static BuildRuntime Static1 => new BuildRuntime("static-1");
         public static BuildRuntime Flutter324 => new BuildRuntime("flutter-3.24");
         public static BuildRuntime Flutter327 => new BuildRuntime("flutter-3.27");

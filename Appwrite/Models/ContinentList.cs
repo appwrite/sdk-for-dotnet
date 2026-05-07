@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public ContinentList(
             long total,
             List<Continent> continents
-        ) {
+        )
+        {
             Total = total;
             Continents = continents;
         }

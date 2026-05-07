@@ -56,7 +56,8 @@ namespace Appwrite.Models
             List<string> services,
             List<string> resources,
             string options
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

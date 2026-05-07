@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public HealthStatusList(
             long total,
             List<HealthStatus> statuses
-        ) {
+        )
+        {
             Total = total;
             Statuses = statuses;
         }

@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public RowList(
             long total,
             List<Row> rows
-        ) {
+        )
+        {
             Total = total;
             Rows = rows;
         }

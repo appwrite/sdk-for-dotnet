@@ -36,7 +36,8 @@ namespace Appwrite.Models
             string name,
             long total,
             Preferences prefs
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

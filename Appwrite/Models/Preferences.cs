@@ -15,12 +15,15 @@ namespace Appwrite.Models
 
         public Preferences(
             Dictionary<string, object> data
-        ) {
+        )
+        {
             Data = data;
         }
 
         public static Preferences From(Dictionary<string, object> map) => new Preferences(
-            data: map.TryGetValue("data", out var dataValue) ? (Dictionary<string, object>)dataValue : map
+            data: map.TryGetValue("data", out var dataValue)
+                ? (Dictionary<string, object>)dataValue
+                : map
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

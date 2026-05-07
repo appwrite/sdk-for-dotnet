@@ -29,6 +29,9 @@ namespace Appwrite.Models
         [JsonPropertyName("userEmail")]
         public string UserEmail { get; private set; }
 
+        [JsonPropertyName("userPhone")]
+        public string UserPhone { get; private set; }
+
         [JsonPropertyName("teamId")]
         public string TeamId { get; private set; }
 
@@ -57,6 +60,7 @@ namespace Appwrite.Models
             string userId,
             string userName,
             string userEmail,
+            string userPhone,
             string teamId,
             string teamName,
             string invited,
@@ -64,13 +68,15 @@ namespace Appwrite.Models
             bool confirm,
             bool mfa,
             List<string> roles
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             UserId = userId;
             UserName = userName;
             UserEmail = userEmail;
+            UserPhone = userPhone;
             TeamId = teamId;
             TeamName = teamName;
             Invited = invited;
@@ -87,6 +93,7 @@ namespace Appwrite.Models
             userId: map["userId"].ToString(),
             userName: map["userName"].ToString(),
             userEmail: map["userEmail"].ToString(),
+            userPhone: map["userPhone"].ToString(),
             teamId: map["teamId"].ToString(),
             teamName: map["teamName"].ToString(),
             invited: map["invited"].ToString(),
@@ -104,6 +111,7 @@ namespace Appwrite.Models
             { "userId", UserId },
             { "userName", UserName },
             { "userEmail", UserEmail },
+            { "userPhone", UserPhone },
             { "teamId", TeamId },
             { "teamName", TeamName },
             { "invited", Invited },

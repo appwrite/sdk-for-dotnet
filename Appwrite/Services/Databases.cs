@@ -605,6 +605,92 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a bigint attribute. Optionally, minimum and maximum values can be
+        /// provided.
+        /// 
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createBigIntColumn` instead.")]
+        public Task<Models.AttributeBigint> CreateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/bigint"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "min", min },
+                { "max", max },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeBigint Convert(Dictionary<string, object> it)
+            {
+                return Models.AttributeBigint.From(map: it);
+            }
+
+            return _client.Call<Models.AttributeBigint>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a bigint attribute. Changing the `default` value will not update
+        /// already existing documents.
+        /// 
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateBigIntColumn` instead.")]
+        public Task<Models.AttributeBigint> UpdateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long xdefault, long? min = null, long? max = null, string? newKey = null)
+        {
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/bigint/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "min", min },
+                { "max", max },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.AttributeBigint Convert(Dictionary<string, object> it)
+            {
+                return Models.AttributeBigint.From(map: it);
+            }
+
+            return _client.Call<Models.AttributeBigint>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Create a boolean attribute.
         /// 
         /// </para>

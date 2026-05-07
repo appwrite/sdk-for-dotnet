@@ -44,7 +44,8 @@ namespace Appwrite.Models
             long smsTotal,
             long pushTotal,
             List<string> subscribe
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

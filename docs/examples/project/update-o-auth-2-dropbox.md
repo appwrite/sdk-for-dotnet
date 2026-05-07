@@ -1,6 +1,5 @@
 ```csharp
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -11,7 +10,8 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateProtocolStatus(
-    protocolId: ProtocolId.Rest,
-    enabled: false
+OAuth2Dropbox result = await project.UpdateOAuth2Dropbox(
+    appKey: "<APP_KEY>", // optional
+    appSecret: "<APP_SECRET>", // optional
+    enabled: false // optional
 );```

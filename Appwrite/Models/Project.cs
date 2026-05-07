@@ -95,6 +95,12 @@ namespace Appwrite.Models
         [JsonPropertyName("authMembershipsMfa")]
         public bool AuthMembershipsMfa { get; private set; }
 
+        [JsonPropertyName("authMembershipsUserId")]
+        public bool AuthMembershipsUserId { get; private set; }
+
+        [JsonPropertyName("authMembershipsUserPhone")]
+        public bool AuthMembershipsUserPhone { get; private set; }
+
         [JsonPropertyName("authInvalidateSessions")]
         public bool AuthInvalidateSessions { get; private set; }
 
@@ -122,8 +128,11 @@ namespace Appwrite.Models
         [JsonPropertyName("smtpSenderEmail")]
         public string SmtpSenderEmail { get; private set; }
 
-        [JsonPropertyName("smtpReplyTo")]
-        public string SmtpReplyTo { get; private set; }
+        [JsonPropertyName("smtpReplyToName")]
+        public string SmtpReplyToName { get; private set; }
+
+        [JsonPropertyName("smtpReplyToEmail")]
+        public string SmtpReplyToEmail { get; private set; }
 
         [JsonPropertyName("smtpHost")]
         public string SmtpHost { get; private set; }
@@ -274,6 +283,8 @@ namespace Appwrite.Models
             bool authMembershipsUserName,
             bool authMembershipsUserEmail,
             bool authMembershipsMfa,
+            bool authMembershipsUserId,
+            bool authMembershipsUserPhone,
             bool authInvalidateSessions,
             List<AuthProvider> oAuthProviders,
             List<object> platforms,
@@ -283,7 +294,8 @@ namespace Appwrite.Models
             bool smtpEnabled,
             string smtpSenderName,
             string smtpSenderEmail,
-            string smtpReplyTo,
+            string smtpReplyToName,
+            string smtpReplyToEmail,
             string smtpHost,
             long smtpPort,
             string smtpUsername,
@@ -324,7 +336,8 @@ namespace Appwrite.Models
             BillingLimits billingLimits,
             List<Block> blocks,
             string consoleAccessedAt
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
@@ -353,6 +366,8 @@ namespace Appwrite.Models
             AuthMembershipsUserName = authMembershipsUserName;
             AuthMembershipsUserEmail = authMembershipsUserEmail;
             AuthMembershipsMfa = authMembershipsMfa;
+            AuthMembershipsUserId = authMembershipsUserId;
+            AuthMembershipsUserPhone = authMembershipsUserPhone;
             AuthInvalidateSessions = authInvalidateSessions;
             OAuthProviders = oAuthProviders;
             Platforms = platforms;
@@ -362,7 +377,8 @@ namespace Appwrite.Models
             SmtpEnabled = smtpEnabled;
             SmtpSenderName = smtpSenderName;
             SmtpSenderEmail = smtpSenderEmail;
-            SmtpReplyTo = smtpReplyTo;
+            SmtpReplyToName = smtpReplyToName;
+            SmtpReplyToEmail = smtpReplyToEmail;
             SmtpHost = smtpHost;
             SmtpPort = smtpPort;
             SmtpUsername = smtpUsername;
@@ -434,6 +450,8 @@ namespace Appwrite.Models
             authMembershipsUserName: (bool)map["authMembershipsUserName"],
             authMembershipsUserEmail: (bool)map["authMembershipsUserEmail"],
             authMembershipsMfa: (bool)map["authMembershipsMfa"],
+            authMembershipsUserId: (bool)map["authMembershipsUserId"],
+            authMembershipsUserPhone: (bool)map["authMembershipsUserPhone"],
             authInvalidateSessions: (bool)map["authInvalidateSessions"],
             oAuthProviders: map["oAuthProviders"].ConvertToList<Dictionary<string, object>>().Select(it => AuthProvider.From(map: it)).ToList(),
             platforms: map["platforms"].ConvertToList<object>(),
@@ -443,7 +461,8 @@ namespace Appwrite.Models
             smtpEnabled: (bool)map["smtpEnabled"],
             smtpSenderName: map["smtpSenderName"].ToString(),
             smtpSenderEmail: map["smtpSenderEmail"].ToString(),
-            smtpReplyTo: map["smtpReplyTo"].ToString(),
+            smtpReplyToName: map["smtpReplyToName"].ToString(),
+            smtpReplyToEmail: map["smtpReplyToEmail"].ToString(),
             smtpHost: map["smtpHost"].ToString(),
             smtpPort: Convert.ToInt64(map["smtpPort"]),
             smtpUsername: map["smtpUsername"].ToString(),
@@ -481,7 +500,7 @@ namespace Appwrite.Models
             protocolStatusForGraphql: (bool)map["protocolStatusForGraphql"],
             protocolStatusForWebsocket: (bool)map["protocolStatusForWebsocket"],
             region: map["region"].ToString(),
-            billingLimits: BillingLimits.From(map: map["billingLimits"] is JsonElement jsonObj76 ? jsonObj76.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["billingLimits"]),
+            billingLimits: BillingLimits.From(map: map["billingLimits"] is JsonElement jsonObj79 ? jsonObj79.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["billingLimits"]),
             blocks: map["blocks"].ConvertToList<Dictionary<string, object>>().Select(it => Block.From(map: it)).ToList(),
             consoleAccessedAt: map["consoleAccessedAt"].ToString()
         );
@@ -516,6 +535,8 @@ namespace Appwrite.Models
             { "authMembershipsUserName", AuthMembershipsUserName },
             { "authMembershipsUserEmail", AuthMembershipsUserEmail },
             { "authMembershipsMfa", AuthMembershipsMfa },
+            { "authMembershipsUserId", AuthMembershipsUserId },
+            { "authMembershipsUserPhone", AuthMembershipsUserPhone },
             { "authInvalidateSessions", AuthInvalidateSessions },
             { "oAuthProviders", OAuthProviders.Select(it => it.ToMap()) },
             { "platforms", Platforms },
@@ -525,7 +546,8 @@ namespace Appwrite.Models
             { "smtpEnabled", SmtpEnabled },
             { "smtpSenderName", SmtpSenderName },
             { "smtpSenderEmail", SmtpSenderEmail },
-            { "smtpReplyTo", SmtpReplyTo },
+            { "smtpReplyToName", SmtpReplyToName },
+            { "smtpReplyToEmail", SmtpReplyToEmail },
             { "smtpHost", SmtpHost },
             { "smtpPort", SmtpPort },
             { "smtpUsername", SmtpUsername },

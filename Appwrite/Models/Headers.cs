@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public Headers(
             string name,
             string xvalue
-        ) {
+        )
+        {
             Name = name;
             Value = xvalue;
         }

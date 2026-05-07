@@ -13,7 +13,7 @@ Functions functions = new Functions(client);
 Variable result = await functions.UpdateVariable(
     functionId: "<FUNCTION_ID>",
     variableId: "<VARIABLE_ID>",
-    key: "<KEY>",
+    key: "<KEY>", // optional
     value: "<VALUE>", // optional
     secret: false // optional
 );```

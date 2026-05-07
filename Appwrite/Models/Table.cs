@@ -60,7 +60,8 @@ namespace Appwrite.Models
             List<ColumnIndex> indexes,
             long bytesMax,
             long bytesUsed
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

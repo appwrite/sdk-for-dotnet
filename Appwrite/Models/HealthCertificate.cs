@@ -36,7 +36,8 @@ namespace Appwrite.Models
             string validFrom,
             string validTo,
             string signatureTypeSN
-        ) {
+        )
+        {
             Name = name;
             SubjectSN = subjectSN;
             IssuerOrganisation = issuerOrganisation;

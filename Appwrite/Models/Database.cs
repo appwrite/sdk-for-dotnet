@@ -44,7 +44,8 @@ namespace Appwrite.Models
             DatabaseType type,
             List<Index> policies,
             List<Collection> archives
-        ) {
+        )
+        {
             Id = id;
             Name = name;
             CreatedAt = createdAt;

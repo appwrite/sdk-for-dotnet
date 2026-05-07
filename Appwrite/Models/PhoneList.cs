@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public PhoneList(
             long total,
             List<Phone> phones
-        ) {
+        )
+        {
             Total = total;
             Phones = phones;
         }

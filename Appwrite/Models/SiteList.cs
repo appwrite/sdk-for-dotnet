@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public SiteList(
             long total,
             List<Site> sites
-        ) {
+        )
+        {
             Total = total;
             Sites = sites;
         }

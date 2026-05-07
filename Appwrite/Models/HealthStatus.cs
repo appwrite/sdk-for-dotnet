@@ -24,7 +24,8 @@ namespace Appwrite.Models
             string name,
             long ping,
             HealthCheckStatus status
-        ) {
+        )
+        {
             Name = name;
             Ping = ping;
             Status = status;
