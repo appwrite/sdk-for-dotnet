@@ -46,7 +46,7 @@ namespace Appwrite.Services
         /// disable a method in your project. 
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdateAuthMethod(Appwrite.Enums.MethodId methodId, bool enabled)
+        public Task<Models.Project> UpdateAuthMethod(Appwrite.Enums.AuthMethod methodId, bool enabled)
         {
             var apiPath = "/project/auth-methods/{methodId}"
                 .Replace("{methodId}", methodId.Value);
@@ -525,7 +525,7 @@ namespace Appwrite.Services
         /// secret, p8 file, key/team IDs) are write-only and always returned empty.
         /// </para>
         /// </summary>
-        public Task<object> GetOAuth2Provider(Appwrite.Enums.ProviderId providerId)
+        public Task<object> GetOAuth2Provider(Appwrite.Enums.OAuthProvider providerId)
         {
             var apiPath = "/project/oauth2/:provider";
 
@@ -3043,7 +3043,7 @@ namespace Appwrite.Services
         /// configuration for the requested project policy.
         /// </para>
         /// </summary>
-        public Task<object> GetPolicy(Appwrite.Enums.PolicyId policyId)
+        public Task<object> GetPolicy(Appwrite.Enums.ProjectPolicyId policyId)
         {
             var apiPath = "/project/policies/{policyId}"
                 .Replace("{policyId}", policyId.Value);
