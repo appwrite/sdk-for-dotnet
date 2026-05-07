@@ -3043,7 +3043,7 @@ namespace Appwrite.Services
         /// configuration for the requested project policy.
         /// </para>
         /// </summary>
-        public Task<object> GetPolicy(Appwrite.Enums.ProjectPolicyId policyId)
+        public Task<object> GetPolicy(Appwrite.Enums.ProjectPolicy policyId)
         {
             var apiPath = "/project/policies/{policyId}"
                 .Replace("{policyId}", policyId.Value);
