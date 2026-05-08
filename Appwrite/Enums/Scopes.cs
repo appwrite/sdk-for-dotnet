@@ -89,6 +89,8 @@ namespace Appwrite.Enums
         public static Scopes SchedulesWrite => new Scopes("schedules.write");
         public static Scopes VcsRead => new Scopes("vcs.read");
         public static Scopes VcsWrite => new Scopes("vcs.write");
+        public static Scopes PresencesRead => new Scopes("presences.read");
+        public static Scopes PresencesWrite => new Scopes("presences.write");
         public static Scopes BackupsPoliciesRead => new Scopes("backups.policies.read");
         public static Scopes BackupsPoliciesWrite => new Scopes("backups.policies.write");
         public static Scopes ArchivesRead => new Scopes("archives.read");

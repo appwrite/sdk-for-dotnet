@@ -1,6 +1,5 @@
 ```csharp
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -9,8 +8,8 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Project project = new Project(client);
+Presences presences = new Presences(client);
 
-object result = await project.GetPolicy(
-    policyId: PolicyId.PasswordDictionary
+Presence result = await presences.Get(
+    presenceId: "<PRESENCE_ID>"
 );```
