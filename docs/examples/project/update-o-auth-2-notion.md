@@ -1,6 +1,5 @@
 ```csharp
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -11,7 +10,8 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateServiceStatus(
-    serviceId: ServiceId.Account,
-    enabled: false
+OAuth2Notion result = await project.UpdateOAuth2Notion(
+    oauthClientId: "<OAUTH_CLIENT_ID>", // optional
+    oauthClientSecret: "<OAUTH_CLIENT_SECRET>", // optional
+    enabled: false // optional
 );```

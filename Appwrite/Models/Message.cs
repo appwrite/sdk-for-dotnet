@@ -64,7 +64,8 @@ namespace Appwrite.Models
             long deliveredTotal,
             object data,
             MessageStatus status
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

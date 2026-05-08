@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public TeamList(
             long total,
             List<Team> teams
-        ) {
+        )
+        {
             Total = total;
             Teams = teams;
         }

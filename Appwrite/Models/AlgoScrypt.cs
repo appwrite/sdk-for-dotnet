@@ -32,7 +32,8 @@ namespace Appwrite.Models
             long costMemory,
             long costParallel,
             long length
-        ) {
+        )
+        {
             Type = type;
             CostCpu = costCpu;
             CostMemory = costMemory;

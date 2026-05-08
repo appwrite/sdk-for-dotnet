@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public IdentityList(
             long total,
             List<Identity> identities
-        ) {
+        )
+        {
             Total = total;
             Identities = identities;
         }

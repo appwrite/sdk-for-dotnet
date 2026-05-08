@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public DocumentList(
             long total,
             List<Document> documents
-        ) {
+        )
+        {
             Total = total;
             Documents = documents;
         }

@@ -140,7 +140,8 @@ namespace Appwrite.Models
             string buildRuntime,
             string adapter,
             string fallbackFile
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

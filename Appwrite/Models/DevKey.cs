@@ -44,7 +44,8 @@ namespace Appwrite.Models
             string secret,
             string accessedAt,
             List<string> sdks
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

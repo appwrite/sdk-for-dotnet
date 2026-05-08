@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public PlatformList(
             long total,
             List<object> platforms
-        ) {
+        )
+        {
             Total = total;
             Platforms = platforms;
         }

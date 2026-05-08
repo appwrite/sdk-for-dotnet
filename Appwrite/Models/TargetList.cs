@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public TargetList(
             long total,
             List<Target> targets
-        ) {
+        )
+        {
             Total = total;
             Targets = targets;
         }

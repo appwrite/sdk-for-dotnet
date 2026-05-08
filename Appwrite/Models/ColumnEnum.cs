@@ -56,7 +56,8 @@ namespace Appwrite.Models
             List<string> elements,
             string format,
             string? xdefault
-        ) {
+        )
+        {
             Key = key;
             Type = type;
             Status = status;

@@ -28,7 +28,8 @@ namespace Appwrite.Models
             string salt,
             string saltSeparator,
             string signerKey
-        ) {
+        )
+        {
             Type = type;
             Salt = salt;
             SaltSeparator = saltSeparator;

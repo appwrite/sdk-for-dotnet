@@ -16,7 +16,8 @@ namespace Appwrite.Models
 
         public AlgoPhpass(
             string type
-        ) {
+        )
+        {
             Type = type;
         }
 

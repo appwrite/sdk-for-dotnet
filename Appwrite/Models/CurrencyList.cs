@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public CurrencyList(
             long total,
             List<Currency> currencies
-        ) {
+        )
+        {
             Total = total;
             Currencies = currencies;
         }

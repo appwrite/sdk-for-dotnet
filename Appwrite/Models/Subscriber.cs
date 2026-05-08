@@ -48,7 +48,8 @@ namespace Appwrite.Models
             string userName,
             string topicId,
             string providerType
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

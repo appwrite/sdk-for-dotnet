@@ -24,7 +24,8 @@ namespace Appwrite.Models
             string code,
             string countryCode,
             string countryName
-        ) {
+        )
+        {
             Code = code;
             CountryCode = countryCode;
             CountryName = countryName;

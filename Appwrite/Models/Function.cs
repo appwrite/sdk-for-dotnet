@@ -132,7 +132,8 @@ namespace Appwrite.Models
             bool providerSilentMode,
             string buildSpecification,
             string runtimeSpecification
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

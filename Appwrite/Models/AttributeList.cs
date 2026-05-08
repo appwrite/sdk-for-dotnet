@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public AttributeList(
             long total,
             List<object> attributes
-        ) {
+        )
+        {
             Total = total;
             Attributes = attributes;
         }

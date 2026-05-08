@@ -56,7 +56,8 @@ namespace Appwrite.Models
             long size,
             string? xdefault,
             bool? encrypt
-        ) {
+        )
+        {
             Key = key;
             Type = type;
             Status = status;

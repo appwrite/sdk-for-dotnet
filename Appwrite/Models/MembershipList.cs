@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public MembershipList(
             long total,
             List<Membership> memberships
-        ) {
+        )
+        {
             Total = total;
             Memberships = memberships;
         }

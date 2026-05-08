@@ -48,7 +48,8 @@ namespace Appwrite.Models
             string type,
             object credentials,
             object? options
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

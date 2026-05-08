@@ -32,7 +32,8 @@ namespace Appwrite.Models
             string buildRuntime,
             List<string> runtimes,
             List<FrameworkAdapter> adapters
-        ) {
+        )
+        {
             Key = key;
             Name = name;
             BuildRuntime = buildRuntime;

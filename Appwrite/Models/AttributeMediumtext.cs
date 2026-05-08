@@ -52,7 +52,8 @@ namespace Appwrite.Models
             string updatedAt,
             string? xdefault,
             bool? encrypt
-        ) {
+        )
+        {
             Key = key;
             Type = type;
             Status = status;

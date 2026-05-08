@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public DeploymentList(
             long total,
             List<Deployment> deployments
-        ) {
+        )
+        {
             Total = total;
             Deployments = deployments;
         }

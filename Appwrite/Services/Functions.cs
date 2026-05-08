@@ -794,13 +794,15 @@ namespace Appwrite.Services
         /// Get a list of all variables of a specific function.
         /// </para>
         /// </summary>
-        public Task<Models.VariableList> ListVariables(string functionId)
+        public Task<Models.VariableList> ListVariables(string functionId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/functions/{functionId}/variables"
                 .Replace("{functionId}", functionId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -827,13 +829,14 @@ namespace Appwrite.Services
         /// in the function at runtime as environment variables.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> CreateVariable(string functionId, string key, string xvalue, bool? secret = null)
+        public Task<Models.Variable> CreateVariable(string functionId, string variableId, string key, string xvalue, bool? secret = null)
         {
             var apiPath = "/functions/{functionId}/variables"
                 .Replace("{functionId}", functionId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "variableId", variableId },
                 { "key", key },
                 { "value", xvalue },
                 { "secret", secret }
@@ -896,7 +899,7 @@ namespace Appwrite.Services
         /// Update variable by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> UpdateVariable(string functionId, string variableId, string key, string? xvalue = null, bool? secret = null)
+        public Task<Models.Variable> UpdateVariable(string functionId, string variableId, string? key = null, string? xvalue = null, bool? secret = null)
         {
             var apiPath = "/functions/{functionId}/variables/{variableId}"
                 .Replace("{functionId}", functionId)

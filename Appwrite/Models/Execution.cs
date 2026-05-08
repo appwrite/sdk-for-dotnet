@@ -84,7 +84,8 @@ namespace Appwrite.Models
             string errors,
             double duration,
             string? scheduledAt
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

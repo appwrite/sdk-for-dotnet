@@ -26,9 +26,12 @@ namespace Appwrite.Enums
         public static OAuthProvider Etsy => new OAuthProvider("etsy");
         public static OAuthProvider Facebook => new OAuthProvider("facebook");
         public static OAuthProvider Figma => new OAuthProvider("figma");
+        public static OAuthProvider Fusionauth => new OAuthProvider("fusionauth");
         public static OAuthProvider Github => new OAuthProvider("github");
         public static OAuthProvider Gitlab => new OAuthProvider("gitlab");
         public static OAuthProvider Google => new OAuthProvider("google");
+        public static OAuthProvider Keycloak => new OAuthProvider("keycloak");
+        public static OAuthProvider Kick => new OAuthProvider("kick");
         public static OAuthProvider Linkedin => new OAuthProvider("linkedin");
         public static OAuthProvider Microsoft => new OAuthProvider("microsoft");
         public static OAuthProvider Notion => new OAuthProvider("notion");
@@ -51,5 +54,7 @@ namespace Appwrite.Enums
         public static OAuthProvider Yandex => new OAuthProvider("yandex");
         public static OAuthProvider Zoho => new OAuthProvider("zoho");
         public static OAuthProvider Zoom => new OAuthProvider("zoom");
+        public static OAuthProvider GithubImagine => new OAuthProvider("githubImagine");
+        public static OAuthProvider GoogleImagine => new OAuthProvider("googleImagine");
     }
 }

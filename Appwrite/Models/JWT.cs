@@ -16,7 +16,8 @@ namespace Appwrite.Models
 
         public JWT(
             string jwt
-        ) {
+        )
+        {
             Jwt = jwt;
         }
 

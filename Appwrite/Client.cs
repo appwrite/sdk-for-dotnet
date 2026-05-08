@@ -69,12 +69,12 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , $"AppwriteDotNetSDK/3.0.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
+                { "user-agent" , $"AppwriteDotNetSDK/3.1.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "3.0.0"},
-                { "X-Appwrite-Response-Format", "1.9.1" }
+                { "x-sdk-version", "3.1.0"},
+                { "X-Appwrite-Response-Format", "1.9.4" }
             };
 
             _config = new Dictionary<string, string>();
@@ -152,6 +152,22 @@ namespace Appwrite
         public Client SetForwardedUserAgent(string value) {
             _config.Add("forwardedUserAgent", value);
             AddHeader("X-Forwarded-User-Agent", value);
+
+            return this;
+        }
+
+        /// <summary>Your secret dev API key</summary>
+        public Client SetDevKey(string value) {
+            _config.Add("devKey", value);
+            AddHeader("X-Appwrite-Dev-Key", value);
+
+            return this;
+        }
+
+        /// <summary>The user cookie to authenticate with. Used by SDKs that forward an incoming Cookie header in server-side runtimes.</summary>
+        public Client SetCookie(string value) {
+            _config.Add("cookie", value);
+            AddHeader("Cookie", value);
 
             return this;
         }
