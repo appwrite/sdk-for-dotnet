@@ -56,7 +56,8 @@ namespace Appwrite.Models
             double? min,
             double? max,
             double? xdefault
-        ) {
+        )
+        {
             Key = key;
             Type = type;
             Status = status;
@@ -79,9 +80,9 @@ namespace Appwrite.Models
             array: (bool?)map["array"],
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            min: map["min"] == null ? null :Convert.ToDouble(map["min"]),
-            max: map["max"] == null ? null :Convert.ToDouble(map["max"]),
-            xdefault: map["default"] == null ? null :Convert.ToDouble(map["default"])
+            min: map["min"] == null ? null : Convert.ToDouble(map["min"]),
+            max: map["max"] == null ? null : Convert.ToDouble(map["max"]),
+            xdefault: map["default"] == null ? null : Convert.ToDouble(map["default"])
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

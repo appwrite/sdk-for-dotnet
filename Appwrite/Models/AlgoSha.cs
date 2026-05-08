@@ -16,7 +16,8 @@ namespace Appwrite.Models
 
         public AlgoSha(
             string type
-        ) {
+        )
+        {
             Type = type;
         }
 

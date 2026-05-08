@@ -64,7 +64,8 @@ namespace Appwrite.Models
             bool enabled,
             string logs,
             long attempts
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

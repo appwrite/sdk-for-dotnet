@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public FunctionList(
             long total,
             List<Function> functions
-        ) {
+        )
+        {
             Total = total;
             Functions = functions;
         }

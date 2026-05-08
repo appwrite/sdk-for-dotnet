@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public RuntimeList(
             long total,
             List<Runtime> runtimes
-        ) {
+        )
+        {
             Total = total;
             Runtimes = runtimes;
         }

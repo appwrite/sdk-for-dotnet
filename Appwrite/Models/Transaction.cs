@@ -36,7 +36,8 @@ namespace Appwrite.Models
             string status,
             long operations,
             string expiresAt
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

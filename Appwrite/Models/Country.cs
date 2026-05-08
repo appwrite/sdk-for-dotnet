@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public Country(
             string name,
             string code
-        ) {
+        )
+        {
             Name = name;
             Code = code;
         }

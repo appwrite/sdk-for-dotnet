@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public ExecutionList(
             long total,
             List<Execution> executions
-        ) {
+        )
+        {
             Total = total;
             Executions = executions;
         }

@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public TopicList(
             long total,
             List<Topic> topics
-        ) {
+        )
+        {
             Total = total;
             Topics = topics;
         }

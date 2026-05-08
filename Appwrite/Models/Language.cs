@@ -24,7 +24,8 @@ namespace Appwrite.Models
             string name,
             string code,
             string nativeName
-        ) {
+        )
+        {
             Name = name;
             Code = code;
             NativeName = nativeName;

@@ -44,7 +44,8 @@ namespace Appwrite.Models
             bool secret,
             string resourceType,
             string resourceId
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

@@ -68,7 +68,8 @@ namespace Appwrite.Models
             string twoWayKey,
             string onDelete,
             string side
-        ) {
+        )
+        {
             Key = key;
             Type = type;
             Status = status;

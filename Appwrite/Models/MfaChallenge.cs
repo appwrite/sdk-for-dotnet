@@ -28,7 +28,8 @@ namespace Appwrite.Models
             string createdAt,
             string userId,
             string expire
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UserId = userId;

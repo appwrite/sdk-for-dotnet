@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public BackupPolicyList(
             long total,
             List<BackupPolicy> policies
-        ) {
+        )
+        {
             Total = total;
             Policies = policies;
         }

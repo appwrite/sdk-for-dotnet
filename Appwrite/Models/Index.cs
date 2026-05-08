@@ -52,7 +52,8 @@ namespace Appwrite.Models
             List<string> attributes,
             List<long> lengths,
             List<string>? orders
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

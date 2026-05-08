@@ -11,29 +11,44 @@ namespace Appwrite.Models
 {
     public class MockNumber
     {
-        [JsonPropertyName("phone")]
-        public string Phone { get; private set; }
+        [JsonPropertyName("number")]
+        public string Number { get; private set; }
 
         [JsonPropertyName("otp")]
         public string Otp { get; private set; }
 
+        [JsonPropertyName("$createdAt")]
+        public string CreatedAt { get; private set; }
+
+        [JsonPropertyName("$updatedAt")]
+        public string UpdatedAt { get; private set; }
+
         public MockNumber(
-            string phone,
-            string otp
-        ) {
-            Phone = phone;
+            string number,
+            string otp,
+            string createdAt,
+            string updatedAt
+        )
+        {
+            Number = number;
             Otp = otp;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
         }
 
         public static MockNumber From(Dictionary<string, object> map) => new MockNumber(
-            phone: map["phone"].ToString(),
-            otp: map["otp"].ToString()
+            number: map["number"].ToString(),
+            otp: map["otp"].ToString(),
+            createdAt: map["$createdAt"].ToString(),
+            updatedAt: map["$updatedAt"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
-            { "phone", Phone },
-            { "otp", Otp }
+            { "number", Number },
+            { "otp", Otp },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt }
         };
     }
 }

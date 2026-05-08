@@ -594,6 +594,90 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a bigint column. Optionally, minimum and maximum values can be
+        /// provided.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnBigint> CreateBigIntColumn(string databaseId, string tableId, string key, bool required, long? min = null, long? max = null, long? xdefault = null, bool? array = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/bigint"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "key", key },
+                { "required", required },
+                { "min", min },
+                { "max", max },
+                { "default", xdefault },
+                { "array", array }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnBigint Convert(Dictionary<string, object> it)
+            {
+                return Models.ColumnBigint.From(map: it);
+            }
+
+            return _client.Call<Models.ColumnBigint>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a bigint column. Changing the `default` value will not update
+        /// already existing rows.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnBigint> UpdateBigIntColumn(string databaseId, string tableId, string key, bool required, long xdefault, long? min = null, long? max = null, string? newKey = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/bigint/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "required", required },
+                { "min", min },
+                { "max", max },
+                { "default", xdefault },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.ColumnBigint Convert(Dictionary<string, object> it)
+            {
+                return Models.ColumnBigint.From(map: it);
+            }
+
+            return _client.Call<Models.ColumnBigint>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Create a boolean column.
         /// 
         /// </para>

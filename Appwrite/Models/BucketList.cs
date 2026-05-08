@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public BucketList(
             long total,
             List<Bucket> buckets
-        ) {
+        )
+        {
             Total = total;
             Buckets = buckets;
         }

@@ -745,13 +745,15 @@ namespace Appwrite.Services
         /// Get a list of all variables of a specific site.
         /// </para>
         /// </summary>
-        public Task<Models.VariableList> ListVariables(string siteId)
+        public Task<Models.VariableList> ListVariables(string siteId, List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/sites/{siteId}/variables"
                 .Replace("{siteId}", siteId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -778,13 +780,14 @@ namespace Appwrite.Services
         /// and runtime (server-side rendering) as environment variables.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> CreateVariable(string siteId, string key, string xvalue, bool? secret = null)
+        public Task<Models.Variable> CreateVariable(string siteId, string variableId, string key, string xvalue, bool? secret = null)
         {
             var apiPath = "/sites/{siteId}/variables"
                 .Replace("{siteId}", siteId);
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "variableId", variableId },
                 { "key", key },
                 { "value", xvalue },
                 { "secret", secret }
@@ -847,7 +850,7 @@ namespace Appwrite.Services
         /// Update variable by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> UpdateVariable(string siteId, string variableId, string key, string? xvalue = null, bool? secret = null)
+        public Task<Models.Variable> UpdateVariable(string siteId, string variableId, string? key = null, string? xvalue = null, bool? secret = null)
         {
             var apiPath = "/sites/{siteId}/variables/{variableId}"
                 .Replace("{siteId}", siteId)
