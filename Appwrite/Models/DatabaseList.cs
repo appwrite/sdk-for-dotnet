@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public DatabaseList(
             long total,
             List<Database> databases
-        ) {
+        )
+        {
             Total = total;
             Databases = databases;
         }

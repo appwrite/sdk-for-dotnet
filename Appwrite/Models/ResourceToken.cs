@@ -40,7 +40,8 @@ namespace Appwrite.Models
             string expire,
             string secret,
             string accessedAt
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             ResourceId = resourceId;

@@ -128,7 +128,8 @@ namespace Appwrite.Models
             List<string> factors,
             string secret,
             string mfaUpdatedAt
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

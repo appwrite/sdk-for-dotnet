@@ -16,7 +16,8 @@ namespace Appwrite.Models
 
         public AlgoBcrypt(
             string type
-        ) {
+        )
+        {
             Type = type;
         }
 

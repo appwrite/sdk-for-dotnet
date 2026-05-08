@@ -1,6 +1,5 @@
 ```csharp
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -9,9 +8,8 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Project project = new Project(client);
+Presences presences = new Presences(client);
 
-Project result = await project.UpdateServiceStatus(
-    serviceId: ServiceId.Account,
-    enabled: false
+await presences.Delete(
+    presenceId: "<PRESENCE_ID>"
 );```

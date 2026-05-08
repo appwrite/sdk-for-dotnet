@@ -32,7 +32,8 @@ namespace Appwrite.Models
             string appId,
             string secret,
             bool enabled
-        ) {
+        )
+        {
             Key = key;
             Name = name;
             AppId = appId;

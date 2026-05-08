@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public TableList(
             long total,
             List<Table> tables
-        ) {
+        )
+        {
             Total = total;
             Tables = tables;
         }

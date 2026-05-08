@@ -52,7 +52,8 @@ namespace Appwrite.Models
             string providerAccessToken,
             string providerAccessTokenExpiry,
             string providerRefreshToken
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

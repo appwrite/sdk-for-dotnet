@@ -44,7 +44,8 @@ namespace Appwrite.Models
             long imageTransformations,
             long authPhone,
             long budgetLimit
-        ) {
+        )
+        {
             Bandwidth = bandwidth;
             Storage = storage;
             Users = users;

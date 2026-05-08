@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public VariableList(
             long total,
             List<Variable> variables
-        ) {
+        )
+        {
             Total = total;
             Variables = variables;
         }

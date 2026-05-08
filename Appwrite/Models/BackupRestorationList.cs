@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public BackupRestorationList(
             long total,
             List<BackupRestoration> restorations
-        ) {
+        )
+        {
             Total = total;
             Restorations = restorations;
         }

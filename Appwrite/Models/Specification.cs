@@ -28,7 +28,8 @@ namespace Appwrite.Models
             double cpus,
             bool enabled,
             string slug
-        ) {
+        )
+        {
             Memory = memory;
             Cpus = cpus;
             Enabled = enabled;

@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public BackupArchiveList(
             long total,
             List<BackupArchive> archives
-        ) {
+        )
+        {
             Total = total;
             Archives = archives;
         }

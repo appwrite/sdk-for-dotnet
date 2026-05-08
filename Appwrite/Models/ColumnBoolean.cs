@@ -48,7 +48,8 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             bool? xdefault
-        ) {
+        )
+        {
             Key = key;
             Type = type;
             Status = status;

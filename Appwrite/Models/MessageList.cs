@@ -20,7 +20,8 @@ namespace Appwrite.Models
         public MessageList(
             long total,
             List<Message> messages
-        ) {
+        )
+        {
             Total = total;
             Messages = messages;
         }

@@ -43,7 +43,8 @@ namespace Appwrite.Models
             string updatedAt,
             List<string> permissions,
             Dictionary<string, object> data
-        ) {
+        )
+        {
             Id = id;
             Sequence = sequence;
             TableId = tableId;
@@ -62,7 +63,9 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             permissions: map["$permissions"].ConvertToList<string>(),
-            data: map.TryGetValue("data", out var dataValue) ? (Dictionary<string, object>)dataValue : map
+            data: map.TryGetValue("data", out var dataValue)
+                ? (Dictionary<string, object>)dataValue
+                : map
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

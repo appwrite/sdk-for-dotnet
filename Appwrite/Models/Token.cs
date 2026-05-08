@@ -36,7 +36,8 @@ namespace Appwrite.Models
             string secret,
             string expire,
             string phrase
-        ) {
+        )
+        {
             Id = id;
             CreatedAt = createdAt;
             UserId = userId;
