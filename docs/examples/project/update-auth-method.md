@@ -12,6 +12,6 @@ Client client = new Client()
 Project project = new Project(client);
 
 Project result = await project.UpdateAuthMethod(
-    methodId: AuthMethod.EmailPassword,
+    methodId: ProjectAuthMethodId.EmailPassword,
     enabled: false
 );```

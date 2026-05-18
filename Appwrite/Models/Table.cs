@@ -102,7 +102,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "rowSecurity", RowSecurity },
             { "columns", Columns },
-            { "indexes", Indexes.Select(it => it.ToMap()) },
+            { "indexes", Indexes?.Select(it => it.ToMap()).ToList() },
             { "bytesMax", BytesMax },
             { "bytesUsed", BytesUsed }
         };

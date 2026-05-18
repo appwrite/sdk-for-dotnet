@@ -79,7 +79,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "targetId", TargetId },
-            { "target", Target.ToMap() },
+            { "target", Target?.ToMap() },
             { "userId", UserId },
             { "userName", UserName },
             { "topicId", TopicId },

@@ -163,8 +163,8 @@ namespace Appwrite.Models
             { "emailVerification", EmailVerification },
             { "phoneVerification", PhoneVerification },
             { "mfa", Mfa },
-            { "prefs", Prefs.ToMap() },
-            { "targets", Targets.Select(it => it.ToMap()) },
+            { "prefs", Prefs?.ToMap() },
+            { "targets", Targets?.Select(it => it.ToMap()).ToList() },
             { "accessedAt", AccessedAt },
             { "impersonator", Impersonator },
             { "impersonatorUserId", ImpersonatorUserId }

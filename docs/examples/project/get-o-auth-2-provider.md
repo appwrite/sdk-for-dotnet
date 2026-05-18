@@ -12,5 +12,5 @@ Client client = new Client()
 Project project = new Project(client);
 
 object result = await project.GetOAuth2Provider(
-    providerId: OAuthProvider.Amazon
+    providerId: ProjectOAuthProviderId.Amazon
 );```

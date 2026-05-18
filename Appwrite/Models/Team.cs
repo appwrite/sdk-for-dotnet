@@ -62,7 +62,7 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "name", Name },
             { "total", Total },
-            { "prefs", Prefs.ToMap() }
+            { "prefs", Prefs?.ToMap() }
         };
     }
 }

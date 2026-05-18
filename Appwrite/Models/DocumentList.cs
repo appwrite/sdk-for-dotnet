@@ -34,7 +34,7 @@ namespace Appwrite.Models
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "total", Total },
-            { "documents", Documents.Select(it => it.ToMap()) }
+            { "documents", Documents?.Select(it => it.ToMap()).ToList() }
         };
 
         public T ConvertTo<T>(Func<Dictionary<string, object>, T> fromJson) =>

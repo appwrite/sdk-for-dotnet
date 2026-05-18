@@ -55,7 +55,7 @@ namespace Appwrite.Models
             { "name", Name },
             { "buildRuntime", BuildRuntime },
             { "runtimes", Runtimes },
-            { "adapters", Adapters.Select(it => it.ToMap()) }
+            { "adapters", Adapters?.Select(it => it.ToMap()).ToList() }
         };
     }
 }

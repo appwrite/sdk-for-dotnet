@@ -34,7 +34,7 @@ namespace Appwrite.Models
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "total", Total },
-            { "webhooks", Webhooks.Select(it => it.ToMap()) }
+            { "webhooks", Webhooks?.Select(it => it.ToMap()).ToList() }
         };
     }
 }

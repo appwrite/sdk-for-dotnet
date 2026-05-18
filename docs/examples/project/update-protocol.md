@@ -12,6 +12,6 @@ Client client = new Client()
 Project project = new Project(client);
 
 Project result = await project.UpdateProtocol(
-    protocolId: ProtocolId.Rest,
+    protocolId: ProjectProtocolId.Rest,
     enabled: false
 );```

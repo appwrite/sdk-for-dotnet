@@ -20,6 +20,6 @@ Project result = await project.UpdateSMTP(
     senderName: "<SENDER_NAME>", // optional
     replyToEmail: "email@example.com", // optional
     replyToName: "<REPLY_TO_NAME>", // optional
-    secure: Secure.Tls, // optional
+    secure: ProjectSMTPSecure.Tls, // optional
     enabled: false // optional
 );```
