@@ -21,8 +21,8 @@ namespace Appwrite.Models
         }
 
         public static Preferences From(Dictionary<string, object> map) => new Preferences(
-            data: map.TryGetValue("data", out var dataValue)
-                ? (Dictionary<string, object>)dataValue
+            data: map.TryGetValue("data", out var additionalPropsValue)
+                ? (Dictionary<string, object>)additionalPropsValue
                 : map
         );
 

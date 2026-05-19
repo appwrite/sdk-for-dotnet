@@ -30,10 +30,10 @@ namespace Appwrite.Models
         public DatabaseType Type { get; private set; }
 
         [JsonPropertyName("policies")]
-        public List<Index> Policies { get; private set; }
+        public List<BackupPolicy> Policies { get; private set; }
 
         [JsonPropertyName("archives")]
-        public List<Collection> Archives { get; private set; }
+        public List<BackupArchive> Archives { get; private set; }
 
         public Database(
             string id,
@@ -42,8 +42,8 @@ namespace Appwrite.Models
             string updatedAt,
             bool enabled,
             DatabaseType type,
-            List<Index> policies,
-            List<Collection> archives
+            List<BackupPolicy> policies,
+            List<BackupArchive> archives
         )
         {
             Id = id;
@@ -63,8 +63,8 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             enabled: (bool)map["enabled"],
             type: new DatabaseType(map["type"].ToString()!),
-            policies: map["policies"].ConvertToList<Dictionary<string, object>>().Select(it => Index.From(map: it)).ToList(),
-            archives: map["archives"].ConvertToList<Dictionary<string, object>>().Select(it => Collection.From(map: it)).ToList()
+            policies: map["policies"].ConvertToList<Dictionary<string, object>>().Select(it => BackupPolicy.From(map: it)).ToList(),
+            archives: map["archives"].ConvertToList<Dictionary<string, object>>().Select(it => BackupArchive.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -75,8 +75,8 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "enabled", Enabled },
             { "type", Type.Value },
-            { "policies", Policies.Select(it => it.ToMap()) },
-            { "archives", Archives.Select(it => it.ToMap()) }
+            { "policies", Policies?.Select(it => it.ToMap()).ToList() },
+            { "archives", Archives?.Select(it => it.ToMap()).ToList() }
         };
     }
 }

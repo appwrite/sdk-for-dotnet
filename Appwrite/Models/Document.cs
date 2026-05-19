@@ -63,8 +63,8 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             permissions: map["$permissions"].ConvertToList<string>(),
-            data: map.TryGetValue("data", out var dataValue)
-                ? (Dictionary<string, object>)dataValue
+            data: map.TryGetValue("data", out var additionalPropsValue)
+                ? (Dictionary<string, object>)additionalPropsValue
                 : map
         );
 

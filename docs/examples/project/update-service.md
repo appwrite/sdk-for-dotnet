@@ -12,6 +12,6 @@ Client client = new Client()
 Project project = new Project(client);
 
 Project result = await project.UpdateService(
-    serviceId: ServiceId.Account,
+    serviceId: ProjectServiceId.Account,
     enabled: false
 );```

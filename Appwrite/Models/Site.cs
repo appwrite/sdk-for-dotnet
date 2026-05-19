@@ -229,7 +229,7 @@ namespace Appwrite.Models
             { "latestDeploymentId", LatestDeploymentId },
             { "latestDeploymentCreatedAt", LatestDeploymentCreatedAt },
             { "latestDeploymentStatus", LatestDeploymentStatus },
-            { "vars", Vars.Select(it => it.ToMap()) },
+            { "vars", Vars?.Select(it => it.ToMap()).ToList() },
             { "timeout", Timeout },
             { "installCommand", InstallCommand },
             { "buildCommand", BuildCommand },

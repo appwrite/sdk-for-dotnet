@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +11,37 @@ namespace Appwrite.Services
     {
         public Project(Client client) : base(client)
         {
+        }
+
+        /// <para>
+        /// Get a project.
+        /// </para>
+        /// </summary>
+        public Task<Models.Project> Get()
+        {
+            var apiPath = "/project";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+            };
+
+
+            static Models.Project Convert(Dictionary<string, object> it)
+            {
+                return Models.Project.From(map: it);
+            }
+
+            return _client.Call<Models.Project>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
         }
 
         /// <para>
@@ -46,7 +76,7 @@ namespace Appwrite.Services
         /// disable a method in your project. 
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdateAuthMethod(Appwrite.Enums.AuthMethod methodId, bool enabled)
+        public Task<Models.Project> UpdateAuthMethod(Appwrite.Enums.ProjectAuthMethodId methodId, bool enabled)
         {
             var apiPath = "/project/auth-methods/{methodId}"
                 .Replace("{methodId}", methodId.Value);
@@ -117,7 +147,7 @@ namespace Appwrite.Services
         /// instead.
         /// </para>
         /// </summary>
-        public Task<Models.Key> CreateKey(string keyId, string name, List<Appwrite.Enums.Scopes> scopes, string? expire = null)
+        public Task<Models.Key> CreateKey(string keyId, string name, List<Appwrite.Enums.ProjectKeyScopes> scopes, string? expire = null)
         {
             var apiPath = "/project/keys";
 
@@ -157,7 +187,7 @@ namespace Appwrite.Services
         /// instead.
         /// </para>
         /// </summary>
-        public Task<Models.EphemeralKey> CreateEphemeralKey(List<Appwrite.Enums.Scopes> scopes, long duration)
+        public Task<Models.EphemeralKey> CreateEphemeralKey(List<Appwrite.Enums.ProjectKeyScopes> scopes, long duration)
         {
             var apiPath = "/project/keys/ephemeral";
 
@@ -224,7 +254,7 @@ namespace Appwrite.Services
         /// scopes, or expiration time of an API key.
         /// </para>
         /// </summary>
-        public Task<Models.Key> UpdateKey(string keyId, string name, List<Appwrite.Enums.Scopes> scopes, string? expire = null)
+        public Task<Models.Key> UpdateKey(string keyId, string name, List<Appwrite.Enums.ProjectKeyScopes> scopes, string? expire = null)
         {
             var apiPath = "/project/keys/{keyId}"
                 .Replace("{keyId}", keyId);
@@ -1160,7 +1190,7 @@ namespace Appwrite.Services
         /// Update the project OAuth2 Google configuration.
         /// </para>
         /// </summary>
-        public Task<Models.OAuth2Google> UpdateOAuth2Google(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        public Task<Models.OAuth2Google> UpdateOAuth2Google(string? clientId = null, string? clientSecret = null, List<Appwrite.Enums.ProjectOAuth2GooglePrompt>? prompt = null, bool? enabled = null)
         {
             var apiPath = "/project/oauth2/google";
 
@@ -1168,6 +1198,7 @@ namespace Appwrite.Services
             {
                 { "clientId", clientId },
                 { "clientSecret", clientSecret },
+                { "prompt", prompt?.Select(e => e.Value).ToList() },
                 { "enabled", enabled }
             };
 
@@ -2010,7 +2041,7 @@ namespace Appwrite.Services
         /// secret, p8 file, key/team IDs) are write-only and always returned empty.
         /// </para>
         /// </summary>
-        public Task<object> GetOAuth2Provider(Appwrite.Enums.OAuthProvider providerId)
+        public Task<object> GetOAuth2Provider(Appwrite.Enums.ProjectOAuthProviderId providerId)
         {
             var apiPath = "/project/oauth2/{providerId}"
                 .Replace("{providerId}", providerId.Value);
@@ -2713,6 +2744,108 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Configures if aliased emails such as subaddresses and emails with suffixes
+        /// are denied during new users sign-ups and email updates.
+        /// </para>
+        /// </summary>
+        public Task<Models.Project> UpdateDenyAliasedEmailPolicy(bool enabled)
+        {
+            var apiPath = "/project/policies/deny-aliased-email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Project Convert(Dictionary<string, object> it)
+            {
+                return Models.Project.From(map: it);
+            }
+
+            return _client.Call<Models.Project>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Configures if disposable emails from known temporary domains are denied
+        /// during new users sign-ups and email updates.
+        /// </para>
+        /// </summary>
+        public Task<Models.Project> UpdateDenyDisposableEmailPolicy(bool enabled)
+        {
+            var apiPath = "/project/policies/deny-disposable-email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Project Convert(Dictionary<string, object> it)
+            {
+                return Models.Project.From(map: it);
+            }
+
+            return _client.Call<Models.Project>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Configures if emails from free providers such as Gmail or Yahoo are denied
+        /// during new users sign-ups and email updates.
+        /// </para>
+        /// </summary>
+        public Task<Models.Project> UpdateDenyFreeEmailPolicy(bool enabled)
+        {
+            var apiPath = "/project/policies/deny-free-email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Project Convert(Dictionary<string, object> it)
+            {
+                return Models.Project.From(map: it);
+            }
+
+            return _client.Call<Models.Project>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Updating this policy allows you to control if team members can see other
         /// members information. When enabled, all team members can see ID, name,
         /// email, phone number, and MFA status of other members..
@@ -3043,7 +3176,7 @@ namespace Appwrite.Services
         /// configuration for the requested project policy.
         /// </para>
         /// </summary>
-        public Task<object> GetPolicy(Appwrite.Enums.ProjectPolicy policyId)
+        public Task<object> GetPolicy(Appwrite.Enums.ProjectPolicyId policyId)
         {
             var apiPath = "/project/policies/{policyId}"
                 .Replace("{policyId}", policyId.Value);
@@ -3112,7 +3245,7 @@ namespace Appwrite.Services
         /// disable a protocol in your project. 
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdateProtocol(Appwrite.Enums.ProtocolId protocolId, bool enabled)
+        public Task<Models.Project> UpdateProtocol(Appwrite.Enums.ProjectProtocolId protocolId, bool enabled)
         {
             var apiPath = "/project/protocols/{protocolId}"
                 .Replace("{protocolId}", protocolId.Value);
@@ -3147,7 +3280,7 @@ namespace Appwrite.Services
         /// disable a service in your project. 
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdateService(Appwrite.Enums.ServiceId serviceId, bool enabled)
+        public Task<Models.Project> UpdateService(Appwrite.Enums.ProjectServiceId serviceId, bool enabled)
         {
             var apiPath = "/project/services/{serviceId}"
                 .Replace("{serviceId}", serviceId.Value);
@@ -3183,7 +3316,7 @@ namespace Appwrite.Services
         /// sending transactional emails.
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdateSMTP(string? host = null, long? port = null, string? username = null, string? password = null, string? senderEmail = null, string? senderName = null, string? replyToEmail = null, string? replyToName = null, Appwrite.Enums.Secure? secure = null, bool? enabled = null)
+        public Task<Models.Project> UpdateSMTP(string? host = null, long? port = null, string? username = null, string? password = null, string? senderEmail = null, string? senderName = null, string? replyToEmail = null, string? replyToName = null, Appwrite.Enums.ProjectSMTPSecure? secure = null, bool? enabled = null)
         {
             var apiPath = "/project/smtp";
 
@@ -3289,7 +3422,7 @@ namespace Appwrite.Services
         /// endpoint to modify the content of your email templates.
         /// </para>
         /// </summary>
-        public Task<Models.EmailTemplate> UpdateEmailTemplate(Appwrite.Enums.EmailTemplateType templateId, Appwrite.Enums.EmailTemplateLocale? locale = null, string? subject = null, string? message = null, string? senderName = null, string? senderEmail = null, string? replyToEmail = null, string? replyToName = null)
+        public Task<Models.EmailTemplate> UpdateEmailTemplate(Appwrite.Enums.ProjectEmailTemplateId templateId, Appwrite.Enums.ProjectEmailTemplateLocale? locale = null, string? subject = null, string? message = null, string? senderName = null, string? senderEmail = null, string? replyToEmail = null, string? replyToName = null)
         {
             var apiPath = "/project/templates/email";
 
@@ -3331,7 +3464,7 @@ namespace Appwrite.Services
         /// details.
         /// </para>
         /// </summary>
-        public Task<Models.EmailTemplate> GetEmailTemplate(Appwrite.Enums.EmailTemplateType templateId, Appwrite.Enums.EmailTemplateLocale? locale = null)
+        public Task<Models.EmailTemplate> GetEmailTemplate(Appwrite.Enums.ProjectEmailTemplateId templateId, Appwrite.Enums.ProjectEmailTemplateLocale? locale = null)
         {
             var apiPath = "/project/templates/email/{templateId}"
                 .Replace("{templateId}", templateId.Value);

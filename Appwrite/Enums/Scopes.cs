@@ -89,6 +89,12 @@ namespace Appwrite.Enums
         public static Scopes SchedulesWrite => new Scopes("schedules.write");
         public static Scopes VcsRead => new Scopes("vcs.read");
         public static Scopes VcsWrite => new Scopes("vcs.write");
+        public static Scopes InsightsRead => new Scopes("insights.read");
+        public static Scopes InsightsWrite => new Scopes("insights.write");
+        public static Scopes ReportsRead => new Scopes("reports.read");
+        public static Scopes ReportsWrite => new Scopes("reports.write");
+        public static Scopes PresencesRead => new Scopes("presences.read");
+        public static Scopes PresencesWrite => new Scopes("presences.write");
         public static Scopes BackupsPoliciesRead => new Scopes("backups.policies.read");
         public static Scopes BackupsPoliciesWrite => new Scopes("backups.policies.write");
         public static Scopes ArchivesRead => new Scopes("archives.read");
@@ -98,5 +104,6 @@ namespace Appwrite.Enums
         public static Scopes DomainsRead => new Scopes("domains.read");
         public static Scopes DomainsWrite => new Scopes("domains.write");
         public static Scopes EventsRead => new Scopes("events.read");
+        public static Scopes UsageRead => new Scopes("usage.read");
     }
 }

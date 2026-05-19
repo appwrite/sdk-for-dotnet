@@ -34,7 +34,7 @@ namespace Appwrite.Models
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "total", Total },
-            { "identities", Identities.Select(it => it.ToMap()) }
+            { "identities", Identities?.Select(it => it.ToMap()).ToList() }
         };
     }
 }

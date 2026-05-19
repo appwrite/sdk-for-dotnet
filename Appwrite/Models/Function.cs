@@ -217,7 +217,7 @@ namespace Appwrite.Models
             { "latestDeploymentCreatedAt", LatestDeploymentCreatedAt },
             { "latestDeploymentStatus", LatestDeploymentStatus },
             { "scopes", Scopes },
-            { "vars", Vars.Select(it => it.ToMap()) },
+            { "vars", Vars?.Select(it => it.ToMap()).ToList() },
             { "events", Events },
             { "schedule", Schedule },
             { "timeout", Timeout },

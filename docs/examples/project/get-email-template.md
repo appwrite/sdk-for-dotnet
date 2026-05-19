@@ -12,6 +12,6 @@ Client client = new Client()
 Project project = new Project(client);
 
 EmailTemplate result = await project.GetEmailTemplate(
-    templateId: EmailTemplateType.Verification,
-    locale: EmailTemplateLocale.Af // optional
+    templateId: ProjectEmailTemplateId.Verification,
+    locale: ProjectEmailTemplateLocale.Af // optional
 );```

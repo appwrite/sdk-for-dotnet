@@ -102,7 +102,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "documentSecurity", DocumentSecurity },
             { "attributes", Attributes },
-            { "indexes", Indexes.Select(it => it.ToMap()) },
+            { "indexes", Indexes?.Select(it => it.ToMap()).ToList() },
             { "bytesMax", BytesMax },
             { "bytesUsed", BytesUsed }
         };

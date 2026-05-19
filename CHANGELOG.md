@@ -1,5 +1,21 @@
 # Change Log
 
+## 4.0.0
+
+* Breaking: Renamed `AuthMethod` enum to `ProjectAuthMethodId`
+* Breaking: Renamed `EmailTemplateType` to `ProjectEmailTemplateId` and `EmailTemplateLocale` to `ProjectEmailTemplateLocale`
+* Breaking: Renamed `ServiceId` to `ProjectServiceId`, `ProtocolId` to `ProjectProtocolId`, `Secure` to `ProjectSMTPSecure`, `ProjectPolicy` to `ProjectPolicyId`
+* Breaking: Replaced `Scopes` enum with `ProjectKeyScopes` for project key endpoints
+* Breaking: Removed `Project.UpdateDenyCanonicalEmailPolicy`; replaced with `UpdateDenyAliasedEmailPolicy`, `UpdateDenyDisposableEmailPolicy`, and `UpdateDenyFreeEmailPolicy`
+* Breaking: Removed `AuthProvider` model; use new `ProjectOAuthProviderId` enum instead
+* Added: `Project.Get` method to fetch current project details
+* Added: `Advisor`, `Presences`, and `Usage` services
+* Added: `Insight`, `Presence`, `Report`, `UsageEvent`, and `UsageGauge` models with list variants
+* Added: `ProjectAuthMethod`, `ProjectProtocol`, and `ProjectService` models
+* Added: `ProjectOAuthProviderId` and `ProjectOAuth2GooglePrompt` enums
+* Updated: `Project`, `Database`, and `OAuth2Google` model schemas
+* Updated: `X-Appwrite-Response-Format` header to `1.9.5`
+
 ## 3.1.0
 
 * Added: Introduced `bigint` create/update APIs for legacy Databases attributes

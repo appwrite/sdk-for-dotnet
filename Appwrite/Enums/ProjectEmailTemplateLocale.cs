@@ -1,0 +1,146 @@
+using System;
+
+namespace Appwrite.Enums
+{
+    public class ProjectEmailTemplateLocale : IEnum
+    {
+        public string Value { get; private set; }
+
+        public ProjectEmailTemplateLocale(string value)
+        {
+            Value = value;
+        }
+
+        public static ProjectEmailTemplateLocale Af => new ProjectEmailTemplateLocale("af");
+        public static ProjectEmailTemplateLocale ArAe => new ProjectEmailTemplateLocale("ar-ae");
+        public static ProjectEmailTemplateLocale ArBh => new ProjectEmailTemplateLocale("ar-bh");
+        public static ProjectEmailTemplateLocale ArDz => new ProjectEmailTemplateLocale("ar-dz");
+        public static ProjectEmailTemplateLocale ArEg => new ProjectEmailTemplateLocale("ar-eg");
+        public static ProjectEmailTemplateLocale ArIq => new ProjectEmailTemplateLocale("ar-iq");
+        public static ProjectEmailTemplateLocale ArJo => new ProjectEmailTemplateLocale("ar-jo");
+        public static ProjectEmailTemplateLocale ArKw => new ProjectEmailTemplateLocale("ar-kw");
+        public static ProjectEmailTemplateLocale ArLb => new ProjectEmailTemplateLocale("ar-lb");
+        public static ProjectEmailTemplateLocale ArLy => new ProjectEmailTemplateLocale("ar-ly");
+        public static ProjectEmailTemplateLocale ArMa => new ProjectEmailTemplateLocale("ar-ma");
+        public static ProjectEmailTemplateLocale ArOm => new ProjectEmailTemplateLocale("ar-om");
+        public static ProjectEmailTemplateLocale ArQa => new ProjectEmailTemplateLocale("ar-qa");
+        public static ProjectEmailTemplateLocale ArSa => new ProjectEmailTemplateLocale("ar-sa");
+        public static ProjectEmailTemplateLocale ArSy => new ProjectEmailTemplateLocale("ar-sy");
+        public static ProjectEmailTemplateLocale ArTn => new ProjectEmailTemplateLocale("ar-tn");
+        public static ProjectEmailTemplateLocale ArYe => new ProjectEmailTemplateLocale("ar-ye");
+        public static ProjectEmailTemplateLocale As => new ProjectEmailTemplateLocale("as");
+        public static ProjectEmailTemplateLocale Az => new ProjectEmailTemplateLocale("az");
+        public static ProjectEmailTemplateLocale Be => new ProjectEmailTemplateLocale("be");
+        public static ProjectEmailTemplateLocale Bg => new ProjectEmailTemplateLocale("bg");
+        public static ProjectEmailTemplateLocale Bh => new ProjectEmailTemplateLocale("bh");
+        public static ProjectEmailTemplateLocale Bn => new ProjectEmailTemplateLocale("bn");
+        public static ProjectEmailTemplateLocale Bs => new ProjectEmailTemplateLocale("bs");
+        public static ProjectEmailTemplateLocale Ca => new ProjectEmailTemplateLocale("ca");
+        public static ProjectEmailTemplateLocale Cs => new ProjectEmailTemplateLocale("cs");
+        public static ProjectEmailTemplateLocale Cy => new ProjectEmailTemplateLocale("cy");
+        public static ProjectEmailTemplateLocale Da => new ProjectEmailTemplateLocale("da");
+        public static ProjectEmailTemplateLocale De => new ProjectEmailTemplateLocale("de");
+        public static ProjectEmailTemplateLocale DeAt => new ProjectEmailTemplateLocale("de-at");
+        public static ProjectEmailTemplateLocale DeCh => new ProjectEmailTemplateLocale("de-ch");
+        public static ProjectEmailTemplateLocale DeLi => new ProjectEmailTemplateLocale("de-li");
+        public static ProjectEmailTemplateLocale DeLu => new ProjectEmailTemplateLocale("de-lu");
+        public static ProjectEmailTemplateLocale El => new ProjectEmailTemplateLocale("el");
+        public static ProjectEmailTemplateLocale En => new ProjectEmailTemplateLocale("en");
+        public static ProjectEmailTemplateLocale EnAu => new ProjectEmailTemplateLocale("en-au");
+        public static ProjectEmailTemplateLocale EnBz => new ProjectEmailTemplateLocale("en-bz");
+        public static ProjectEmailTemplateLocale EnCa => new ProjectEmailTemplateLocale("en-ca");
+        public static ProjectEmailTemplateLocale EnGb => new ProjectEmailTemplateLocale("en-gb");
+        public static ProjectEmailTemplateLocale EnIe => new ProjectEmailTemplateLocale("en-ie");
+        public static ProjectEmailTemplateLocale EnJm => new ProjectEmailTemplateLocale("en-jm");
+        public static ProjectEmailTemplateLocale EnNz => new ProjectEmailTemplateLocale("en-nz");
+        public static ProjectEmailTemplateLocale EnTt => new ProjectEmailTemplateLocale("en-tt");
+        public static ProjectEmailTemplateLocale EnUs => new ProjectEmailTemplateLocale("en-us");
+        public static ProjectEmailTemplateLocale EnZa => new ProjectEmailTemplateLocale("en-za");
+        public static ProjectEmailTemplateLocale Eo => new ProjectEmailTemplateLocale("eo");
+        public static ProjectEmailTemplateLocale Es => new ProjectEmailTemplateLocale("es");
+        public static ProjectEmailTemplateLocale EsAr => new ProjectEmailTemplateLocale("es-ar");
+        public static ProjectEmailTemplateLocale EsBo => new ProjectEmailTemplateLocale("es-bo");
+        public static ProjectEmailTemplateLocale EsCl => new ProjectEmailTemplateLocale("es-cl");
+        public static ProjectEmailTemplateLocale EsCo => new ProjectEmailTemplateLocale("es-co");
+        public static ProjectEmailTemplateLocale EsCr => new ProjectEmailTemplateLocale("es-cr");
+        public static ProjectEmailTemplateLocale EsDo => new ProjectEmailTemplateLocale("es-do");
+        public static ProjectEmailTemplateLocale EsEc => new ProjectEmailTemplateLocale("es-ec");
+        public static ProjectEmailTemplateLocale EsGt => new ProjectEmailTemplateLocale("es-gt");
+        public static ProjectEmailTemplateLocale EsHn => new ProjectEmailTemplateLocale("es-hn");
+        public static ProjectEmailTemplateLocale EsMx => new ProjectEmailTemplateLocale("es-mx");
+        public static ProjectEmailTemplateLocale EsNi => new ProjectEmailTemplateLocale("es-ni");
+        public static ProjectEmailTemplateLocale EsPa => new ProjectEmailTemplateLocale("es-pa");
+        public static ProjectEmailTemplateLocale EsPe => new ProjectEmailTemplateLocale("es-pe");
+        public static ProjectEmailTemplateLocale EsPr => new ProjectEmailTemplateLocale("es-pr");
+        public static ProjectEmailTemplateLocale EsPy => new ProjectEmailTemplateLocale("es-py");
+        public static ProjectEmailTemplateLocale EsSv => new ProjectEmailTemplateLocale("es-sv");
+        public static ProjectEmailTemplateLocale EsUy => new ProjectEmailTemplateLocale("es-uy");
+        public static ProjectEmailTemplateLocale EsVe => new ProjectEmailTemplateLocale("es-ve");
+        public static ProjectEmailTemplateLocale Et => new ProjectEmailTemplateLocale("et");
+        public static ProjectEmailTemplateLocale Eu => new ProjectEmailTemplateLocale("eu");
+        public static ProjectEmailTemplateLocale Fa => new ProjectEmailTemplateLocale("fa");
+        public static ProjectEmailTemplateLocale Fi => new ProjectEmailTemplateLocale("fi");
+        public static ProjectEmailTemplateLocale Fo => new ProjectEmailTemplateLocale("fo");
+        public static ProjectEmailTemplateLocale Fr => new ProjectEmailTemplateLocale("fr");
+        public static ProjectEmailTemplateLocale FrBe => new ProjectEmailTemplateLocale("fr-be");
+        public static ProjectEmailTemplateLocale FrCa => new ProjectEmailTemplateLocale("fr-ca");
+        public static ProjectEmailTemplateLocale FrCh => new ProjectEmailTemplateLocale("fr-ch");
+        public static ProjectEmailTemplateLocale FrLu => new ProjectEmailTemplateLocale("fr-lu");
+        public static ProjectEmailTemplateLocale Ga => new ProjectEmailTemplateLocale("ga");
+        public static ProjectEmailTemplateLocale Gd => new ProjectEmailTemplateLocale("gd");
+        public static ProjectEmailTemplateLocale He => new ProjectEmailTemplateLocale("he");
+        public static ProjectEmailTemplateLocale Hi => new ProjectEmailTemplateLocale("hi");
+        public static ProjectEmailTemplateLocale Hr => new ProjectEmailTemplateLocale("hr");
+        public static ProjectEmailTemplateLocale Hu => new ProjectEmailTemplateLocale("hu");
+        public static ProjectEmailTemplateLocale Id => new ProjectEmailTemplateLocale("id");
+        public static ProjectEmailTemplateLocale Is => new ProjectEmailTemplateLocale("is");
+        public static ProjectEmailTemplateLocale It => new ProjectEmailTemplateLocale("it");
+        public static ProjectEmailTemplateLocale ItCh => new ProjectEmailTemplateLocale("it-ch");
+        public static ProjectEmailTemplateLocale Ja => new ProjectEmailTemplateLocale("ja");
+        public static ProjectEmailTemplateLocale Ji => new ProjectEmailTemplateLocale("ji");
+        public static ProjectEmailTemplateLocale Ko => new ProjectEmailTemplateLocale("ko");
+        public static ProjectEmailTemplateLocale Ku => new ProjectEmailTemplateLocale("ku");
+        public static ProjectEmailTemplateLocale Lt => new ProjectEmailTemplateLocale("lt");
+        public static ProjectEmailTemplateLocale Lv => new ProjectEmailTemplateLocale("lv");
+        public static ProjectEmailTemplateLocale Mk => new ProjectEmailTemplateLocale("mk");
+        public static ProjectEmailTemplateLocale Ml => new ProjectEmailTemplateLocale("ml");
+        public static ProjectEmailTemplateLocale Ms => new ProjectEmailTemplateLocale("ms");
+        public static ProjectEmailTemplateLocale Mt => new ProjectEmailTemplateLocale("mt");
+        public static ProjectEmailTemplateLocale Nb => new ProjectEmailTemplateLocale("nb");
+        public static ProjectEmailTemplateLocale Ne => new ProjectEmailTemplateLocale("ne");
+        public static ProjectEmailTemplateLocale Nl => new ProjectEmailTemplateLocale("nl");
+        public static ProjectEmailTemplateLocale NlBe => new ProjectEmailTemplateLocale("nl-be");
+        public static ProjectEmailTemplateLocale Nn => new ProjectEmailTemplateLocale("nn");
+        public static ProjectEmailTemplateLocale No => new ProjectEmailTemplateLocale("no");
+        public static ProjectEmailTemplateLocale Pa => new ProjectEmailTemplateLocale("pa");
+        public static ProjectEmailTemplateLocale Pl => new ProjectEmailTemplateLocale("pl");
+        public static ProjectEmailTemplateLocale Pt => new ProjectEmailTemplateLocale("pt");
+        public static ProjectEmailTemplateLocale PtBr => new ProjectEmailTemplateLocale("pt-br");
+        public static ProjectEmailTemplateLocale Rm => new ProjectEmailTemplateLocale("rm");
+        public static ProjectEmailTemplateLocale Ro => new ProjectEmailTemplateLocale("ro");
+        public static ProjectEmailTemplateLocale RoMd => new ProjectEmailTemplateLocale("ro-md");
+        public static ProjectEmailTemplateLocale Ru => new ProjectEmailTemplateLocale("ru");
+        public static ProjectEmailTemplateLocale RuMd => new ProjectEmailTemplateLocale("ru-md");
+        public static ProjectEmailTemplateLocale Sb => new ProjectEmailTemplateLocale("sb");
+        public static ProjectEmailTemplateLocale Sk => new ProjectEmailTemplateLocale("sk");
+        public static ProjectEmailTemplateLocale Sl => new ProjectEmailTemplateLocale("sl");
+        public static ProjectEmailTemplateLocale Sq => new ProjectEmailTemplateLocale("sq");
+        public static ProjectEmailTemplateLocale Sr => new ProjectEmailTemplateLocale("sr");
+        public static ProjectEmailTemplateLocale Sv => new ProjectEmailTemplateLocale("sv");
+        public static ProjectEmailTemplateLocale SvFi => new ProjectEmailTemplateLocale("sv-fi");
+        public static ProjectEmailTemplateLocale Th => new ProjectEmailTemplateLocale("th");
+        public static ProjectEmailTemplateLocale Tn => new ProjectEmailTemplateLocale("tn");
+        public static ProjectEmailTemplateLocale Tr => new ProjectEmailTemplateLocale("tr");
+        public static ProjectEmailTemplateLocale Ts => new ProjectEmailTemplateLocale("ts");
+        public static ProjectEmailTemplateLocale Ua => new ProjectEmailTemplateLocale("ua");
+        public static ProjectEmailTemplateLocale Ur => new ProjectEmailTemplateLocale("ur");
+        public static ProjectEmailTemplateLocale Ve => new ProjectEmailTemplateLocale("ve");
+        public static ProjectEmailTemplateLocale Vi => new ProjectEmailTemplateLocale("vi");
+        public static ProjectEmailTemplateLocale Xh => new ProjectEmailTemplateLocale("xh");
+        public static ProjectEmailTemplateLocale ZhCn => new ProjectEmailTemplateLocale("zh-cn");
+        public static ProjectEmailTemplateLocale ZhHk => new ProjectEmailTemplateLocale("zh-hk");
+        public static ProjectEmailTemplateLocale ZhSg => new ProjectEmailTemplateLocale("zh-sg");
+        public static ProjectEmailTemplateLocale ZhTw => new ProjectEmailTemplateLocale("zh-tw");
+        public static ProjectEmailTemplateLocale Zu => new ProjectEmailTemplateLocale("zu");
+    }
+}
