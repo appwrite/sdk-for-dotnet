@@ -84,7 +84,7 @@ namespace Appwrite.Models
         public string Region { get; private set; }
 
         [JsonPropertyName("billingLimits")]
-        public BillingLimits BillingLimits { get; private set; }
+        public BillingLimits? BillingLimits { get; private set; }
 
         [JsonPropertyName("blocks")]
         public List<Block> Blocks { get; private set; }
@@ -117,7 +117,7 @@ namespace Appwrite.Models
             List<ProjectService> services,
             List<ProjectProtocol> protocols,
             string region,
-            BillingLimits billingLimits,
+            BillingLimits? billingLimits,
             List<Block> blocks,
             string consoleAccessedAt
         )

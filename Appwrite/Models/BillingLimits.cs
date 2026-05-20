@@ -12,38 +12,38 @@ namespace Appwrite.Models
     public class BillingLimits
     {
         [JsonPropertyName("bandwidth")]
-        public long Bandwidth { get; private set; }
+        public long? Bandwidth { get; private set; }
 
         [JsonPropertyName("storage")]
-        public long Storage { get; private set; }
+        public long? Storage { get; private set; }
 
         [JsonPropertyName("users")]
-        public long Users { get; private set; }
+        public long? Users { get; private set; }
 
         [JsonPropertyName("executions")]
-        public long Executions { get; private set; }
+        public long? Executions { get; private set; }
 
         [JsonPropertyName("GBHours")]
-        public long GBHours { get; private set; }
+        public long? GBHours { get; private set; }
 
         [JsonPropertyName("imageTransformations")]
-        public long ImageTransformations { get; private set; }
+        public long? ImageTransformations { get; private set; }
 
         [JsonPropertyName("authPhone")]
-        public long AuthPhone { get; private set; }
+        public long? AuthPhone { get; private set; }
 
         [JsonPropertyName("budgetLimit")]
-        public long BudgetLimit { get; private set; }
+        public long? BudgetLimit { get; private set; }
 
         public BillingLimits(
-            long bandwidth,
-            long storage,
-            long users,
-            long executions,
-            long gBHours,
-            long imageTransformations,
-            long authPhone,
-            long budgetLimit
+            long? bandwidth,
+            long? storage,
+            long? users,
+            long? executions,
+            long? gBHours,
+            long? imageTransformations,
+            long? authPhone,
+            long? budgetLimit
         )
         {
             Bandwidth = bandwidth;
@@ -57,14 +57,14 @@ namespace Appwrite.Models
         }
 
         public static BillingLimits From(Dictionary<string, object> map) => new BillingLimits(
-            bandwidth: Convert.ToInt64(map["bandwidth"]),
-            storage: Convert.ToInt64(map["storage"]),
-            users: Convert.ToInt64(map["users"]),
-            executions: Convert.ToInt64(map["executions"]),
-            gBHours: Convert.ToInt64(map["GBHours"]),
-            imageTransformations: Convert.ToInt64(map["imageTransformations"]),
-            authPhone: Convert.ToInt64(map["authPhone"]),
-            budgetLimit: Convert.ToInt64(map["budgetLimit"])
+            bandwidth: map["bandwidth"] == null ? null : Convert.ToInt64(map["bandwidth"]),
+            storage: map["storage"] == null ? null : Convert.ToInt64(map["storage"]),
+            users: map["users"] == null ? null : Convert.ToInt64(map["users"]),
+            executions: map["executions"] == null ? null : Convert.ToInt64(map["executions"]),
+            gBHours: map["GBHours"] == null ? null : Convert.ToInt64(map["GBHours"]),
+            imageTransformations: map["imageTransformations"] == null ? null : Convert.ToInt64(map["imageTransformations"]),
+            authPhone: map["authPhone"] == null ? null : Convert.ToInt64(map["authPhone"]),
+            budgetLimit: map["budgetLimit"] == null ? null : Convert.ToInt64(map["budgetLimit"])
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

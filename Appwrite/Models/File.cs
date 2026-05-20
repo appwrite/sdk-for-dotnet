@@ -38,6 +38,9 @@ namespace Appwrite.Models
         [JsonPropertyName("sizeOriginal")]
         public long SizeOriginal { get; private set; }
 
+        [JsonPropertyName("sizeActual")]
+        public long SizeActual { get; private set; }
+
         [JsonPropertyName("chunksTotal")]
         public long ChunksTotal { get; private set; }
 
@@ -60,6 +63,7 @@ namespace Appwrite.Models
             string signature,
             string mimeType,
             long sizeOriginal,
+            long sizeActual,
             long chunksTotal,
             long chunksUploaded,
             bool encryption,
@@ -75,6 +79,7 @@ namespace Appwrite.Models
             Signature = signature;
             MimeType = mimeType;
             SizeOriginal = sizeOriginal;
+            SizeActual = sizeActual;
             ChunksTotal = chunksTotal;
             ChunksUploaded = chunksUploaded;
             Encryption = encryption;
@@ -91,6 +96,7 @@ namespace Appwrite.Models
             signature: map["signature"].ToString(),
             mimeType: map["mimeType"].ToString(),
             sizeOriginal: Convert.ToInt64(map["sizeOriginal"]),
+            sizeActual: Convert.ToInt64(map["sizeActual"]),
             chunksTotal: Convert.ToInt64(map["chunksTotal"]),
             chunksUploaded: Convert.ToInt64(map["chunksUploaded"]),
             encryption: (bool)map["encryption"],
@@ -108,6 +114,7 @@ namespace Appwrite.Models
             { "signature", Signature },
             { "mimeType", MimeType },
             { "sizeOriginal", SizeOriginal },
+            { "sizeActual", SizeActual },
             { "chunksTotal", ChunksTotal },
             { "chunksUploaded", ChunksUploaded },
             { "encryption", Encryption },

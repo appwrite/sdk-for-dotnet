@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.1.0
+
+* Added `Deno121`, `Deno124`, and `Deno135` runtime support to `BuildRuntime` and `Runtime` enums
+* Added `SizeActual` property to `File` model for tracking actual file sizes
+* Breaking: Changed `BillingLimits` properties to nullable types in constructor and model
+* Breaking: Changed `BillingLimits` property to nullable in `Project` model
+* Updated advisor authentication examples to use API key instead of session
+
 ## 4.0.0
 
 * Breaking: Renamed `AuthMethod` enum to `ProjectAuthMethodId`
