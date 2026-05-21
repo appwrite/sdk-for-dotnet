@@ -456,7 +456,6 @@ namespace Appwrite
             {
                 case "path":
                     var info = new FileInfo(input.Path);
-                    input.Data = info.OpenRead();
                     size = info.Length;
                     break;
                 case "stream":
@@ -482,6 +481,8 @@ namespace Appwrite
                 switch(input.SourceType)
                 {
                     case "path":
+                        buffer = System.IO.File.ReadAllBytes(input.Path);
+                        break;
                     case "stream":
                         var dataStream = input.Data as Stream;
                         if (dataStream == null)
@@ -613,7 +614,7 @@ namespace Appwrite
                     chunkParameters
                 );
 
-                if (index == 0 || string.IsNullOrEmpty(uploadId))
+                if (index == 0)
                 {
                     uploadId = chunkResult.ContainsKey("$id")
                         ? chunkResult["$id"]?.ToString() ?? string.Empty
@@ -661,6 +662,8 @@ namespace Appwrite
                 var completedChunks = (long)(offset / ChunkSize);
                 var uploadedBytes = offset;
                 var resultLock = new object();
+                var lastResult = result;
+                Dictionary<string, object?>? completedResult = null;
 
                 bool IsUploadComplete(Dictionary<string, object?> chunkResult)
                 {
@@ -689,11 +692,12 @@ namespace Appwrite
                             var chunk = chunks[chunkIndex];
                             var chunkResult = await UploadChunkAsync(chunk.Index, chunk.Start, chunk.End, true);
 
-                            if (IsUploadComplete(chunkResult))
+                            lock (resultLock)
                             {
-                                lock (resultLock)
+                                lastResult = chunkResult;
+                                if (IsUploadComplete(chunkResult))
                                 {
-                                    result = chunkResult;
+                                    completedResult = chunkResult;
                                 }
                             }
 
@@ -714,6 +718,7 @@ namespace Appwrite
                     });
 
                 await Task.WhenAll(workers);
+                result = completedResult ?? lastResult;
             }
 
             // Convert to non-nullable dictionary for converter
