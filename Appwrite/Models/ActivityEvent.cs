@@ -14,17 +14,17 @@ namespace Appwrite.Models
         [JsonPropertyName("$id")]
         public string Id { get; private set; }
 
-        [JsonPropertyName("userType")]
-        public string UserType { get; private set; }
+        [JsonPropertyName("actorType")]
+        public string ActorType { get; private set; }
 
-        [JsonPropertyName("userId")]
-        public string UserId { get; private set; }
+        [JsonPropertyName("actorId")]
+        public string ActorId { get; private set; }
 
-        [JsonPropertyName("userEmail")]
-        public string UserEmail { get; private set; }
+        [JsonPropertyName("actorEmail")]
+        public string ActorEmail { get; private set; }
 
-        [JsonPropertyName("userName")]
-        public string UserName { get; private set; }
+        [JsonPropertyName("actorName")]
+        public string ActorName { get; private set; }
 
         [JsonPropertyName("resourceParent")]
         public string ResourceParent { get; private set; }
@@ -109,10 +109,10 @@ namespace Appwrite.Models
 
         public ActivityEvent(
             string id,
-            string userType,
-            string userId,
-            string userEmail,
-            string userName,
+            string actorType,
+            string actorId,
+            string actorEmail,
+            string actorName,
             string resourceParent,
             string resourceType,
             string resourceId,
@@ -143,10 +143,10 @@ namespace Appwrite.Models
         )
         {
             Id = id;
-            UserType = userType;
-            UserId = userId;
-            UserEmail = userEmail;
-            UserName = userName;
+            ActorType = actorType;
+            ActorId = actorId;
+            ActorEmail = actorEmail;
+            ActorName = actorName;
             ResourceParent = resourceParent;
             ResourceType = resourceType;
             ResourceId = resourceId;
@@ -178,10 +178,10 @@ namespace Appwrite.Models
 
         public static ActivityEvent From(Dictionary<string, object> map) => new ActivityEvent(
             id: map["$id"].ToString(),
-            userType: map["userType"].ToString(),
-            userId: map["userId"].ToString(),
-            userEmail: map["userEmail"].ToString(),
-            userName: map["userName"].ToString(),
+            actorType: map["actorType"].ToString(),
+            actorId: map["actorId"].ToString(),
+            actorEmail: map["actorEmail"].ToString(),
+            actorName: map["actorName"].ToString(),
             resourceParent: map["resourceParent"].ToString(),
             resourceType: map["resourceType"].ToString(),
             resourceId: map["resourceId"].ToString(),
@@ -214,10 +214,10 @@ namespace Appwrite.Models
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "$id", Id },
-            { "userType", UserType },
-            { "userId", UserId },
-            { "userEmail", UserEmail },
-            { "userName", UserName },
+            { "actorType", ActorType },
+            { "actorId", ActorId },
+            { "actorEmail", ActorEmail },
+            { "actorName", ActorName },
             { "resourceParent", ResourceParent },
             { "resourceType", ResourceType },
             { "resourceId", ResourceId },

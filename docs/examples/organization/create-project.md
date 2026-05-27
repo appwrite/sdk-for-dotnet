@@ -9,12 +9,10 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Proxy proxy = new Proxy(client);
+Organization organization = new Organization(client);
 
-ProxyRule result = await proxy.CreateRedirectRule(
-    domain: "",
-    url: "https://example.com",
-    statusCode: RedirectStatusCode.MovedPermanently,
-    resourceId: "<RESOURCE_ID>",
-    resourceType: ProxyResourceType.Site
+Project result = await organization.CreateProject(
+    projectId: "",
+    name: "<NAME>",
+    region: Region.Fra // optional
 );```

@@ -52,7 +52,7 @@ namespace Appwrite.Services
         /// Create a new site.
         /// </para>
         /// </summary>
-        public Task<Models.Site> Create(string siteId, string name, Appwrite.Enums.Framework framework, Appwrite.Enums.BuildRuntime buildRuntime, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.Adapter? adapter = null, string? installationId = null, string? fallbackFile = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
+        public Task<Models.Site> Create(string siteId, string name, Appwrite.Enums.SiteFramework framework, Appwrite.Enums.SiteBuildRuntime buildRuntime, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.SiteAdapter? adapter = null, string? installationId = null, string? fallbackFile = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
         {
             var apiPath = "/sites";
 
@@ -76,6 +76,8 @@ namespace Appwrite.Services
                 { "providerBranch", providerBranch },
                 { "providerSilentMode", providerSilentMode },
                 { "providerRootDirectory", providerRootDirectory },
+                { "providerBranches", providerBranches },
+                { "providerPaths", providerPaths },
                 { "buildSpecification", buildSpecification },
                 { "runtimeSpecification", runtimeSpecification },
                 { "deploymentRetention", deploymentRetention }
@@ -200,7 +202,7 @@ namespace Appwrite.Services
         /// Update site by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Site> Update(string siteId, string name, Appwrite.Enums.Framework framework, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.BuildRuntime? buildRuntime = null, Appwrite.Enums.Adapter? adapter = null, string? fallbackFile = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
+        public Task<Models.Site> Update(string siteId, string name, Appwrite.Enums.SiteFramework framework, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.SiteBuildRuntime? buildRuntime = null, Appwrite.Enums.SiteAdapter? adapter = null, string? fallbackFile = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
         {
             var apiPath = "/sites/{siteId}"
                 .Replace("{siteId}", siteId);
@@ -224,6 +226,8 @@ namespace Appwrite.Services
                 { "providerBranch", providerBranch },
                 { "providerSilentMode", providerSilentMode },
                 { "providerRootDirectory", providerRootDirectory },
+                { "providerBranches", providerBranches },
+                { "providerPaths", providerPaths },
                 { "buildSpecification", buildSpecification },
                 { "runtimeSpecification", runtimeSpecification },
                 { "deploymentRetention", deploymentRetention }

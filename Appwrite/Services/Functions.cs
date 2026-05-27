@@ -55,7 +55,7 @@ namespace Appwrite.Services
         /// API.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.Runtime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<Appwrite.Enums.Scopes>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
+        public Task<Models.Function> Create(string functionId, string name, Appwrite.Enums.FunctionRuntime runtime, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<Appwrite.Enums.ProjectKeyScopes>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
         {
             var apiPath = "/functions";
 
@@ -78,6 +78,8 @@ namespace Appwrite.Services
                 { "providerBranch", providerBranch },
                 { "providerSilentMode", providerSilentMode },
                 { "providerRootDirectory", providerRootDirectory },
+                { "providerBranches", providerBranches },
+                { "providerPaths", providerPaths },
                 { "buildSpecification", buildSpecification },
                 { "runtimeSpecification", runtimeSpecification },
                 { "deploymentRetention", deploymentRetention }
@@ -201,7 +203,7 @@ namespace Appwrite.Services
         /// Update function by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Update(string functionId, string name, Appwrite.Enums.Runtime? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<Appwrite.Enums.Scopes>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
+        public Task<Models.Function> Update(string functionId, string name, Appwrite.Enums.FunctionRuntime? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<Appwrite.Enums.ProjectKeyScopes>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null)
         {
             var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
@@ -224,6 +226,8 @@ namespace Appwrite.Services
                 { "providerBranch", providerBranch },
                 { "providerSilentMode", providerSilentMode },
                 { "providerRootDirectory", providerRootDirectory },
+                { "providerBranches", providerBranches },
+                { "providerPaths", providerPaths },
                 { "buildSpecification", buildSpecification },
                 { "runtimeSpecification", runtimeSpecification },
                 { "deploymentRetention", deploymentRetention }

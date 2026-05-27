@@ -95,6 +95,12 @@ namespace Appwrite.Models
         [JsonPropertyName("providerSilentMode")]
         public bool ProviderSilentMode { get; private set; }
 
+        [JsonPropertyName("providerBranches")]
+        public List<string> ProviderBranches { get; private set; }
+
+        [JsonPropertyName("providerPaths")]
+        public List<string> ProviderPaths { get; private set; }
+
         [JsonPropertyName("buildSpecification")]
         public string BuildSpecification { get; private set; }
 
@@ -130,6 +136,8 @@ namespace Appwrite.Models
             string providerBranch,
             string providerRootDirectory,
             bool providerSilentMode,
+            List<string> providerBranches,
+            List<string> providerPaths,
             string buildSpecification,
             string runtimeSpecification
         )
@@ -162,6 +170,8 @@ namespace Appwrite.Models
             ProviderBranch = providerBranch;
             ProviderRootDirectory = providerRootDirectory;
             ProviderSilentMode = providerSilentMode;
+            ProviderBranches = providerBranches;
+            ProviderPaths = providerPaths;
             BuildSpecification = buildSpecification;
             RuntimeSpecification = runtimeSpecification;
         }
@@ -195,6 +205,8 @@ namespace Appwrite.Models
             providerBranch: map["providerBranch"].ToString(),
             providerRootDirectory: map["providerRootDirectory"].ToString(),
             providerSilentMode: (bool)map["providerSilentMode"],
+            providerBranches: map["providerBranches"].ConvertToList<string>(),
+            providerPaths: map["providerPaths"].ConvertToList<string>(),
             buildSpecification: map["buildSpecification"].ToString(),
             runtimeSpecification: map["runtimeSpecification"].ToString()
         );
@@ -229,6 +241,8 @@ namespace Appwrite.Models
             { "providerBranch", ProviderBranch },
             { "providerRootDirectory", ProviderRootDirectory },
             { "providerSilentMode", ProviderSilentMode },
+            { "providerBranches", ProviderBranches },
+            { "providerPaths", ProviderPaths },
             { "buildSpecification", BuildSpecification },
             { "runtimeSpecification", RuntimeSpecification }
         };

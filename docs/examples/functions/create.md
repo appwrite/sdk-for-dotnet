@@ -14,7 +14,7 @@ Functions functions = new Functions(client);
 Function result = await functions.Create(
     functionId: "<FUNCTION_ID>",
     name: "<NAME>",
-    runtime: Runtime.Node145,
+    runtime: FunctionRuntime.Node145,
     execute: ["any"], // optional
     events: new List<string>(), // optional
     schedule: "", // optional
@@ -23,12 +23,14 @@ Function result = await functions.Create(
     logging: false, // optional
     entrypoint: "<ENTRYPOINT>", // optional
     commands: "<COMMANDS>", // optional
-    scopes: new List&lt;Scopes&gt; { Scopes.ProjectRead }, // optional
+    scopes: new List&lt;ProjectKeyScopes&gt; { ProjectKeyScopes.ProjectRead }, // optional
     installationId: "<INSTALLATION_ID>", // optional
     providerRepositoryId: "<PROVIDER_REPOSITORY_ID>", // optional
     providerBranch: "<PROVIDER_BRANCH>", // optional
     providerSilentMode: false, // optional
     providerRootDirectory: "<PROVIDER_ROOT_DIRECTORY>", // optional
+    providerBranches: new List<string>(), // optional
+    providerPaths: new List<string>(), // optional
     buildSpecification: "", // optional
     runtimeSpecification: "", // optional
     deploymentRetention: 0 // optional

@@ -129,7 +129,7 @@ namespace Appwrite.Services
         /// performance purposes.
         /// </para>
         /// </summary>
-        public Task<Models.ProxyRule> CreateRedirectRule(string domain, string url, Appwrite.Enums.StatusCode statusCode, string resourceId, Appwrite.Enums.ProxyResourceType resourceType)
+        public Task<Models.ProxyRule> CreateRedirectRule(string domain, string url, Appwrite.Enums.RedirectStatusCode statusCode, string resourceId, Appwrite.Enums.ProxyResourceType resourceType)
         {
             var apiPath = "/proxy/rules/redirect";
 

@@ -12,6 +12,6 @@ Client client = new Client()
 Health health = new Health(client);
 
 HealthQueue result = await health.GetFailedJobs(
-    name: Name.V1Database,
+    name: HealthQueueName.V1Database,
     threshold: 0 // optional
 );```

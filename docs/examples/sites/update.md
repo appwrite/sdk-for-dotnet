@@ -14,7 +14,7 @@ Sites sites = new Sites(client);
 Site result = await sites.Update(
     siteId: "<SITE_ID>",
     name: "<NAME>",
-    framework: Framework.Analog,
+    framework: SiteFramework.Analog,
     enabled: false, // optional
     logging: false, // optional
     timeout: 1, // optional
@@ -22,14 +22,16 @@ Site result = await sites.Update(
     buildCommand: "<BUILD_COMMAND>", // optional
     startCommand: "<START_COMMAND>", // optional
     outputDirectory: "<OUTPUT_DIRECTORY>", // optional
-    buildRuntime: BuildRuntime.Node145, // optional
-    adapter: Adapter.Static, // optional
+    buildRuntime: SiteBuildRuntime.Node145, // optional
+    adapter: SiteAdapter.Static, // optional
     fallbackFile: "<FALLBACK_FILE>", // optional
     installationId: "<INSTALLATION_ID>", // optional
     providerRepositoryId: "<PROVIDER_REPOSITORY_ID>", // optional
     providerBranch: "<PROVIDER_BRANCH>", // optional
     providerSilentMode: false, // optional
     providerRootDirectory: "<PROVIDER_ROOT_DIRECTORY>", // optional
+    providerBranches: new List<string>(), // optional
+    providerPaths: new List<string>(), // optional
     buildSpecification: "", // optional
     runtimeSpecification: "", // optional
     deploymentRetention: 0 // optional
