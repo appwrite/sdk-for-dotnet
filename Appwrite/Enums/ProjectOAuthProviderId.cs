@@ -54,7 +54,5 @@ namespace Appwrite.Enums
         public static ProjectOAuthProviderId Yandex => new ProjectOAuthProviderId("yandex");
         public static ProjectOAuthProviderId Zoho => new ProjectOAuthProviderId("zoho");
         public static ProjectOAuthProviderId Zoom => new ProjectOAuthProviderId("zoom");
-        public static ProjectOAuthProviderId GithubImagine => new ProjectOAuthProviderId("githubImagine");
-        public static ProjectOAuthProviderId GoogleImagine => new ProjectOAuthProviderId("googleImagine");
     }
 }

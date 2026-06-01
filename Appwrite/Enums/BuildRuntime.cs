@@ -42,9 +42,6 @@ namespace Appwrite.Enums
         public static BuildRuntime PythonMl311 => new BuildRuntime("python-ml-3.11");
         public static BuildRuntime PythonMl312 => new BuildRuntime("python-ml-3.12");
         public static BuildRuntime PythonMl313 => new BuildRuntime("python-ml-3.13");
-        public static BuildRuntime Deno121 => new BuildRuntime("deno-1.21");
-        public static BuildRuntime Deno124 => new BuildRuntime("deno-1.24");
-        public static BuildRuntime Deno135 => new BuildRuntime("deno-1.35");
         public static BuildRuntime Deno140 => new BuildRuntime("deno-1.40");
         public static BuildRuntime Deno146 => new BuildRuntime("deno-1.46");
         public static BuildRuntime Deno20 => new BuildRuntime("deno-2.0");
@@ -63,6 +60,7 @@ namespace Appwrite.Enums
         public static BuildRuntime Dart39 => new BuildRuntime("dart-3.9");
         public static BuildRuntime Dart310 => new BuildRuntime("dart-3.10");
         public static BuildRuntime Dart311 => new BuildRuntime("dart-3.11");
+        public static BuildRuntime Dart312 => new BuildRuntime("dart-3.12");
         public static BuildRuntime Dotnet60 => new BuildRuntime("dotnet-6.0");
         public static BuildRuntime Dotnet70 => new BuildRuntime("dotnet-7.0");
         public static BuildRuntime Dotnet80 => new BuildRuntime("dotnet-8.0");
@@ -103,5 +101,6 @@ namespace Appwrite.Enums
         public static BuildRuntime Flutter335 => new BuildRuntime("flutter-3.35");
         public static BuildRuntime Flutter338 => new BuildRuntime("flutter-3.38");
         public static BuildRuntime Flutter341 => new BuildRuntime("flutter-3.41");
+        public static BuildRuntime Flutter344 => new BuildRuntime("flutter-3.44");
     }
 }

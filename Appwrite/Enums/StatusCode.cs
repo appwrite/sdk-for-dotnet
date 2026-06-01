@@ -11,9 +11,9 @@ namespace Appwrite.Enums
             Value = value;
         }
 
-        public static StatusCode MovedPermanently301 => new StatusCode("301");
-        public static StatusCode Found302 => new StatusCode("302");
-        public static StatusCode TemporaryRedirect307 => new StatusCode("307");
-        public static StatusCode PermanentRedirect308 => new StatusCode("308");
+        public static StatusCode MovedPermanently => new StatusCode("301");
+        public static StatusCode Found => new StatusCode("302");
+        public static StatusCode TemporaryRedirect => new StatusCode("307");
+        public static StatusCode PermanentRedirect => new StatusCode("308");
     }
 }

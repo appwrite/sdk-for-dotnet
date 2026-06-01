@@ -9,32 +9,32 @@ using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
-    public class PresenceList
+    public class ProjectList
     {
         [JsonPropertyName("total")]
         public long Total { get; private set; }
 
-        [JsonPropertyName("presences")]
-        public List<Presence> Presences { get; private set; }
+        [JsonPropertyName("projects")]
+        public List<Project> Projects { get; private set; }
 
-        public PresenceList(
+        public ProjectList(
             long total,
-            List<Presence> presences
+            List<Project> projects
         )
         {
             Total = total;
-            Presences = presences;
+            Projects = projects;
         }
 
-        public static PresenceList From(Dictionary<string, object> map) => new PresenceList(
+        public static ProjectList From(Dictionary<string, object> map) => new ProjectList(
             total: Convert.ToInt64(map["total"]),
-            presences: map["presences"].ConvertToList<Dictionary<string, object>>().Select(it => Presence.From(map: it)).ToList()
+            projects: map["projects"].ConvertToList<Dictionary<string, object>>().Select(it => Project.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "total", Total },
-            { "presences", Presences?.Select(it => it.ToMap()).ToList() }
+            { "projects", Projects?.Select(it => it.ToMap()).ToList() }
         };
     }
 }

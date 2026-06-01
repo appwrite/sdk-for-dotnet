@@ -10,7 +10,7 @@ Client client = new Client()
 
 Presences presences = new Presences(client);
 
-Presence result = await presences.UpdatePresence(
+Presence result = await presences.Update(
     presenceId: "<PRESENCE_ID>",
     userId: "<USER_ID>",
     status: "<STATUS>", // optional

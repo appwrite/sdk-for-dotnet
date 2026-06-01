@@ -35,7 +35,8 @@ namespace Appwrite.Models
         [JsonPropertyName("expiresAt")]
         public string? ExpiresAt { get; private set; }
 
-        public Dictionary<string, object> Metadata { get; private set; }
+        [JsonPropertyName("metadata")]
+        public object? Metadata { get; private set; }
 
         public Presence(
             string id,
@@ -46,7 +47,7 @@ namespace Appwrite.Models
             string? status,
             string source,
             string? expiresAt,
-            Dictionary<string, object> metadata
+            object? metadata
         )
         {
             Id = id;
@@ -69,9 +70,7 @@ namespace Appwrite.Models
             status: map.TryGetValue("status", out var status) ? status?.ToString() : null,
             source: map["source"].ToString(),
             expiresAt: map.TryGetValue("expiresAt", out var expiresAt) ? expiresAt?.ToString() : null,
-            metadata: map.TryGetValue("metadata", out var additionalPropsValue)
-                ? (Dictionary<string, object>)additionalPropsValue
-                : map
+            metadata: map.TryGetValue("metadata", out var metadata) ? metadata?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -86,8 +85,5 @@ namespace Appwrite.Models
             { "expiresAt", ExpiresAt },
             { "metadata", Metadata }
         };
-
-        public T ConvertTo<T>(Func<Dictionary<string, object>, T> fromJson) =>
-            fromJson.Invoke(Metadata);
     }
 }

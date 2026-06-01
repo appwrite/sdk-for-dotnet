@@ -127,7 +127,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Presence> UpdatePresence(string presenceId, string userId, string? status = null, string? expiresAt = null, object? metadata = null, List<string>? permissions = null, bool? purge = null)
+        public Task<Models.Presence> Update(string presenceId, string userId, string? status = null, string? expiresAt = null, object? metadata = null, List<string>? permissions = null, bool? purge = null)
         {
             var apiPath = "/presences/{presenceId}"
                 .Replace("{presenceId}", presenceId);

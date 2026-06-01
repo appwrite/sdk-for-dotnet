@@ -30,6 +30,8 @@ Site result = await sites.Update(
     providerBranch: "<PROVIDER_BRANCH>", // optional
     providerSilentMode: false, // optional
     providerRootDirectory: "<PROVIDER_ROOT_DIRECTORY>", // optional
+    providerBranches: new List<string>(), // optional
+    providerPaths: new List<string>(), // optional
     buildSpecification: "", // optional
     runtimeSpecification: "", // optional
     deploymentRetention: 0 // optional

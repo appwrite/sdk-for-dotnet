@@ -1,12 +1,18 @@
 # Change Log
 
-## 4.1.0
+## 5.0.0
 
-* Added `Deno121`, `Deno124`, and `Deno135` runtime support to `BuildRuntime` and `Runtime` enums
-* Added `SizeActual` property to `File` model for tracking actual file sizes
-* Breaking: Changed `BillingLimits` properties to nullable types in constructor and model
-* Breaking: Changed `BillingLimits` property to nullable in `Project` model
-* Updated advisor authentication examples to use API key instead of session
+* Breaking: Removed `githubImagine` and `googleImagine` from `ProjectOAuthProviderId`
+* Breaking: Removed `deno-1.21`, `deno-1.24`, and `deno-1.35` from `Runtime` and `BuildRuntime`
+* Breaking: Dropped numeric suffixes from `StatusCode` redirect members
+* Added: `Organization` service for managing projects and API keys
+* Added: `PolicyDenyAliasedEmail`, `PolicyDenyDisposableEmail`, and `PolicyDenyFreeEmail` policy models
+* Added: `deny-aliased-email`, `deny-disposable-email`, and `deny-free-email` to `ProjectPolicyId`
+* Added: `BrowserTheme`, `HealthQueueName`, `OrganizationKeyScopes`, and `Region` enums
+* Added: `dart-3.12` and `flutter-3.44` runtimes
+* Added: `ProjectList` model and new attributes on `Function`, `Site`, and `UsageGauge`
+* Updated: `functions`, `sites`, `usage`, `health`, and `avatars` services
+* Updated: Renamed `updatePresence` to `update` in the `presences` service
 
 ## 4.0.0
 

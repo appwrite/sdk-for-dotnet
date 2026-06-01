@@ -15,6 +15,7 @@ namespace Appwrite.Enums
         public static BackupServices Tablesdb => new BackupServices("tablesdb");
         public static BackupServices Documentsdb => new BackupServices("documentsdb");
         public static BackupServices Vectorsdb => new BackupServices("vectorsdb");
+        public static BackupServices DedicatedDatabases => new BackupServices("dedicatedDatabases");
         public static BackupServices Functions => new BackupServices("functions");
         public static BackupServices Storage => new BackupServices("storage");
     }
