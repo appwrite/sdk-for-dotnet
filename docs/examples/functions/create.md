@@ -14,7 +14,7 @@ Functions functions = new Functions(client);
 Function result = await functions.Create(
     functionId: "<FUNCTION_ID>",
     name: "<NAME>",
-    runtime: FunctionRuntime.Node145,
+    runtime: Runtime.Node145,
     execute: ["any"], // optional
     events: new List<string>(), // optional
     schedule: "", // optional

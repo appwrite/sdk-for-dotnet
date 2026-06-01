@@ -20,5 +20,8 @@ namespace Appwrite.Enums
         public static ProjectPolicyId SessionLimit => new ProjectPolicyId("session-limit");
         public static ProjectPolicyId UserLimit => new ProjectPolicyId("user-limit");
         public static ProjectPolicyId MembershipPrivacy => new ProjectPolicyId("membership-privacy");
+        public static ProjectPolicyId DenyAliasedEmail => new ProjectPolicyId("deny-aliased-email");
+        public static ProjectPolicyId DenyDisposableEmail => new ProjectPolicyId("deny-disposable-email");
+        public static ProjectPolicyId DenyFreeEmail => new ProjectPolicyId("deny-free-email");
     }
 }

@@ -36,9 +36,5 @@ namespace Appwrite.Models
             { "total", Total },
             { "presences", Presences?.Select(it => it.ToMap()).ToList() }
         };
-
-        public T ConvertTo<T>(Func<Dictionary<string, object>, T> fromJson) =>
-            (T)Presences.Select(it => it.ConvertTo(fromJson));
-
     }
 }

@@ -14,7 +14,7 @@ Proxy proxy = new Proxy(client);
 ProxyRule result = await proxy.CreateRedirectRule(
     domain: "",
     url: "https://example.com",
-    statusCode: RedirectStatusCode.MovedPermanently,
+    statusCode: StatusCode.MovedPermanently,
     resourceId: "<RESOURCE_ID>",
     resourceType: ProxyResourceType.Site
 );```

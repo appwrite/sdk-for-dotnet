@@ -3228,6 +3228,18 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.PolicyMembershipPrivacy.From(map: it);
                 }
+                if (it.TryGetValue("$id", out var idValue10) && idValue10?.ToString() == "deny-aliased-email")
+                {
+                    return Appwrite.Models.PolicyDenyAliasedEmail.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue11) && idValue11?.ToString() == "deny-disposable-email")
+                {
+                    return Appwrite.Models.PolicyDenyDisposableEmail.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue12) && idValue12?.ToString() == "deny-free-email")
+                {
+                    return Appwrite.Models.PolicyDenyFreeEmail.From(map: it);
+                }
                 throw new System.Exception("Unable to match response to any expected response model");
             }
 
