@@ -55,7 +55,7 @@ namespace Appwrite.Models
             string updatedAt,
             long? min,
             long? max,
-            long? xdefault
+            long? @default
         )
         {
             Key = key;
@@ -68,7 +68,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Min = min;
             Max = max;
-            Default = xdefault;
+            Default = @default;
         }
 
         public static ColumnBigint From(Dictionary<string, object> map) => new ColumnBigint(
@@ -77,12 +77,20 @@ namespace Appwrite.Models
             status: new ColumnStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
-            array: (bool?)map["array"],
+            array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null
+                                        ? (bool?)boolRaw6
+                                        : null,
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            min: map["min"] == null ? null : Convert.ToInt64(map["min"]),
-            max: map["max"] == null ? null : Convert.ToInt64(map["max"]),
-            xdefault: map["default"] == null ? null : Convert.ToInt64(map["default"])
+            min: map.TryGetValue("min", out var numberRaw9) && numberRaw9 != null
+                                    ? Convert.ToInt64(numberRaw9)
+                                    : null,
+            max: map.TryGetValue("max", out var numberRaw10) && numberRaw10 != null
+                                    ? Convert.ToInt64(numberRaw10)
+                                    : null,
+            @default: map.TryGetValue("default", out var numberRaw11) && numberRaw11 != null
+                                    ? Convert.ToInt64(numberRaw11)
+                                    : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

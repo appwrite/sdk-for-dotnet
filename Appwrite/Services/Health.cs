@@ -27,6 +27,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -58,6 +59,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -67,6 +69,41 @@ namespace Appwrite.Services
             }
 
             return _client.Call<Models.HealthAntivirus>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Check the database that backs the audit and activity store. When the
+        /// connection is reachable the endpoint returns a passing status with its
+        /// response time.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.HealthStatusList> GetAuditsDB()
+        {
+            var apiPath = "/health/audits-db";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
+            };
+
+
+            static Models.HealthStatusList Convert(Dictionary<string, object> it)
+            {
+                return Models.HealthStatusList.From(map: it);
+            }
+
+            return _client.Call<Models.HealthStatusList>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -90,6 +127,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -122,6 +160,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -157,6 +196,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -188,6 +228,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -219,6 +260,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -253,6 +295,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -286,6 +329,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -320,6 +364,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -354,6 +399,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -387,6 +433,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -421,6 +468,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -454,6 +502,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -487,6 +536,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -520,6 +570,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -553,6 +604,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -586,6 +638,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -619,6 +672,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -652,6 +706,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -685,6 +740,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -716,6 +772,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -747,6 +804,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -784,6 +842,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 

@@ -50,7 +50,7 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            string? xdefault,
+            string? @default,
             bool? encrypt
         )
         {
@@ -62,7 +62,7 @@ namespace Appwrite.Models
             Array = array;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
-            Default = xdefault;
+            Default = @default;
             Encrypt = encrypt;
         }
 
@@ -72,11 +72,15 @@ namespace Appwrite.Models
             status: new ColumnStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
-            array: (bool?)map["array"],
+            array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null
+                                        ? (bool?)boolRaw6
+                                        : null,
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null,
-            encrypt: (bool?)map["encrypt"]
+            @default: map.TryGetValue("default", out var @default) ? @default?.ToString() : null,
+            encrypt: map.TryGetValue("encrypt", out var boolRaw10) && boolRaw10 != null
+                                        ? (bool?)boolRaw10
+                                        : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

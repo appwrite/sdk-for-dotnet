@@ -32,6 +32,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -68,6 +69,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -101,6 +103,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -133,6 +136,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -166,6 +170,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -200,6 +205,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -233,6 +239,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -262,6 +269,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -297,6 +305,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -332,6 +341,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -367,6 +377,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -400,6 +411,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -443,6 +455,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -479,6 +492,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -518,6 +532,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -554,6 +569,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -586,6 +602,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -610,7 +627,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createBigIntColumn` instead.")]
-        public Task<Models.AttributeBigint> CreateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? xdefault = null, bool? array = null)
+        public Task<Models.AttributeBigint> CreateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/bigint"
                 .Replace("{databaseId}", databaseId)
@@ -622,12 +639,13 @@ namespace Appwrite.Services
                 { "required", required },
                 { "min", min },
                 { "max", max },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -653,7 +671,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateBigIntColumn` instead.")]
-        public Task<Models.AttributeBigint> UpdateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long xdefault, long? min = null, long? max = null, string? newKey = null)
+        public Task<Models.AttributeBigint> UpdateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/bigint/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -665,12 +683,13 @@ namespace Appwrite.Services
                 { "required", required },
                 { "min", min },
                 { "max", max },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -695,7 +714,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createBooleanColumn` instead.")]
-        public Task<Models.AttributeBoolean> CreateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool? xdefault = null, bool? array = null)
+        public Task<Models.AttributeBoolean> CreateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool? @default = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean"
                 .Replace("{databaseId}", databaseId)
@@ -705,12 +724,13 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -735,7 +755,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateBooleanColumn` instead.")]
-        public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool xdefault, string? newKey = null)
+        public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool @default, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -745,12 +765,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -774,7 +795,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createDatetimeColumn` instead.")]
-        public Task<Models.AttributeDatetime> CreateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.AttributeDatetime> CreateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime"
                 .Replace("{databaseId}", databaseId)
@@ -784,12 +805,13 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -814,7 +836,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateDatetimeColumn` instead.")]
-        public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -824,12 +846,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -854,7 +877,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createEmailColumn` instead.")]
-        public Task<Models.AttributeEmail> CreateEmailAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.AttributeEmail> CreateEmailAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email"
                 .Replace("{databaseId}", databaseId)
@@ -864,12 +887,13 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -895,7 +919,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateEmailColumn` instead.")]
-        public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -905,12 +929,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -936,7 +961,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createEnumColumn` instead.")]
-        public Task<Models.AttributeEnum> CreateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.AttributeEnum> CreateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? @default = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum"
                 .Replace("{databaseId}", databaseId)
@@ -947,12 +972,13 @@ namespace Appwrite.Services
                 { "key", key },
                 { "elements", elements },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -978,7 +1004,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateEnumColumn` instead.")]
-        public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string xdefault, string? newKey = null)
+        public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string @default, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -989,12 +1015,13 @@ namespace Appwrite.Services
             {
                 { "elements", elements },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1020,7 +1047,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createFloatColumn` instead.")]
-        public Task<Models.AttributeFloat> CreateFloatAttribute(string databaseId, string collectionId, string key, bool required, double? min = null, double? max = null, double? xdefault = null, bool? array = null)
+        public Task<Models.AttributeFloat> CreateFloatAttribute(string databaseId, string collectionId, string key, bool required, double? min = null, double? max = null, double? @default = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float"
                 .Replace("{databaseId}", databaseId)
@@ -1032,12 +1059,13 @@ namespace Appwrite.Services
                 { "required", required },
                 { "min", min },
                 { "max", max },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1063,7 +1091,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateFloatColumn` instead.")]
-        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double xdefault, double? min = null, double? max = null, string? newKey = null)
+        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double @default, double? min = null, double? max = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1075,12 +1103,13 @@ namespace Appwrite.Services
                 { "required", required },
                 { "min", min },
                 { "max", max },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1106,7 +1135,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIntegerColumn` instead.")]
-        public Task<Models.AttributeInteger> CreateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? xdefault = null, bool? array = null)
+        public Task<Models.AttributeInteger> CreateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer"
                 .Replace("{databaseId}", databaseId)
@@ -1118,12 +1147,13 @@ namespace Appwrite.Services
                 { "required", required },
                 { "min", min },
                 { "max", max },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1149,7 +1179,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateIntegerColumn` instead.")]
-        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long xdefault, long? min = null, long? max = null, string? newKey = null)
+        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1161,12 +1191,13 @@ namespace Appwrite.Services
                 { "required", required },
                 { "min", min },
                 { "max", max },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1191,7 +1222,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIpColumn` instead.")]
-        public Task<Models.AttributeIp> CreateIpAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.AttributeIp> CreateIpAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip"
                 .Replace("{databaseId}", databaseId)
@@ -1201,12 +1232,13 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1232,7 +1264,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateIpColumn` instead.")]
-        public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1242,12 +1274,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1271,7 +1304,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createLineColumn` instead.")]
-        public Task<Models.AttributeLine> CreateLineAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null)
+        public Task<Models.AttributeLine> CreateLineAttribute(string databaseId, string collectionId, string key, bool required, List<object>? @default = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line"
                 .Replace("{databaseId}", databaseId)
@@ -1281,11 +1314,12 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault }
+                { "default", @default }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1310,7 +1344,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateLineColumn` instead.")]
-        public Task<Models.AttributeLine> UpdateLineAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null, string? newKey = null)
+        public Task<Models.AttributeLine> UpdateLineAttribute(string databaseId, string collectionId, string key, bool required, List<object>? @default = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1320,12 +1354,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1349,7 +1384,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeLongtext> CreateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeLongtext> CreateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/longtext"
                 .Replace("{databaseId}", databaseId)
@@ -1359,13 +1394,14 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array },
                 { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1390,7 +1426,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeLongtext> UpdateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        public Task<Models.AttributeLongtext> UpdateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/longtext/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1400,12 +1436,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1429,7 +1466,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeMediumtext> CreateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeMediumtext> CreateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/mediumtext"
                 .Replace("{databaseId}", databaseId)
@@ -1439,13 +1476,14 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array },
                 { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1470,7 +1508,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeMediumtext> UpdateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        public Task<Models.AttributeMediumtext> UpdateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/mediumtext/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1480,12 +1518,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1509,7 +1548,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPointColumn` instead.")]
-        public Task<Models.AttributePoint> CreatePointAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null)
+        public Task<Models.AttributePoint> CreatePointAttribute(string databaseId, string collectionId, string key, bool required, List<object>? @default = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point"
                 .Replace("{databaseId}", databaseId)
@@ -1519,11 +1558,12 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault }
+                { "default", @default }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1548,7 +1588,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePointColumn` instead.")]
-        public Task<Models.AttributePoint> UpdatePointAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null, string? newKey = null)
+        public Task<Models.AttributePoint> UpdatePointAttribute(string databaseId, string collectionId, string key, bool required, List<object>? @default = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1558,12 +1598,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1587,7 +1628,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPolygonColumn` instead.")]
-        public Task<Models.AttributePolygon> CreatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null)
+        public Task<Models.AttributePolygon> CreatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<object>? @default = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon"
                 .Replace("{databaseId}", databaseId)
@@ -1597,11 +1638,12 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault }
+                { "default", @default }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1626,7 +1668,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePolygonColumn` instead.")]
-        public Task<Models.AttributePolygon> UpdatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<object>? xdefault = null, string? newKey = null)
+        public Task<Models.AttributePolygon> UpdatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<object>? @default = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1636,12 +1678,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1685,6 +1728,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1725,6 +1769,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1749,7 +1794,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createStringColumn` instead.")]
-        public Task<Models.AttributeString> CreateStringAttribute(string databaseId, string collectionId, string key, long size, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeString> CreateStringAttribute(string databaseId, string collectionId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string"
                 .Replace("{databaseId}", databaseId)
@@ -1760,13 +1805,14 @@ namespace Appwrite.Services
                 { "key", key },
                 { "size", size },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array },
                 { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1792,7 +1838,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateStringColumn` instead.")]
-        public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, long? size = null, string? newKey = null)
+        public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string @default, long? size = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1802,13 +1848,14 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "size", size },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1832,7 +1879,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeText> CreateTextAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeText> CreateTextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/text"
                 .Replace("{databaseId}", databaseId)
@@ -1842,13 +1889,14 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array },
                 { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1873,7 +1921,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeText> UpdateTextAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        public Task<Models.AttributeText> UpdateTextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/text/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1883,12 +1931,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1913,7 +1962,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createUrlColumn` instead.")]
-        public Task<Models.AttributeUrl> CreateUrlAttribute(string databaseId, string collectionId, string key, bool required, string? xdefault = null, bool? array = null)
+        public Task<Models.AttributeUrl> CreateUrlAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url"
                 .Replace("{databaseId}", databaseId)
@@ -1923,12 +1972,13 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1954,7 +2004,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateUrlColumn` instead.")]
-        public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, string? newKey = null)
+        public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -1964,12 +2014,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1993,7 +2044,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeVarchar> CreateVarcharAttribute(string databaseId, string collectionId, string key, long size, bool required, string? xdefault = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeVarchar> CreateVarcharAttribute(string databaseId, string collectionId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/varchar"
                 .Replace("{databaseId}", databaseId)
@@ -2004,13 +2055,14 @@ namespace Appwrite.Services
                 { "key", key },
                 { "size", size },
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "array", array },
                 { "encrypt", encrypt }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2035,7 +2087,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.AttributeVarchar> UpdateVarcharAttribute(string databaseId, string collectionId, string key, bool required, string xdefault, long? size = null, string? newKey = null)
+        public Task<Models.AttributeVarchar> UpdateVarcharAttribute(string databaseId, string collectionId, string key, bool required, string @default, long? size = null, string? newKey = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/varchar/{key}"
                 .Replace("{databaseId}", databaseId)
@@ -2045,13 +2097,14 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "required", required },
-                { "default", xdefault },
+                { "default", @default },
                 { "size", size },
                 { "newKey", newKey }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2088,6 +2141,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -2163,6 +2217,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2198,6 +2253,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -2239,6 +2295,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2279,6 +2336,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2320,6 +2378,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2360,6 +2419,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2398,6 +2458,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2437,6 +2498,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -2478,6 +2540,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2518,6 +2581,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2555,6 +2619,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2573,7 +2638,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.decrementRowColumn` instead.")]
-        public Task<Models.Document> DecrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? xvalue = null, double? min = null, string? transactionId = null)
+        public Task<Models.Document> DecrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? @value = null, double? min = null, string? transactionId = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/decrement"
                 .Replace("{databaseId}", databaseId)
@@ -2583,13 +2648,14 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "value", xvalue },
+                { "value", @value },
                 { "min", min },
                 { "transactionId", transactionId }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2613,7 +2679,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.incrementRowColumn` instead.")]
-        public Task<Models.Document> IncrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? xvalue = null, double? max = null, string? transactionId = null)
+        public Task<Models.Document> IncrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? @value = null, double? max = null, string? transactionId = null)
         {
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/increment"
                 .Replace("{databaseId}", databaseId)
@@ -2623,13 +2689,14 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "value", xvalue },
+                { "value", @value },
                 { "max", max },
                 { "transactionId", transactionId }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2667,6 +2734,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -2708,6 +2776,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2744,6 +2813,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -2779,6 +2849,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 

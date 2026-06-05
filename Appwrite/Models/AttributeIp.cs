@@ -51,7 +51,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string format,
-            string? xdefault
+            string? @default
         )
         {
             Key = key;
@@ -63,7 +63,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Format = format;
-            Default = xdefault;
+            Default = @default;
         }
 
         public static AttributeIp From(Dictionary<string, object> map) => new AttributeIp(
@@ -72,11 +72,13 @@ namespace Appwrite.Models
             status: new AttributeStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
-            array: (bool?)map["array"],
+            array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null
+                                        ? (bool?)boolRaw6
+                                        : null,
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             format: map["format"].ToString(),
-            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
+            @default: map.TryGetValue("default", out var @default) ? @default?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

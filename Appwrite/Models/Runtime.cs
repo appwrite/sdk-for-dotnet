@@ -40,7 +40,7 @@ namespace Appwrite.Models
             string key,
             string name,
             string version,
-            string xbase,
+            string @base,
             string image,
             string logo,
             List<string> supports
@@ -50,7 +50,7 @@ namespace Appwrite.Models
             Key = key;
             Name = name;
             Version = version;
-            Base = xbase;
+            Base = @base;
             Image = image;
             Logo = logo;
             Supports = supports;
@@ -61,7 +61,7 @@ namespace Appwrite.Models
             key: map["key"].ToString(),
             name: map["name"].ToString(),
             version: map["version"].ToString(),
-            xbase: map["base"].ToString(),
+            @base: map["base"].ToString(),
             image: map["image"].ToString(),
             logo: map["logo"].ToString(),
             supports: map["supports"].ConvertToList<string>()

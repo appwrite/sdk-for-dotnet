@@ -66,7 +66,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             targetId: map["targetId"].ToString(),
-            target: Target.From(map: map["target"] is JsonElement jsonObj5 ? jsonObj5.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["target"]),
+            target: Appwrite.Models.Target.From(map: map["target"] is JsonElement jsonObj5 ? jsonObj5.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["target"]),
             userId: map["userId"].ToString(),
             userName: map["userName"].ToString(),
             topicId: map["topicId"].ToString(),

@@ -19,16 +19,16 @@ namespace Appwrite.Models
 
         public Headers(
             string name,
-            string xvalue
+            string @value
         )
         {
             Name = name;
-            Value = xvalue;
+            Value = @value;
         }
 
         public static Headers From(Dictionary<string, object> map) => new Headers(
             name: map["name"].ToString(),
-            xvalue: map["value"].ToString()
+            @value: map["value"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

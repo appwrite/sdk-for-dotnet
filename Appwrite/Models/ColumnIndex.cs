@@ -76,7 +76,9 @@ namespace Appwrite.Models
             error: map["error"].ToString(),
             columns: map["columns"].ConvertToList<string>(),
             lengths: map["lengths"].ConvertToList<long>(),
-            orders: map["orders"].ConvertToList<string>()
+            orders: map.TryGetValue("orders", out var arrayRaw10) && arrayRaw10 != null
+                                ? arrayRaw10.ConvertToList<string>()
+                                : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

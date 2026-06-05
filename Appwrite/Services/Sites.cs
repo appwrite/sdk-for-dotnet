@@ -31,6 +31,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -85,6 +86,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -118,6 +120,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -149,6 +152,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -181,6 +185,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -235,6 +240,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -268,6 +274,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -298,6 +305,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -335,6 +343,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -374,6 +383,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "multipart/form-data" }
             };
 
@@ -417,6 +427,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -460,6 +471,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -498,6 +510,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -532,6 +545,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -565,6 +579,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -597,6 +612,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -629,6 +645,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -665,6 +682,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -698,6 +716,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -731,6 +750,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -761,6 +781,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -783,7 +804,7 @@ namespace Appwrite.Services
         /// and runtime (server-side rendering) as environment variables.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> CreateVariable(string siteId, string variableId, string key, string xvalue, bool? secret = null)
+        public Task<Models.Variable> CreateVariable(string siteId, string variableId, string key, string @value, bool? secret = null)
         {
             var apiPath = "/sites/{siteId}/variables"
                 .Replace("{siteId}", siteId);
@@ -792,12 +813,13 @@ namespace Appwrite.Services
             {
                 { "variableId", variableId },
                 { "key", key },
-                { "value", xvalue },
+                { "value", @value },
                 { "secret", secret }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -832,6 +854,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -853,7 +876,7 @@ namespace Appwrite.Services
         /// Update variable by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> UpdateVariable(string siteId, string variableId, string? key = null, string? xvalue = null, bool? secret = null)
+        public Task<Models.Variable> UpdateVariable(string siteId, string variableId, string? key = null, string? @value = null, bool? secret = null)
         {
             var apiPath = "/sites/{siteId}/variables/{variableId}"
                 .Replace("{siteId}", siteId)
@@ -862,12 +885,13 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "key", key },
-                { "value", xvalue },
+                { "value", @value },
                 { "secret", secret }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -902,6 +926,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 

@@ -104,6 +104,8 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes DomainsRead => new ProjectKeyScopes("domains.read");
         public static ProjectKeyScopes DomainsWrite => new ProjectKeyScopes("domains.write");
         public static ProjectKeyScopes EventsRead => new ProjectKeyScopes("events.read");
+        public static ProjectKeyScopes AppsRead => new ProjectKeyScopes("apps.read");
+        public static ProjectKeyScopes AppsWrite => new ProjectKeyScopes("apps.write");
         public static ProjectKeyScopes UsageRead => new ProjectKeyScopes("usage.read");
     }
 }

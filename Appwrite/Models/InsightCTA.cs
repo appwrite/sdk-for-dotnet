@@ -27,20 +27,20 @@ namespace Appwrite.Models
             string label,
             string service,
             string method,
-            object xparams
+            object @params
         )
         {
             Label = label;
             Service = service;
             Method = method;
-            Params = xparams;
+            Params = @params;
         }
 
         public static InsightCTA From(Dictionary<string, object> map) => new InsightCTA(
             label: map["label"].ToString(),
             service: map["service"].ToString(),
             method: map["method"].ToString(),
-            xparams: map["params"].ToString()
+            @params: map["params"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

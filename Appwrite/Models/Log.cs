@@ -78,7 +78,7 @@ namespace Appwrite.Models
         public string CountryName { get; private set; }
 
         public Log(
-            string xevent,
+            string @event,
             string userId,
             string userEmail,
             string userName,
@@ -102,7 +102,7 @@ namespace Appwrite.Models
             string countryName
         )
         {
-            Event = xevent;
+            Event = @event;
             UserId = userId;
             UserEmail = userEmail;
             UserName = userName;
@@ -127,7 +127,7 @@ namespace Appwrite.Models
         }
 
         public static Log From(Dictionary<string, object> map) => new Log(
-            xevent: map["event"].ToString(),
+            @event: map["event"].ToString(),
             userId: map["userId"].ToString(),
             userEmail: map["userEmail"].ToString(),
             userName: map["userName"].ToString(),

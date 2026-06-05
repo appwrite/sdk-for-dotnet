@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static UsageEventList From(Dictionary<string, object> map) => new UsageEventList(
             total: Convert.ToInt64(map["total"]),
-            events: map["events"].ConvertToList<Dictionary<string, object>>().Select(it => UsageEvent.From(map: it)).ToList()
+            events: map["events"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.UsageEvent.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

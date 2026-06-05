@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static ColumnIndexList From(Dictionary<string, object> map) => new ColumnIndexList(
             total: Convert.ToInt64(map["total"]),
-            indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => ColumnIndex.From(map: it)).ToList()
+            indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ColumnIndex.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

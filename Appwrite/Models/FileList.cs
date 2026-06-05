@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static FileList From(Dictionary<string, object> map) => new FileList(
             total: Convert.ToInt64(map["total"]),
-            files: map["files"].ConvertToList<Dictionary<string, object>>().Select(it => File.From(map: it)).ToList()
+            files: map["files"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.File.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

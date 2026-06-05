@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static HealthStatusList From(Dictionary<string, object> map) => new HealthStatusList(
             total: Convert.ToInt64(map["total"]),
-            statuses: map["statuses"].ConvertToList<Dictionary<string, object>>().Select(it => HealthStatus.From(map: it)).ToList()
+            statuses: map["statuses"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.HealthStatus.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

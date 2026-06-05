@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static LanguageList From(Dictionary<string, object> map) => new LanguageList(
             total: Convert.ToInt64(map["total"]),
-            languages: map["languages"].ConvertToList<Dictionary<string, object>>().Select(it => Language.From(map: it)).ToList()
+            languages: map["languages"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Language.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

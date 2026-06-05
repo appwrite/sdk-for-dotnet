@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static EmailTemplateList From(Dictionary<string, object> map) => new EmailTemplateList(
             total: Convert.ToInt64(map["total"]),
-            templates: map["templates"].ConvertToList<Dictionary<string, object>>().Select(it => EmailTemplate.From(map: it)).ToList()
+            templates: map["templates"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.EmailTemplate.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

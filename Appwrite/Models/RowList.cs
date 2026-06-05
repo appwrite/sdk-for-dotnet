@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static RowList From(Dictionary<string, object> map) => new RowList(
             total: Convert.ToInt64(map["total"]),
-            rows: map["rows"].ConvertToList<Dictionary<string, object>>().Select(it => Row.From(map: it)).ToList()
+            rows: map["rows"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Row.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

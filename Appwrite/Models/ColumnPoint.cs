@@ -47,7 +47,7 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            List<object>? xdefault
+            List<object>? @default
         )
         {
             Key = key;
@@ -58,7 +58,7 @@ namespace Appwrite.Models
             Array = array;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
-            Default = xdefault;
+            Default = @default;
         }
 
         public static ColumnPoint From(Dictionary<string, object> map) => new ColumnPoint(
@@ -67,10 +67,14 @@ namespace Appwrite.Models
             status: new ColumnStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
-            array: (bool?)map["array"],
+            array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null
+                                        ? (bool?)boolRaw6
+                                        : null,
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            xdefault: map["default"].ConvertToList<object>()
+            @default: map.TryGetValue("default", out var arrayRaw9) && arrayRaw9 != null
+                                ? arrayRaw9.ConvertToList<object>()
+                                : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

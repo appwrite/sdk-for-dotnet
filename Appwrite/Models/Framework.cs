@@ -46,7 +46,7 @@ namespace Appwrite.Models
             name: map["name"].ToString(),
             buildRuntime: map["buildRuntime"].ToString(),
             runtimes: map["runtimes"].ConvertToList<string>(),
-            adapters: map["adapters"].ConvertToList<Dictionary<string, object>>().Select(it => FrameworkAdapter.From(map: it)).ToList()
+            adapters: map["adapters"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.FrameworkAdapter.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

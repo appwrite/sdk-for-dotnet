@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static SiteList From(Dictionary<string, object> map) => new SiteList(
             total: Convert.ToInt64(map["total"]),
-            sites: map["sites"].ConvertToList<Dictionary<string, object>>().Select(it => Site.From(map: it)).ToList()
+            sites: map["sites"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Site.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
