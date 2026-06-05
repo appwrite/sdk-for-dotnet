@@ -57,14 +57,30 @@ namespace Appwrite.Models
         }
 
         public static BillingLimits From(Dictionary<string, object> map) => new BillingLimits(
-            bandwidth: map["bandwidth"] == null ? null : Convert.ToInt64(map["bandwidth"]),
-            storage: map["storage"] == null ? null : Convert.ToInt64(map["storage"]),
-            users: map["users"] == null ? null : Convert.ToInt64(map["users"]),
-            executions: map["executions"] == null ? null : Convert.ToInt64(map["executions"]),
-            gBHours: map["GBHours"] == null ? null : Convert.ToInt64(map["GBHours"]),
-            imageTransformations: map["imageTransformations"] == null ? null : Convert.ToInt64(map["imageTransformations"]),
-            authPhone: map["authPhone"] == null ? null : Convert.ToInt64(map["authPhone"]),
-            budgetLimit: map["budgetLimit"] == null ? null : Convert.ToInt64(map["budgetLimit"])
+            bandwidth: map.TryGetValue("bandwidth", out var numberRaw1) && numberRaw1 != null
+                                    ? Convert.ToInt64(numberRaw1)
+                                    : null,
+            storage: map.TryGetValue("storage", out var numberRaw2) && numberRaw2 != null
+                                    ? Convert.ToInt64(numberRaw2)
+                                    : null,
+            users: map.TryGetValue("users", out var numberRaw3) && numberRaw3 != null
+                                    ? Convert.ToInt64(numberRaw3)
+                                    : null,
+            executions: map.TryGetValue("executions", out var numberRaw4) && numberRaw4 != null
+                                    ? Convert.ToInt64(numberRaw4)
+                                    : null,
+            gBHours: map.TryGetValue("GBHours", out var numberRaw5) && numberRaw5 != null
+                                    ? Convert.ToInt64(numberRaw5)
+                                    : null,
+            imageTransformations: map.TryGetValue("imageTransformations", out var numberRaw6) && numberRaw6 != null
+                                    ? Convert.ToInt64(numberRaw6)
+                                    : null,
+            authPhone: map.TryGetValue("authPhone", out var numberRaw7) && numberRaw7 != null
+                                    ? Convert.ToInt64(numberRaw7)
+                                    : null,
+            budgetLimit: map.TryGetValue("budgetLimit", out var numberRaw8) && numberRaw8 != null
+                                    ? Convert.ToInt64(numberRaw8)
+                                    : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

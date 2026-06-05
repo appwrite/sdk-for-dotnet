@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static InsightList From(Dictionary<string, object> map) => new InsightList(
             total: Convert.ToInt64(map["total"]),
-            insights: map["insights"].ConvertToList<Dictionary<string, object>>().Select(it => Insight.From(map: it)).ToList()
+            insights: map["insights"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Insight.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

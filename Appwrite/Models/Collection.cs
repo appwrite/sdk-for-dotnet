@@ -86,7 +86,7 @@ namespace Appwrite.Models
             enabled: (bool)map["enabled"],
             documentSecurity: (bool)map["documentSecurity"],
             attributes: map["attributes"].ConvertToList<object>(),
-            indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Index.From(map: it)).ToList(),
+            indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Index.From(map: it)).ToList(),
             bytesMax: Convert.ToInt64(map["bytesMax"]),
             bytesUsed: Convert.ToInt64(map["bytesUsed"])
         );

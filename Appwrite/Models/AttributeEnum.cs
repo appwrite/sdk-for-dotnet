@@ -55,7 +55,7 @@ namespace Appwrite.Models
             string updatedAt,
             List<string> elements,
             string format,
-            string? xdefault
+            string? @default
         )
         {
             Key = key;
@@ -68,7 +68,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Elements = elements;
             Format = format;
-            Default = xdefault;
+            Default = @default;
         }
 
         public static AttributeEnum From(Dictionary<string, object> map) => new AttributeEnum(
@@ -77,12 +77,14 @@ namespace Appwrite.Models
             status: new AttributeStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
-            array: (bool?)map["array"],
+            array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null
+                                        ? (bool?)boolRaw6
+                                        : null,
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             elements: map["elements"].ConvertToList<string>(),
             format: map["format"].ToString(),
-            xdefault: map.TryGetValue("default", out var xdefault) ? xdefault?.ToString() : null
+            @default: map.TryGetValue("default", out var @default) ? @default?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

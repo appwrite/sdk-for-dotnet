@@ -30,6 +30,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -73,6 +74,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -120,6 +122,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -171,6 +174,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -225,6 +229,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -265,6 +270,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -304,6 +310,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -347,6 +354,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -389,6 +397,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -423,6 +432,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -456,6 +466,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -486,6 +497,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -520,6 +532,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -554,6 +567,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -594,6 +608,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -634,6 +649,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -675,6 +691,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -715,6 +732,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -752,6 +770,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -788,6 +807,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -825,6 +845,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -861,6 +882,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -903,6 +925,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -945,6 +968,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -983,6 +1007,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1021,6 +1046,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1061,6 +1087,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1101,6 +1128,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1141,6 +1169,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1181,6 +1210,93 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it)
+            {
+                return Models.Provider.From(map: it);
+            }
+
+            return _client.Call<Models.Provider>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a new Amazon SES provider.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> CreateSesProvider(string providerId, string name, string? accessKey = null, string? secretKey = null, string? region = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        {
+            var apiPath = "/messaging/providers/ses";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "providerId", providerId },
+                { "name", name },
+                { "accessKey", accessKey },
+                { "secretKey", secretKey },
+                { "region", region },
+                { "fromName", fromName },
+                { "fromEmail", fromEmail },
+                { "replyToName", replyToName },
+                { "replyToEmail", replyToEmail },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it)
+            {
+                return Models.Provider.From(map: it);
+            }
+
+            return _client.Call<Models.Provider>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update an Amazon SES provider by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> UpdateSesProvider(string providerId, string? name = null, bool? enabled = null, string? accessKey = null, string? secretKey = null, string? region = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null)
+        {
+            var apiPath = "/messaging/providers/ses/{providerId}"
+                .Replace("{providerId}", providerId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "enabled", enabled },
+                { "accessKey", accessKey },
+                { "secretKey", secretKey },
+                { "region", region },
+                { "fromName", fromName },
+                { "fromEmail", fromEmail },
+                { "replyToName", replyToName },
+                { "replyToEmail", replyToEmail }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1228,6 +1344,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1274,6 +1391,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1321,6 +1439,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1367,6 +1486,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1389,7 +1509,7 @@ namespace Appwrite.Services
         /// Create a new Telesign provider.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateTelesignProvider(string providerId, string name, string? xfrom = null, string? customerId = null, string? apiKey = null, bool? enabled = null)
+        public Task<Models.Provider> CreateTelesignProvider(string providerId, string name, string? @from = null, string? customerId = null, string? apiKey = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/telesign";
 
@@ -1397,7 +1517,7 @@ namespace Appwrite.Services
             {
                 { "providerId", providerId },
                 { "name", name },
-                { "from", xfrom },
+                { "from", @from },
                 { "customerId", customerId },
                 { "apiKey", apiKey },
                 { "enabled", enabled }
@@ -1405,6 +1525,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1427,7 +1548,7 @@ namespace Appwrite.Services
         /// Update a Telesign provider by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateTelesignProvider(string providerId, string? name = null, bool? enabled = null, string? customerId = null, string? apiKey = null, string? xfrom = null)
+        public Task<Models.Provider> UpdateTelesignProvider(string providerId, string? name = null, bool? enabled = null, string? customerId = null, string? apiKey = null, string? @from = null)
         {
             var apiPath = "/messaging/providers/telesign/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -1438,11 +1559,12 @@ namespace Appwrite.Services
                 { "enabled", enabled },
                 { "customerId", customerId },
                 { "apiKey", apiKey },
-                { "from", xfrom }
+                { "from", @from }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1465,7 +1587,7 @@ namespace Appwrite.Services
         /// Create a new Textmagic provider.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateTextmagicProvider(string providerId, string name, string? xfrom = null, string? username = null, string? apiKey = null, bool? enabled = null)
+        public Task<Models.Provider> CreateTextmagicProvider(string providerId, string name, string? @from = null, string? username = null, string? apiKey = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/textmagic";
 
@@ -1473,7 +1595,7 @@ namespace Appwrite.Services
             {
                 { "providerId", providerId },
                 { "name", name },
-                { "from", xfrom },
+                { "from", @from },
                 { "username", username },
                 { "apiKey", apiKey },
                 { "enabled", enabled }
@@ -1481,6 +1603,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1503,7 +1626,7 @@ namespace Appwrite.Services
         /// Update a Textmagic provider by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateTextmagicProvider(string providerId, string? name = null, bool? enabled = null, string? username = null, string? apiKey = null, string? xfrom = null)
+        public Task<Models.Provider> UpdateTextmagicProvider(string providerId, string? name = null, bool? enabled = null, string? username = null, string? apiKey = null, string? @from = null)
         {
             var apiPath = "/messaging/providers/textmagic/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -1514,11 +1637,12 @@ namespace Appwrite.Services
                 { "enabled", enabled },
                 { "username", username },
                 { "apiKey", apiKey },
-                { "from", xfrom }
+                { "from", @from }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1541,7 +1665,7 @@ namespace Appwrite.Services
         /// Create a new Twilio provider.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateTwilioProvider(string providerId, string name, string? xfrom = null, string? accountSid = null, string? authToken = null, bool? enabled = null)
+        public Task<Models.Provider> CreateTwilioProvider(string providerId, string name, string? @from = null, string? accountSid = null, string? authToken = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/twilio";
 
@@ -1549,7 +1673,7 @@ namespace Appwrite.Services
             {
                 { "providerId", providerId },
                 { "name", name },
-                { "from", xfrom },
+                { "from", @from },
                 { "accountSid", accountSid },
                 { "authToken", authToken },
                 { "enabled", enabled }
@@ -1557,6 +1681,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1579,7 +1704,7 @@ namespace Appwrite.Services
         /// Update a Twilio provider by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateTwilioProvider(string providerId, string? name = null, bool? enabled = null, string? accountSid = null, string? authToken = null, string? xfrom = null)
+        public Task<Models.Provider> UpdateTwilioProvider(string providerId, string? name = null, bool? enabled = null, string? accountSid = null, string? authToken = null, string? @from = null)
         {
             var apiPath = "/messaging/providers/twilio/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -1590,11 +1715,12 @@ namespace Appwrite.Services
                 { "enabled", enabled },
                 { "accountSid", accountSid },
                 { "authToken", authToken },
-                { "from", xfrom }
+                { "from", @from }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1617,7 +1743,7 @@ namespace Appwrite.Services
         /// Create a new Vonage provider.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> CreateVonageProvider(string providerId, string name, string? xfrom = null, string? apiKey = null, string? apiSecret = null, bool? enabled = null)
+        public Task<Models.Provider> CreateVonageProvider(string providerId, string name, string? @from = null, string? apiKey = null, string? apiSecret = null, bool? enabled = null)
         {
             var apiPath = "/messaging/providers/vonage";
 
@@ -1625,7 +1751,7 @@ namespace Appwrite.Services
             {
                 { "providerId", providerId },
                 { "name", name },
-                { "from", xfrom },
+                { "from", @from },
                 { "apiKey", apiKey },
                 { "apiSecret", apiSecret },
                 { "enabled", enabled }
@@ -1633,6 +1759,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1655,7 +1782,7 @@ namespace Appwrite.Services
         /// Update a Vonage provider by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Provider> UpdateVonageProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? apiSecret = null, string? xfrom = null)
+        public Task<Models.Provider> UpdateVonageProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? apiSecret = null, string? @from = null)
         {
             var apiPath = "/messaging/providers/vonage/{providerId}"
                 .Replace("{providerId}", providerId);
@@ -1666,11 +1793,12 @@ namespace Appwrite.Services
                 { "enabled", enabled },
                 { "apiKey", apiKey },
                 { "apiSecret", apiSecret },
-                { "from", xfrom }
+                { "from", @from }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1705,6 +1833,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -1737,6 +1866,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1767,6 +1897,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -1801,6 +1932,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -1835,6 +1967,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -1869,6 +2002,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1903,6 +2037,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -1938,6 +2073,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -1971,6 +2107,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2001,6 +2138,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -2036,6 +2174,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -2070,6 +2209,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 
@@ -2105,6 +2245,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") }
             };
 
 
@@ -2138,6 +2279,7 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" }
             };
 

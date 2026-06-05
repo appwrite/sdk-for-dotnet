@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static DocumentList From(Dictionary<string, object> map) => new DocumentList(
             total: Convert.ToInt64(map["total"]),
-            documents: map["documents"].ConvertToList<Dictionary<string, object>>().Select(it => Document.From(map: it)).ToList()
+            documents: map["documents"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Document.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

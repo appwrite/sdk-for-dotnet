@@ -203,7 +203,7 @@ namespace Appwrite.Models
             latestDeploymentId: map["latestDeploymentId"].ToString(),
             latestDeploymentCreatedAt: map["latestDeploymentCreatedAt"].ToString(),
             latestDeploymentStatus: map["latestDeploymentStatus"].ToString(),
-            vars: map["vars"].ConvertToList<Dictionary<string, object>>().Select(it => Variable.From(map: it)).ToList(),
+            vars: map["vars"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Variable.From(map: it)).ToList(),
             timeout: Convert.ToInt64(map["timeout"]),
             installCommand: map["installCommand"].ToString(),
             buildCommand: map["buildCommand"].ToString(),

@@ -63,8 +63,8 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             enabled: (bool)map["enabled"],
             type: new DatabaseType(map["type"].ToString()!),
-            policies: map["policies"].ConvertToList<Dictionary<string, object>>().Select(it => BackupPolicy.From(map: it)).ToList(),
-            archives: map["archives"].ConvertToList<Dictionary<string, object>>().Select(it => BackupArchive.From(map: it)).ToList()
+            policies: map["policies"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupPolicy.From(map: it)).ToList(),
+            archives: map["archives"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupArchive.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

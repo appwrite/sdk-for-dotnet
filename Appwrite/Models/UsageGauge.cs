@@ -28,14 +28,14 @@ namespace Appwrite.Models
 
         public UsageGauge(
             string metric,
-            long xvalue,
+            long @value,
             string time,
             string resourceType,
             string resourceId
         )
         {
             Metric = metric;
-            Value = xvalue;
+            Value = @value;
             Time = time;
             ResourceType = resourceType;
             ResourceId = resourceId;
@@ -43,7 +43,7 @@ namespace Appwrite.Models
 
         public static UsageGauge From(Dictionary<string, object> map) => new UsageGauge(
             metric: map["metric"].ToString(),
-            xvalue: Convert.ToInt64(map["value"]),
+            @value: Convert.ToInt64(map["value"]),
             time: map["time"].ToString(),
             resourceType: map["resourceType"].ToString(),
             resourceId: map["resourceId"].ToString()

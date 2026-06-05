@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static TargetList From(Dictionary<string, object> map) => new TargetList(
             total: Convert.ToInt64(map["total"]),
-            targets: map["targets"].ConvertToList<Dictionary<string, object>>().Select(it => Target.From(map: it)).ToList()
+            targets: map["targets"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Target.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

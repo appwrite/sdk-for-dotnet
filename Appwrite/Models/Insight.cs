@@ -115,7 +115,7 @@ namespace Appwrite.Models
             parentResourceId: map["parentResourceId"].ToString(),
             title: map["title"].ToString(),
             summary: map["summary"].ToString(),
-            ctas: map["ctas"].ConvertToList<Dictionary<string, object>>().Select(it => InsightCTA.From(map: it)).ToList(),
+            ctas: map["ctas"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.InsightCTA.From(map: it)).ToList(),
             analyzedAt: map.TryGetValue("analyzedAt", out var analyzedAt) ? analyzedAt?.ToString() : null,
             dismissedAt: map.TryGetValue("dismissedAt", out var dismissedAt) ? dismissedAt?.ToString() : null,
             dismissedBy: map.TryGetValue("dismissedBy", out var dismissedBy) ? dismissedBy?.ToString() : null

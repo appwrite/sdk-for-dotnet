@@ -138,10 +138,12 @@ namespace Appwrite.Models
             emailVerification: (bool)map["emailVerification"],
             phoneVerification: (bool)map["phoneVerification"],
             mfa: (bool)map["mfa"],
-            prefs: Preferences.From(map: map["prefs"] is JsonElement jsonObj17 ? jsonObj17.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
-            targets: map["targets"].ConvertToList<Dictionary<string, object>>().Select(it => Target.From(map: it)).ToList(),
+            prefs: Appwrite.Models.Preferences.From(map: map["prefs"] is JsonElement jsonObj17 ? jsonObj17.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
+            targets: map["targets"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Target.From(map: it)).ToList(),
             accessedAt: map["accessedAt"].ToString(),
-            impersonator: (bool?)map["impersonator"],
+            impersonator: map.TryGetValue("impersonator", out var boolRaw20) && boolRaw20 != null
+                                        ? (bool?)boolRaw20
+                                        : null,
             impersonatorUserId: map.TryGetValue("impersonatorUserId", out var impersonatorUserId) ? impersonatorUserId?.ToString() : null
         );
 

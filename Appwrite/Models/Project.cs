@@ -26,6 +26,9 @@ namespace Appwrite.Models
         [JsonPropertyName("teamId")]
         public string TeamId { get; private set; }
 
+        [JsonPropertyName("region")]
+        public string Region { get; private set; }
+
         [JsonPropertyName("devKeys")]
         public List<DevKey> DevKeys { get; private set; }
 
@@ -80,17 +83,41 @@ namespace Appwrite.Models
         [JsonPropertyName("protocols")]
         public List<ProjectProtocol> Protocols { get; private set; }
 
-        [JsonPropertyName("region")]
-        public string Region { get; private set; }
-
-        [JsonPropertyName("billingLimits")]
-        public BillingLimits? BillingLimits { get; private set; }
-
         [JsonPropertyName("blocks")]
         public List<Block> Blocks { get; private set; }
 
         [JsonPropertyName("consoleAccessedAt")]
         public string ConsoleAccessedAt { get; private set; }
+
+        [JsonPropertyName("billingLimits")]
+        public BillingLimits? BillingLimits { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerEnabled")]
+        public bool OAuth2ServerEnabled { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerAuthorizationUrl")]
+        public string OAuth2ServerAuthorizationUrl { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerScopes")]
+        public List<string> OAuth2ServerScopes { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerAccessTokenDuration")]
+        public long OAuth2ServerAccessTokenDuration { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerRefreshTokenDuration")]
+        public long OAuth2ServerRefreshTokenDuration { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerPublicAccessTokenDuration")]
+        public long OAuth2ServerPublicAccessTokenDuration { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerPublicRefreshTokenDuration")]
+        public long OAuth2ServerPublicRefreshTokenDuration { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerConfidentialPkce")]
+        public bool OAuth2ServerConfidentialPkce { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerDiscoveryUrl")]
+        public string OAuth2ServerDiscoveryUrl { get; private set; }
 
         public Project(
             string id,
@@ -98,6 +125,7 @@ namespace Appwrite.Models
             string updatedAt,
             string name,
             string teamId,
+            string region,
             List<DevKey> devKeys,
             bool smtpEnabled,
             string smtpSenderName,
@@ -116,10 +144,18 @@ namespace Appwrite.Models
             List<ProjectAuthMethod> authMethods,
             List<ProjectService> services,
             List<ProjectProtocol> protocols,
-            string region,
-            BillingLimits? billingLimits,
             List<Block> blocks,
-            string consoleAccessedAt
+            string consoleAccessedAt,
+            BillingLimits? billingLimits,
+            bool oAuth2ServerEnabled,
+            string oAuth2ServerAuthorizationUrl,
+            List<string> oAuth2ServerScopes,
+            long oAuth2ServerAccessTokenDuration,
+            long oAuth2ServerRefreshTokenDuration,
+            long oAuth2ServerPublicAccessTokenDuration,
+            long oAuth2ServerPublicRefreshTokenDuration,
+            bool oAuth2ServerConfidentialPkce,
+            string oAuth2ServerDiscoveryUrl
         )
         {
             Id = id;
@@ -127,6 +163,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Name = name;
             TeamId = teamId;
+            Region = region;
             DevKeys = devKeys;
             SmtpEnabled = smtpEnabled;
             SmtpSenderName = smtpSenderName;
@@ -145,10 +182,18 @@ namespace Appwrite.Models
             AuthMethods = authMethods;
             Services = services;
             Protocols = protocols;
-            Region = region;
-            BillingLimits = billingLimits;
             Blocks = blocks;
             ConsoleAccessedAt = consoleAccessedAt;
+            BillingLimits = billingLimits;
+            OAuth2ServerEnabled = oAuth2ServerEnabled;
+            OAuth2ServerAuthorizationUrl = oAuth2ServerAuthorizationUrl;
+            OAuth2ServerScopes = oAuth2ServerScopes;
+            OAuth2ServerAccessTokenDuration = oAuth2ServerAccessTokenDuration;
+            OAuth2ServerRefreshTokenDuration = oAuth2ServerRefreshTokenDuration;
+            OAuth2ServerPublicAccessTokenDuration = oAuth2ServerPublicAccessTokenDuration;
+            OAuth2ServerPublicRefreshTokenDuration = oAuth2ServerPublicRefreshTokenDuration;
+            OAuth2ServerConfidentialPkce = oAuth2ServerConfidentialPkce;
+            OAuth2ServerDiscoveryUrl = oAuth2ServerDiscoveryUrl;
         }
 
         public static Project From(Dictionary<string, object> map) => new Project(
@@ -157,7 +202,8 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
             teamId: map["teamId"].ToString(),
-            devKeys: map["devKeys"].ConvertToList<Dictionary<string, object>>().Select(it => DevKey.From(map: it)).ToList(),
+            region: map["region"].ToString(),
+            devKeys: map["devKeys"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DevKey.From(map: it)).ToList(),
             smtpEnabled: (bool)map["smtpEnabled"],
             smtpSenderName: map["smtpSenderName"].ToString(),
             smtpSenderEmail: map["smtpSenderEmail"].ToString(),
@@ -172,13 +218,23 @@ namespace Appwrite.Models
             pingedAt: map["pingedAt"].ToString(),
             labels: map["labels"].ConvertToList<string>(),
             status: map["status"].ToString(),
-            authMethods: map["authMethods"].ConvertToList<Dictionary<string, object>>().Select(it => ProjectAuthMethod.From(map: it)).ToList(),
-            services: map["services"].ConvertToList<Dictionary<string, object>>().Select(it => ProjectService.From(map: it)).ToList(),
-            protocols: map["protocols"].ConvertToList<Dictionary<string, object>>().Select(it => ProjectProtocol.From(map: it)).ToList(),
-            region: map["region"].ToString(),
-            billingLimits: BillingLimits.From(map: map["billingLimits"] is JsonElement jsonObj25 ? jsonObj25.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["billingLimits"]),
-            blocks: map["blocks"].ConvertToList<Dictionary<string, object>>().Select(it => Block.From(map: it)).ToList(),
-            consoleAccessedAt: map["consoleAccessedAt"].ToString()
+            authMethods: map["authMethods"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectAuthMethod.From(map: it)).ToList(),
+            services: map["services"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectService.From(map: it)).ToList(),
+            protocols: map["protocols"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectProtocol.From(map: it)).ToList(),
+            blocks: map["blocks"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Block.From(map: it)).ToList(),
+            consoleAccessedAt: map["consoleAccessedAt"].ToString(),
+            billingLimits: map.TryGetValue("billingLimits", out var objectRaw27) && objectRaw27 != null
+                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw27 is JsonElement jsonObj27 ? jsonObj27.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw27)
+                                    : null,
+            oAuth2ServerEnabled: (bool)map["oAuth2ServerEnabled"],
+            oAuth2ServerAuthorizationUrl: map["oAuth2ServerAuthorizationUrl"].ToString(),
+            oAuth2ServerScopes: map["oAuth2ServerScopes"].ConvertToList<string>(),
+            oAuth2ServerAccessTokenDuration: Convert.ToInt64(map["oAuth2ServerAccessTokenDuration"]),
+            oAuth2ServerRefreshTokenDuration: Convert.ToInt64(map["oAuth2ServerRefreshTokenDuration"]),
+            oAuth2ServerPublicAccessTokenDuration: Convert.ToInt64(map["oAuth2ServerPublicAccessTokenDuration"]),
+            oAuth2ServerPublicRefreshTokenDuration: Convert.ToInt64(map["oAuth2ServerPublicRefreshTokenDuration"]),
+            oAuth2ServerConfidentialPkce: (bool)map["oAuth2ServerConfidentialPkce"],
+            oAuth2ServerDiscoveryUrl: map["oAuth2ServerDiscoveryUrl"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -188,6 +244,7 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "name", Name },
             { "teamId", TeamId },
+            { "region", Region },
             { "devKeys", DevKeys?.Select(it => it.ToMap()).ToList() },
             { "smtpEnabled", SmtpEnabled },
             { "smtpSenderName", SmtpSenderName },
@@ -206,10 +263,18 @@ namespace Appwrite.Models
             { "authMethods", AuthMethods?.Select(it => it.ToMap()).ToList() },
             { "services", Services?.Select(it => it.ToMap()).ToList() },
             { "protocols", Protocols?.Select(it => it.ToMap()).ToList() },
-            { "region", Region },
-            { "billingLimits", BillingLimits?.ToMap() },
             { "blocks", Blocks?.Select(it => it.ToMap()).ToList() },
-            { "consoleAccessedAt", ConsoleAccessedAt }
+            { "consoleAccessedAt", ConsoleAccessedAt },
+            { "billingLimits", BillingLimits?.ToMap() },
+            { "oAuth2ServerEnabled", OAuth2ServerEnabled },
+            { "oAuth2ServerAuthorizationUrl", OAuth2ServerAuthorizationUrl },
+            { "oAuth2ServerScopes", OAuth2ServerScopes },
+            { "oAuth2ServerAccessTokenDuration", OAuth2ServerAccessTokenDuration },
+            { "oAuth2ServerRefreshTokenDuration", OAuth2ServerRefreshTokenDuration },
+            { "oAuth2ServerPublicAccessTokenDuration", OAuth2ServerPublicAccessTokenDuration },
+            { "oAuth2ServerPublicRefreshTokenDuration", OAuth2ServerPublicRefreshTokenDuration },
+            { "oAuth2ServerConfidentialPkce", OAuth2ServerConfidentialPkce },
+            { "oAuth2ServerDiscoveryUrl", OAuth2ServerDiscoveryUrl }
         };
     }
 }

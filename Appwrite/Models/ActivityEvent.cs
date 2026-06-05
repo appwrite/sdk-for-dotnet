@@ -117,7 +117,7 @@ namespace Appwrite.Models
             string resourceType,
             string resourceId,
             string resource,
-            string xevent,
+            string @event,
             string userAgent,
             string ip,
             string mode,
@@ -151,7 +151,7 @@ namespace Appwrite.Models
             ResourceType = resourceType;
             ResourceId = resourceId;
             Resource = resource;
-            Event = xevent;
+            Event = @event;
             UserAgent = userAgent;
             Ip = ip;
             Mode = mode;
@@ -186,7 +186,7 @@ namespace Appwrite.Models
             resourceType: map["resourceType"].ToString(),
             resourceId: map["resourceId"].ToString(),
             resource: map["resource"].ToString(),
-            xevent: map["event"].ToString(),
+            @event: map["event"].ToString(),
             userAgent: map["userAgent"].ToString(),
             ip: map["ip"].ToString(),
             mode: map["mode"].ToString(),

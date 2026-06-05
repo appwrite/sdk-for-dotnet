@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static ContinentList From(Dictionary<string, object> map) => new ContinentList(
             total: Convert.ToInt64(map["total"]),
-            continents: map["continents"].ConvertToList<Dictionary<string, object>>().Select(it => Continent.From(map: it)).ToList()
+            continents: map["continents"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Continent.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

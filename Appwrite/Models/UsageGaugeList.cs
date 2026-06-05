@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static UsageGaugeList From(Dictionary<string, object> map) => new UsageGaugeList(
             total: Convert.ToInt64(map["total"]),
-            gauges: map["gauges"].ConvertToList<Dictionary<string, object>>().Select(it => UsageGauge.From(map: it)).ToList()
+            gauges: map["gauges"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.UsageGauge.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

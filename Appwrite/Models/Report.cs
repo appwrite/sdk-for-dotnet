@@ -87,7 +87,7 @@ namespace Appwrite.Models
             targetType: map["targetType"].ToString(),
             target: map["target"].ToString(),
             categories: map["categories"].ConvertToList<string>(),
-            insights: map["insights"].ConvertToList<Dictionary<string, object>>().Select(it => Insight.From(map: it)).ToList(),
+            insights: map["insights"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Insight.From(map: it)).ToList(),
             analyzedAt: map.TryGetValue("analyzedAt", out var analyzedAt) ? analyzedAt?.ToString() : null
         );
 

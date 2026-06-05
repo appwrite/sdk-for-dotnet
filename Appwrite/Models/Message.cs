@@ -91,7 +91,9 @@ namespace Appwrite.Models
             targets: map["targets"].ConvertToList<string>(),
             scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null,
             deliveredAt: map.TryGetValue("deliveredAt", out var deliveredAt) ? deliveredAt?.ToString() : null,
-            deliveryErrors: map["deliveryErrors"].ConvertToList<string>(),
+            deliveryErrors: map.TryGetValue("deliveryErrors", out var arrayRaw10) && arrayRaw10 != null
+                                ? arrayRaw10.ConvertToList<string>()
+                                : null,
             deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
             data: map["data"].ToString(),
             status: new MessageStatus(map["status"].ToString()!)

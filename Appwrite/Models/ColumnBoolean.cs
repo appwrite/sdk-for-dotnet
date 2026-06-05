@@ -47,7 +47,7 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            bool? xdefault
+            bool? @default
         )
         {
             Key = key;
@@ -58,7 +58,7 @@ namespace Appwrite.Models
             Array = array;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
-            Default = xdefault;
+            Default = @default;
         }
 
         public static ColumnBoolean From(Dictionary<string, object> map) => new ColumnBoolean(
@@ -67,10 +67,14 @@ namespace Appwrite.Models
             status: new ColumnStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
-            array: (bool?)map["array"],
+            array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null
+                                        ? (bool?)boolRaw6
+                                        : null,
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
-            xdefault: (bool?)map["default"]
+            @default: map.TryGetValue("default", out var boolRaw9) && boolRaw9 != null
+                                        ? (bool?)boolRaw9
+                                        : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

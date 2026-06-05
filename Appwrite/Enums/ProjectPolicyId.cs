@@ -13,6 +13,7 @@ namespace Appwrite.Enums
 
         public static ProjectPolicyId PasswordDictionary => new ProjectPolicyId("password-dictionary");
         public static ProjectPolicyId PasswordHistory => new ProjectPolicyId("password-history");
+        public static ProjectPolicyId PasswordStrength => new ProjectPolicyId("password-strength");
         public static ProjectPolicyId PasswordPersonalData => new ProjectPolicyId("password-personal-data");
         public static ProjectPolicyId SessionAlert => new ProjectPolicyId("session-alert");
         public static ProjectPolicyId SessionDuration => new ProjectPolicyId("session-duration");

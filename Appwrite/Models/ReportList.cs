@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static ReportList From(Dictionary<string, object> map) => new ReportList(
             total: Convert.ToInt64(map["total"]),
-            reports: map["reports"].ConvertToList<Dictionary<string, object>>().Select(it => Report.From(map: it)).ToList()
+            reports: map["reports"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Report.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

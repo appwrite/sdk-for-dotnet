@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static DatabaseList From(Dictionary<string, object> map) => new DatabaseList(
             total: Convert.ToInt64(map["total"]),
-            databases: map["databases"].ConvertToList<Dictionary<string, object>>().Select(it => Database.From(map: it)).ToList()
+            databases: map["databases"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Database.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static ProxyRuleList From(Dictionary<string, object> map) => new ProxyRuleList(
             total: Convert.ToInt64(map["total"]),
-            rules: map["rules"].ConvertToList<Dictionary<string, object>>().Select(it => ProxyRule.From(map: it)).ToList()
+            rules: map["rules"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProxyRule.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

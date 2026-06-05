@@ -193,7 +193,7 @@ namespace Appwrite.Models
             latestDeploymentCreatedAt: map["latestDeploymentCreatedAt"].ToString(),
             latestDeploymentStatus: map["latestDeploymentStatus"].ToString(),
             scopes: map["scopes"].ConvertToList<string>(),
-            vars: map["vars"].ConvertToList<Dictionary<string, object>>().Select(it => Variable.From(map: it)).ToList(),
+            vars: map["vars"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Variable.From(map: it)).ToList(),
             events: map["events"].ConvertToList<string>(),
             schedule: map["schedule"].ToString(),
             timeout: Convert.ToInt64(map["timeout"]),

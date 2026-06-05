@@ -40,7 +40,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string key,
-            string xvalue,
+            string @value,
             bool secret,
             string resourceType,
             string resourceId
@@ -50,7 +50,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Key = key;
-            Value = xvalue;
+            Value = @value;
             Secret = secret;
             ResourceType = resourceType;
             ResourceId = resourceId;
@@ -61,7 +61,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             key: map["key"].ToString(),
-            xvalue: map["value"].ToString(),
+            @value: map["value"].ToString(),
             secret: (bool)map["secret"],
             resourceType: map["resourceType"].ToString(),
             resourceId: map["resourceId"].ToString()

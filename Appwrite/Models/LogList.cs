@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static LogList From(Dictionary<string, object> map) => new LogList(
             total: Convert.ToInt64(map["total"]),
-            logs: map["logs"].ConvertToList<Dictionary<string, object>>().Select(it => Log.From(map: it)).ToList()
+            logs: map["logs"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Log.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static SubscriberList From(Dictionary<string, object> map) => new SubscriberList(
             total: Convert.ToInt64(map["total"]),
-            subscribers: map["subscribers"].ConvertToList<Dictionary<string, object>>().Select(it => Subscriber.From(map: it)).ToList()
+            subscribers: map["subscribers"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Subscriber.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

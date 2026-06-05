@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static CollectionList From(Dictionary<string, object> map) => new CollectionList(
             total: Convert.ToInt64(map["total"]),
-            collections: map["collections"].ConvertToList<Dictionary<string, object>>().Select(it => Collection.From(map: it)).ToList()
+            collections: map["collections"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Collection.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

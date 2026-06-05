@@ -43,9 +43,9 @@ namespace Appwrite.Models
 
         public UsageEvent(
             string metric,
-            long xvalue,
+            long @value,
             string time,
-            string xpath,
+            string @path,
             string method,
             string status,
             string resourceType,
@@ -55,9 +55,9 @@ namespace Appwrite.Models
         )
         {
             Metric = metric;
-            Value = xvalue;
+            Value = @value;
             Time = time;
-            Path = xpath;
+            Path = @path;
             Method = method;
             Status = status;
             ResourceType = resourceType;
@@ -68,9 +68,9 @@ namespace Appwrite.Models
 
         public static UsageEvent From(Dictionary<string, object> map) => new UsageEvent(
             metric: map["metric"].ToString(),
-            xvalue: Convert.ToInt64(map["value"]),
+            @value: Convert.ToInt64(map["value"]),
             time: map["time"].ToString(),
-            xpath: map["path"].ToString(),
+            @path: map["path"].ToString(),
             method: map["method"].ToString(),
             status: map["status"].ToString(),
             resourceType: map["resourceType"].ToString(),
