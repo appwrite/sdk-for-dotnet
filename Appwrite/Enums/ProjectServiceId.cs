@@ -29,5 +29,6 @@ namespace Appwrite.Enums
         public static ProjectServiceId Migrations => new ProjectServiceId("migrations");
         public static ProjectServiceId Messaging => new ProjectServiceId("messaging");
         public static ProjectServiceId Advisor => new ProjectServiceId("advisor");
+        public static ProjectServiceId Oauth2 => new ProjectServiceId("oauth2");
     }
 }

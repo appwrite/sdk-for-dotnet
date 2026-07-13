@@ -30,7 +30,8 @@ namespace Appwrite.Services
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "x-sdk-graphql", "true" },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -65,7 +66,8 @@ namespace Appwrite.Services
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "x-sdk-graphql", "true" },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 

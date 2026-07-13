@@ -13,6 +13,7 @@ namespace Appwrite.Enums
 
         public static OAuthProvider Amazon => new OAuthProvider("amazon");
         public static OAuthProvider Apple => new OAuthProvider("apple");
+        public static OAuthProvider Appwrite => new OAuthProvider("appwrite");
         public static OAuthProvider Auth0 => new OAuthProvider("auth0");
         public static OAuthProvider Authentik => new OAuthProvider("authentik");
         public static OAuthProvider Autodesk => new OAuthProvider("autodesk");

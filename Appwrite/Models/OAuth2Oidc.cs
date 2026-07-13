@@ -35,6 +35,12 @@ namespace Appwrite.Models
         [JsonPropertyName("userInfoURL")]
         public string UserInfoURL { get; private set; }
 
+        [JsonPropertyName("prompt")]
+        public List<Appwrite.Enums.OAuth2OidcPrompt> Prompt { get; private set; }
+
+        [JsonPropertyName("maxAge")]
+        public long? MaxAge { get; private set; }
+
         public OAuth2Oidc(
             string id,
             bool enabled,
@@ -43,7 +49,9 @@ namespace Appwrite.Models
             string wellKnownURL,
             string authorizationURL,
             string tokenURL,
-            string userInfoURL
+            string userInfoURL,
+            List<Appwrite.Enums.OAuth2OidcPrompt> prompt,
+            long? maxAge
         )
         {
             Id = id;
@@ -54,6 +62,8 @@ namespace Appwrite.Models
             AuthorizationURL = authorizationURL;
             TokenURL = tokenURL;
             UserInfoURL = userInfoURL;
+            Prompt = prompt;
+            MaxAge = maxAge;
         }
 
         public static OAuth2Oidc From(Dictionary<string, object> map) => new OAuth2Oidc(
@@ -64,7 +74,11 @@ namespace Appwrite.Models
             wellKnownURL: map["wellKnownURL"].ToString(),
             authorizationURL: map["authorizationURL"].ToString(),
             tokenURL: map["tokenURL"].ToString(),
-            userInfoURL: map["userInfoURL"].ToString()
+            userInfoURL: map["userInfoURL"].ToString(),
+            prompt: map["prompt"].ConvertToList<Appwrite.Enums.OAuth2OidcPrompt>(),
+            maxAge: map.TryGetValue("maxAge", out var numberRaw10) && numberRaw10 != null
+                                    ? Convert.ToInt64(numberRaw10)
+                                    : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -76,7 +90,9 @@ namespace Appwrite.Models
             { "wellKnownURL", WellKnownURL },
             { "authorizationURL", AuthorizationURL },
             { "tokenURL", TokenURL },
-            { "userInfoURL", UserInfoURL }
+            { "userInfoURL", UserInfoURL },
+            { "prompt", Prompt },
+            { "maxAge", MaxAge }
         };
     }
 }

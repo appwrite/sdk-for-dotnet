@@ -76,11 +76,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , $"AppwriteDotNetSDK/5.1.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
+                { "user-agent" , $"AppwriteDotNetSDK/6.0.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "5.1.0"},
+                { "x-sdk-version", "6.0.0"},
                 { "X-Appwrite-Response-Format", "1.9.5" }
             };
 
@@ -139,6 +139,14 @@ namespace Appwrite
             return this;
         }
 
+        /// <summary>The OAuth access token to authenticate with</summary>
+        public Client SetBearer(string value) {
+            _config["bearer"] = value;
+            AddHeader("Authorization", "Bearer " + value);
+
+            return this;
+        }
+
         public Client SetLocale(string value) {
             _config["locale"] = value;
             AddHeader("X-Appwrite-Locale", value);
@@ -178,7 +186,7 @@ namespace Appwrite
             return this;
         }
 
-        /// <summary>Impersonate a user by ID on an already user-authenticated request. Requires the current request to be authenticated as a user with impersonator capability; X-Appwrite-Key alone is not sufficient. Impersonator users are intentionally granted users.read so they can discover a target before impersonation begins. Internal audit logs still attribute actions to the original impersonator and record the impersonated target only in internal audit payload data.</summary>
+        /// <summary>Impersonate a user by ID</summary>
         public Client SetImpersonateUserId(string value) {
             _config["impersonateUserId"] = value;
             AddHeader("X-Appwrite-Impersonate-User-Id", value);
@@ -186,7 +194,7 @@ namespace Appwrite
             return this;
         }
 
-        /// <summary>Impersonate a user by email on an already user-authenticated request. Requires the current request to be authenticated as a user with impersonator capability; X-Appwrite-Key alone is not sufficient. Impersonator users are intentionally granted users.read so they can discover a target before impersonation begins. Internal audit logs still attribute actions to the original impersonator and record the impersonated target only in internal audit payload data.</summary>
+        /// <summary>Impersonate a user by email</summary>
         public Client SetImpersonateUserEmail(string value) {
             _config["impersonateUserEmail"] = value;
             AddHeader("X-Appwrite-Impersonate-User-Email", value);
@@ -194,7 +202,7 @@ namespace Appwrite
             return this;
         }
 
-        /// <summary>Impersonate a user by phone on an already user-authenticated request. Requires the current request to be authenticated as a user with impersonator capability; X-Appwrite-Key alone is not sufficient. Impersonator users are intentionally granted users.read so they can discover a target before impersonation begins. Internal audit logs still attribute actions to the original impersonator and record the impersonated target only in internal audit payload data.</summary>
+        /// <summary>Impersonate a user by phone</summary>
         public Client SetImpersonateUserPhone(string value) {
             _config["impersonateUserPhone"] = value;
             AddHeader("X-Appwrite-Impersonate-User-Phone", value);

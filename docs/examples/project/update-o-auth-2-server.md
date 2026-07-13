@@ -14,9 +14,15 @@ Project result = await project.UpdateOAuth2Server(
     enabled: false,
     authorizationUrl: "https://example.com",
     scopes: new List<string>(), // optional
+    authorizationDetailsTypes: new List<string>(), // optional
     accessTokenDuration: 60, // optional
     refreshTokenDuration: 60, // optional
     publicAccessTokenDuration: 60, // optional
     publicRefreshTokenDuration: 60, // optional
-    confidentialPkce: false // optional
+    confidentialPkce: false, // optional
+    verificationUrl: "https://example.com", // optional
+    userCodeLength: 6, // optional
+    userCodeFormat: "numeric", // optional
+    deviceCodeDuration: 60, // optional
+    defaultScopes: new List<string>() // optional
 );```

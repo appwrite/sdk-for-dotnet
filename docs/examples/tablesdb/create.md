@@ -13,5 +13,6 @@ TablesDB tablesDB = new TablesDB(client);
 Database result = await tablesDB.Create(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>",
-    enabled: false // optional
+    enabled: false, // optional
+    specification: "serverless" // optional
 );```

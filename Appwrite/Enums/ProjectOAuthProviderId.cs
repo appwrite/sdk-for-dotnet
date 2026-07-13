@@ -13,6 +13,7 @@ namespace Appwrite.Enums
 
         public static ProjectOAuthProviderId Amazon => new ProjectOAuthProviderId("amazon");
         public static ProjectOAuthProviderId Apple => new ProjectOAuthProviderId("apple");
+        public static ProjectOAuthProviderId Appwrite => new ProjectOAuthProviderId("appwrite");
         public static ProjectOAuthProviderId Auth0 => new ProjectOAuthProviderId("auth0");
         public static ProjectOAuthProviderId Authentik => new ProjectOAuthProviderId("authentik");
         public static ProjectOAuthProviderId Autodesk => new ProjectOAuthProviderId("autodesk");

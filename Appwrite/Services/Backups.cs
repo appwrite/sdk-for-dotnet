@@ -28,7 +28,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "X-Appwrite-Project", _client.GetConfig("project") }
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
             };
 
 
@@ -63,7 +64,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -96,7 +98,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "X-Appwrite-Project", _client.GetConfig("project") }
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
             };
 
 
@@ -130,7 +133,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -158,7 +162,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "X-Appwrite-Project", _client.GetConfig("project") }
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
             };
 
 
@@ -198,7 +203,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -231,7 +237,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "X-Appwrite-Project", _client.GetConfig("project") }
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
             };
 
 
@@ -269,7 +276,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -303,7 +311,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -318,9 +327,19 @@ namespace Appwrite.Services
 
         /// <para>
         /// Create and trigger a new restoration for a backup on a project.
+        /// 
+        /// When restoring a DocumentsDB or VectorsDB database to a new resource, pass
+        /// `newSpecification` to provision the restored database on a different
+        /// specification than the archived one (for example, restoring onto a larger
+        /// or smaller dedicated database). Use `serverless` to restore onto the shared
+        /// pool, or a dedicated specification slug to restore onto a dedicated
+        /// database of that size. The specification must be permitted by the
+        /// organization's plan. `newSpecification` is not supported for
+        /// legacy/TablesDB databases or for bucket restores.
+        /// 
         /// </para>
         /// </summary>
-        public Task<Models.BackupRestoration> CreateRestoration(string archiveId, List<Appwrite.Enums.BackupServices> services, string? newResourceId = null, string? newResourceName = null)
+        public Task<Models.BackupRestoration> CreateRestoration(string archiveId, List<Appwrite.Enums.BackupServices> services, string? newResourceId = null, string? newResourceName = null, string? newSpecification = null)
         {
             var apiPath = "/backups/restoration";
 
@@ -329,13 +348,15 @@ namespace Appwrite.Services
                 { "archiveId", archiveId },
                 { "services", services?.Select(e => e.Value).ToList() },
                 { "newResourceId", newResourceId },
-                { "newResourceName", newResourceName }
+                { "newResourceName", newResourceName },
+                { "newSpecification", newSpecification }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -368,7 +389,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "X-Appwrite-Project", _client.GetConfig("project") }
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
             };
 
 
@@ -401,7 +423,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "X-Appwrite-Project", _client.GetConfig("project") }
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
             };
 
 
