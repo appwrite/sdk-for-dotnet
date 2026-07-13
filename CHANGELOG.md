@@ -5,7 +5,7 @@
 * Breaking: Removed `Health` service with all its models and enums
 * Breaking: Removed `Usage` service and `UsageEvent`/`UsageGauge` models
 * Breaking: Removed `Messaging` log methods `ListMessageLogs`, `ListProviderLogs`, `ListSubscriberLogs`, `ListTopicLogs`
-* Breaking: Removed OS, client, device, and country fields from `ActivityEvent`
+* Breaking: Removed OS, client, and device fields plus `countryCode`/`countryName` from `ActivityEvent` (`country` remains)
 * Breaking: Changed spatial attribute/column `default` parameters from `List<object>` to typed coordinate lists
 * Breaking: Made `Project` OAuth2 server properties nullable
 * Added: `Organization` service methods `Get`, `Update`, `Delete`, and membership CRUD
