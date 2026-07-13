@@ -142,7 +142,7 @@ namespace Appwrite
         /// <summary>The OAuth access token to authenticate with</summary>
         public Client SetBearer(string value) {
             _config["bearer"] = value;
-            AddHeader("Authorization", value);
+            AddHeader("Authorization", "Bearer " + value);
 
             return this;
         }
