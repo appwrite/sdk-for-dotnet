@@ -10,5 +10,6 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-SpecificationList result = await sites.ListSpecifications();
-```
+SpecificationList result = await sites.ListSpecifications(
+    type: "runtimes" // optional
+);```

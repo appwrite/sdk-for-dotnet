@@ -1,5 +1,6 @@
 ```csharp
 using Appwrite;
+using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -17,5 +18,7 @@ OAuth2Oidc result = await project.UpdateOAuth2Oidc(
     authorizationURL: "https://example.com", // optional
     tokenURL: "https://example.com", // optional
     userInfoURL: "https://example.com", // optional
+    prompt: new List&lt;ProjectOAuth2OidcPrompt&gt; { ProjectOAuth2OidcPrompt.None }, // optional
+    maxAge: 0, // optional
     enabled: false // optional
 );```

@@ -74,6 +74,9 @@ namespace Appwrite.Models
         [JsonPropertyName("status")]
         public string Status { get; private set; }
 
+        [JsonPropertyName("onboarding")]
+        public object Onboarding { get; private set; }
+
         [JsonPropertyName("authMethods")]
         public List<ProjectAuthMethod> AuthMethods { get; private set; }
 
@@ -93,31 +96,49 @@ namespace Appwrite.Models
         public BillingLimits? BillingLimits { get; private set; }
 
         [JsonPropertyName("oAuth2ServerEnabled")]
-        public bool OAuth2ServerEnabled { get; private set; }
+        public bool? OAuth2ServerEnabled { get; private set; }
 
         [JsonPropertyName("oAuth2ServerAuthorizationUrl")]
-        public string OAuth2ServerAuthorizationUrl { get; private set; }
+        public string? OAuth2ServerAuthorizationUrl { get; private set; }
 
         [JsonPropertyName("oAuth2ServerScopes")]
-        public List<string> OAuth2ServerScopes { get; private set; }
+        public List<string>? OAuth2ServerScopes { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerDefaultScopes")]
+        public List<string>? OAuth2ServerDefaultScopes { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerAuthorizationDetailsTypes")]
+        public List<string>? OAuth2ServerAuthorizationDetailsTypes { get; private set; }
 
         [JsonPropertyName("oAuth2ServerAccessTokenDuration")]
-        public long OAuth2ServerAccessTokenDuration { get; private set; }
+        public long? OAuth2ServerAccessTokenDuration { get; private set; }
 
         [JsonPropertyName("oAuth2ServerRefreshTokenDuration")]
-        public long OAuth2ServerRefreshTokenDuration { get; private set; }
+        public long? OAuth2ServerRefreshTokenDuration { get; private set; }
 
         [JsonPropertyName("oAuth2ServerPublicAccessTokenDuration")]
-        public long OAuth2ServerPublicAccessTokenDuration { get; private set; }
+        public long? OAuth2ServerPublicAccessTokenDuration { get; private set; }
 
         [JsonPropertyName("oAuth2ServerPublicRefreshTokenDuration")]
-        public long OAuth2ServerPublicRefreshTokenDuration { get; private set; }
+        public long? OAuth2ServerPublicRefreshTokenDuration { get; private set; }
 
         [JsonPropertyName("oAuth2ServerConfidentialPkce")]
-        public bool OAuth2ServerConfidentialPkce { get; private set; }
+        public bool? OAuth2ServerConfidentialPkce { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerVerificationUrl")]
+        public string? OAuth2ServerVerificationUrl { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerUserCodeLength")]
+        public long? OAuth2ServerUserCodeLength { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerUserCodeFormat")]
+        public string? OAuth2ServerUserCodeFormat { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerDeviceCodeDuration")]
+        public long? OAuth2ServerDeviceCodeDuration { get; private set; }
 
         [JsonPropertyName("oAuth2ServerDiscoveryUrl")]
-        public string OAuth2ServerDiscoveryUrl { get; private set; }
+        public string? OAuth2ServerDiscoveryUrl { get; private set; }
 
         public Project(
             string id,
@@ -141,21 +162,28 @@ namespace Appwrite.Models
             string pingedAt,
             List<string> labels,
             string status,
+            object onboarding,
             List<ProjectAuthMethod> authMethods,
             List<ProjectService> services,
             List<ProjectProtocol> protocols,
             List<Block> blocks,
             string consoleAccessedAt,
             BillingLimits? billingLimits,
-            bool oAuth2ServerEnabled,
-            string oAuth2ServerAuthorizationUrl,
-            List<string> oAuth2ServerScopes,
-            long oAuth2ServerAccessTokenDuration,
-            long oAuth2ServerRefreshTokenDuration,
-            long oAuth2ServerPublicAccessTokenDuration,
-            long oAuth2ServerPublicRefreshTokenDuration,
-            bool oAuth2ServerConfidentialPkce,
-            string oAuth2ServerDiscoveryUrl
+            bool? oAuth2ServerEnabled,
+            string? oAuth2ServerAuthorizationUrl,
+            List<string>? oAuth2ServerScopes,
+            List<string>? oAuth2ServerDefaultScopes,
+            List<string>? oAuth2ServerAuthorizationDetailsTypes,
+            long? oAuth2ServerAccessTokenDuration,
+            long? oAuth2ServerRefreshTokenDuration,
+            long? oAuth2ServerPublicAccessTokenDuration,
+            long? oAuth2ServerPublicRefreshTokenDuration,
+            bool? oAuth2ServerConfidentialPkce,
+            string? oAuth2ServerVerificationUrl,
+            long? oAuth2ServerUserCodeLength,
+            string? oAuth2ServerUserCodeFormat,
+            long? oAuth2ServerDeviceCodeDuration,
+            string? oAuth2ServerDiscoveryUrl
         )
         {
             Id = id;
@@ -179,6 +207,7 @@ namespace Appwrite.Models
             PingedAt = pingedAt;
             Labels = labels;
             Status = status;
+            Onboarding = onboarding;
             AuthMethods = authMethods;
             Services = services;
             Protocols = protocols;
@@ -188,11 +217,17 @@ namespace Appwrite.Models
             OAuth2ServerEnabled = oAuth2ServerEnabled;
             OAuth2ServerAuthorizationUrl = oAuth2ServerAuthorizationUrl;
             OAuth2ServerScopes = oAuth2ServerScopes;
+            OAuth2ServerDefaultScopes = oAuth2ServerDefaultScopes;
+            OAuth2ServerAuthorizationDetailsTypes = oAuth2ServerAuthorizationDetailsTypes;
             OAuth2ServerAccessTokenDuration = oAuth2ServerAccessTokenDuration;
             OAuth2ServerRefreshTokenDuration = oAuth2ServerRefreshTokenDuration;
             OAuth2ServerPublicAccessTokenDuration = oAuth2ServerPublicAccessTokenDuration;
             OAuth2ServerPublicRefreshTokenDuration = oAuth2ServerPublicRefreshTokenDuration;
             OAuth2ServerConfidentialPkce = oAuth2ServerConfidentialPkce;
+            OAuth2ServerVerificationUrl = oAuth2ServerVerificationUrl;
+            OAuth2ServerUserCodeLength = oAuth2ServerUserCodeLength;
+            OAuth2ServerUserCodeFormat = oAuth2ServerUserCodeFormat;
+            OAuth2ServerDeviceCodeDuration = oAuth2ServerDeviceCodeDuration;
             OAuth2ServerDiscoveryUrl = oAuth2ServerDiscoveryUrl;
         }
 
@@ -218,23 +253,52 @@ namespace Appwrite.Models
             pingedAt: map["pingedAt"].ToString(),
             labels: map["labels"].ConvertToList<string>(),
             status: map["status"].ToString(),
+            onboarding: map["onboarding"].ToString(),
             authMethods: map["authMethods"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectAuthMethod.From(map: it)).ToList(),
             services: map["services"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectService.From(map: it)).ToList(),
             protocols: map["protocols"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectProtocol.From(map: it)).ToList(),
             blocks: map["blocks"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Block.From(map: it)).ToList(),
             consoleAccessedAt: map["consoleAccessedAt"].ToString(),
-            billingLimits: map.TryGetValue("billingLimits", out var objectRaw27) && objectRaw27 != null
-                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw27 is JsonElement jsonObj27 ? jsonObj27.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw27)
+            billingLimits: map.TryGetValue("billingLimits", out var objectRaw28) && objectRaw28 != null
+                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw28 is JsonElement jsonObj28 ? jsonObj28.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw28)
                                     : null,
-            oAuth2ServerEnabled: (bool)map["oAuth2ServerEnabled"],
-            oAuth2ServerAuthorizationUrl: map["oAuth2ServerAuthorizationUrl"].ToString(),
-            oAuth2ServerScopes: map["oAuth2ServerScopes"].ConvertToList<string>(),
-            oAuth2ServerAccessTokenDuration: Convert.ToInt64(map["oAuth2ServerAccessTokenDuration"]),
-            oAuth2ServerRefreshTokenDuration: Convert.ToInt64(map["oAuth2ServerRefreshTokenDuration"]),
-            oAuth2ServerPublicAccessTokenDuration: Convert.ToInt64(map["oAuth2ServerPublicAccessTokenDuration"]),
-            oAuth2ServerPublicRefreshTokenDuration: Convert.ToInt64(map["oAuth2ServerPublicRefreshTokenDuration"]),
-            oAuth2ServerConfidentialPkce: (bool)map["oAuth2ServerConfidentialPkce"],
-            oAuth2ServerDiscoveryUrl: map["oAuth2ServerDiscoveryUrl"].ToString()
+            oAuth2ServerEnabled: map.TryGetValue("oAuth2ServerEnabled", out var boolRaw29) && boolRaw29 != null
+                                        ? (bool?)boolRaw29
+                                        : null,
+            oAuth2ServerAuthorizationUrl: map.TryGetValue("oAuth2ServerAuthorizationUrl", out var oAuth2ServerAuthorizationUrl) ? oAuth2ServerAuthorizationUrl?.ToString() : null,
+            oAuth2ServerScopes: map.TryGetValue("oAuth2ServerScopes", out var arrayRaw31) && arrayRaw31 != null
+                                ? arrayRaw31.ConvertToList<string>()
+                                : null,
+            oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw32) && arrayRaw32 != null
+                                ? arrayRaw32.ConvertToList<string>()
+                                : null,
+            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw33) && arrayRaw33 != null
+                                ? arrayRaw33.ConvertToList<string>()
+                                : null,
+            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw34) && numberRaw34 != null
+                                    ? Convert.ToInt64(numberRaw34)
+                                    : null,
+            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw35) && numberRaw35 != null
+                                    ? Convert.ToInt64(numberRaw35)
+                                    : null,
+            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw36) && numberRaw36 != null
+                                    ? Convert.ToInt64(numberRaw36)
+                                    : null,
+            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw37) && numberRaw37 != null
+                                    ? Convert.ToInt64(numberRaw37)
+                                    : null,
+            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw38) && boolRaw38 != null
+                                        ? (bool?)boolRaw38
+                                        : null,
+            oAuth2ServerVerificationUrl: map.TryGetValue("oAuth2ServerVerificationUrl", out var oAuth2ServerVerificationUrl) ? oAuth2ServerVerificationUrl?.ToString() : null,
+            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw40) && numberRaw40 != null
+                                    ? Convert.ToInt64(numberRaw40)
+                                    : null,
+            oAuth2ServerUserCodeFormat: map.TryGetValue("oAuth2ServerUserCodeFormat", out var oAuth2ServerUserCodeFormat) ? oAuth2ServerUserCodeFormat?.ToString() : null,
+            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw42) && numberRaw42 != null
+                                    ? Convert.ToInt64(numberRaw42)
+                                    : null,
+            oAuth2ServerDiscoveryUrl: map.TryGetValue("oAuth2ServerDiscoveryUrl", out var oAuth2ServerDiscoveryUrl) ? oAuth2ServerDiscoveryUrl?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -260,6 +324,7 @@ namespace Appwrite.Models
             { "pingedAt", PingedAt },
             { "labels", Labels },
             { "status", Status },
+            { "onboarding", Onboarding },
             { "authMethods", AuthMethods?.Select(it => it.ToMap()).ToList() },
             { "services", Services?.Select(it => it.ToMap()).ToList() },
             { "protocols", Protocols?.Select(it => it.ToMap()).ToList() },
@@ -269,11 +334,17 @@ namespace Appwrite.Models
             { "oAuth2ServerEnabled", OAuth2ServerEnabled },
             { "oAuth2ServerAuthorizationUrl", OAuth2ServerAuthorizationUrl },
             { "oAuth2ServerScopes", OAuth2ServerScopes },
+            { "oAuth2ServerDefaultScopes", OAuth2ServerDefaultScopes },
+            { "oAuth2ServerAuthorizationDetailsTypes", OAuth2ServerAuthorizationDetailsTypes },
             { "oAuth2ServerAccessTokenDuration", OAuth2ServerAccessTokenDuration },
             { "oAuth2ServerRefreshTokenDuration", OAuth2ServerRefreshTokenDuration },
             { "oAuth2ServerPublicAccessTokenDuration", OAuth2ServerPublicAccessTokenDuration },
             { "oAuth2ServerPublicRefreshTokenDuration", OAuth2ServerPublicRefreshTokenDuration },
             { "oAuth2ServerConfidentialPkce", OAuth2ServerConfidentialPkce },
+            { "oAuth2ServerVerificationUrl", OAuth2ServerVerificationUrl },
+            { "oAuth2ServerUserCodeLength", OAuth2ServerUserCodeLength },
+            { "oAuth2ServerUserCodeFormat", OAuth2ServerUserCodeFormat },
+            { "oAuth2ServerDeviceCodeDuration", OAuth2ServerDeviceCodeDuration },
             { "oAuth2ServerDiscoveryUrl", OAuth2ServerDiscoveryUrl }
         };
     }

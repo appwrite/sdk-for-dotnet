@@ -14,5 +14,6 @@ Functions functions = new Functions(client);
 byte[] result = await functions.GetDeploymentDownload(
     functionId: "<FUNCTION_ID>",
     deploymentId: "<DEPLOYMENT_ID>",
-    type: DeploymentDownloadType.Source // optional
+    type: DeploymentDownloadType.Source, // optional
+    token: "<TOKEN>" // optional
 );```

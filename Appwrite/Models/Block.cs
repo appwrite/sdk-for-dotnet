@@ -20,6 +20,9 @@ namespace Appwrite.Models
         [JsonPropertyName("resourceId")]
         public string ResourceId { get; private set; }
 
+        [JsonPropertyName("mode")]
+        public string Mode { get; private set; }
+
         [JsonPropertyName("reason")]
         public string? Reason { get; private set; }
 
@@ -45,6 +48,7 @@ namespace Appwrite.Models
             string createdAt,
             string resourceType,
             string resourceId,
+            string mode,
             string? reason,
             string? expiredAt,
             string projectName,
@@ -57,6 +61,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             ResourceType = resourceType;
             ResourceId = resourceId;
+            Mode = mode;
             Reason = reason;
             ExpiredAt = expiredAt;
             ProjectName = projectName;
@@ -70,6 +75,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             resourceType: map["resourceType"].ToString(),
             resourceId: map["resourceId"].ToString(),
+            mode: map["mode"].ToString(),
             reason: map.TryGetValue("reason", out var reason) ? reason?.ToString() : null,
             expiredAt: map.TryGetValue("expiredAt", out var expiredAt) ? expiredAt?.ToString() : null,
             projectName: map["projectName"].ToString(),
@@ -84,6 +90,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "resourceType", ResourceType },
             { "resourceId", ResourceId },
+            { "mode", Mode },
             { "reason", Reason },
             { "expiredAt", ExpiredAt },
             { "projectName", ProjectName },

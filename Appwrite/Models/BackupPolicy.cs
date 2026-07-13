@@ -41,6 +41,9 @@ namespace Appwrite.Models
         [JsonPropertyName("schedule")]
         public string Schedule { get; private set; }
 
+        [JsonPropertyName("type")]
+        public string Type { get; private set; }
+
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
@@ -55,6 +58,7 @@ namespace Appwrite.Models
             string? resourceType,
             long retention,
             string schedule,
+            string type,
             bool enabled
         )
         {
@@ -68,6 +72,7 @@ namespace Appwrite.Models
             ResourceType = resourceType;
             Retention = retention;
             Schedule = schedule;
+            Type = type;
             Enabled = enabled;
         }
 
@@ -82,6 +87,7 @@ namespace Appwrite.Models
             resourceType: map.TryGetValue("resourceType", out var resourceType) ? resourceType?.ToString() : null,
             retention: Convert.ToInt64(map["retention"]),
             schedule: map["schedule"].ToString(),
+            type: map["type"].ToString(),
             enabled: (bool)map["enabled"]
         );
 
@@ -97,6 +103,7 @@ namespace Appwrite.Models
             { "resourceType", ResourceType },
             { "retention", Retention },
             { "schedule", Schedule },
+            { "type", Type },
             { "enabled", Enabled }
         };
     }

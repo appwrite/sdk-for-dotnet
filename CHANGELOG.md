@@ -1,5 +1,24 @@
 # Change Log
 
+## 6.0.0
+
+* Breaking: Removed `Health` service with all its models and enums
+* Breaking: Removed `Usage` service and `UsageEvent`/`UsageGauge` models
+* Breaking: Removed `Messaging` log methods `ListMessageLogs`, `ListProviderLogs`, `ListSubscriberLogs`, `ListTopicLogs`
+* Breaking: Removed OS, client, device, and country fields from `ActivityEvent`
+* Breaking: Changed spatial attribute/column `default` parameters from `List<object>` to typed coordinate lists
+* Breaking: Made `Project` OAuth2 server properties nullable
+* Added: `Organization` service methods `Get`, `Update`, `Delete`, and membership CRUD
+* Added: `Client.SetBearer` for OAuth access token authentication
+* Added: vector query methods `Query.VectorDot`, `Query.VectorCosine`, `Query.VectorEuclidean`
+* Added: `Project.UpdateOAuth2Appwrite` and `Project.UpdateDenyCorporateEmailPolicy` methods
+* Added: OIDC `prompt` and `maxAge` parameters plus OAuth2 device-flow server options
+* Added: optional `specification` on `TablesDB.Create`, `newSpecification` on `Backups.CreateRestoration`
+* Added: optional `type` on `ListSpecifications`, `token` on `GetDeploymentDownload`
+* Added: geolocation and ISP fields on `Locale`, email classification fields on `User`
+* Added: `DatabaseStatus`, `BillingPlanGroup`, `OAuth2OidcPrompt` enums and new key scopes
+* Added: billing plan models, `Database.Status`, `BackupPolicy.Type`, `Block.Mode`, `Membership.UserAccessedAt`
+
 ## 5.1.0
 
 * Added: `createSesProvider` and `updateSesProvider` to `messaging`

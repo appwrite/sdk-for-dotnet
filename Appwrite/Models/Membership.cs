@@ -50,6 +50,9 @@ namespace Appwrite.Models
         [JsonPropertyName("mfa")]
         public bool Mfa { get; private set; }
 
+        [JsonPropertyName("userAccessedAt")]
+        public string UserAccessedAt { get; private set; }
+
         [JsonPropertyName("roles")]
         public List<string> Roles { get; private set; }
 
@@ -67,6 +70,7 @@ namespace Appwrite.Models
             string joined,
             bool confirm,
             bool mfa,
+            string userAccessedAt,
             List<string> roles
         )
         {
@@ -83,6 +87,7 @@ namespace Appwrite.Models
             Joined = joined;
             Confirm = confirm;
             Mfa = mfa;
+            UserAccessedAt = userAccessedAt;
             Roles = roles;
         }
 
@@ -100,6 +105,7 @@ namespace Appwrite.Models
             joined: map["joined"].ToString(),
             confirm: (bool)map["confirm"],
             mfa: (bool)map["mfa"],
+            userAccessedAt: map["userAccessedAt"].ToString(),
             roles: map["roles"].ConvertToList<string>()
         );
 
@@ -118,6 +124,7 @@ namespace Appwrite.Models
             { "joined", Joined },
             { "confirm", Confirm },
             { "mfa", Mfa },
+            { "userAccessedAt", UserAccessedAt },
             { "roles", Roles }
         };
     }

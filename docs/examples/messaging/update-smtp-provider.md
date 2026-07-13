@@ -17,7 +17,7 @@ Provider result = await messaging.UpdateSMTPProvider(
     host: "<HOST>", // optional
     port: 1, // optional
     username: "<USERNAME>", // optional
-    password: "<PASSWORD>", // optional
+    password: "password", // optional
     encryption: SmtpEncryption.None, // optional
     autoTLS: false, // optional
     mailer: "<MAILER>", // optional

@@ -23,10 +23,12 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes PoliciesWrite => new ProjectKeyScopes("policies.write");
         public static ProjectKeyScopes ProjectPoliciesRead => new ProjectKeyScopes("project.policies.read");
         public static ProjectKeyScopes ProjectPoliciesWrite => new ProjectKeyScopes("project.policies.write");
+        public static ProjectKeyScopes ProjectOauth2Read => new ProjectKeyScopes("project.oauth2.read");
+        public static ProjectKeyScopes ProjectOauth2Write => new ProjectKeyScopes("project.oauth2.write");
         public static ProjectKeyScopes TemplatesRead => new ProjectKeyScopes("templates.read");
         public static ProjectKeyScopes TemplatesWrite => new ProjectKeyScopes("templates.write");
-        public static ProjectKeyScopes Oauth2Read => new ProjectKeyScopes("oauth2.read");
-        public static ProjectKeyScopes Oauth2Write => new ProjectKeyScopes("oauth2.write");
+        public static ProjectKeyScopes StagesRead => new ProjectKeyScopes("stages.read");
+        public static ProjectKeyScopes StagesWrite => new ProjectKeyScopes("stages.write");
         public static ProjectKeyScopes UsersRead => new ProjectKeyScopes("users.read");
         public static ProjectKeyScopes UsersWrite => new ProjectKeyScopes("users.write");
         public static ProjectKeyScopes SessionsRead => new ProjectKeyScopes("sessions.read");
@@ -101,11 +103,14 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes ArchivesWrite => new ProjectKeyScopes("archives.write");
         public static ProjectKeyScopes RestorationsRead => new ProjectKeyScopes("restorations.read");
         public static ProjectKeyScopes RestorationsWrite => new ProjectKeyScopes("restorations.write");
+        public static ProjectKeyScopes DedicatedDatabasesExecute => new ProjectKeyScopes("dedicatedDatabases.execute");
         public static ProjectKeyScopes DomainsRead => new ProjectKeyScopes("domains.read");
         public static ProjectKeyScopes DomainsWrite => new ProjectKeyScopes("domains.write");
         public static ProjectKeyScopes EventsRead => new ProjectKeyScopes("events.read");
         public static ProjectKeyScopes AppsRead => new ProjectKeyScopes("apps.read");
         public static ProjectKeyScopes AppsWrite => new ProjectKeyScopes("apps.write");
+        public static ProjectKeyScopes Oauth2Read => new ProjectKeyScopes("oauth2.read");
+        public static ProjectKeyScopes Oauth2Write => new ProjectKeyScopes("oauth2.write");
         public static ProjectKeyScopes UsageRead => new ProjectKeyScopes("usage.read");
     }
 }

@@ -15,7 +15,7 @@ Project result = await project.UpdateSMTP(
     host: "", // optional
     port: 0, // optional
     username: "<USERNAME>", // optional
-    password: "<PASSWORD>", // optional
+    password: "password", // optional
     senderEmail: "email@example.com", // optional
     senderName: "<SENDER_NAME>", // optional
     replyToEmail: "email@example.com", // optional

@@ -14,6 +14,6 @@ User result = await users.Create(
     userId: "<USER_ID>",
     email: "email@example.com", // optional
     phone: "+12065550100", // optional
-    password: "", // optional
+    password: "password", // optional
     name: "<NAME>" // optional
 );```

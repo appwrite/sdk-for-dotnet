@@ -12,5 +12,5 @@ Users users = new Users(client);
 
 User result = await users.UpdatePassword(
     userId: "<USER_ID>",
-    password: ""
+    password: "password"
 );```

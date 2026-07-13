@@ -36,7 +36,7 @@ namespace Appwrite.Models
         public string UpdatedAt { get; private set; }
 
         [JsonPropertyName("default")]
-        public List<object>? Default { get; private set; }
+        public List<List<List<double>>>? Default { get; private set; }
 
         public AttributePolygon(
             string key,
@@ -47,7 +47,7 @@ namespace Appwrite.Models
             bool? array,
             string createdAt,
             string updatedAt,
-            List<object>? @default
+            List<List<List<double>>>? @default
         )
         {
             Key = key;
@@ -73,7 +73,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             @default: map.TryGetValue("default", out var arrayRaw9) && arrayRaw9 != null
-                                ? arrayRaw9.ConvertToList<object>()
+                                ? arrayRaw9.ConvertToList<List<List<double>>>()
                                 : null
         );
 

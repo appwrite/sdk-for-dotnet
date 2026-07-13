@@ -53,6 +53,21 @@ namespace Appwrite.Models
         [JsonPropertyName("emailVerification")]
         public bool EmailVerification { get; private set; }
 
+        [JsonPropertyName("emailCanonical")]
+        public string? EmailCanonical { get; private set; }
+
+        [JsonPropertyName("emailIsFree")]
+        public bool? EmailIsFree { get; private set; }
+
+        [JsonPropertyName("emailIsDisposable")]
+        public bool? EmailIsDisposable { get; private set; }
+
+        [JsonPropertyName("emailIsCorporate")]
+        public bool? EmailIsCorporate { get; private set; }
+
+        [JsonPropertyName("emailIsCanonical")]
+        public bool? EmailIsCanonical { get; private set; }
+
         [JsonPropertyName("phoneVerification")]
         public bool PhoneVerification { get; private set; }
 
@@ -89,6 +104,11 @@ namespace Appwrite.Models
             string email,
             string phone,
             bool emailVerification,
+            string? emailCanonical,
+            bool? emailIsFree,
+            bool? emailIsDisposable,
+            bool? emailIsCorporate,
+            bool? emailIsCanonical,
             bool phoneVerification,
             bool mfa,
             Preferences prefs,
@@ -112,6 +132,11 @@ namespace Appwrite.Models
             Email = email;
             Phone = phone;
             EmailVerification = emailVerification;
+            EmailCanonical = emailCanonical;
+            EmailIsFree = emailIsFree;
+            EmailIsDisposable = emailIsDisposable;
+            EmailIsCorporate = emailIsCorporate;
+            EmailIsCanonical = emailIsCanonical;
             PhoneVerification = phoneVerification;
             Mfa = mfa;
             Prefs = prefs;
@@ -136,13 +161,26 @@ namespace Appwrite.Models
             email: map["email"].ToString(),
             phone: map["phone"].ToString(),
             emailVerification: (bool)map["emailVerification"],
+            emailCanonical: map.TryGetValue("emailCanonical", out var emailCanonical) ? emailCanonical?.ToString() : null,
+            emailIsFree: map.TryGetValue("emailIsFree", out var boolRaw16) && boolRaw16 != null
+                                        ? (bool?)boolRaw16
+                                        : null,
+            emailIsDisposable: map.TryGetValue("emailIsDisposable", out var boolRaw17) && boolRaw17 != null
+                                        ? (bool?)boolRaw17
+                                        : null,
+            emailIsCorporate: map.TryGetValue("emailIsCorporate", out var boolRaw18) && boolRaw18 != null
+                                        ? (bool?)boolRaw18
+                                        : null,
+            emailIsCanonical: map.TryGetValue("emailIsCanonical", out var boolRaw19) && boolRaw19 != null
+                                        ? (bool?)boolRaw19
+                                        : null,
             phoneVerification: (bool)map["phoneVerification"],
             mfa: (bool)map["mfa"],
-            prefs: Appwrite.Models.Preferences.From(map: map["prefs"] is JsonElement jsonObj17 ? jsonObj17.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
+            prefs: Appwrite.Models.Preferences.From(map: map["prefs"] is JsonElement jsonObj22 ? jsonObj22.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
             targets: map["targets"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Target.From(map: it)).ToList(),
             accessedAt: map["accessedAt"].ToString(),
-            impersonator: map.TryGetValue("impersonator", out var boolRaw20) && boolRaw20 != null
-                                        ? (bool?)boolRaw20
+            impersonator: map.TryGetValue("impersonator", out var boolRaw25) && boolRaw25 != null
+                                        ? (bool?)boolRaw25
                                         : null,
             impersonatorUserId: map.TryGetValue("impersonatorUserId", out var impersonatorUserId) ? impersonatorUserId?.ToString() : null
         );
@@ -163,6 +201,11 @@ namespace Appwrite.Models
             { "email", Email },
             { "phone", Phone },
             { "emailVerification", EmailVerification },
+            { "emailCanonical", EmailCanonical },
+            { "emailIsFree", EmailIsFree },
+            { "emailIsDisposable", EmailIsDisposable },
+            { "emailIsCorporate", EmailIsCorporate },
+            { "emailIsCanonical", EmailIsCanonical },
             { "phoneVerification", PhoneVerification },
             { "mfa", Mfa },
             { "prefs", Prefs?.ToMap() },
