@@ -328,18 +328,33 @@ namespace Appwrite.Services
         /// <para>
         /// Create and trigger a new restoration for a backup on a project.
         /// 
-        /// When restoring a DocumentsDB or VectorsDB database to a new resource, pass
-        /// `newSpecification` to provision the restored database on a different
-        /// specification than the archived one (for example, restoring onto a larger
-        /// or smaller dedicated database). Use `serverless` to restore onto the shared
-        /// pool, or a dedicated specification slug to restore onto a dedicated
-        /// database of that size. The specification must be permitted by the
-        /// organization's plan. `newSpecification` is not supported for
-        /// legacy/TablesDB databases or for bucket restores.
+        /// For a backup of one database, the restoration resolves its destination
+        /// before it is queued. Pass `newResourceId` to restore into that database ID,
+        /// including the archived database ID to overwrite it. When `newResourceId` is
+        /// omitted, a new database ID is generated and returned in `options`.
+        /// 
+        /// The restoration migration records the archived database in `resourceId` and
+        /// `resourceType`, and the resolved database in `destinationResourceId` and
+        /// `destinationResourceType`. Database types are stored canonically as
+        /// `database`, `documentsdb`, or `vectorsdb`. Project-wide restorations leave
+        /// these fields empty because they do not have a single source or destination
+        /// database.
+        /// 
+        /// To list every migration related to one database, use its canonical type in
+        /// a nested `OR(AND(...), AND(...), AND(...))` across the root, parent, and
+        /// destination relation pairs: `(resourceType, resourceId)`,
+        /// `(parentResourceType, parentResourceId)`, and `(destinationResourceType,
+        /// destinationResourceId)`. Legacy and TablesDB databases use `database`; the
+        /// operational `resourceType` of a table migration is not rewritten to
+        /// `tablesdb`.
+        /// 
+        /// When restoring a DocumentsDB or VectorsDB database to a new resource from a
+        /// dedicated source, the restore provisions a fresh dedicated backing database
+        /// at the source database's own specification.
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.BackupRestoration> CreateRestoration(string archiveId, List<Appwrite.Enums.BackupServices> services, string? newResourceId = null, string? newResourceName = null, string? newSpecification = null)
+        public Task<Models.BackupRestoration> CreateRestoration(string archiveId, List<Appwrite.Enums.BackupServices> services, string? newResourceId = null, string? newResourceName = null)
         {
             var apiPath = "/backups/restoration";
 
@@ -348,8 +363,7 @@ namespace Appwrite.Services
                 { "archiveId", archiveId },
                 { "services", services?.Select(e => e.Value).ToList() },
                 { "newResourceId", newResourceId },
-                { "newResourceName", newResourceName },
-                { "newSpecification", newSpecification }
+                { "newResourceName", newResourceName }
             };
 
             var apiHeaders = new Dictionary<string, string>()

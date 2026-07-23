@@ -32,11 +32,20 @@ namespace Appwrite.Models
         [JsonPropertyName("status")]
         public DatabaseStatus? Status { get; private set; }
 
+        [JsonPropertyName("engine")]
+        public string? Engine { get; private set; }
+
+        [JsonPropertyName("specification")]
+        public string? Specification { get; private set; }
+
+        [JsonPropertyName("replicas")]
+        public long? Replicas { get; private set; }
+
         [JsonPropertyName("policies")]
-        public List<BackupPolicy> Policies { get; private set; }
+        public List<BackupPolicy>? Policies { get; private set; }
 
         [JsonPropertyName("archives")]
-        public List<BackupArchive> Archives { get; private set; }
+        public List<BackupArchive>? Archives { get; private set; }
 
         public Database(
             string id,
@@ -46,8 +55,11 @@ namespace Appwrite.Models
             bool enabled,
             DatabaseType type,
             DatabaseStatus? status,
-            List<BackupPolicy> policies,
-            List<BackupArchive> archives
+            string? engine,
+            string? specification,
+            long? replicas,
+            List<BackupPolicy>? policies,
+            List<BackupArchive>? archives
         )
         {
             Id = id;
@@ -57,6 +69,9 @@ namespace Appwrite.Models
             Enabled = enabled;
             Type = type;
             Status = status;
+            Engine = engine;
+            Specification = specification;
+            Replicas = replicas;
             Policies = policies;
             Archives = archives;
         }
@@ -73,8 +88,17 @@ namespace Appwrite.Models
                                 ? null
                                 : new DatabaseStatus(enumRaw7.ToString()!)
                             : null,
-            policies: map["policies"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupPolicy.From(map: it)).ToList(),
-            archives: map["archives"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupArchive.From(map: it)).ToList()
+            engine: map.TryGetValue("engine", out var engine) ? engine?.ToString() : null,
+            specification: map.TryGetValue("specification", out var specification) ? specification?.ToString() : null,
+            replicas: map.TryGetValue("replicas", out var numberRaw10) && numberRaw10 != null
+                                    ? Convert.ToInt64(numberRaw10)
+                                    : null,
+            policies: map.TryGetValue("policies", out var arrayRaw11) && arrayRaw11 != null
+                                    ? arrayRaw11.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupPolicy.From(map: it)).ToList()
+                                    : null,
+            archives: map.TryGetValue("archives", out var arrayRaw12) && arrayRaw12 != null
+                                    ? arrayRaw12.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupArchive.From(map: it)).ToList()
+                                    : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -86,6 +110,9 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "type", Type.Value },
             { "status", Status?.Value },
+            { "engine", Engine },
+            { "specification", Specification },
+            { "replicas", Replicas },
             { "policies", Policies?.Select(it => it.ToMap()).ToList() },
             { "archives", Archives?.Select(it => it.ToMap()).ToList() }
         };

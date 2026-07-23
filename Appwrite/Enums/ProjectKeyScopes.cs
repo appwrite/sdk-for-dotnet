@@ -106,11 +106,14 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes DedicatedDatabasesExecute => new ProjectKeyScopes("dedicatedDatabases.execute");
         public static ProjectKeyScopes DomainsRead => new ProjectKeyScopes("domains.read");
         public static ProjectKeyScopes DomainsWrite => new ProjectKeyScopes("domains.write");
+        public static ProjectKeyScopes WafRulesRead => new ProjectKeyScopes("wafRules.read");
+        public static ProjectKeyScopes WafRulesWrite => new ProjectKeyScopes("wafRules.write");
         public static ProjectKeyScopes EventsRead => new ProjectKeyScopes("events.read");
         public static ProjectKeyScopes AppsRead => new ProjectKeyScopes("apps.read");
         public static ProjectKeyScopes AppsWrite => new ProjectKeyScopes("apps.write");
         public static ProjectKeyScopes Oauth2Read => new ProjectKeyScopes("oauth2.read");
         public static ProjectKeyScopes Oauth2Write => new ProjectKeyScopes("oauth2.write");
+        public static ProjectKeyScopes Oauth2Introspect => new ProjectKeyScopes("oauth2.introspect");
         public static ProjectKeyScopes UsageRead => new ProjectKeyScopes("usage.read");
     }
 }

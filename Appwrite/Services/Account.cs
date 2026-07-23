@@ -91,6 +91,216 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get a list of the OAuth2 consents the current user has given to third-party
+        /// apps.
+        /// </para>
+        /// </summary>
+        public Task<Models.Oauth2ConsentList> ListConsents(List<string>? queries = null, bool? total = null)
+        {
+            var apiPath = "/account/consents";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "total", total }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Oauth2ConsentList Convert(Dictionary<string, object> it)
+            {
+                return Models.Oauth2ConsentList.From(map: it);
+            }
+
+            return _client.Call<Models.Oauth2ConsentList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get an OAuth2 consent the current user has given to a third-party app by
+        /// its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Oauth2Consent> GetConsent(string consentId)
+        {
+            var apiPath = "/account/consents/{consentId}"
+                .Replace("{consentId}", consentId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Oauth2Consent Convert(Dictionary<string, object> it)
+            {
+                return Models.Oauth2Consent.From(map: it);
+            }
+
+            return _client.Call<Models.Oauth2Consent>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete an OAuth2 consent by its unique ID. All token families issued under
+        /// the consent are revoked, and the app must ask for consent again to regain
+        /// access.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteConsent(string consentId)
+        {
+            var apiPath = "/account/consents/{consentId}"
+                .Replace("{consentId}", consentId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Get a list of the token families issued under an OAuth2 consent. Each entry
+        /// represents one authorized device or session; the token secrets themselves
+        /// are never returned.
+        /// </para>
+        /// </summary>
+        public Task<Models.Oauth2ConsentTokenList> ListConsentTokens(string consentId, List<string>? queries = null, bool? total = null)
+        {
+            var apiPath = "/account/consents/{consentId}/tokens"
+                .Replace("{consentId}", consentId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "total", total }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Oauth2ConsentTokenList Convert(Dictionary<string, object> it)
+            {
+                return Models.Oauth2ConsentTokenList.From(map: it);
+            }
+
+            return _client.Call<Models.Oauth2ConsentTokenList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a token family issued under an OAuth2 consent by its unique ID. The
+        /// token secrets themselves are never returned.
+        /// </para>
+        /// </summary>
+        public Task<Models.Oauth2ConsentToken> GetConsentToken(string consentId, string tokenId)
+        {
+            var apiPath = "/account/consents/{consentId}/tokens/{tokenId}"
+                .Replace("{consentId}", consentId)
+                .Replace("{tokenId}", tokenId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Oauth2ConsentToken Convert(Dictionary<string, object> it)
+            {
+                return Models.Oauth2ConsentToken.From(map: it);
+            }
+
+            return _client.Call<Models.Oauth2ConsentToken>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete a token family issued under an OAuth2 consent by its unique ID. The
+        /// access and refresh tokens of the family stop working immediately; other
+        /// token families and the consent itself are unaffected.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteConsentToken(string consentId, string tokenId)
+        {
+            var apiPath = "/account/consents/{consentId}/tokens/{tokenId}"
+                .Replace("{consentId}", consentId)
+                .Replace("{tokenId}", tokenId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
         /// Update currently logged in user account email address. After changing user
         /// address, the user confirmation status will get reset. A new confirmation
         /// email is not sent automatically however you can use the send confirmation

@@ -53,6 +53,33 @@ namespace Appwrite.Models
         [JsonPropertyName("country")]
         public string Country { get; private set; }
 
+        [JsonPropertyName("continentCode")]
+        public string ContinentCode { get; private set; }
+
+        [JsonPropertyName("city")]
+        public string City { get; private set; }
+
+        [JsonPropertyName("subdivisions")]
+        public string Subdivisions { get; private set; }
+
+        [JsonPropertyName("isp")]
+        public string Isp { get; private set; }
+
+        [JsonPropertyName("autonomousSystemNumber")]
+        public string AutonomousSystemNumber { get; private set; }
+
+        [JsonPropertyName("autonomousSystemOrganization")]
+        public string AutonomousSystemOrganization { get; private set; }
+
+        [JsonPropertyName("connectionType")]
+        public string ConnectionType { get; private set; }
+
+        [JsonPropertyName("connectionUsageType")]
+        public string ConnectionUsageType { get; private set; }
+
+        [JsonPropertyName("connectionOrganization")]
+        public string ConnectionOrganization { get; private set; }
+
         [JsonPropertyName("time")]
         public string Time { get; private set; }
 
@@ -64,6 +91,12 @@ namespace Appwrite.Models
 
         [JsonPropertyName("hostname")]
         public string Hostname { get; private set; }
+
+        [JsonPropertyName("sdk")]
+        public string Sdk { get; private set; }
+
+        [JsonPropertyName("sdkVersion")]
+        public string SdkVersion { get; private set; }
 
         public ActivityEvent(
             string id,
@@ -80,10 +113,21 @@ namespace Appwrite.Models
             string ip,
             string mode,
             string country,
+            string continentCode,
+            string city,
+            string subdivisions,
+            string isp,
+            string autonomousSystemNumber,
+            string autonomousSystemOrganization,
+            string connectionType,
+            string connectionUsageType,
+            string connectionOrganization,
             string time,
             string projectId,
             string teamId,
-            string hostname
+            string hostname,
+            string sdk,
+            string sdkVersion
         )
         {
             Id = id;
@@ -100,10 +144,21 @@ namespace Appwrite.Models
             Ip = ip;
             Mode = mode;
             Country = country;
+            ContinentCode = continentCode;
+            City = city;
+            Subdivisions = subdivisions;
+            Isp = isp;
+            AutonomousSystemNumber = autonomousSystemNumber;
+            AutonomousSystemOrganization = autonomousSystemOrganization;
+            ConnectionType = connectionType;
+            ConnectionUsageType = connectionUsageType;
+            ConnectionOrganization = connectionOrganization;
             Time = time;
             ProjectId = projectId;
             TeamId = teamId;
             Hostname = hostname;
+            Sdk = sdk;
+            SdkVersion = sdkVersion;
         }
 
         public static ActivityEvent From(Dictionary<string, object> map) => new ActivityEvent(
@@ -121,10 +176,21 @@ namespace Appwrite.Models
             ip: map["ip"].ToString(),
             mode: map["mode"].ToString(),
             country: map["country"].ToString(),
+            continentCode: map["continentCode"].ToString(),
+            city: map["city"].ToString(),
+            subdivisions: map["subdivisions"].ToString(),
+            isp: map["isp"].ToString(),
+            autonomousSystemNumber: map["autonomousSystemNumber"].ToString(),
+            autonomousSystemOrganization: map["autonomousSystemOrganization"].ToString(),
+            connectionType: map["connectionType"].ToString(),
+            connectionUsageType: map["connectionUsageType"].ToString(),
+            connectionOrganization: map["connectionOrganization"].ToString(),
             time: map["time"].ToString(),
             projectId: map["projectId"].ToString(),
             teamId: map["teamId"].ToString(),
-            hostname: map["hostname"].ToString()
+            hostname: map["hostname"].ToString(),
+            sdk: map["sdk"].ToString(),
+            sdkVersion: map["sdkVersion"].ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -143,10 +209,21 @@ namespace Appwrite.Models
             { "ip", Ip },
             { "mode", Mode },
             { "country", Country },
+            { "continentCode", ContinentCode },
+            { "city", City },
+            { "subdivisions", Subdivisions },
+            { "isp", Isp },
+            { "autonomousSystemNumber", AutonomousSystemNumber },
+            { "autonomousSystemOrganization", AutonomousSystemOrganization },
+            { "connectionType", ConnectionType },
+            { "connectionUsageType", ConnectionUsageType },
+            { "connectionOrganization", ConnectionOrganization },
             { "time", Time },
             { "projectId", ProjectId },
             { "teamId", TeamId },
-            { "hostname", Hostname }
+            { "hostname", Hostname },
+            { "sdk", Sdk },
+            { "sdkVersion", SdkVersion }
         };
     }
 }

@@ -613,7 +613,7 @@ namespace Appwrite.Services
         /// browser to start downloading the file to user downloads directory.
         /// </para>
         /// </summary>
-        public Task<byte[]> GetDeploymentDownload(string siteId, string deploymentId, Appwrite.Enums.DeploymentDownloadType? type = null)
+        public Task<byte[]> GetDeploymentDownload(string siteId, string deploymentId, Appwrite.Enums.DeploymentDownloadType? type = null, string? token = null)
         {
             var apiPath = "/sites/{siteId}/deployments/{deploymentId}/download"
                 .Replace("{siteId}", siteId)
@@ -621,7 +621,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "type", type?.Value }
+                { "type", type?.Value },
+                { "token", token }
             };
 
             var apiHeaders = new Dictionary<string, string>()

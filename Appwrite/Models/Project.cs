@@ -92,6 +92,9 @@ namespace Appwrite.Models
         [JsonPropertyName("consoleAccessedAt")]
         public string ConsoleAccessedAt { get; private set; }
 
+        [JsonPropertyName("wafEnabled")]
+        public bool WafEnabled { get; private set; }
+
         [JsonPropertyName("billingLimits")]
         public BillingLimits? BillingLimits { get; private set; }
 
@@ -121,6 +124,9 @@ namespace Appwrite.Models
 
         [JsonPropertyName("oAuth2ServerPublicRefreshTokenDuration")]
         public long? OAuth2ServerPublicRefreshTokenDuration { get; private set; }
+
+        [JsonPropertyName("oAuth2ServerInstallationAccessTokenDuration")]
+        public long? OAuth2ServerInstallationAccessTokenDuration { get; private set; }
 
         [JsonPropertyName("oAuth2ServerConfidentialPkce")]
         public bool? OAuth2ServerConfidentialPkce { get; private set; }
@@ -168,6 +174,7 @@ namespace Appwrite.Models
             List<ProjectProtocol> protocols,
             List<Block> blocks,
             string consoleAccessedAt,
+            bool wafEnabled,
             BillingLimits? billingLimits,
             bool? oAuth2ServerEnabled,
             string? oAuth2ServerAuthorizationUrl,
@@ -178,6 +185,7 @@ namespace Appwrite.Models
             long? oAuth2ServerRefreshTokenDuration,
             long? oAuth2ServerPublicAccessTokenDuration,
             long? oAuth2ServerPublicRefreshTokenDuration,
+            long? oAuth2ServerInstallationAccessTokenDuration,
             bool? oAuth2ServerConfidentialPkce,
             string? oAuth2ServerVerificationUrl,
             long? oAuth2ServerUserCodeLength,
@@ -213,6 +221,7 @@ namespace Appwrite.Models
             Protocols = protocols;
             Blocks = blocks;
             ConsoleAccessedAt = consoleAccessedAt;
+            WafEnabled = wafEnabled;
             BillingLimits = billingLimits;
             OAuth2ServerEnabled = oAuth2ServerEnabled;
             OAuth2ServerAuthorizationUrl = oAuth2ServerAuthorizationUrl;
@@ -223,6 +232,7 @@ namespace Appwrite.Models
             OAuth2ServerRefreshTokenDuration = oAuth2ServerRefreshTokenDuration;
             OAuth2ServerPublicAccessTokenDuration = oAuth2ServerPublicAccessTokenDuration;
             OAuth2ServerPublicRefreshTokenDuration = oAuth2ServerPublicRefreshTokenDuration;
+            OAuth2ServerInstallationAccessTokenDuration = oAuth2ServerInstallationAccessTokenDuration;
             OAuth2ServerConfidentialPkce = oAuth2ServerConfidentialPkce;
             OAuth2ServerVerificationUrl = oAuth2ServerVerificationUrl;
             OAuth2ServerUserCodeLength = oAuth2ServerUserCodeLength;
@@ -259,44 +269,48 @@ namespace Appwrite.Models
             protocols: map["protocols"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectProtocol.From(map: it)).ToList(),
             blocks: map["blocks"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Block.From(map: it)).ToList(),
             consoleAccessedAt: map["consoleAccessedAt"].ToString(),
-            billingLimits: map.TryGetValue("billingLimits", out var objectRaw28) && objectRaw28 != null
-                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw28 is JsonElement jsonObj28 ? jsonObj28.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw28)
+            wafEnabled: (bool)map["wafEnabled"],
+            billingLimits: map.TryGetValue("billingLimits", out var objectRaw29) && objectRaw29 != null
+                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw29 is JsonElement jsonObj29 ? jsonObj29.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw29)
                                     : null,
-            oAuth2ServerEnabled: map.TryGetValue("oAuth2ServerEnabled", out var boolRaw29) && boolRaw29 != null
-                                        ? (bool?)boolRaw29
+            oAuth2ServerEnabled: map.TryGetValue("oAuth2ServerEnabled", out var boolRaw30) && boolRaw30 != null
+                                        ? (bool?)boolRaw30
                                         : null,
             oAuth2ServerAuthorizationUrl: map.TryGetValue("oAuth2ServerAuthorizationUrl", out var oAuth2ServerAuthorizationUrl) ? oAuth2ServerAuthorizationUrl?.ToString() : null,
-            oAuth2ServerScopes: map.TryGetValue("oAuth2ServerScopes", out var arrayRaw31) && arrayRaw31 != null
-                                ? arrayRaw31.ConvertToList<string>()
-                                : null,
-            oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw32) && arrayRaw32 != null
+            oAuth2ServerScopes: map.TryGetValue("oAuth2ServerScopes", out var arrayRaw32) && arrayRaw32 != null
                                 ? arrayRaw32.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw33) && arrayRaw33 != null
+            oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw33) && arrayRaw33 != null
                                 ? arrayRaw33.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw34) && numberRaw34 != null
-                                    ? Convert.ToInt64(numberRaw34)
-                                    : null,
-            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw35) && numberRaw35 != null
+            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw34) && arrayRaw34 != null
+                                ? arrayRaw34.ConvertToList<string>()
+                                : null,
+            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw35) && numberRaw35 != null
                                     ? Convert.ToInt64(numberRaw35)
                                     : null,
-            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw36) && numberRaw36 != null
+            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw36) && numberRaw36 != null
                                     ? Convert.ToInt64(numberRaw36)
                                     : null,
-            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw37) && numberRaw37 != null
+            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw37) && numberRaw37 != null
                                     ? Convert.ToInt64(numberRaw37)
                                     : null,
-            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw38) && boolRaw38 != null
-                                        ? (bool?)boolRaw38
+            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw38) && numberRaw38 != null
+                                    ? Convert.ToInt64(numberRaw38)
+                                    : null,
+            oAuth2ServerInstallationAccessTokenDuration: map.TryGetValue("oAuth2ServerInstallationAccessTokenDuration", out var numberRaw39) && numberRaw39 != null
+                                    ? Convert.ToInt64(numberRaw39)
+                                    : null,
+            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw40) && boolRaw40 != null
+                                        ? (bool?)boolRaw40
                                         : null,
             oAuth2ServerVerificationUrl: map.TryGetValue("oAuth2ServerVerificationUrl", out var oAuth2ServerVerificationUrl) ? oAuth2ServerVerificationUrl?.ToString() : null,
-            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw40) && numberRaw40 != null
-                                    ? Convert.ToInt64(numberRaw40)
+            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw42) && numberRaw42 != null
+                                    ? Convert.ToInt64(numberRaw42)
                                     : null,
             oAuth2ServerUserCodeFormat: map.TryGetValue("oAuth2ServerUserCodeFormat", out var oAuth2ServerUserCodeFormat) ? oAuth2ServerUserCodeFormat?.ToString() : null,
-            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw42) && numberRaw42 != null
-                                    ? Convert.ToInt64(numberRaw42)
+            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw44) && numberRaw44 != null
+                                    ? Convert.ToInt64(numberRaw44)
                                     : null,
             oAuth2ServerDiscoveryUrl: map.TryGetValue("oAuth2ServerDiscoveryUrl", out var oAuth2ServerDiscoveryUrl) ? oAuth2ServerDiscoveryUrl?.ToString() : null
         );
@@ -330,6 +344,7 @@ namespace Appwrite.Models
             { "protocols", Protocols?.Select(it => it.ToMap()).ToList() },
             { "blocks", Blocks?.Select(it => it.ToMap()).ToList() },
             { "consoleAccessedAt", ConsoleAccessedAt },
+            { "wafEnabled", WafEnabled },
             { "billingLimits", BillingLimits?.ToMap() },
             { "oAuth2ServerEnabled", OAuth2ServerEnabled },
             { "oAuth2ServerAuthorizationUrl", OAuth2ServerAuthorizationUrl },
@@ -340,6 +355,7 @@ namespace Appwrite.Models
             { "oAuth2ServerRefreshTokenDuration", OAuth2ServerRefreshTokenDuration },
             { "oAuth2ServerPublicAccessTokenDuration", OAuth2ServerPublicAccessTokenDuration },
             { "oAuth2ServerPublicRefreshTokenDuration", OAuth2ServerPublicRefreshTokenDuration },
+            { "oAuth2ServerInstallationAccessTokenDuration", OAuth2ServerInstallationAccessTokenDuration },
             { "oAuth2ServerConfidentialPkce", OAuth2ServerConfidentialPkce },
             { "oAuth2ServerVerificationUrl", OAuth2ServerVerificationUrl },
             { "oAuth2ServerUserCodeLength", OAuth2ServerUserCodeLength },
