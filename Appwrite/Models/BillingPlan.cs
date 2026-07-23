@@ -210,7 +210,7 @@ namespace Appwrite.Models
         public BillingPlanLimits? Limits { get; private set; }
 
         [JsonPropertyName("group")]
-        public BillingPlanGroup Group { get; private set; }
+        public Appwrite.Enums.BillingPlanGroup Group { get; private set; }
 
         [JsonPropertyName("program")]
         public Program? Program { get; private set; }
@@ -285,7 +285,7 @@ namespace Appwrite.Models
             long buildSize,
             bool databasesAllowEncrypt,
             BillingPlanLimits? limits,
-            BillingPlanGroup @group,
+            Appwrite.Enums.BillingPlanGroup @group,
             Program? program,
             BillingPlanDedicatedDatabaseLimits? dedicatedDatabases
         )
@@ -432,7 +432,7 @@ namespace Appwrite.Models
             limits: map.TryGetValue("limits", out var objectRaw66) && objectRaw66 != null
                                     ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw66 is JsonElement jsonObj66 ? jsonObj66.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw66)
                                     : null,
-            @group: new BillingPlanGroup(map["group"].ToString()!),
+            @group: new Appwrite.Enums.BillingPlanGroup(map["group"].ToString()!),
             program: map.TryGetValue("program", out var objectRaw68) && objectRaw68 != null
                                     ? Appwrite.Models.Program.From(map: objectRaw68 is JsonElement jsonObj68 ? jsonObj68.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw68)
                                     : null,

@@ -27,10 +27,10 @@ namespace Appwrite.Models
         public bool Enabled { get; private set; }
 
         [JsonPropertyName("type")]
-        public DatabaseType Type { get; private set; }
+        public Appwrite.Enums.DatabaseType Type { get; private set; }
 
         [JsonPropertyName("status")]
-        public DatabaseStatus? Status { get; private set; }
+        public Appwrite.Enums.DatabaseStatus? Status { get; private set; }
 
         [JsonPropertyName("engine")]
         public string? Engine { get; private set; }
@@ -53,8 +53,8 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             bool enabled,
-            DatabaseType type,
-            DatabaseStatus? status,
+            Appwrite.Enums.DatabaseType type,
+            Appwrite.Enums.DatabaseStatus? status,
             string? engine,
             string? specification,
             long? replicas,
@@ -82,11 +82,11 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             enabled: (bool)map["enabled"],
-            type: new DatabaseType(map["type"].ToString()!),
+            type: new Appwrite.Enums.DatabaseType(map["type"].ToString()!),
             status: map.TryGetValue("status", out var enumRaw7)
                             ? enumRaw7 == null
                                 ? null
-                                : new DatabaseStatus(enumRaw7.ToString()!)
+                                : new Appwrite.Enums.DatabaseStatus(enumRaw7.ToString()!)
                             : null,
             engine: map.TryGetValue("engine", out var engine) ? engine?.ToString() : null,
             specification: map.TryGetValue("specification", out var specification) ? specification?.ToString() : null,

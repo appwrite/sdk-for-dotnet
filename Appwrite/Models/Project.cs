@@ -263,7 +263,7 @@ namespace Appwrite.Models
             pingedAt: map["pingedAt"].ToString(),
             labels: map["labels"].ConvertToList<string>(),
             status: map["status"].ToString(),
-            onboarding: map["onboarding"].ToString(),
+            onboarding: map["onboarding"],
             authMethods: map["authMethods"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectAuthMethod.From(map: it)).ToList(),
             services: map["services"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectService.From(map: it)).ToList(),
             protocols: map["protocols"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectProtocol.From(map: it)).ToList(),

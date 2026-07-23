@@ -73,7 +73,7 @@ namespace Appwrite.Models
             appId: map["appId"].ToString(),
             teamId: map["teamId"].ToString(),
             scopes: map["scopes"].ConvertToList<string>(),
-            authorizationDetails: map["authorizationDetails"].ToString(),
+            authorizationDetails: map["authorizationDetails"],
             createdById: map["createdById"].ToString(),
             createdByName: map["createdByName"].ToString(),
             lastAccessedAt: map.TryGetValue("lastAccessedAt", out var lastAccessedAt) ? lastAccessedAt?.ToString() : null

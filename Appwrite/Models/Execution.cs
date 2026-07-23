@@ -30,10 +30,10 @@ namespace Appwrite.Models
         public string DeploymentId { get; private set; }
 
         [JsonPropertyName("trigger")]
-        public ExecutionTrigger Trigger { get; private set; }
+        public Appwrite.Enums.ExecutionTrigger Trigger { get; private set; }
 
         [JsonPropertyName("status")]
-        public ExecutionStatus Status { get; private set; }
+        public Appwrite.Enums.ExecutionStatus Status { get; private set; }
 
         [JsonPropertyName("requestMethod")]
         public string RequestMethod { get; private set; }
@@ -72,8 +72,8 @@ namespace Appwrite.Models
             List<string> permissions,
             string functionId,
             string deploymentId,
-            ExecutionTrigger trigger,
-            ExecutionStatus status,
+            Appwrite.Enums.ExecutionTrigger trigger,
+            Appwrite.Enums.ExecutionStatus status,
             string requestMethod,
             string requestPath,
             List<Headers> requestHeaders,
@@ -113,8 +113,8 @@ namespace Appwrite.Models
             permissions: map["$permissions"].ConvertToList<string>(),
             functionId: map["functionId"].ToString(),
             deploymentId: map["deploymentId"].ToString(),
-            trigger: new ExecutionTrigger(map["trigger"].ToString()!),
-            status: new ExecutionStatus(map["status"].ToString()!),
+            trigger: new Appwrite.Enums.ExecutionTrigger(map["trigger"].ToString()!),
+            status: new Appwrite.Enums.ExecutionStatus(map["status"].ToString()!),
             requestMethod: map["requestMethod"].ToString(),
             requestPath: map["requestPath"].ToString(),
             requestHeaders: map["requestHeaders"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Headers.From(map: it)).ToList(),

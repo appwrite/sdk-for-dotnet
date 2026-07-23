@@ -12,13 +12,13 @@ namespace Appwrite.Models
     public class ProjectService
     {
         [JsonPropertyName("$id")]
-        public ProjectServiceId Id { get; private set; }
+        public Appwrite.Enums.ProjectServiceId Id { get; private set; }
 
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
         public ProjectService(
-            ProjectServiceId id,
+            Appwrite.Enums.ProjectServiceId id,
             bool enabled
         )
         {
@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static ProjectService From(Dictionary<string, object> map) => new ProjectService(
-            id: new ProjectServiceId(map["$id"].ToString()!),
+            id: new Appwrite.Enums.ProjectServiceId(map["$id"].ToString()!),
             enabled: (bool)map["enabled"]
         );
 

@@ -18,7 +18,7 @@ namespace Appwrite.Models
         public string Type { get; private set; }
 
         [JsonPropertyName("status")]
-        public AttributeStatus Status { get; private set; }
+        public Appwrite.Enums.AttributeStatus Status { get; private set; }
 
         [JsonPropertyName("error")]
         public string Error { get; private set; }
@@ -41,7 +41,7 @@ namespace Appwrite.Models
         public AttributeBoolean(
             string key,
             string type,
-            AttributeStatus status,
+            Appwrite.Enums.AttributeStatus status,
             string error,
             bool required,
             bool? array,
@@ -64,7 +64,7 @@ namespace Appwrite.Models
         public static AttributeBoolean From(Dictionary<string, object> map) => new AttributeBoolean(
             key: map["key"].ToString(),
             type: map["type"].ToString(),
-            status: new AttributeStatus(map["status"].ToString()!),
+            status: new Appwrite.Enums.AttributeStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null

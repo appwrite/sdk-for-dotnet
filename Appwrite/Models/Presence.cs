@@ -70,7 +70,7 @@ namespace Appwrite.Models
             status: map.TryGetValue("status", out var status) ? status?.ToString() : null,
             source: map["source"].ToString(),
             expiresAt: map.TryGetValue("expiresAt", out var expiresAt) ? expiresAt?.ToString() : null,
-            metadata: map.TryGetValue("metadata", out var metadata) ? metadata?.ToString() : null
+            metadata: map.TryGetValue("metadata", out var objectRaw9) ? objectRaw9 : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
