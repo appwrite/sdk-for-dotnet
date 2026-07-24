@@ -1,5 +1,15 @@
 # Change Log
 
+## 6.1.0
+
+* Added: `Apps` service for managing OAuth2 applications, keys, and installations
+* Added: `OAuth2` service with authorize, grant, device authorization, and consent flows
+* Added: `Account` OAuth2 consent methods `ListConsents`, `GetConsent`, `DeleteConsent`, and consent token methods
+* Added: app installation management methods to `Organization` and `Teams` services
+* Added: `installationAccessTokenDuration` parameter to `Project.UpdateOAuth2Server`
+* Added: `token` parameter to `Sites.GetDeploymentDownload`
+* Added: `oauth2.introspect` and organization installation key scopes
+
 ## 6.0.0
 
 * Breaking: Removed `Health` service with all its models and enums

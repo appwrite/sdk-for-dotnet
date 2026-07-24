@@ -14,5 +14,6 @@ Sites sites = new Sites(client);
 byte[] result = await sites.GetDeploymentDownload(
     siteId: "<SITE_ID>",
     deploymentId: "<DEPLOYMENT_ID>",
-    type: DeploymentDownloadType.Source // optional
+    type: DeploymentDownloadType.Source, // optional
+    token: "<TOKEN>" // optional
 );```

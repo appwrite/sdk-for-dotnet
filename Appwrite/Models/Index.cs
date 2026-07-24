@@ -27,7 +27,7 @@ namespace Appwrite.Models
         public string Type { get; private set; }
 
         [JsonPropertyName("status")]
-        public IndexStatus Status { get; private set; }
+        public Appwrite.Enums.IndexStatus Status { get; private set; }
 
         [JsonPropertyName("error")]
         public string Error { get; private set; }
@@ -47,7 +47,7 @@ namespace Appwrite.Models
             string updatedAt,
             string key,
             string type,
-            IndexStatus status,
+            Appwrite.Enums.IndexStatus status,
             string error,
             List<string> attributes,
             List<long> lengths,
@@ -72,7 +72,7 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             key: map["key"].ToString(),
             type: map["type"].ToString(),
-            status: new IndexStatus(map["status"].ToString()!),
+            status: new Appwrite.Enums.IndexStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             attributes: map["attributes"].ConvertToList<string>(),
             lengths: map["lengths"].ConvertToList<long>(),

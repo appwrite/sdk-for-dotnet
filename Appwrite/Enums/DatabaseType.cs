@@ -15,5 +15,8 @@ namespace Appwrite.Enums
         public static DatabaseType Tablesdb => new DatabaseType("tablesdb");
         public static DatabaseType Documentsdb => new DatabaseType("documentsdb");
         public static DatabaseType Vectorsdb => new DatabaseType("vectorsdb");
+        public static DatabaseType Mysql => new DatabaseType("mysql");
+        public static DatabaseType Postgresql => new DatabaseType("postgresql");
+        public static DatabaseType Mongodb => new DatabaseType("mongodb");
     }
 }

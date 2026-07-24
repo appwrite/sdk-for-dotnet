@@ -55,7 +55,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? specification = null)
+        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? specification = null, long? replicas = null)
         {
             var apiPath = "/tablesdb";
 
@@ -64,7 +64,8 @@ namespace Appwrite.Services
                 { "databaseId", databaseId },
                 { "name", name },
                 { "enabled", enabled },
-                { "specification", specification }
+                { "specification", specification },
+                { "replicas", replicas }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -82,6 +83,41 @@ namespace Appwrite.Services
 
             return _client.Call<Models.Database>(
                 method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// List the dedicated database specifications available on the current plan.
+        /// Each specification reports its resource limits, pricing, and whether it is
+        /// enabled for the organization.
+        /// </para>
+        /// </summary>
+        public Task<Models.DedicatedDatabaseSpecificationList> ListSpecifications()
+        {
+            var apiPath = "/tablesdb/specifications";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DedicatedDatabaseSpecificationList Convert(Dictionary<string, object> it)
+            {
+                return Models.DedicatedDatabaseSpecificationList.From(map: it);
+            }
+
+            return _client.Call<Models.DedicatedDatabaseSpecificationList>(
+                method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -333,7 +369,7 @@ namespace Appwrite.Services
         /// Update a database by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null)
+        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null, long? replicas = null)
         {
             var apiPath = "/tablesdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
@@ -341,7 +377,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "replicas", replicas }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -393,6 +430,115 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Trigger a manual failover for a dedicated database with high availability
+        /// enabled. Promotes a replica to primary. The failover runs asynchronously;
+        /// poll the database document for status updates.
+        /// </para>
+        /// </summary>
+        public Task<Models.DedicatedDatabase> CreateFailover(string databaseId, string? targetReplicaId = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/failovers"
+                .Replace("{databaseId}", databaseId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "targetReplicaId", targetReplicaId }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DedicatedDatabase Convert(Dictionary<string, object> it)
+            {
+                return Models.DedicatedDatabase.From(map: it);
+            }
+
+            return _client.Call<Models.DedicatedDatabase>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get high availability status for a dedicated database. Returns replica
+        /// statuses, replication lag, and sync mode.
+        /// </para>
+        /// </summary>
+        public Task<Models.DedicatedDatabaseReplicas> GetReplicas(string databaseId)
+        {
+            var apiPath = "/tablesdb/{databaseId}/replicas"
+                .Replace("{databaseId}", databaseId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DedicatedDatabaseReplicas Convert(Dictionary<string, object> it)
+            {
+                return Models.DedicatedDatabaseReplicas.From(map: it);
+            }
+
+            return _client.Call<Models.DedicatedDatabaseReplicas>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get real-time health and status information for a dedicated database.
+        /// Returns health status, readiness, uptime, connection info, replica status,
+        /// and volume information.
+        /// </para>
+        /// </summary>
+        public Task<Models.DatabaseStatus> GetStatus(string databaseId)
+        {
+            var apiPath = "/tablesdb/{databaseId}/status"
+                .Replace("{databaseId}", databaseId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DatabaseStatus Convert(Dictionary<string, object> it)
+            {
+                return Models.DatabaseStatus.From(map: it);
+            }
+
+            return _client.Call<Models.DatabaseStatus>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 

@@ -12,13 +12,13 @@ namespace Appwrite.Models
     public class ProjectProtocol
     {
         [JsonPropertyName("$id")]
-        public ProjectProtocolId Id { get; private set; }
+        public Appwrite.Enums.ProjectProtocolId Id { get; private set; }
 
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
         public ProjectProtocol(
-            ProjectProtocolId id,
+            Appwrite.Enums.ProjectProtocolId id,
             bool enabled
         )
         {
@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static ProjectProtocol From(Dictionary<string, object> map) => new ProjectProtocol(
-            id: new ProjectProtocolId(map["$id"].ToString()!),
+            id: new Appwrite.Enums.ProjectProtocolId(map["$id"].ToString()!),
             enabled: (bool)map["enabled"]
         );
 

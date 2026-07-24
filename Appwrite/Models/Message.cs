@@ -48,7 +48,7 @@ namespace Appwrite.Models
         public object Data { get; private set; }
 
         [JsonPropertyName("status")]
-        public MessageStatus Status { get; private set; }
+        public Appwrite.Enums.MessageStatus Status { get; private set; }
 
         public Message(
             string id,
@@ -63,7 +63,7 @@ namespace Appwrite.Models
             List<string>? deliveryErrors,
             long deliveredTotal,
             object data,
-            MessageStatus status
+            Appwrite.Enums.MessageStatus status
         )
         {
             Id = id;
@@ -95,8 +95,8 @@ namespace Appwrite.Models
                                 ? arrayRaw10.ConvertToList<string>()
                                 : null,
             deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
-            data: map["data"].ToString(),
-            status: new MessageStatus(map["status"].ToString()!)
+            data: map["data"],
+            status: new Appwrite.Enums.MessageStatus(map["status"].ToString()!)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

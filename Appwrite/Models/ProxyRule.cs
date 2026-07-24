@@ -39,7 +39,7 @@ namespace Appwrite.Models
         public string DeploymentId { get; private set; }
 
         [JsonPropertyName("deploymentResourceType")]
-        public ProxyRuleDeploymentResourceType? DeploymentResourceType { get; private set; }
+        public Appwrite.Enums.ProxyRuleDeploymentResourceType? DeploymentResourceType { get; private set; }
 
         [JsonPropertyName("deploymentResourceId")]
         public string DeploymentResourceId { get; private set; }
@@ -48,7 +48,7 @@ namespace Appwrite.Models
         public string DeploymentVcsProviderBranch { get; private set; }
 
         [JsonPropertyName("status")]
-        public ProxyRuleStatus Status { get; private set; }
+        public Appwrite.Enums.ProxyRuleStatus Status { get; private set; }
 
         [JsonPropertyName("logs")]
         public string Logs { get; private set; }
@@ -66,10 +66,10 @@ namespace Appwrite.Models
             string redirectUrl,
             long redirectStatusCode,
             string deploymentId,
-            ProxyRuleDeploymentResourceType? deploymentResourceType,
+            Appwrite.Enums.ProxyRuleDeploymentResourceType? deploymentResourceType,
             string deploymentResourceId,
             string deploymentVcsProviderBranch,
-            ProxyRuleStatus status,
+            Appwrite.Enums.ProxyRuleStatus status,
             string logs,
             string renewAt
         )
@@ -104,11 +104,11 @@ namespace Appwrite.Models
             deploymentResourceType: map.TryGetValue("deploymentResourceType", out var enumRaw10)
                             ? enumRaw10 == null
                                 ? null
-                                : new ProxyRuleDeploymentResourceType(enumRaw10.ToString()!)
+                                : new Appwrite.Enums.ProxyRuleDeploymentResourceType(enumRaw10.ToString()!)
                             : null,
             deploymentResourceId: map["deploymentResourceId"].ToString(),
             deploymentVcsProviderBranch: map["deploymentVcsProviderBranch"].ToString(),
-            status: new ProxyRuleStatus(map["status"].ToString()!),
+            status: new Appwrite.Enums.ProxyRuleStatus(map["status"].ToString()!),
             logs: map["logs"].ToString(),
             renewAt: map["renewAt"].ToString()
         );

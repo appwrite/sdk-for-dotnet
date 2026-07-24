@@ -190,6 +190,191 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// List app installations on a team. Any team member can read installations.
+        /// </para>
+        /// </summary>
+        public Task<Models.AppInstallationList> ListInstallations(string teamId, List<string>? queries = null, bool? total = null)
+        {
+            var apiPath = "/teams/{teamId}/installations"
+                .Replace("{teamId}", teamId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "total", total }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.AppInstallationList Convert(Dictionary<string, object> it)
+            {
+                return Models.AppInstallationList.From(map: it);
+            }
+
+            return _client.Call<Models.AppInstallationList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Install an app on a team. When authenticated as a user, only team members
+        /// with the owner role can install apps. Requests using an API key or in admin
+        /// mode can install apps on any team. The installation is granted the scopes
+        /// the app currently requests.
+        /// </para>
+        /// </summary>
+        public Task<Models.AppInstallation> CreateInstallation(string teamId, string appId, string? authorizationDetails = null)
+        {
+            var apiPath = "/teams/{teamId}/installations"
+                .Replace("{teamId}", teamId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "appId", appId },
+                { "authorizationDetails", authorizationDetails }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.AppInstallation Convert(Dictionary<string, object> it)
+            {
+                return Models.AppInstallation.From(map: it);
+            }
+
+            return _client.Call<Models.AppInstallation>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get an app installation on a team by its unique ID. Any team member can
+        /// read installations.
+        /// </para>
+        /// </summary>
+        public Task<Models.AppInstallation> GetInstallation(string teamId, string installationId)
+        {
+            var apiPath = "/teams/{teamId}/installations/{installationId}"
+                .Replace("{teamId}", teamId)
+                .Replace("{installationId}", installationId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.AppInstallation Convert(Dictionary<string, object> it)
+            {
+                return Models.AppInstallation.From(map: it);
+            }
+
+            return _client.Call<Models.AppInstallation>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update an app installation on a team. Only team members with the owner role
+        /// can update installations. The installation's granted scopes are refreshed
+        /// to the scopes the app currently requests; previously issued installation
+        /// access tokens are revoked.
+        /// </para>
+        /// </summary>
+        public Task<Models.AppInstallation> UpdateInstallation(string teamId, string installationId, string? authorizationDetails = null)
+        {
+            var apiPath = "/teams/{teamId}/installations/{installationId}"
+                .Replace("{teamId}", teamId)
+                .Replace("{installationId}", installationId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "authorizationDetails", authorizationDetails }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.AppInstallation Convert(Dictionary<string, object> it)
+            {
+                return Models.AppInstallation.From(map: it);
+            }
+
+            return _client.Call<Models.AppInstallation>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Uninstall an app from a team by its installation ID. Only team members with
+        /// the owner role can remove installations. Previously issued installation
+        /// access tokens are revoked.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteInstallation(string teamId, string installationId)
+        {
+            var apiPath = "/teams/{teamId}/installations/{installationId}"
+                .Replace("{teamId}", teamId)
+                .Replace("{installationId}", installationId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
         /// Use this endpoint to list a team's members using the team's ID. All team
         /// members have read access to this endpoint. Hide sensitive attributes from
         /// the response by toggling membership privacy in the Console.

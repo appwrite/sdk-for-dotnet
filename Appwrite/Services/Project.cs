@@ -582,7 +582,7 @@ namespace Appwrite.Services
         /// Update the OAuth2 server (OIDC provider) configuration.
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdateOAuth2Server(bool enabled, string authorizationUrl, List<string>? scopes = null, List<string>? authorizationDetailsTypes = null, long? accessTokenDuration = null, long? refreshTokenDuration = null, long? publicAccessTokenDuration = null, long? publicRefreshTokenDuration = null, bool? confidentialPkce = null, string? verificationUrl = null, long? userCodeLength = null, string? userCodeFormat = null, long? deviceCodeDuration = null, List<string>? defaultScopes = null)
+        public Task<Models.Project> UpdateOAuth2Server(bool enabled, string authorizationUrl, List<string>? scopes = null, List<string>? authorizationDetailsTypes = null, long? accessTokenDuration = null, long? refreshTokenDuration = null, long? publicAccessTokenDuration = null, long? publicRefreshTokenDuration = null, long? installationAccessTokenDuration = null, bool? confidentialPkce = null, string? verificationUrl = null, long? userCodeLength = null, string? userCodeFormat = null, long? deviceCodeDuration = null, List<string>? defaultScopes = null)
         {
             var apiPath = "/project/oauth2-server";
 
@@ -596,6 +596,7 @@ namespace Appwrite.Services
                 { "refreshTokenDuration", refreshTokenDuration },
                 { "publicAccessTokenDuration", publicAccessTokenDuration },
                 { "publicRefreshTokenDuration", publicRefreshTokenDuration },
+                { "installationAccessTokenDuration", installationAccessTokenDuration },
                 { "confidentialPkce", confidentialPkce },
                 { "verificationUrl", verificationUrl },
                 { "userCodeLength", userCodeLength },

@@ -40,7 +40,7 @@ namespace Appwrite.Models
             label: map["label"].ToString(),
             service: map["service"].ToString(),
             method: map["method"].ToString(),
-            @params: map["params"].ToString()
+            @params: map["params"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

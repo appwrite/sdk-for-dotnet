@@ -18,7 +18,7 @@ namespace Appwrite.Models
         public string Type { get; private set; }
 
         [JsonPropertyName("status")]
-        public ColumnStatus Status { get; private set; }
+        public Appwrite.Enums.ColumnStatus Status { get; private set; }
 
         [JsonPropertyName("error")]
         public string Error { get; private set; }
@@ -47,7 +47,7 @@ namespace Appwrite.Models
         public ColumnInteger(
             string key,
             string type,
-            ColumnStatus status,
+            Appwrite.Enums.ColumnStatus status,
             string error,
             bool required,
             bool? array,
@@ -74,7 +74,7 @@ namespace Appwrite.Models
         public static ColumnInteger From(Dictionary<string, object> map) => new ColumnInteger(
             key: map["key"].ToString(),
             type: map["type"].ToString(),
-            status: new ColumnStatus(map["status"].ToString()!),
+            status: new Appwrite.Enums.ColumnStatus(map["status"].ToString()!),
             error: map["error"].ToString(),
             required: (bool)map["required"],
             array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null

@@ -54,7 +54,7 @@ namespace Appwrite.Models
         public string ScreenshotDark { get; private set; }
 
         [JsonPropertyName("status")]
-        public DeploymentStatus Status { get; private set; }
+        public Appwrite.Enums.DeploymentStatus Status { get; private set; }
 
         [JsonPropertyName("buildLogs")]
         public string BuildLogs { get; private set; }
@@ -107,7 +107,7 @@ namespace Appwrite.Models
             bool activate,
             string screenshotLight,
             string screenshotDark,
-            DeploymentStatus status,
+            Appwrite.Enums.DeploymentStatus status,
             string buildLogs,
             long buildDuration,
             string providerRepositoryName,
@@ -166,7 +166,7 @@ namespace Appwrite.Models
             activate: (bool)map["activate"],
             screenshotLight: map["screenshotLight"].ToString(),
             screenshotDark: map["screenshotDark"].ToString(),
-            status: new DeploymentStatus(map["status"].ToString()!),
+            status: new Appwrite.Enums.DeploymentStatus(map["status"].ToString()!),
             buildLogs: map["buildLogs"].ToString(),
             buildDuration: Convert.ToInt64(map["buildDuration"]),
             providerRepositoryName: map["providerRepositoryName"].ToString(),

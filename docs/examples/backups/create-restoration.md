@@ -15,6 +15,5 @@ BackupRestoration result = await backups.CreateRestoration(
     archiveId: "<ARCHIVE_ID>",
     services: new List&lt;BackupServices&gt; { BackupServices.Databases },
     newResourceId: "<NEW_RESOURCE_ID>", // optional
-    newResourceName: "<NEW_RESOURCE_NAME>", // optional
-    newSpecification: "serverless" // optional
+    newResourceName: "<NEW_RESOURCE_NAME>" // optional
 );```

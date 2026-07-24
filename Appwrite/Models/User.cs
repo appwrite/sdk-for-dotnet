@@ -153,7 +153,7 @@ namespace Appwrite.Models
             name: map["name"].ToString(),
             password: map.TryGetValue("password", out var password) ? password?.ToString() : null,
             hash: map.TryGetValue("hash", out var hash) ? hash?.ToString() : null,
-            hashOptions: map.TryGetValue("hashOptions", out var hashOptions) ? hashOptions?.ToString() : null,
+            hashOptions: map.TryGetValue("hashOptions", out var objectRaw7) ? objectRaw7 : null,
             registration: map["registration"].ToString(),
             status: (bool)map["status"],
             labels: map["labels"].ConvertToList<string>(),

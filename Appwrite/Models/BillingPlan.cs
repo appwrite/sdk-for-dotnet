@@ -47,6 +47,9 @@ namespace Appwrite.Models
         [JsonPropertyName("webhooks")]
         public long Webhooks { get; private set; }
 
+        [JsonPropertyName("wafRules")]
+        public long WafRules { get; private set; }
+
         [JsonPropertyName("projects")]
         public long Projects { get; private set; }
 
@@ -207,7 +210,7 @@ namespace Appwrite.Models
         public BillingPlanLimits? Limits { get; private set; }
 
         [JsonPropertyName("group")]
-        public BillingPlanGroup Group { get; private set; }
+        public Appwrite.Enums.BillingPlanGroup Group { get; private set; }
 
         [JsonPropertyName("program")]
         public Program? Program { get; private set; }
@@ -228,6 +231,7 @@ namespace Appwrite.Models
             long screenshotsGenerated,
             long members,
             long webhooks,
+            long wafRules,
             long projects,
             long platforms,
             long users,
@@ -281,7 +285,7 @@ namespace Appwrite.Models
             long buildSize,
             bool databasesAllowEncrypt,
             BillingPlanLimits? limits,
-            BillingPlanGroup @group,
+            Appwrite.Enums.BillingPlanGroup @group,
             Program? program,
             BillingPlanDedicatedDatabaseLimits? dedicatedDatabases
         )
@@ -298,6 +302,7 @@ namespace Appwrite.Models
             ScreenshotsGenerated = screenshotsGenerated;
             Members = members;
             Webhooks = webhooks;
+            WafRules = wafRules;
             Projects = projects;
             Platforms = platforms;
             Users = users;
@@ -369,6 +374,7 @@ namespace Appwrite.Models
             screenshotsGenerated: Convert.ToInt64(map["screenshotsGenerated"]),
             members: Convert.ToInt64(map["members"]),
             webhooks: Convert.ToInt64(map["webhooks"]),
+            wafRules: Convert.ToInt64(map["wafRules"]),
             projects: Convert.ToInt64(map["projects"]),
             platforms: Convert.ToInt64(map["platforms"]),
             users: Convert.ToInt64(map["users"]),
@@ -392,13 +398,13 @@ namespace Appwrite.Models
             domains: Convert.ToInt64(map["domains"]),
             activityLogs: Convert.ToInt64(map["activityLogs"]),
             usageLogs: Convert.ToInt64(map["usageLogs"]),
-            usageLogsIntervals: map.TryGetValue("usageLogsIntervals", out var arrayRaw36) && arrayRaw36 != null
-                                ? arrayRaw36.ConvertToList<string>()
+            usageLogsIntervals: map.TryGetValue("usageLogsIntervals", out var arrayRaw37) && arrayRaw37 != null
+                                ? arrayRaw37.ConvertToList<string>()
                                 : null,
             projectInactivityDays: Convert.ToInt64(map["projectInactivityDays"]),
             alertLimit: Convert.ToInt64(map["alertLimit"]),
-            usage: Appwrite.Models.UsageBillingPlan.From(map: map["usage"] is JsonElement jsonObj39 ? jsonObj39.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["usage"]),
-            addons: Appwrite.Models.BillingPlanAddon.From(map: map["addons"] is JsonElement jsonObj40 ? jsonObj40.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["addons"]),
+            usage: Appwrite.Models.UsageBillingPlan.From(map: map["usage"] is JsonElement jsonObj40 ? jsonObj40.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["usage"]),
+            addons: Appwrite.Models.BillingPlanAddon.From(map: map["addons"] is JsonElement jsonObj41 ? jsonObj41.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["addons"]),
             budgetCapEnabled: (bool)map["budgetCapEnabled"],
             customSmtp: (bool)map["customSmtp"],
             emailBranding: (bool)map["emailBranding"],
@@ -418,20 +424,20 @@ namespace Appwrite.Models
             supportsProjectSpecificRoles: (bool)map["supportsProjectSpecificRoles"],
             backupsEnabled: (bool)map["backupsEnabled"],
             usagePerProject: (bool)map["usagePerProject"],
-            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj60 ? jsonObj60.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
+            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj61 ? jsonObj61.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
             backupPolicies: Convert.ToInt64(map["backupPolicies"]),
             deploymentSize: Convert.ToInt64(map["deploymentSize"]),
             buildSize: Convert.ToInt64(map["buildSize"]),
             databasesAllowEncrypt: (bool)map["databasesAllowEncrypt"],
-            limits: map.TryGetValue("limits", out var objectRaw65) && objectRaw65 != null
-                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw65 is JsonElement jsonObj65 ? jsonObj65.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw65)
+            limits: map.TryGetValue("limits", out var objectRaw66) && objectRaw66 != null
+                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw66 is JsonElement jsonObj66 ? jsonObj66.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw66)
                                     : null,
-            @group: new BillingPlanGroup(map["group"].ToString()!),
-            program: map.TryGetValue("program", out var objectRaw67) && objectRaw67 != null
-                                    ? Appwrite.Models.Program.From(map: objectRaw67 is JsonElement jsonObj67 ? jsonObj67.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw67)
+            @group: new Appwrite.Enums.BillingPlanGroup(map["group"].ToString()!),
+            program: map.TryGetValue("program", out var objectRaw68) && objectRaw68 != null
+                                    ? Appwrite.Models.Program.From(map: objectRaw68 is JsonElement jsonObj68 ? jsonObj68.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw68)
                                     : null,
-            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw68) && objectRaw68 != null
-                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw68 is JsonElement jsonObj68 ? jsonObj68.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw68)
+            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw69) && objectRaw69 != null
+                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw69 is JsonElement jsonObj69 ? jsonObj69.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw69)
                                     : null
         );
 
@@ -449,6 +455,7 @@ namespace Appwrite.Models
             { "screenshotsGenerated", ScreenshotsGenerated },
             { "members", Members },
             { "webhooks", Webhooks },
+            { "wafRules", WafRules },
             { "projects", Projects },
             { "platforms", Platforms },
             { "users", Users },

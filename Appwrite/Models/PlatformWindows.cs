@@ -24,7 +24,7 @@ namespace Appwrite.Models
         public string Name { get; private set; }
 
         [JsonPropertyName("type")]
-        public PlatformType Type { get; private set; }
+        public Appwrite.Enums.PlatformType Type { get; private set; }
 
         [JsonPropertyName("packageIdentifierName")]
         public string PackageIdentifierName { get; private set; }
@@ -34,7 +34,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string name,
-            PlatformType type,
+            Appwrite.Enums.PlatformType type,
             string packageIdentifierName
         )
         {
@@ -51,7 +51,7 @@ namespace Appwrite.Models
             createdAt: map["$createdAt"].ToString(),
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
-            type: new PlatformType(map["type"].ToString()!),
+            type: new Appwrite.Enums.PlatformType(map["type"].ToString()!),
             packageIdentifierName: map["packageIdentifierName"].ToString()
         );
 

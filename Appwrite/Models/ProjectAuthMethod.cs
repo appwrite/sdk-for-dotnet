@@ -12,13 +12,13 @@ namespace Appwrite.Models
     public class ProjectAuthMethod
     {
         [JsonPropertyName("$id")]
-        public ProjectAuthMethodId Id { get; private set; }
+        public Appwrite.Enums.ProjectAuthMethodId Id { get; private set; }
 
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
         public ProjectAuthMethod(
-            ProjectAuthMethodId id,
+            Appwrite.Enums.ProjectAuthMethodId id,
             bool enabled
         )
         {
@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static ProjectAuthMethod From(Dictionary<string, object> map) => new ProjectAuthMethod(
-            id: new ProjectAuthMethodId(map["$id"].ToString()!),
+            id: new Appwrite.Enums.ProjectAuthMethodId(map["$id"].ToString()!),
             enabled: (bool)map["enabled"]
         );
 
