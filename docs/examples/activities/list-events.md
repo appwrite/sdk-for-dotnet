@@ -11,5 +11,5 @@ Client client = new Client()
 Activities activities = new Activities(client);
 
 ActivityEventList result = await activities.ListEvents(
-    queries: "" // optional
+    queries: new List<string>() // optional
 );```

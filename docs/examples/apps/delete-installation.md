@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-AppInstallation result = await apps.GetInstallation(
+await apps.DeleteInstallation(
     appId: "<APP_ID>",
     installationId: "<INSTALLATION_ID>"
 );```

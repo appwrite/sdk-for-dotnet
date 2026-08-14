@@ -287,7 +287,8 @@ namespace Appwrite.Services
 
         /// <para>
         /// List installations of an application. Requires an app key sent in the
-        /// `X-Appwrite-Key` header alongside the `X-Appwrite-App` header.
+        /// `X-Appwrite-Key` header alongside the `X-Appwrite-App` header, or a caller
+        /// with update access to the app.
         /// </para>
         /// </summary>
         public Task<Models.AppInstallationList> ListInstallations(string appId, List<string>? queries = null, bool? total = null)
@@ -324,7 +325,8 @@ namespace Appwrite.Services
 
         /// <para>
         /// Get an installation of an application by its unique ID. Requires an app key
-        /// sent in the `X-Appwrite-Key` header alongside the `X-Appwrite-App` header.
+        /// sent in the `X-Appwrite-Key` header alongside the `X-Appwrite-App` header,
+        /// or a caller with update access to the app.
         /// </para>
         /// </summary>
         public Task<Models.AppInstallation> GetInstallation(string appId, string installationId)
@@ -359,13 +361,47 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Delete an installation of an application by its unique ID. Requires a
+        /// caller with update access to the app. Previously issued installation access
+        /// tokens are revoked.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteInstallation(string appId, string installationId)
+        {
+            var apiPath = "/apps/{appId}/installations/{installationId}"
+                .Replace("{appId}", appId)
+                .Replace("{installationId}", installationId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
         /// Create a token for an installation of an application. Requires an app key
-        /// sent in the `X-Appwrite-Key` header alongside the `X-Appwrite-App` header.
-        /// The returned token carries the scopes and authorization details granted to
-        /// the installation, and can be used as an `Authorization: Bearer` header
-        /// everywhere OAuth2 access tokens are accepted. Multiple tokens can be active
-        /// for the same installation at once; each token stays valid until it expires
-        /// or the installation is updated or deleted.
+        /// sent in the `X-Appwrite-Key` header alongside the `X-Appwrite-App` header,
+        /// or a caller with update access to the app. The returned token carries the
+        /// scopes and authorization details granted to the installation, and can be
+        /// used as an `Authorization: Bearer` header everywhere OAuth2 access tokens
+        /// are accepted. Multiple tokens can be active for the same installation at
+        /// once; each token stays valid until it expires or the installation is
+        /// updated or deleted.
         /// </para>
         /// </summary>
         public Task<Models.Oauth2Token> CreateInstallationToken(string appId, string installationId)

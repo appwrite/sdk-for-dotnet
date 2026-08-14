@@ -1,5 +1,6 @@
 ```csharp
 using Appwrite;
+using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -8,13 +9,10 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-TablesDB tablesDB = new TablesDB(client);
+Proxy proxy = new Proxy(client);
 
-Database result = await tablesDB.Update(
-    databaseId: "<DATABASE_ID>",
-    name: "<NAME>", // optional
-    enabled: false, // optional
-    specification: "serverless", // optional
-    replicas: 0, // optional
-    syncMode: "async" // optional
+ProxyInvalidation result = await proxy.CreateInvalidation(
+    domain: "",
+    type: InvalidationType.Tag,
+    reference: "<REFERENCE>" // optional
 );```

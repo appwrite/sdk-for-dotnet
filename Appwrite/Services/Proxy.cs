@@ -14,6 +14,47 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a new CDN cache invalidation for a domain. Executes a hard purge of
+        /// cached content.
+        /// 
+        /// Depending on type, the invalidation purges a single cache tag, a single URL
+        /// path, or all cached content for the domain.
+        /// </para>
+        /// </summary>
+        public Task<Models.ProxyInvalidation> CreateInvalidation(string domain, Appwrite.Enums.InvalidationType type, string? reference = null)
+        {
+            var apiPath = "/proxy/invalidations";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "domain", domain },
+                { "type", type?.Value },
+                { "reference", reference }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.ProxyInvalidation Convert(Dictionary<string, object> it)
+            {
+                return Models.ProxyInvalidation.From(map: it);
+            }
+
+            return _client.Call<Models.ProxyInvalidation>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get a list of all the proxy rules. You can use the query params to filter
         /// your results.
         /// </para>

@@ -10,11 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Database result = await tablesDB.Update(
+DatabaseMigration result = await tablesDB.CutoverMigration(
     databaseId: "<DATABASE_ID>",
-    name: "<NAME>", // optional
-    enabled: false, // optional
-    specification: "serverless", // optional
-    replicas: 0, // optional
-    syncMode: "async" // optional
+    migrationId: "<MIGRATION_ID>"
 );```

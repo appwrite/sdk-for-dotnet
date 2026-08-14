@@ -146,48 +146,6 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Create a new API key. It's recommended to have multiple API keys with
-        /// strict scopes for separate functions within your project.
-        /// 
-        /// You can also create an ephemeral API key if you need a short-lived key
-        /// instead.
-        /// </para>
-        /// </summary>
-        public Task<Models.Key> CreateKey(string keyId, string name, List<Appwrite.Enums.ProjectKeyScopes> scopes, string? expire = null)
-        {
-            var apiPath = "/project/keys";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "keyId", keyId },
-                { "name", name },
-                { "scopes", scopes?.Select(e => e.Value).ToList() },
-                { "expire", expire }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.Key Convert(Dictionary<string, object> it)
-            {
-                return Models.Key.From(map: it);
-            }
-
-            return _client.Call<Models.Key>(
-                method: "POST",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
         /// Create a new ephemeral API key. It's recommended to have multiple API keys
         /// with strict scopes for separate functions within your project.
         /// 
@@ -582,7 +540,7 @@ namespace Appwrite.Services
         /// Update the OAuth2 server (OIDC provider) configuration.
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdateOAuth2Server(bool enabled, string authorizationUrl, List<string>? scopes = null, List<string>? authorizationDetailsTypes = null, long? accessTokenDuration = null, long? refreshTokenDuration = null, long? publicAccessTokenDuration = null, long? publicRefreshTokenDuration = null, long? installationAccessTokenDuration = null, bool? confidentialPkce = null, string? verificationUrl = null, long? userCodeLength = null, string? userCodeFormat = null, long? deviceCodeDuration = null, List<string>? defaultScopes = null)
+        public Task<Models.Project> UpdateOAuth2Server(bool enabled, string authorizationUrl, List<string>? scopes = null, List<string>? authorizationDetailsTypes = null, long? accessTokenDuration = null, long? refreshTokenDuration = null, long? publicAccessTokenDuration = null, long? publicRefreshTokenDuration = null, long? installationAccessTokenDuration = null, bool? confidentialPkce = null, string? verificationUrl = null, long? userCodeLength = null, string? userCodeFormat = null, long? deviceCodeDuration = null, List<string>? defaultScopes = null, List<string>? installationScopes = null)
         {
             var apiPath = "/project/oauth2-server";
 
@@ -602,7 +560,8 @@ namespace Appwrite.Services
                 { "userCodeLength", userCodeLength },
                 { "userCodeFormat", userCodeFormat },
                 { "deviceCodeDuration", deviceCodeDuration },
-                { "defaultScopes", defaultScopes }
+                { "defaultScopes", defaultScopes },
+                { "installationScopes", installationScopes }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -3159,6 +3118,48 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Updating this policy allows you to control which factors users can use to
+        /// complete an MFA challenge. Disabled factors cannot be used to create a
+        /// challenge and are reported as unavailable when listing factors. The custom
+        /// factor is disabled by default; enable it to deliver challenge codes through
+        /// your own channel. Recovery codes always remain available as a fallback.
+        /// </para>
+        /// </summary>
+        public Task<Models.Project> UpdateMFAFactorsPolicy(bool? totp = null, bool? email = null, bool? phone = null, bool? custom = null)
+        {
+            var apiPath = "/project/policies/mfa-factors";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "totp", totp },
+                { "email", email },
+                { "phone", phone },
+                { "custom", custom }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Project Convert(Dictionary<string, object> it)
+            {
+                return Models.Project.From(map: it);
+            }
+
+            return _client.Call<Models.Project>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Updating this policy allows you to control if new passwords are checked
         /// against most common passwords dictionary. When enabled, and user changes
         /// their password, password must not be contained in the dictionary.
@@ -3563,19 +3564,23 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.PolicyMembershipPrivacy.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue11) && idValue11?.ToString() == "deny-aliased-email")
+                if (it.TryGetValue("$id", out var idValue11) && idValue11?.ToString() == "mfa-factors")
+                {
+                    return Appwrite.Models.PolicyMfaFactors.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue12) && idValue12?.ToString() == "deny-aliased-email")
                 {
                     return Appwrite.Models.PolicyDenyAliasedEmail.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue12) && idValue12?.ToString() == "deny-disposable-email")
+                if (it.TryGetValue("$id", out var idValue13) && idValue13?.ToString() == "deny-disposable-email")
                 {
                     return Appwrite.Models.PolicyDenyDisposableEmail.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue13) && idValue13?.ToString() == "deny-free-email")
+                if (it.TryGetValue("$id", out var idValue14) && idValue14?.ToString() == "deny-free-email")
                 {
                     return Appwrite.Models.PolicyDenyFreeEmail.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue14) && idValue14?.ToString() == "deny-corporate-email")
+                if (it.TryGetValue("$id", out var idValue15) && idValue15?.ToString() == "deny-corporate-email")
                 {
                     return Appwrite.Models.PolicyDenyCorporateEmail.From(map: it);
                 }

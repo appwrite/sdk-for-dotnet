@@ -9,52 +9,52 @@ using Appwrite.Extensions;
 
 namespace Appwrite.Models
 {
-    public class MfaFactors
+    public class PolicyMfaFactors
     {
+        [JsonPropertyName("$id")]
+        public string Id { get; private set; }
+
         [JsonPropertyName("totp")]
         public bool Totp { get; private set; }
-
-        [JsonPropertyName("phone")]
-        public bool Phone { get; private set; }
 
         [JsonPropertyName("email")]
         public bool Email { get; private set; }
 
-        [JsonPropertyName("recoveryCode")]
-        public bool RecoveryCode { get; private set; }
+        [JsonPropertyName("phone")]
+        public bool Phone { get; private set; }
 
         [JsonPropertyName("custom")]
         public bool Custom { get; private set; }
 
-        public MfaFactors(
+        public PolicyMfaFactors(
+            string id,
             bool totp,
-            bool phone,
             bool email,
-            bool recoveryCode,
+            bool phone,
             bool custom
         )
         {
+            Id = id;
             Totp = totp;
-            Phone = phone;
             Email = email;
-            RecoveryCode = recoveryCode;
+            Phone = phone;
             Custom = custom;
         }
 
-        public static MfaFactors From(Dictionary<string, object> map) => new MfaFactors(
+        public static PolicyMfaFactors From(Dictionary<string, object> map) => new PolicyMfaFactors(
+            id: map["$id"].ToString(),
             totp: (bool)map["totp"],
-            phone: (bool)map["phone"],
             email: (bool)map["email"],
-            recoveryCode: (bool)map["recoveryCode"],
+            phone: (bool)map["phone"],
             custom: (bool)map["custom"]
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
+            { "$id", Id },
             { "totp", Totp },
-            { "phone", Phone },
             { "email", Email },
-            { "recoveryCode", RecoveryCode },
+            { "phone", Phone },
             { "custom", Custom }
         };
     }

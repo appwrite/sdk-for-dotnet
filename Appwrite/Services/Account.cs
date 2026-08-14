@@ -408,45 +408,6 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Use this endpoint to create a JSON Web Token. You can use the resulting JWT
-        /// to authenticate on behalf of the current user when working with the
-        /// Appwrite server-side API and SDKs. The JWT secret is valid for 15 minutes
-        /// from its creation and will be invalid if the user will logout in that time
-        /// frame.
-        /// </para>
-        /// </summary>
-        public Task<Models.JWT> CreateJWT(long? duration = null)
-        {
-            var apiPath = "/account/jwts";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "duration", duration }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.JWT Convert(Dictionary<string, object> it)
-            {
-                return Models.JWT.From(map: it);
-            }
-
-            return _client.Call<Models.JWT>(
-                method: "POST",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
         /// Get the list of latest security activity logs for the currently logged in
         /// user. Each log returns user IP address, location and date and time of log.
         /// </para>

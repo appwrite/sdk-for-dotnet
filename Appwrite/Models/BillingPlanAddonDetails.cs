@@ -24,7 +24,7 @@ namespace Appwrite.Models
         public string Type { get; private set; }
 
         [JsonPropertyName("currency")]
-        public string Currency { get; private set; }
+        public string? Currency { get; private set; }
 
         [JsonPropertyName("price")]
         public double Price { get; private set; }
@@ -40,7 +40,7 @@ namespace Appwrite.Models
             long planIncluded,
             long limit,
             string type,
-            string currency,
+            string? currency,
             double price,
             long @value,
             string invoiceDesc
@@ -61,7 +61,7 @@ namespace Appwrite.Models
             planIncluded: Convert.ToInt64(map["planIncluded"]),
             limit: Convert.ToInt64(map["limit"]),
             type: map["type"].ToString(),
-            currency: map["currency"].ToString(),
+            currency: map.TryGetValue("currency", out var currency) ? currency?.ToString() : null,
             price: Convert.ToDouble(map["price"]),
             @value: Convert.ToInt64(map["value"]),
             invoiceDesc: map["invoiceDesc"].ToString()

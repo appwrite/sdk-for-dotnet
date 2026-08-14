@@ -14,5 +14,6 @@ File result = await storage.CreateFile(
     bucketId: "<BUCKET_ID>",
     fileId: "<FILE_ID>",
     file: InputFile.FromPath("./path-to-files/image.jpg"),
-    permissions: new List<string> { Permission.Read(Role.Any()) } // optional
+    permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
+    folder: "" // optional
 );```

@@ -21,6 +21,7 @@ namespace Appwrite.Enums
         public static Runtime Node23 => new Runtime("node-23");
         public static Runtime Node24 => new Runtime("node-24");
         public static Runtime Node25 => new Runtime("node-25");
+        public static Runtime Node26 => new Runtime("node-26");
         public static Runtime Php80 => new Runtime("php-8.0");
         public static Runtime Php81 => new Runtime("php-8.1");
         public static Runtime Php82 => new Runtime("php-8.2");

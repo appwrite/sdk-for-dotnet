@@ -101,9 +101,6 @@ namespace Appwrite.Models
         [JsonPropertyName("syncMode")]
         public string SyncMode { get; private set; }
 
-        [JsonPropertyName("crossRegionReplicas")]
-        public long CrossRegionReplicas { get; private set; }
-
         [JsonPropertyName("networkMaxConnections")]
         public long NetworkMaxConnections { get; private set; }
 
@@ -189,7 +186,6 @@ namespace Appwrite.Models
             string nodePool,
             long replicas,
             string syncMode,
-            long crossRegionReplicas,
             long networkMaxConnections,
             long networkIdleTimeoutSeconds,
             List<string> networkIPAllowlist,
@@ -240,7 +236,6 @@ namespace Appwrite.Models
             NodePool = nodePool;
             Replicas = replicas;
             SyncMode = syncMode;
-            CrossRegionReplicas = crossRegionReplicas;
             NetworkMaxConnections = networkMaxConnections;
             NetworkIdleTimeoutSeconds = networkIdleTimeoutSeconds;
             NetworkIPAllowlist = networkIPAllowlist;
@@ -292,7 +287,6 @@ namespace Appwrite.Models
             nodePool: map["nodePool"].ToString(),
             replicas: Convert.ToInt64(map["replicas"]),
             syncMode: map["syncMode"].ToString(),
-            crossRegionReplicas: Convert.ToInt64(map["crossRegionReplicas"]),
             networkMaxConnections: Convert.ToInt64(map["networkMaxConnections"]),
             networkIdleTimeoutSeconds: Convert.ToInt64(map["networkIdleTimeoutSeconds"]),
             networkIPAllowlist: map["networkIPAllowlist"].ConvertToList<string>(),
@@ -345,7 +339,6 @@ namespace Appwrite.Models
             { "nodePool", NodePool },
             { "replicas", Replicas },
             { "syncMode", SyncMode },
-            { "crossRegionReplicas", CrossRegionReplicas },
             { "networkMaxConnections", NetworkMaxConnections },
             { "networkIdleTimeoutSeconds", NetworkIdleTimeoutSeconds },
             { "networkIPAllowlist", NetworkIPAllowlist },

@@ -29,6 +29,12 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("folder")]
+        public string Folder { get; private set; }
+
+        [JsonPropertyName("key")]
+        public string Key { get; private set; }
+
         [JsonPropertyName("signature")]
         public string Signature { get; private set; }
 
@@ -60,6 +66,8 @@ namespace Appwrite.Models
             string updatedAt,
             List<string> permissions,
             string name,
+            string folder,
+            string key,
             string signature,
             string mimeType,
             long sizeOriginal,
@@ -76,6 +84,8 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Permissions = permissions;
             Name = name;
+            Folder = folder;
+            Key = key;
             Signature = signature;
             MimeType = mimeType;
             SizeOriginal = sizeOriginal;
@@ -93,6 +103,8 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             permissions: map["$permissions"].ConvertToList<string>(),
             name: map["name"].ToString(),
+            folder: map["folder"].ToString(),
+            key: map["key"].ToString(),
             signature: map["signature"].ToString(),
             mimeType: map["mimeType"].ToString(),
             sizeOriginal: Convert.ToInt64(map["sizeOriginal"]),
@@ -111,6 +123,8 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "$permissions", Permissions },
             { "name", Name },
+            { "folder", Folder },
+            { "key", Key },
             { "signature", Signature },
             { "mimeType", MimeType },
             { "sizeOriginal", SizeOriginal },

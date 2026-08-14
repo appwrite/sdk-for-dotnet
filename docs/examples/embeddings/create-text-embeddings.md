@@ -1,5 +1,6 @@
 ```csharp
 using Appwrite;
+using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -8,13 +9,9 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-TablesDB tablesDB = new TablesDB(client);
+Embeddings embeddings = new Embeddings(client);
 
-Database result = await tablesDB.Update(
-    databaseId: "<DATABASE_ID>",
-    name: "<NAME>", // optional
-    enabled: false, // optional
-    specification: "serverless", // optional
-    replicas: 0, // optional
-    syncMode: "async" // optional
+EmbeddingList result = await embeddings.CreateTextEmbeddings(
+    texts: new List<string>(),
+    model: EmbeddingModel.NomicEmbedText // optional
 );```

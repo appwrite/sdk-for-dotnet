@@ -55,7 +55,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? specification = null, long? replicas = null)
+        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
             var apiPath = "/tablesdb";
 
@@ -65,7 +65,8 @@ namespace Appwrite.Services
                 { "name", name },
                 { "enabled", enabled },
                 { "specification", specification },
-                { "replicas", replicas }
+                { "replicas", replicas },
+                { "syncMode", syncMode }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -369,7 +370,7 @@ namespace Appwrite.Services
         /// Update a database by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null, long? replicas = null)
+        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
             var apiPath = "/tablesdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
@@ -378,7 +379,9 @@ namespace Appwrite.Services
             {
                 { "name", name },
                 { "enabled", enabled },
-                { "replicas", replicas }
+                { "specification", specification },
+                { "replicas", replicas },
+                { "syncMode", syncMode }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -436,7 +439,9 @@ namespace Appwrite.Services
         /// <para>
         /// Trigger a manual failover for a dedicated database with high availability
         /// enabled. Promotes a replica to primary. The failover runs asynchronously;
-        /// poll the database document for status updates.
+        /// poll the database document for status updates. A database left
+        /// mid-operation by a failover that did not finish also accepts this call as a
+        /// repair, provided `targetReplicaId` names the member to promote.
         /// </para>
         /// </summary>
         public Task<Models.DedicatedDatabase> CreateFailover(string databaseId, string? targetReplicaId = null)
@@ -464,6 +469,228 @@ namespace Appwrite.Services
 
             return _client.Call<Models.DedicatedDatabase>(
                 method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// List the dedicated migrations for a TablesDB database. A database has at
+        /// most one in-flight migration.
+        /// </para>
+        /// </summary>
+        public Task<Models.DatabaseMigrationList> ListMigrations(string databaseId)
+        {
+            var apiPath = "/tablesdb/{databaseId}/migrations"
+                .Replace("{databaseId}", databaseId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DatabaseMigrationList Convert(Dictionary<string, object> it)
+            {
+                return Models.DatabaseMigrationList.From(map: it);
+            }
+
+            return _client.Call<Models.DatabaseMigrationList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Start migrating a serverless TablesDB database onto a dedicated MySQL
+        /// compute. Data is copied to the target while the source stays live, with a
+        /// brief read-only window during cutover.
+        /// </para>
+        /// </summary>
+        public Task<Models.DatabaseMigration> CreateMigration(string databaseId, string specification, bool? autoCutover = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/migrations"
+                .Replace("{databaseId}", databaseId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "specification", specification },
+                { "autoCutover", autoCutover }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DatabaseMigration Convert(Dictionary<string, object> it)
+            {
+                return Models.DatabaseMigration.From(map: it);
+            }
+
+            return _client.Call<Models.DatabaseMigration>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a single dedicated migration for a TablesDB database by its ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.DatabaseMigration> GetMigration(string databaseId, string migrationId)
+        {
+            var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{migrationId}", migrationId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DatabaseMigration Convert(Dictionary<string, object> it)
+            {
+                return Models.DatabaseMigration.From(map: it);
+            }
+
+            return _client.Call<Models.DatabaseMigration>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Abort an in-flight TablesDB dedicated migration. Only allowed before
+        /// cutover; once the migration has cut over it cannot be aborted.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteMigration(string databaseId, string migrationId)
+        {
+            var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{migrationId}", migrationId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Cut a verified TablesDB migration over to its dedicated compute. Only
+        /// applies to a migration created with `autoCutover` disabled, which waits at
+        /// `ready_to_cutover` until this is called. The routing flip happens shortly
+        /// after this returns, with a brief read-only window. One call buys one
+        /// attempt: a cutover that fails a check returns the migration to `verifying`
+        /// and parks it again, so call this once more to retry.
+        /// </para>
+        /// </summary>
+        public Task<Models.DatabaseMigration> CutoverMigration(string databaseId, string migrationId)
+        {
+            var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}/cutover"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{migrationId}", migrationId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DatabaseMigration Convert(Dictionary<string, object> it)
+            {
+                return Models.DatabaseMigration.From(map: it);
+            }
+
+            return _client.Call<Models.DatabaseMigration>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// List the lifecycle operations recorded for a dedicated database, newest
+        /// first. Every provision, update, restore, backup and replication action is
+        /// recorded here with its outcome, including an attempt that was abandoned
+        /// because another worker took over the database.
+        /// </para>
+        /// </summary>
+        public Task<Models.DedicatedDatabaseOperationList> ListOperations(string databaseId, string? status = null, long? limit = null, long? offset = null)
+        {
+            var apiPath = "/tablesdb/{databaseId}/operations"
+                .Replace("{databaseId}", databaseId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "status", status },
+                { "limit", limit },
+                { "offset", offset }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DedicatedDatabaseOperationList Convert(Dictionary<string, object> it)
+            {
+                return Models.DedicatedDatabaseOperationList.From(map: it);
+            }
+
+            return _client.Call<Models.DedicatedDatabaseOperationList>(
+                method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,

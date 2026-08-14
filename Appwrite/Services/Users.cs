@@ -884,6 +884,42 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get a custom MFA challenge for a user, including the code to be delivered
+        /// through your own channel.
+        /// </para>
+        /// </summary>
+        public Task<Models.MfaChallengeSecret> GetMFAChallenge(string userId, string challengeId)
+        {
+            var apiPath = "/users/{userId}/mfa/challenges/{challengeId}"
+                .Replace("{userId}", userId)
+                .Replace("{challengeId}", challengeId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.MfaChallengeSecret Convert(Dictionary<string, object> it)
+            {
+                return Models.MfaChallengeSecret.From(map: it);
+            }
+
+            return _client.Call<Models.MfaChallengeSecret>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// List the factors available on the account to be used as a MFA challange.
         /// </para>
         /// </summary>
