@@ -21,13 +21,13 @@ namespace Appwrite.Models
         public string Status { get; private set; }
 
         [JsonPropertyName("lagSeconds")]
-        public double LagSeconds { get; private set; }
+        public double? LagSeconds { get; private set; }
 
         public DedicatedDatabaseMember(
             string id,
             string role,
             string status,
-            double lagSeconds
+            double? lagSeconds
         )
         {
             Id = id;
@@ -40,7 +40,9 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             role: map["role"].ToString(),
             status: map["status"].ToString(),
-            lagSeconds: Convert.ToDouble(map["lagSeconds"])
+            lagSeconds: map.TryGetValue("lagSeconds", out var numberRaw4) && numberRaw4 != null
+                                    ? Convert.ToDouble(numberRaw4)
+                                    : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -6,10 +6,11 @@ using Appwrite.Services;
 Client client = new Client()
     .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
-    .SetSession(""); // The user session to authenticate with
+    .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Account account = new Account(client);
+TablesDB tablesDB = new TablesDB(client);
 
-JWT result = await account.CreateJWT(
-    duration: 0 // optional
+await tablesDB.DeleteMigration(
+    databaseId: "<DATABASE_ID>",
+    migrationId: "<MIGRATION_ID>"
 );```

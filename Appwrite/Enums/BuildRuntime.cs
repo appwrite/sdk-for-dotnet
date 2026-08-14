@@ -21,6 +21,7 @@ namespace Appwrite.Enums
         public static BuildRuntime Node23 => new BuildRuntime("node-23");
         public static BuildRuntime Node24 => new BuildRuntime("node-24");
         public static BuildRuntime Node25 => new BuildRuntime("node-25");
+        public static BuildRuntime Node26 => new BuildRuntime("node-26");
         public static BuildRuntime Php80 => new BuildRuntime("php-8.0");
         public static BuildRuntime Php81 => new BuildRuntime("php-8.1");
         public static BuildRuntime Php82 => new BuildRuntime("php-8.2");

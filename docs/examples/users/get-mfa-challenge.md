@@ -8,13 +8,9 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-TablesDB tablesDB = new TablesDB(client);
+Users users = new Users(client);
 
-Database result = await tablesDB.Update(
-    databaseId: "<DATABASE_ID>",
-    name: "<NAME>", // optional
-    enabled: false, // optional
-    specification: "serverless", // optional
-    replicas: 0, // optional
-    syncMode: "async" // optional
+MfaChallengeSecret result = await users.GetMFAChallenge(
+    userId: "<USER_ID>",
+    challengeId: "<CHALLENGE_ID>"
 );```

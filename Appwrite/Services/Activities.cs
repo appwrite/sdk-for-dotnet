@@ -17,7 +17,7 @@ namespace Appwrite.Services
         /// List all events for selected filters.
         /// </para>
         /// </summary>
-        public Task<Models.ActivityEventList> ListEvents(string? queries = null)
+        public Task<Models.ActivityEventList> ListEvents(List<string>? queries = null)
         {
             var apiPath = "/activities/events";
 

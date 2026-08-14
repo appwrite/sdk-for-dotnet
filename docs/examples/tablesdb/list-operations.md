@@ -10,11 +10,9 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Database result = await tablesDB.Update(
+DedicatedDatabaseOperationList result = await tablesDB.ListOperations(
     databaseId: "<DATABASE_ID>",
-    name: "<NAME>", // optional
-    enabled: false, // optional
-    specification: "serverless", // optional
-    replicas: 0, // optional
-    syncMode: "async" // optional
+    status: "running", // optional
+    limit: 1, // optional
+    offset: 0 // optional
 );```

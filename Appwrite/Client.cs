@@ -76,12 +76,12 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , $"AppwriteDotNetSDK/6.1.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
+                { "user-agent" , $"AppwriteDotNetSDK/7.0.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "6.1.0"},
-                { "X-Appwrite-Response-Format", "1.9.5" }
+                { "x-sdk-version", "7.0.0"},
+                { "X-Appwrite-Response-Format", "1.9.6" }
             };
 
             _config = new Dictionary<string, string>();
@@ -127,6 +127,14 @@ namespace Appwrite
         public Client SetKey(string value) {
             _config["key"] = value;
             AddHeader("X-Appwrite-Key", value);
+
+            return this;
+        }
+
+        /// <summary>Your organization ID</summary>
+        public Client SetOrganization(string value) {
+            _config["organization"] = value;
+            AddHeader("X-Appwrite-Organization", value);
 
             return this;
         }

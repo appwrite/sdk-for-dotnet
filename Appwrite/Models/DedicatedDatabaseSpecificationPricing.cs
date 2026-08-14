@@ -20,9 +20,6 @@ namespace Appwrite.Models
         [JsonPropertyName("replicaRate")]
         public double ReplicaRate { get; private set; }
 
-        [JsonPropertyName("crossRegionReplicaRate")]
-        public double CrossRegionReplicaRate { get; private set; }
-
         [JsonPropertyName("pitrRate")]
         public double PitrRate { get; private set; }
 
@@ -30,14 +27,12 @@ namespace Appwrite.Models
             double storageOverageRate,
             double bandwidthOverageRate,
             double replicaRate,
-            double crossRegionReplicaRate,
             double pitrRate
         )
         {
             StorageOverageRate = storageOverageRate;
             BandwidthOverageRate = bandwidthOverageRate;
             ReplicaRate = replicaRate;
-            CrossRegionReplicaRate = crossRegionReplicaRate;
             PitrRate = pitrRate;
         }
 
@@ -45,7 +40,6 @@ namespace Appwrite.Models
             storageOverageRate: Convert.ToDouble(map["storageOverageRate"]),
             bandwidthOverageRate: Convert.ToDouble(map["bandwidthOverageRate"]),
             replicaRate: Convert.ToDouble(map["replicaRate"]),
-            crossRegionReplicaRate: Convert.ToDouble(map["crossRegionReplicaRate"]),
             pitrRate: Convert.ToDouble(map["pitrRate"])
         );
 
@@ -54,7 +48,6 @@ namespace Appwrite.Models
             { "storageOverageRate", StorageOverageRate },
             { "bandwidthOverageRate", BandwidthOverageRate },
             { "replicaRate", ReplicaRate },
-            { "crossRegionReplicaRate", CrossRegionReplicaRate },
             { "pitrRate", PitrRate }
         };
     }

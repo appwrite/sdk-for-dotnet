@@ -263,7 +263,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.File> CreateFile(string bucketId, string fileId, InputFile file, List<string>? permissions = null, Action<UploadProgress>? onProgress = null)
+        public Task<Models.File> CreateFile(string bucketId, string fileId, InputFile file, List<string>? permissions = null, string? folder = null, Action<UploadProgress>? onProgress = null)
         {
             var apiPath = "/storage/buckets/{bucketId}/files"
                 .Replace("{bucketId}", bucketId);
@@ -272,7 +272,8 @@ namespace Appwrite.Services
             {
                 { "fileId", fileId },
                 { "file", file },
-                { "permissions", permissions }
+                { "permissions", permissions },
+                { "folder", folder }
             };
 
             var apiHeaders = new Dictionary<string, string>()

@@ -30,7 +30,7 @@ namespace Appwrite.Models
         public Preferences Prefs { get; private set; }
 
         [JsonPropertyName("billingBudget")]
-        public long BillingBudget { get; private set; }
+        public long? BillingBudget { get; private set; }
 
         [JsonPropertyName("budgetAlerts")]
         public List<long> BudgetAlerts { get; private set; }
@@ -57,7 +57,7 @@ namespace Appwrite.Models
         public string BillingNextInvoiceDate { get; private set; }
 
         [JsonPropertyName("billingTrialStartDate")]
-        public string BillingTrialStartDate { get; private set; }
+        public string? BillingTrialStartDate { get; private set; }
 
         [JsonPropertyName("billingTrialDays")]
         public long BillingTrialDays { get; private set; }
@@ -72,40 +72,40 @@ namespace Appwrite.Models
         public string PaymentMethodId { get; private set; }
 
         [JsonPropertyName("billingAddressId")]
-        public string BillingAddressId { get; private set; }
+        public string? BillingAddressId { get; private set; }
 
         [JsonPropertyName("backupPaymentMethodId")]
-        public string BackupPaymentMethodId { get; private set; }
+        public string? BackupPaymentMethodId { get; private set; }
 
         [JsonPropertyName("status")]
         public string Status { get; private set; }
 
         [JsonPropertyName("remarks")]
-        public string Remarks { get; private set; }
+        public string? Remarks { get; private set; }
 
         [JsonPropertyName("agreementBAA")]
-        public string AgreementBAA { get; private set; }
+        public string? AgreementBAA { get; private set; }
 
         [JsonPropertyName("programManagerName")]
-        public string ProgramManagerName { get; private set; }
+        public string? ProgramManagerName { get; private set; }
 
         [JsonPropertyName("programManagerCalendar")]
-        public string ProgramManagerCalendar { get; private set; }
+        public string? ProgramManagerCalendar { get; private set; }
 
         [JsonPropertyName("programDiscordChannelName")]
-        public string ProgramDiscordChannelName { get; private set; }
+        public string? ProgramDiscordChannelName { get; private set; }
 
         [JsonPropertyName("programDiscordChannelUrl")]
-        public string ProgramDiscordChannelUrl { get; private set; }
+        public string? ProgramDiscordChannelUrl { get; private set; }
 
         [JsonPropertyName("billingLimits")]
         public BillingLimits? BillingLimits { get; private set; }
 
         [JsonPropertyName("billingPlanDowngrade")]
-        public string BillingPlanDowngrade { get; private set; }
+        public string? BillingPlanDowngrade { get; private set; }
 
         [JsonPropertyName("billingTaxId")]
-        public string BillingTaxId { get; private set; }
+        public string? BillingTaxId { get; private set; }
 
         [JsonPropertyName("markedForDeletion")]
         public bool MarkedForDeletion { get; private set; }
@@ -123,7 +123,7 @@ namespace Appwrite.Models
             string name,
             long total,
             Preferences prefs,
-            long billingBudget,
+            long? billingBudget,
             List<long> budgetAlerts,
             string billingPlan,
             string billingPlanId,
@@ -132,23 +132,23 @@ namespace Appwrite.Models
             string billingStartDate,
             string billingCurrentInvoiceDate,
             string billingNextInvoiceDate,
-            string billingTrialStartDate,
+            string? billingTrialStartDate,
             long billingTrialDays,
             string billingAggregationId,
             string billingInvoiceId,
             string paymentMethodId,
-            string billingAddressId,
-            string backupPaymentMethodId,
+            string? billingAddressId,
+            string? backupPaymentMethodId,
             string status,
-            string remarks,
-            string agreementBAA,
-            string programManagerName,
-            string programManagerCalendar,
-            string programDiscordChannelName,
-            string programDiscordChannelUrl,
+            string? remarks,
+            string? agreementBAA,
+            string? programManagerName,
+            string? programManagerCalendar,
+            string? programDiscordChannelName,
+            string? programDiscordChannelUrl,
             BillingLimits? billingLimits,
-            string billingPlanDowngrade,
-            string billingTaxId,
+            string? billingPlanDowngrade,
+            string? billingTaxId,
             bool markedForDeletion,
             string platform,
             List<string> projects
@@ -198,7 +198,9 @@ namespace Appwrite.Models
             name: map["name"].ToString(),
             total: Convert.ToInt64(map["total"]),
             prefs: Appwrite.Models.Preferences.From(map: map["prefs"] is JsonElement jsonObj6 ? jsonObj6.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
-            billingBudget: Convert.ToInt64(map["billingBudget"]),
+            billingBudget: map.TryGetValue("billingBudget", out var numberRaw7) && numberRaw7 != null
+                                    ? Convert.ToInt64(numberRaw7)
+                                    : null,
             budgetAlerts: map["budgetAlerts"].ConvertToList<long>(),
             billingPlan: map["billingPlan"].ToString(),
             billingPlanId: map["billingPlanId"].ToString(),
@@ -207,25 +209,25 @@ namespace Appwrite.Models
             billingStartDate: map["billingStartDate"].ToString(),
             billingCurrentInvoiceDate: map["billingCurrentInvoiceDate"].ToString(),
             billingNextInvoiceDate: map["billingNextInvoiceDate"].ToString(),
-            billingTrialStartDate: map["billingTrialStartDate"].ToString(),
+            billingTrialStartDate: map.TryGetValue("billingTrialStartDate", out var billingTrialStartDate) ? billingTrialStartDate?.ToString() : null,
             billingTrialDays: Convert.ToInt64(map["billingTrialDays"]),
             billingAggregationId: map["billingAggregationId"].ToString(),
             billingInvoiceId: map["billingInvoiceId"].ToString(),
             paymentMethodId: map["paymentMethodId"].ToString(),
-            billingAddressId: map["billingAddressId"].ToString(),
-            backupPaymentMethodId: map["backupPaymentMethodId"].ToString(),
+            billingAddressId: map.TryGetValue("billingAddressId", out var billingAddressId) ? billingAddressId?.ToString() : null,
+            backupPaymentMethodId: map.TryGetValue("backupPaymentMethodId", out var backupPaymentMethodId) ? backupPaymentMethodId?.ToString() : null,
             status: map["status"].ToString(),
-            remarks: map["remarks"].ToString(),
-            agreementBAA: map["agreementBAA"].ToString(),
-            programManagerName: map["programManagerName"].ToString(),
-            programManagerCalendar: map["programManagerCalendar"].ToString(),
-            programDiscordChannelName: map["programDiscordChannelName"].ToString(),
-            programDiscordChannelUrl: map["programDiscordChannelUrl"].ToString(),
+            remarks: map.TryGetValue("remarks", out var remarks) ? remarks?.ToString() : null,
+            agreementBAA: map.TryGetValue("agreementBAA", out var agreementBAA) ? agreementBAA?.ToString() : null,
+            programManagerName: map.TryGetValue("programManagerName", out var programManagerName) ? programManagerName?.ToString() : null,
+            programManagerCalendar: map.TryGetValue("programManagerCalendar", out var programManagerCalendar) ? programManagerCalendar?.ToString() : null,
+            programDiscordChannelName: map.TryGetValue("programDiscordChannelName", out var programDiscordChannelName) ? programDiscordChannelName?.ToString() : null,
+            programDiscordChannelUrl: map.TryGetValue("programDiscordChannelUrl", out var programDiscordChannelUrl) ? programDiscordChannelUrl?.ToString() : null,
             billingLimits: map.TryGetValue("billingLimits", out var objectRaw30) && objectRaw30 != null
                                     ? Appwrite.Models.BillingLimits.From(map: objectRaw30 is JsonElement jsonObj30 ? jsonObj30.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw30)
                                     : null,
-            billingPlanDowngrade: map["billingPlanDowngrade"].ToString(),
-            billingTaxId: map["billingTaxId"].ToString(),
+            billingPlanDowngrade: map.TryGetValue("billingPlanDowngrade", out var billingPlanDowngrade) ? billingPlanDowngrade?.ToString() : null,
+            billingTaxId: map.TryGetValue("billingTaxId", out var billingTaxId) ? billingTaxId?.ToString() : null,
             markedForDeletion: (bool)map["markedForDeletion"],
             platform: map["platform"].ToString(),
             projects: map["projects"].ConvertToList<string>()

@@ -8,13 +8,11 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-TablesDB tablesDB = new TablesDB(client);
+Project project = new Project(client);
 
-Database result = await tablesDB.Update(
-    databaseId: "<DATABASE_ID>",
-    name: "<NAME>", // optional
-    enabled: false, // optional
-    specification: "serverless", // optional
-    replicas: 0, // optional
-    syncMode: "async" // optional
+Project result = await project.UpdateMFAFactorsPolicy(
+    totp: false, // optional
+    email: false, // optional
+    phone: false, // optional
+    custom: false // optional
 );```

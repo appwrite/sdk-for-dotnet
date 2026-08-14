@@ -25,5 +25,6 @@ Project result = await project.UpdateOAuth2Server(
     userCodeLength: 6, // optional
     userCodeFormat: "numeric", // optional
     deviceCodeDuration: 60, // optional
-    defaultScopes: new List<string>() // optional
+    defaultScopes: new List<string>(), // optional
+    installationScopes: new List<string>() // optional
 );```

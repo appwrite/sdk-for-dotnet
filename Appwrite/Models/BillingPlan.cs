@@ -42,7 +42,7 @@ namespace Appwrite.Models
         public long ScreenshotsGenerated { get; private set; }
 
         [JsonPropertyName("members")]
-        public long Members { get; private set; }
+        public long? Members { get; private set; }
 
         [JsonPropertyName("webhooks")]
         public long Webhooks { get; private set; }
@@ -114,7 +114,7 @@ namespace Appwrite.Models
         public long Domains { get; private set; }
 
         [JsonPropertyName("activityLogs")]
-        public long ActivityLogs { get; private set; }
+        public long? ActivityLogs { get; private set; }
 
         [JsonPropertyName("usageLogs")]
         public long UsageLogs { get; private set; }
@@ -186,7 +186,7 @@ namespace Appwrite.Models
         public bool SupportsProjectSpecificRoles { get; private set; }
 
         [JsonPropertyName("backupsEnabled")]
-        public bool BackupsEnabled { get; private set; }
+        public bool? BackupsEnabled { get; private set; }
 
         [JsonPropertyName("usagePerProject")]
         public bool UsagePerProject { get; private set; }
@@ -195,7 +195,7 @@ namespace Appwrite.Models
         public BillingPlanSupportedAddons SupportedAddons { get; private set; }
 
         [JsonPropertyName("backupPolicies")]
-        public long BackupPolicies { get; private set; }
+        public long? BackupPolicies { get; private set; }
 
         [JsonPropertyName("deploymentSize")]
         public long DeploymentSize { get; private set; }
@@ -229,7 +229,7 @@ namespace Appwrite.Models
             long storage,
             long imageTransformations,
             long screenshotsGenerated,
-            long members,
+            long? members,
             long webhooks,
             long wafRules,
             long projects,
@@ -253,7 +253,7 @@ namespace Appwrite.Models
             long topics,
             long authPhone,
             long domains,
-            long activityLogs,
+            long? activityLogs,
             long usageLogs,
             List<string>? usageLogsIntervals,
             long projectInactivityDays,
@@ -277,10 +277,10 @@ namespace Appwrite.Models
             bool supportsFreeEmailValidation,
             bool supportsCorporateEmailValidation,
             bool supportsProjectSpecificRoles,
-            bool backupsEnabled,
+            bool? backupsEnabled,
             bool usagePerProject,
             BillingPlanSupportedAddons supportedAddons,
-            long backupPolicies,
+            long? backupPolicies,
             long deploymentSize,
             long buildSize,
             bool databasesAllowEncrypt,
@@ -372,7 +372,9 @@ namespace Appwrite.Models
             storage: Convert.ToInt64(map["storage"]),
             imageTransformations: Convert.ToInt64(map["imageTransformations"]),
             screenshotsGenerated: Convert.ToInt64(map["screenshotsGenerated"]),
-            members: Convert.ToInt64(map["members"]),
+            members: map.TryGetValue("members", out var numberRaw11) && numberRaw11 != null
+                                    ? Convert.ToInt64(numberRaw11)
+                                    : null,
             webhooks: Convert.ToInt64(map["webhooks"]),
             wafRules: Convert.ToInt64(map["wafRules"]),
             projects: Convert.ToInt64(map["projects"]),
@@ -396,7 +398,9 @@ namespace Appwrite.Models
             topics: Convert.ToInt64(map["topics"]),
             authPhone: Convert.ToInt64(map["authPhone"]),
             domains: Convert.ToInt64(map["domains"]),
-            activityLogs: Convert.ToInt64(map["activityLogs"]),
+            activityLogs: map.TryGetValue("activityLogs", out var numberRaw35) && numberRaw35 != null
+                                    ? Convert.ToInt64(numberRaw35)
+                                    : null,
             usageLogs: Convert.ToInt64(map["usageLogs"]),
             usageLogsIntervals: map.TryGetValue("usageLogsIntervals", out var arrayRaw37) && arrayRaw37 != null
                                 ? arrayRaw37.ConvertToList<string>()
@@ -422,10 +426,14 @@ namespace Appwrite.Models
             supportsFreeEmailValidation: (bool)map["supportsFreeEmailValidation"],
             supportsCorporateEmailValidation: (bool)map["supportsCorporateEmailValidation"],
             supportsProjectSpecificRoles: (bool)map["supportsProjectSpecificRoles"],
-            backupsEnabled: (bool)map["backupsEnabled"],
+            backupsEnabled: map.TryGetValue("backupsEnabled", out var boolRaw59) && boolRaw59 != null
+                                        ? (bool?)boolRaw59
+                                        : null,
             usagePerProject: (bool)map["usagePerProject"],
             supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj61 ? jsonObj61.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
-            backupPolicies: Convert.ToInt64(map["backupPolicies"]),
+            backupPolicies: map.TryGetValue("backupPolicies", out var numberRaw62) && numberRaw62 != null
+                                    ? Convert.ToInt64(numberRaw62)
+                                    : null,
             deploymentSize: Convert.ToInt64(map["deploymentSize"]),
             buildSize: Convert.ToInt64(map["buildSize"]),
             databasesAllowEncrypt: (bool)map["databasesAllowEncrypt"],

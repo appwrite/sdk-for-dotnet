@@ -110,6 +110,9 @@ namespace Appwrite.Models
         [JsonPropertyName("oAuth2ServerDefaultScopes")]
         public List<string>? OAuth2ServerDefaultScopes { get; private set; }
 
+        [JsonPropertyName("oAuth2ServerInstallationScopes")]
+        public List<string>? OAuth2ServerInstallationScopes { get; private set; }
+
         [JsonPropertyName("oAuth2ServerAuthorizationDetailsTypes")]
         public List<string>? OAuth2ServerAuthorizationDetailsTypes { get; private set; }
 
@@ -180,6 +183,7 @@ namespace Appwrite.Models
             string? oAuth2ServerAuthorizationUrl,
             List<string>? oAuth2ServerScopes,
             List<string>? oAuth2ServerDefaultScopes,
+            List<string>? oAuth2ServerInstallationScopes,
             List<string>? oAuth2ServerAuthorizationDetailsTypes,
             long? oAuth2ServerAccessTokenDuration,
             long? oAuth2ServerRefreshTokenDuration,
@@ -227,6 +231,7 @@ namespace Appwrite.Models
             OAuth2ServerAuthorizationUrl = oAuth2ServerAuthorizationUrl;
             OAuth2ServerScopes = oAuth2ServerScopes;
             OAuth2ServerDefaultScopes = oAuth2ServerDefaultScopes;
+            OAuth2ServerInstallationScopes = oAuth2ServerInstallationScopes;
             OAuth2ServerAuthorizationDetailsTypes = oAuth2ServerAuthorizationDetailsTypes;
             OAuth2ServerAccessTokenDuration = oAuth2ServerAccessTokenDuration;
             OAuth2ServerRefreshTokenDuration = oAuth2ServerRefreshTokenDuration;
@@ -283,34 +288,37 @@ namespace Appwrite.Models
             oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw33) && arrayRaw33 != null
                                 ? arrayRaw33.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw34) && arrayRaw34 != null
+            oAuth2ServerInstallationScopes: map.TryGetValue("oAuth2ServerInstallationScopes", out var arrayRaw34) && arrayRaw34 != null
                                 ? arrayRaw34.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw35) && numberRaw35 != null
-                                    ? Convert.ToInt64(numberRaw35)
-                                    : null,
-            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw36) && numberRaw36 != null
+            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw35) && arrayRaw35 != null
+                                ? arrayRaw35.ConvertToList<string>()
+                                : null,
+            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw36) && numberRaw36 != null
                                     ? Convert.ToInt64(numberRaw36)
                                     : null,
-            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw37) && numberRaw37 != null
+            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw37) && numberRaw37 != null
                                     ? Convert.ToInt64(numberRaw37)
                                     : null,
-            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw38) && numberRaw38 != null
+            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw38) && numberRaw38 != null
                                     ? Convert.ToInt64(numberRaw38)
                                     : null,
-            oAuth2ServerInstallationAccessTokenDuration: map.TryGetValue("oAuth2ServerInstallationAccessTokenDuration", out var numberRaw39) && numberRaw39 != null
+            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw39) && numberRaw39 != null
                                     ? Convert.ToInt64(numberRaw39)
                                     : null,
-            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw40) && boolRaw40 != null
-                                        ? (bool?)boolRaw40
+            oAuth2ServerInstallationAccessTokenDuration: map.TryGetValue("oAuth2ServerInstallationAccessTokenDuration", out var numberRaw40) && numberRaw40 != null
+                                    ? Convert.ToInt64(numberRaw40)
+                                    : null,
+            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw41) && boolRaw41 != null
+                                        ? (bool?)boolRaw41
                                         : null,
             oAuth2ServerVerificationUrl: map.TryGetValue("oAuth2ServerVerificationUrl", out var oAuth2ServerVerificationUrl) ? oAuth2ServerVerificationUrl?.ToString() : null,
-            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw42) && numberRaw42 != null
-                                    ? Convert.ToInt64(numberRaw42)
+            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw43) && numberRaw43 != null
+                                    ? Convert.ToInt64(numberRaw43)
                                     : null,
             oAuth2ServerUserCodeFormat: map.TryGetValue("oAuth2ServerUserCodeFormat", out var oAuth2ServerUserCodeFormat) ? oAuth2ServerUserCodeFormat?.ToString() : null,
-            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw44) && numberRaw44 != null
-                                    ? Convert.ToInt64(numberRaw44)
+            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw45) && numberRaw45 != null
+                                    ? Convert.ToInt64(numberRaw45)
                                     : null,
             oAuth2ServerDiscoveryUrl: map.TryGetValue("oAuth2ServerDiscoveryUrl", out var oAuth2ServerDiscoveryUrl) ? oAuth2ServerDiscoveryUrl?.ToString() : null
         );
@@ -350,6 +358,7 @@ namespace Appwrite.Models
             { "oAuth2ServerAuthorizationUrl", OAuth2ServerAuthorizationUrl },
             { "oAuth2ServerScopes", OAuth2ServerScopes },
             { "oAuth2ServerDefaultScopes", OAuth2ServerDefaultScopes },
+            { "oAuth2ServerInstallationScopes", OAuth2ServerInstallationScopes },
             { "oAuth2ServerAuthorizationDetailsTypes", OAuth2ServerAuthorizationDetailsTypes },
             { "oAuth2ServerAccessTokenDuration", OAuth2ServerAccessTokenDuration },
             { "oAuth2ServerRefreshTokenDuration", OAuth2ServerRefreshTokenDuration },
