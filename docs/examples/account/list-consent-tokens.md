@@ -14,4 +14,6 @@ Oauth2ConsentTokenList result = await account.ListConsentTokens(
     consentId: "<CONSENT_ID>",
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

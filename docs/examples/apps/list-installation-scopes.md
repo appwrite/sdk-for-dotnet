@@ -11,4 +11,6 @@ Client client = new Client()
 Apps apps = new Apps(client);
 
 AppScopeList result = await apps.ListInstallationScopes();
+
+
 ```

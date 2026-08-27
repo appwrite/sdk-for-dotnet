@@ -13,5 +13,7 @@ Databases databases = new Databases(client);
 await databases.DeleteAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: ""
-);```
+    key: "<KEY>"
+);
+
+```

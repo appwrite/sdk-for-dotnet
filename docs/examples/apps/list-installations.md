@@ -14,4 +14,6 @@ AppInstallationList result = await apps.ListInstallations(
     appId: "<APP_ID>",
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

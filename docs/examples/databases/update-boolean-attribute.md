@@ -13,8 +13,10 @@ Databases databases = new Databases(client);
 AttributeBoolean result = await databases.UpdateBooleanAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: false,
-    newKey: "" // optional
-);```
+    newKey: "<NEW_KEY>" // optional
+);
+
+```

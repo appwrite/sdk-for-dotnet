@@ -13,4 +13,6 @@ Proxy proxy = new Proxy(client);
 ProxyRuleList result = await proxy.ListRules(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

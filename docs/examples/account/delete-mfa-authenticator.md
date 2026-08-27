@@ -13,4 +13,6 @@ Account account = new Account(client);
 
 await account.DeleteMFAAuthenticator(
     type: AuthenticatorType.Totp
-);```
+);
+
+```

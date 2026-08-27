@@ -93,7 +93,7 @@ namespace Appwrite.Models
         public string ConsoleAccessedAt { get; private set; }
 
         [JsonPropertyName("wafEnabled")]
-        public bool WafEnabled { get; private set; }
+        public bool? WafEnabled { get; private set; }
 
         [JsonPropertyName("billingLimits")]
         public BillingLimits? BillingLimits { get; private set; }
@@ -177,7 +177,7 @@ namespace Appwrite.Models
             List<ProjectProtocol> protocols,
             List<Block> blocks,
             string consoleAccessedAt,
-            bool wafEnabled,
+            bool? wafEnabled,
             BillingLimits? billingLimits,
             bool? oAuth2ServerEnabled,
             string? oAuth2ServerAuthorizationUrl,
@@ -274,7 +274,9 @@ namespace Appwrite.Models
             protocols: map["protocols"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectProtocol.From(map: it)).ToList(),
             blocks: map["blocks"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Block.From(map: it)).ToList(),
             consoleAccessedAt: map["consoleAccessedAt"].ToString(),
-            wafEnabled: (bool)map["wafEnabled"],
+            wafEnabled: map.TryGetValue("wafEnabled", out var boolRaw28) && boolRaw28 != null
+                                        ? (bool?)boolRaw28
+                                        : null,
             billingLimits: map.TryGetValue("billingLimits", out var objectRaw29) && objectRaw29 != null
                                     ? Appwrite.Models.BillingLimits.From(map: objectRaw29 is JsonElement jsonObj29 ? jsonObj29.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw29)
                                     : null,

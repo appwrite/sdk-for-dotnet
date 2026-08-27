@@ -13,7 +13,9 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnLine result = await tablesDB.CreateLineColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: [[1, 2], [3, 4], [5, 6]] // optional
-);```
+);
+
+```

@@ -17,7 +17,9 @@ AttributeRelationship result = await databases.CreateRelationshipAttribute(
     relatedCollectionId: "<RELATED_COLLECTION_ID>",
     type: RelationshipType.OneToOne,
     twoWay: false, // optional
-    key: "", // optional
-    twoWayKey: "", // optional
+    key: "<KEY>", // optional
+    twoWayKey: "<TWO_WAY_KEY>", // optional
     onDelete: RelationMutate.Cascade // optional
-);```
+);
+
+```

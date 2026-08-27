@@ -17,4 +17,6 @@ Provider result = await messaging.UpdateMsg91Provider(
     templateId: "<TEMPLATE_ID>", // optional
     senderId: "<SENDER_ID>", // optional
     authKey: "<AUTH_KEY>" // optional
-);```
+);
+
+```

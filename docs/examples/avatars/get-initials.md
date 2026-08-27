@@ -14,5 +14,7 @@ byte[] result = await avatars.GetInitials(
     name: "<NAME>", // optional
     width: 0, // optional
     height: 0, // optional
-    background: "" // optional
-);```
+    background: "FFFFFF" // optional
+);
+
+```

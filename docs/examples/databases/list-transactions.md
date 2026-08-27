@@ -12,4 +12,6 @@ Databases databases = new Databases(client);
 
 TransactionList result = await databases.ListTransactions(
     queries: new List<string>() // optional
-);```
+);
+
+```

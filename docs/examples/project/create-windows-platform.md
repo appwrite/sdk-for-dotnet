@@ -14,4 +14,6 @@ PlatformWindows result = await project.CreateWindowsPlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     packageIdentifierName: "<PACKAGE_IDENTIFIER_NAME>"
-);```
+);
+
+```

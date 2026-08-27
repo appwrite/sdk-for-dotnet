@@ -14,4 +14,6 @@ TargetList result = await messaging.ListTargets(
     messageId: "<MESSAGE_ID>",
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

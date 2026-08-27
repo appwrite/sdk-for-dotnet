@@ -18,4 +18,6 @@ Target result = await users.CreateTarget(
     identifier: "<IDENTIFIER>",
     providerId: "<PROVIDER_ID>", // optional
     name: "<NAME>" // optional
-);```
+);
+
+```

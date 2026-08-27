@@ -25,10 +25,12 @@ Message result = await messaging.UpdatePush(
     sound: "<SOUND>", // optional
     color: "<COLOR>", // optional
     tag: "<TAG>", // optional
-    badge: 0, // optional
+    badge: 1, // optional
     draft: false, // optional
     scheduledAt: "2020-10-15T06:38:00.000+00:00", // optional
     contentAvailable: false, // optional
     critical: false, // optional
     priority: MessagePriority.Normal // optional
-);```
+);
+
+```

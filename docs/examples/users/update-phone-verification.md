@@ -13,4 +13,6 @@ Users users = new Users(client);
 User result = await users.UpdatePhoneVerification(
     userId: "<USER_ID>",
     phoneVerification: false
-);```
+);
+
+```

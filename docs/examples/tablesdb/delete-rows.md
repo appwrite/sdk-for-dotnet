@@ -15,4 +15,6 @@ await tablesDB.DeleteRows(
     tableId: "<TABLE_ID>",
     queries: new List<string>(), // optional
     transactionId: "<TRANSACTION_ID>" // optional
-);```
+);
+
+```

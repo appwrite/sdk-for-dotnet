@@ -12,4 +12,6 @@ Advisor advisor = new Advisor(client);
 
 await advisor.DeleteReport(
     reportId: "<REPORT_ID>"
-);```
+);
+
+```

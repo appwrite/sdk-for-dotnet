@@ -16,4 +16,6 @@ BackupRestoration result = await backups.CreateRestoration(
     services: new List&lt;BackupServices&gt; { BackupServices.Databases },
     newResourceId: "<NEW_RESOURCE_ID>", // optional
     newResourceName: "<NEW_RESOURCE_NAME>" // optional
-);```
+);
+
+```

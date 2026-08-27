@@ -14,7 +14,9 @@ Databases databases = new Databases(client);
 AttributeRelationship result = await databases.UpdateRelationshipAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: "",
+    key: "<KEY>",
     onDelete: RelationMutate.Cascade, // optional
-    newKey: "" // optional
-);```
+    newKey: "<NEW_KEY>" // optional
+);
+
+```

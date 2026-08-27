@@ -12,4 +12,6 @@ Account account = new Account(client);
 
 Session result = await account.GetSession(
     sessionId: "<SESSION_ID>"
-);```
+);
+
+```

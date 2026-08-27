@@ -12,4 +12,6 @@ TablesDB tablesDB = new TablesDB(client);
 
 DedicatedDatabaseReplicas result = await tablesDB.GetReplicas(
     databaseId: "<DATABASE_ID>"
-);```
+);
+
+```

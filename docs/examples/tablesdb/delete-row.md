@@ -15,4 +15,6 @@ await tablesDB.DeleteRow(
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
     transactionId: "<TRANSACTION_ID>" // optional
-);```
+);
+
+```

@@ -14,4 +14,6 @@ OAuth2X result = await project.UpdateOAuth2X(
     customerKey: "<CUSTOMER_KEY>", // optional
     secretKey: "<SECRET_KEY>", // optional
     enabled: false // optional
-);```
+);
+
+```

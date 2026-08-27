@@ -13,4 +13,6 @@ Account account = new Account(client);
 Token result = await account.CreateRecovery(
     email: "email@example.com",
     url: "https://example.com"
-);```
+);
+
+```

@@ -13,6 +13,7 @@ namespace Appwrite.Enums
 
         public static ProjectKeyScopes ProjectRead => new ProjectKeyScopes("project.read");
         public static ProjectKeyScopes ProjectWrite => new ProjectKeyScopes("project.write");
+        public static ProjectKeyScopes UsageRead => new ProjectKeyScopes("usage.read");
         public static ProjectKeyScopes KeysRead => new ProjectKeyScopes("keys.read");
         public static ProjectKeyScopes KeysWrite => new ProjectKeyScopes("keys.write");
         public static ProjectKeyScopes PlatformsRead => new ProjectKeyScopes("platforms.read");
@@ -52,6 +53,18 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes AttributesWrite => new ProjectKeyScopes("attributes.write");
         public static ProjectKeyScopes DocumentsRead => new ProjectKeyScopes("documents.read");
         public static ProjectKeyScopes DocumentsWrite => new ProjectKeyScopes("documents.write");
+        public static ProjectKeyScopes DocumentsdbRead => new ProjectKeyScopes("documentsdb.read");
+        public static ProjectKeyScopes DocumentsdbWrite => new ProjectKeyScopes("documentsdb.write");
+        public static ProjectKeyScopes DocumentsdbCollectionsRead => new ProjectKeyScopes("documentsdb.collections.read");
+        public static ProjectKeyScopes DocumentsdbCollectionsWrite => new ProjectKeyScopes("documentsdb.collections.write");
+        public static ProjectKeyScopes DocumentsdbDocumentsRead => new ProjectKeyScopes("documentsdb.documents.read");
+        public static ProjectKeyScopes DocumentsdbDocumentsWrite => new ProjectKeyScopes("documentsdb.documents.write");
+        public static ProjectKeyScopes VectorsdbRead => new ProjectKeyScopes("vectorsdb.read");
+        public static ProjectKeyScopes VectorsdbWrite => new ProjectKeyScopes("vectorsdb.write");
+        public static ProjectKeyScopes VectorsdbCollectionsRead => new ProjectKeyScopes("vectorsdb.collections.read");
+        public static ProjectKeyScopes VectorsdbCollectionsWrite => new ProjectKeyScopes("vectorsdb.collections.write");
+        public static ProjectKeyScopes VectorsdbDocumentsRead => new ProjectKeyScopes("vectorsdb.documents.read");
+        public static ProjectKeyScopes VectorsdbDocumentsWrite => new ProjectKeyScopes("vectorsdb.documents.write");
         public static ProjectKeyScopes BucketsRead => new ProjectKeyScopes("buckets.read");
         public static ProjectKeyScopes BucketsWrite => new ProjectKeyScopes("buckets.write");
         public static ProjectKeyScopes FilesRead => new ProjectKeyScopes("files.read");
@@ -104,7 +117,6 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes ArchivesWrite => new ProjectKeyScopes("archives.write");
         public static ProjectKeyScopes RestorationsRead => new ProjectKeyScopes("restorations.read");
         public static ProjectKeyScopes RestorationsWrite => new ProjectKeyScopes("restorations.write");
-        public static ProjectKeyScopes DedicatedDatabasesExecute => new ProjectKeyScopes("dedicatedDatabases.execute");
         public static ProjectKeyScopes DomainsRead => new ProjectKeyScopes("domains.read");
         public static ProjectKeyScopes DomainsWrite => new ProjectKeyScopes("domains.write");
         public static ProjectKeyScopes WafRulesRead => new ProjectKeyScopes("wafRules.read");
@@ -116,6 +128,5 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes Oauth2Read => new ProjectKeyScopes("oauth2.read");
         public static ProjectKeyScopes Oauth2Write => new ProjectKeyScopes("oauth2.write");
         public static ProjectKeyScopes Oauth2Introspect => new ProjectKeyScopes("oauth2.introspect");
-        public static ProjectKeyScopes UsageRead => new ProjectKeyScopes("usage.read");
     }
 }

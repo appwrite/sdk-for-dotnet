@@ -13,4 +13,6 @@ Storage storage = new Storage(client);
 await storage.DeleteFile(
     bucketId: "<BUCKET_ID>",
     fileId: "<FILE_ID>"
-);```
+);
+
+```

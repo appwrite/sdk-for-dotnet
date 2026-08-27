@@ -15,4 +15,6 @@ Project result = await project.UpdateMFAFactorsPolicy(
     email: false, // optional
     phone: false, // optional
     custom: false // optional
-);```
+);
+
+```

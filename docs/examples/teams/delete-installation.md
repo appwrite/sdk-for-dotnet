@@ -13,4 +13,6 @@ Teams teams = new Teams(client);
 await teams.DeleteInstallation(
     teamId: "<TEAM_ID>",
     installationId: "<INSTALLATION_ID>"
-);```
+);
+
+```

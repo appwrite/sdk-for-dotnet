@@ -13,4 +13,6 @@ Webhooks webhooks = new Webhooks(client);
 WebhookList result = await webhooks.List(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

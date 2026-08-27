@@ -15,4 +15,6 @@ User result = await users.CreatePHPassUser(
     email: "email@example.com",
     password: "password",
     name: "<NAME>" // optional
-);```
+);
+
+```

@@ -22,4 +22,6 @@ RowList result = await tablesDB.UpdateRows(
     }, // optional
     queries: new List<string>(), // optional
     transactionId: "<TRANSACTION_ID>" // optional
-);```
+);
+
+```

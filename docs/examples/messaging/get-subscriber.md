@@ -13,4 +13,6 @@ Messaging messaging = new Messaging(client);
 Subscriber result = await messaging.GetSubscriber(
     topicId: "<TOPIC_ID>",
     subscriberId: "<SUBSCRIBER_ID>"
-);```
+);
+
+```

@@ -12,4 +12,6 @@ Apps apps = new Apps(client);
 
 AppSecretPlaintext result = await apps.CreateSecret(
     appId: "<APP_ID>"
-);```
+);
+
+```

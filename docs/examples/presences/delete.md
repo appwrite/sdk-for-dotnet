@@ -12,4 +12,6 @@ Presences presences = new Presences(client);
 
 await presences.Delete(
     presenceId: "<PRESENCE_ID>"
-);```
+);
+
+```

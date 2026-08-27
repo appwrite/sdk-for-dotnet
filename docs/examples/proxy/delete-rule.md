@@ -12,4 +12,6 @@ Proxy proxy = new Proxy(client);
 
 await proxy.DeleteRule(
     ruleId: "<RULE_ID>"
-);```
+);
+
+```

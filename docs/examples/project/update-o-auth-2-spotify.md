@@ -14,4 +14,6 @@ OAuth2Spotify result = await project.UpdateOAuth2Spotify(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional
-);```
+);
+
+```

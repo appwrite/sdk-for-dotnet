@@ -13,4 +13,6 @@ Account account = new Account(client);
 IdentityList result = await account.ListIdentities(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

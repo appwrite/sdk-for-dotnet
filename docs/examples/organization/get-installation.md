@@ -12,4 +12,6 @@ Organization organization = new Organization(client);
 
 AppInstallation result = await organization.GetInstallation(
     installationId: "<INSTALLATION_ID>"
-);```
+);
+
+```

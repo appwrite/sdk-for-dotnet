@@ -16,4 +16,6 @@ Oauth2DeviceAuthorization result = await oauth2.CreateDeviceAuthorization(
     authorization_details: "<AUTHORIZATION_DETAILS>", // optional
     resource: "", // optional
     audience: "<AUDIENCE>" // optional
-);```
+);
+
+```

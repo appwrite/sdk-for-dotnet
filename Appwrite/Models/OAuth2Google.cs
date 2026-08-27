@@ -55,7 +55,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "clientId", ClientId },
             { "clientSecret", ClientSecret },
-            { "prompt", Prompt }
+            { "prompt", Prompt.Select(it => it.Value).ToList() }
         };
     }
 }

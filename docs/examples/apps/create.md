@@ -30,4 +30,6 @@ App result = await apps.Create(
     type: "public", // optional
     deviceFlow: false, // optional
     teamId: "<TEAM_ID>" // optional
-);```
+);
+
+```

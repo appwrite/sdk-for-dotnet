@@ -13,10 +13,12 @@ Databases databases = new Databases(client);
 AttributeBigint result = await databases.UpdateBigIntAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: 0,
     min: 0, // optional
-    max: 0, // optional
-    newKey: "" // optional
-);```
+    max: 1000000, // optional
+    newKey: "<NEW_KEY>" // optional
+);
+
+```

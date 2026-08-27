@@ -12,6 +12,8 @@ Users users = new Users(client);
 
 JWT result = await users.CreateJWT(
     userId: "<USER_ID>",
-    sessionId: "<SESSION_ID>", // optional
+    sessionId: "recent()", // optional
     duration: 0 // optional
-);```
+);
+
+```

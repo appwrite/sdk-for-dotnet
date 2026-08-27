@@ -18,4 +18,6 @@ User result = await users.CreateScryptModifiedUser(
     passwordSaltSeparator: "<PASSWORD_SALT_SEPARATOR>",
     passwordSignerKey: "<PASSWORD_SIGNER_KEY>",
     name: "<NAME>" // optional
-);```
+);
+
+```

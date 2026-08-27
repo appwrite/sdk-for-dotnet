@@ -16,4 +16,6 @@ Variable result = await sites.UpdateVariable(
     key: "<KEY>", // optional
     value: "<VALUE>", // optional
     secret: false // optional
-);```
+);
+
+```

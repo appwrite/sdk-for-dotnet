@@ -12,4 +12,6 @@ Proxy proxy = new Proxy(client);
 
 ProxyRule result = await proxy.UpdateRuleStatus(
     ruleId: "<RULE_ID>"
-);```
+);
+
+```

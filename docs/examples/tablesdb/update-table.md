@@ -18,4 +18,6 @@ Table result = await tablesDB.UpdateTable(
     rowSecurity: false, // optional
     enabled: false, // optional
     purge: false // optional
-);```
+);
+
+```

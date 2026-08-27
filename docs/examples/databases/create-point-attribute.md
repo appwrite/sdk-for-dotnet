@@ -13,7 +13,9 @@ Databases databases = new Databases(client);
 AttributePoint result = await databases.CreatePointAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: [1, 2] // optional
-);```
+);
+
+```

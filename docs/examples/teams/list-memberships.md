@@ -15,4 +15,6 @@ MembershipList result = await teams.ListMemberships(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional
-);```
+);
+
+```

@@ -13,4 +13,6 @@ Apps apps = new Apps(client);
 AppInstallation result = await apps.GetInstallation(
     appId: "<APP_ID>",
     installationId: "<INSTALLATION_ID>"
-);```
+);
+
+```

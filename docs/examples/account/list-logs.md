@@ -13,4 +13,6 @@ Account account = new Account(client);
 LogList result = await account.ListLogs(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

@@ -15,4 +15,6 @@ RowList result = await tablesDB.CreateRows(
     tableId: "<TABLE_ID>",
     rows: new List<object>(),
     transactionId: "<TRANSACTION_ID>" // optional
-);```
+);
+
+```

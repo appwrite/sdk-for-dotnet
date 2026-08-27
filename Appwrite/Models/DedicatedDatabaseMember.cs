@@ -20,6 +20,9 @@ namespace Appwrite.Models
         [JsonPropertyName("status")]
         public string Status { get; private set; }
 
+        [JsonPropertyName("replicating")]
+        public bool? Replicating { get; private set; }
+
         [JsonPropertyName("lagSeconds")]
         public double? LagSeconds { get; private set; }
 
@@ -27,12 +30,14 @@ namespace Appwrite.Models
             string id,
             string role,
             string status,
+            bool? replicating,
             double? lagSeconds
         )
         {
             Id = id;
             Role = role;
             Status = status;
+            Replicating = replicating;
             LagSeconds = lagSeconds;
         }
 
@@ -40,8 +45,11 @@ namespace Appwrite.Models
             id: map["$id"].ToString(),
             role: map["role"].ToString(),
             status: map["status"].ToString(),
-            lagSeconds: map.TryGetValue("lagSeconds", out var numberRaw4) && numberRaw4 != null
-                                    ? Convert.ToDouble(numberRaw4)
+            replicating: map.TryGetValue("replicating", out var boolRaw4) && boolRaw4 != null
+                                        ? (bool?)boolRaw4
+                                        : null,
+            lagSeconds: map.TryGetValue("lagSeconds", out var numberRaw5) && numberRaw5 != null
+                                    ? Convert.ToDouble(numberRaw5)
                                     : null
         );
 
@@ -50,6 +58,7 @@ namespace Appwrite.Models
             { "$id", Id },
             { "role", Role },
             { "status", Status },
+            { "replicating", Replicating },
             { "lagSeconds", LagSeconds }
         };
     }

@@ -24,4 +24,6 @@ Oauth2PAR result = await oauth2.CreatePAR(
     authorization_details: "<AUTHORIZATION_DETAILS>", // optional
     resource: "", // optional
     audience: "<AUDIENCE>" // optional
-);```
+);
+
+```

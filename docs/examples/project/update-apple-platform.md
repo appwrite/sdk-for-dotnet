@@ -14,4 +14,6 @@ PlatformApple result = await project.UpdateApplePlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     bundleIdentifier: "<BUNDLE_IDENTIFIER>"
-);```
+);
+
+```

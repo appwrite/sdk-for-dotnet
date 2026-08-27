@@ -13,4 +13,6 @@ Apps apps = new Apps(client);
 AppKey result = await apps.GetKey(
     appId: "<APP_ID>",
     keyId: "<KEY_ID>"
-);```
+);
+
+```

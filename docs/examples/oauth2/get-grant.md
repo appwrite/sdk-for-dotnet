@@ -12,4 +12,6 @@ Oauth2 oauth2 = new Oauth2(client);
 
 Oauth2Grant result = await oauth2.GetGrant(
     grant_id: "<GRANT_ID>"
-);```
+);
+
+```

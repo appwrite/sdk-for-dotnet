@@ -12,4 +12,6 @@ TablesDB tablesDB = new TablesDB(client);
 
 await tablesDB.Delete(
     databaseId: "<DATABASE_ID>"
-);```
+);
+
+```

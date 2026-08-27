@@ -31,4 +31,6 @@ App result = await apps.Update(
     deviceFlow: false, // optional
     installationScopes: new List<string>(), // optional
     installationRedirectUrl: "https://example.com" // optional
-);```
+);
+
+```

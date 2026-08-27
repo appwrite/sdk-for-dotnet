@@ -17,4 +17,6 @@ User result = await users.CreateSHAUser(
     password: "password",
     passwordVersion: PasswordHash.Sha1, // optional
     name: "<NAME>" // optional
-);```
+);
+
+```

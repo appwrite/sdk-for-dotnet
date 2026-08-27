@@ -16,4 +16,6 @@ User result = await account.UpdatePrefs(
         timezone = "UTC",
         darkTheme = true
     }
-);```
+);
+
+```

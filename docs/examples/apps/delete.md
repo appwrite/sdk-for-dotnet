@@ -12,4 +12,6 @@ Apps apps = new Apps(client);
 
 await apps.Delete(
     appId: "<APP_ID>"
-);```
+);
+
+```

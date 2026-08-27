@@ -13,4 +13,6 @@ Teams teams = new Teams(client);
 Membership result = await teams.GetMembership(
     teamId: "<TEAM_ID>",
     membershipId: "<MEMBERSHIP_ID>"
-);```
+);
+
+```

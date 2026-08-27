@@ -13,8 +13,10 @@ Databases databases = new Databases(client);
 AttributeIp result = await databases.UpdateIpAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
-    default: "",
-    newKey: "" // optional
-);```
+    default: "192.0.2.0",
+    newKey: "<NEW_KEY>" // optional
+);
+
+```

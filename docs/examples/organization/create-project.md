@@ -12,7 +12,9 @@ Client client = new Client()
 Organization organization = new Organization(client);
 
 Project result = await organization.CreateProject(
-    projectId: "",
+    projectId: "<PROJECT_ID>",
     name: "<NAME>",
     region: Region.Fra // optional
-);```
+);
+
+```

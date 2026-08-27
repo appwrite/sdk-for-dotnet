@@ -23,4 +23,6 @@ Row result = await tablesDB.UpdateRow(
     }, // optional
     permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
     transactionId: "<TRANSACTION_ID>" // optional
-);```
+);
+
+```

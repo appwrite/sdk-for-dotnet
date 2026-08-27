@@ -1334,6 +1334,43 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 Hugging Face configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2HuggingFace> UpdateOAuth2HuggingFace(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/huggingface";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2HuggingFace Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2HuggingFace.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2HuggingFace>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Keycloak configuration.
         /// </para>
         /// </summary>
@@ -2310,71 +2347,75 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.OAuth2Yahoo.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue24) && idValue24?.ToString() == "linkedin")
+                if (it.TryGetValue("$id", out var idValue24) && idValue24?.ToString() == "huggingface")
+                {
+                    return Appwrite.Models.OAuth2HuggingFace.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue25) && idValue25?.ToString() == "linkedin")
                 {
                     return Appwrite.Models.OAuth2Linkedin.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue25) && idValue25?.ToString() == "disqus")
+                if (it.TryGetValue("$id", out var idValue26) && idValue26?.ToString() == "disqus")
                 {
                     return Appwrite.Models.OAuth2Disqus.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue26) && idValue26?.ToString() == "amazon")
+                if (it.TryGetValue("$id", out var idValue27) && idValue27?.ToString() == "amazon")
                 {
                     return Appwrite.Models.OAuth2Amazon.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue27) && idValue27?.ToString() == "etsy")
+                if (it.TryGetValue("$id", out var idValue28) && idValue28?.ToString() == "etsy")
                 {
                     return Appwrite.Models.OAuth2Etsy.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue28) && idValue28?.ToString() == "facebook")
+                if (it.TryGetValue("$id", out var idValue29) && idValue29?.ToString() == "facebook")
                 {
                     return Appwrite.Models.OAuth2Facebook.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue29) && idValue29?.ToString() == "tradeshiftBox")
+                if (it.TryGetValue("$id", out var idValue30) && idValue30?.ToString() == "tradeshiftBox")
                 {
                     return Appwrite.Models.OAuth2Tradeshift.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue30) && idValue30?.ToString() == "paypalSandbox")
+                if (it.TryGetValue("$id", out var idValue31) && idValue31?.ToString() == "paypalSandbox")
                 {
                     return Appwrite.Models.OAuth2Paypal.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue31) && idValue31?.ToString() == "gitlab")
+                if (it.TryGetValue("$id", out var idValue32) && idValue32?.ToString() == "gitlab")
                 {
                     return Appwrite.Models.OAuth2Gitlab.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue32) && idValue32?.ToString() == "authentik")
+                if (it.TryGetValue("$id", out var idValue33) && idValue33?.ToString() == "authentik")
                 {
                     return Appwrite.Models.OAuth2Authentik.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue33) && idValue33?.ToString() == "auth0")
+                if (it.TryGetValue("$id", out var idValue34) && idValue34?.ToString() == "auth0")
                 {
                     return Appwrite.Models.OAuth2Auth0.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue34) && idValue34?.ToString() == "fusionauth")
+                if (it.TryGetValue("$id", out var idValue35) && idValue35?.ToString() == "fusionauth")
                 {
                     return Appwrite.Models.OAuth2FusionAuth.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue35) && idValue35?.ToString() == "keycloak")
+                if (it.TryGetValue("$id", out var idValue36) && idValue36?.ToString() == "keycloak")
                 {
                     return Appwrite.Models.OAuth2Keycloak.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue36) && idValue36?.ToString() == "oidc")
+                if (it.TryGetValue("$id", out var idValue37) && idValue37?.ToString() == "oidc")
                 {
                     return Appwrite.Models.OAuth2Oidc.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue37) && idValue37?.ToString() == "apple")
+                if (it.TryGetValue("$id", out var idValue38) && idValue38?.ToString() == "apple")
                 {
                     return Appwrite.Models.OAuth2Apple.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue38) && idValue38?.ToString() == "okta")
+                if (it.TryGetValue("$id", out var idValue39) && idValue39?.ToString() == "okta")
                 {
                     return Appwrite.Models.OAuth2Okta.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue39) && idValue39?.ToString() == "kick")
+                if (it.TryGetValue("$id", out var idValue40) && idValue40?.ToString() == "kick")
                 {
                     return Appwrite.Models.OAuth2Kick.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue40) && idValue40?.ToString() == "microsoft")
+                if (it.TryGetValue("$id", out var idValue41) && idValue41?.ToString() == "microsoft")
                 {
                     return Appwrite.Models.OAuth2Microsoft.From(map: it);
                 }

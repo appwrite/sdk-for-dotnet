@@ -13,4 +13,6 @@ Account account = new Account(client);
 Oauth2ConsentToken result = await account.GetConsentToken(
     consentId: "<CONSENT_ID>",
     tokenId: "<TOKEN_ID>"
-);```
+);
+
+```

@@ -12,4 +12,6 @@ Backups backups = new Backups(client);
 
 BackupRestorationList result = await backups.ListRestorations(
     queries: new List<string>() // optional
-);```
+);
+
+```

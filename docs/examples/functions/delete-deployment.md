@@ -13,4 +13,6 @@ Functions functions = new Functions(client);
 await functions.DeleteDeployment(
     functionId: "<FUNCTION_ID>",
     deploymentId: "<DEPLOYMENT_ID>"
-);```
+);
+
+```

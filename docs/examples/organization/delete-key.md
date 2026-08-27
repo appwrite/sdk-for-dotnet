@@ -12,4 +12,6 @@ Organization organization = new Organization(client);
 
 await organization.DeleteKey(
     keyId: "<KEY_ID>"
-);```
+);
+
+```

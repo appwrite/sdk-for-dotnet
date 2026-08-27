@@ -12,4 +12,6 @@ Webhooks webhooks = new Webhooks(client);
 
 await webhooks.Delete(
     webhookId: "<WEBHOOK_ID>"
-);```
+);
+
+```

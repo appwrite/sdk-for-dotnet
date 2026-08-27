@@ -12,7 +12,9 @@ Client client = new Client()
 Proxy proxy = new Proxy(client);
 
 ProxyInvalidation result = await proxy.CreateInvalidation(
-    domain: "",
+    domain: "example.com",
     type: InvalidationType.Tag,
     reference: "<REFERENCE>" // optional
-);```
+);
+
+```

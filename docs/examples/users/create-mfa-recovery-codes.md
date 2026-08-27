@@ -12,4 +12,6 @@ Users users = new Users(client);
 
 MfaRecoveryCodes result = await users.CreateMFARecoveryCodes(
     userId: "<USER_ID>"
-);```
+);
+
+```

@@ -12,4 +12,6 @@ TablesDB tablesDB = new TablesDB(client);
 
 DatabaseMigrationList result = await tablesDB.ListMigrations(
     databaseId: "<DATABASE_ID>"
-);```
+);
+
+```

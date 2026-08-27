@@ -15,4 +15,6 @@ OAuth2FusionAuth result = await project.UpdateOAuth2FusionAuth(
     clientSecret: "<CLIENT_SECRET>", // optional
     endpoint: "<ENDPOINT>", // optional
     enabled: false // optional
-);```
+);
+
+```

@@ -12,4 +12,6 @@ Messaging messaging = new Messaging(client);
 
 Topic result = await messaging.GetTopic(
     topicId: "<TOPIC_ID>"
-);```
+);
+
+```

@@ -13,10 +13,12 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnVarchar result = await tablesDB.CreateVarcharColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     size: 1,
     required: false,
-    default: "<DEFAULT>", // optional
+    default: "Hello World", // optional
     array: false, // optional
     encrypt: false // optional
-);```
+);
+
+```

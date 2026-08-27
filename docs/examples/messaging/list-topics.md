@@ -14,4 +14,6 @@ TopicList result = await messaging.ListTopics(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional
-);```
+);
+
+```

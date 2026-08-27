@@ -15,4 +15,6 @@ OAuth2Microsoft result = await project.UpdateOAuth2Microsoft(
     applicationSecret: "<APPLICATION_SECRET>", // optional
     tenant: "<TENANT>", // optional
     enabled: false // optional
-);```
+);
+
+```

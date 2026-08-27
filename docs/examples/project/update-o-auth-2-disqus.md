@@ -14,4 +14,6 @@ OAuth2Disqus result = await project.UpdateOAuth2Disqus(
     publicKey: "<PUBLIC_KEY>", // optional
     secretKey: "<SECRET_KEY>", // optional
     enabled: false // optional
-);```
+);
+
+```

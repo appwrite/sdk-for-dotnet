@@ -14,4 +14,6 @@ PlatformLinux result = await project.UpdateLinuxPlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     packageName: "<PACKAGE_NAME>"
-);```
+);
+
+```

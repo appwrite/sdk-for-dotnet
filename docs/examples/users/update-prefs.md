@@ -13,4 +13,6 @@ Users users = new Users(client);
 Preferences result = await users.UpdatePrefs(
     userId: "<USER_ID>",
     prefs: [object]
-);```
+);
+
+```

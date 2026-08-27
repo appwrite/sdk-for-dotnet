@@ -14,4 +14,6 @@ byte[] result = await storage.GetFileView(
     bucketId: "<BUCKET_ID>",
     fileId: "<FILE_ID>",
     token: "<TOKEN>" // optional
-);```
+);
+
+```

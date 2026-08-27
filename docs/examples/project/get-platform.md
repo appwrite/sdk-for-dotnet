@@ -12,4 +12,6 @@ Project project = new Project(client);
 
 object result = await project.GetPlatform(
     platformId: "<PLATFORM_ID>"
-);```
+);
+
+```

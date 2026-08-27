@@ -15,4 +15,6 @@ Provider result = await messaging.CreateFCMProvider(
     name: "<NAME>",
     serviceAccountJSON: [object], // optional
     enabled: false // optional
-);```
+);
+
+```

@@ -2,7 +2,7 @@ namespace Appwrite
 {
     public enum OrderType
     {
-        ASC, 
+        ASC,
         DESC
     }
 }

@@ -15,4 +15,6 @@ SubscriberList result = await messaging.ListSubscribers(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional
-);```
+);
+
+```

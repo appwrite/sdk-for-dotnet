@@ -12,4 +12,6 @@ Teams teams = new Teams(client);
 
 Preferences result = await teams.GetPrefs(
     teamId: "<TEAM_ID>"
-);```
+);
+
+```

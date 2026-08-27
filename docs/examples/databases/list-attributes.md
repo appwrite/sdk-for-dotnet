@@ -15,4 +15,6 @@ AttributeList result = await databases.ListAttributes(
     collectionId: "<COLLECTION_ID>",
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

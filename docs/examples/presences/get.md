@@ -12,4 +12,6 @@ Presences presences = new Presences(client);
 
 Presence result = await presences.Get(
     presenceId: "<PRESENCE_ID>"
-);```
+);
+
+```

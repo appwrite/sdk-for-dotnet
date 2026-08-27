@@ -12,4 +12,6 @@ Graphql graphql = new Graphql(client);
 
 Any result = await graphql.Query(
     query: [object]
-);```
+);
+
+```

@@ -14,4 +14,6 @@ DatabaseMigration result = await tablesDB.CreateMigration(
     databaseId: "<DATABASE_ID>",
     specification: "s-1vcpu-1gb",
     autoCutover: false // optional
-);```
+);
+
+```

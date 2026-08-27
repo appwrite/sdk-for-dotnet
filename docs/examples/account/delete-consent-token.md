@@ -13,4 +13,6 @@ Account account = new Account(client);
 await account.DeleteConsentToken(
     consentId: "<CONSENT_ID>",
     tokenId: "<TOKEN_ID>"
-);```
+);
+
+```

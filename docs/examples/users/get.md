@@ -12,4 +12,6 @@ Users users = new Users(client);
 
 User result = await users.Get(
     userId: "<USER_ID>"
-);```
+);
+
+```

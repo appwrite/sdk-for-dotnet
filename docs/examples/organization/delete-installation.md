@@ -12,4 +12,6 @@ Organization organization = new Organization(client);
 
 await organization.DeleteInstallation(
     installationId: "<INSTALLATION_ID>"
-);```
+);
+
+```

@@ -15,4 +15,6 @@ FileList result = await storage.ListFiles(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional
-);```
+);
+
+```

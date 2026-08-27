@@ -14,4 +14,6 @@ PlatformApple result = await project.CreateApplePlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     bundleIdentifier: "<BUNDLE_IDENTIFIER>"
-);```
+);
+
+```

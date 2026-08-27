@@ -13,4 +13,6 @@ Account account = new Account(client);
 Oauth2ConsentList result = await account.ListConsents(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

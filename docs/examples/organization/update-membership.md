@@ -13,4 +13,6 @@ Organization organization = new Organization(client);
 Membership result = await organization.UpdateMembership(
     membershipId: "<MEMBERSHIP_ID>",
     roles: new List<string>()
-);```
+);
+
+```

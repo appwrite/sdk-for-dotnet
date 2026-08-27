@@ -13,4 +13,6 @@ Apps apps = new Apps(client);
 await apps.DeleteKey(
     appId: "<APP_ID>",
     keyId: "<KEY_ID>"
-);```
+);
+
+```

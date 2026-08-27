@@ -14,4 +14,6 @@ Token result = await account.UpdateRecovery(
     userId: "<USER_ID>",
     secret: "<SECRET>",
     password: "password"
-);```
+);
+
+```

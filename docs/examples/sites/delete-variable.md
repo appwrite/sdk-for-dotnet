@@ -13,4 +13,6 @@ Sites sites = new Sites(client);
 await sites.DeleteVariable(
     siteId: "<SITE_ID>",
     variableId: "<VARIABLE_ID>"
-);```
+);
+
+```

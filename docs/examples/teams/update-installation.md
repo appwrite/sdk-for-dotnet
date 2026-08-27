@@ -14,4 +14,6 @@ AppInstallation result = await teams.UpdateInstallation(
     teamId: "<TEAM_ID>",
     installationId: "<INSTALLATION_ID>",
     authorizationDetails: "<AUTHORIZATION_DETAILS>" // optional
-);```
+);
+
+```

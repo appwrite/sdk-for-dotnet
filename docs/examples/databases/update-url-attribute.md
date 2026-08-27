@@ -13,8 +13,10 @@ Databases databases = new Databases(client);
 AttributeUrl result = await databases.UpdateUrlAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: "https://example.com",
-    newKey: "" // optional
-);```
+    newKey: "<NEW_KEY>" // optional
+);
+
+```

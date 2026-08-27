@@ -13,4 +13,6 @@ Account account = new Account(client);
 
 MfaChallenge result = await account.CreateMFAChallenge(
     factor: AuthenticationFactor.Email
-);```
+);
+
+```

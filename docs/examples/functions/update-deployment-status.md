@@ -13,4 +13,6 @@ Functions functions = new Functions(client);
 Deployment result = await functions.UpdateDeploymentStatus(
     functionId: "<FUNCTION_ID>",
     deploymentId: "<DEPLOYMENT_ID>"
-);```
+);
+
+```

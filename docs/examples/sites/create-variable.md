@@ -16,4 +16,6 @@ Variable result = await sites.CreateVariable(
     key: "<KEY>",
     value: "<VALUE>",
     secret: false // optional
-);```
+);
+
+```

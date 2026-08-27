@@ -31,6 +31,7 @@ namespace Appwrite.Enums
         public static ProjectOAuthProviderId Github => new ProjectOAuthProviderId("github");
         public static ProjectOAuthProviderId Gitlab => new ProjectOAuthProviderId("gitlab");
         public static ProjectOAuthProviderId Google => new ProjectOAuthProviderId("google");
+        public static ProjectOAuthProviderId Huggingface => new ProjectOAuthProviderId("huggingface");
         public static ProjectOAuthProviderId Keycloak => new ProjectOAuthProviderId("keycloak");
         public static ProjectOAuthProviderId Kick => new ProjectOAuthProviderId("kick");
         public static ProjectOAuthProviderId Linkedin => new ProjectOAuthProviderId("linkedin");

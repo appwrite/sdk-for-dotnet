@@ -12,4 +12,6 @@ Apps apps = new Apps(client);
 
 await apps.DeleteTokens(
     appId: "<APP_ID>"
-);```
+);
+
+```

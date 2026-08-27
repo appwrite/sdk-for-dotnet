@@ -13,4 +13,6 @@ Teams teams = new Teams(client);
 AppInstallation result = await teams.GetInstallation(
     teamId: "<TEAM_ID>",
     installationId: "<INSTALLATION_ID>"
-);```
+);
+
+```

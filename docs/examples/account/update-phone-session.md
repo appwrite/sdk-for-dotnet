@@ -13,4 +13,6 @@ Account account = new Account(client);
 Session result = await account.UpdatePhoneSession(
     userId: "<USER_ID>",
     secret: "<SECRET>"
-);```
+);
+
+```

@@ -14,4 +14,6 @@ OAuth2Stripe result = await project.UpdateOAuth2Stripe(
     clientId: "<CLIENT_ID>", // optional
     apiSecretKey: "<API_SECRET_KEY>", // optional
     enabled: false // optional
-);```
+);
+
+```

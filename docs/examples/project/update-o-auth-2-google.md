@@ -16,4 +16,6 @@ OAuth2Google result = await project.UpdateOAuth2Google(
     clientSecret: "<CLIENT_SECRET>", // optional
     prompt: new List&lt;ProjectOAuth2GooglePrompt&gt; { ProjectOAuth2GooglePrompt.None }, // optional
     enabled: false // optional
-);```
+);
+
+```

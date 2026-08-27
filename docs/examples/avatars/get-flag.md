@@ -16,4 +16,6 @@ byte[] result = await avatars.GetFlag(
     width: 0, // optional
     height: 0, // optional
     quality: -1 // optional
-);```
+);
+
+```
