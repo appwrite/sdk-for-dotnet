@@ -21,4 +21,6 @@ Oauth2Token result = await oauth2.CreateToken(
     redirect_uri: "https://example.com", // optional
     resource: "", // optional
     audience: "<AUDIENCE>" // optional
-);```
+);
+
+```

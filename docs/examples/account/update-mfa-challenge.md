@@ -13,4 +13,6 @@ Account account = new Account(client);
 Session result = await account.UpdateMFAChallenge(
     challengeId: "<CHALLENGE_ID>",
     otp: "<OTP>"
-);```
+);
+
+```

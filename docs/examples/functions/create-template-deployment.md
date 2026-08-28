@@ -19,4 +19,6 @@ Deployment result = await functions.CreateTemplateDeployment(
     type: TemplateReferenceType.Commit,
     reference: "<REFERENCE>",
     activate: false // optional
-);```
+);
+
+```

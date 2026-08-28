@@ -12,4 +12,6 @@ Databases databases = new Databases(client);
 
 Transaction result = await databases.GetTransaction(
     transactionId: "<TRANSACTION_ID>"
-);```
+);
+
+```

@@ -12,7 +12,7 @@ Webhooks webhooks = new Webhooks(client);
 
 Webhook result = await webhooks.Create(
     webhookId: "<WEBHOOK_ID>",
-    url: "",
+    url: "https://example.com/webhook",
     name: "<NAME>",
     events: new List<string>(),
     enabled: false, // optional
@@ -20,4 +20,6 @@ Webhook result = await webhooks.Create(
     authUsername: "<AUTH_USERNAME>", // optional
     authPassword: "password", // optional
     secret: "<SECRET>" // optional
-);```
+);
+
+```

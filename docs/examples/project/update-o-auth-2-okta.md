@@ -13,7 +13,9 @@ Project project = new Project(client);
 OAuth2Okta result = await project.UpdateOAuth2Okta(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
-    domain: "", // optional
+    domain: "example.com", // optional
     authorizationServerId: "<AUTHORIZATION_SERVER_ID>", // optional
     enabled: false // optional
-);```
+);
+
+```

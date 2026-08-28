@@ -14,4 +14,6 @@ OAuth2Appwrite result = await project.UpdateOAuth2Appwrite(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional
-);```
+);
+
+```

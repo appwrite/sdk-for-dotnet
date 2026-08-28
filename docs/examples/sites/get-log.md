@@ -13,4 +13,6 @@ Sites sites = new Sites(client);
 Execution result = await sites.GetLog(
     siteId: "<SITE_ID>",
     logId: "<LOG_ID>"
-);```
+);
+
+```

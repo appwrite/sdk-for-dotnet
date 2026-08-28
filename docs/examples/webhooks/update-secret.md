@@ -13,4 +13,6 @@ Webhooks webhooks = new Webhooks(client);
 Webhook result = await webhooks.UpdateSecret(
     webhookId: "<WEBHOOK_ID>",
     secret: "<SECRET>" // optional
-);```
+);
+
+```

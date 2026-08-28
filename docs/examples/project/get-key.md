@@ -12,4 +12,6 @@ Project project = new Project(client);
 
 Key result = await project.GetKey(
     keyId: "<KEY_ID>"
-);```
+);
+
+```

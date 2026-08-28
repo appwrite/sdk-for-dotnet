@@ -12,4 +12,6 @@ Activities activities = new Activities(client);
 
 ActivityEvent result = await activities.GetEvent(
     eventId: "<EVENT_ID>"
-);```
+);
+
+```

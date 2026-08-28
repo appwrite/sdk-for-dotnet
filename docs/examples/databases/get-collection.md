@@ -13,4 +13,6 @@ Databases databases = new Databases(client);
 Collection result = await databases.GetCollection(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>"
-);```
+);
+
+```

@@ -14,4 +14,6 @@ OAuth2Facebook result = await project.UpdateOAuth2Facebook(
     appId: "<APP_ID>", // optional
     appSecret: "<APP_SECRET>", // optional
     enabled: false // optional
-);```
+);
+
+```

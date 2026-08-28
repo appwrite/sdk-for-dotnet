@@ -12,4 +12,6 @@ Account account = new Account(client);
 
 Token result = await account.CreateVerification(
     url: "https://example.com"
-);```
+);
+
+```

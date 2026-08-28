@@ -15,4 +15,6 @@ User result = await account.Create(
     email: "email@example.com",
     password: "password",
     name: "<NAME>" // optional
-);```
+);
+
+```

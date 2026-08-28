@@ -12,4 +12,6 @@ Organization organization = new Organization(client);
 
 Key result = await organization.GetKey(
     keyId: "<KEY_ID>"
-);```
+);
+
+```

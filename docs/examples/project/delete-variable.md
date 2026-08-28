@@ -12,4 +12,6 @@ Project project = new Project(client);
 
 await project.DeleteVariable(
     variableId: "<VARIABLE_ID>"
-);```
+);
+
+```

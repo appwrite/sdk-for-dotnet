@@ -11,4 +11,6 @@ Client client = new Client()
 Locale locale = new Locale(client);
 
 CountryList result = await locale.ListCountriesEU();
+
+
 ```

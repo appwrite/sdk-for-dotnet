@@ -13,5 +13,7 @@ TablesDB tablesDB = new TablesDB(client);
 object result = await tablesDB.GetColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: ""
-);```
+    key: "<KEY>"
+);
+
+```

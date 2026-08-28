@@ -18,4 +18,6 @@ Presence result = await presences.Update(
     metadata: [object], // optional
     permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
     purge: false // optional
-);```
+);
+
+```

@@ -13,4 +13,6 @@ Databases databases = new Databases(client);
 await databases.DeleteCollection(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>"
-);```
+);
+
+```

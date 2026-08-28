@@ -17,4 +17,6 @@ Provider result = await messaging.UpdateTextmagicProvider(
     username: "<USERNAME>", // optional
     apiKey: "<API_KEY>", // optional
     from: "<FROM>" // optional
-);```
+);
+
+```

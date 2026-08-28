@@ -14,4 +14,6 @@ OAuth2Github result = await project.UpdateOAuth2GitHub(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional
-);```
+);
+
+```

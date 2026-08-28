@@ -14,4 +14,6 @@ PlatformAndroid result = await project.CreateAndroidPlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     applicationId: "<APPLICATION_ID>"
-);```
+);
+
+```

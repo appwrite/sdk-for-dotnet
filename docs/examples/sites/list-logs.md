@@ -14,4 +14,6 @@ ExecutionList result = await sites.ListLogs(
     siteId: "<SITE_ID>",
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

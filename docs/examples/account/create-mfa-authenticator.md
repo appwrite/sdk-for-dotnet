@@ -13,4 +13,6 @@ Account account = new Account(client);
 
 MfaType result = await account.CreateMFAAuthenticator(
     type: AuthenticatorType.Totp
-);```
+);
+
+```

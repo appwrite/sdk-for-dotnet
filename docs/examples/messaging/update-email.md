@@ -23,4 +23,6 @@ Message result = await messaging.UpdateEmail(
     bcc: new List<string>(), // optional
     scheduledAt: "2020-10-15T06:38:00.000+00:00", // optional
     attachments: new List<string>() // optional
-);```
+);
+
+```

@@ -14,4 +14,6 @@ Topic result = await messaging.UpdateTopic(
     topicId: "<TOPIC_ID>",
     name: "<NAME>", // optional
     subscribe: ["any"] // optional
-);```
+);
+
+```

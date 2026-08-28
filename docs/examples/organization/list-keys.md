@@ -13,4 +13,6 @@ Organization organization = new Organization(client);
 KeyList result = await organization.ListKeys(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

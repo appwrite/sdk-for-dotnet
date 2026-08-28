@@ -13,7 +13,9 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnPoint result = await tablesDB.CreatePointColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: [1, 2] // optional
-);```
+);
+
+```

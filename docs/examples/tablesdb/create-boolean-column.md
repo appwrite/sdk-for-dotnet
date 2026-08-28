@@ -13,8 +13,10 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnBoolean result = await tablesDB.CreateBooleanColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: false, // optional
     array: false // optional
-);```
+);
+
+```

@@ -25,4 +25,6 @@ Oauth2Authorize result = await oauth2.Authorize(
     resource: "", // optional
     audience: "<AUDIENCE>", // optional
     request_uri: "<REQUEST_URI>" // optional
-);```
+);
+
+```

@@ -15,4 +15,6 @@ await databases.DeleteDocument(
     collectionId: "<COLLECTION_ID>",
     documentId: "<DOCUMENT_ID>",
     transactionId: "<TRANSACTION_ID>" // optional
-);```
+);
+
+```

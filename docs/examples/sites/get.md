@@ -12,4 +12,6 @@ Sites sites = new Sites(client);
 
 Site result = await sites.Get(
     siteId: "<SITE_ID>"
-);```
+);
+
+```

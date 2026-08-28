@@ -89,6 +89,7 @@ namespace Appwrite.Enums
         public static BuildRuntime Bun11 => new BuildRuntime("bun-1.1");
         public static BuildRuntime Bun12 => new BuildRuntime("bun-1.2");
         public static BuildRuntime Bun13 => new BuildRuntime("bun-1.3");
+        public static BuildRuntime Bun14 => new BuildRuntime("bun-1.4");
         public static BuildRuntime Go123 => new BuildRuntime("go-1.23");
         public static BuildRuntime Go124 => new BuildRuntime("go-1.24");
         public static BuildRuntime Go125 => new BuildRuntime("go-1.25");

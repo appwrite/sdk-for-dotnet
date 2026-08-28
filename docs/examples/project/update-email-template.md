@@ -20,4 +20,6 @@ EmailTemplate result = await project.UpdateEmailTemplate(
     senderEmail: "email@example.com", // optional
     replyToEmail: "email@example.com", // optional
     replyToName: "<REPLY_TO_NAME>" // optional
-);```
+);
+
+```

@@ -13,4 +13,6 @@ TablesDB tablesDB = new TablesDB(client);
 await tablesDB.DeleteMigration(
     databaseId: "<DATABASE_ID>",
     migrationId: "<MIGRATION_ID>"
-);```
+);
+
+```

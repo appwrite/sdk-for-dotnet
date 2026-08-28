@@ -12,4 +12,6 @@ Activities activities = new Activities(client);
 
 ActivityEventList result = await activities.ListEvents(
     queries: new List<string>() // optional
-);```
+);
+
+```

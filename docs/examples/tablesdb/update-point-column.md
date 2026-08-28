@@ -13,8 +13,10 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnPoint result = await tablesDB.UpdatePointColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: [1, 2], // optional
-    newKey: "" // optional
-);```
+    newKey: "<NEW_KEY>" // optional
+);
+
+```

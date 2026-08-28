@@ -12,4 +12,6 @@ Sites sites = new Sites(client);
 
 await sites.Delete(
     siteId: "<SITE_ID>"
-);```
+);
+
+```

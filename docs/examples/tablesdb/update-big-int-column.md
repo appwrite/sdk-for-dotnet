@@ -13,10 +13,12 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnBigint result = await tablesDB.UpdateBigIntColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: 0,
     min: 0, // optional
-    max: 0, // optional
-    newKey: "" // optional
-);```
+    max: 1000000, // optional
+    newKey: "<NEW_KEY>" // optional
+);
+
+```

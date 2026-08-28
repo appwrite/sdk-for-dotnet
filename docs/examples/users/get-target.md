@@ -13,4 +13,6 @@ Users users = new Users(client);
 Target result = await users.GetTarget(
     userId: "<USER_ID>",
     targetId: "<TARGET_ID>"
-);```
+);
+
+```

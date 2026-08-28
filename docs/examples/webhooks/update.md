@@ -13,10 +13,12 @@ Webhooks webhooks = new Webhooks(client);
 Webhook result = await webhooks.Update(
     webhookId: "<WEBHOOK_ID>",
     name: "<NAME>",
-    url: "",
+    url: "https://example.com/webhook",
     events: new List<string>(),
     enabled: false, // optional
     tls: false, // optional
     authUsername: "<AUTH_USERNAME>", // optional
     authPassword: "password" // optional
-);```
+);
+
+```

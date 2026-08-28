@@ -12,4 +12,6 @@ Users users = new Users(client);
 
 await users.DeleteIdentity(
     identityId: "<IDENTITY_ID>"
-);```
+);
+
+```

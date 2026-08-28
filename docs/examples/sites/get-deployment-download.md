@@ -16,4 +16,6 @@ byte[] result = await sites.GetDeploymentDownload(
     deploymentId: "<DEPLOYMENT_ID>",
     type: DeploymentDownloadType.Source, // optional
     token: "<TOKEN>" // optional
-);```
+);
+
+```

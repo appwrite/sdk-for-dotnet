@@ -12,4 +12,6 @@ Apps apps = new Apps(client);
 
 AppKey result = await apps.CreateKey(
     appId: "<APP_ID>"
-);```
+);
+
+```

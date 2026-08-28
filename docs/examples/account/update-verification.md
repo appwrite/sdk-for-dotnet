@@ -13,4 +13,6 @@ Account account = new Account(client);
 Token result = await account.UpdateVerification(
     userId: "<USER_ID>",
     secret: "<SECRET>"
-);```
+);
+
+```

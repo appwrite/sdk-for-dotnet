@@ -15,4 +15,6 @@ DocumentList result = await databases.CreateDocuments(
     collectionId: "<COLLECTION_ID>",
     documents: new List<object>(),
     transactionId: "<TRANSACTION_ID>" // optional
-);```
+);
+
+```

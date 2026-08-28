@@ -13,4 +13,6 @@ Organization organization = new Organization(client);
 AppInstallationList result = await organization.ListInstallations(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

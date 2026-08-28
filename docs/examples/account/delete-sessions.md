@@ -11,4 +11,6 @@ Client client = new Client()
 Account account = new Account(client);
 
 await account.DeleteSessions();
+
+
 ```

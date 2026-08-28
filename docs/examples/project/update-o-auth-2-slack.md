@@ -14,4 +14,6 @@ OAuth2Slack result = await project.UpdateOAuth2Slack(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional
-);```
+);
+
+```

@@ -12,4 +12,6 @@ Organization organization = new Organization(client);
 
 await organization.DeleteMembership(
     membershipId: "<MEMBERSHIP_ID>"
-);```
+);
+
+```

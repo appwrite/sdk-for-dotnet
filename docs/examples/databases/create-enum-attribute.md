@@ -13,9 +13,11 @@ Databases databases = new Databases(client);
 AttributeEnum result = await databases.CreateEnumAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: "",
-    elements: new List<string>(),
+    key: "<KEY>",
+    elements: ["active", "inactive"],
     required: false,
-    default: "<DEFAULT>", // optional
+    default: "active", // optional
     array: false // optional
-);```
+);
+
+```

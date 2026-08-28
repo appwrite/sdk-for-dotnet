@@ -12,4 +12,6 @@ Account account = new Account(client);
 
 User result = await account.UpdateMFA(
     mfa: false
-);```
+);
+
+```

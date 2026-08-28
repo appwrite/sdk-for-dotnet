@@ -15,7 +15,7 @@ Provider result = await messaging.CreateSMTPProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>",
     host: "<HOST>",
-    port: 1, // optional
+    port: 587, // optional
     username: "<USERNAME>", // optional
     password: "password", // optional
     encryption: SmtpEncryption.None, // optional
@@ -26,4 +26,6 @@ Provider result = await messaging.CreateSMTPProvider(
     replyToName: "<REPLY_TO_NAME>", // optional
     replyToEmail: "email@example.com", // optional
     enabled: false // optional
-);```
+);
+
+```

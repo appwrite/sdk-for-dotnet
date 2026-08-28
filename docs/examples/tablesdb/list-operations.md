@@ -12,7 +12,9 @@ TablesDB tablesDB = new TablesDB(client);
 
 DedicatedDatabaseOperationList result = await tablesDB.ListOperations(
     databaseId: "<DATABASE_ID>",
-    status: "running", // optional
+    status: "queued", // optional
     limit: 1, // optional
     offset: 0 // optional
-);```
+);
+
+```

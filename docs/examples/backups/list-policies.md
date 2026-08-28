@@ -12,4 +12,6 @@ Backups backups = new Backups(client);
 
 BackupPolicyList result = await backups.ListPolicies(
     queries: new List<string>() // optional
-);```
+);
+
+```

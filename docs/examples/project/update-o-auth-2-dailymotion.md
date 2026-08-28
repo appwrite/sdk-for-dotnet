@@ -14,4 +14,6 @@ OAuth2Dailymotion result = await project.UpdateOAuth2Dailymotion(
     apiKey: "<API_KEY>", // optional
     apiSecret: "<API_SECRET>", // optional
     enabled: false // optional
-);```
+);
+
+```

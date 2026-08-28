@@ -13,4 +13,6 @@ Sites sites = new Sites(client);
 await sites.DeleteLog(
     siteId: "<SITE_ID>",
     logId: "<LOG_ID>"
-);```
+);
+
+```

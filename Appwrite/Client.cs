@@ -69,18 +69,19 @@ namespace Appwrite
             _http = http ?? new HttpClient();
 
             _httpForRedirect = httpForRedirect ?? new HttpClient(
-                new HttpClientHandler(){
+                new HttpClientHandler()
+                {
                     AllowAutoRedirect = false
                 });
 
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent" , $"AppwriteDotNetSDK/7.0.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
+                { "user-agent", $"AppwriteDotNetSDK/8.0.0-rc.1 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "7.0.0"},
+                { "x-sdk-version", "8.0.0-rc.1"},
                 { "X-Appwrite-Response-Format", "1.9.6" }
             };
 
@@ -108,7 +109,8 @@ namespace Appwrite
 
         public Client SetEndpoint(string endpoint)
         {
-            if (!endpoint.StartsWith("http://") && !endpoint.StartsWith("https://")) {
+            if (!endpoint.StartsWith("http://") && !endpoint.StartsWith("https://"))
+            {
                 throw new AppwriteException("Invalid endpoint URL: " + endpoint);
             }
 
@@ -117,14 +119,16 @@ namespace Appwrite
         }
 
         /// <summary>Your project ID</summary>
-        public Client SetProject(string value) {
+        public Client SetProject(string value)
+        {
             _config["project"] = value;
 
             return this;
         }
 
         /// <summary>Your secret API key</summary>
-        public Client SetKey(string value) {
+        public Client SetKey(string value)
+        {
             _config["key"] = value;
             AddHeader("X-Appwrite-Key", value);
 
@@ -132,7 +136,8 @@ namespace Appwrite
         }
 
         /// <summary>Your organization ID</summary>
-        public Client SetOrganization(string value) {
+        public Client SetOrganization(string value)
+        {
             _config["organization"] = value;
             AddHeader("X-Appwrite-Organization", value);
 
@@ -140,7 +145,8 @@ namespace Appwrite
         }
 
         /// <summary>Your secret JSON Web Token</summary>
-        public Client SetJWT(string value) {
+        public Client SetJWT(string value)
+        {
             _config["jWT"] = value;
             AddHeader("X-Appwrite-JWT", value);
 
@@ -148,14 +154,16 @@ namespace Appwrite
         }
 
         /// <summary>The OAuth access token to authenticate with</summary>
-        public Client SetBearer(string value) {
+        public Client SetBearer(string value)
+        {
             _config["bearer"] = value;
             AddHeader("Authorization", "Bearer " + value);
 
             return this;
         }
 
-        public Client SetLocale(string value) {
+        public Client SetLocale(string value)
+        {
             _config["locale"] = value;
             AddHeader("X-Appwrite-Locale", value);
 
@@ -163,7 +171,8 @@ namespace Appwrite
         }
 
         /// <summary>The user session to authenticate with</summary>
-        public Client SetSession(string value) {
+        public Client SetSession(string value)
+        {
             _config["session"] = value;
             AddHeader("X-Appwrite-Session", value);
 
@@ -171,7 +180,8 @@ namespace Appwrite
         }
 
         /// <summary>The user agent string of the client that made the request</summary>
-        public Client SetForwardedUserAgent(string value) {
+        public Client SetForwardedUserAgent(string value)
+        {
             _config["forwardedUserAgent"] = value;
             AddHeader("X-Forwarded-User-Agent", value);
 
@@ -179,7 +189,8 @@ namespace Appwrite
         }
 
         /// <summary>Your secret dev API key</summary>
-        public Client SetDevKey(string value) {
+        public Client SetDevKey(string value)
+        {
             _config["devKey"] = value;
             AddHeader("X-Appwrite-Dev-Key", value);
 
@@ -187,7 +198,8 @@ namespace Appwrite
         }
 
         /// <summary>The user cookie to authenticate with. Used by SDKs that forward an incoming Cookie header in server-side runtimes.</summary>
-        public Client SetCookie(string value) {
+        public Client SetCookie(string value)
+        {
             _config["cookie"] = value;
             AddHeader("Cookie", value);
 
@@ -195,7 +207,8 @@ namespace Appwrite
         }
 
         /// <summary>Impersonate a user by ID</summary>
-        public Client SetImpersonateUserId(string value) {
+        public Client SetImpersonateUserId(string value)
+        {
             _config["impersonateUserId"] = value;
             AddHeader("X-Appwrite-Impersonate-User-Id", value);
 
@@ -203,7 +216,8 @@ namespace Appwrite
         }
 
         /// <summary>Impersonate a user by email</summary>
-        public Client SetImpersonateUserEmail(string value) {
+        public Client SetImpersonateUserEmail(string value)
+        {
             _config["impersonateUserEmail"] = value;
             AddHeader("X-Appwrite-Impersonate-User-Email", value);
 
@@ -211,7 +225,8 @@ namespace Appwrite
         }
 
         /// <summary>Impersonate a user by phone</summary>
-        public Client SetImpersonateUserPhone(string value) {
+        public Client SetImpersonateUserPhone(string value)
+        {
             _config["impersonateUserPhone"] = value;
             AddHeader("X-Appwrite-Impersonate-User-Phone", value);
 
@@ -246,7 +261,7 @@ namespace Appwrite
                 new HttpMethod(method),
                 _endpoint + path + queryString);
 
-            if (headers.TryGetValue("content-type", out var contentType) && 
+            if (headers.TryGetValue("content-type", out var contentType) &&
                 "multipart/form-data".Equals(contentType, StringComparison.OrdinalIgnoreCase))
             {
                 var form = new MultipartFormDataContent();
@@ -293,7 +308,8 @@ namespace Appwrite
                 }
                 else
                 {
-                    if (request.Headers.Contains(header.Key)) {
+                    if (request.Headers.Contains(header.Key))
+                    {
                         request.Headers.Remove(header.Key);
                     }
                     request.Headers.Add(header.Key, header.Value);
@@ -312,7 +328,8 @@ namespace Appwrite
                 }
                 else
                 {
-                    if (request.Headers.Contains(header.Key)) {
+                    if (request.Headers.Contains(header.Key))
+                    {
                         request.Headers.Remove(header.Key);
                     }
                     request.Headers.Add(header.Key, header.Value);
@@ -333,7 +350,8 @@ namespace Appwrite
             var response = await _httpForRedirect.SendAsync(request);
             var code = (int)response.StatusCode;
 
-            if (code >= 400) {
+            if (code >= 400)
+            {
                 var text = await response.Content.ReadAsStringAsync();
                 var message = "";
                 var type = "";
@@ -344,8 +362,9 @@ namespace Appwrite
                     contentType = contentTypes.FirstOrDefault() ?? string.Empty;
                 }
 
-                if (contentType.Contains("application/json")) {
-                    try 
+                if (contentType.Contains("application/json"))
+                {
+                    try
                     {
                         using var errorDoc = JsonDocument.Parse(text);
                         message = errorDoc.RootElement.GetProperty("message").GetString() ?? "";
@@ -358,7 +377,9 @@ namespace Appwrite
                     {
                         message = text;
                     }
-                } else {
+                }
+                else
+                {
                     message = text;
                 }
 
@@ -405,13 +426,15 @@ namespace Appwrite
 
             var isJson = contentType.Contains("application/json");
 
-            if (code >= 400) {
+            if (code >= 400)
+            {
                 var text = await response.Content.ReadAsStringAsync();
                 var message = "";
                 var type = "";
 
-                if (isJson) {
-                    try 
+                if (isJson)
+                {
+                    try
                     {
                         using var errorDoc = JsonDocument.Parse(text);
                         message = errorDoc.RootElement.GetProperty("message").GetString() ?? "";
@@ -424,7 +447,9 @@ namespace Appwrite
                     {
                         message = text;
                     }
-                } else {
+                }
+                else
+                {
                     message = text;
                 }
 
@@ -463,16 +488,16 @@ namespace Appwrite
         {
             if (string.IsNullOrEmpty(paramName))
                 throw new ArgumentException("Parameter name cannot be null or empty", nameof(paramName));
-                
+
             if (!parameters.ContainsKey(paramName))
                 throw new ArgumentException($"Parameter {paramName} not found", nameof(paramName));
-                
+
             var input = parameters[paramName] as InputFile;
             if (input == null)
                 throw new ArgumentException($"Parameter {paramName} must be an InputFile", nameof(paramName));
-                
+
             var size = 0L;
-            switch(input.SourceType)
+            switch (input.SourceType)
             {
                 case "path":
                     var info = new FileInfo(input.Path);
@@ -490,7 +515,7 @@ namespace Appwrite
                         throw new InvalidOperationException("Byte array data is null");
                     size = bytes.Length;
                     break;
-            };
+            }
 
             var offset = 0L;
             var buffer = new byte[Math.Min(size, ChunkSize)];
@@ -498,7 +523,7 @@ namespace Appwrite
 
             if (size < ChunkSize)
             {
-                switch(input.SourceType)
+                switch (input.SourceType)
                 {
                     case "path":
                         buffer = System.IO.File.ReadAllBytes(input.Path);
@@ -534,14 +559,18 @@ namespace Appwrite
 
             var uploadId = string.Empty;
 
-            if (!string.IsNullOrEmpty(idParamName))
+            if (idParamName is not null
+                && idParamName.Length > 0
+                && parameters.TryGetValue(idParamName, out var uploadIdValue)
+                && uploadIdValue != null)
             {
+                uploadId = uploadIdValue.ToString() ?? string.Empty;
                 try
                 {
                     // Make a request to check if a file already exists
                     var current = await Call<Dictionary<string, object?>>(
                         method: "GET",
-                        path: $"{path}/{parameters[idParamName!]}",
+                        path: $"{path}/{uploadId}",
                         new Dictionary<string, string> { { "content-type", "application/json" } },
                         parameters: new Dictionary<string, object?>()
                     );
@@ -550,7 +579,6 @@ namespace Appwrite
                         offset = Convert.ToInt64(chunksUploadedValue) * ChunkSize;
                     }
                     result = current;
-                    uploadId = parameters[idParamName!]?.ToString() ?? string.Empty;
                 }
                 catch
                 {
@@ -565,7 +593,7 @@ namespace Appwrite
                 var length = (int)(end - start);
                 var chunk = new byte[length];
 
-                switch(input.SourceType)
+                switch (input.SourceType)
                 {
                     case "path":
                         using (var chunkStream = System.IO.File.OpenRead(input.Path))
@@ -744,7 +772,7 @@ namespace Appwrite
             // Convert to non-nullable dictionary for converter
             var nonNullableResult = result.Where(kvp => kvp.Value != null)
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value!);
-            
+
             return converter(nonNullableResult);
         }
     }

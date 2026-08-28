@@ -13,8 +13,10 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnEmail result = await tablesDB.CreateEmailColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: "email@example.com", // optional
     array: false // optional
-);```
+);
+
+```

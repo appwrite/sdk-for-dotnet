@@ -26,4 +26,6 @@ Provider result = await messaging.UpdateSMTPProvider(
     replyToName: "<REPLY_TO_NAME>", // optional
     replyToEmail: "<REPLY_TO_EMAIL>", // optional
     enabled: false // optional
-);```
+);
+
+```

@@ -30,7 +30,7 @@ namespace Appwrite.Models
         public List<string> Scopes { get; private set; }
 
         [JsonPropertyName("authorizationDetails")]
-        public object AuthorizationDetails { get; private set; }
+        public List<object> AuthorizationDetails { get; private set; }
 
         [JsonPropertyName("createdById")]
         public string CreatedById { get; private set; }
@@ -48,7 +48,7 @@ namespace Appwrite.Models
             string appId,
             string teamId,
             List<string> scopes,
-            object authorizationDetails,
+            List<object> authorizationDetails,
             string createdById,
             string createdByName,
             string? lastAccessedAt
@@ -73,7 +73,7 @@ namespace Appwrite.Models
             appId: map["appId"].ToString(),
             teamId: map["teamId"].ToString(),
             scopes: map["scopes"].ConvertToList<string>(),
-            authorizationDetails: map["authorizationDetails"],
+            authorizationDetails: map["authorizationDetails"].ConvertToList<object>(),
             createdById: map["createdById"].ToString(),
             createdByName: map["createdByName"].ToString(),
             lastAccessedAt: map.TryGetValue("lastAccessedAt", out var lastAccessedAt) ? lastAccessedAt?.ToString() : null

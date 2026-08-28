@@ -15,4 +15,6 @@ OAuth2Gitlab result = await project.UpdateOAuth2Gitlab(
     secret: "<SECRET>", // optional
     endpoint: "https://example.com", // optional
     enabled: false // optional
-);```
+);
+
+```

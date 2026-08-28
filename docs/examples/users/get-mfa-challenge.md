@@ -13,4 +13,6 @@ Users users = new Users(client);
 MfaChallengeSecret result = await users.GetMFAChallenge(
     userId: "<USER_ID>",
     challengeId: "<CHALLENGE_ID>"
-);```
+);
+
+```

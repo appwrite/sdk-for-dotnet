@@ -170,6 +170,9 @@ namespace Appwrite.Models
         [JsonPropertyName("supportsCredits")]
         public bool SupportsCredits { get; private set; }
 
+        [JsonPropertyName("supportsDedicatedDatabases")]
+        public bool SupportsDedicatedDatabases { get; private set; }
+
         [JsonPropertyName("supportsDisposableEmailValidation")]
         public bool SupportsDisposableEmailValidation { get; private set; }
 
@@ -214,6 +217,9 @@ namespace Appwrite.Models
 
         [JsonPropertyName("program")]
         public Program? Program { get; private set; }
+
+        [JsonPropertyName("databaseComputeCredit")]
+        public double DatabaseComputeCredit { get; private set; }
 
         [JsonPropertyName("dedicatedDatabases")]
         public BillingPlanDedicatedDatabaseLimits? DedicatedDatabases { get; private set; }
@@ -272,6 +278,7 @@ namespace Appwrite.Models
             bool supportsMockNumbers,
             bool supportsOrganizationRoles,
             bool supportsCredits,
+            bool supportsDedicatedDatabases,
             bool supportsDisposableEmailValidation,
             bool supportsCanonicalEmailValidation,
             bool supportsFreeEmailValidation,
@@ -287,6 +294,7 @@ namespace Appwrite.Models
             BillingPlanLimits? limits,
             Appwrite.Enums.BillingPlanGroup @group,
             Program? program,
+            double databaseComputeCredit,
             BillingPlanDedicatedDatabaseLimits? dedicatedDatabases
         )
         {
@@ -343,6 +351,7 @@ namespace Appwrite.Models
             SupportsMockNumbers = supportsMockNumbers;
             SupportsOrganizationRoles = supportsOrganizationRoles;
             SupportsCredits = supportsCredits;
+            SupportsDedicatedDatabases = supportsDedicatedDatabases;
             SupportsDisposableEmailValidation = supportsDisposableEmailValidation;
             SupportsCanonicalEmailValidation = supportsCanonicalEmailValidation;
             SupportsFreeEmailValidation = supportsFreeEmailValidation;
@@ -358,6 +367,7 @@ namespace Appwrite.Models
             Limits = limits;
             Group = @group;
             Program = program;
+            DatabaseComputeCredit = databaseComputeCredit;
             DedicatedDatabases = dedicatedDatabases;
         }
 
@@ -421,31 +431,33 @@ namespace Appwrite.Models
             supportsMockNumbers: (bool)map["supportsMockNumbers"],
             supportsOrganizationRoles: (bool)map["supportsOrganizationRoles"],
             supportsCredits: (bool)map["supportsCredits"],
+            supportsDedicatedDatabases: (bool)map["supportsDedicatedDatabases"],
             supportsDisposableEmailValidation: (bool)map["supportsDisposableEmailValidation"],
             supportsCanonicalEmailValidation: (bool)map["supportsCanonicalEmailValidation"],
             supportsFreeEmailValidation: (bool)map["supportsFreeEmailValidation"],
             supportsCorporateEmailValidation: (bool)map["supportsCorporateEmailValidation"],
             supportsProjectSpecificRoles: (bool)map["supportsProjectSpecificRoles"],
-            backupsEnabled: map.TryGetValue("backupsEnabled", out var boolRaw59) && boolRaw59 != null
-                                        ? (bool?)boolRaw59
+            backupsEnabled: map.TryGetValue("backupsEnabled", out var boolRaw60) && boolRaw60 != null
+                                        ? (bool?)boolRaw60
                                         : null,
             usagePerProject: (bool)map["usagePerProject"],
-            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj61 ? jsonObj61.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
-            backupPolicies: map.TryGetValue("backupPolicies", out var numberRaw62) && numberRaw62 != null
-                                    ? Convert.ToInt64(numberRaw62)
+            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj62 ? jsonObj62.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
+            backupPolicies: map.TryGetValue("backupPolicies", out var numberRaw63) && numberRaw63 != null
+                                    ? Convert.ToInt64(numberRaw63)
                                     : null,
             deploymentSize: Convert.ToInt64(map["deploymentSize"]),
             buildSize: Convert.ToInt64(map["buildSize"]),
             databasesAllowEncrypt: (bool)map["databasesAllowEncrypt"],
-            limits: map.TryGetValue("limits", out var objectRaw66) && objectRaw66 != null
-                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw66 is JsonElement jsonObj66 ? jsonObj66.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw66)
+            limits: map.TryGetValue("limits", out var objectRaw67) && objectRaw67 != null
+                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw67 is JsonElement jsonObj67 ? jsonObj67.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw67)
                                     : null,
             @group: new Appwrite.Enums.BillingPlanGroup(map["group"].ToString()!),
-            program: map.TryGetValue("program", out var objectRaw68) && objectRaw68 != null
-                                    ? Appwrite.Models.Program.From(map: objectRaw68 is JsonElement jsonObj68 ? jsonObj68.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw68)
+            program: map.TryGetValue("program", out var objectRaw69) && objectRaw69 != null
+                                    ? Appwrite.Models.Program.From(map: objectRaw69 is JsonElement jsonObj69 ? jsonObj69.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw69)
                                     : null,
-            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw69) && objectRaw69 != null
-                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw69 is JsonElement jsonObj69 ? jsonObj69.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw69)
+            databaseComputeCredit: Convert.ToDouble(map["databaseComputeCredit"]),
+            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw71) && objectRaw71 != null
+                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw71 is JsonElement jsonObj71 ? jsonObj71.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw71)
                                     : null
         );
 
@@ -504,6 +516,7 @@ namespace Appwrite.Models
             { "supportsMockNumbers", SupportsMockNumbers },
             { "supportsOrganizationRoles", SupportsOrganizationRoles },
             { "supportsCredits", SupportsCredits },
+            { "supportsDedicatedDatabases", SupportsDedicatedDatabases },
             { "supportsDisposableEmailValidation", SupportsDisposableEmailValidation },
             { "supportsCanonicalEmailValidation", SupportsCanonicalEmailValidation },
             { "supportsFreeEmailValidation", SupportsFreeEmailValidation },
@@ -519,6 +532,7 @@ namespace Appwrite.Models
             { "limits", Limits?.ToMap() },
             { "group", Group.Value },
             { "program", Program?.ToMap() },
+            { "databaseComputeCredit", DatabaseComputeCredit },
             { "dedicatedDatabases", DedicatedDatabases?.ToMap() }
         };
     }

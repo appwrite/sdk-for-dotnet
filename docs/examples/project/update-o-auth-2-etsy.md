@@ -14,4 +14,6 @@ OAuth2Etsy result = await project.UpdateOAuth2Etsy(
     keyString: "<KEY_STRING>", // optional
     sharedSecret: "<SHARED_SECRET>", // optional
     enabled: false // optional
-);```
+);
+
+```

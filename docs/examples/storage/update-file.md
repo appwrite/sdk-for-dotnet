@@ -15,4 +15,6 @@ File result = await storage.UpdateFile(
     fileId: "<FILE_ID>",
     name: "<NAME>", // optional
     permissions: new List<string> { Permission.Read(Role.Any()) } // optional
-);```
+);
+
+```

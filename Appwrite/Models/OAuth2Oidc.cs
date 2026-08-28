@@ -91,7 +91,7 @@ namespace Appwrite.Models
             { "authorizationURL", AuthorizationURL },
             { "tokenURL", TokenURL },
             { "userInfoURL", UserInfoURL },
-            { "prompt", Prompt },
+            { "prompt", Prompt.Select(it => it.Value).ToList() },
             { "maxAge", MaxAge }
         };
     }

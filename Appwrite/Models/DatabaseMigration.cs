@@ -41,6 +41,9 @@ namespace Appwrite.Models
         [JsonPropertyName("lagDocuments")]
         public long LagDocuments { get; private set; }
 
+        [JsonPropertyName("changelogWatermark")]
+        public long ChangelogWatermark { get; private set; }
+
         [JsonPropertyName("verifiedAt")]
         public string VerifiedAt { get; private set; }
 
@@ -70,6 +73,7 @@ namespace Appwrite.Models
             long attempt,
             string lastError,
             long lagDocuments,
+            long changelogWatermark,
             string verifiedAt,
             string cutoverAt,
             string soakUntil,
@@ -88,6 +92,7 @@ namespace Appwrite.Models
             Attempt = attempt;
             LastError = lastError;
             LagDocuments = lagDocuments;
+            ChangelogWatermark = changelogWatermark;
             VerifiedAt = verifiedAt;
             CutoverAt = cutoverAt;
             SoakUntil = soakUntil;
@@ -107,6 +112,7 @@ namespace Appwrite.Models
             attempt: Convert.ToInt64(map["attempt"]),
             lastError: map["lastError"].ToString(),
             lagDocuments: Convert.ToInt64(map["lagDocuments"]),
+            changelogWatermark: Convert.ToInt64(map["changelogWatermark"]),
             verifiedAt: map["verifiedAt"].ToString(),
             cutoverAt: map["cutoverAt"].ToString(),
             soakUntil: map["soakUntil"].ToString(),
@@ -127,6 +133,7 @@ namespace Appwrite.Models
             { "attempt", Attempt },
             { "lastError", LastError },
             { "lagDocuments", LagDocuments },
+            { "changelogWatermark", ChangelogWatermark },
             { "verifiedAt", VerifiedAt },
             { "cutoverAt", CutoverAt },
             { "soakUntil", SoakUntil },

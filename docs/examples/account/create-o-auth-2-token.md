@@ -16,4 +16,6 @@ await account.CreateOAuth2Token(
     success: "https://example.com", // optional
     failure: "https://example.com", // optional
     scopes: new List<string>() // optional
-);```
+);
+
+```

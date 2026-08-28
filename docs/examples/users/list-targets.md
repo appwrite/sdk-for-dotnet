@@ -14,4 +14,6 @@ TargetList result = await users.ListTargets(
     userId: "<USER_ID>",
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

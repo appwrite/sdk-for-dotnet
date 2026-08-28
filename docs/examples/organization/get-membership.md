@@ -12,4 +12,6 @@ Organization organization = new Organization(client);
 
 Membership result = await organization.GetMembership(
     membershipId: "<MEMBERSHIP_ID>"
-);```
+);
+
+```

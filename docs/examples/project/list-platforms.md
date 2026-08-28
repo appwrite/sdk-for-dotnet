@@ -13,4 +13,6 @@ Project project = new Project(client);
 PlatformList result = await project.ListPlatforms(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

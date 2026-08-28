@@ -12,4 +12,6 @@ TablesDB tablesDB = new TablesDB(client);
 
 Database result = await tablesDB.Get(
     databaseId: "<DATABASE_ID>"
-);```
+);
+
+```

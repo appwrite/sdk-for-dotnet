@@ -16,4 +16,6 @@ Target result = await users.UpdateTarget(
     identifier: "<IDENTIFIER>", // optional
     providerId: "<PROVIDER_ID>", // optional
     name: "<NAME>" // optional
-);```
+);
+
+```

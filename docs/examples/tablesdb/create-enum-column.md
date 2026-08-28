@@ -13,9 +13,11 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnEnum result = await tablesDB.CreateEnumColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
-    elements: new List<string>(),
+    key: "<KEY>",
+    elements: ["active", "inactive"],
     required: false,
-    default: "<DEFAULT>", // optional
+    default: "active", // optional
     array: false // optional
-);```
+);
+
+```

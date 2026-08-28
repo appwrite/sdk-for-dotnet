@@ -12,4 +12,6 @@ Tokens tokens = new Tokens(client);
 
 await tokens.Delete(
     tokenId: "<TOKEN_ID>"
-);```
+);
+
+```

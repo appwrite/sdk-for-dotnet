@@ -14,4 +14,6 @@ Users users = new Users(client);
 await users.DeleteMFAAuthenticator(
     userId: "<USER_ID>",
     type: AuthenticatorType.Totp
-);```
+);
+
+```

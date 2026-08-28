@@ -16,4 +16,6 @@ OAuth2Keycloak result = await project.UpdateOAuth2Keycloak(
     endpoint: "<ENDPOINT>", // optional
     realmName: "<REALM_NAME>", // optional
     enabled: false // optional
-);```
+);
+
+```

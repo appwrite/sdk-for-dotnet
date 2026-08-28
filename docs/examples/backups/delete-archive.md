@@ -12,4 +12,6 @@ Backups backups = new Backups(client);
 
 await backups.DeleteArchive(
     archiveId: "<ARCHIVE_ID>"
-);```
+);
+
+```

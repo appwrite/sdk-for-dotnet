@@ -12,4 +12,6 @@ TablesDB tablesDB = new TablesDB(client);
 
 TransactionList result = await tablesDB.ListTransactions(
     queries: new List<string>() // optional
-);```
+);
+
+```

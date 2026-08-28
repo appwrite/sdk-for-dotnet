@@ -13,5 +13,7 @@ Databases databases = new Databases(client);
 object result = await databases.GetAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: ""
-);```
+    key: "<KEY>"
+);
+
+```

@@ -14,4 +14,6 @@ byte[] result = await avatars.GetImage(
     url: "https://example.com",
     width: 0, // optional
     height: 0 // optional
-);```
+);
+
+```

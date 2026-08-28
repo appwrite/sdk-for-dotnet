@@ -12,4 +12,6 @@ Functions functions = new Functions(client);
 
 await functions.Delete(
     functionId: "<FUNCTION_ID>"
-);```
+);
+
+```

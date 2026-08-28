@@ -13,4 +13,6 @@ Sites sites = new Sites(client);
 Variable result = await sites.GetVariable(
     siteId: "<SITE_ID>",
     variableId: "<VARIABLE_ID>"
-);```
+);
+
+```

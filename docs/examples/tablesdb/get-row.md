@@ -16,4 +16,6 @@ Row result = await tablesDB.GetRow(
     rowId: "<ROW_ID>",
     queries: new List<string>(), // optional
     transactionId: "<TRANSACTION_ID>" // optional
-);```
+);
+
+```

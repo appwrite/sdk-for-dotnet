@@ -13,4 +13,6 @@ Apps apps = new Apps(client);
 App result = await apps.UpdateTeam(
     appId: "<APP_ID>",
     teamId: "<TEAM_ID>"
-);```
+);
+
+```

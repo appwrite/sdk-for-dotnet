@@ -13,4 +13,6 @@ Users users = new Users(client);
 User result = await users.UpdateImpersonator(
     userId: "<USER_ID>",
     impersonator: false
-);```
+);
+
+```

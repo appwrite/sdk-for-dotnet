@@ -23,4 +23,6 @@ Bucket result = await storage.UpdateBucket(
     encryption: false, // optional
     antivirus: false, // optional
     transformations: false // optional
-);```
+);
+
+```

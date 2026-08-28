@@ -15,4 +15,6 @@ OAuth2Authentik result = await project.UpdateOAuth2Authentik(
     clientSecret: "<CLIENT_SECRET>", // optional
     endpoint: "<ENDPOINT>", // optional
     enabled: false // optional
-);```
+);
+
+```

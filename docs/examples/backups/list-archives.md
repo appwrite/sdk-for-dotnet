@@ -12,4 +12,6 @@ Backups backups = new Backups(client);
 
 BackupArchiveList result = await backups.ListArchives(
     queries: new List<string>() // optional
-);```
+);
+
+```

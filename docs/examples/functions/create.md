@@ -17,7 +17,7 @@ Function result = await functions.Create(
     runtime: Runtime.Node145,
     execute: ["any"], // optional
     events: new List<string>(), // optional
-    schedule: "", // optional
+    schedule: "0 0 * * *", // optional
     timeout: 1, // optional
     enabled: false, // optional
     logging: false, // optional
@@ -31,7 +31,9 @@ Function result = await functions.Create(
     providerRootDirectory: "<PROVIDER_ROOT_DIRECTORY>", // optional
     providerBranches: new List<string>(), // optional
     providerPaths: new List<string>(), // optional
-    buildSpecification: "", // optional
-    runtimeSpecification: "", // optional
+    buildSpecification: "s-1vcpu-512mb", // optional
+    runtimeSpecification: "s-1vcpu-512mb", // optional
     deploymentRetention: 0 // optional
-);```
+);
+
+```

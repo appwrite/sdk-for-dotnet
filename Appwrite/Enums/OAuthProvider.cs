@@ -31,6 +31,7 @@ namespace Appwrite.Enums
         public static OAuthProvider Github => new OAuthProvider("github");
         public static OAuthProvider Gitlab => new OAuthProvider("gitlab");
         public static OAuthProvider Google => new OAuthProvider("google");
+        public static OAuthProvider Huggingface => new OAuthProvider("huggingface");
         public static OAuthProvider Keycloak => new OAuthProvider("keycloak");
         public static OAuthProvider Kick => new OAuthProvider("kick");
         public static OAuthProvider Linkedin => new OAuthProvider("linkedin");

@@ -12,4 +12,6 @@ Project project = new Project(client);
 
 Project result = await project.UpdateSessionLimitPolicy(
     total: 1
-);```
+);
+
+```

@@ -13,4 +13,6 @@ Apps apps = new Apps(client);
 AppSecret result = await apps.GetSecret(
     appId: "<APP_ID>",
     secretId: "<SECRET_ID>"
-);```
+);
+
+```

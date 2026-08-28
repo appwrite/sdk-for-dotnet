@@ -17,4 +17,6 @@ Database result = await tablesDB.Create(
     specification: "serverless", // optional
     replicas: 0, // optional
     syncMode: "async" // optional
-);```
+);
+
+```

@@ -13,4 +13,6 @@ Users users = new Users(client);
 await users.DeleteTarget(
     userId: "<USER_ID>",
     targetId: "<TARGET_ID>"
-);```
+);
+
+```

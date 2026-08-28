@@ -59,6 +59,9 @@ namespace Appwrite.Models
         [JsonPropertyName("latestDeploymentStatus")]
         public string LatestDeploymentStatus { get; private set; }
 
+        [JsonPropertyName("scopes")]
+        public List<string> Scopes { get; private set; }
+
         [JsonPropertyName("vars")]
         public List<Variable> Vars { get; private set; }
 
@@ -130,6 +133,7 @@ namespace Appwrite.Models
             string latestDeploymentId,
             string latestDeploymentCreatedAt,
             string latestDeploymentStatus,
+            List<string> scopes,
             List<Variable> vars,
             long timeout,
             string installCommand,
@@ -166,6 +170,7 @@ namespace Appwrite.Models
             LatestDeploymentId = latestDeploymentId;
             LatestDeploymentCreatedAt = latestDeploymentCreatedAt;
             LatestDeploymentStatus = latestDeploymentStatus;
+            Scopes = scopes;
             Vars = vars;
             Timeout = timeout;
             InstallCommand = installCommand;
@@ -203,6 +208,7 @@ namespace Appwrite.Models
             latestDeploymentId: map["latestDeploymentId"].ToString(),
             latestDeploymentCreatedAt: map["latestDeploymentCreatedAt"].ToString(),
             latestDeploymentStatus: map["latestDeploymentStatus"].ToString(),
+            scopes: map["scopes"].ConvertToList<string>(),
             vars: map["vars"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Variable.From(map: it)).ToList(),
             timeout: Convert.ToInt64(map["timeout"]),
             installCommand: map["installCommand"].ToString(),
@@ -241,6 +247,7 @@ namespace Appwrite.Models
             { "latestDeploymentId", LatestDeploymentId },
             { "latestDeploymentCreatedAt", LatestDeploymentCreatedAt },
             { "latestDeploymentStatus", LatestDeploymentStatus },
+            { "scopes", Scopes },
             { "vars", Vars?.Select(it => it.ToMap()).ToList() },
             { "timeout", Timeout },
             { "installCommand", InstallCommand },

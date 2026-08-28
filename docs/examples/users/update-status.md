@@ -13,4 +13,6 @@ Users users = new Users(client);
 User result = await users.UpdateStatus(
     userId: "<USER_ID>",
     status: false
-);```
+);
+
+```

@@ -13,4 +13,6 @@ Apps apps = new Apps(client);
 AppsList result = await apps.List(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

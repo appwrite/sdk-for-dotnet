@@ -13,4 +13,6 @@ Apps apps = new Apps(client);
 await apps.DeleteInstallation(
     appId: "<APP_ID>",
     installationId: "<INSTALLATION_ID>"
-);```
+);
+
+```

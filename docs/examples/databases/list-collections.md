@@ -15,4 +15,6 @@ CollectionList result = await databases.ListCollections(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional
-);```
+);
+
+```

@@ -14,4 +14,6 @@ PlatformAndroid result = await project.UpdateAndroidPlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     applicationId: "<APPLICATION_ID>"
-);```
+);
+
+```

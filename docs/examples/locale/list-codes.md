@@ -11,4 +11,6 @@ Client client = new Client()
 Locale locale = new Locale(client);
 
 LocaleCodeList result = await locale.ListCodes();
+
+
 ```

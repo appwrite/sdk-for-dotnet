@@ -13,10 +13,12 @@ Databases databases = new Databases(client);
 AttributeFloat result = await databases.UpdateFloatAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
-    default: 0,
+    default: 10.5,
     min: 0, // optional
-    max: 0, // optional
-    newKey: "" // optional
-);```
+    max: 100, // optional
+    newKey: "<NEW_KEY>" // optional
+);
+
+```

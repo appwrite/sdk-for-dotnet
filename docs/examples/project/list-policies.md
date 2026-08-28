@@ -13,4 +13,6 @@ Project project = new Project(client);
 PolicyList result = await project.ListPolicies(
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

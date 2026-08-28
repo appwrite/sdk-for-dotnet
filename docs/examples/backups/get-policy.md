@@ -12,4 +12,6 @@ Backups backups = new Backups(client);
 
 BackupPolicy result = await backups.GetPolicy(
     policyId: "<POLICY_ID>"
-);```
+);
+
+```

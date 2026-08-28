@@ -14,4 +14,6 @@ OAuth2Paypal result = await project.UpdateOAuth2PaypalSandbox(
     clientId: "<CLIENT_ID>", // optional
     secretKey: "<SECRET_KEY>", // optional
     enabled: false // optional
-);```
+);
+
+```

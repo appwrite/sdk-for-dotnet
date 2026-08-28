@@ -11,5 +11,7 @@ Client client = new Client()
 Proxy proxy = new Proxy(client);
 
 ProxyRule result = await proxy.CreateAPIRule(
-    domain: ""
-);```
+    domain: "example.com"
+);
+
+```

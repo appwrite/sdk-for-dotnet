@@ -12,4 +12,6 @@ Backups backups = new Backups(client);
 
 BackupArchive result = await backups.GetArchive(
     archiveId: "<ARCHIVE_ID>"
-);```
+);
+
+```

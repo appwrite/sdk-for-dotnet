@@ -13,10 +13,12 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnFloat result = await tablesDB.CreateFloatColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     min: 0, // optional
-    max: 0, // optional
-    default: 0, // optional
+    max: 100, // optional
+    default: 10.5, // optional
     array: false // optional
-);```
+);
+
+```

@@ -15,4 +15,6 @@ TableList result = await tablesDB.ListTables(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional
-);```
+);
+
+```

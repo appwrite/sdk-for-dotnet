@@ -12,4 +12,6 @@ Messaging messaging = new Messaging(client);
 
 await messaging.DeleteTopic(
     topicId: "<TOPIC_ID>"
-);```
+);
+
+```

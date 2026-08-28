@@ -21,4 +21,6 @@ OAuth2Oidc result = await project.UpdateOAuth2Oidc(
     prompt: new List&lt;ProjectOAuth2OidcPrompt&gt; { ProjectOAuth2OidcPrompt.None }, // optional
     maxAge: 0, // optional
     enabled: false // optional
-);```
+);
+
+```

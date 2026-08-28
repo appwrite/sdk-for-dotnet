@@ -13,8 +13,10 @@ Databases databases = new Databases(client);
 AttributeEmail result = await databases.CreateEmailAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: "email@example.com", // optional
     array: false // optional
-);```
+);
+
+```

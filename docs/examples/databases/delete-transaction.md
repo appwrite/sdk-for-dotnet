@@ -12,4 +12,6 @@ Databases databases = new Databases(client);
 
 await databases.DeleteTransaction(
     transactionId: "<TRANSACTION_ID>"
-);```
+);
+
+```

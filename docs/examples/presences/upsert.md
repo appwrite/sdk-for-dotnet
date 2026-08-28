@@ -17,4 +17,6 @@ Presence result = await presences.Upsert(
     permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
     expiresAt: "2020-10-15T06:38:00.000+00:00", // optional
     metadata: [object] // optional
-);```
+);
+
+```

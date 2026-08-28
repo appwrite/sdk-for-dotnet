@@ -14,4 +14,6 @@ Oauth2Approve result = await oauth2.Approve(
     grant_id: "<GRANT_ID>",
     authorization_details: "<AUTHORIZATION_DETAILS>", // optional
     scope: "<SCOPE>" // optional
-);```
+);
+
+```

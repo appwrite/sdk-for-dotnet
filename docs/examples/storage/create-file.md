@@ -15,5 +15,7 @@ File result = await storage.CreateFile(
     fileId: "<FILE_ID>",
     file: InputFile.FromPath("./path-to-files/image.jpg"),
     permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
-    folder: "" // optional
-);```
+    folder: "photos/2026" // optional
+);
+
+```

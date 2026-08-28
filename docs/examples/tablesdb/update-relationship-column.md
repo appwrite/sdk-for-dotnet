@@ -14,7 +14,9 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnRelationship result = await tablesDB.UpdateRelationshipColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     onDelete: RelationMutate.Cascade, // optional
-    newKey: "" // optional
-);```
+    newKey: "<NEW_KEY>" // optional
+);
+
+```

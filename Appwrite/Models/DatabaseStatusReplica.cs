@@ -20,6 +20,9 @@ namespace Appwrite.Models
         [JsonPropertyName("healthy")]
         public bool Healthy { get; private set; }
 
+        [JsonPropertyName("replicating")]
+        public bool? Replicating { get; private set; }
+
         [JsonPropertyName("lagSeconds")]
         public double? LagSeconds { get; private set; }
 
@@ -27,12 +30,14 @@ namespace Appwrite.Models
             long index,
             string role,
             bool healthy,
+            bool? replicating,
             double? lagSeconds
         )
         {
             Index = index;
             Role = role;
             Healthy = healthy;
+            Replicating = replicating;
             LagSeconds = lagSeconds;
         }
 
@@ -40,8 +45,11 @@ namespace Appwrite.Models
             index: Convert.ToInt64(map["index"]),
             role: map["role"].ToString(),
             healthy: (bool)map["healthy"],
-            lagSeconds: map.TryGetValue("lagSeconds", out var numberRaw4) && numberRaw4 != null
-                                    ? Convert.ToDouble(numberRaw4)
+            replicating: map.TryGetValue("replicating", out var boolRaw4) && boolRaw4 != null
+                                        ? (bool?)boolRaw4
+                                        : null,
+            lagSeconds: map.TryGetValue("lagSeconds", out var numberRaw5) && numberRaw5 != null
+                                    ? Convert.ToDouble(numberRaw5)
                                     : null
         );
 
@@ -50,6 +58,7 @@ namespace Appwrite.Models
             { "index", Index },
             { "role", Role },
             { "healthy", Healthy },
+            { "replicating", Replicating },
             { "lagSeconds", LagSeconds }
         };
     }

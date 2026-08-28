@@ -12,4 +12,6 @@ Apps apps = new Apps(client);
 
 App result = await apps.Get(
     appId: "<APP_ID>"
-);```
+);
+
+```

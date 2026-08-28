@@ -12,4 +12,6 @@ Account account = new Account(client);
 
 Session result = await account.UpdateSession(
     sessionId: "<SESSION_ID>"
-);```
+);
+
+```

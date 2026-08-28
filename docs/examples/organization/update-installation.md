@@ -13,4 +13,6 @@ Organization organization = new Organization(client);
 AppInstallation result = await organization.UpdateInstallation(
     installationId: "<INSTALLATION_ID>",
     authorizationDetails: "<AUTHORIZATION_DETAILS>" // optional
-);```
+);
+
+```

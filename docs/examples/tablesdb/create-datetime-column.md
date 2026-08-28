@@ -13,8 +13,10 @@ TablesDB tablesDB = new TablesDB(client);
 ColumnDatetime result = await tablesDB.CreateDatetimeColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    key: "",
+    key: "<KEY>",
     required: false,
     default: "2020-10-15T06:38:00.000+00:00", // optional
     array: false // optional
-);```
+);
+
+```

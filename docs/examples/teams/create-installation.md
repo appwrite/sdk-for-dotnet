@@ -14,4 +14,6 @@ AppInstallation result = await teams.CreateInstallation(
     teamId: "<TEAM_ID>",
     appId: "<APP_ID>",
     authorizationDetails: "<AUTHORIZATION_DETAILS>" // optional
-);```
+);
+
+```

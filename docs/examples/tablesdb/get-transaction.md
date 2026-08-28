@@ -12,4 +12,6 @@ TablesDB tablesDB = new TablesDB(client);
 
 Transaction result = await tablesDB.GetTransaction(
     transactionId: "<TRANSACTION_ID>"
-);```
+);
+
+```

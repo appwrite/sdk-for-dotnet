@@ -15,4 +15,6 @@ ColumnIndexList result = await tablesDB.ListIndexes(
     tableId: "<TABLE_ID>",
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

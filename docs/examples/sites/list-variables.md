@@ -14,4 +14,6 @@ VariableList result = await sites.ListVariables(
     siteId: "<SITE_ID>",
     queries: new List<string>(), // optional
     total: false // optional
-);```
+);
+
+```

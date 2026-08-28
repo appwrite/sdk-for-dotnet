@@ -41,6 +41,15 @@ namespace Appwrite.Models
         [JsonPropertyName("replicas")]
         public long? Replicas { get; private set; }
 
+        [JsonPropertyName("error")]
+        public string? Error { get; private set; }
+
+        [JsonPropertyName("containerStatus")]
+        public string? ContainerStatus { get; private set; }
+
+        [JsonPropertyName("lifecycleState")]
+        public string? LifecycleState { get; private set; }
+
         [JsonPropertyName("policies")]
         public List<BackupPolicy>? Policies { get; private set; }
 
@@ -58,6 +67,9 @@ namespace Appwrite.Models
             string? engine,
             string? specification,
             long? replicas,
+            string? error,
+            string? containerStatus,
+            string? lifecycleState,
             List<BackupPolicy>? policies,
             List<BackupArchive>? archives
         )
@@ -72,6 +84,9 @@ namespace Appwrite.Models
             Engine = engine;
             Specification = specification;
             Replicas = replicas;
+            Error = error;
+            ContainerStatus = containerStatus;
+            LifecycleState = lifecycleState;
             Policies = policies;
             Archives = archives;
         }
@@ -93,11 +108,14 @@ namespace Appwrite.Models
             replicas: map.TryGetValue("replicas", out var numberRaw10) && numberRaw10 != null
                                     ? Convert.ToInt64(numberRaw10)
                                     : null,
-            policies: map.TryGetValue("policies", out var arrayRaw11) && arrayRaw11 != null
-                                    ? arrayRaw11.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupPolicy.From(map: it)).ToList()
+            error: map.TryGetValue("error", out var error) ? error?.ToString() : null,
+            containerStatus: map.TryGetValue("containerStatus", out var containerStatus) ? containerStatus?.ToString() : null,
+            lifecycleState: map.TryGetValue("lifecycleState", out var lifecycleState) ? lifecycleState?.ToString() : null,
+            policies: map.TryGetValue("policies", out var arrayRaw14) && arrayRaw14 != null
+                                    ? arrayRaw14.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupPolicy.From(map: it)).ToList()
                                     : null,
-            archives: map.TryGetValue("archives", out var arrayRaw12) && arrayRaw12 != null
-                                    ? arrayRaw12.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupArchive.From(map: it)).ToList()
+            archives: map.TryGetValue("archives", out var arrayRaw15) && arrayRaw15 != null
+                                    ? arrayRaw15.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupArchive.From(map: it)).ToList()
                                     : null
         );
 
@@ -113,6 +131,9 @@ namespace Appwrite.Models
             { "engine", Engine },
             { "specification", Specification },
             { "replicas", Replicas },
+            { "error", Error },
+            { "containerStatus", ContainerStatus },
+            { "lifecycleState", LifecycleState },
             { "policies", Policies?.Select(it => it.ToMap()).ToList() },
             { "archives", Archives?.Select(it => it.ToMap()).ToList() }
         };

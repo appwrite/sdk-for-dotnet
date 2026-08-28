@@ -15,4 +15,6 @@ Membership result = await teams.UpdateMembershipStatus(
     membershipId: "<MEMBERSHIP_ID>",
     userId: "<USER_ID>",
     secret: "<SECRET>"
-);```
+);
+
+```

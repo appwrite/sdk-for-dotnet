@@ -12,4 +12,6 @@ Organization organization = new Organization(client);
 
 Organization result = await organization.Update(
     name: "<NAME>"
-);```
+);
+
+```

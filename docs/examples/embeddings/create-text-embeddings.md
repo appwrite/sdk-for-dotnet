@@ -14,4 +14,6 @@ Embeddings embeddings = new Embeddings(client);
 EmbeddingList result = await embeddings.CreateTextEmbeddings(
     texts: new List<string>(),
     model: EmbeddingModel.NomicEmbedText // optional
-);```
+);
+
+```

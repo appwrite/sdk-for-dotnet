@@ -13,4 +13,6 @@ TablesDB tablesDB = new TablesDB(client);
 DedicatedDatabase result = await tablesDB.CreateFailover(
     databaseId: "<DATABASE_ID>",
     targetReplicaId: "<TARGET_REPLICA_ID>" // optional
-);```
+);
+
+```

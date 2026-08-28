@@ -12,8 +12,8 @@ Client client = new Client()
 Project project = new Project(client);
 
 Project result = await project.UpdateSMTP(
-    host: "", // optional
-    port: 0, // optional
+    host: "example.com", // optional
+    port: 587, // optional
     username: "<USERNAME>", // optional
     password: "password", // optional
     senderEmail: "email@example.com", // optional
@@ -22,4 +22,6 @@ Project result = await project.UpdateSMTP(
     replyToName: "<REPLY_TO_NAME>", // optional
     secure: ProjectSMTPSecure.Tls, // optional
     enabled: false // optional
-);```
+);
+
+```

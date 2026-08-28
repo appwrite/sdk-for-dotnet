@@ -17,4 +17,6 @@ Project result = await project.UpdateMembershipPrivacyPolicy(
     userName: false, // optional
     userMFA: false, // optional
     userAccessedAt: false // optional
-);```
+);
+
+```

@@ -14,4 +14,6 @@ ProviderList result = await messaging.ListProviders(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional
-);```
+);
+
+```

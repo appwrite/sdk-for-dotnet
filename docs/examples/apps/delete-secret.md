@@ -13,4 +13,6 @@ Apps apps = new Apps(client);
 await apps.DeleteSecret(
     appId: "<APP_ID>",
     secretId: "<SECRET_ID>"
-);```
+);
+
+```
