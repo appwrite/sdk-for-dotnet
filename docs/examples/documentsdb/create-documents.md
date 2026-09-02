@@ -13,7 +13,8 @@ DocumentsDB documentsDB = new DocumentsDB(client);
 DocumentList result = await documentsDB.CreateDocuments(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    documents: new List<object>()
+    documents: new List<object>(),
+    transactionId: "<TRANSACTION_ID>" // optional
 );
 
 ```

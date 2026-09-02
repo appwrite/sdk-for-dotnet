@@ -122,6 +122,9 @@ namespace Appwrite.Models
         [JsonPropertyName("usageLogsIntervals")]
         public List<string>? UsageLogsIntervals { get; private set; }
 
+        [JsonPropertyName("usageAggregateOnlyMetrics")]
+        public List<string>? UsageAggregateOnlyMetrics { get; private set; }
+
         [JsonPropertyName("projectInactivityDays")]
         public long ProjectInactivityDays { get; private set; }
 
@@ -262,6 +265,7 @@ namespace Appwrite.Models
             long? activityLogs,
             long usageLogs,
             List<string>? usageLogsIntervals,
+            List<string>? usageAggregateOnlyMetrics,
             long projectInactivityDays,
             long alertLimit,
             UsageBillingPlan usage,
@@ -335,6 +339,7 @@ namespace Appwrite.Models
             ActivityLogs = activityLogs;
             UsageLogs = usageLogs;
             UsageLogsIntervals = usageLogsIntervals;
+            UsageAggregateOnlyMetrics = usageAggregateOnlyMetrics;
             ProjectInactivityDays = projectInactivityDays;
             AlertLimit = alertLimit;
             Usage = usage;
@@ -415,10 +420,13 @@ namespace Appwrite.Models
             usageLogsIntervals: map.TryGetValue("usageLogsIntervals", out var arrayRaw37) && arrayRaw37 != null
                                 ? arrayRaw37.ConvertToList<string>()
                                 : null,
+            usageAggregateOnlyMetrics: map.TryGetValue("usageAggregateOnlyMetrics", out var arrayRaw38) && arrayRaw38 != null
+                                ? arrayRaw38.ConvertToList<string>()
+                                : null,
             projectInactivityDays: Convert.ToInt64(map["projectInactivityDays"]),
             alertLimit: Convert.ToInt64(map["alertLimit"]),
-            usage: Appwrite.Models.UsageBillingPlan.From(map: map["usage"] is JsonElement jsonObj40 ? jsonObj40.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["usage"]),
-            addons: Appwrite.Models.BillingPlanAddon.From(map: map["addons"] is JsonElement jsonObj41 ? jsonObj41.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["addons"]),
+            usage: Appwrite.Models.UsageBillingPlan.From(map: map["usage"] is JsonElement jsonObj41 ? jsonObj41.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["usage"]),
+            addons: Appwrite.Models.BillingPlanAddon.From(map: map["addons"] is JsonElement jsonObj42 ? jsonObj42.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["addons"]),
             budgetCapEnabled: (bool)map["budgetCapEnabled"],
             customSmtp: (bool)map["customSmtp"],
             emailBranding: (bool)map["emailBranding"],
@@ -437,27 +445,27 @@ namespace Appwrite.Models
             supportsFreeEmailValidation: (bool)map["supportsFreeEmailValidation"],
             supportsCorporateEmailValidation: (bool)map["supportsCorporateEmailValidation"],
             supportsProjectSpecificRoles: (bool)map["supportsProjectSpecificRoles"],
-            backupsEnabled: map.TryGetValue("backupsEnabled", out var boolRaw60) && boolRaw60 != null
-                                        ? (bool?)boolRaw60
+            backupsEnabled: map.TryGetValue("backupsEnabled", out var boolRaw61) && boolRaw61 != null
+                                        ? (bool?)boolRaw61
                                         : null,
             usagePerProject: (bool)map["usagePerProject"],
-            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj62 ? jsonObj62.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
-            backupPolicies: map.TryGetValue("backupPolicies", out var numberRaw63) && numberRaw63 != null
-                                    ? Convert.ToInt64(numberRaw63)
+            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj63 ? jsonObj63.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
+            backupPolicies: map.TryGetValue("backupPolicies", out var numberRaw64) && numberRaw64 != null
+                                    ? Convert.ToInt64(numberRaw64)
                                     : null,
             deploymentSize: Convert.ToInt64(map["deploymentSize"]),
             buildSize: Convert.ToInt64(map["buildSize"]),
             databasesAllowEncrypt: (bool)map["databasesAllowEncrypt"],
-            limits: map.TryGetValue("limits", out var objectRaw67) && objectRaw67 != null
-                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw67 is JsonElement jsonObj67 ? jsonObj67.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw67)
+            limits: map.TryGetValue("limits", out var objectRaw68) && objectRaw68 != null
+                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw68 is JsonElement jsonObj68 ? jsonObj68.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw68)
                                     : null,
             @group: new Appwrite.Enums.BillingPlanGroup(map["group"].ToString()!),
-            program: map.TryGetValue("program", out var objectRaw69) && objectRaw69 != null
-                                    ? Appwrite.Models.Program.From(map: objectRaw69 is JsonElement jsonObj69 ? jsonObj69.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw69)
+            program: map.TryGetValue("program", out var objectRaw70) && objectRaw70 != null
+                                    ? Appwrite.Models.Program.From(map: objectRaw70 is JsonElement jsonObj70 ? jsonObj70.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw70)
                                     : null,
             databaseComputeCredit: Convert.ToDouble(map["databaseComputeCredit"]),
-            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw71) && objectRaw71 != null
-                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw71 is JsonElement jsonObj71 ? jsonObj71.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw71)
+            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw72) && objectRaw72 != null
+                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw72 is JsonElement jsonObj72 ? jsonObj72.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw72)
                                     : null
         );
 
@@ -500,6 +508,7 @@ namespace Appwrite.Models
             { "activityLogs", ActivityLogs },
             { "usageLogs", UsageLogs },
             { "usageLogsIntervals", UsageLogsIntervals },
+            { "usageAggregateOnlyMetrics", UsageAggregateOnlyMetrics },
             { "projectInactivityDays", ProjectInactivityDays },
             { "alertLimit", AlertLimit },
             { "usage", Usage?.ToMap() },

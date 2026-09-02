@@ -8,11 +8,12 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-TablesDB tablesDB = new TablesDB(client);
+Project project = new Project(client);
 
-DatabaseMigration result = await tablesDB.CutoverMigration(
-    databaseId: "<DATABASE_ID>",
-    migrationId: "<MIGRATION_ID>"
+OAuth2Cloudflare result = await project.UpdateOAuth2Cloudflare(
+    clientId: "<CLIENT_ID>", // optional
+    clientSecret: "<CLIENT_SECRET>", // optional
+    enabled: false // optional
 );
 
 ```

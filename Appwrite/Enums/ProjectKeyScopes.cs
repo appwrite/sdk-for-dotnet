@@ -59,12 +59,16 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes DocumentsdbCollectionsWrite => new ProjectKeyScopes("documentsdb.collections.write");
         public static ProjectKeyScopes DocumentsdbDocumentsRead => new ProjectKeyScopes("documentsdb.documents.read");
         public static ProjectKeyScopes DocumentsdbDocumentsWrite => new ProjectKeyScopes("documentsdb.documents.write");
+        public static ProjectKeyScopes DocumentsdbIndexesRead => new ProjectKeyScopes("documentsdb.indexes.read");
+        public static ProjectKeyScopes DocumentsdbIndexesWrite => new ProjectKeyScopes("documentsdb.indexes.write");
         public static ProjectKeyScopes VectorsdbRead => new ProjectKeyScopes("vectorsdb.read");
         public static ProjectKeyScopes VectorsdbWrite => new ProjectKeyScopes("vectorsdb.write");
         public static ProjectKeyScopes VectorsdbCollectionsRead => new ProjectKeyScopes("vectorsdb.collections.read");
         public static ProjectKeyScopes VectorsdbCollectionsWrite => new ProjectKeyScopes("vectorsdb.collections.write");
         public static ProjectKeyScopes VectorsdbDocumentsRead => new ProjectKeyScopes("vectorsdb.documents.read");
         public static ProjectKeyScopes VectorsdbDocumentsWrite => new ProjectKeyScopes("vectorsdb.documents.write");
+        public static ProjectKeyScopes VectorsdbIndexesRead => new ProjectKeyScopes("vectorsdb.indexes.read");
+        public static ProjectKeyScopes VectorsdbIndexesWrite => new ProjectKeyScopes("vectorsdb.indexes.write");
         public static ProjectKeyScopes BucketsRead => new ProjectKeyScopes("buckets.read");
         public static ProjectKeyScopes BucketsWrite => new ProjectKeyScopes("buckets.write");
         public static ProjectKeyScopes FilesRead => new ProjectKeyScopes("files.read");

@@ -740,13 +740,13 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Rotate the primary connection credentials for a dedicated database.
-        /// Generates a new password and updates the database atomically. Previous
-        /// credentials stop working immediately. Returns the database with a refreshed
-        /// connection string carrying the new password.
+        /// Queue a rotation of the primary connection credentials for a dedicated
+        /// database. A hibernated database is woken by the worker before rotation.
+        /// List database operations until the returned operation reaches a terminal
+        /// status, then fetch the database again for the refreshed connection string.
         /// </para>
         /// </summary>
-        public Task<Models.DedicatedDatabase> UpdateCredentials(string databaseId)
+        public Task<Models.DedicatedDatabaseOperation> UpdateCredentials(string databaseId)
         {
             var apiPath = "/mongo/{databaseId}/credentials"
                 .Replace("{databaseId}", databaseId);
@@ -763,12 +763,12 @@ namespace Appwrite.Services
             };
 
 
-            static Models.DedicatedDatabase Convert(Dictionary<string, object> it)
+            static Models.DedicatedDatabaseOperation Convert(Dictionary<string, object> it)
             {
-                return Models.DedicatedDatabase.From(map: it);
+                return Models.DedicatedDatabaseOperation.From(map: it);
             }
 
-            return _client.Call<Models.DedicatedDatabase>(
+            return _client.Call<Models.DedicatedDatabaseOperation>(
                 method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,

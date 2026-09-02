@@ -672,7 +672,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        public Task<Models.Document> CreateDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null)
+        public Task<Models.Document> CreateDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null, string? transactionId = null)
         {
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
@@ -682,7 +682,8 @@ namespace Appwrite.Services
             {
                 { "documentId", documentId },
                 { "data", data },
-                { "permissions", permissions }
+                { "permissions", permissions },
+                { "transactionId", transactionId }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -714,7 +715,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        public Task<Models.DocumentList> CreateDocuments(string databaseId, string collectionId, List<object> documents)
+        public Task<Models.DocumentList> CreateDocuments(string databaseId, string collectionId, List<object> documents, string? transactionId = null)
         {
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
@@ -722,7 +723,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "documents", documents }
+                { "documents", documents },
+                { "transactionId", transactionId }
             };
 
             var apiHeaders = new Dictionary<string, string>()

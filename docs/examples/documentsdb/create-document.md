@@ -21,7 +21,8 @@ Document result = await documentsDB.CreateDocument(
         age = 30,
         isAdmin = false
     },
-    permissions: new List<string> { Permission.Read(Role.Any()) } // optional
+    permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
+    transactionId: "<TRANSACTION_ID>" // optional
 );
 
 ```
