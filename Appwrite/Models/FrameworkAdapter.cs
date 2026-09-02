@@ -24,14 +24,14 @@ namespace Appwrite.Models
         public string OutputDirectory { get; private set; }
 
         [JsonPropertyName("fallbackFile")]
-        public string FallbackFile { get; private set; }
+        public string? FallbackFile { get; private set; }
 
         public FrameworkAdapter(
             string key,
             string installCommand,
             string buildCommand,
             string outputDirectory,
-            string fallbackFile
+            string? fallbackFile
         )
         {
             Key = key;
@@ -46,7 +46,7 @@ namespace Appwrite.Models
             installCommand: map["installCommand"].ToString(),
             buildCommand: map["buildCommand"].ToString(),
             outputDirectory: map["outputDirectory"].ToString(),
-            fallbackFile: map["fallbackFile"].ToString()
+            fallbackFile: map.TryGetValue("fallbackFile", out var fallbackFile) ? fallbackFile?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -18,7 +18,8 @@ Document result = await vectorsDB.CreateDocument(
         embeddings = new[] { 0.12, -0.55, 0.88, 1.02 },
         metadata = { key = "value" }
     },
-    permissions: new List<string> { Permission.Read(Role.Any()) } // optional
+    permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
+    transactionId: "<TRANSACTION_ID>" // optional
 );
 
 ```

@@ -53,6 +53,9 @@ namespace Appwrite.Models
         [JsonPropertyName("connectionPassword")]
         public string ConnectionPassword { get; private set; }
 
+        [JsonPropertyName("credentialGeneration")]
+        public long CredentialGeneration { get; private set; }
+
         [JsonPropertyName("connectionString")]
         public string ConnectionString { get; private set; }
 
@@ -170,6 +173,7 @@ namespace Appwrite.Models
             long connectionPort,
             string connectionUser,
             string connectionPassword,
+            long credentialGeneration,
             string connectionString,
             bool ssl,
             string status,
@@ -220,6 +224,7 @@ namespace Appwrite.Models
             ConnectionPort = connectionPort;
             ConnectionUser = connectionUser;
             ConnectionPassword = connectionPassword;
+            CredentialGeneration = credentialGeneration;
             ConnectionString = connectionString;
             Ssl = ssl;
             Status = status;
@@ -271,6 +276,7 @@ namespace Appwrite.Models
             connectionPort: Convert.ToInt64(map["connectionPort"]),
             connectionUser: map["connectionUser"].ToString(),
             connectionPassword: map["connectionPassword"].ToString(),
+            credentialGeneration: Convert.ToInt64(map["credentialGeneration"]),
             connectionString: map["connectionString"].ToString(),
             ssl: (bool)map["ssl"],
             status: map["status"].ToString(),
@@ -323,6 +329,7 @@ namespace Appwrite.Models
             { "connectionPort", ConnectionPort },
             { "connectionUser", ConnectionUser },
             { "connectionPassword", ConnectionPassword },
+            { "credentialGeneration", CredentialGeneration },
             { "connectionString", ConnectionString },
             { "ssl", Ssl },
             { "status", Status },

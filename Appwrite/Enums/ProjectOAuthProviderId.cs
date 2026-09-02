@@ -20,6 +20,7 @@ namespace Appwrite.Enums
         public static ProjectOAuthProviderId Bitbucket => new ProjectOAuthProviderId("bitbucket");
         public static ProjectOAuthProviderId Bitly => new ProjectOAuthProviderId("bitly");
         public static ProjectOAuthProviderId Box => new ProjectOAuthProviderId("box");
+        public static ProjectOAuthProviderId Cloudflare => new ProjectOAuthProviderId("cloudflare");
         public static ProjectOAuthProviderId Dailymotion => new ProjectOAuthProviderId("dailymotion");
         public static ProjectOAuthProviderId Discord => new ProjectOAuthProviderId("discord");
         public static ProjectOAuthProviderId Disqus => new ProjectOAuthProviderId("disqus");
@@ -42,6 +43,7 @@ namespace Appwrite.Enums
         public static ProjectOAuthProviderId Paypal => new ProjectOAuthProviderId("paypal");
         public static ProjectOAuthProviderId PaypalSandbox => new ProjectOAuthProviderId("paypalSandbox");
         public static ProjectOAuthProviderId Podio => new ProjectOAuthProviderId("podio");
+        public static ProjectOAuthProviderId Resend => new ProjectOAuthProviderId("resend");
         public static ProjectOAuthProviderId Salesforce => new ProjectOAuthProviderId("salesforce");
         public static ProjectOAuthProviderId Slack => new ProjectOAuthProviderId("slack");
         public static ProjectOAuthProviderId Spotify => new ProjectOAuthProviderId("spotify");

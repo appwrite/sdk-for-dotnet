@@ -630,9 +630,9 @@ namespace Appwrite.Services
         /// and parks it again, so call this once more to retry.
         /// </para>
         /// </summary>
-        public Task<Models.DatabaseMigration> CutoverMigration(string databaseId, string migrationId)
+        public Task<Models.DatabaseMigration> CreateCutover(string databaseId, string migrationId)
         {
-            var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}/cutover"
+            var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}/cutovers"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{migrationId}", migrationId);
 

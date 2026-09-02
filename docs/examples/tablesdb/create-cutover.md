@@ -8,10 +8,11 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Postgresql postgresql = new Postgresql(client);
+TablesDB tablesDB = new TablesDB(client);
 
-DedicatedDatabaseOperation result = await postgresql.UpdateCredentials(
-    databaseId: "<DATABASE_ID>"
+DatabaseMigration result = await tablesDB.CreateCutover(
+    databaseId: "<DATABASE_ID>",
+    migrationId: "<MIGRATION_ID>"
 );
 
 ```
