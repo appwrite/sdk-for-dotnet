@@ -1930,7 +1930,7 @@ namespace Appwrite.Services
         /// limits](https://appwrite.io/docs/authentication-security#limits).
         /// </para>
         /// </summary>
-        public Task<String> CreateOAuth2Token(Appwrite.Enums.OAuthProvider provider, string? success = null, string? failure = null, List<string>? scopes = null)
+        public Task<String> CreateOAuth2Token(Appwrite.Enums.OAuthProvider provider, string? success = null, string? failure = null, List<string>? scopes = null, string? state = null)
         {
             var apiPath = "/account/tokens/oauth2/{provider}"
                 .Replace("{provider}", provider.Value);
@@ -1939,7 +1939,8 @@ namespace Appwrite.Services
             {
                 { "success", success },
                 { "failure", failure },
-                { "scopes", scopes }
+                { "scopes", scopes },
+                { "state", state }
             };
 
             var apiHeaders = new Dictionary<string, string>()
