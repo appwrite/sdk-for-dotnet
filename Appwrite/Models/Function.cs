@@ -68,6 +68,9 @@ namespace Appwrite.Models
         [JsonPropertyName("schedule")]
         public string Schedule { get; private set; }
 
+        [JsonPropertyName("interval")]
+        public long? Interval { get; private set; }
+
         [JsonPropertyName("timeout")]
         public long Timeout { get; private set; }
 
@@ -127,6 +130,7 @@ namespace Appwrite.Models
             List<Variable> vars,
             List<string> events,
             string schedule,
+            long? interval,
             long timeout,
             string entrypoint,
             string commands,
@@ -161,6 +165,7 @@ namespace Appwrite.Models
             Vars = vars;
             Events = events;
             Schedule = schedule;
+            Interval = interval;
             Timeout = timeout;
             Entrypoint = entrypoint;
             Commands = commands;
@@ -196,6 +201,9 @@ namespace Appwrite.Models
             vars: map["vars"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Variable.From(map: it)).ToList(),
             events: map["events"].ConvertToList<string>(),
             schedule: map["schedule"].ToString(),
+            interval: map.TryGetValue("interval", out var numberRaw20) && numberRaw20 != null
+                                    ? Convert.ToInt64(numberRaw20)
+                                    : null,
             timeout: Convert.ToInt64(map["timeout"]),
             entrypoint: map["entrypoint"].ToString(),
             commands: map["commands"].ToString(),
@@ -232,6 +240,7 @@ namespace Appwrite.Models
             { "vars", Vars?.Select(it => it.ToMap()).ToList() },
             { "events", Events },
             { "schedule", Schedule },
+            { "interval", Interval },
             { "timeout", Timeout },
             { "entrypoint", Entrypoint },
             { "commands", Commands },
