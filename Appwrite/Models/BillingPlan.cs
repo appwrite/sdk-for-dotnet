@@ -209,6 +209,9 @@ namespace Appwrite.Models
         [JsonPropertyName("buildSize")]
         public long BuildSize { get; private set; }
 
+        [JsonPropertyName("functionsIntervalMinimum")]
+        public long FunctionsIntervalMinimum { get; private set; }
+
         [JsonPropertyName("databasesAllowEncrypt")]
         public bool DatabasesAllowEncrypt { get; private set; }
 
@@ -294,6 +297,7 @@ namespace Appwrite.Models
             long? backupPolicies,
             long deploymentSize,
             long buildSize,
+            long functionsIntervalMinimum,
             bool databasesAllowEncrypt,
             BillingPlanLimits? limits,
             Appwrite.Enums.BillingPlanGroup @group,
@@ -368,6 +372,7 @@ namespace Appwrite.Models
             BackupPolicies = backupPolicies;
             DeploymentSize = deploymentSize;
             BuildSize = buildSize;
+            FunctionsIntervalMinimum = functionsIntervalMinimum;
             DatabasesAllowEncrypt = databasesAllowEncrypt;
             Limits = limits;
             Group = @group;
@@ -455,17 +460,18 @@ namespace Appwrite.Models
                                     : null,
             deploymentSize: Convert.ToInt64(map["deploymentSize"]),
             buildSize: Convert.ToInt64(map["buildSize"]),
+            functionsIntervalMinimum: Convert.ToInt64(map["functionsIntervalMinimum"]),
             databasesAllowEncrypt: (bool)map["databasesAllowEncrypt"],
-            limits: map.TryGetValue("limits", out var objectRaw68) && objectRaw68 != null
-                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw68 is JsonElement jsonObj68 ? jsonObj68.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw68)
+            limits: map.TryGetValue("limits", out var objectRaw69) && objectRaw69 != null
+                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw69 is JsonElement jsonObj69 ? jsonObj69.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw69)
                                     : null,
             @group: new Appwrite.Enums.BillingPlanGroup(map["group"].ToString()!),
-            program: map.TryGetValue("program", out var objectRaw70) && objectRaw70 != null
-                                    ? Appwrite.Models.Program.From(map: objectRaw70 is JsonElement jsonObj70 ? jsonObj70.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw70)
+            program: map.TryGetValue("program", out var objectRaw71) && objectRaw71 != null
+                                    ? Appwrite.Models.Program.From(map: objectRaw71 is JsonElement jsonObj71 ? jsonObj71.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw71)
                                     : null,
             databaseComputeCredit: Convert.ToDouble(map["databaseComputeCredit"]),
-            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw72) && objectRaw72 != null
-                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw72 is JsonElement jsonObj72 ? jsonObj72.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw72)
+            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw73) && objectRaw73 != null
+                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw73 is JsonElement jsonObj73 ? jsonObj73.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw73)
                                     : null
         );
 
@@ -537,6 +543,7 @@ namespace Appwrite.Models
             { "backupPolicies", BackupPolicies },
             { "deploymentSize", DeploymentSize },
             { "buildSize", BuildSize },
+            { "functionsIntervalMinimum", FunctionsIntervalMinimum },
             { "databasesAllowEncrypt", DatabasesAllowEncrypt },
             { "limits", Limits?.ToMap() },
             { "group", Group.Value },
