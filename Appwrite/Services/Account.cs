@@ -1175,6 +1175,248 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get the list of verified passkeys registered by the currently logged in
+        /// user.
+        /// </para>
+        /// </summary>
+        public Task<Models.PasskeyList> ListPasskeys(List<string>? queries = null, bool? total = null)
+        {
+            var apiPath = "/account/passkeys";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "total", total }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.PasskeyList Convert(Dictionary<string, object> it)
+            {
+                return Models.PasskeyList.From(map: it);
+            }
+
+            return _client.Call<Models.PasskeyList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Start registering a passkey for the currently logged in user. The session
+        /// must have signed in or completed an MFA challenge within the last 10
+        /// minutes. Pass the returned `publicKey` options to
+        /// `navigator.credentials.create()`, then complete the registration with
+        /// [Update passkey
+        /// verification](/docs/references/cloud/client-web/account#updatePasskeyVerification).
+        /// The passkey stays pending until verified, and the challenge expires after 5
+        /// minutes.
+        /// </para>
+        /// </summary>
+        public Task<Models.PasskeyChallenge> CreatePasskey(string? passkeyId = null, string? name = null)
+        {
+            var apiPath = "/account/passkeys";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "passkeyId", passkeyId },
+                { "name", name }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.PasskeyChallenge Convert(Dictionary<string, object> it)
+            {
+                return Models.PasskeyChallenge.From(map: it);
+            }
+
+            return _client.Call<Models.PasskeyChallenge>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a verified passkey of the currently logged in user by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Passkey> GetPasskey(string passkeyId)
+        {
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/account/passkeys/{passkeyId}"
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Passkey Convert(Dictionary<string, object> it)
+            {
+                return Models.Passkey.From(map: it);
+            }
+
+            return _client.Call<Models.Passkey>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Rename a passkey of the currently logged in user.
+        /// </para>
+        /// </summary>
+        public Task<Models.Passkey> UpdatePasskey(string passkeyId, string name)
+        {
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/account/passkeys/{passkeyId}"
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Passkey Convert(Dictionary<string, object> it)
+            {
+                return Models.Passkey.From(map: it);
+            }
+
+            return _client.Call<Models.Passkey>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete a passkey from the currently logged in user. The passkey can no
+        /// longer be used to sign in, although it may remain stored on the user's
+        /// device. The session must have signed in or completed an MFA challenge
+        /// within the last 10 minutes.
+        /// </para>
+        /// </summary>
+        public Task<object> DeletePasskey(string passkeyId)
+        {
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/account/passkeys/{passkeyId}"
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Complete a passkey registration started with [Create
+        /// passkey](/docs/references/cloud/client-web/account#createPasskey). Pass the
+        /// JSON form of the credential returned by `navigator.credentials.create()`,
+        /// for example `credential.toJSON()`. Each registration can be verified once;
+        /// a failed attempt requires starting it again.
+        /// </para>
+        /// </summary>
+        public Task<Models.Passkey> UpdatePasskeyVerification(string passkeyId, object credential)
+        {
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/account/passkeys/{passkeyId}/verification"
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "credential", credential }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Passkey Convert(Dictionary<string, object> it)
+            {
+                return Models.Passkey.From(map: it);
+            }
+
+            return _client.Call<Models.Passkey>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update currently logged in user password. For validation, user is required
         /// to pass in the new password, and the old password. For users created with
         /// OAuth, Team Invites and Magic URL, oldPassword is optional.
@@ -1956,6 +2198,90 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Start signing in with a passkey. No email or user ID is needed: pass the
+        /// returned `publicKey` options to `navigator.credentials.get()` and the user
+        /// picks one of their passkeys. Then call [Update passkey
+        /// token](/docs/references/cloud/client-web/account#updatePasskeyToken) with
+        /// the credential to receive a token, and exchange it with [Create
+        /// session](/docs/references/cloud/client-web/account#createSession). The
+        /// challenge expires after 5 minutes.
+        /// </para>
+        /// </summary>
+        public Task<Models.PasskeyChallenge> CreatePasskeyToken()
+        {
+            var apiPath = "/account/tokens/passkey";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.PasskeyChallenge Convert(Dictionary<string, object> it)
+            {
+                return Models.PasskeyChallenge.From(map: it);
+            }
+
+            return _client.Call<Models.PasskeyChallenge>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Complete a passkey sign-in started with [Create passkey
+        /// token](/docs/references/cloud/client-web/account#createPasskeyToken). Pass
+        /// the challenge ID and the JSON form of the credential returned by
+        /// `navigator.credentials.get()`, for example `credential.toJSON()`. The
+        /// returned token includes its secret and expires after 1 minute: exchange it
+        /// for a session with [Create
+        /// session](/docs/references/cloud/client-web/account#createSession). Passkeys
+        /// require user verification, so the session also satisfies MFA. Each
+        /// challenge can only be used once.
+        /// </para>
+        /// </summary>
+        public Task<Models.TokenSecret> UpdatePasskeyToken(string challengeId, object credential)
+        {
+            var apiPath = "/account/tokens/passkey";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "challengeId", challengeId },
+                { "credential", credential }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.TokenSecret Convert(Dictionary<string, object> it)
+            {
+                return Models.TokenSecret.From(map: it);
+            }
+
+            return _client.Call<Models.TokenSecret>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 

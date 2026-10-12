@@ -1254,6 +1254,181 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get the list of verified passkeys registered by a user.
+        /// </para>
+        /// </summary>
+        public Task<Models.PasskeyList> ListPasskeys(string userId, List<string>? queries = null, bool? total = null)
+        {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
+            var apiPath = "/users/{userId}/passkeys"
+                .Replace("{userId}", userId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "total", total }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.PasskeyList Convert(Dictionary<string, object> it)
+            {
+                return Models.PasskeyList.From(map: it);
+            }
+
+            return _client.Call<Models.PasskeyList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a verified passkey of a user by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Passkey> GetPasskey(string userId, string passkeyId)
+        {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/users/{userId}/passkeys/{passkeyId}"
+                .Replace("{userId}", userId)
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Passkey Convert(Dictionary<string, object> it)
+            {
+                return Models.Passkey.From(map: it);
+            }
+
+            return _client.Call<Models.Passkey>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Rename a passkey of a user.
+        /// </para>
+        /// </summary>
+        public Task<Models.Passkey> UpdatePasskey(string userId, string passkeyId, string name)
+        {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/users/{userId}/passkeys/{passkeyId}"
+                .Replace("{userId}", userId)
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Passkey Convert(Dictionary<string, object> it)
+            {
+                return Models.Passkey.From(map: it);
+            }
+
+            return _client.Call<Models.Passkey>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete a passkey from a user, for example when a device is lost. The
+        /// passkey can no longer be used to sign in.
+        /// </para>
+        /// </summary>
+        public Task<object> DeletePasskey(string userId, string passkeyId)
+        {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/users/{userId}/passkeys/{passkeyId}"
+                .Replace("{userId}", userId)
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
         /// Update the user password by its unique ID.
         /// </para>
         /// </summary>

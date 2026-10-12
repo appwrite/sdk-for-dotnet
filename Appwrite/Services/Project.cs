@@ -3283,6 +3283,46 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Set the relying party ID passkeys are bound to: the domain of your
+        /// application. Passkeys work on the project's web platforms on that domain or
+        /// its subdomains, and on the domain itself for Apple apps. A localhost web
+        /// platform enables passkeys for local development without a relying party ID.
+        /// The relying party ID cannot change while users have passkeys, and any
+        /// change invalidates ceremonies in progress.
+        /// </para>
+        /// </summary>
+        public Task<Models.Project> UpdatePasskeyPolicy(string rpId)
+        {
+            var apiPath = "/project/policies/passkey";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "rpId", rpId }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Project Convert(Dictionary<string, object> it)
+            {
+                return Models.Project.From(map: it);
+            }
+
+            return _client.Call<Models.Project>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Updating this policy allows you to control if new passwords are checked
         /// against most common passwords dictionary. When enabled, and user changes
         /// their password, password must not be contained in the dictionary.
