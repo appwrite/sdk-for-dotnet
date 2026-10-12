@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static Oauth2ProjectList From(Dictionary<string, object> map) => new Oauth2ProjectList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             projects: map["projects"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Oauth2Project.From(map: it)).ToList()
         );
 

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeVarchar result = await databases.CreateVarcharAttribute(
+Appwrite.Models.AttributeVarchar result = await databases.CreateVarcharAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

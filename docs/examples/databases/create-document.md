@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-Document result = await databases.CreateDocument(
+Appwrite.Models.Document result = await databases.CreateDocument(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     documentId: "<DOCUMENT_ID>",

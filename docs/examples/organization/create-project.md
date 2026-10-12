@@ -11,7 +11,7 @@ Client client = new Client()
 
 Organization organization = new Organization(client);
 
-Project result = await organization.CreateProject(
+Appwrite.Models.Project result = await organization.CreateProject(
     projectId: "<PROJECT_ID>",
     name: "<NAME>",
     region: Region.Fra // optional

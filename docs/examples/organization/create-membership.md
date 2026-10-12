@@ -10,7 +10,7 @@ Client client = new Client()
 
 Organization organization = new Organization(client);
 
-Membership result = await organization.CreateMembership(
+Appwrite.Models.Membership result = await organization.CreateMembership(
     roles: new List<string>(),
     email: "email@example.com", // optional
     userId: "<USER_ID>", // optional

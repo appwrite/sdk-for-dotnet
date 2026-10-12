@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static Oauth2ConsentList From(Dictionary<string, object> map) => new Oauth2ConsentList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             consents: map["consents"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Oauth2Consent.From(map: it)).ToList()
         );
 

@@ -11,12 +11,12 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-Index result = await vectorsDB.CreateIndex(
+Appwrite.Models.Index result = await vectorsDB.CreateIndex(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     type: VectorsDBIndexType.HnswEuclidean,
-    attributes: new List<string>(),
+    attributes: ["embeddings"],
     orders: new List&lt;OrderBy&gt; { OrderBy.Asc }, // optional
     lengths: new List<long>() // optional
 );

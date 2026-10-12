@@ -11,8 +11,8 @@ Client client = new Client()
 
 Embeddings embeddings = new Embeddings(client);
 
-EmbeddingList result = await embeddings.CreateTextEmbeddings(
-    texts: new List<string>(),
+Appwrite.Models.EmbeddingList result = await embeddings.CreateTextEmbeddings(
+    texts: ["Appwrite helps developers build applications.", "Find documents with semantic search."],
     model: EmbeddingModel.NomicEmbedText // optional
 );
 

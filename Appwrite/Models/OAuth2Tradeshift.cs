@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Tradeshift From(Dictionary<string, object> map) => new OAuth2Tradeshift(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            oauth2ClientId: map["oauth2ClientId"].ToString(),
-            oauth2ClientSecret: map["oauth2ClientSecret"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            oauth2ClientId: (map.ContainsKey("oauth2ClientId") ? map["oauth2ClientId"] : "").ToString(),
+            oauth2ClientSecret: (map.ContainsKey("oauth2ClientSecret") ? map["oauth2ClientSecret"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

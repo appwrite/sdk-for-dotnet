@@ -10,9 +10,10 @@ Client client = new Client()
 
 Teams teams = new Teams(client);
 
-Membership result = await teams.CreateMembership(
+Appwrite.Models.Membership result = await teams.CreateMembership(
     teamId: "<TEAM_ID>",
-    roles: new List<string>(),
+    roles: ["editor"],
+    membershipId: "<MEMBERSHIP_ID>", // optional
     email: "email@example.com", // optional
     userId: "<USER_ID>", // optional
     phone: "+12065550100", // optional

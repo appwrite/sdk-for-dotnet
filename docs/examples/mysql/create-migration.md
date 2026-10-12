@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabase result = await mysql.CreateMigration(
+Appwrite.Models.DedicatedDatabase result = await mysql.CreateMigration(
     databaseId: "<DATABASE_ID>",
     targetType: "shared",
     specification: "<SPECIFICATION>" // optional

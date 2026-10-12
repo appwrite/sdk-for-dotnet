@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static Specification From(Dictionary<string, object> map) => new Specification(
-            memory: Convert.ToInt64(map["memory"]),
-            cpus: Convert.ToDouble(map["cpus"]),
-            enabled: (bool)map["enabled"],
-            slug: map["slug"].ToString()
+            memory: Convert.ToInt64((map.ContainsKey("memory") ? map["memory"] : 0)),
+            cpus: Convert.ToDouble((map.ContainsKey("cpus") ? map["cpus"] : 0)),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            slug: (map.ContainsKey("slug") ? map["slug"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

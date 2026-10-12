@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnString result = await tablesDB.UpdateStringColumn(
+Appwrite.Models.ColumnString result = await tablesDB.UpdateStringColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

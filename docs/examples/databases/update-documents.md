@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-DocumentList result = await databases.UpdateDocuments(
+Appwrite.Models.DocumentList result = await databases.UpdateDocuments(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     data: new {

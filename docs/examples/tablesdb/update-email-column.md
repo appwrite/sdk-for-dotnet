@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnEmail result = await tablesDB.UpdateEmailColumn(
+Appwrite.Models.ColumnEmail result = await tablesDB.UpdateEmailColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

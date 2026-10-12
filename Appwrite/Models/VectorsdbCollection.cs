@@ -82,19 +82,19 @@ namespace Appwrite.Models
         }
 
         public static VectorsdbCollection From(Dictionary<string, object> map) => new VectorsdbCollection(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             permissions: map["$permissions"].ConvertToList<string>(),
-            databaseId: map["databaseId"].ToString(),
-            name: map["name"].ToString(),
-            enabled: (bool)map["enabled"],
-            documentSecurity: (bool)map["documentSecurity"],
+            databaseId: (map.ContainsKey("databaseId") ? map["databaseId"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
+            documentSecurity: (bool)(map.ContainsKey("documentSecurity") ? map["documentSecurity"] : false),
             attributes: map["attributes"].ConvertToList<object>(),
             indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Index.From(map: it)).ToList(),
-            bytesMax: Convert.ToInt64(map["bytesMax"]),
-            bytesUsed: Convert.ToInt64(map["bytesUsed"]),
-            dimension: Convert.ToInt64(map["dimension"])
+            bytesMax: Convert.ToInt64((map.ContainsKey("bytesMax") ? map["bytesMax"] : 0)),
+            bytesUsed: Convert.ToInt64((map.ContainsKey("bytesUsed") ? map["bytesUsed"] : 0)),
+            dimension: Convert.ToInt64((map.ContainsKey("dimension") ? map["dimension"] : 0))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

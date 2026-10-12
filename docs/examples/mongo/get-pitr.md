@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabasePITRWindows result = await mongo.GetPitr(
+Appwrite.Models.DedicatedDatabasePITRWindows result = await mongo.GetPitr(
     databaseId: "<DATABASE_ID>"
 );
 

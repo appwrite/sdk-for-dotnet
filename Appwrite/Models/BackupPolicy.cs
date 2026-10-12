@@ -77,18 +77,18 @@ namespace Appwrite.Models
         }
 
         public static BackupPolicy From(Dictionary<string, object> map) => new BackupPolicy(
-            id: map["$id"].ToString(),
-            name: map["name"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             services: map["services"].ConvertToList<string>(),
             resources: map["resources"].ConvertToList<string>(),
             resourceId: map.TryGetValue("resourceId", out var resourceId) ? resourceId?.ToString() : null,
             resourceType: map.TryGetValue("resourceType", out var resourceType) ? resourceType?.ToString() : null,
-            retention: Convert.ToInt64(map["retention"]),
-            schedule: map["schedule"].ToString(),
-            type: map["type"].ToString(),
-            enabled: (bool)map["enabled"]
+            retention: Convert.ToInt64((map.ContainsKey("retention") ? map["retention"] : 1)),
+            schedule: (map.ContainsKey("schedule") ? map["schedule"] : "0 * * * *").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "full").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

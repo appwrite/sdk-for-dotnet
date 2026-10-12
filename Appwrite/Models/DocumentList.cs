@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static DocumentList From(Dictionary<string, object> map) => new DocumentList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             documents: map["documents"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Document.From(map: it)).ToList()
         );
 

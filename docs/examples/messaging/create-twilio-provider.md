@@ -10,10 +10,10 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.CreateTwilioProvider(
+Appwrite.Models.Provider result = await messaging.CreateTwilioProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>",
-    from: "+12065550100", // optional
+    from: "<FROM>", // optional
     accountSid: "<ACCOUNT_SID>", // optional
     authToken: "<AUTH_TOKEN>", // optional
     enabled: false // optional

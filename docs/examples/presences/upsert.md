@@ -10,7 +10,7 @@ Client client = new Client()
 
 Presences presences = new Presences(client);
 
-Presence result = await presences.Upsert(
+Appwrite.Models.Presence result = await presences.Upsert(
     presenceId: "<PRESENCE_ID>",
     userId: "<USER_ID>",
     status: "<STATUS>",

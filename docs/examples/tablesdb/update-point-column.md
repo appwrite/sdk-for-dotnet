@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnPoint result = await tablesDB.UpdatePointColumn(
+Appwrite.Models.ColumnPoint result = await tablesDB.UpdatePointColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

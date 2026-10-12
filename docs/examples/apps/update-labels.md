@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-App result = await apps.UpdateLabels(
+Appwrite.Models.App result = await apps.UpdateLabels(
     appId: "<APP_ID>",
     labels: new List<string>()
 );

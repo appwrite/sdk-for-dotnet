@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeText result = await databases.CreateTextAttribute(
+Appwrite.Models.AttributeText result = await databases.CreateTextAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

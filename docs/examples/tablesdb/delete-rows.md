@@ -13,7 +13,7 @@ TablesDB tablesDB = new TablesDB(client);
 await tablesDB.DeleteRows(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    queries: new List<string>(), // optional
+    queries: ["{\"method\":\"equal\", \"attribute\":\"$id\", \"values\":[\"<ROW_ID>\"]}"], // optional
     transactionId: "<TRANSACTION_ID>" // optional
 );
 

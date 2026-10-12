@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabase result = await postgresql.CreateFailover(
+Appwrite.Models.DedicatedDatabase result = await postgresql.CreateFailover(
     databaseId: "<DATABASE_ID>",
     targetReplicaId: "<TARGET_REPLICA_ID>" // optional
 );

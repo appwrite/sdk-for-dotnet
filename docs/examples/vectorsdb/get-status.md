@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-DatabaseStatus result = await vectorsDB.GetStatus(
+Appwrite.Models.DatabaseStatus result = await vectorsDB.GetStatus(
     databaseId: "<DATABASE_ID>"
 );
 

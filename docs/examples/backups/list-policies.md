@@ -10,7 +10,7 @@ Client client = new Client()
 
 Backups backups = new Backups(client);
 
-BackupPolicyList result = await backups.ListPolicies(
+Appwrite.Models.BackupPolicyList result = await backups.ListPolicies(
     queries: new List<string>() // optional
 );
 

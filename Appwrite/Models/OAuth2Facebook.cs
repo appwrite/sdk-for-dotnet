@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Facebook From(Dictionary<string, object> map) => new OAuth2Facebook(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            appId: map["appId"].ToString(),
-            appSecret: map["appSecret"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            appId: (map.ContainsKey("appId") ? map["appId"] : "").ToString(),
+            appSecret: (map.ContainsKey("appSecret") ? map["appSecret"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

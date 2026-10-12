@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static PolicySessionInvalidation From(Dictionary<string, object> map) => new PolicySessionInvalidation(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"]
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

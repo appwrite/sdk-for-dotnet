@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static UserList From(Dictionary<string, object> map) => new UserList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             users: map["users"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.User.From(map: it)).ToList()
         );
 

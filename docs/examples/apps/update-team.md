@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-App result = await apps.UpdateTeam(
+Appwrite.Models.App result = await apps.UpdateTeam(
     appId: "<APP_ID>",
     teamId: "<TEAM_ID>"
 );

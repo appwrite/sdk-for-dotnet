@@ -10,7 +10,7 @@ Client client = new Client()
 
 Backups backups = new Backups(client);
 
-BackupArchive result = await backups.GetArchive(
+Appwrite.Models.BackupArchive result = await backups.GetArchive(
     archiveId: "<ARCHIVE_ID>"
 );
 

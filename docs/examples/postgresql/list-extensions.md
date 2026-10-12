@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseExtensions result = await postgresql.ListExtensions(
+Appwrite.Models.DedicatedDatabaseExtensions result = await postgresql.ListExtensions(
     databaseId: "<DATABASE_ID>"
 );
 

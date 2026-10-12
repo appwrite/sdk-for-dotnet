@@ -1,5 +1,43 @@
 # Change Log
 
+## 9.0.0
+
+* Breaking: `Account.ListLogs`, `Users.ListLogs`, `Log` and `LogList` removed
+* Breaking: `organization` key methods renamed to `CreateEphemeralProjectKey`, `GetProjectKey`, `ListProjectKeys`, `UpdateProjectKey` and `DeleteProjectKey`; `OrganizationKeyScopes` removed
+* Breaking: `SetDevKey` client method, `DevKey` model and `Project.DevKeys` removed
+* Breaking: `ProjectName`, `Region`, `OrganizationId`, `OrganizationName`, `BillingPlan` and `Reason` removed from `Block`
+* Breaking: `DedicatedDatabaseSpecificationList.Pricing` and `DedicatedDatabaseSpecificationPricing` removed; rates now live on `DedicatedDatabaseSpecification`
+* Breaking: `BillingPlanGroup` `starter` replaced by `free` and `start`
+* Breaking: `resource` is now an array on `Oauth2.Authorize`, `Oauth2.CreatePAR`, `Oauth2.CreateToken` and `Oauth2.CreateDeviceAuthorization`
+* Breaking: `BackupRestoration.Options` is now a key-value object instead of a string
+* Breaking: several model fields are now nullable, e.g. `DedicatedDatabase.Engine`, `Organization.BillingStartDate`, `BillingPlan.Usage`, `BackupArchive.Size`
+* Breaking: optional parameters reordered in `Messaging.UpdateEmail`, `Messaging.UpdatePush` and `Messaging.UpdateSMS`; new ones inserted mid-list in `Messaging.CreateEmail`, `Teams.CreateMembership` and `project` OAuth2 provider updates; use named arguments
+* Added: passkey methods `Account.ListPasskeys`, `Account.CreatePasskey`, `Account.GetPasskey`, `Account.UpdatePasskey`, `Account.DeletePasskey`, `Account.UpdatePasskeyVerification`, `Account.CreatePasskeyToken` and `Account.UpdatePasskeyToken`
+* Added: `Users.ListPasskeys`, `Users.GetPasskey`, `Users.UpdatePasskey`, `Users.DeletePasskey`, plus `Project.UpdatePasskeyPolicy`
+* Added: `Passkey`, `PasskeyList`, `PasskeyChallenge`, `PolicyPasskey` and `TokenSecret` models
+* Added: `Fingerprints` on Android platforms for passkeys
+* Added: `domains` service for domains, DNS records, email presets, prices and transfers
+* Added: `waf` service for bypass, challenge, deny, rate-limit and redirect rules
+* Added: `Account.CreateIdTokenSession` for native Apple and Google sign-in, with native client IDs on those providers
+* Added: email verification and recovery OTP methods on `account`
+* Added: `Oauth2.Introspect` for RFC 7662 token introspection, returning `Oauth2Introspection`
+* Added: `Avatars.UpdatePhoto` and `Avatars.DeletePhoto`
+* Added: `Messaging.CreateAppwriteProvider` and `Messaging.UpdateAppwriteProvider`
+* Added: `Project.UpdatePasswordPwnedPolicy`, `PolicyPasswordPwned` model and `User.PasswordPwned`
+* Added: Kakao, TikTok and Webflow OAuth2 providers
+* Added: `prompt` on Auth0, Discord, GitHub, Microsoft, Okta, Salesforce and Zoho providers, with prompt enums
+* Added: `Topic` and `ResolvedTopic` helpers for building MQTT push topics
+* Added: reply-to on email messages, `ChannelId` on push messages, `Qos` and `Expiry` on topics
+* Added: `MembershipId` on `Teams.CreateMembership`, and `Total` on locale and other list endpoints
+* Added: `StorageStatus` and `StorageTargetGb` on `DedicatedDatabase`; `EligibleCountries` on `BillingPlan`
+* Added: `auto` image gravity, `jaspr` framework, `dart-3.13` and `flutter-3.47` runtimes
+* Added: `Project.UpdatePasswordRotationPolicy` and the `PolicyPasswordRotation` model
+* Fixed: response models fill missing fields from spec defaults instead of throwing
+* Fixed: object parameters in multipart requests are sent as JSON
+* Fixed: stream inputs are read fully before a single-request upload
+* Updated: requests send `X-Appwrite-Response-Format` `2.4.0`
+* Updated: `System.Text.Json` bumped to `9.0.20`
+
 ## 8.2.0
 
 * Added: optional `interval` parameter on `functions.create` and `functions.update` to run a function every N minutes

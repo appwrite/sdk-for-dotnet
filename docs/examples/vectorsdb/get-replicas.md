@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-DedicatedDatabaseReplicas result = await vectorsDB.GetReplicas(
+Appwrite.Models.DedicatedDatabaseReplicas result = await vectorsDB.GetReplicas(
     databaseId: "<DATABASE_ID>"
 );
 

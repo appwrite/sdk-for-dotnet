@@ -10,7 +10,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-JWT result = await users.CreateJWT(
+Appwrite.Models.JWT result = await users.CreateJWT(
     userId: "<USER_ID>",
     sessionId: "recent()", // optional
     duration: 0 // optional

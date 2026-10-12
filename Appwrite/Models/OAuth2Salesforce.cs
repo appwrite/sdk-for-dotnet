@@ -23,24 +23,30 @@ namespace Appwrite.Models
         [JsonPropertyName("customerSecret")]
         public string CustomerSecret { get; private set; }
 
+        [JsonPropertyName("prompt")]
+        public List<Appwrite.Enums.OAuth2SalesforcePrompt> Prompt { get; private set; }
+
         public OAuth2Salesforce(
             string id,
             bool enabled,
             string customerKey,
-            string customerSecret
+            string customerSecret,
+            List<Appwrite.Enums.OAuth2SalesforcePrompt> prompt
         )
         {
             Id = id;
             Enabled = enabled;
             CustomerKey = customerKey;
             CustomerSecret = customerSecret;
+            Prompt = prompt;
         }
 
         public static OAuth2Salesforce From(Dictionary<string, object> map) => new OAuth2Salesforce(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            customerKey: map["customerKey"].ToString(),
-            customerSecret: map["customerSecret"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            customerKey: (map.ContainsKey("customerKey") ? map["customerKey"] : "").ToString(),
+            customerSecret: (map.ContainsKey("customerSecret") ? map["customerSecret"] : "").ToString(),
+            prompt: (map.ContainsKey("prompt") ? map["prompt"] : new List<object>()).ConvertToList<Appwrite.Enums.OAuth2SalesforcePrompt>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -48,7 +54,8 @@ namespace Appwrite.Models
             { "$id", Id },
             { "enabled", Enabled },
             { "customerKey", CustomerKey },
-            { "customerSecret", CustomerSecret }
+            { "customerSecret", CustomerSecret },
+            { "prompt", Prompt.Select(it => it.Value).ToList() }
         };
     }
 }

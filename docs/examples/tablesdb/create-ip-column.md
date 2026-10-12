@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnIp result = await tablesDB.CreateIpColumn(
+Appwrite.Models.ColumnIp result = await tablesDB.CreateIpColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

@@ -11,7 +11,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-MfaChallenge result = await account.CreateMFAChallenge(
+Appwrite.Models.MfaChallenge result = await account.CreateMFAChallenge(
     factor: AuthenticationFactor.Email
 );
 

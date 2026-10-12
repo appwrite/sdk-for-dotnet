@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static Oauth2OrganizationList From(Dictionary<string, object> map) => new Oauth2OrganizationList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             organizations: map["organizations"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Oauth2Organization.From(map: it)).ToList()
         );
 

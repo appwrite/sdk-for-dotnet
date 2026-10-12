@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabase result = await postgresql.CreateUpgrade(
+Appwrite.Models.DedicatedDatabase result = await postgresql.CreateUpgrade(
     databaseId: "<DATABASE_ID>",
     targetVersion: "<TARGET_VERSION>"
 );

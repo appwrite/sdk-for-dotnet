@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static ProxyInvalidation From(Dictionary<string, object> map) => new ProxyInvalidation(
-            domain: map["domain"].ToString(),
-            type: map["type"].ToString(),
-            reference: map["reference"].ToString(),
-            status: map["status"].ToString()
+            domain: (map.ContainsKey("domain") ? map["domain"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
+            reference: (map.ContainsKey("reference") ? map["reference"] : "").ToString(),
+            status: (map.ContainsKey("status") ? map["status"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

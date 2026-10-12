@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static SessionList From(Dictionary<string, object> map) => new SessionList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             sessions: map["sessions"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Session.From(map: it)).ToList()
         );
 

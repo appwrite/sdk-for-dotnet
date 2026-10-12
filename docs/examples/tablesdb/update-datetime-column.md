@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnDatetime result = await tablesDB.UpdateDatetimeColumn(
+Appwrite.Models.ColumnDatetime result = await tablesDB.UpdateDatetimeColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

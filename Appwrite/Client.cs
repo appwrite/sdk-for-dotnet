@@ -77,12 +77,12 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent", $"AppwriteDotNetSDK/8.2.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
+                { "user-agent", $"AppwriteDotNetSDK/9.0.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "8.2.0"},
-                { "X-Appwrite-Response-Format", "2.0.0" }
+                { "x-sdk-version", "9.0.0"},
+                { "X-Appwrite-Response-Format", "2.4.0" }
             };
 
             _config = new Dictionary<string, string>();
@@ -188,15 +188,6 @@ namespace Appwrite
             return this;
         }
 
-        /// <summary>Your secret dev API key</summary>
-        public Client SetDevKey(string value)
-        {
-            _config["devKey"] = value;
-            AddHeader("X-Appwrite-Dev-Key", value);
-
-            return this;
-        }
-
         /// <summary>The user cookie to authenticate with. Used by SDKs that forward an incoming Cookie header in server-side runtimes.</summary>
         public Client SetCookie(string value)
         {
@@ -269,13 +260,13 @@ namespace Appwrite
                 foreach (var parameter in parameters)
                 {
                     if (parameter.Value == null) continue;
-                    if (parameter.Key == "file")
+                    if (parameter.Value is MultipartFormDataContent fileContent)
                     {
-                        var fileContent = parameters["file"] as MultipartFormDataContent;
-                        if (fileContent != null)
-                        {
-                            form.Add(fileContent.First()!);
-                        }
+                        form.Add(fileContent.First()!);
+                    }
+                    else if (parameter.Value is System.Collections.IDictionary)
+                    {
+                        form.Add(new StringContent(JsonSerializer.Serialize(parameter.Value, SerializerOptions)), parameter.Key);
                     }
                     else if (parameter.Value is IEnumerable<object> enumerable)
                     {
@@ -471,6 +462,10 @@ namespace Appwrite
 
                 return (dict as T)!;
             }
+            else if (typeof(T) == typeof(string))
+            {
+                return ((await response.Content.ReadAsStringAsync()) as T)!;
+            }
             else
             {
                 return ((await response.Content.ReadAsByteArrayAsync()) as T)!;
@@ -481,18 +476,27 @@ namespace Appwrite
             string path,
             Dictionary<string, string> headers,
             Dictionary<string, object?> parameters,
-            Func<Dictionary<string, object>, T> converter,
+            Func<Dictionary<string, object>, T>? converter,
             string paramName,
             string? idParamName = null,
-            Action<UploadProgress>? onProgress = null) where T : class
+            Action<UploadProgress>? onProgress = null,
+            string method = "POST") where T : class
         {
             if (string.IsNullOrEmpty(paramName))
                 throw new ArgumentException("Parameter name cannot be null or empty", nameof(paramName));
 
-            if (!parameters.ContainsKey(paramName))
-                throw new ArgumentException($"Parameter {paramName} not found", nameof(paramName));
+            if (!parameters.TryGetValue(paramName, out var value) || value == null)
+            {
+                return await Call(
+                    method: method,
+                    path,
+                    headers,
+                    parameters,
+                    converter
+                );
+            }
 
-            var input = parameters[paramName] as InputFile;
+            var input = value as InputFile;
             if (input == null)
                 throw new ArgumentException($"Parameter {paramName} must be an InputFile", nameof(paramName));
 
@@ -518,11 +522,11 @@ namespace Appwrite
             }
 
             var offset = 0L;
-            var buffer = new byte[Math.Min(size, ChunkSize)];
             var result = new Dictionary<string, object?>();
 
-            if (size < ChunkSize)
+            if (size <= ChunkSize || typeof(T) == typeof(string))
             {
+                byte[] buffer;
                 switch (input.SourceType)
                 {
                     case "path":
@@ -532,7 +536,15 @@ namespace Appwrite
                         var dataStream = input.Data as Stream;
                         if (dataStream == null)
                             throw new InvalidOperationException("Stream data is null");
-                        await dataStream.ReadAsync(buffer, 0, (int)size);
+                        buffer = new byte[size];
+                        var bytesRead = 0;
+                        while (bytesRead < size)
+                        {
+                            var count = await dataStream.ReadAsync(buffer, bytesRead, (int)size - bytesRead);
+                            if (count == 0)
+                                break;
+                            bytesRead += count;
+                        }
                         break;
                     case "bytes":
                         var dataBytes = input.Data as byte[];
@@ -540,6 +552,8 @@ namespace Appwrite
                             throw new InvalidOperationException("Byte array data is null");
                         buffer = dataBytes;
                         break;
+                    default:
+                        throw new InvalidOperationException($"Unsupported source type: {input.SourceType}");
                 }
 
                 var content = new MultipartFormDataContent {
@@ -549,7 +563,7 @@ namespace Appwrite
                 parameters[paramName] = content;
 
                 return await Call(
-                    method: "POST",
+                    method: method,
                     path,
                     headers,
                     parameters,
@@ -656,7 +670,7 @@ namespace Appwrite
                 };
 
                 var chunkResult = await Call<Dictionary<string, object?>>(
-                    method: "POST",
+                    method: method,
                     path,
                     chunkHeaders,
                     chunkParameters
@@ -773,7 +787,7 @@ namespace Appwrite
             var nonNullableResult = result.Where(kvp => kvp.Value != null)
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value!);
 
-            return converter(nonNullableResult);
+            return converter != null ? converter(nonNullableResult) : (nonNullableResult as T)!;
         }
     }
 }

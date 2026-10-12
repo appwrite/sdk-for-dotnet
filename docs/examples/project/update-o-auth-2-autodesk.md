@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Autodesk result = await project.UpdateOAuth2Autodesk(
+Appwrite.Models.OAuth2Autodesk result = await project.UpdateOAuth2Autodesk(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional

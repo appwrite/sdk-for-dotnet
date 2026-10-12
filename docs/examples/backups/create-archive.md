@@ -11,7 +11,7 @@ Client client = new Client()
 
 Backups backups = new Backups(client);
 
-BackupArchive result = await backups.CreateArchive(
+Appwrite.Models.BackupArchive result = await backups.CreateArchive(
     services: new List&lt;BackupServices&gt; { BackupServices.Databases },
     resourceId: "<RESOURCE_ID>" // optional
 );

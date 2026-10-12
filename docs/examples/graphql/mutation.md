@@ -10,8 +10,8 @@ Client client = new Client()
 
 Graphql graphql = new Graphql(client);
 
-Any result = await graphql.Mutation(
-    query: [object]
+Appwrite.Models.Any result = await graphql.Mutation(
+    query: new { query = "mutation { accountUpdateName(name: "Walter") { name } }" }
 );
 
 ```

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabasePooler result = await mysql.UpdatePooler(
+Appwrite.Models.DedicatedDatabasePooler result = await mysql.UpdatePooler(
     databaseId: "<DATABASE_ID>",
     mode: "transaction", // optional
     maxConnections: 10, // optional

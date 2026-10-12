@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseOperationList From(Dictionary<string, object> map) => new DedicatedDatabaseOperationList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             operations: map["operations"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabaseOperation.From(map: it)).ToList()
         );
 

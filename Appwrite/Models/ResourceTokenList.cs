@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static ResourceTokenList From(Dictionary<string, object> map) => new ResourceTokenList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             tokens: map["tokens"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ResourceToken.From(map: it)).ToList()
         );
 

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseRestoration result = await mysql.CreateRestoration(
+Appwrite.Models.DedicatedDatabaseRestoration result = await mysql.CreateRestoration(
     databaseId: "<DATABASE_ID>",
     type: "backup", // optional
     backupId: "<BACKUP_ID>", // optional

@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-DedicatedDatabaseOperationList result = await tablesDB.ListOperations(
+Appwrite.Models.DedicatedDatabaseOperationList result = await tablesDB.ListOperations(
     databaseId: "<DATABASE_ID>",
     status: "queued", // optional
     limit: 1, // optional

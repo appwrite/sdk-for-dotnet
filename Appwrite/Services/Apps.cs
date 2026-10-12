@@ -173,6 +173,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.App> Get(string appId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}"
                 .Replace("{appId}", appId);
 
@@ -207,6 +212,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.App> Update(string appId, string name, string? description = null, string? clientUri = null, string? logoUri = null, string? privacyPolicyUrl = null, string? termsUrl = null, List<string>? contacts = null, string? tagline = null, List<string>? tags = null, List<string>? images = null, string? supportUrl = null, string? dataDeletionUrl = null, bool? enabled = null, List<string>? redirectUris = null, List<string>? postLogoutRedirectUris = null, string? type = null, bool? deviceFlow = null, List<string>? installationScopes = null, string? installationRedirectUrl = null)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}"
                 .Replace("{appId}", appId);
 
@@ -261,6 +271,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string appId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}"
                 .Replace("{appId}", appId);
 
@@ -293,6 +308,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppInstallationList> ListInstallations(string appId, List<string>? queries = null, bool? total = null)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}/installations"
                 .Replace("{appId}", appId);
 
@@ -331,6 +351,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppInstallation> GetInstallation(string appId, string installationId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
+            if (installationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"installationId\"");
+            }
+
             var apiPath = "/apps/{appId}/installations/{installationId}"
                 .Replace("{appId}", appId)
                 .Replace("{installationId}", installationId);
@@ -368,6 +398,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteInstallation(string appId, string installationId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
+            if (installationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"installationId\"");
+            }
+
             var apiPath = "/apps/{appId}/installations/{installationId}"
                 .Replace("{appId}", appId)
                 .Replace("{installationId}", installationId);
@@ -406,6 +446,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Oauth2Token> CreateInstallationToken(string appId, string installationId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
+            if (installationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"installationId\"");
+            }
+
             var apiPath = "/apps/{appId}/installations/{installationId}/tokens"
                 .Replace("{appId}", appId)
                 .Replace("{installationId}", installationId);
@@ -442,6 +492,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppKeyList> ListKeys(string appId, List<string>? queries = null, bool? total = null)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}/keys"
                 .Replace("{appId}", appId);
 
@@ -480,6 +535,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppKey> CreateKey(string appId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}/keys"
                 .Replace("{appId}", appId);
 
@@ -515,6 +575,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppKey> GetKey(string appId, string keyId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
+            if (keyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"keyId\"");
+            }
+
             var apiPath = "/apps/{appId}/keys/{keyId}"
                 .Replace("{appId}", appId)
                 .Replace("{keyId}", keyId);
@@ -550,6 +620,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteKey(string appId, string keyId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
+            if (keyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"keyId\"");
+            }
+
             var apiPath = "/apps/{appId}/keys/{keyId}"
                 .Replace("{appId}", appId)
                 .Replace("{keyId}", keyId);
@@ -583,6 +663,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.App> UpdateLabels(string appId, List<string> labels)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}/labels"
                 .Replace("{appId}", appId);
 
@@ -619,6 +704,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppSecretList> ListSecrets(string appId, List<string>? queries = null, bool? total = null)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}/secrets"
                 .Replace("{appId}", appId);
 
@@ -655,6 +745,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppSecretPlaintext> CreateSecret(string appId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}/secrets"
                 .Replace("{appId}", appId);
 
@@ -690,6 +785,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppSecret> GetSecret(string appId, string secretId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
+            if (secretId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"secretId\"");
+            }
+
             var apiPath = "/apps/{appId}/secrets/{secretId}"
                 .Replace("{appId}", appId)
                 .Replace("{secretId}", secretId);
@@ -725,6 +830,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteSecret(string appId, string secretId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
+            if (secretId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"secretId\"");
+            }
+
             var apiPath = "/apps/{appId}/secrets/{secretId}"
                 .Replace("{appId}", appId)
                 .Replace("{secretId}", secretId);
@@ -756,6 +871,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.App> UpdateTeam(string appId, string teamId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}/team"
                 .Replace("{appId}", appId);
 
@@ -792,6 +912,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteTokens(string appId)
         {
+            if (appId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"appId\"");
+            }
+
             var apiPath = "/apps/{appId}/tokens"
                 .Replace("{appId}", appId);
 

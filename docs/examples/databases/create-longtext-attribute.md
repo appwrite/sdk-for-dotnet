@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeLongtext result = await databases.CreateLongtextAttribute(
+Appwrite.Models.AttributeLongtext result = await databases.CreateLongtextAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

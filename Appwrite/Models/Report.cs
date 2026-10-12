@@ -77,16 +77,16 @@ namespace Appwrite.Models
         }
 
         public static Report From(Dictionary<string, object> map) => new Report(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            appId: map["appId"].ToString(),
-            type: map["type"].ToString(),
-            title: map["title"].ToString(),
-            summary: map["summary"].ToString(),
-            targetType: map["targetType"].ToString(),
-            target: map["target"].ToString(),
-            categories: map["categories"].ConvertToList<string>(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            appId: (map.ContainsKey("appId") ? map["appId"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
+            title: (map.ContainsKey("title") ? map["title"] : "").ToString(),
+            summary: (map.ContainsKey("summary") ? map["summary"] : "").ToString(),
+            targetType: (map.ContainsKey("targetType") ? map["targetType"] : "").ToString(),
+            target: (map.ContainsKey("target") ? map["target"] : "").ToString(),
+            categories: (map.ContainsKey("categories") ? map["categories"] : new List<object>()).ConvertToList<string>(),
             insights: map["insights"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Insight.From(map: it)).ToList(),
             analyzedAt: map.TryGetValue("analyzedAt", out var analyzedAt) ? analyzedAt?.ToString() : null
         );

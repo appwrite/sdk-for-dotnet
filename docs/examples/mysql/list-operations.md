@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseOperationList result = await mysql.ListOperations(
+Appwrite.Models.DedicatedDatabaseOperationList result = await mysql.ListOperations(
     databaseId: "<DATABASE_ID>",
     status: "queued", // optional
     limit: 1, // optional

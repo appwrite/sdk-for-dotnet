@@ -11,7 +11,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-Deployment result = await sites.CreateTemplateDeployment(
+Appwrite.Models.Deployment result = await sites.CreateTemplateDeployment(
     siteId: "<SITE_ID>",
     repository: "<REPOSITORY>",
     owner: "<OWNER>",

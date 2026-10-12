@@ -32,9 +32,9 @@ namespace Appwrite.Models
         }
 
         public static BillingPlanSupportedAddons From(Dictionary<string, object> map) => new BillingPlanSupportedAddons(
-            baa: (bool)map["baa"],
-            premiumGeoDB: (bool)map["premiumGeoDB"],
-            premiumGeoDBOrg: (bool)map["premiumGeoDBOrg"]
+            baa: (bool)(map.ContainsKey("baa") ? map["baa"] : false),
+            premiumGeoDB: (bool)(map.ContainsKey("premiumGeoDB") ? map["premiumGeoDB"] : false),
+            premiumGeoDBOrg: (bool)(map.ContainsKey("premiumGeoDBOrg") ? map["premiumGeoDBOrg"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

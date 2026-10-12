@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static FunctionList From(Dictionary<string, object> map) => new FunctionList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             functions: map["functions"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Function.From(map: it)).ToList()
         );
 

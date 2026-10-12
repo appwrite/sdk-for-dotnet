@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static AlgoArgon2 From(Dictionary<string, object> map) => new AlgoArgon2(
-            type: map["type"].ToString(),
-            memoryCost: Convert.ToInt64(map["memoryCost"]),
-            timeCost: Convert.ToInt64(map["timeCost"]),
-            threads: Convert.ToInt64(map["threads"])
+            type: (map.ContainsKey("type") ? map["type"] : "argon2").ToString(),
+            memoryCost: Convert.ToInt64((map.ContainsKey("memoryCost") ? map["memoryCost"] : 0)),
+            timeCost: Convert.ToInt64((map.ContainsKey("timeCost") ? map["timeCost"] : 0)),
+            threads: Convert.ToInt64((map.ContainsKey("threads") ? map["threads"] : 0))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

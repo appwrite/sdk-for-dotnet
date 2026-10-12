@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.CreateMsg91Provider(
+Appwrite.Models.Provider result = await messaging.CreateMsg91Provider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>",
     templateId: "<TEMPLATE_ID>", // optional

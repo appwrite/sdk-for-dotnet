@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnLine result = await tablesDB.CreateLineColumn(
+Appwrite.Models.ColumnLine result = await tablesDB.CreateLineColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

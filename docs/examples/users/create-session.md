@@ -10,7 +10,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-Session result = await users.CreateSession(
+Appwrite.Models.Session result = await users.CreateSession(
     userId: "<USER_ID>"
 );
 

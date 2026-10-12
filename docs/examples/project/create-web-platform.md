@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-PlatformWeb result = await project.CreateWebPlatform(
+Appwrite.Models.PlatformWeb result = await project.CreateWebPlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     hostname: "app.example.com"

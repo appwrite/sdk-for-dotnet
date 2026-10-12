@@ -10,7 +10,7 @@ Client client = new Client()
 
 Organization organization = new Organization(client);
 
-Membership result = await organization.GetMembership(
+Appwrite.Models.Membership result = await organization.GetMembership(
     membershipId: "<MEMBERSHIP_ID>"
 );
 

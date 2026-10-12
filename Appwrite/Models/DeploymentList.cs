@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static DeploymentList From(Dictionary<string, object> map) => new DeploymentList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             deployments: map["deployments"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Deployment.From(map: it)).ToList()
         );
 

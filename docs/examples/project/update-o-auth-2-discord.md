@@ -1,5 +1,6 @@
 ```csharp
 using Appwrite;
+using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -10,9 +11,10 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Discord result = await project.UpdateOAuth2Discord(
+Appwrite.Models.OAuth2Discord result = await project.UpdateOAuth2Discord(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
+    prompt: new List&lt;ProjectOAuth2DiscordPrompt&gt; { ProjectOAuth2DiscordPrompt.None }, // optional
     enabled: false // optional
 );
 

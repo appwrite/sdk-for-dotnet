@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static TransactionList From(Dictionary<string, object> map) => new TransactionList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             transactions: map["transactions"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Transaction.From(map: it)).ToList()
         );
 

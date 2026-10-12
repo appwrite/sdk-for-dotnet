@@ -62,13 +62,13 @@ namespace Appwrite.Models
         }
 
         public static Presence From(Dictionary<string, object> map) => new Presence(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             permissions: map["$permissions"].ConvertToList<string>(),
-            userId: map["userId"].ToString(),
+            userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
             status: map.TryGetValue("status", out var status) ? status?.ToString() : null,
-            source: map["source"].ToString(),
+            source: (map.ContainsKey("source") ? map["source"] : "").ToString(),
             expiresAt: map.TryGetValue("expiresAt", out var expiresAt) ? expiresAt?.ToString() : null,
             metadata: map.TryGetValue("metadata", out var objectRaw9) ? objectRaw9 : null
         );

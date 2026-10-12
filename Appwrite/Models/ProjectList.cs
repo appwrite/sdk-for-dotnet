@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static ProjectList From(Dictionary<string, object> map) => new ProjectList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             projects: map["projects"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Project.From(map: it)).ToList()
         );
 

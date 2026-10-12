@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("clientSecret")]
         public string ClientSecret { get; private set; }
 
+        [JsonPropertyName("prompt")]
+        public List<Appwrite.Enums.OAuth2OktaPrompt> Prompt { get; private set; }
+
         [JsonPropertyName("domain")]
         public string Domain { get; private set; }
 
@@ -34,6 +37,7 @@ namespace Appwrite.Models
             bool enabled,
             string clientId,
             string clientSecret,
+            List<Appwrite.Enums.OAuth2OktaPrompt> prompt,
             string domain,
             string authorizationServerId
         )
@@ -42,17 +46,19 @@ namespace Appwrite.Models
             Enabled = enabled;
             ClientId = clientId;
             ClientSecret = clientSecret;
+            Prompt = prompt;
             Domain = domain;
             AuthorizationServerId = authorizationServerId;
         }
 
         public static OAuth2Okta From(Dictionary<string, object> map) => new OAuth2Okta(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            clientSecret: map["clientSecret"].ToString(),
-            domain: map["domain"].ToString(),
-            authorizationServerId: map["authorizationServerId"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            clientSecret: (map.ContainsKey("clientSecret") ? map["clientSecret"] : "").ToString(),
+            prompt: (map.ContainsKey("prompt") ? map["prompt"] : new List<object>()).ConvertToList<Appwrite.Enums.OAuth2OktaPrompt>(),
+            domain: (map.ContainsKey("domain") ? map["domain"] : "").ToString(),
+            authorizationServerId: (map.ContainsKey("authorizationServerId") ? map["authorizationServerId"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -61,6 +67,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "clientId", ClientId },
             { "clientSecret", ClientSecret },
+            { "prompt", Prompt.Select(it => it.Value).ToList() },
             { "domain", Domain },
             { "authorizationServerId", AuthorizationServerId }
         };

@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Database result = await tablesDB.Update(
+Appwrite.Models.Database result = await tablesDB.Update(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>", // optional
     enabled: false, // optional

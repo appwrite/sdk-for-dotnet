@@ -62,6 +62,7 @@ namespace Appwrite.Enums
         public static BuildRuntime Dart310 => new BuildRuntime("dart-3.10");
         public static BuildRuntime Dart311 => new BuildRuntime("dart-3.11");
         public static BuildRuntime Dart312 => new BuildRuntime("dart-3.12");
+        public static BuildRuntime Dart313 => new BuildRuntime("dart-3.13");
         public static BuildRuntime Dotnet60 => new BuildRuntime("dotnet-6.0");
         public static BuildRuntime Dotnet70 => new BuildRuntime("dotnet-7.0");
         public static BuildRuntime Dotnet80 => new BuildRuntime("dotnet-8.0");
@@ -104,5 +105,6 @@ namespace Appwrite.Enums
         public static BuildRuntime Flutter338 => new BuildRuntime("flutter-3.38");
         public static BuildRuntime Flutter341 => new BuildRuntime("flutter-3.41");
         public static BuildRuntime Flutter344 => new BuildRuntime("flutter-3.44");
+        public static BuildRuntime Flutter347 => new BuildRuntime("flutter-3.47");
     }
 }

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Advisor advisor = new Advisor(client);
 
-Report result = await advisor.GetReport(
+Appwrite.Models.Report result = await advisor.GetReport(
     reportId: "<REPORT_ID>"
 );
 

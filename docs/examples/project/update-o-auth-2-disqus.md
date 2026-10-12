@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Disqus result = await project.UpdateOAuth2Disqus(
+Appwrite.Models.OAuth2Disqus result = await project.UpdateOAuth2Disqus(
     publicKey: "<PUBLIC_KEY>", // optional
     secretKey: "<SECRET_KEY>", // optional
     enabled: false // optional

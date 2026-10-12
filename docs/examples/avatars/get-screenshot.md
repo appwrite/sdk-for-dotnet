@@ -13,10 +13,7 @@ Avatars avatars = new Avatars(client);
 
 byte[] result = await avatars.GetScreenshot(
     url: "https://example.com",
-    headers: new {
-        Authorization = "Bearer token123",
-        X-Custom-Header = "value"
-    }, // optional
+    headers: new { Accept-Language = "en-US,en;q=0.9" }, // optional
     viewportWidth: 1920, // optional
     viewportHeight: 1080, // optional
     scale: 2, // optional

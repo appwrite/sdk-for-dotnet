@@ -10,7 +10,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-Deployment result = await sites.GetDeployment(
+Appwrite.Models.Deployment result = await sites.GetDeployment(
     siteId: "<SITE_ID>",
     deploymentId: "<DEPLOYMENT_ID>"
 );

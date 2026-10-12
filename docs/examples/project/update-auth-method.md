@@ -11,7 +11,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateAuthMethod(
+Appwrite.Models.Project result = await project.UpdateAuthMethod(
     methodId: ProjectAuthMethodId.EmailPassword,
     enabled: false
 );

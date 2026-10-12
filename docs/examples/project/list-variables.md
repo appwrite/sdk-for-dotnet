@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-VariableList result = await project.ListVariables(
+Appwrite.Models.VariableList result = await project.ListVariables(
     queries: new List<string>(), // optional
     total: false // optional
 );

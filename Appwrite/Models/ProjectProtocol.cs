@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static ProjectProtocol From(Dictionary<string, object> map) => new ProjectProtocol(
             id: new Appwrite.Enums.ProjectProtocolId(map["$id"].ToString()!),
-            enabled: (bool)map["enabled"]
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -11,7 +11,7 @@ Client client = new Client()
 
 Proxy proxy = new Proxy(client);
 
-ProxyInvalidation result = await proxy.CreateInvalidation(
+Appwrite.Models.ProxyInvalidation result = await proxy.CreateInvalidation(
     domain: "example.com",
     type: InvalidationType.Tag,
     reference: "<REFERENCE>" // optional

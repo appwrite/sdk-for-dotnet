@@ -11,7 +11,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Message result = await messaging.CreatePush(
+Appwrite.Models.Message result = await messaging.CreatePush(
     messageId: "<MESSAGE_ID>",
     title: "<TITLE>", // optional
     body: "<BODY>", // optional
@@ -30,7 +30,8 @@ Message result = await messaging.CreatePush(
     scheduledAt: "2020-10-15T06:38:00.000+00:00", // optional
     contentAvailable: false, // optional
     critical: false, // optional
-    priority: MessagePriority.Normal // optional
+    priority: MessagePriority.Normal, // optional
+    channelId: "<CHANNEL_ID>" // optional
 );
 
 ```

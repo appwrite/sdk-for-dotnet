@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-Transaction result = await documentsDB.UpdateTransaction(
+Appwrite.Models.Transaction result = await documentsDB.UpdateTransaction(
     transactionId: "<TRANSACTION_ID>",
     commit: false, // optional
     rollback: false // optional

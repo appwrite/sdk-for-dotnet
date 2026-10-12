@@ -10,10 +10,11 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-PlatformAndroid result = await project.UpdateAndroidPlatform(
+Appwrite.Models.PlatformAndroid result = await project.UpdateAndroidPlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
-    applicationId: "<APPLICATION_ID>"
+    applicationId: "<APPLICATION_ID>",
+    fingerprints: new List<string>() // optional
 );
 
 ```

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-DatabaseList result = await databases.List(
+Appwrite.Models.DatabaseList result = await databases.List(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional

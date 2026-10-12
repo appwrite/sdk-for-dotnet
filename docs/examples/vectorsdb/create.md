@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-Database result = await vectorsDB.Create(
+Appwrite.Models.Database result = await vectorsDB.Create(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>",
     enabled: false, // optional

@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnList result = await tablesDB.ListColumns(
+Appwrite.Models.ColumnList result = await tablesDB.ListColumns(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     queries: new List<string>(), // optional

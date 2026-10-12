@@ -92,24 +92,24 @@ namespace Appwrite.Models
         }
 
         public static ProxyRule From(Dictionary<string, object> map) => new ProxyRule(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            domain: map["domain"].ToString(),
-            type: map["type"].ToString(),
-            trigger: map["trigger"].ToString(),
-            redirectUrl: map["redirectUrl"].ToString(),
-            redirectStatusCode: Convert.ToInt64(map["redirectStatusCode"]),
-            deploymentId: map["deploymentId"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            domain: (map.ContainsKey("domain") ? map["domain"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
+            trigger: (map.ContainsKey("trigger") ? map["trigger"] : "").ToString(),
+            redirectUrl: (map.ContainsKey("redirectUrl") ? map["redirectUrl"] : "").ToString(),
+            redirectStatusCode: Convert.ToInt64((map.ContainsKey("redirectStatusCode") ? map["redirectStatusCode"] : 301)),
+            deploymentId: (map.ContainsKey("deploymentId") ? map["deploymentId"] : "").ToString(),
             deploymentResourceType: map.TryGetValue("deploymentResourceType", out var enumRaw10)
                             ? enumRaw10 == null
                                 ? null
                                 : new Appwrite.Enums.ProxyRuleDeploymentResourceType(enumRaw10.ToString()!)
                             : null,
-            deploymentResourceId: map["deploymentResourceId"].ToString(),
-            deploymentVcsProviderBranch: map["deploymentVcsProviderBranch"].ToString(),
-            status: new Appwrite.Enums.ProxyRuleStatus(map["status"].ToString()!),
-            logs: map["logs"].ToString(),
+            deploymentResourceId: (map.ContainsKey("deploymentResourceId") ? map["deploymentResourceId"] : "").ToString(),
+            deploymentVcsProviderBranch: (map.ContainsKey("deploymentVcsProviderBranch") ? map["deploymentVcsProviderBranch"] : "").ToString(),
+            status: new Appwrite.Enums.ProxyRuleStatus((map.ContainsKey("status") ? map["status"] : "unverified").ToString()!),
+            logs: (map.ContainsKey("logs") ? map["logs"] : "").ToString(),
             renewAt: map["renewAt"].ToString()
         );
 

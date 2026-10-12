@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static AppSecretList From(Dictionary<string, object> map) => new AppSecretList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             secrets: map["secrets"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.AppSecret.From(map: it)).ToList()
         );
 

@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-DocumentList result = await vectorsDB.UpdateDocuments(
+Appwrite.Models.DocumentList result = await vectorsDB.UpdateDocuments(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     data: [object], // optional

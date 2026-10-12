@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseBackupStorage result = await mysql.UpdateBackupStorage(
+Appwrite.Models.DedicatedDatabaseBackupStorage result = await mysql.UpdateBackupStorage(
     databaseId: "<DATABASE_ID>",
     provider: "s3",
     bucket: "<BUCKET>",

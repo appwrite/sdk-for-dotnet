@@ -10,12 +10,12 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Message result = await messaging.UpdateSMS(
+Appwrite.Models.Message result = await messaging.UpdateSMS(
     messageId: "<MESSAGE_ID>",
+    content: "<CONTENT>", // optional
     topics: new List<string>(), // optional
     users: new List<string>(), // optional
     targets: new List<string>(), // optional
-    content: "<CONTENT>", // optional
     draft: false, // optional
     scheduledAt: "2020-10-15T06:38:00.000+00:00" // optional
 );

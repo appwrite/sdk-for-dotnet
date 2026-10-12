@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static CurrencyList From(Dictionary<string, object> map) => new CurrencyList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             currencies: map["currencies"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Currency.From(map: it)).ToList()
         );
 

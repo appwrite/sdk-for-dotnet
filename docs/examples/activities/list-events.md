@@ -10,7 +10,7 @@ Client client = new Client()
 
 Activities activities = new Activities(client);
 
-ActivityEventList result = await activities.ListEvents(
+Appwrite.Models.ActivityEventList result = await activities.ListEvents(
     queries: new List<string>() // optional
 );
 

@@ -52,13 +52,13 @@ namespace Appwrite.Models
         }
 
         public static ResourceToken From(Dictionary<string, object> map) => new ResourceToken(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            resourceId: map["resourceId"].ToString(),
-            resourceType: map["resourceType"].ToString(),
-            expire: map["expire"].ToString(),
-            secret: map["secret"].ToString(),
-            accessedAt: map["accessedAt"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            resourceId: (map.ContainsKey("resourceId") ? map["resourceId"] : "").ToString(),
+            resourceType: (map.ContainsKey("resourceType") ? map["resourceType"] : "").ToString(),
+            expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString(),
+            secret: (map.ContainsKey("secret") ? map["secret"] : "").ToString(),
+            accessedAt: (map.ContainsKey("accessedAt") ? map["accessedAt"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

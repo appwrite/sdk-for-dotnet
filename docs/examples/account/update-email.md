@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-User result = await account.UpdateEmail(
+Appwrite.Models.User result = await account.UpdateEmail(
     email: "email@example.com",
     password: "password"
 );

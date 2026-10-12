@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabase result = await mongo.CreateMigration(
+Appwrite.Models.DedicatedDatabase result = await mongo.CreateMigration(
     databaseId: "<DATABASE_ID>",
     targetType: "shared",
     specification: "<SPECIFICATION>" // optional

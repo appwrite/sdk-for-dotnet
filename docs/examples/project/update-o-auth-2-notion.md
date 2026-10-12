@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Notion result = await project.UpdateOAuth2Notion(
+Appwrite.Models.OAuth2Notion result = await project.UpdateOAuth2Notion(
     oauthClientId: "<OAUTH_CLIENT_ID>", // optional
     oauthClientSecret: "<OAUTH_CLIENT_SECRET>", // optional
     enabled: false // optional

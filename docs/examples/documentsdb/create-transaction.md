@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-Transaction result = await documentsDB.CreateTransaction(
+Appwrite.Models.Transaction result = await documentsDB.CreateTransaction(
     ttl: 60 // optional
 );
 

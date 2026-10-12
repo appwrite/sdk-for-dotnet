@@ -82,19 +82,19 @@ namespace Appwrite.Models
         }
 
         public static Webhook From(Dictionary<string, object> map) => new Webhook(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
-            url: map["url"].ToString(),
-            events: map["events"].ConvertToList<string>(),
-            tls: (bool)map["tls"],
-            authUsername: map["authUsername"].ToString(),
-            authPassword: map["authPassword"].ToString(),
-            secret: map["secret"].ToString(),
-            enabled: (bool)map["enabled"],
-            logs: map["logs"].ToString(),
-            attempts: Convert.ToInt64(map["attempts"])
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            url: (map.ContainsKey("url") ? map["url"] : "").ToString(),
+            events: (map.ContainsKey("events") ? map["events"] : new List<object>()).ConvertToList<string>(),
+            tls: (bool)(map.ContainsKey("tls") ? map["tls"] : true),
+            authUsername: (map.ContainsKey("authUsername") ? map["authUsername"] : "").ToString(),
+            authPassword: (map.ContainsKey("authPassword") ? map["authPassword"] : "").ToString(),
+            secret: (map.ContainsKey("secret") ? map["secret"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
+            logs: (map.ContainsKey("logs") ? map["logs"] : "").ToString(),
+            attempts: Convert.ToInt64((map.ContainsKey("attempts") ? map["attempts"] : 0))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

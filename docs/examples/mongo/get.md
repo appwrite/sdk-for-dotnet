@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabase result = await mongo.Get(
+Appwrite.Models.DedicatedDatabase result = await mongo.Get(
     databaseId: "<DATABASE_ID>"
 );
 

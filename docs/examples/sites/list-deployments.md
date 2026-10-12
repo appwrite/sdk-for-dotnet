@@ -10,7 +10,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-DeploymentList result = await sites.ListDeployments(
+Appwrite.Models.DeploymentList result = await sites.ListDeployments(
     siteId: "<SITE_ID>",
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional

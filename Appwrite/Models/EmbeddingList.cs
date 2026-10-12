@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static EmbeddingList From(Dictionary<string, object> map) => new EmbeddingList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             embeddings: map["embeddings"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Embedding.From(map: it)).ToList()
         );
 

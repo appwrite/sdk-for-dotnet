@@ -10,7 +10,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-Target result = await users.UpdateTarget(
+Appwrite.Models.Target result = await users.UpdateTarget(
     userId: "<USER_ID>",
     targetId: "<TARGET_ID>",
     identifier: "<IDENTIFIER>", // optional

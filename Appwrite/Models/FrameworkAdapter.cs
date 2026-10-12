@@ -42,10 +42,10 @@ namespace Appwrite.Models
         }
 
         public static FrameworkAdapter From(Dictionary<string, object> map) => new FrameworkAdapter(
-            key: map["key"].ToString(),
-            installCommand: map["installCommand"].ToString(),
-            buildCommand: map["buildCommand"].ToString(),
-            outputDirectory: map["outputDirectory"].ToString(),
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            installCommand: (map.ContainsKey("installCommand") ? map["installCommand"] : "").ToString(),
+            buildCommand: (map.ContainsKey("buildCommand") ? map["buildCommand"] : "").ToString(),
+            outputDirectory: (map.ContainsKey("outputDirectory") ? map["outputDirectory"] : "").ToString(),
             fallbackFile: map.TryGetValue("fallbackFile", out var fallbackFile) ? fallbackFile?.ToString() : null
         );
 

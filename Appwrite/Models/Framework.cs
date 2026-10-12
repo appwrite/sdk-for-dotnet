@@ -42,9 +42,9 @@ namespace Appwrite.Models
         }
 
         public static Framework From(Dictionary<string, object> map) => new Framework(
-            key: map["key"].ToString(),
-            name: map["name"].ToString(),
-            buildRuntime: map["buildRuntime"].ToString(),
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            buildRuntime: (map.ContainsKey("buildRuntime") ? map["buildRuntime"] : "").ToString(),
             runtimes: map["runtimes"].ConvertToList<string>(),
             adapters: map["adapters"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.FrameworkAdapter.From(map: it)).ToList()
         );

@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnMediumtext result = await tablesDB.CreateMediumtextColumn(
+Appwrite.Models.ColumnMediumtext result = await tablesDB.CreateMediumtextColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

@@ -10,8 +10,9 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-TransactionList result = await vectorsDB.ListTransactions(
-    queries: new List<string>() // optional
+Appwrite.Models.TransactionList result = await vectorsDB.ListTransactions(
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

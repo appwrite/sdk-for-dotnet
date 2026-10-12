@@ -62,14 +62,14 @@ namespace Appwrite.Models
         }
 
         public static Key From(Dictionary<string, object> map) => new Key(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
-            expire: map["expire"].ToString(),
-            scopes: map["scopes"].ConvertToList<string>(),
-            secret: map["secret"].ToString(),
-            accessedAt: map["accessedAt"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString(),
+            scopes: (map.ContainsKey("scopes") ? map["scopes"] : new List<object>()).ConvertToList<string>(),
+            secret: (map.ContainsKey("secret") ? map["secret"] : "").ToString(),
+            accessedAt: (map.ContainsKey("accessedAt") ? map["accessedAt"] : "").ToString(),
             sdks: map["sdks"].ConvertToList<string>()
         );
 

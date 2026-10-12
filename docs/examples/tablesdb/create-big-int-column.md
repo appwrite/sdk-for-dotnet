@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnBigint result = await tablesDB.CreateBigIntColumn(
+Appwrite.Models.ColumnBigint result = await tablesDB.CreateBigIntColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

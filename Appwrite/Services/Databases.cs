@@ -95,13 +95,14 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listTransactions` instead.")]
-        public Task<Models.TransactionList> ListTransactions(List<string>? queries = null)
+        public Task<Models.TransactionList> ListTransactions(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/databases/transactions";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -168,6 +169,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getTransaction` instead.")]
         public Task<Models.Transaction> GetTransaction(string transactionId)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/databases/transactions/{transactionId}"
                 .Replace("{transactionId}", transactionId);
 
@@ -203,6 +209,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTransaction` instead.")]
         public Task<Models.Transaction> UpdateTransaction(string transactionId, bool? commit = null, bool? rollback = null)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/databases/transactions/{transactionId}"
                 .Replace("{transactionId}", transactionId);
 
@@ -241,6 +252,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteTransaction` instead.")]
         public Task<object> DeleteTransaction(string transactionId)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/databases/transactions/{transactionId}"
                 .Replace("{transactionId}", transactionId);
 
@@ -251,7 +267,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -271,6 +288,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createOperations` instead.")]
         public Task<Models.Transaction> CreateOperations(string transactionId, List<object>? operations = null)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/databases/transactions/{transactionId}/operations"
                 .Replace("{transactionId}", transactionId);
 
@@ -309,6 +331,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.get` instead.")]
         public Task<Models.Database> Get(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/databases/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -344,6 +371,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.update` instead.")]
         public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/databases/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -383,6 +415,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.delete` instead.")]
         public Task<object> Delete(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/databases/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -393,7 +430,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -414,6 +452,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listTables` instead.")]
         public Task<Models.CollectionList> ListCollections(string databaseId, List<string>? queries = null, string? search = null, bool? total = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections"
                 .Replace("{databaseId}", databaseId);
 
@@ -455,6 +498,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createTable` instead.")]
         public Task<Models.Collection> CreateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, List<object>? attributes = null, List<object>? indexes = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections"
                 .Replace("{databaseId}", databaseId);
 
@@ -499,6 +547,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getTable` instead.")]
         public Task<Models.Collection> GetCollection(string databaseId, string collectionId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -535,6 +593,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTable` instead.")]
         public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string? name = null, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, bool? purge = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -578,6 +646,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteTable` instead.")]
         public Task<object> DeleteCollection(string databaseId, string collectionId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -589,7 +667,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -609,6 +688,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listColumns` instead.")]
         public Task<Models.AttributeList> ListAttributes(string databaseId, string collectionId, List<string>? queries = null, bool? total = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -649,6 +738,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createBigIntColumn` instead.")]
         public Task<Models.AttributeBigint> CreateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/bigint"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -694,6 +793,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateBigIntColumn` instead.")]
         public Task<Models.AttributeBigint> UpdateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/bigint/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -738,6 +852,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createBooleanColumn` instead.")]
         public Task<Models.AttributeBoolean> CreateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -780,6 +904,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateBooleanColumn` instead.")]
         public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -821,6 +960,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createDatetimeColumn` instead.")]
         public Task<Models.AttributeDatetime> CreateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -863,6 +1012,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateDatetimeColumn` instead.")]
         public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -905,6 +1069,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createEmailColumn` instead.")]
         public Task<Models.AttributeEmail> CreateEmailAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -948,6 +1122,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateEmailColumn` instead.")]
         public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -991,6 +1180,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createEnumColumn` instead.")]
         public Task<Models.AttributeEnum> CreateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1035,6 +1234,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateEnumColumn` instead.")]
         public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1079,6 +1293,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createFloatColumn` instead.")]
         public Task<Models.AttributeFloat> CreateFloatAttribute(string databaseId, string collectionId, string key, bool required, double? min = null, double? max = null, double? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1124,6 +1348,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateFloatColumn` instead.")]
         public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double @default, double? min = null, double? max = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1169,6 +1408,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIntegerColumn` instead.")]
         public Task<Models.AttributeInteger> CreateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1214,6 +1463,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateIntegerColumn` instead.")]
         public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1258,6 +1522,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIpColumn` instead.")]
         public Task<Models.AttributeIp> CreateIpAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1301,6 +1575,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateIpColumn` instead.")]
         public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1342,6 +1631,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createLineColumn` instead.")]
         public Task<Models.AttributeLine> CreateLineAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1383,6 +1682,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateLineColumn` instead.")]
         public Task<Models.AttributeLine> UpdateLineAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1425,6 +1739,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createLongtextColumn` instead.")]
         public Task<Models.AttributeLongtext> CreateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/longtext"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1469,6 +1793,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateLongtextColumn` instead.")]
         public Task<Models.AttributeLongtext> UpdateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/longtext/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1511,6 +1850,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createMediumtextColumn` instead.")]
         public Task<Models.AttributeMediumtext> CreateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/mediumtext"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1555,6 +1904,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateMediumtextColumn` instead.")]
         public Task<Models.AttributeMediumtext> UpdateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/mediumtext/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1596,6 +1960,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPointColumn` instead.")]
         public Task<Models.AttributePoint> CreatePointAttribute(string databaseId, string collectionId, string key, bool required, List<double>? @default = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1637,6 +2011,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePointColumn` instead.")]
         public Task<Models.AttributePoint> UpdatePointAttribute(string databaseId, string collectionId, string key, bool required, List<double>? @default = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1678,6 +2067,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPolygonColumn` instead.")]
         public Task<Models.AttributePolygon> CreatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1719,6 +2118,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePolygonColumn` instead.")]
         public Task<Models.AttributePolygon> UpdatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1762,6 +2176,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createRelationshipColumn` instead.")]
         public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, Appwrite.Enums.RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, Appwrite.Enums.RelationMutate? onDelete = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/relationship"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1807,6 +2231,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateRelationshipColumn` instead.")]
         public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/relationship/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1848,6 +2287,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createStringColumn` instead.")]
         public Task<Models.AttributeString> CreateStringAttribute(string databaseId, string collectionId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1893,6 +2342,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateStringColumn` instead.")]
         public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string @default, long? size = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1936,6 +2400,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createTextColumn` instead.")]
         public Task<Models.AttributeText> CreateTextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/text"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1980,6 +2454,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTextColumn` instead.")]
         public Task<Models.AttributeText> UpdateTextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/text/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2022,6 +2511,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createUrlColumn` instead.")]
         public Task<Models.AttributeUrl> CreateUrlAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2065,6 +2564,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateUrlColumn` instead.")]
         public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2107,6 +2621,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createVarcharColumn` instead.")]
         public Task<Models.AttributeVarchar> CreateVarcharAttribute(string databaseId, string collectionId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/varchar"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2152,6 +2676,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateVarcharColumn` instead.")]
         public Task<Models.AttributeVarchar> UpdateVarcharAttribute(string databaseId, string collectionId, string key, bool required, string @default, long? size = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/varchar/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2194,6 +2733,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getColumn` instead.")]
         public Task<object> GetAttribute(string databaseId, string collectionId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2232,23 +2786,55 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.AttributeBoolean.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue6) && typeValue6?.ToString() == "integer")
+                if (it.TryGetValue("type", out var typeValue6) && typeValue6?.ToString() == "bigint")
+                {
+                    return Appwrite.Models.AttributeBigint.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue7) && typeValue7?.ToString() == "integer")
                 {
                     return Appwrite.Models.AttributeInteger.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue7) && typeValue7?.ToString() == "double")
+                if (it.TryGetValue("type", out var typeValue8) && typeValue8?.ToString() == "double")
                 {
                     return Appwrite.Models.AttributeFloat.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue8) && typeValue8?.ToString() == "datetime")
+                if (it.TryGetValue("type", out var typeValue9) && typeValue9?.ToString() == "datetime")
                 {
                     return Appwrite.Models.AttributeDatetime.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue9) && typeValue9?.ToString() == "relationship")
+                if (it.TryGetValue("type", out var typeValue10) && typeValue10?.ToString() == "relationship")
                 {
                     return Appwrite.Models.AttributeRelationship.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue10) && typeValue10?.ToString() == "string")
+                if (it.TryGetValue("type", out var typeValue11) && typeValue11?.ToString() == "point")
+                {
+                    return Appwrite.Models.AttributePoint.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue12) && typeValue12?.ToString() == "linestring")
+                {
+                    return Appwrite.Models.AttributeLine.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue13) && typeValue13?.ToString() == "polygon")
+                {
+                    return Appwrite.Models.AttributePolygon.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue14) && typeValue14?.ToString() == "varchar")
+                {
+                    return Appwrite.Models.AttributeVarchar.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue15) && typeValue15?.ToString() == "text")
+                {
+                    return Appwrite.Models.AttributeText.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue16) && typeValue16?.ToString() == "mediumtext")
+                {
+                    return Appwrite.Models.AttributeMediumtext.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue17) && typeValue17?.ToString() == "longtext")
+                {
+                    return Appwrite.Models.AttributeLongtext.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue18) && typeValue18?.ToString() == "string")
                 {
                     return Appwrite.Models.AttributeString.From(map: it);
                 }
@@ -2271,6 +2857,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteColumn` instead.")]
         public Task<object> DeleteAttribute(string databaseId, string collectionId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2283,7 +2884,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -2304,6 +2906,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listRows` instead.")]
         public Task<Models.DocumentList> ListDocuments(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2347,6 +2959,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createRow` instead.")]
         public Task<Models.Document> CreateDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2391,6 +3013,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createRows` instead.")]
         public Task<Models.DocumentList> CreateDocuments(string databaseId, string collectionId, List<object> documents, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2434,6 +3066,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.upsertRows` instead.")]
         public Task<Models.DocumentList> UpsertDocuments(string databaseId, string collectionId, List<object> documents, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2475,6 +3117,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateRows` instead.")]
         public Task<Models.DocumentList> UpdateDocuments(string databaseId, string collectionId, object? data = null, List<string>? queries = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2516,6 +3168,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteRows` instead.")]
         public Task<Models.DocumentList> DeleteDocuments(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2556,6 +3218,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getRow` instead.")]
         public Task<Models.Document> GetDocument(string databaseId, string collectionId, string documentId, List<string>? queries = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2598,6 +3275,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.upsertRow` instead.")]
         public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object? data = null, List<string>? permissions = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2640,6 +3332,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateRow` instead.")]
         public Task<Models.Document> UpdateDocument(string databaseId, string collectionId, string documentId, object? data = null, List<string>? permissions = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2681,6 +3388,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteRow` instead.")]
         public Task<object> DeleteDocument(string databaseId, string collectionId, string documentId, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2694,7 +3416,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -2714,6 +3437,26 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.decrementRowColumn` instead.")]
         public Task<Models.Document> DecrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? @value = null, double? min = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
+            if (attribute == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"attribute\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/decrement"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2756,6 +3499,26 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.incrementRowColumn` instead.")]
         public Task<Models.Document> IncrementDocumentAttribute(string databaseId, string collectionId, string documentId, string attribute, double? @value = null, double? max = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
+            if (attribute == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"attribute\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/increment"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2798,6 +3561,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listIndexes` instead.")]
         public Task<Models.IndexList> ListIndexes(string databaseId, string collectionId, List<string>? queries = null, bool? total = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2838,6 +3611,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIndex` instead.")]
         public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.DatabasesIndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -2880,6 +3663,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.getIndex` instead.")]
         public Task<Models.Index> GetIndex(string databaseId, string collectionId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2917,6 +3715,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.deleteIndex` instead.")]
         public Task<object> DeleteIndex(string databaseId, string collectionId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -2929,7 +3742,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 

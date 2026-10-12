@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-AppInstallationList result = await apps.ListInstallations(
+Appwrite.Models.AppInstallationList result = await apps.ListInstallations(
     appId: "<APP_ID>",
     queries: new List<string>(), // optional
     total: false // optional

@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Database result = await tablesDB.Get(
+Appwrite.Models.Database result = await tablesDB.Get(
     databaseId: "<DATABASE_ID>"
 );
 

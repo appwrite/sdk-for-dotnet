@@ -11,11 +11,13 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Google result = await project.UpdateOAuth2Google(
+Appwrite.Models.OAuth2Google result = await project.UpdateOAuth2Google(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     prompt: new List&lt;ProjectOAuth2GooglePrompt&gt; { ProjectOAuth2GooglePrompt.None }, // optional
-    enabled: false // optional
+    nativeClientIds: new List<string>(), // optional
+    enabled: false, // optional
+    nativeEnabled: false // optional
 );
 
 ```

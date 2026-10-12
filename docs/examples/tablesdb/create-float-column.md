@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnFloat result = await tablesDB.CreateFloatColumn(
+Appwrite.Models.ColumnFloat result = await tablesDB.CreateFloatColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

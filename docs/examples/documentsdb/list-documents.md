@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-DocumentList result = await documentsDB.ListDocuments(
+Appwrite.Models.DocumentList result = await documentsDB.ListDocuments(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     queries: new List<string>(), // optional

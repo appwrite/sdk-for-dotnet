@@ -29,13 +29,17 @@ namespace Appwrite.Models
         [JsonPropertyName("applicationId")]
         public string ApplicationId { get; private set; }
 
+        [JsonPropertyName("fingerprints")]
+        public List<string> Fingerprints { get; private set; }
+
         public PlatformAndroid(
             string id,
             string createdAt,
             string updatedAt,
             string name,
             Appwrite.Enums.PlatformType type,
-            string applicationId
+            string applicationId,
+            List<string> fingerprints
         )
         {
             Id = id;
@@ -44,15 +48,17 @@ namespace Appwrite.Models
             Name = name;
             Type = type;
             ApplicationId = applicationId;
+            Fingerprints = fingerprints;
         }
 
         public static PlatformAndroid From(Dictionary<string, object> map) => new PlatformAndroid(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
             type: new Appwrite.Enums.PlatformType(map["type"].ToString()!),
-            applicationId: map["applicationId"].ToString()
+            applicationId: (map.ContainsKey("applicationId") ? map["applicationId"] : "").ToString(),
+            fingerprints: (map.ContainsKey("fingerprints") ? map["fingerprints"] : new List<object>()).ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -62,7 +68,8 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "name", Name },
             { "type", Type.Value },
-            { "applicationId", ApplicationId }
+            { "applicationId", ApplicationId },
+            { "fingerprints", Fingerprints }
         };
     }
 }

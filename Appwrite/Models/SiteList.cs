@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static SiteList From(Dictionary<string, object> map) => new SiteList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             sites: map["sites"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Site.From(map: it)).ToList()
         );
 

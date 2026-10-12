@@ -67,16 +67,16 @@ namespace Appwrite.Models
         }
 
         public static Oauth2Consent From(Dictionary<string, object> map) => new Oauth2Consent(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            userId: map["userId"].ToString(),
-            appId: map["appId"].ToString(),
-            cimdUrl: map["cimdUrl"].ToString(),
-            scopes: map["scopes"].ConvertToList<string>(),
-            resources: map["resources"].ConvertToList<string>(),
-            authorizationDetails: map["authorizationDetails"].ToString(),
-            expire: map["expire"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
+            appId: (map.ContainsKey("appId") ? map["appId"] : "").ToString(),
+            cimdUrl: (map.ContainsKey("cimdUrl") ? map["cimdUrl"] : "").ToString(),
+            scopes: (map.ContainsKey("scopes") ? map["scopes"] : new List<object>()).ConvertToList<string>(),
+            resources: (map.ContainsKey("resources") ? map["resources"] : new List<object>()).ConvertToList<string>(),
+            authorizationDetails: (map.ContainsKey("authorizationDetails") ? map["authorizationDetails"] : "[]").ToString(),
+            expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

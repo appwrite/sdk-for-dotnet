@@ -10,7 +10,7 @@ Client client = new Client()
 
 Backups backups = new Backups(client);
 
-BackupRestoration result = await backups.GetRestoration(
+Appwrite.Models.BackupRestoration result = await backups.GetRestoration(
     restorationId: "<RESTORATION_ID>"
 );
 

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseRestorationList result = await postgresql.ListRestorations(
+Appwrite.Models.DedicatedDatabaseRestorationList result = await postgresql.ListRestorations(
     databaseId: "<DATABASE_ID>",
     status: "pending", // optional
     type: "backup", // optional

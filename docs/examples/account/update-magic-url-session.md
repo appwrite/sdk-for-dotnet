@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Session result = await account.UpdateMagicURLSession(
+Appwrite.Models.Session result = await account.UpdateMagicURLSession(
     userId: "<USER_ID>",
     secret: "<SECRET>"
 );

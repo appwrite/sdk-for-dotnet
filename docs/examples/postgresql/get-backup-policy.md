@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-BackupPolicy result = await postgresql.GetBackupPolicy(
+Appwrite.Models.BackupPolicy result = await postgresql.GetBackupPolicy(
     databaseId: "<DATABASE_ID>",
     policyId: "<POLICY_ID>"
 );

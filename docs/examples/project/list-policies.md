@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-PolicyList result = await project.ListPolicies(
+Appwrite.Models.PolicyList result = await project.ListPolicies(
     queries: new List<string>(), // optional
     total: false // optional
 );

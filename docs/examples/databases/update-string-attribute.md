@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeString result = await databases.UpdateStringAttribute(
+Appwrite.Models.AttributeString result = await databases.UpdateStringAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

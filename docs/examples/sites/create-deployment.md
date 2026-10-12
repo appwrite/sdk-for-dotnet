@@ -10,7 +10,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-Deployment result = await sites.CreateDeployment(
+Appwrite.Models.Deployment result = await sites.CreateDeployment(
     siteId: "<SITE_ID>",
     code: InputFile.FromPath("./path-to-files/image.jpg"),
     installCommand: "<INSTALL_COMMAND>", // optional

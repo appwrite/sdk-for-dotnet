@@ -11,12 +11,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-Index result = await databases.CreateIndex(
+Appwrite.Models.Index result = await databases.CreateIndex(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     type: DatabasesIndexType.Key,
-    attributes: new List<string>(),
+    attributes: ["username"],
     orders: new List&lt;OrderBy&gt; { OrderBy.Asc }, // optional
     lengths: new List<long>() // optional
 );

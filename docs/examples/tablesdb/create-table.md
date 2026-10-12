@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Table result = await tablesDB.CreateTable(
+Appwrite.Models.Table result = await tablesDB.CreateTable(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     name: "<NAME>",

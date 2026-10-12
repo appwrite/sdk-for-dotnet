@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.CreateAPNSProvider(
+Appwrite.Models.Provider result = await messaging.CreateAPNSProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>",
     authKey: "<AUTH_KEY>", // optional

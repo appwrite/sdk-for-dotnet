@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnPolygon result = await tablesDB.CreatePolygonColumn(
+Appwrite.Models.ColumnPolygon result = await tablesDB.CreatePolygonColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

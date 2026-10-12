@@ -10,7 +10,7 @@ Client client = new Client()
 
 Teams teams = new Teams(client);
 
-Team result = await teams.Create(
+Appwrite.Models.Team result = await teams.Create(
     teamId: "<TEAM_ID>",
     name: "<NAME>",
     roles: new List<string>() // optional

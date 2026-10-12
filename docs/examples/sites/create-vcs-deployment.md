@@ -11,7 +11,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-Deployment result = await sites.CreateVcsDeployment(
+Appwrite.Models.Deployment result = await sites.CreateVcsDeployment(
     siteId: "<SITE_ID>",
     type: VCSReferenceType.Branch,
     reference: "<REFERENCE>",

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Message result = await messaging.CreateEmail(
+Appwrite.Models.Message result = await messaging.CreateEmail(
     messageId: "<MESSAGE_ID>",
     subject: "<SUBJECT>",
     content: "<CONTENT>",
@@ -20,6 +20,8 @@ Message result = await messaging.CreateEmail(
     cc: new List<string>(), // optional
     bcc: new List<string>(), // optional
     attachments: new List<string>(), // optional
+    replyToEmail: "email@example.com", // optional
+    replyToName: "<REPLY_TO_NAME>", // optional
     draft: false, // optional
     html: false, // optional
     scheduledAt: "2020-10-15T06:38:00.000+00:00" // optional

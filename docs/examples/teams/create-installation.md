@@ -10,7 +10,7 @@ Client client = new Client()
 
 Teams teams = new Teams(client);
 
-AppInstallation result = await teams.CreateInstallation(
+Appwrite.Models.AppInstallation result = await teams.CreateInstallation(
     teamId: "<TEAM_ID>",
     appId: "<APP_ID>",
     authorizationDetails: "<AUTHORIZATION_DETAILS>" // optional

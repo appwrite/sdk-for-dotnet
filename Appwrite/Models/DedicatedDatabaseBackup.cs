@@ -102,23 +102,23 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseBackup From(Dictionary<string, object> map) => new DedicatedDatabaseBackup(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            databaseId: map["databaseId"].ToString(),
-            projectId: map["projectId"].ToString(),
-            policyId: map["policyId"].ToString(),
-            trigger: map["trigger"].ToString(),
-            type: map["type"].ToString(),
-            requestedType: map["requestedType"].ToString(),
-            fallbackReason: map["fallbackReason"].ToString(),
-            status: map["status"].ToString(),
-            sizeBytes: Convert.ToInt64(map["sizeBytes"]),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            databaseId: (map.ContainsKey("databaseId") ? map["databaseId"] : "").ToString(),
+            projectId: (map.ContainsKey("projectId") ? map["projectId"] : "").ToString(),
+            policyId: (map.ContainsKey("policyId") ? map["policyId"] : "").ToString(),
+            trigger: (map.ContainsKey("trigger") ? map["trigger"] : "manual").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "full").ToString(),
+            requestedType: (map.ContainsKey("requestedType") ? map["requestedType"] : "").ToString(),
+            fallbackReason: (map.ContainsKey("fallbackReason") ? map["fallbackReason"] : "").ToString(),
+            status: (map.ContainsKey("status") ? map["status"] : "pending").ToString(),
+            sizeBytes: Convert.ToInt64((map.ContainsKey("sizeBytes") ? map["sizeBytes"] : 0)),
             startedAt: map.TryGetValue("startedAt", out var startedAt) ? startedAt?.ToString() : null,
             completedAt: map.TryGetValue("completedAt", out var completedAt) ? completedAt?.ToString() : null,
             verifiedAt: map.TryGetValue("verifiedAt", out var verifiedAt) ? verifiedAt?.ToString() : null,
             expiresAt: map.TryGetValue("expiresAt", out var expiresAt) ? expiresAt?.ToString() : null,
             logPosition: map.TryGetValue("logPosition", out var logPosition) ? logPosition?.ToString() : null,
-            error: map["error"].ToString()
+            error: (map.ContainsKey("error") ? map["error"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

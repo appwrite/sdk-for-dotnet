@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Tradeshift result = await project.UpdateOAuth2Tradeshift(
+Appwrite.Models.OAuth2Tradeshift result = await project.UpdateOAuth2Tradeshift(
     oauth2ClientId: "<OAUTH2_CLIENT_ID>", // optional
     oauth2ClientSecret: "<OAUTH2_CLIENT_SECRET>", // optional
     enabled: false // optional

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Keycloak result = await project.UpdateOAuth2Keycloak(
+Appwrite.Models.OAuth2Keycloak result = await project.UpdateOAuth2Keycloak(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     endpoint: "<ENDPOINT>", // optional

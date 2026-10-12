@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabasePITRWindows result = await postgresql.GetPitr(
+Appwrite.Models.DedicatedDatabasePITRWindows result = await postgresql.GetPitr(
     databaseId: "<DATABASE_ID>"
 );
 

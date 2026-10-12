@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-DatabaseMigration result = await tablesDB.CreateMigration(
+Appwrite.Models.DatabaseMigration result = await tablesDB.CreateMigration(
     databaseId: "<DATABASE_ID>",
     specification: "s-1vcpu-1gb",
     autoCutover: false // optional

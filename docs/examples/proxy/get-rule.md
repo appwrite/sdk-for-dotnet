@@ -10,7 +10,7 @@ Client client = new Client()
 
 Proxy proxy = new Proxy(client);
 
-ProxyRule result = await proxy.GetRule(
+Appwrite.Models.ProxyRule result = await proxy.GetRule(
     ruleId: "<RULE_ID>"
 );
 

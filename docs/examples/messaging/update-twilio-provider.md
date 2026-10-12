@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateTwilioProvider(
+Appwrite.Models.Provider result = await messaging.UpdateTwilioProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>", // optional
     enabled: false, // optional

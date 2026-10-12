@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabase result = await mongo.CreateFailover(
+Appwrite.Models.DedicatedDatabase result = await mongo.CreateFailover(
     databaseId: "<DATABASE_ID>",
     targetReplicaId: "<TARGET_REPLICA_ID>" // optional
 );

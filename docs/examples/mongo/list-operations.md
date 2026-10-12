@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabaseOperationList result = await mongo.ListOperations(
+Appwrite.Models.DedicatedDatabaseOperationList result = await mongo.ListOperations(
     databaseId: "<DATABASE_ID>",
     status: "queued", // optional
     limit: 1, // optional

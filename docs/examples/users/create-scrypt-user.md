@@ -10,7 +10,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-User result = await users.CreateScryptUser(
+Appwrite.Models.User result = await users.CreateScryptUser(
     userId: "<USER_ID>",
     email: "email@example.com",
     password: "password",

@@ -29,9 +29,6 @@ namespace Appwrite.Models
         [JsonPropertyName("region")]
         public string Region { get; private set; }
 
-        [JsonPropertyName("devKeys")]
-        public List<DevKey> DevKeys { get; private set; }
-
         [JsonPropertyName("smtpEnabled")]
         public bool SmtpEnabled { get; private set; }
 
@@ -98,6 +95,12 @@ namespace Appwrite.Models
         [JsonPropertyName("billingLimits")]
         public BillingLimits? BillingLimits { get; private set; }
 
+        [JsonPropertyName("firstAccessedAt")]
+        public string? FirstAccessedAt { get; private set; }
+
+        [JsonPropertyName("mcpAccessedAt")]
+        public string? McpAccessedAt { get; private set; }
+
         [JsonPropertyName("oAuth2ServerEnabled")]
         public bool? OAuth2ServerEnabled { get; private set; }
 
@@ -156,7 +159,6 @@ namespace Appwrite.Models
             string name,
             string teamId,
             string region,
-            List<DevKey> devKeys,
             bool smtpEnabled,
             string smtpSenderName,
             string smtpSenderEmail,
@@ -179,6 +181,8 @@ namespace Appwrite.Models
             string consoleAccessedAt,
             bool? wafEnabled,
             BillingLimits? billingLimits,
+            string? firstAccessedAt,
+            string? mcpAccessedAt,
             bool? oAuth2ServerEnabled,
             string? oAuth2ServerAuthorizationUrl,
             List<string>? oAuth2ServerScopes,
@@ -204,7 +208,6 @@ namespace Appwrite.Models
             Name = name;
             TeamId = teamId;
             Region = region;
-            DevKeys = devKeys;
             SmtpEnabled = smtpEnabled;
             SmtpSenderName = smtpSenderName;
             SmtpSenderEmail = smtpSenderEmail;
@@ -227,6 +230,8 @@ namespace Appwrite.Models
             ConsoleAccessedAt = consoleAccessedAt;
             WafEnabled = wafEnabled;
             BillingLimits = billingLimits;
+            FirstAccessedAt = firstAccessedAt;
+            McpAccessedAt = mcpAccessedAt;
             OAuth2ServerEnabled = oAuth2ServerEnabled;
             OAuth2ServerAuthorizationUrl = oAuth2ServerAuthorizationUrl;
             OAuth2ServerScopes = oAuth2ServerScopes;
@@ -247,80 +252,81 @@ namespace Appwrite.Models
         }
 
         public static Project From(Dictionary<string, object> map) => new Project(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
-            teamId: map["teamId"].ToString(),
-            region: map["region"].ToString(),
-            devKeys: map["devKeys"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DevKey.From(map: it)).ToList(),
-            smtpEnabled: (bool)map["smtpEnabled"],
-            smtpSenderName: map["smtpSenderName"].ToString(),
-            smtpSenderEmail: map["smtpSenderEmail"].ToString(),
-            smtpReplyToName: map["smtpReplyToName"].ToString(),
-            smtpReplyToEmail: map["smtpReplyToEmail"].ToString(),
-            smtpHost: map["smtpHost"].ToString(),
-            smtpPort: Convert.ToInt64(map["smtpPort"]),
-            smtpUsername: map["smtpUsername"].ToString(),
-            smtpPassword: map["smtpPassword"].ToString(),
-            smtpSecure: map["smtpSecure"].ToString(),
-            pingCount: Convert.ToInt64(map["pingCount"]),
-            pingedAt: map["pingedAt"].ToString(),
-            labels: map["labels"].ConvertToList<string>(),
-            status: map["status"].ToString(),
-            onboarding: map["onboarding"],
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            teamId: (map.ContainsKey("teamId") ? map["teamId"] : "").ToString(),
+            region: (map.ContainsKey("region") ? map["region"] : "fra").ToString(),
+            smtpEnabled: (bool)(map.ContainsKey("smtpEnabled") ? map["smtpEnabled"] : false),
+            smtpSenderName: (map.ContainsKey("smtpSenderName") ? map["smtpSenderName"] : "").ToString(),
+            smtpSenderEmail: (map.ContainsKey("smtpSenderEmail") ? map["smtpSenderEmail"] : "").ToString(),
+            smtpReplyToName: (map.ContainsKey("smtpReplyToName") ? map["smtpReplyToName"] : "").ToString(),
+            smtpReplyToEmail: (map.ContainsKey("smtpReplyToEmail") ? map["smtpReplyToEmail"] : "").ToString(),
+            smtpHost: (map.ContainsKey("smtpHost") ? map["smtpHost"] : "").ToString(),
+            smtpPort: Convert.ToInt64((map.ContainsKey("smtpPort") ? map["smtpPort"] : 0)),
+            smtpUsername: (map.ContainsKey("smtpUsername") ? map["smtpUsername"] : "").ToString(),
+            smtpPassword: (map.ContainsKey("smtpPassword") ? map["smtpPassword"] : "").ToString(),
+            smtpSecure: (map.ContainsKey("smtpSecure") ? map["smtpSecure"] : "").ToString(),
+            pingCount: Convert.ToInt64((map.ContainsKey("pingCount") ? map["pingCount"] : 0)),
+            pingedAt: (map.ContainsKey("pingedAt") ? map["pingedAt"] : "").ToString(),
+            labels: (map.ContainsKey("labels") ? map["labels"] : new List<object>()).ConvertToList<string>(),
+            status: (map.ContainsKey("status") ? map["status"] : "active").ToString(),
+            onboarding: (map.ContainsKey("onboarding") ? map["onboarding"] : new Dictionary<string, object>()),
             authMethods: map["authMethods"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectAuthMethod.From(map: it)).ToList(),
             services: map["services"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectService.From(map: it)).ToList(),
             protocols: map["protocols"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectProtocol.From(map: it)).ToList(),
             blocks: map["blocks"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Block.From(map: it)).ToList(),
-            consoleAccessedAt: map["consoleAccessedAt"].ToString(),
-            wafEnabled: map.TryGetValue("wafEnabled", out var boolRaw28) && boolRaw28 != null
-                                        ? (bool?)boolRaw28
+            consoleAccessedAt: (map.ContainsKey("consoleAccessedAt") ? map["consoleAccessedAt"] : "").ToString(),
+            wafEnabled: map.TryGetValue("wafEnabled", out var boolRaw27) && boolRaw27 != null
+                                        ? (bool?)boolRaw27
                                         : null,
-            billingLimits: map.TryGetValue("billingLimits", out var objectRaw29) && objectRaw29 != null
-                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw29 is JsonElement jsonObj29 ? jsonObj29.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw29)
+            billingLimits: map.TryGetValue("billingLimits", out var objectRaw28) && objectRaw28 != null
+                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw28 is JsonElement jsonObj28 ? jsonObj28.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw28)
                                     : null,
-            oAuth2ServerEnabled: map.TryGetValue("oAuth2ServerEnabled", out var boolRaw30) && boolRaw30 != null
-                                        ? (bool?)boolRaw30
+            firstAccessedAt: map.TryGetValue("firstAccessedAt", out var firstAccessedAt) ? firstAccessedAt?.ToString() : null,
+            mcpAccessedAt: map.TryGetValue("mcpAccessedAt", out var mcpAccessedAt) ? mcpAccessedAt?.ToString() : null,
+            oAuth2ServerEnabled: map.TryGetValue("oAuth2ServerEnabled", out var boolRaw31) && boolRaw31 != null
+                                        ? (bool?)boolRaw31
                                         : null,
             oAuth2ServerAuthorizationUrl: map.TryGetValue("oAuth2ServerAuthorizationUrl", out var oAuth2ServerAuthorizationUrl) ? oAuth2ServerAuthorizationUrl?.ToString() : null,
-            oAuth2ServerScopes: map.TryGetValue("oAuth2ServerScopes", out var arrayRaw32) && arrayRaw32 != null
-                                ? arrayRaw32.ConvertToList<string>()
-                                : null,
-            oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw33) && arrayRaw33 != null
+            oAuth2ServerScopes: map.TryGetValue("oAuth2ServerScopes", out var arrayRaw33) && arrayRaw33 != null
                                 ? arrayRaw33.ConvertToList<string>()
                                 : null,
-            oAuth2ServerInstallationScopes: map.TryGetValue("oAuth2ServerInstallationScopes", out var arrayRaw34) && arrayRaw34 != null
+            oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw34) && arrayRaw34 != null
                                 ? arrayRaw34.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw35) && arrayRaw35 != null
+            oAuth2ServerInstallationScopes: map.TryGetValue("oAuth2ServerInstallationScopes", out var arrayRaw35) && arrayRaw35 != null
                                 ? arrayRaw35.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw36) && numberRaw36 != null
-                                    ? Convert.ToInt64(numberRaw36)
-                                    : null,
-            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw37) && numberRaw37 != null
+            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw36) && arrayRaw36 != null
+                                ? arrayRaw36.ConvertToList<string>()
+                                : null,
+            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw37) && numberRaw37 != null
                                     ? Convert.ToInt64(numberRaw37)
                                     : null,
-            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw38) && numberRaw38 != null
+            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw38) && numberRaw38 != null
                                     ? Convert.ToInt64(numberRaw38)
                                     : null,
-            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw39) && numberRaw39 != null
+            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw39) && numberRaw39 != null
                                     ? Convert.ToInt64(numberRaw39)
                                     : null,
-            oAuth2ServerInstallationAccessTokenDuration: map.TryGetValue("oAuth2ServerInstallationAccessTokenDuration", out var numberRaw40) && numberRaw40 != null
+            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw40) && numberRaw40 != null
                                     ? Convert.ToInt64(numberRaw40)
                                     : null,
-            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw41) && boolRaw41 != null
-                                        ? (bool?)boolRaw41
+            oAuth2ServerInstallationAccessTokenDuration: map.TryGetValue("oAuth2ServerInstallationAccessTokenDuration", out var numberRaw41) && numberRaw41 != null
+                                    ? Convert.ToInt64(numberRaw41)
+                                    : null,
+            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw42) && boolRaw42 != null
+                                        ? (bool?)boolRaw42
                                         : null,
             oAuth2ServerVerificationUrl: map.TryGetValue("oAuth2ServerVerificationUrl", out var oAuth2ServerVerificationUrl) ? oAuth2ServerVerificationUrl?.ToString() : null,
-            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw43) && numberRaw43 != null
-                                    ? Convert.ToInt64(numberRaw43)
+            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw44) && numberRaw44 != null
+                                    ? Convert.ToInt64(numberRaw44)
                                     : null,
             oAuth2ServerUserCodeFormat: map.TryGetValue("oAuth2ServerUserCodeFormat", out var oAuth2ServerUserCodeFormat) ? oAuth2ServerUserCodeFormat?.ToString() : null,
-            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw45) && numberRaw45 != null
-                                    ? Convert.ToInt64(numberRaw45)
+            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw46) && numberRaw46 != null
+                                    ? Convert.ToInt64(numberRaw46)
                                     : null,
             oAuth2ServerDiscoveryUrl: map.TryGetValue("oAuth2ServerDiscoveryUrl", out var oAuth2ServerDiscoveryUrl) ? oAuth2ServerDiscoveryUrl?.ToString() : null
         );
@@ -333,7 +339,6 @@ namespace Appwrite.Models
             { "name", Name },
             { "teamId", TeamId },
             { "region", Region },
-            { "devKeys", DevKeys?.Select(it => it.ToMap()).ToList() },
             { "smtpEnabled", SmtpEnabled },
             { "smtpSenderName", SmtpSenderName },
             { "smtpSenderEmail", SmtpSenderEmail },
@@ -356,6 +361,8 @@ namespace Appwrite.Models
             { "consoleAccessedAt", ConsoleAccessedAt },
             { "wafEnabled", WafEnabled },
             { "billingLimits", BillingLimits?.ToMap() },
+            { "firstAccessedAt", FirstAccessedAt },
+            { "mcpAccessedAt", McpAccessedAt },
             { "oAuth2ServerEnabled", OAuth2ServerEnabled },
             { "oAuth2ServerAuthorizationUrl", OAuth2ServerAuthorizationUrl },
             { "oAuth2ServerScopes", OAuth2ServerScopes },

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DatabaseStatus result = await mysql.GetStatus(
+Appwrite.Models.DatabaseStatus result = await mysql.GetStatus(
     databaseId: "<DATABASE_ID>"
 );
 

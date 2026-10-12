@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Etsy result = await project.UpdateOAuth2Etsy(
+Appwrite.Models.OAuth2Etsy result = await project.UpdateOAuth2Etsy(
     keyString: "<KEY_STRING>", // optional
     sharedSecret: "<SHARED_SECRET>", // optional
     enabled: false // optional

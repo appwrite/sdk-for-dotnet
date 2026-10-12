@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabaseBranchList result = await mongo.ListBranches(
+Appwrite.Models.DedicatedDatabaseBranchList result = await mongo.ListBranches(
     databaseId: "<DATABASE_ID>"
 );
 

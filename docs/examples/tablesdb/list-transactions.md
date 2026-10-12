@@ -10,8 +10,9 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-TransactionList result = await tablesDB.ListTransactions(
-    queries: new List<string>() // optional
+Appwrite.Models.TransactionList result = await tablesDB.ListTransactions(
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

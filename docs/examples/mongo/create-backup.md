@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabaseBackup result = await mongo.CreateBackup(
+Appwrite.Models.DedicatedDatabaseBackup result = await mongo.CreateBackup(
     databaseId: "<DATABASE_ID>",
     type: "full" // optional
 );

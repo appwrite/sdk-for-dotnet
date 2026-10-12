@@ -10,7 +10,8 @@ Client client = new Client()
 
 Locale locale = new Locale(client);
 
-ContinentList result = await locale.ListContinents();
-
+Appwrite.Models.ContinentList result = await locale.ListContinents(
+    total: false // optional
+);
 
 ```

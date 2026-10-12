@@ -11,7 +11,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-User result = await users.CreateSHAUser(
+Appwrite.Models.User result = await users.CreateSHAUser(
     userId: "<USER_ID>",
     email: "email@example.com",
     password: "password",

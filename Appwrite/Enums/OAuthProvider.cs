@@ -33,6 +33,7 @@ namespace Appwrite.Enums
         public static OAuthProvider Gitlab => new OAuthProvider("gitlab");
         public static OAuthProvider Google => new OAuthProvider("google");
         public static OAuthProvider Huggingface => new OAuthProvider("huggingface");
+        public static OAuthProvider Kakao => new OAuthProvider("kakao");
         public static OAuthProvider Keycloak => new OAuthProvider("keycloak");
         public static OAuthProvider Kick => new OAuthProvider("kick");
         public static OAuthProvider Linkedin => new OAuthProvider("linkedin");
@@ -48,9 +49,11 @@ namespace Appwrite.Enums
         public static OAuthProvider Slack => new OAuthProvider("slack");
         public static OAuthProvider Spotify => new OAuthProvider("spotify");
         public static OAuthProvider Stripe => new OAuthProvider("stripe");
+        public static OAuthProvider Tiktok => new OAuthProvider("tiktok");
         public static OAuthProvider Tradeshift => new OAuthProvider("tradeshift");
         public static OAuthProvider TradeshiftBox => new OAuthProvider("tradeshiftBox");
         public static OAuthProvider Twitch => new OAuthProvider("twitch");
+        public static OAuthProvider Webflow => new OAuthProvider("webflow");
         public static OAuthProvider Wordpress => new OAuthProvider("wordpress");
         public static OAuthProvider X => new OAuthProvider("x");
         public static OAuthProvider Yahoo => new OAuthProvider("yahoo");

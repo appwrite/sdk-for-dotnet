@@ -87,20 +87,20 @@ namespace Appwrite.Models
         }
 
         public static Bucket From(Dictionary<string, object> map) => new Bucket(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            permissions: map["$permissions"].ConvertToList<string>(),
-            fileSecurity: (bool)map["fileSecurity"],
-            name: map["name"].ToString(),
-            enabled: (bool)map["enabled"],
-            maximumFileSize: Convert.ToInt64(map["maximumFileSize"]),
-            allowedFileExtensions: map["allowedFileExtensions"].ConvertToList<string>(),
-            compression: map["compression"].ToString(),
-            encryption: (bool)map["encryption"],
-            antivirus: (bool)map["antivirus"],
-            transformations: (bool)map["transformations"],
-            totalSize: Convert.ToInt64(map["totalSize"])
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            permissions: (map.ContainsKey("$permissions") ? map["$permissions"] : new List<object>()).ConvertToList<string>(),
+            fileSecurity: (bool)(map.ContainsKey("fileSecurity") ? map["fileSecurity"] : false),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
+            maximumFileSize: Convert.ToInt64((map.ContainsKey("maximumFileSize") ? map["maximumFileSize"] : 0)),
+            allowedFileExtensions: (map.ContainsKey("allowedFileExtensions") ? map["allowedFileExtensions"] : new List<object>()).ConvertToList<string>(),
+            compression: (map.ContainsKey("compression") ? map["compression"] : "").ToString(),
+            encryption: (bool)(map.ContainsKey("encryption") ? map["encryption"] : true),
+            antivirus: (bool)(map.ContainsKey("antivirus") ? map["antivirus"] : true),
+            transformations: (bool)(map.ContainsKey("transformations") ? map["transformations"] : true),
+            totalSize: Convert.ToInt64((map.ContainsKey("totalSize") ? map["totalSize"] : 0))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

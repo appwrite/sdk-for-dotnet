@@ -1,5 +1,6 @@
 ```csharp
 using Appwrite;
+using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -10,9 +11,10 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Salesforce result = await project.UpdateOAuth2Salesforce(
+Appwrite.Models.OAuth2Salesforce result = await project.UpdateOAuth2Salesforce(
     customerKey: "<CUSTOMER_KEY>", // optional
     customerSecret: "<CUSTOMER_SECRET>", // optional
+    prompt: new List&lt;ProjectOAuth2SalesforcePrompt&gt; { ProjectOAuth2SalesforcePrompt.Login }, // optional
     enabled: false // optional
 );
 

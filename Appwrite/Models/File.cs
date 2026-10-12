@@ -97,22 +97,22 @@ namespace Appwrite.Models
         }
 
         public static File From(Dictionary<string, object> map) => new File(
-            id: map["$id"].ToString(),
-            bucketId: map["bucketId"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            permissions: map["$permissions"].ConvertToList<string>(),
-            name: map["name"].ToString(),
-            folder: map["folder"].ToString(),
-            key: map["key"].ToString(),
-            signature: map["signature"].ToString(),
-            mimeType: map["mimeType"].ToString(),
-            sizeOriginal: Convert.ToInt64(map["sizeOriginal"]),
-            sizeActual: Convert.ToInt64(map["sizeActual"]),
-            chunksTotal: Convert.ToInt64(map["chunksTotal"]),
-            chunksUploaded: Convert.ToInt64(map["chunksUploaded"]),
-            encryption: (bool)map["encryption"],
-            compression: map["compression"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            bucketId: (map.ContainsKey("bucketId") ? map["bucketId"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            permissions: (map.ContainsKey("$permissions") ? map["$permissions"] : new List<object>()).ConvertToList<string>(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            folder: (map.ContainsKey("folder") ? map["folder"] : "").ToString(),
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            signature: (map.ContainsKey("signature") ? map["signature"] : "").ToString(),
+            mimeType: (map.ContainsKey("mimeType") ? map["mimeType"] : "").ToString(),
+            sizeOriginal: Convert.ToInt64((map.ContainsKey("sizeOriginal") ? map["sizeOriginal"] : 0)),
+            sizeActual: Convert.ToInt64((map.ContainsKey("sizeActual") ? map["sizeActual"] : 0)),
+            chunksTotal: Convert.ToInt64((map.ContainsKey("chunksTotal") ? map["chunksTotal"] : 0)),
+            chunksUploaded: Convert.ToInt64((map.ContainsKey("chunksUploaded") ? map["chunksUploaded"] : 0)),
+            encryption: (bool)(map.ContainsKey("encryption") ? map["encryption"] : false),
+            compression: (map.ContainsKey("compression") ? map["compression"] : "none").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

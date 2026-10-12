@@ -92,8 +92,8 @@ namespace Appwrite.Services
 
         /// <para>
         /// List the dedicated database specifications available on the current plan.
-        /// Each specification reports its resource limits, pricing, and whether it is
-        /// enabled for the organization.
+        /// Each specification reports its resource limits, its own prices and overage
+        /// rates, and whether it is enabled for the organization.
         /// </para>
         /// </summary>
         public Task<Models.DedicatedDatabaseSpecificationList> ListSpecifications()
@@ -129,13 +129,14 @@ namespace Appwrite.Services
         /// List transactions across all databases.
         /// </para>
         /// </summary>
-        public Task<Models.TransactionList> ListTransactions(List<string>? queries = null)
+        public Task<Models.TransactionList> ListTransactions(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/vectorsdb/transactions";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -200,6 +201,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Transaction> GetTransaction(string transactionId)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/vectorsdb/transactions/{transactionId}"
                 .Replace("{transactionId}", transactionId);
 
@@ -234,6 +240,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Transaction> UpdateTransaction(string transactionId, bool? commit = null, bool? rollback = null)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/vectorsdb/transactions/{transactionId}"
                 .Replace("{transactionId}", transactionId);
 
@@ -271,6 +282,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteTransaction(string transactionId)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/vectorsdb/transactions/{transactionId}"
                 .Replace("{transactionId}", transactionId);
 
@@ -281,7 +297,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -300,6 +317,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Transaction> CreateOperations(string transactionId, List<object>? operations = null)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/vectorsdb/transactions/{transactionId}/operations"
                 .Replace("{transactionId}", transactionId);
 
@@ -337,6 +359,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Database> Get(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -371,6 +398,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -412,6 +444,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -422,7 +459,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -442,6 +480,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.VectorsdbCollectionList> ListCollections(string databaseId, List<string>? queries = null, string? search = null, bool? total = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections"
                 .Replace("{databaseId}", databaseId);
 
@@ -482,6 +525,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.VectorsdbCollection> CreateCollection(string databaseId, string collectionId, string name, long dimension, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections"
                 .Replace("{databaseId}", databaseId);
 
@@ -524,6 +572,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.VectorsdbCollection> GetCollection(string databaseId, string collectionId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -559,6 +617,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.VectorsdbCollection> UpdateCollection(string databaseId, string collectionId, string name, long? dimension = null, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -601,6 +669,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteCollection(string databaseId, string collectionId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -612,7 +690,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -632,6 +711,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DocumentList> ListDocuments(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -674,6 +763,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Document> CreateDocument(string databaseId, string collectionId, string documentId, object data, List<string>? permissions = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -717,6 +816,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DocumentList> CreateDocuments(string databaseId, string collectionId, List<object> documents, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -759,6 +868,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DocumentList> UpsertDocuments(string databaseId, string collectionId, List<object> documents, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -799,6 +918,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DocumentList> UpdateDocuments(string databaseId, string collectionId, object? data = null, List<string>? queries = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -839,6 +968,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DocumentList> DeleteDocuments(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -881,6 +1020,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DocumentList> CreateQuery(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/query"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -922,6 +1071,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Document> GetDocument(string databaseId, string collectionId, string documentId, List<string>? queries = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -963,6 +1127,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Document> UpsertDocument(string databaseId, string collectionId, string documentId, object? data = null, List<string>? permissions = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1004,6 +1183,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Document> UpdateDocument(string databaseId, string collectionId, string documentId, object? data = null, List<string>? permissions = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1044,6 +1238,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteDocument(string databaseId, string collectionId, string documentId, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (documentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"documentId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/{documentId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1057,7 +1266,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1076,6 +1286,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.IndexList> ListIndexes(string databaseId, string collectionId, List<string>? queries = null, bool? total = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1115,6 +1335,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.VectorsDBIndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/indexes"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId);
@@ -1156,6 +1386,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Index> GetIndex(string databaseId, string collectionId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/indexes/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1192,6 +1437,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteIndex(string databaseId, string collectionId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/indexes/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{collectionId}", collectionId)
@@ -1204,7 +1464,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1231,6 +1492,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> CreateFailover(string databaseId, string? targetReplicaId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/failovers"
                 .Replace("{databaseId}", databaseId);
 
@@ -1270,6 +1536,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseOperationList> ListOperations(string databaseId, string? status = null, long? limit = null, long? offset = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/operations"
                 .Replace("{databaseId}", databaseId);
 
@@ -1308,6 +1579,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseReplicas> GetReplicas(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/replicas"
                 .Replace("{databaseId}", databaseId);
 
@@ -1344,6 +1620,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DatabaseStatus> GetStatus(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/vectorsdb/{databaseId}/status"
                 .Replace("{databaseId}", databaseId);
 

@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnInteger result = await tablesDB.CreateIntegerColumn(
+Appwrite.Models.ColumnInteger result = await tablesDB.CreateIntegerColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

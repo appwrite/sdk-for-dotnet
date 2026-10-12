@@ -15,6 +15,8 @@ namespace Appwrite.Enums
         public static ProjectPolicyId PasswordHistory => new ProjectPolicyId("password-history");
         public static ProjectPolicyId PasswordStrength => new ProjectPolicyId("password-strength");
         public static ProjectPolicyId PasswordPersonalData => new ProjectPolicyId("password-personal-data");
+        public static ProjectPolicyId PasswordPwned => new ProjectPolicyId("password-pwned");
+        public static ProjectPolicyId PasswordRotation => new ProjectPolicyId("password-rotation");
         public static ProjectPolicyId SessionAlert => new ProjectPolicyId("session-alert");
         public static ProjectPolicyId SessionDuration => new ProjectPolicyId("session-duration");
         public static ProjectPolicyId SessionInvalidation => new ProjectPolicyId("session-invalidation");
@@ -26,5 +28,6 @@ namespace Appwrite.Enums
         public static ProjectPolicyId DenyDisposableEmail => new ProjectPolicyId("deny-disposable-email");
         public static ProjectPolicyId DenyFreeEmail => new ProjectPolicyId("deny-free-email");
         public static ProjectPolicyId DenyCorporateEmail => new ProjectPolicyId("deny-corporate-email");
+        public static ProjectPolicyId Passkey => new ProjectPolicyId("passkey");
     }
 }

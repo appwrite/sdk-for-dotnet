@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Row result = await tablesDB.IncrementRowColumn(
+Appwrite.Models.Row result = await tablesDB.IncrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",

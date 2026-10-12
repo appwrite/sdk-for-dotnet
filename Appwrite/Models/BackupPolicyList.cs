@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static BackupPolicyList From(Dictionary<string, object> map) => new BackupPolicyList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             policies: map["policies"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupPolicy.From(map: it)).ToList()
         );
 

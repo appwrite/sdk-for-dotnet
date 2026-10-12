@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-IndexList result = await vectorsDB.ListIndexes(
+Appwrite.Models.IndexList result = await vectorsDB.ListIndexes(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     queries: new List<string>(), // optional

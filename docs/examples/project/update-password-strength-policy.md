@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-PolicyPasswordStrength result = await project.UpdatePasswordStrengthPolicy(
+Appwrite.Models.PolicyPasswordStrength result = await project.UpdatePasswordStrengthPolicy(
     min: 8, // optional
     uppercase: false, // optional
     lowercase: false, // optional

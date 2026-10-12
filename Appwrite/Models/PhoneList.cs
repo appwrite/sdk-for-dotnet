@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static PhoneList From(Dictionary<string, object> map) => new PhoneList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             phones: map["phones"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Phone.From(map: it)).ToList()
         );
 

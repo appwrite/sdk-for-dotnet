@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnBoolean result = await tablesDB.CreateBooleanColumn(
+Appwrite.Models.ColumnBoolean result = await tablesDB.CreateBooleanColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

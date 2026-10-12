@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static OAuth2ProviderList From(Dictionary<string, object> map) => new OAuth2ProviderList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             providers: map["providers"].ConvertToList<object>()
         );
 

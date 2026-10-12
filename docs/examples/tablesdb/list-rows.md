@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-RowList result = await tablesDB.ListRows(
+Appwrite.Models.RowList result = await tablesDB.ListRows(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     queries: new List<string>(), // optional

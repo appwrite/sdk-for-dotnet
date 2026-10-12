@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateMFAFactorsPolicy(
+Appwrite.Models.Project result = await project.UpdateMFAFactorsPolicy(
     totp: false, // optional
     email: false, // optional
     phone: false, // optional

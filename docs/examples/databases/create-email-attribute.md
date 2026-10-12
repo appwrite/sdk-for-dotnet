@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeEmail result = await databases.CreateEmailAttribute(
+Appwrite.Models.AttributeEmail result = await databases.CreateEmailAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

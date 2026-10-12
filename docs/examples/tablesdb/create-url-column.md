@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnUrl result = await tablesDB.CreateUrlColumn(
+Appwrite.Models.ColumnUrl result = await tablesDB.CreateUrlColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

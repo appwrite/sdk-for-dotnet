@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-DatabaseList result = await vectorsDB.List(
+Appwrite.Models.DatabaseList result = await vectorsDB.List(
     queries: new List<string>(), // optional
     total: false // optional
 );

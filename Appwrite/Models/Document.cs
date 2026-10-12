@@ -56,12 +56,12 @@ namespace Appwrite.Models
         }
 
         public static Document From(Dictionary<string, object> map) => new Document(
-            id: map["$id"].ToString(),
-            sequence: map["$sequence"].ToString(),
-            collectionId: map["$collectionId"].ToString(),
-            databaseId: map["$databaseId"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            sequence: (map.ContainsKey("$sequence") ? map["$sequence"] : "").ToString(),
+            collectionId: (map.ContainsKey("$collectionId") ? map["$collectionId"] : "").ToString(),
+            databaseId: (map.ContainsKey("$databaseId") ? map["$databaseId"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             permissions: map["$permissions"].ConvertToList<string>(),
             data: map.TryGetValue("data", out var additionalPropsValue)
                 ? (Dictionary<string, object>)additionalPropsValue

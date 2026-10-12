@@ -29,13 +29,21 @@ namespace Appwrite.Models
         [JsonPropertyName("p8File")]
         public string P8File { get; private set; }
 
+        [JsonPropertyName("nativeEnabled")]
+        public bool NativeEnabled { get; private set; }
+
+        [JsonPropertyName("nativeClientIds")]
+        public List<string> NativeClientIds { get; private set; }
+
         public OAuth2Apple(
             string id,
             bool enabled,
             string serviceId,
             string keyId,
             string teamId,
-            string p8File
+            string p8File,
+            bool nativeEnabled,
+            List<string> nativeClientIds
         )
         {
             Id = id;
@@ -44,15 +52,19 @@ namespace Appwrite.Models
             KeyId = keyId;
             TeamId = teamId;
             P8File = p8File;
+            NativeEnabled = nativeEnabled;
+            NativeClientIds = nativeClientIds;
         }
 
         public static OAuth2Apple From(Dictionary<string, object> map) => new OAuth2Apple(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            serviceId: map["serviceId"].ToString(),
-            keyId: map["keyId"].ToString(),
-            teamId: map["teamId"].ToString(),
-            p8File: map["p8File"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            serviceId: (map.ContainsKey("serviceId") ? map["serviceId"] : "").ToString(),
+            keyId: (map.ContainsKey("keyId") ? map["keyId"] : "").ToString(),
+            teamId: (map.ContainsKey("teamId") ? map["teamId"] : "").ToString(),
+            p8File: (map.ContainsKey("p8File") ? map["p8File"] : "").ToString(),
+            nativeEnabled: (bool)(map.ContainsKey("nativeEnabled") ? map["nativeEnabled"] : false),
+            nativeClientIds: (map.ContainsKey("nativeClientIds") ? map["nativeClientIds"] : new List<object>()).ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -62,7 +74,9 @@ namespace Appwrite.Models
             { "serviceId", ServiceId },
             { "keyId", KeyId },
             { "teamId", TeamId },
-            { "p8File", P8File }
+            { "p8File", P8File },
+            { "nativeEnabled", NativeEnabled },
+            { "nativeClientIds", NativeClientIds }
         };
     }
 }

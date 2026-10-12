@@ -1,5 +1,6 @@
 ```csharp
 using Appwrite;
+using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -10,10 +11,11 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Microsoft result = await project.UpdateOAuth2Microsoft(
+Appwrite.Models.OAuth2Microsoft result = await project.UpdateOAuth2Microsoft(
     applicationId: "<APPLICATION_ID>", // optional
     applicationSecret: "<APPLICATION_SECRET>", // optional
     tenant: "<TENANT>", // optional
+    prompt: new List&lt;ProjectOAuth2MicrosoftPrompt&gt; { ProjectOAuth2MicrosoftPrompt.None }, // optional
     enabled: false // optional
 );
 

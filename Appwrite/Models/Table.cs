@@ -77,18 +77,18 @@ namespace Appwrite.Models
         }
 
         public static Table From(Dictionary<string, object> map) => new Table(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             permissions: map["$permissions"].ConvertToList<string>(),
-            databaseId: map["databaseId"].ToString(),
-            name: map["name"].ToString(),
-            enabled: (bool)map["enabled"],
-            rowSecurity: (bool)map["rowSecurity"],
+            databaseId: (map.ContainsKey("databaseId") ? map["databaseId"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
+            rowSecurity: (bool)(map.ContainsKey("rowSecurity") ? map["rowSecurity"] : false),
             columns: map["columns"].ConvertToList<object>(),
             indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ColumnIndex.From(map: it)).ToList(),
-            bytesMax: Convert.ToInt64(map["bytesMax"]),
-            bytesUsed: Convert.ToInt64(map["bytesUsed"])
+            bytesMax: Convert.ToInt64((map.ContainsKey("bytesMax") ? map["bytesMax"] : 0)),
+            bytesUsed: Convert.ToInt64((map.ContainsKey("bytesUsed") ? map["bytesUsed"] : 0))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

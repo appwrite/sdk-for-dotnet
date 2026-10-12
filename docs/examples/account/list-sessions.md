@@ -10,7 +10,8 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-SessionList result = await account.ListSessions();
-
+Appwrite.Models.SessionList result = await account.ListSessions(
+    total: false // optional
+);
 
 ```

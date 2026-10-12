@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-Collection result = await documentsDB.GetCollection(
+Appwrite.Models.Collection result = await documentsDB.GetCollection(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>"
 );

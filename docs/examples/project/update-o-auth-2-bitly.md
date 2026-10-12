@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Bitly result = await project.UpdateOAuth2Bitly(
+Appwrite.Models.OAuth2Bitly result = await project.UpdateOAuth2Bitly(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional

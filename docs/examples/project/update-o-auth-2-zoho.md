@@ -1,5 +1,6 @@
 ```csharp
 using Appwrite;
+using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -10,9 +11,10 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Zoho result = await project.UpdateOAuth2Zoho(
+Appwrite.Models.OAuth2Zoho result = await project.UpdateOAuth2Zoho(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
+    prompt: new List&lt;ProjectOAuth2ZohoPrompt&gt; { ProjectOAuth2ZohoPrompt.Consent }, // optional
     enabled: false // optional
 );
 

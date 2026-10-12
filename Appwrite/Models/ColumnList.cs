@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static ColumnList From(Dictionary<string, object> map) => new ColumnList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             columns: map["columns"].ConvertToList<object>()
         );
 

@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static IndexList From(Dictionary<string, object> map) => new IndexList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Index.From(map: it)).ToList()
         );
 

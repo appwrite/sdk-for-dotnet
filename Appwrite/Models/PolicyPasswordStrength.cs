@@ -47,12 +47,12 @@ namespace Appwrite.Models
         }
 
         public static PolicyPasswordStrength From(Dictionary<string, object> map) => new PolicyPasswordStrength(
-            id: map["$id"].ToString(),
-            min: Convert.ToInt64(map["min"]),
-            uppercase: (bool)map["uppercase"],
-            lowercase: (bool)map["lowercase"],
-            number: (bool)map["number"],
-            symbols: (bool)map["symbols"]
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            min: Convert.ToInt64((map.ContainsKey("min") ? map["min"] : 8)),
+            uppercase: (bool)(map.ContainsKey("uppercase") ? map["uppercase"] : false),
+            lowercase: (bool)(map.ContainsKey("lowercase") ? map["lowercase"] : false),
+            number: (bool)(map.ContainsKey("number") ? map["number"] : false),
+            symbols: (bool)(map.ContainsKey("symbols") ? map["symbols"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -11,7 +11,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateSMTP(
+Appwrite.Models.Project result = await project.UpdateSMTP(
     host: "example.com", // optional
     port: 587, // optional
     username: "<USERNAME>", // optional

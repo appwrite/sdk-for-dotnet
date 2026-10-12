@@ -10,7 +10,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-Deployment result = await functions.CreateDeployment(
+Appwrite.Models.Deployment result = await functions.CreateDeployment(
     functionId: "<FUNCTION_ID>",
     code: InputFile.FromPath("./path-to-files/image.jpg"),
     activate: false,

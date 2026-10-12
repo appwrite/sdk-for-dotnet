@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-MockNumberList result = await project.ListMockPhones(
+Appwrite.Models.MockNumberList result = await project.ListMockPhones(
     queries: new List<string>(), // optional
     total: false // optional
 );

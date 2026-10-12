@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributePolygon result = await databases.UpdatePolygonAttribute(
+Appwrite.Models.AttributePolygon result = await databases.UpdatePolygonAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

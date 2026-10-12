@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-DedicatedDatabaseSpecificationList result = await vectorsDB.ListSpecifications();
+Appwrite.Models.DedicatedDatabaseSpecificationList result = await vectorsDB.ListSpecifications();
 
 
 ```

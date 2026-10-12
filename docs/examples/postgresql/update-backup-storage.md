@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseBackupStorage result = await postgresql.UpdateBackupStorage(
+Appwrite.Models.DedicatedDatabaseBackupStorage result = await postgresql.UpdateBackupStorage(
     databaseId: "<DATABASE_ID>",
     provider: "s3",
     bucket: "<BUCKET>",

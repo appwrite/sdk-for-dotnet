@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-User result = await account.Create(
+Appwrite.Models.User result = await account.Create(
     userId: "<USER_ID>",
     email: "email@example.com",
     password: "password",

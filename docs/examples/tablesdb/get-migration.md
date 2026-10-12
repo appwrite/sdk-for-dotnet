@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-DatabaseMigration result = await tablesDB.GetMigration(
+Appwrite.Models.DatabaseMigration result = await tablesDB.GetMigration(
     databaseId: "<DATABASE_ID>",
     migrationId: "<MIGRATION_ID>"
 );

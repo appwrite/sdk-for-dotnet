@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-PlatformLinux result = await project.UpdateLinuxPlatform(
+Appwrite.Models.PlatformLinux result = await project.UpdateLinuxPlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     packageName: "<PACKAGE_NAME>"

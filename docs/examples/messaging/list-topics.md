@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-TopicList result = await messaging.ListTopics(
+Appwrite.Models.TopicList result = await messaging.ListTopics(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional

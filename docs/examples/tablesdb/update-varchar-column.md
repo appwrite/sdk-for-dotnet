@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnVarchar result = await tablesDB.UpdateVarcharColumn(
+Appwrite.Models.ColumnVarchar result = await tablesDB.UpdateVarcharColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",

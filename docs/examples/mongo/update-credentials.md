@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabaseOperation result = await mongo.UpdateCredentials(
+Appwrite.Models.DedicatedDatabaseOperation result = await mongo.UpdateCredentials(
     databaseId: "<DATABASE_ID>"
 );
 

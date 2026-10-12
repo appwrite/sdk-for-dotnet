@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static MembershipList From(Dictionary<string, object> map) => new MembershipList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             memberships: map["memberships"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Membership.From(map: it)).ToList()
         );
 

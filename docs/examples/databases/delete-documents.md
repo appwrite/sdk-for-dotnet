@@ -13,7 +13,7 @@ Databases databases = new Databases(client);
 await databases.DeleteDocuments(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    queries: new List<string>(), // optional
+    queries: ["{\"method\":\"equal\", \"attribute\":\"$id\", \"values\":[\"<DOCUMENT_ID>\"]}"], // optional
     transactionId: "<TRANSACTION_ID>" // optional
 );
 

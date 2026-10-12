@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Transaction result = await tablesDB.GetTransaction(
+Appwrite.Models.Transaction result = await tablesDB.GetTransaction(
     transactionId: "<TRANSACTION_ID>"
 );
 

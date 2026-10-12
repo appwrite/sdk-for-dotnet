@@ -10,8 +10,8 @@ Client client = new Client()
 
 Graphql graphql = new Graphql(client);
 
-Any result = await graphql.Query(
-    query: [object]
+Appwrite.Models.Any result = await graphql.Query(
+    query: new { query = "query { localeGet { ip } }" }
 );
 
 ```

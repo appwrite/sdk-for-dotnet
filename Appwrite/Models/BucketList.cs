@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static BucketList From(Dictionary<string, object> map) => new BucketList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             buckets: map["buckets"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Bucket.From(map: it)).ToList()
         );
 

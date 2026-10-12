@@ -11,12 +11,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnIndex result = await tablesDB.CreateIndex(
+Appwrite.Models.ColumnIndex result = await tablesDB.CreateIndex(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     type: TablesDBIndexType.Key,
-    columns: new List<string>(),
+    columns: ["username"],
     orders: new List&lt;OrderBy&gt; { OrderBy.Asc }, // optional
     lengths: new List<long>() // optional
 );

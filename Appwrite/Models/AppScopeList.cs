@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static AppScopeList From(Dictionary<string, object> map) => new AppScopeList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             scopes: map["scopes"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.AppScope.From(map: it)).ToList()
         );
 

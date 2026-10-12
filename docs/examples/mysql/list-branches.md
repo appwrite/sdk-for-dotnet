@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseBranchList result = await mysql.ListBranches(
+Appwrite.Models.DedicatedDatabaseBranchList result = await mysql.ListBranches(
     databaseId: "<DATABASE_ID>"
 );
 

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Facebook result = await project.UpdateOAuth2Facebook(
+Appwrite.Models.OAuth2Facebook result = await project.UpdateOAuth2Facebook(
     appId: "<APP_ID>", // optional
     appSecret: "<APP_SECRET>", // optional
     enabled: false // optional

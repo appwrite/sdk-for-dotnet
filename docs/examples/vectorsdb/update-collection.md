@@ -10,11 +10,11 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-VectorsdbCollection result = await vectorsDB.UpdateCollection(
+Appwrite.Models.VectorsdbCollection result = await vectorsDB.UpdateCollection(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     name: "<NAME>",
-    dimension: 1, // optional
+    dimension: 4, // optional
     permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
     documentSecurity: false, // optional
     enabled: false // optional

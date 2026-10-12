@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static LocaleCodeList From(Dictionary<string, object> map) => new LocaleCodeList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             localeCodes: map["localeCodes"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.LocaleCode.From(map: it)).ToList()
         );
 

@@ -57,14 +57,14 @@ namespace Appwrite.Models
         }
 
         public static Variable From(Dictionary<string, object> map) => new Variable(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            key: map["key"].ToString(),
-            @value: map["value"].ToString(),
-            secret: (bool)map["secret"],
-            resourceType: map["resourceType"].ToString(),
-            resourceId: map["resourceId"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            @value: (map.ContainsKey("value") ? map["value"] : "").ToString(),
+            secret: (bool)(map.ContainsKey("secret") ? map["secret"] : false),
+            resourceType: (map.ContainsKey("resourceType") ? map["resourceType"] : "").ToString(),
+            resourceId: (map.ContainsKey("resourceId") ? map["resourceId"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

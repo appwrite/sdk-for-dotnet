@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static PolicyList From(Dictionary<string, object> map) => new PolicyList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             policies: map["policies"].ConvertToList<object>()
         );
 

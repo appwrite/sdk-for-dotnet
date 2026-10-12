@@ -10,7 +10,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-Variable result = await sites.GetVariable(
+Appwrite.Models.Variable result = await sites.GetVariable(
     siteId: "<SITE_ID>",
     variableId: "<VARIABLE_ID>"
 );

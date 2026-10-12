@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Variable result = await project.UpdateVariable(
+Appwrite.Models.Variable result = await project.UpdateVariable(
     variableId: "<VARIABLE_ID>",
     key: "<KEY>", // optional
     value: "<VALUE>", // optional

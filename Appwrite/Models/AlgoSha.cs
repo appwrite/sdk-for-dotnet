@@ -22,7 +22,7 @@ namespace Appwrite.Models
         }
 
         public static AlgoSha From(Dictionary<string, object> map) => new AlgoSha(
-            type: map["type"].ToString()
+            type: (map.ContainsKey("type") ? map["type"] : "sha").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DatabaseStatus result = await mongo.GetStatus(
+Appwrite.Models.DatabaseStatus result = await mongo.GetStatus(
     databaseId: "<DATABASE_ID>"
 );
 

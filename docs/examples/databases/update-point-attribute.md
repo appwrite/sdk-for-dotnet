@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributePoint result = await databases.UpdatePointAttribute(
+Appwrite.Models.AttributePoint result = await databases.UpdatePointAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

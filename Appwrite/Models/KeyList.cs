@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static KeyList From(Dictionary<string, object> map) => new KeyList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             keys: map["keys"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Key.From(map: it)).ToList()
         );
 

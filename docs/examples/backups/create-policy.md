@@ -11,7 +11,7 @@ Client client = new Client()
 
 Backups backups = new Backups(client);
 
-BackupPolicy result = await backups.CreatePolicy(
+Appwrite.Models.BackupPolicy result = await backups.CreatePolicy(
     policyId: "<POLICY_ID>",
     services: new List&lt;BackupServices&gt; { BackupServices.Databases },
     retention: 1,

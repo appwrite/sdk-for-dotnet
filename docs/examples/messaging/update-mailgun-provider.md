@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateMailgunProvider(
+Appwrite.Models.Provider result = await messaging.UpdateMailgunProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>", // optional
     apiKey: "<API_KEY>", // optional

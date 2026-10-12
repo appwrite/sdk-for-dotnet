@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabasePooler result = await mysql.GetPooler(
+Appwrite.Models.DedicatedDatabasePooler result = await mysql.GetPooler(
     databaseId: "<DATABASE_ID>"
 );
 

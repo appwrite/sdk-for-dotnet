@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-Transaction result = await vectorsDB.GetTransaction(
+Appwrite.Models.Transaction result = await vectorsDB.GetTransaction(
     transactionId: "<TRANSACTION_ID>"
 );
 

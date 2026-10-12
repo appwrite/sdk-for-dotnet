@@ -32,9 +32,9 @@ namespace Appwrite.Models
         }
 
         public static Oauth2Project From(Dictionary<string, object> map) => new Oauth2Project(
-            id: map["$id"].ToString(),
-            region: map["region"].ToString(),
-            endpoint: map["endpoint"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            region: (map.ContainsKey("region") ? map["region"] : "").ToString(),
+            endpoint: (map.ContainsKey("endpoint") ? map["endpoint"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

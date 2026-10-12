@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static AppInstallationList From(Dictionary<string, object> map) => new AppInstallationList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             installations: map["installations"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.AppInstallation.From(map: it)).ToList()
         );
 

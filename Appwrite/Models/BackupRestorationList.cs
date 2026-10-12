@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static BackupRestorationList From(Dictionary<string, object> map) => new BackupRestorationList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             restorations: map["restorations"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupRestoration.From(map: it)).ToList()
         );
 

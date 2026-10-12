@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabasePooler result = await postgresql.GetPooler(
+Appwrite.Models.DedicatedDatabasePooler result = await postgresql.GetPooler(
     databaseId: "<DATABASE_ID>"
 );
 

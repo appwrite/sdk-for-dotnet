@@ -10,7 +10,7 @@ Client client = new Client()
 
 Presences presences = new Presences(client);
 
-PresenceList result = await presences.List(
+Appwrite.Models.PresenceList result = await presences.List(
     queries: new List<string>(), // optional
     total: false, // optional
     ttl: 0 // optional

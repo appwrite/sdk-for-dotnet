@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-Transaction result = await vectorsDB.CreateTransaction(
+Appwrite.Models.Transaction result = await vectorsDB.CreateTransaction(
     ttl: 60 // optional
 );
 

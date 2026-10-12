@@ -47,12 +47,12 @@ namespace Appwrite.Models
         }
 
         public static AdditionalResource From(Dictionary<string, object> map) => new AdditionalResource(
-            name: map["name"].ToString(),
-            unit: map["unit"].ToString(),
-            currency: map["currency"].ToString(),
-            price: Convert.ToDouble(map["price"]),
-            @value: Convert.ToInt64(map["value"]),
-            invoiceDesc: map["invoiceDesc"].ToString()
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            unit: (map.ContainsKey("unit") ? map["unit"] : "").ToString(),
+            currency: (map.ContainsKey("currency") ? map["currency"] : "").ToString(),
+            price: Convert.ToDouble((map.ContainsKey("price") ? map["price"] : 0)),
+            @value: Convert.ToInt64((map.ContainsKey("value") ? map["value"] : 0)),
+            invoiceDesc: (map.ContainsKey("invoiceDesc") ? map["invoiceDesc"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

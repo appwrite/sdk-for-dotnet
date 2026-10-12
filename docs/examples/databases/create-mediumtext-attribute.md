@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeMediumtext result = await databases.CreateMediumtextAttribute(
+Appwrite.Models.AttributeMediumtext result = await databases.CreateMediumtextAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

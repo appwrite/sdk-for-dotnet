@@ -133,6 +133,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Oauth2Consent> GetConsent(string consentId)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}"
                 .Replace("{consentId}", consentId);
 
@@ -169,6 +174,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteConsent(string consentId)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}"
                 .Replace("{consentId}", consentId);
 
@@ -201,6 +211,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Oauth2ConsentTokenList> ListConsentTokens(string consentId, List<string>? queries = null, bool? total = null)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}/tokens"
                 .Replace("{consentId}", consentId);
 
@@ -238,6 +253,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Oauth2ConsentToken> GetConsentToken(string consentId, string tokenId)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
+            if (tokenId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tokenId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}/tokens/{tokenId}"
                 .Replace("{consentId}", consentId)
                 .Replace("{tokenId}", tokenId);
@@ -275,6 +300,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteConsentToken(string consentId, string tokenId)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
+            if (tokenId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tokenId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}/tokens/{tokenId}"
                 .Replace("{consentId}", consentId)
                 .Replace("{tokenId}", tokenId);
@@ -384,6 +419,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteIdentity(string identityId)
         {
+            if (identityId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"identityId\"");
+            }
+
             var apiPath = "/account/identities/{identityId}"
                 .Replace("{identityId}", identityId);
 
@@ -394,7 +434,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -404,42 +445,6 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
-
-        }
-
-        /// <para>
-        /// Get the list of latest security activity logs for the currently logged in
-        /// user. Each log returns user IP address, location and date and time of log.
-        /// </para>
-        /// </summary>
-        public Task<Models.LogList> ListLogs(List<string>? queries = null, bool? total = null)
-        {
-            var apiPath = "/account/logs";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "queries", queries },
-                { "total", total }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.LogList Convert(Dictionary<string, object> it)
-            {
-                return Models.LogList.From(map: it);
-            }
-
-            return _client.Call<Models.LogList>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
 
         }
 
@@ -649,7 +654,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -678,7 +684,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1175,6 +1182,248 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get the list of verified passkeys registered by the currently logged in
+        /// user.
+        /// </para>
+        /// </summary>
+        public Task<Models.PasskeyList> ListPasskeys(List<string>? queries = null, bool? total = null)
+        {
+            var apiPath = "/account/passkeys";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "total", total }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.PasskeyList Convert(Dictionary<string, object> it)
+            {
+                return Models.PasskeyList.From(map: it);
+            }
+
+            return _client.Call<Models.PasskeyList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Start registering a passkey for the currently logged in user. The session
+        /// must have signed in or completed an MFA challenge within the last 10
+        /// minutes. Pass the returned `publicKey` options to
+        /// `navigator.credentials.create()`, then complete the registration with
+        /// [Update passkey
+        /// verification](/docs/references/cloud/client-web/account#updatePasskeyVerification).
+        /// The passkey stays pending until verified, and the challenge expires after 5
+        /// minutes.
+        /// </para>
+        /// </summary>
+        public Task<Models.PasskeyChallenge> CreatePasskey(string? passkeyId = null, string? name = null)
+        {
+            var apiPath = "/account/passkeys";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "passkeyId", passkeyId },
+                { "name", name }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.PasskeyChallenge Convert(Dictionary<string, object> it)
+            {
+                return Models.PasskeyChallenge.From(map: it);
+            }
+
+            return _client.Call<Models.PasskeyChallenge>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a verified passkey of the currently logged in user by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Passkey> GetPasskey(string passkeyId)
+        {
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/account/passkeys/{passkeyId}"
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Passkey Convert(Dictionary<string, object> it)
+            {
+                return Models.Passkey.From(map: it);
+            }
+
+            return _client.Call<Models.Passkey>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Rename a passkey of the currently logged in user.
+        /// </para>
+        /// </summary>
+        public Task<Models.Passkey> UpdatePasskey(string passkeyId, string name)
+        {
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/account/passkeys/{passkeyId}"
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Passkey Convert(Dictionary<string, object> it)
+            {
+                return Models.Passkey.From(map: it);
+            }
+
+            return _client.Call<Models.Passkey>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete a passkey from the currently logged in user. The passkey can no
+        /// longer be used to sign in, although it may remain stored on the user's
+        /// device. The session must have signed in or completed an MFA challenge
+        /// within the last 10 minutes.
+        /// </para>
+        /// </summary>
+        public Task<object> DeletePasskey(string passkeyId)
+        {
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/account/passkeys/{passkeyId}"
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Complete a passkey registration started with [Create
+        /// passkey](/docs/references/cloud/client-web/account#createPasskey). Pass the
+        /// JSON form of the credential returned by `navigator.credentials.create()`,
+        /// for example `credential.toJSON()`. Each registration can be verified once;
+        /// a failed attempt requires starting it again.
+        /// </para>
+        /// </summary>
+        public Task<Models.Passkey> UpdatePasskeyVerification(string passkeyId, object credential)
+        {
+            if (passkeyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"passkeyId\"");
+            }
+
+            var apiPath = "/account/passkeys/{passkeyId}/verification"
+                .Replace("{passkeyId}", passkeyId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "credential", credential }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Passkey Convert(Dictionary<string, object> it)
+            {
+                return Models.Passkey.From(map: it);
+            }
+
+            return _client.Call<Models.Passkey>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update currently logged in user password. For validation, user is required
         /// to pass in the new password, and the old password. For users created with
         /// OAuth, Team Invites and Magic URL, oldPassword is optional.
@@ -1412,16 +1661,109 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Use this endpoint to send a 6-digit password recovery code to the user's
+        /// email address. Unlike
+        /// [createRecovery](https://appwrite.io/docs/references/cloud/client-web/account#createRecovery),
+        /// this method requires no redirect URL, which makes it suitable for mobile
+        /// and desktop apps that cannot host a recovery page. Learn more about how to
+        /// [complete the recovery
+        /// process](https://appwrite.io/docs/references/cloud/client-web/account#updateRecoveryOTP).
+        /// The code sent to the user's email address is valid for 15 minutes.
+        /// 
+        /// Enable the **phrase** parameter to include a randomly generated security
+        /// phrase in both the email and the response. Showing that phrase in your app
+        /// lets the user confirm the email genuinely came from your request, which
+        /// helps protect against phishing.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> CreateRecoveryOTP(string email, bool? phrase = null)
+        {
+            var apiPath = "/account/recovery/otp";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "email", email },
+                { "phrase", phrase }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it)
+            {
+                return Models.Token.From(map: it);
+            }
+
+            return _client.Call<Models.Token>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Use this endpoint to complete the user password recovery process using the
+        /// 6-digit code that was emailed by
+        /// [createRecoveryOTP](https://appwrite.io/docs/references/cloud/client-web/account#createRecoveryOTP).
+        /// Pass the **userId** of the user along with the **secret** code from the
+        /// email and the new **password** to set. If confirmed, this route will return
+        /// a 200 status code, the code is consumed and the user's password is updated.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> UpdateRecoveryOTP(string userId, string secret, string password)
+        {
+            var apiPath = "/account/recovery/otp";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "secret", secret },
+                { "password", password }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it)
+            {
+                return Models.Token.From(map: it);
+            }
+
+            return _client.Call<Models.Token>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get the list of active sessions across different devices for the currently
         /// logged in user.
         /// </para>
         /// </summary>
-        public Task<Models.SessionList> ListSessions()
+        public Task<Models.SessionList> ListSessions(bool? total = null)
         {
             var apiPath = "/account/sessions";
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1447,21 +1789,24 @@ namespace Appwrite.Services
 
         /// <para>
         /// Delete all sessions from the user account and remove any sessions cookies
-        /// from the end client.
+        /// from the end client. Pass `current` as false to keep the session making the
+        /// request and sign out of every other session.
         /// </para>
         /// </summary>
-        public Task<object> DeleteSessions()
+        public Task<object> DeleteSessions(bool? current = null)
         {
             var apiPath = "/account/sessions";
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "current", current }
             };
 
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1517,20 +1862,105 @@ namespace Appwrite.Services
         /// <para>
         /// Allow the user to login into their account by providing a valid email and
         /// password combination. This route will create a new session for the user.
+        /// Use the optional `duration` parameter to create a shorter session, for
+        /// example when the user doesn't choose "remember me". It must be at least 60
+        /// seconds and cannot exceed the project maximum session length.
         /// 
         /// A user is limited to 10 active sessions at a time by default. [Learn more
         /// about session
         /// limits](https://appwrite.io/docs/authentication-security#limits).
         /// </para>
         /// </summary>
-        public Task<Models.Session> CreateEmailPasswordSession(string email, string password)
+        public Task<Models.Session> CreateEmailPasswordSession(string email, string password, long? duration = null)
         {
             var apiPath = "/account/sessions/email";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "email", email },
-                { "password", password }
+                { "password", password },
+                { "duration", duration }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Session Convert(Dictionary<string, object> it)
+            {
+                return Models.Session.From(map: it);
+            }
+
+            return _client.Call<Models.Session>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Allow the user to login to their account using an OpenID Connect ID token
+        /// obtained natively from the OAuth2 provider, for example via Google
+        /// Credential Manager on Android or Sign in with Apple on iOS. No browser or
+        /// redirect is involved: the ID token is verified against the provider's
+        /// published signing keys and a session is created in a single request.
+        /// 
+        /// Native sign-in is switched on per provider with its nativeEnabled setting.
+        /// It is independent of the browser-based flow's enabled setting, which has no
+        /// effect on this endpoint. The token's audience must match the provider's
+        /// configured client ID or one of its native client IDs; tokens issued for any
+        /// other client ID are rejected. For Sign in with Apple, register your app's
+        /// bundle ID as a native client ID. For Google, the web client ID used by
+        /// Credential Manager is usually the configured client ID; add your Android
+        /// and iOS client IDs as native client IDs if your app requests tokens for
+        /// them.
+        /// 
+        /// Pass the raw nonce used when requesting the ID token so it can be validated
+        /// against the token's nonce claim. When signing in with Apple, the nonce is
+        /// required: hash it with SHA-256 before passing it to the Apple SDK, and send
+        /// the raw value here - Apple tokens requested without a nonce are rejected.
+        /// For Google the nonce is optional: it is validated whenever the token
+        /// carries one, and ignored when the provider issued the token without one.
+        /// Apple only returns the user's name on the first authorization, and never
+        /// inside the ID token - capture it on the client and pass it via the name
+        /// parameter.
+        /// 
+        /// If there is already an active session, the new session will be attached to
+        /// the logged-in account. If there are no active sessions, the server will
+        /// attempt to look for a user with the same email address as the verified
+        /// email received from the provider and attach the new session to the existing
+        /// user. If no matching user is found - the server will create a new user.
+        /// 
+        /// This flow does not return provider refresh tokens. You may pass an access
+        /// token the provider handed your client, along with its lifetime, to store it
+        /// on the session - but Appwrite cannot renew it once it expires. If your app
+        /// needs long-lived access to provider APIs, use the browser-based OAuth2 flow
+        /// instead.
+        /// 
+        /// A user is limited to 10 active sessions at a time by default. [Learn more
+        /// about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Session> CreateIdTokenSession(Appwrite.Enums.IdTokenProvider provider, string idToken, string? nonce = null, string? accessToken = null, long? accessTokenExpiry = null, string? name = null)
+        {
+            var apiPath = "/account/sessions/id-token";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "provider", provider?.Value },
+                { "idToken", idToken },
+                { "nonce", nonce },
+                { "accessToken", accessToken },
+                { "accessTokenExpiry", accessTokenExpiry },
+                { "name", name }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1678,6 +2108,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Session> GetSession(string sessionId)
         {
+            if (sessionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"sessionId\"");
+            }
+
             var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
@@ -1714,6 +2149,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Session> UpdateSession(string sessionId)
         {
+            if (sessionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"sessionId\"");
+            }
+
             var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
@@ -1753,6 +2193,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteSession(string sessionId)
         {
+            if (sessionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"sessionId\"");
+            }
+
             var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
@@ -1763,7 +2208,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1925,6 +2371,10 @@ namespace Appwrite.Services
         /// session](https://appwrite.io/docs/references/cloud/client-web/account#createSession)
         /// endpoint.
         /// 
+        /// If there is already an active session, the OAuth2 identity is attached to
+        /// the logged-in account and that session stays active until the token is
+        /// exchanged for a new one.
+        /// 
         /// A user is limited to 10 active sessions at a time by default. [Learn more
         /// about session
         /// limits](https://appwrite.io/docs/authentication-security#limits).
@@ -1956,6 +2406,90 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Start signing in with a passkey. No email or user ID is needed: pass the
+        /// returned `publicKey` options to `navigator.credentials.get()` and the user
+        /// picks one of their passkeys. Then call [Update passkey
+        /// token](/docs/references/cloud/client-web/account#updatePasskeyToken) with
+        /// the credential to receive a token, and exchange it with [Create
+        /// session](/docs/references/cloud/client-web/account#createSession). The
+        /// challenge expires after 5 minutes.
+        /// </para>
+        /// </summary>
+        public Task<Models.PasskeyChallenge> CreatePasskeyToken()
+        {
+            var apiPath = "/account/tokens/passkey";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.PasskeyChallenge Convert(Dictionary<string, object> it)
+            {
+                return Models.PasskeyChallenge.From(map: it);
+            }
+
+            return _client.Call<Models.PasskeyChallenge>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Complete a passkey sign-in started with [Create passkey
+        /// token](/docs/references/cloud/client-web/account#createPasskeyToken). Pass
+        /// the challenge ID and the JSON form of the credential returned by
+        /// `navigator.credentials.get()`, for example `credential.toJSON()`. The
+        /// returned token includes its secret and expires after 1 minute: exchange it
+        /// for a session with [Create
+        /// session](/docs/references/cloud/client-web/account#createSession). Passkeys
+        /// require user verification, so the session also satisfies MFA. Each
+        /// challenge can only be used once.
+        /// </para>
+        /// </summary>
+        public Task<Models.TokenSecret> UpdatePasskeyToken(string challengeId, object credential)
+        {
+            var apiPath = "/account/tokens/passkey";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "challengeId", challengeId },
+                { "credential", credential }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.TokenSecret Convert(Dictionary<string, object> it)
+            {
+                return Models.TokenSecret.From(map: it);
+            }
+
+            return _client.Call<Models.TokenSecret>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
 
         }
 
@@ -2153,6 +2687,96 @@ namespace Appwrite.Services
         public Task<Models.Token> UpdateVerification(string userId, string secret)
         {
             var apiPath = "/account/verifications/email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "secret", secret }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it)
+            {
+                return Models.Token.From(map: it);
+            }
+
+            return _client.Call<Models.Token>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Use this endpoint to send a 6-digit verification code to the currently
+        /// logged in user's email address. Unlike
+        /// [createEmailVerification](https://appwrite.io/docs/references/cloud/client-web/account#createEmailVerification),
+        /// this method requires no redirect URL, which makes it suitable for mobile
+        /// and desktop apps that cannot host a verification page. Learn more about how
+        /// to [complete the verification
+        /// process](https://appwrite.io/docs/references/cloud/client-web/account#updateEmailVerificationOTP).
+        /// The code sent to the user's email address is valid for 15 minutes.
+        /// 
+        /// Enable the **phrase** parameter to include a randomly generated security
+        /// phrase in both the email and the response. Showing that phrase in your app
+        /// lets the user confirm the email genuinely came from your request, which
+        /// helps protect against phishing.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> CreateEmailVerificationOTP(bool? phrase = null)
+        {
+            var apiPath = "/account/verifications/email/otp";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "phrase", phrase }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it)
+            {
+                return Models.Token.From(map: it);
+            }
+
+            return _client.Call<Models.Token>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Use this endpoint to complete the user email verification process using the
+        /// 6-digit code that was emailed by
+        /// [createEmailVerificationOTP](https://appwrite.io/docs/references/cloud/client-web/account#createEmailVerificationOTP).
+        /// Pass the **userId** of the user being verified along with the **secret**
+        /// code from the email. If confirmed, this route will return a 200 status code
+        /// and the code is consumed.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> UpdateEmailVerificationOTP(string userId, string secret)
+        {
+            var apiPath = "/account/verifications/email/otp";
 
             var apiParameters = new Dictionary<string, object?>()
             {

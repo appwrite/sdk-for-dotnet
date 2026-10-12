@@ -57,13 +57,13 @@ namespace Appwrite.Models
         }
 
         public static Runtime From(Dictionary<string, object> map) => new Runtime(
-            id: map["$id"].ToString(),
-            key: map["key"].ToString(),
-            name: map["name"].ToString(),
-            version: map["version"].ToString(),
-            @base: map["base"].ToString(),
-            image: map["image"].ToString(),
-            logo: map["logo"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            version: (map.ContainsKey("version") ? map["version"] : "").ToString(),
+            @base: (map.ContainsKey("base") ? map["base"] : "").ToString(),
+            image: (map.ContainsKey("image") ? map["image"] : "").ToString(),
+            logo: (map.ContainsKey("logo") ? map["logo"] : "").ToString(),
             supports: map["supports"].ConvertToList<string>()
         );
 

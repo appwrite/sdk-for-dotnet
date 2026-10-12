@@ -10,7 +10,7 @@ Client client = new Client()
 
 Webhooks webhooks = new Webhooks(client);
 
-Webhook result = await webhooks.UpdateSecret(
+Appwrite.Models.Webhook result = await webhooks.UpdateSecret(
     webhookId: "<WEBHOOK_ID>",
     secret: "<SECRET>" // optional
 );

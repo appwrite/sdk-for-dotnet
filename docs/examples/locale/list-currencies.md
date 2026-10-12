@@ -10,7 +10,8 @@ Client client = new Client()
 
 Locale locale = new Locale(client);
 
-CurrencyList result = await locale.ListCurrencies();
-
+Appwrite.Models.CurrencyList result = await locale.ListCurrencies(
+    total: false // optional
+);
 
 ```

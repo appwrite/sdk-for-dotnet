@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabase result = await mysql.Update(
+Appwrite.Models.DedicatedDatabase result = await mysql.Update(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>", // optional
     status: "ready", // optional

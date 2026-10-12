@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-App result = await apps.Update(
+Appwrite.Models.App result = await apps.Update(
     appId: "<APP_ID>",
     name: "<NAME>",
     description: "<DESCRIPTION>", // optional

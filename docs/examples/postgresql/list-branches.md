@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseBranchList result = await postgresql.ListBranches(
+Appwrite.Models.DedicatedDatabaseBranchList result = await postgresql.ListBranches(
     databaseId: "<DATABASE_ID>"
 );
 

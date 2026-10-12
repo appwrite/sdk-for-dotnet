@@ -10,7 +10,7 @@ Client client = new Client()
 
 Proxy proxy = new Proxy(client);
 
-ProxyRule result = await proxy.CreateSiteRule(
+Appwrite.Models.ProxyRule result = await proxy.CreateSiteRule(
     domain: "example.com",
     siteId: "<SITE_ID>",
     branch: "<BRANCH>" // optional

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Tokens tokens = new Tokens(client);
 
-ResourceToken result = await tokens.Get(
+Appwrite.Models.ResourceToken result = await tokens.Get(
     tokenId: "<TOKEN_ID>"
 );
 

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-Transaction result = await databases.UpdateTransaction(
+Appwrite.Models.Transaction result = await databases.UpdateTransaction(
     transactionId: "<TRANSACTION_ID>",
     commit: false, // optional
     rollback: false // optional

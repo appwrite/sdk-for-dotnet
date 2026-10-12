@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static ColumnIndexList From(Dictionary<string, object> map) => new ColumnIndexList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             indexes: map["indexes"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ColumnIndex.From(map: it)).ToList()
         );
 

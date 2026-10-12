@@ -56,12 +56,12 @@ namespace Appwrite.Models
         }
 
         public static Row From(Dictionary<string, object> map) => new Row(
-            id: map["$id"].ToString(),
-            sequence: map["$sequence"].ToString(),
-            tableId: map["$tableId"].ToString(),
-            databaseId: map["$databaseId"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            sequence: (map.ContainsKey("$sequence") ? map["$sequence"] : "").ToString(),
+            tableId: (map.ContainsKey("$tableId") ? map["$tableId"] : "").ToString(),
+            databaseId: (map.ContainsKey("$databaseId") ? map["$databaseId"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             permissions: map["$permissions"].ConvertToList<string>(),
             data: map.TryGetValue("data", out var additionalPropsValue)
                 ? (Dictionary<string, object>)additionalPropsValue

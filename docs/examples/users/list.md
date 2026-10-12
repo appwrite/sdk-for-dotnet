@@ -10,7 +10,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-UserList result = await users.List(
+Appwrite.Models.UserList result = await users.List(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional

@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnIndexList result = await tablesDB.ListIndexes(
+Appwrite.Models.ColumnIndexList result = await tablesDB.ListIndexes(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     queries: new List<string>(), // optional

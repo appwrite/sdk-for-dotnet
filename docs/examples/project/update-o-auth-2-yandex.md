@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Yandex result = await project.UpdateOAuth2Yandex(
+Appwrite.Models.OAuth2Yandex result = await project.UpdateOAuth2Yandex(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional

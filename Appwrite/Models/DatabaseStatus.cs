@@ -27,7 +27,7 @@ namespace Appwrite.Models
         public long Uptime { get; private set; }
 
         [JsonPropertyName("connections")]
-        public DatabaseStatusConnections Connections { get; private set; }
+        public DatabaseStatusConnections? Connections { get; private set; }
 
         [JsonPropertyName("syncMode")]
         public string SyncMode { get; private set; }
@@ -59,7 +59,7 @@ namespace Appwrite.Models
             string engine,
             string version,
             long uptime,
-            DatabaseStatusConnections connections,
+            DatabaseStatusConnections? connections,
             string syncMode,
             string? effectiveSyncMode,
             bool syncDegraded,
@@ -87,17 +87,19 @@ namespace Appwrite.Models
         }
 
         public static DatabaseStatus From(Dictionary<string, object> map) => new DatabaseStatus(
-            health: map["health"].ToString(),
-            ready: (bool)map["ready"],
-            engine: map["engine"].ToString(),
-            version: map["version"].ToString(),
-            uptime: Convert.ToInt64(map["uptime"]),
-            connections: Appwrite.Models.DatabaseStatusConnections.From(map: map["connections"] is JsonElement jsonObj6 ? jsonObj6.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["connections"]),
-            syncMode: map["syncMode"].ToString(),
+            health: (map.ContainsKey("health") ? map["health"] : "unknown").ToString(),
+            ready: (bool)(map.ContainsKey("ready") ? map["ready"] : false),
+            engine: (map.ContainsKey("engine") ? map["engine"] : "postgresql").ToString(),
+            version: (map.ContainsKey("version") ? map["version"] : "").ToString(),
+            uptime: Convert.ToInt64((map.ContainsKey("uptime") ? map["uptime"] : 0)),
+            connections: map.TryGetValue("connections", out var objectRaw6) && objectRaw6 != null
+                                    ? Appwrite.Models.DatabaseStatusConnections.From(map: objectRaw6 is JsonElement jsonObj6 ? jsonObj6.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw6)
+                                    : null,
+            syncMode: (map.ContainsKey("syncMode") ? map["syncMode"] : "async").ToString(),
             effectiveSyncMode: map.TryGetValue("effectiveSyncMode", out var effectiveSyncMode) ? effectiveSyncMode?.ToString() : null,
-            syncDegraded: (bool)map["syncDegraded"],
-            syncAcknowledgements: Convert.ToInt64(map["syncAcknowledgements"]),
-            syncStandbyCount: Convert.ToInt64(map["syncStandbyCount"]),
+            syncDegraded: (bool)(map.ContainsKey("syncDegraded") ? map["syncDegraded"] : false),
+            syncAcknowledgements: Convert.ToInt64((map.ContainsKey("syncAcknowledgements") ? map["syncAcknowledgements"] : 0)),
+            syncStandbyCount: Convert.ToInt64((map.ContainsKey("syncStandbyCount") ? map["syncStandbyCount"] : 0)),
             syncStateConfirmed: map.TryGetValue("syncStateConfirmed", out var boolRaw12) && boolRaw12 != null
                                         ? (bool?)boolRaw12
                                         : null,

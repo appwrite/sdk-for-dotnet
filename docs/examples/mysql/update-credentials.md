@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseOperation result = await mysql.UpdateCredentials(
+Appwrite.Models.DedicatedDatabaseOperation result = await mysql.UpdateCredentials(
     databaseId: "<DATABASE_ID>"
 );
 

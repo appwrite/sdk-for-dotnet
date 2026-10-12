@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-DedicatedDatabaseOperationList result = await documentsDB.ListOperations(
+Appwrite.Models.DedicatedDatabaseOperationList result = await documentsDB.ListOperations(
     databaseId: "<DATABASE_ID>",
     status: "queued", // optional
     limit: 1, // optional

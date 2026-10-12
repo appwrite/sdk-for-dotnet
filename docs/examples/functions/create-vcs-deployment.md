@@ -11,7 +11,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-Deployment result = await functions.CreateVcsDeployment(
+Appwrite.Models.Deployment result = await functions.CreateVcsDeployment(
     functionId: "<FUNCTION_ID>",
     type: VCSReferenceType.Branch,
     reference: "<REFERENCE>",

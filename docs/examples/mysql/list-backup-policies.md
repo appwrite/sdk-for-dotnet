@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-BackupPolicyList result = await mysql.ListBackupPolicies(
+Appwrite.Models.BackupPolicyList result = await mysql.ListBackupPolicies(
     databaseId: "<DATABASE_ID>",
     queries: new List<string>() // optional
 );

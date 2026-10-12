@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static ActivityEventList From(Dictionary<string, object> map) => new ActivityEventList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             events: map["events"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ActivityEvent.From(map: it)).ToList()
         );
 

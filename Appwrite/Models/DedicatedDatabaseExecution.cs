@@ -47,12 +47,12 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseExecution From(Dictionary<string, object> map) => new DedicatedDatabaseExecution(
-            rows: map["rows"].ConvertToList<object>(),
-            rowCount: Convert.ToInt64(map["rowCount"]),
+            rows: (map.ContainsKey("rows") ? map["rows"] : new List<object>()).ConvertToList<object>(),
+            rowCount: Convert.ToInt64((map.ContainsKey("rowCount") ? map["rowCount"] : 0)),
             columns: map["columns"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabaseExecutionColumn.From(map: it)).ToList(),
-            durationMs: Convert.ToInt64(map["durationMs"]),
-            truncated: (bool)map["truncated"],
-            bytes: Convert.ToInt64(map["bytes"])
+            durationMs: Convert.ToInt64((map.ContainsKey("durationMs") ? map["durationMs"] : 0)),
+            truncated: (bool)(map.ContainsKey("truncated") ? map["truncated"] : false),
+            bytes: Convert.ToInt64((map.ContainsKey("bytes") ? map["bytes"] : 0))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

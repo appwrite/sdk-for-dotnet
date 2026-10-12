@@ -10,10 +10,19 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-DocumentList result = await databases.UpsertDocuments(
+Appwrite.Models.DocumentList result = await databases.UpsertDocuments(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    documents: new List<object>(),
+    documents: [
+	    {
+	        "$id": "example1",
+	        "username": "walter.obrien",
+	        "email": "walter.obrien@example.com",
+	        "fullName": "Walter O'Brien",
+	        "age": 30,
+	        "isAdmin": false
+	    }
+	],
     transactionId: "<TRANSACTION_ID>" // optional
 );
 

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeDatetime result = await databases.CreateDatetimeAttribute(
+Appwrite.Models.AttributeDatetime result = await databases.CreateDatetimeAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

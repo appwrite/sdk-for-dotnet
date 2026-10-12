@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static DatabaseMigrationList From(Dictionary<string, object> map) => new DatabaseMigrationList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             migrations: map["migrations"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DatabaseMigration.From(map: it)).ToList()
         );
 

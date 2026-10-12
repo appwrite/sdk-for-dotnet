@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-IndexList result = await documentsDB.ListIndexes(
+Appwrite.Models.IndexList result = await documentsDB.ListIndexes(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     queries: new List<string>(), // optional

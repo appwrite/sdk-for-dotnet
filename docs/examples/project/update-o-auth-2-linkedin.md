@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Linkedin result = await project.UpdateOAuth2Linkedin(
+Appwrite.Models.OAuth2Linkedin result = await project.UpdateOAuth2Linkedin(
     clientId: "<CLIENT_ID>", // optional
     primaryClientSecret: "<PRIMARY_CLIENT_SECRET>", // optional
     enabled: false // optional

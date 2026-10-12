@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-Document result = await databases.DecrementDocumentAttribute(
+Appwrite.Models.Document result = await databases.DecrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     documentId: "<DOCUMENT_ID>",

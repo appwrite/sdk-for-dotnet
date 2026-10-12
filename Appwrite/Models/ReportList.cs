@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static ReportList From(Dictionary<string, object> map) => new ReportList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             reports: map["reports"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Report.From(map: it)).ToList()
         );
 

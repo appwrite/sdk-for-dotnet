@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseOperation result = await postgresql.UpdateCredentials(
+Appwrite.Models.DedicatedDatabaseOperation result = await postgresql.UpdateCredentials(
     databaseId: "<DATABASE_ID>"
 );
 

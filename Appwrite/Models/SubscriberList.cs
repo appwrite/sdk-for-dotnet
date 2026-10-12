@@ -27,7 +27,7 @@ namespace Appwrite.Models
         }
 
         public static SubscriberList From(Dictionary<string, object> map) => new SubscriberList(
-            total: Convert.ToInt64(map["total"]),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             subscribers: map["subscribers"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Subscriber.From(map: it)).ToList()
         );
 

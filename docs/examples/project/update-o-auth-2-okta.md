@@ -1,5 +1,6 @@
 ```csharp
 using Appwrite;
+using Appwrite.Enums;
 using Appwrite.Models;
 using Appwrite.Services;
 
@@ -10,11 +11,12 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Okta result = await project.UpdateOAuth2Okta(
+Appwrite.Models.OAuth2Okta result = await project.UpdateOAuth2Okta(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     domain: "example.com", // optional
     authorizationServerId: "<AUTHORIZATION_SERVER_ID>", // optional
+    prompt: new List&lt;ProjectOAuth2OktaPrompt&gt; { ProjectOAuth2OktaPrompt.None }, // optional
     enabled: false // optional
 );
 

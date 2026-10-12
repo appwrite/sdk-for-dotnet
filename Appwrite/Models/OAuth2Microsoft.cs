@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("applicationSecret")]
         public string ApplicationSecret { get; private set; }
 
+        [JsonPropertyName("prompt")]
+        public List<Appwrite.Enums.OAuth2MicrosoftPrompt> Prompt { get; private set; }
+
         [JsonPropertyName("tenant")]
         public string Tenant { get; private set; }
 
@@ -31,6 +34,7 @@ namespace Appwrite.Models
             bool enabled,
             string applicationId,
             string applicationSecret,
+            List<Appwrite.Enums.OAuth2MicrosoftPrompt> prompt,
             string tenant
         )
         {
@@ -38,15 +42,17 @@ namespace Appwrite.Models
             Enabled = enabled;
             ApplicationId = applicationId;
             ApplicationSecret = applicationSecret;
+            Prompt = prompt;
             Tenant = tenant;
         }
 
         public static OAuth2Microsoft From(Dictionary<string, object> map) => new OAuth2Microsoft(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            applicationId: map["applicationId"].ToString(),
-            applicationSecret: map["applicationSecret"].ToString(),
-            tenant: map["tenant"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            applicationId: (map.ContainsKey("applicationId") ? map["applicationId"] : "").ToString(),
+            applicationSecret: (map.ContainsKey("applicationSecret") ? map["applicationSecret"] : "").ToString(),
+            prompt: (map.ContainsKey("prompt") ? map["prompt"] : new List<object>()).ConvertToList<Appwrite.Enums.OAuth2MicrosoftPrompt>(),
+            tenant: (map.ContainsKey("tenant") ? map["tenant"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -55,6 +61,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "applicationId", ApplicationId },
             { "applicationSecret", ApplicationSecret },
+            { "prompt", Prompt.Select(it => it.Value).ToList() },
             { "tenant", Tenant }
         };
     }

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Message result = await messaging.CreateSMS(
+Appwrite.Models.Message result = await messaging.CreateSMS(
     messageId: "<MESSAGE_ID>",
     content: "<CONTENT>",
     topics: new List<string>(), // optional

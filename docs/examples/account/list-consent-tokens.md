@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Oauth2ConsentTokenList result = await account.ListConsentTokens(
+Appwrite.Models.Oauth2ConsentTokenList result = await account.ListConsentTokens(
     consentId: "<CONSENT_ID>",
     queries: new List<string>(), // optional
     total: false // optional

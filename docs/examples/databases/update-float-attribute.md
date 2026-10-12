@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeFloat result = await databases.UpdateFloatAttribute(
+Appwrite.Models.AttributeFloat result = await databases.UpdateFloatAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

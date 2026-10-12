@@ -11,7 +11,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeRelationship result = await databases.UpdateRelationshipAttribute(
+Appwrite.Models.AttributeRelationship result = await databases.UpdateRelationshipAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",

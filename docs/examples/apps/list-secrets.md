@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-AppSecretList result = await apps.ListSecrets(
+Appwrite.Models.AppSecretList result = await apps.ListSecrets(
     appId: "<APP_ID>",
     queries: new List<string>(), // optional
     total: false // optional
