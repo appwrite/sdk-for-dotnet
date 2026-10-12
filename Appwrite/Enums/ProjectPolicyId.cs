@@ -26,5 +26,6 @@ namespace Appwrite.Enums
         public static ProjectPolicyId DenyDisposableEmail => new ProjectPolicyId("deny-disposable-email");
         public static ProjectPolicyId DenyFreeEmail => new ProjectPolicyId("deny-free-email");
         public static ProjectPolicyId DenyCorporateEmail => new ProjectPolicyId("deny-corporate-email");
+        public static ProjectPolicyId Passkey => new ProjectPolicyId("passkey");
     }
 }

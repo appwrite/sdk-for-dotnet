@@ -3747,6 +3747,10 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.PolicyDenyCorporateEmail.From(map: it);
                 }
+                if (it.TryGetValue("$id", out var idValue17) && idValue17?.ToString() == "passkey")
+                {
+                    return Appwrite.Models.PolicyPasskey.From(map: it);
+                }
                 throw new System.Exception("Unable to match response to any expected response model");
             }
 
