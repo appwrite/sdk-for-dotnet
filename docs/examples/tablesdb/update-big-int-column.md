@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnBigint result = await tablesDB.UpdateBigIntColumn(
+Appwrite.Models.ColumnBigint result = await tablesDB.UpdateBigIntColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: 0,
+    @default: 0,
     min: 0, // optional
     max: 1000000, // optional
     newKey: "<NEW_KEY>" // optional

@@ -1,12 +1,12 @@
 # Appwrite .NET SDK
 
 ![License](https://img.shields.io/github/license/appwrite/sdk-for-dotnet.svg?style=flat-square)
-![Version](https://img.shields.io/badge/api%20version-2.0.0-blue.svg?style=flat-square)
+![Version](https://img.shields.io/badge/api%20version-2.5.0-blue.svg?style=flat-square)
 [![Build Status](https://img.shields.io/travis/com/appwrite/sdk-generator?style=flat-square)](https://travis-ci.com/appwrite/sdk-generator)
 [![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
 
-**This SDK targets Appwrite server version 1.9.x as shipped on Appwrite Cloud.** Self-hosted releases can lag behind Cloud — if you run an older self-hosted build, use a matching older SDK from [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases) when APIs differ.
+**This SDK targets Appwrite server version 2.5.x as shipped on Appwrite Cloud.** Self-hosted releases can lag behind Cloud — if you run an older self-hosted build, use a matching older SDK from [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases) when APIs differ.
 
 Appwrite is an open-source backend as a service server that abstracts and simplifies complex and repetitive development tasks behind a very simple to use REST API. Appwrite aims to help you develop your apps faster and in a more secure way. Use the .NET SDK to integrate your app with the Appwrite server to easily start interacting with all of Appwrite backend APIs and tools. For full API documentation and tutorials go to [https://appwrite.io/docs](https://appwrite.io/docs)
 
@@ -17,17 +17,17 @@ Appwrite is an open-source backend as a service server that abstracts and simpli
 Add this reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="8.4.0" />
+<PackageReference Include="Appwrite" Version="9.0.0" />
 ```
 
 You can install packages from the command line:
 
 ```powershell
 # Package Manager
-Install-Package Appwrite -Version 8.4.0
+Install-Package Appwrite -Version 9.0.0
 
 # or .NET CLI
-dotnet add package Appwrite --version 8.4.0
+dotnet add package Appwrite --version 9.0.0
 ```
 
 

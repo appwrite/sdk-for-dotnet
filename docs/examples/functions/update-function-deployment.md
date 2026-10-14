@@ -10,7 +10,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-Function result = await functions.UpdateFunctionDeployment(
+Appwrite.Models.Function result = await functions.UpdateFunctionDeployment(
     functionId: "<FUNCTION_ID>",
     deploymentId: "<DEPLOYMENT_ID>"
 );

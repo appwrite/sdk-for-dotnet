@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static VariableList From(Dictionary<string, object> map) => new VariableList(
-            total: Convert.ToInt64(map["total"]),
-            variables: map["variables"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Variable.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            variables: (map.ContainsKey("variables") ? map["variables"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Variable.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

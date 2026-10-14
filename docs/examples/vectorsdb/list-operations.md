@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-DedicatedDatabaseOperationList result = await vectorsDB.ListOperations(
+Appwrite.Models.DedicatedDatabaseOperationList result = await vectorsDB.ListOperations(
     databaseId: "<DATABASE_ID>",
     status: "queued", // optional
     limit: 1, // optional

@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static MockNumberList From(Dictionary<string, object> map) => new MockNumberList(
-            total: Convert.ToInt64(map["total"]),
-            mockNumbers: map["mockNumbers"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.MockNumber.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            mockNumbers: (map.ContainsKey("mockNumbers") ? map["mockNumbers"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.MockNumber.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -67,16 +67,16 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabasePooler From(Dictionary<string, object> map) => new DedicatedDatabasePooler(
-            enabled: (bool)map["enabled"],
-            mode: map["mode"].ToString(),
-            maxConnections: Convert.ToInt64(map["maxConnections"]),
-            defaultPoolSize: Convert.ToInt64(map["defaultPoolSize"]),
-            port: Convert.ToInt64(map["port"]),
-            readWriteSplitting: (bool)map["readWriteSplitting"],
-            poolerCpuRequest: map["poolerCpuRequest"].ToString(),
-            poolerCpuLimit: map["poolerCpuLimit"].ToString(),
-            poolerMemoryRequest: map["poolerMemoryRequest"].ToString(),
-            poolerMemoryLimit: map["poolerMemoryLimit"].ToString()
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            mode: (map.ContainsKey("mode") ? map["mode"] : "transaction").ToString(),
+            maxConnections: Convert.ToInt64((map.ContainsKey("maxConnections") ? map["maxConnections"] : 100)),
+            defaultPoolSize: Convert.ToInt64((map.ContainsKey("defaultPoolSize") ? map["defaultPoolSize"] : 20)),
+            port: Convert.ToInt64((map.ContainsKey("port") ? map["port"] : 6432)),
+            readWriteSplitting: (bool)(map.ContainsKey("readWriteSplitting") ? map["readWriteSplitting"] : false),
+            poolerCpuRequest: (map.ContainsKey("poolerCpuRequest") ? map["poolerCpuRequest"] : "").ToString(),
+            poolerCpuLimit: (map.ContainsKey("poolerCpuLimit") ? map["poolerCpuLimit"] : "").ToString(),
+            poolerMemoryRequest: (map.ContainsKey("poolerMemoryRequest") ? map["poolerMemoryRequest"] : "").ToString(),
+            poolerMemoryLimit: (map.ContainsKey("poolerMemoryLimit") ? map["poolerMemoryLimit"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

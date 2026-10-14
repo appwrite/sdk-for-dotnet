@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Dropbox result = await project.UpdateOAuth2Dropbox(
+Appwrite.Models.OAuth2Dropbox result = await project.UpdateOAuth2Dropbox(
     appKey: "<APP_KEY>", // optional
     appSecret: "<APP_SECRET>", // optional
     enabled: false // optional

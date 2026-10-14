@@ -47,12 +47,12 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Keycloak From(Dictionary<string, object> map) => new OAuth2Keycloak(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            clientSecret: map["clientSecret"].ToString(),
-            endpoint: map["endpoint"].ToString(),
-            realmName: map["realmName"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            clientSecret: (map.ContainsKey("clientSecret") ? map["clientSecret"] : "").ToString(),
+            endpoint: (map.ContainsKey("endpoint") ? map["endpoint"] : "").ToString(),
+            realmName: (map.ContainsKey("realmName") ? map["realmName"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

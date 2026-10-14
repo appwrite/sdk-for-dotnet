@@ -98,8 +98,8 @@ namespace Appwrite.Services
 
         /// <para>
         /// List the dedicated database specifications available on the current plan.
-        /// Each specification reports its resource limits, pricing, and whether it is
-        /// enabled for the organization.
+        /// Each specification reports its resource limits, its own prices and overage
+        /// rates, and whether it is enabled for the organization.
         /// </para>
         /// </summary>
         public Task<Models.DedicatedDatabaseSpecificationList> ListSpecifications()
@@ -138,6 +138,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> Get(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -175,6 +180,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> Update(string databaseId, string? name = null, string? status = null, string? specification = null, long? replicas = null, string? syncMode = null, long? networkIdleTimeoutSeconds = null, List<string>? networkIPAllowlist = null, long? idleTimeoutMinutes = null, bool? pitr = null, long? pitrRetentionDays = null, bool? storageAutoscaling = null, long? storageAutoscalingThresholdPercent = null, long? storageAutoscalingMaxGb = null, double? metricsTraceSampleRate = null, long? metricsSlowQueryLogThresholdMs = null, bool? sqlApiEnabled = null, List<string>? sqlApiAllowedStatements = null, long? sqlApiMaxRows = null, long? sqlApiMaxBytes = null, long? sqlApiTimeoutSeconds = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -233,6 +243,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -264,6 +279,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseBackupList> ListBackups(string databaseId, List<string>? queries = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups"
                 .Replace("{databaseId}", databaseId);
 
@@ -300,6 +320,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseBackup> CreateBackup(string databaseId, string? type = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups"
                 .Replace("{databaseId}", databaseId);
 
@@ -336,6 +361,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.BackupPolicyList> ListBackupPolicies(string databaseId, List<string>? queries = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups/policies"
                 .Replace("{databaseId}", databaseId);
 
@@ -371,6 +401,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.BackupPolicy> CreateBackupPolicy(string databaseId, string policyId, string name, string schedule, long retention, string? type = null, bool? enabled = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups/policies"
                 .Replace("{databaseId}", databaseId);
 
@@ -412,6 +447,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.BackupPolicy> GetBackupPolicy(string databaseId, string policyId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (policyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"policyId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups/policies/{policyId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{policyId}", policyId);
@@ -447,6 +492,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.BackupPolicy> UpdateBackupPolicy(string databaseId, string policyId, string? name = null, string? schedule = null, long? retention = null, bool? enabled = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (policyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"policyId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups/policies/{policyId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{policyId}", policyId);
@@ -488,6 +543,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteBackupPolicy(string databaseId, string policyId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (policyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"policyId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups/policies/{policyId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{policyId}", policyId);
@@ -521,6 +586,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseBackupStorage> UpdateBackupStorage(string databaseId, string provider, string bucket, string accessKey, string secretKey, string? region = null, string? prefix = null, string? endpoint = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups/storage"
                 .Replace("{databaseId}", databaseId);
 
@@ -564,6 +634,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseBackup> GetBackup(string databaseId, string backupId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (backupId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"backupId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups/{backupId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{backupId}", backupId);
@@ -600,6 +680,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteBackup(string databaseId, string backupId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (backupId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"backupId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/backups/{backupId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{backupId}", backupId);
@@ -632,6 +722,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseBranchList> ListBranches(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/branches"
                 .Replace("{databaseId}", databaseId);
 
@@ -670,6 +765,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> CreateBranch(string databaseId, string? branchId = null, long? ttl = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/branches"
                 .Replace("{databaseId}", databaseId);
 
@@ -709,6 +809,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> DeleteBranch(string databaseId, string branchId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (branchId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"branchId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/branches/{branchId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{branchId}", branchId);
@@ -748,6 +858,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseOperation> UpdateCredentials(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/credentials"
                 .Replace("{databaseId}", databaseId);
 
@@ -791,6 +906,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseExecution> CreateExecution(string databaseId, string sql, object? bindings = null, long? timeoutSeconds = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/executions"
                 .Replace("{databaseId}", databaseId);
 
@@ -837,6 +957,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> CreateFailover(string databaseId, string? targetReplicaId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/failovers"
                 .Replace("{databaseId}", databaseId);
 
@@ -875,6 +1000,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> UpdateMaintenance(string databaseId, string day, long hourUtc)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/maintenance"
                 .Replace("{databaseId}", databaseId);
 
@@ -915,6 +1045,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> CreateMigration(string databaseId, string targetType, string? specification = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/migrations"
                 .Replace("{databaseId}", databaseId);
 
@@ -955,6 +1090,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseOperationList> ListOperations(string databaseId, string? status = null, long? limit = null, long? offset = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/operations"
                 .Replace("{databaseId}", databaseId);
 
@@ -993,6 +1133,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabasePITRWindows> GetPitr(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/pitr"
                 .Replace("{databaseId}", databaseId);
 
@@ -1028,6 +1173,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabasePooler> GetPooler(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/pooler"
                 .Replace("{databaseId}", databaseId);
 
@@ -1063,6 +1213,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabasePooler> UpdatePooler(string databaseId, string? mode = null, long? maxConnections = null, long? defaultPoolSize = null, bool? readWriteSplitting = null, string? poolerCpuRequest = null, string? poolerCpuLimit = null, string? poolerMemoryRequest = null, string? poolerMemoryLimit = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/pooler"
                 .Replace("{databaseId}", databaseId);
 
@@ -1107,6 +1262,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseReplicas> GetReplicas(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/replicas"
                 .Replace("{databaseId}", databaseId);
 
@@ -1142,6 +1302,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseRestorationList> ListRestorations(string databaseId, string? status = null, string? type = null, long? limit = null, long? offset = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/restorations"
                 .Replace("{databaseId}", databaseId);
 
@@ -1183,6 +1348,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseRestoration> CreateRestoration(string databaseId, string? type = null, string? backupId = null, string? targetDatabaseId = null, string? targetTime = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/restorations"
                 .Replace("{databaseId}", databaseId);
 
@@ -1223,6 +1393,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseRestoration> GetRestoration(string databaseId, string restorationId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (restorationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"restorationId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/restorations/{restorationId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{restorationId}", restorationId);
@@ -1260,6 +1440,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DatabaseStatus> GetStatus(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/status"
                 .Replace("{databaseId}", databaseId);
 
@@ -1295,6 +1480,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> CreateUpgrade(string databaseId, string targetVersion)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/mysql/{databaseId}/upgrades"
                 .Replace("{databaseId}", databaseId);
 

@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseList From(Dictionary<string, object> map) => new DedicatedDatabaseList(
-            total: Convert.ToInt64(map["total"]),
-            databases: map["databases"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabase.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            databases: (map.ContainsKey("databases") ? map["databases"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabase.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

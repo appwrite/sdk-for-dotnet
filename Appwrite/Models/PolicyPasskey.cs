@@ -32,9 +32,9 @@ namespace Appwrite.Models
         }
 
         public static PolicyPasskey From(Dictionary<string, object> map) => new PolicyPasskey(
-            id: map["$id"].ToString(),
-            rpId: map["rpId"].ToString(),
-            origins: map["origins"].ConvertToList<string>()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            rpId: (map.ContainsKey("rpId") ? map["rpId"] : "").ToString(),
+            origins: (map.ContainsKey("origins") ? map["origins"] : new List<object>()).ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

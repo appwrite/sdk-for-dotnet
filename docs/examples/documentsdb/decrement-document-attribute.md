@@ -10,12 +10,12 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-Document result = await documentsDB.DecrementDocumentAttribute(
+Appwrite.Models.Document result = await documentsDB.DecrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     documentId: "<DOCUMENT_ID>",
     attribute: "<ATTRIBUTE>",
-    value: 1, // optional
+    @value: 1, // optional
     min: 0, // optional
     transactionId: "<TRANSACTION_ID>" // optional
 );

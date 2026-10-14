@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static DatabaseStatusConnections From(Dictionary<string, object> map) => new DatabaseStatusConnections(
-            current: Convert.ToInt64(map["current"]),
-            max: Convert.ToInt64(map["max"])
+            current: Convert.ToInt64((map.ContainsKey("current") ? map["current"] : 0)),
+            max: Convert.ToInt64((map.ContainsKey("max") ? map["max"] : 100))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

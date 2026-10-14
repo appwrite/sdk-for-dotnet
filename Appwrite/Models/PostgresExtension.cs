@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static PostgresExtension From(Dictionary<string, object> map) => new PostgresExtension(
-            key: map["key"].ToString(),
-            name: map["name"].ToString(),
-            description: map["description"].ToString(),
-            category: map["category"].ToString()
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
+            category: (map.ContainsKey("category") ? map["category"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

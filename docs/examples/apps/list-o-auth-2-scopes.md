@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-AppScopeList result = await apps.ListOAuth2Scopes();
+Appwrite.Models.AppScopeList result = await apps.ListOAuth2Scopes();
 
 
 ```

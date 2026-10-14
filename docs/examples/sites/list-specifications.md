@@ -10,7 +10,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-SpecificationList result = await sites.ListSpecifications(
+Appwrite.Models.SpecificationList result = await sites.ListSpecifications(
     type: "runtimes", // optional
     total: false // optional
 );

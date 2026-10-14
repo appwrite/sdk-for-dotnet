@@ -27,7 +27,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "X-Appwrite-Project", _client.GetConfig("project") }
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
             };
 
 
@@ -60,7 +61,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -380,6 +382,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Key> GetKey(string keyId)
         {
+            if (keyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"keyId\"");
+            }
+
             var apiPath = "/project/keys/{keyId}"
                 .Replace("{keyId}", keyId);
 
@@ -415,6 +422,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Key> UpdateKey(string keyId, string name, List<Appwrite.Enums.ProjectKeyScopes> scopes, string? expire = null)
         {
+            if (keyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"keyId\"");
+            }
+
             var apiPath = "/project/keys/{keyId}"
                 .Replace("{keyId}", keyId);
 
@@ -454,6 +466,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteKey(string keyId)
         {
+            if (keyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"keyId\"");
+            }
+
             var apiPath = "/project/keys/{keyId}"
                 .Replace("{keyId}", keyId);
 
@@ -464,7 +481,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -593,6 +611,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.MockNumber> GetMockPhone(string number)
         {
+            if (number == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"number\"");
+            }
+
             var apiPath = "/project/mock-phones/{number}"
                 .Replace("{number}", number);
 
@@ -628,6 +651,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.MockNumber> UpdateMockPhone(string number, string otp)
         {
+            if (number == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"number\"");
+            }
+
             var apiPath = "/project/mock-phones/{number}"
                 .Replace("{number}", number);
 
@@ -665,6 +693,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteMockPhone(string number)
         {
+            if (number == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"number\"");
+            }
+
             var apiPath = "/project/mock-phones/{number}"
                 .Replace("{number}", number);
 
@@ -675,7 +708,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1607,7 +1641,7 @@ namespace Appwrite.Services
         /// Update the project OAuth2 Kakao configuration.
         /// </para>
         /// </summary>
-        public Task<Models.OAuth2Kakao> UpdateOAuth2Kakao(string? clientId = null, string? clientSecret = null, List<Appwrite.Enums.ProjectOAuth2KakaoPrompt>? prompt = null, bool? enabled = null)
+        public Task<Models.OAuth2Kakao> UpdateOAuth2Kakao(string? clientId = null, string? clientSecret = null, bool? enabled = null, List<Appwrite.Enums.ProjectOAuth2KakaoPrompt>? prompt = null)
         {
             var apiPath = "/project/oauth2/kakao";
 
@@ -1615,8 +1649,8 @@ namespace Appwrite.Services
             {
                 { "clientId", clientId },
                 { "clientSecret", clientSecret },
-                { "prompt", prompt?.Select(e => e.Value).ToList() },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "prompt", prompt?.Select(e => e.Value).ToList() }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2915,11 +2949,16 @@ namespace Appwrite.Services
 
         /// <para>
         /// Update an Android platform by its unique ID. Use this endpoint to update
-        /// the platform's name or application ID.
+        /// the platform's name, application ID or signing certificate fingerprints.
         /// </para>
         /// </summary>
         public Task<Models.PlatformAndroid> UpdateAndroidPlatform(string platformId, string name, string applicationId, List<string>? fingerprints = null)
         {
+            if (platformId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"platformId\"");
+            }
+
             var apiPath = "/project/platforms/android/{platformId}"
                 .Replace("{platformId}", platformId);
 
@@ -2998,6 +3037,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.PlatformApple> UpdateApplePlatform(string platformId, string name, string bundleIdentifier)
         {
+            if (platformId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"platformId\"");
+            }
+
             var apiPath = "/project/platforms/apple/{platformId}"
                 .Replace("{platformId}", platformId);
 
@@ -3075,6 +3119,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.PlatformLinux> UpdateLinuxPlatform(string platformId, string name, string packageName)
         {
+            if (platformId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"platformId\"");
+            }
+
             var apiPath = "/project/platforms/linux/{platformId}"
                 .Replace("{platformId}", platformId);
 
@@ -3152,6 +3201,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.PlatformWeb> UpdateWebPlatform(string platformId, string name, string hostname)
         {
+            if (platformId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"platformId\"");
+            }
+
             var apiPath = "/project/platforms/web/{platformId}"
                 .Replace("{platformId}", platformId);
 
@@ -3229,6 +3283,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.PlatformWindows> UpdateWindowsPlatform(string platformId, string name, string packageIdentifierName)
         {
+            if (platformId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"platformId\"");
+            }
+
             var apiPath = "/project/platforms/windows/{platformId}"
                 .Replace("{platformId}", platformId);
 
@@ -3267,6 +3326,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> GetPlatform(string platformId)
         {
+            if (platformId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"platformId\"");
+            }
+
             var apiPath = "/project/platforms/{platformId}"
                 .Replace("{platformId}", platformId);
 
@@ -3322,6 +3386,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeletePlatform(string platformId)
         {
+            if (platformId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"platformId\"");
+            }
+
             var apiPath = "/project/platforms/{platformId}"
                 .Replace("{platformId}", platformId);
 
@@ -3332,7 +3401,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -4315,7 +4385,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -4525,6 +4596,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> GetVariable(string variableId)
         {
+            if (variableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"variableId\"");
+            }
+
             var apiPath = "/project/variables/{variableId}"
                 .Replace("{variableId}", variableId);
 
@@ -4559,6 +4635,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> UpdateVariable(string variableId, string? key = null, string? @value = null, bool? secret = null)
         {
+            if (variableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"variableId\"");
+            }
+
             var apiPath = "/project/variables/{variableId}"
                 .Replace("{variableId}", variableId);
 
@@ -4597,6 +4678,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteVariable(string variableId)
         {
+            if (variableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"variableId\"");
+            }
+
             var apiPath = "/project/variables/{variableId}"
                 .Replace("{variableId}", variableId);
 
@@ -4607,7 +4693,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 

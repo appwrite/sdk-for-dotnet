@@ -10,14 +10,14 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnBigint result = await tablesDB.CreateBigIntColumn(
+Appwrite.Models.ColumnBigint result = await tablesDB.CreateBigIntColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
     min: 0, // optional
     max: 1000000, // optional
-    default: 0, // optional
+    @default: 0, // optional
     array: false // optional
 );
 

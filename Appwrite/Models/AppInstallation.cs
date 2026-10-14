@@ -67,15 +67,15 @@ namespace Appwrite.Models
         }
 
         public static AppInstallation From(Dictionary<string, object> map) => new AppInstallation(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            appId: map["appId"].ToString(),
-            teamId: map["teamId"].ToString(),
-            scopes: map["scopes"].ConvertToList<string>(),
-            authorizationDetails: map["authorizationDetails"].ConvertToList<object>(),
-            createdById: map["createdById"].ToString(),
-            createdByName: map["createdByName"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            appId: (map.ContainsKey("appId") ? map["appId"] : "").ToString(),
+            teamId: (map.ContainsKey("teamId") ? map["teamId"] : "").ToString(),
+            scopes: (map.ContainsKey("scopes") ? map["scopes"] : new List<object>()).ConvertToList<string>(),
+            authorizationDetails: (map.ContainsKey("authorizationDetails") ? map["authorizationDetails"] : new List<object>()).ConvertToList<object>(),
+            createdById: (map.ContainsKey("createdById") ? map["createdById"] : "").ToString(),
+            createdByName: (map.ContainsKey("createdByName") ? map["createdByName"] : "").ToString(),
             lastAccessedAt: map.TryGetValue("lastAccessedAt", out var lastAccessedAt) ? lastAccessedAt?.ToString() : null
         );
 

@@ -42,7 +42,7 @@ namespace Appwrite.Models
         public string ProviderRefreshToken { get; private set; }
 
         [JsonPropertyName("providerIdToken")]
-        public string? ProviderIdToken { get; private set; }
+        public string ProviderIdToken { get; private set; }
 
         public Identity(
             string id,
@@ -55,7 +55,7 @@ namespace Appwrite.Models
             string providerAccessToken,
             string providerAccessTokenExpiry,
             string providerRefreshToken,
-            string? providerIdToken = null
+            string providerIdToken
         )
         {
             Id = id;
@@ -72,17 +72,17 @@ namespace Appwrite.Models
         }
 
         public static Identity From(Dictionary<string, object> map) => new Identity(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            userId: map["userId"].ToString(),
-            provider: map["provider"].ToString(),
-            providerUid: map["providerUid"].ToString(),
-            providerEmail: map["providerEmail"].ToString(),
-            providerAccessToken: map["providerAccessToken"].ToString(),
-            providerAccessTokenExpiry: map["providerAccessTokenExpiry"].ToString(),
-            providerRefreshToken: map["providerRefreshToken"].ToString(),
-            providerIdToken: map.TryGetValue("providerIdToken", out var providerIdToken) ? providerIdToken?.ToString() : null
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
+            provider: (map.ContainsKey("provider") ? map["provider"] : "").ToString(),
+            providerUid: (map.ContainsKey("providerUid") ? map["providerUid"] : "").ToString(),
+            providerEmail: (map.ContainsKey("providerEmail") ? map["providerEmail"] : "").ToString(),
+            providerAccessToken: (map.ContainsKey("providerAccessToken") ? map["providerAccessToken"] : "").ToString(),
+            providerAccessTokenExpiry: (map.ContainsKey("providerAccessTokenExpiry") ? map["providerAccessTokenExpiry"] : "").ToString(),
+            providerRefreshToken: (map.ContainsKey("providerRefreshToken") ? map["providerRefreshToken"] : "").ToString(),
+            providerIdToken: (map.ContainsKey("providerIdToken") ? map["providerIdToken"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

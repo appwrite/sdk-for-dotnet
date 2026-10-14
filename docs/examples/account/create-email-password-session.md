@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Session result = await account.CreateEmailPasswordSession(
+Appwrite.Models.Session result = await account.CreateEmailPasswordSession(
     email: "email@example.com",
     password: "password",
     duration: 60 // optional

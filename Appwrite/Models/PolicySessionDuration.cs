@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static PolicySessionDuration From(Dictionary<string, object> map) => new PolicySessionDuration(
-            id: map["$id"].ToString(),
-            duration: Convert.ToInt64(map["duration"])
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            duration: Convert.ToInt64((map.ContainsKey("duration") ? map["duration"] : 31536000))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

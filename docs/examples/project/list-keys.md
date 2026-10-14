@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-KeyList result = await project.ListKeys(
+Appwrite.Models.KeyList result = await project.ListKeys(
     queries: new List<string>(), // optional
     total: false // optional
 );

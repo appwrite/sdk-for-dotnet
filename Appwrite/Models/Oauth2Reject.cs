@@ -22,7 +22,7 @@ namespace Appwrite.Models
         }
 
         public static Oauth2Reject From(Dictionary<string, object> map) => new Oauth2Reject(
-            redirectUrl: map["redirectUrl"].ToString()
+            redirectUrl: (map.ContainsKey("redirectUrl") ? map["redirectUrl"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

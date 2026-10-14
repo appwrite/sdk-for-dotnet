@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static PresenceList From(Dictionary<string, object> map) => new PresenceList(
-            total: Convert.ToInt64(map["total"]),
-            presences: map["presences"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Presence.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            presences: (map.ContainsKey("presences") ? map["presences"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Presence.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

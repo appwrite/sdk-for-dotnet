@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-DedicatedDatabaseSpecificationList result = await tablesDB.ListSpecifications();
+Appwrite.Models.DedicatedDatabaseSpecificationList result = await tablesDB.ListSpecifications();
 
 
 ```

@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnBoolean result = await tablesDB.UpdateBooleanColumn(
+Appwrite.Models.ColumnBoolean result = await tablesDB.UpdateBooleanColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: false,
+    @default: false,
     newKey: "<NEW_KEY>" // optional
 );
 

@@ -11,7 +11,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Message result = await messaging.UpdatePush(
+Appwrite.Models.Message result = await messaging.UpdatePush(
     messageId: "<MESSAGE_ID>",
     topics: new List<string>(), // optional
     users: new List<string>(), // optional

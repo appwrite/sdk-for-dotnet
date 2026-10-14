@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static Oauth2PAR From(Dictionary<string, object> map) => new Oauth2PAR(
-            requestUri: map["request_uri"].ToString(),
-            expiresIn: Convert.ToInt64(map["expires_in"])
+            requestUri: (map.ContainsKey("request_uri") ? map["request_uri"] : "").ToString(),
+            expiresIn: Convert.ToInt64((map.ContainsKey("expires_in") ? map["expires_in"] : 0))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

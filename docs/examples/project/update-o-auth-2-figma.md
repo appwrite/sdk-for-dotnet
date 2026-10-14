@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Figma result = await project.UpdateOAuth2Figma(
+Appwrite.Models.OAuth2Figma result = await project.UpdateOAuth2Figma(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional

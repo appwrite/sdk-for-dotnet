@@ -14,7 +14,7 @@ Appwrite.Models.DnsRecord result = await domains.UpdateRecordA(
     domainId: "<DOMAIN_ID>",
     recordId: "<RECORD_ID>",
     name: "",
-    value: "",
+    @value: "",
     ttl: 1,
     comment: "<COMMENT>" // optional
 );

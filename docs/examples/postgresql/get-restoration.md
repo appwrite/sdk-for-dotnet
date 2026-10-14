@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseRestoration result = await postgresql.GetRestoration(
+Appwrite.Models.DedicatedDatabaseRestoration result = await postgresql.GetRestoration(
     databaseId: "<DATABASE_ID>",
     restorationId: "<RESTORATION_ID>"
 );

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Amazon result = await project.UpdateOAuth2Amazon(
+Appwrite.Models.OAuth2Amazon result = await project.UpdateOAuth2Amazon(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional

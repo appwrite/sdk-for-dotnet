@@ -184,6 +184,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Site> Get(string siteId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}"
                 .Replace("{siteId}", siteId);
 
@@ -218,6 +223,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Site> Update(string siteId, string name, Appwrite.Enums.Framework framework, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.BuildRuntime? buildRuntime = null, Appwrite.Enums.Adapter? adapter = null, string? fallbackFile = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null, List<Appwrite.Enums.ProjectKeyScopes>? scopes = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}"
                 .Replace("{siteId}", siteId);
 
@@ -276,6 +286,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string siteId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}"
                 .Replace("{siteId}", siteId);
 
@@ -286,7 +301,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -306,6 +322,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Site> UpdateSiteDeployment(string siteId, string deploymentId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployment"
                 .Replace("{siteId}", siteId);
 
@@ -343,6 +364,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DeploymentList> ListDeployments(string siteId, List<string>? queries = null, string? search = null, bool? total = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployments"
                 .Replace("{siteId}", siteId);
 
@@ -382,6 +408,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> CreateDeployment(string siteId, InputFile code, string? installCommand = null, string? buildCommand = null, string? outputDirectory = null, bool? activate = null, Action<UploadProgress>? onProgress = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployments"
                 .Replace("{siteId}", siteId);
 
@@ -418,7 +449,8 @@ namespace Appwrite.Services
                 Convert,
                 paramName,
                 idParamName,
-                onProgress);
+                onProgress,
+                method: "POST");
         }
 
         /// <para>
@@ -431,6 +463,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> CreateDuplicateDeployment(string siteId, string deploymentId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployments/duplicate"
                 .Replace("{siteId}", siteId);
 
@@ -471,6 +508,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> CreateTemplateDeployment(string siteId, string repository, string owner, string rootDirectory, Appwrite.Enums.TemplateReferenceType type, string reference, bool? activate = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployments/template"
                 .Replace("{siteId}", siteId);
 
@@ -514,6 +556,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> CreateVcsDeployment(string siteId, Appwrite.Enums.VCSReferenceType type, string reference, bool? activate = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployments/vcs"
                 .Replace("{siteId}", siteId);
 
@@ -552,6 +599,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> GetDeployment(string siteId, string deploymentId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            if (deploymentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deploymentId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployments/{deploymentId}"
                 .Replace("{siteId}", siteId)
                 .Replace("{deploymentId}", deploymentId);
@@ -587,6 +644,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteDeployment(string siteId, string deploymentId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            if (deploymentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deploymentId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployments/{deploymentId}"
                 .Replace("{siteId}", siteId)
                 .Replace("{deploymentId}", deploymentId);
@@ -598,7 +665,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -619,6 +687,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<byte[]> GetDeploymentDownload(string siteId, string deploymentId, Appwrite.Enums.DeploymentDownloadType? type = null, string? token = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            if (deploymentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deploymentId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployments/{deploymentId}/download"
                 .Replace("{siteId}", siteId)
                 .Replace("{deploymentId}", deploymentId);
@@ -655,6 +733,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> UpdateDeploymentStatus(string siteId, string deploymentId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            if (deploymentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deploymentId\"");
+            }
+
             var apiPath = "/sites/{siteId}/deployments/{deploymentId}/status"
                 .Replace("{siteId}", siteId)
                 .Replace("{deploymentId}", deploymentId);
@@ -692,6 +780,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ExecutionList> ListLogs(string siteId, List<string>? queries = null, bool? total = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}/logs"
                 .Replace("{siteId}", siteId);
 
@@ -728,6 +821,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Execution> GetLog(string siteId, string logId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            if (logId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"logId\"");
+            }
+
             var apiPath = "/sites/{siteId}/logs/{logId}"
                 .Replace("{siteId}", siteId)
                 .Replace("{logId}", logId);
@@ -763,6 +866,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteLog(string siteId, string logId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            if (logId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"logId\"");
+            }
+
             var apiPath = "/sites/{siteId}/logs/{logId}"
                 .Replace("{siteId}", siteId)
                 .Replace("{logId}", logId);
@@ -794,6 +907,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.VariableList> ListVariables(string siteId, List<string>? queries = null, bool? total = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}/variables"
                 .Replace("{siteId}", siteId);
 
@@ -831,6 +949,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> CreateVariable(string siteId, string variableId, string key, string @value, bool? secret = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
             var apiPath = "/sites/{siteId}/variables"
                 .Replace("{siteId}", siteId);
 
@@ -870,6 +993,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> GetVariable(string siteId, string variableId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            if (variableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"variableId\"");
+            }
+
             var apiPath = "/sites/{siteId}/variables/{variableId}"
                 .Replace("{siteId}", siteId)
                 .Replace("{variableId}", variableId);
@@ -905,6 +1038,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> UpdateVariable(string siteId, string variableId, string? key = null, string? @value = null, bool? secret = null)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            if (variableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"variableId\"");
+            }
+
             var apiPath = "/sites/{siteId}/variables/{variableId}"
                 .Replace("{siteId}", siteId)
                 .Replace("{variableId}", variableId);
@@ -944,6 +1087,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteVariable(string siteId, string variableId)
         {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            if (variableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"variableId\"");
+            }
+
             var apiPath = "/sites/{siteId}/variables/{variableId}"
                 .Replace("{siteId}", siteId)
                 .Replace("{variableId}", variableId);
@@ -955,7 +1108,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 

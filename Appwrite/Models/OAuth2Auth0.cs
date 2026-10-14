@@ -24,7 +24,7 @@ namespace Appwrite.Models
         public string ClientSecret { get; private set; }
 
         [JsonPropertyName("prompt")]
-        public List<Appwrite.Enums.OAuth2Auth0Prompt>? Prompt { get; private set; }
+        public List<Appwrite.Enums.OAuth2Auth0Prompt> Prompt { get; private set; }
 
         [JsonPropertyName("endpoint")]
         public string Endpoint { get; private set; }
@@ -34,8 +34,8 @@ namespace Appwrite.Models
             bool enabled,
             string clientId,
             string clientSecret,
-            string endpoint,
-            List<Appwrite.Enums.OAuth2Auth0Prompt>? prompt = null
+            List<Appwrite.Enums.OAuth2Auth0Prompt> prompt,
+            string endpoint
         )
         {
             Id = id;
@@ -47,14 +47,12 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Auth0 From(Dictionary<string, object> map) => new OAuth2Auth0(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            clientSecret: map["clientSecret"].ToString(),
-            endpoint: map["endpoint"].ToString(),
-            prompt: map.TryGetValue("prompt", out var arrayRaw5Added) && arrayRaw5Added != null
-                                ? arrayRaw5Added.ConvertToList<Appwrite.Enums.OAuth2Auth0Prompt>()
-                                : null
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            clientSecret: (map.ContainsKey("clientSecret") ? map["clientSecret"] : "").ToString(),
+            prompt: (map.ContainsKey("prompt") ? map["prompt"] : new List<object>()).ConvertToList<Appwrite.Enums.OAuth2Auth0Prompt>(),
+            endpoint: (map.ContainsKey("endpoint") ? map["endpoint"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -63,7 +61,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "clientId", ClientId },
             { "clientSecret", ClientSecret },
-            { "prompt", Prompt?.Select(it => it.Value).ToList() },
+            { "prompt", Prompt.Select(it => it.Value).ToList() },
             { "endpoint", Endpoint }
         };
     }

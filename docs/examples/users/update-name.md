@@ -10,7 +10,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-User result = await users.UpdateName(
+Appwrite.Models.User result = await users.UpdateName(
     userId: "<USER_ID>",
     name: "<NAME>"
 );

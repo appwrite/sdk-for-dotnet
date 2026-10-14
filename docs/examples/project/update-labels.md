@@ -10,8 +10,8 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateLabels(
-    labels: new List<string>()
+Appwrite.Models.Project result = await project.UpdateLabels(
+    labels: ["production"]
 );
 
 ```

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-AppKey result = await apps.CreateKey(
+Appwrite.Models.AppKey result = await apps.CreateKey(
     appId: "<APP_ID>"
 );
 

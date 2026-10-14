@@ -77,18 +77,18 @@ namespace Appwrite.Models
         }
 
         public static Oauth2Grant From(Dictionary<string, object> map) => new Oauth2Grant(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            userId: map["userId"].ToString(),
-            appId: map["appId"].ToString(),
-            scopes: map["scopes"].ConvertToList<string>(),
-            resources: map["resources"].ConvertToList<string>(),
-            authorizationDetails: map["authorizationDetails"].ToString(),
-            prompt: map["prompt"].ToString(),
-            redirectUri: map["redirectUri"].ToString(),
-            authTime: Convert.ToInt64(map["authTime"]),
-            expire: map["expire"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
+            appId: (map.ContainsKey("appId") ? map["appId"] : "").ToString(),
+            scopes: (map.ContainsKey("scopes") ? map["scopes"] : new List<object>()).ConvertToList<string>(),
+            resources: (map.ContainsKey("resources") ? map["resources"] : new List<object>()).ConvertToList<string>(),
+            authorizationDetails: (map.ContainsKey("authorizationDetails") ? map["authorizationDetails"] : "[]").ToString(),
+            prompt: (map.ContainsKey("prompt") ? map["prompt"] : "").ToString(),
+            redirectUri: (map.ContainsKey("redirectUri") ? map["redirectUri"] : "").ToString(),
+            authTime: Convert.ToInt64((map.ContainsKey("authTime") ? map["authTime"] : 0)),
+            expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

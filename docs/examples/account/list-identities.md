@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-IdentityList result = await account.ListIdentities(
+Appwrite.Models.IdentityList result = await account.ListIdentities(
     queries: new List<string>(), // optional
     total: false // optional
 );

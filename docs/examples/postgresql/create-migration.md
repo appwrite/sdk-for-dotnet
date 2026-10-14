@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabase result = await postgresql.CreateMigration(
+Appwrite.Models.DedicatedDatabase result = await postgresql.CreateMigration(
     databaseId: "<DATABASE_ID>",
     targetType: "shared",
     specification: "<SPECIFICATION>" // optional

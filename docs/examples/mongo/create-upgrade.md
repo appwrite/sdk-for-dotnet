@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabase result = await mongo.CreateUpgrade(
+Appwrite.Models.DedicatedDatabase result = await mongo.CreateUpgrade(
     databaseId: "<DATABASE_ID>",
     targetVersion: "<TARGET_VERSION>"
 );

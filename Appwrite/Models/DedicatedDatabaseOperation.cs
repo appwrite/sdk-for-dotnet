@@ -72,17 +72,17 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseOperation From(Dictionary<string, object> map) => new DedicatedDatabaseOperation(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            databaseId: map["databaseId"].ToString(),
-            type: map["type"].ToString(),
-            status: map["status"].ToString(),
-            attempts: Convert.ToInt64(map["attempts"]),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            databaseId: (map.ContainsKey("databaseId") ? map["databaseId"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
+            status: (map.ContainsKey("status") ? map["status"] : "").ToString(),
+            attempts: Convert.ToInt64((map.ContainsKey("attempts") ? map["attempts"] : 0)),
             requestedAt: map.TryGetValue("requestedAt", out var requestedAt) ? requestedAt?.ToString() : null,
             startedAt: map.TryGetValue("startedAt", out var startedAt) ? startedAt?.ToString() : null,
             completedAt: map.TryGetValue("completedAt", out var completedAt) ? completedAt?.ToString() : null,
-            errorCode: map["errorCode"].ToString(),
-            errorMessage: map["errorMessage"].ToString()
+            errorCode: (map.ContainsKey("errorCode") ? map["errorCode"] : "").ToString(),
+            errorMessage: (map.ContainsKey("errorMessage") ? map["errorMessage"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

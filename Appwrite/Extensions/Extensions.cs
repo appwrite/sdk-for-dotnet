@@ -77,16 +77,16 @@ namespace Appwrite.Extensions
                     case IList list:
                         foreach (var item in list)
                         {
-                            query.Add($"{kvp.Key}[]={item}");
+                            query.Add($"{Uri.EscapeDataString(kvp.Key)}[]={Uri.EscapeDataString(item?.ToString() ?? string.Empty)}");
                         }
                         break;
                     default:
-                        query.Add($"{kvp.Key}={kvp.Value.ToString()}");
+                        query.Add($"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value.ToString() ?? string.Empty)}");
                         break;
                 }
             }
 
-            return Uri.EscapeUriString(string.Join("&", query));
+            return string.Join("&", query);
         }
 
         public static Dictionary<string, string> FromQueryString(this string queryString)

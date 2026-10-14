@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnMediumtext result = await tablesDB.UpdateMediumtextColumn(
+Appwrite.Models.ColumnMediumtext result = await tablesDB.UpdateMediumtextColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: "Hello World",
+    @default: "Hello World",
     newKey: "<NEW_KEY>" // optional
 );
 

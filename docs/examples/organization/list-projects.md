@@ -10,7 +10,7 @@ Client client = new Client()
 
 Organization organization = new Organization(client);
 
-ProjectList result = await organization.ListProjects(
+Appwrite.Models.ProjectList result = await organization.ListProjects(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional

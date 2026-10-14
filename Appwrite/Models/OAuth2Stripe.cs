@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Stripe From(Dictionary<string, object> map) => new OAuth2Stripe(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            apiSecretKey: map["apiSecretKey"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            apiSecretKey: (map.ContainsKey("apiSecretKey") ? map["apiSecretKey"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

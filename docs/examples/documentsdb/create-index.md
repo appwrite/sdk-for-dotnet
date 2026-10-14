@@ -11,12 +11,12 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-Index result = await documentsDB.CreateIndex(
+Appwrite.Models.Index result = await documentsDB.CreateIndex(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     type: DocumentsDBIndexType.Key,
-    attributes: new List<string>(),
+    attributes: ["username"],
     orders: new List&lt;OrderBy&gt; { OrderBy.Asc }, // optional
     lengths: new List<long>() // optional
 );

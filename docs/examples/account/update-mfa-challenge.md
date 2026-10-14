@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Session result = await account.UpdateMFAChallenge(
+Appwrite.Models.Session result = await account.UpdateMFAChallenge(
     challengeId: "<CHALLENGE_ID>",
     otp: "<OTP>"
 );

@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseRestorationList From(Dictionary<string, object> map) => new DedicatedDatabaseRestorationList(
-            total: Convert.ToInt64(map["total"]),
-            restorations: map["restorations"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabaseRestoration.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            restorations: (map.ContainsKey("restorations") ? map["restorations"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabaseRestoration.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

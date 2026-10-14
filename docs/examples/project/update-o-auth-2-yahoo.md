@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Yahoo result = await project.UpdateOAuth2Yahoo(
+Appwrite.Models.OAuth2Yahoo result = await project.UpdateOAuth2Yahoo(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional

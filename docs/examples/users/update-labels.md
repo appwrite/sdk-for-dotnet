@@ -10,9 +10,9 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-User result = await users.UpdateLabels(
+Appwrite.Models.User result = await users.UpdateLabels(
     userId: "<USER_ID>",
-    labels: new List<string>()
+    labels: ["subscriber"]
 );
 
 ```

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateSessionAlertPolicy(
+Appwrite.Models.Project result = await project.UpdateSessionAlertPolicy(
     enabled: false
 );
 

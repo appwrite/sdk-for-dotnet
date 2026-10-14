@@ -22,7 +22,7 @@ namespace Appwrite.Models
         }
 
         public static JWT From(Dictionary<string, object> map) => new JWT(
-            jwt: map["jwt"].ToString()
+            jwt: (map.ContainsKey("jwt") ? map["jwt"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

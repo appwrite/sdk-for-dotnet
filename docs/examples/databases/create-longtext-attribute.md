@@ -10,12 +10,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeLongtext result = await databases.CreateLongtextAttribute(
+Appwrite.Models.AttributeLongtext result = await databases.CreateLongtextAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
-    default: "Hello World", // optional
+    @default: "Hello World", // optional
     array: false, // optional
     encrypt: false // optional
 );

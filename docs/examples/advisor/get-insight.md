@@ -10,7 +10,7 @@ Client client = new Client()
 
 Advisor advisor = new Advisor(client);
 
-Insight result = await advisor.GetInsight(
+Appwrite.Models.Insight result = await advisor.GetInsight(
     reportId: "<REPORT_ID>",
     insightId: "<INSIGHT_ID>"
 );

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.CreateResendProvider(
+Appwrite.Models.Provider result = await messaging.CreateResendProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>",
     apiKey: "<API_KEY>", // optional

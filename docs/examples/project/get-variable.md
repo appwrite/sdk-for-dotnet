@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Variable result = await project.GetVariable(
+Appwrite.Models.Variable result = await project.GetVariable(
     variableId: "<VARIABLE_ID>"
 );
 

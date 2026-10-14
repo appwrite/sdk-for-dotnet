@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Preferences result = await account.GetPrefs();
+Appwrite.Models.Preferences result = await account.GetPrefs();
 
 
 ```

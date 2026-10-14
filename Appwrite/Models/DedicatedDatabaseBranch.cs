@@ -27,7 +27,7 @@ namespace Appwrite.Models
         public string Host { get; private set; }
 
         [JsonPropertyName("port")]
-        public long Port { get; private set; }
+        public long? Port { get; private set; }
 
         [JsonPropertyName("database")]
         public string Database { get; private set; }
@@ -53,7 +53,7 @@ namespace Appwrite.Models
             string @namespace,
             long expiresAt,
             string host,
-            long port,
+            long? port,
             string database,
             string username,
             string password,
@@ -77,18 +77,20 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseBranch From(Dictionary<string, object> map) => new DedicatedDatabaseBranch(
-            branchId: map["branchId"].ToString(),
-            branchName: map["branchName"].ToString(),
-            @namespace: map["namespace"].ToString(),
-            expiresAt: Convert.ToInt64(map["expiresAt"]),
-            host: map["host"].ToString(),
-            port: Convert.ToInt64(map["port"]),
-            database: map["database"].ToString(),
-            username: map["username"].ToString(),
-            password: map["password"].ToString(),
-            ssl: (bool)map["ssl"],
-            engine: map["engine"].ToString(),
-            connectionString: map["connectionString"].ToString()
+            branchId: (map.ContainsKey("branchId") ? map["branchId"] : "").ToString(),
+            branchName: (map.ContainsKey("branchName") ? map["branchName"] : "").ToString(),
+            @namespace: (map.ContainsKey("namespace") ? map["namespace"] : "").ToString(),
+            expiresAt: Convert.ToInt64((map.ContainsKey("expiresAt") ? map["expiresAt"] : 0)),
+            host: (map.ContainsKey("host") ? map["host"] : "").ToString(),
+            port: map.TryGetValue("port", out var numberRaw6) && numberRaw6 != null
+                                    ? Convert.ToInt64(numberRaw6)
+                                    : null,
+            database: (map.ContainsKey("database") ? map["database"] : "").ToString(),
+            username: (map.ContainsKey("username") ? map["username"] : "").ToString(),
+            password: (map.ContainsKey("password") ? map["password"] : "").ToString(),
+            ssl: (bool)(map.ContainsKey("ssl") ? map["ssl"] : false),
+            engine: (map.ContainsKey("engine") ? map["engine"] : "").ToString(),
+            connectionString: (map.ContainsKey("connectionString") ? map["connectionString"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

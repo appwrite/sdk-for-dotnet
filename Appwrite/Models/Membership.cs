@@ -92,21 +92,21 @@ namespace Appwrite.Models
         }
 
         public static Membership From(Dictionary<string, object> map) => new Membership(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            userId: map["userId"].ToString(),
-            userName: map["userName"].ToString(),
-            userEmail: map["userEmail"].ToString(),
-            userPhone: map["userPhone"].ToString(),
-            teamId: map["teamId"].ToString(),
-            teamName: map["teamName"].ToString(),
-            invited: map["invited"].ToString(),
-            joined: map["joined"].ToString(),
-            confirm: (bool)map["confirm"],
-            mfa: (bool)map["mfa"],
-            userAccessedAt: map["userAccessedAt"].ToString(),
-            roles: map["roles"].ConvertToList<string>()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
+            userName: (map.ContainsKey("userName") ? map["userName"] : "").ToString(),
+            userEmail: (map.ContainsKey("userEmail") ? map["userEmail"] : "").ToString(),
+            userPhone: (map.ContainsKey("userPhone") ? map["userPhone"] : "").ToString(),
+            teamId: (map.ContainsKey("teamId") ? map["teamId"] : "").ToString(),
+            teamName: (map.ContainsKey("teamName") ? map["teamName"] : "").ToString(),
+            invited: (map.ContainsKey("invited") ? map["invited"] : "").ToString(),
+            joined: (map.ContainsKey("joined") ? map["joined"] : "").ToString(),
+            confirm: (bool)(map.ContainsKey("confirm") ? map["confirm"] : false),
+            mfa: (bool)(map.ContainsKey("mfa") ? map["mfa"] : false),
+            userAccessedAt: (map.ContainsKey("userAccessedAt") ? map["userAccessedAt"] : "").ToString(),
+            roles: (map.ContainsKey("roles") ? map["roles"] : new List<object>()).ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

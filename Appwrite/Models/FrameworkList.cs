@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static FrameworkList From(Dictionary<string, object> map) => new FrameworkList(
-            total: Convert.ToInt64(map["total"]),
-            frameworks: map["frameworks"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Framework.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            frameworks: (map.ContainsKey("frameworks") ? map["frameworks"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Framework.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

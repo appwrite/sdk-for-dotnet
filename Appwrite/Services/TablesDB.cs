@@ -93,8 +93,8 @@ namespace Appwrite.Services
 
         /// <para>
         /// List the dedicated database specifications available on the current plan.
-        /// Each specification reports its resource limits, pricing, and whether it is
-        /// enabled for the organization.
+        /// Each specification reports its resource limits, its own prices and overage
+        /// rates, and whether it is enabled for the organization.
         /// </para>
         /// </summary>
         public Task<Models.DedicatedDatabaseSpecificationList> ListSpecifications()
@@ -202,6 +202,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Transaction> GetTransaction(string transactionId)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/tablesdb/transactions/{transactionId}"
                 .Replace("{transactionId}", transactionId);
 
@@ -236,6 +241,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Transaction> UpdateTransaction(string transactionId, bool? commit = null, bool? rollback = null)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/tablesdb/transactions/{transactionId}"
                 .Replace("{transactionId}", transactionId);
 
@@ -273,6 +283,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteTransaction(string transactionId)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/tablesdb/transactions/{transactionId}"
                 .Replace("{transactionId}", transactionId);
 
@@ -283,7 +298,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -302,6 +318,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Transaction> CreateOperations(string transactionId, List<object>? operations = null)
         {
+            if (transactionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"transactionId\"");
+            }
+
             var apiPath = "/tablesdb/transactions/{transactionId}/operations"
                 .Replace("{transactionId}", transactionId);
 
@@ -339,6 +360,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Database> Get(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -373,6 +399,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -414,6 +445,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}"
                 .Replace("{databaseId}", databaseId);
 
@@ -424,7 +460,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -451,6 +488,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabase> CreateFailover(string databaseId, string? targetReplicaId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/failovers"
                 .Replace("{databaseId}", databaseId);
 
@@ -488,6 +530,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DatabaseMigrationList> ListMigrations(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/migrations"
                 .Replace("{databaseId}", databaseId);
 
@@ -524,6 +571,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DatabaseMigration> CreateMigration(string databaseId, string specification, bool? autoCutover = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/migrations"
                 .Replace("{databaseId}", databaseId);
 
@@ -561,6 +613,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DatabaseMigration> GetMigration(string databaseId, string migrationId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (migrationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"migrationId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{migrationId}", migrationId);
@@ -597,6 +659,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteMigration(string databaseId, string migrationId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (migrationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"migrationId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{migrationId}", migrationId);
@@ -633,6 +705,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DatabaseMigration> CreateCutover(string databaseId, string migrationId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (migrationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"migrationId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}/cutovers"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{migrationId}", migrationId);
@@ -672,6 +754,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseOperationList> ListOperations(string databaseId, string? status = null, long? limit = null, long? offset = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/operations"
                 .Replace("{databaseId}", databaseId);
 
@@ -710,6 +797,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DedicatedDatabaseReplicas> GetReplicas(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/replicas"
                 .Replace("{databaseId}", databaseId);
 
@@ -746,6 +838,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DatabaseStatus> GetStatus(string databaseId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/status"
                 .Replace("{databaseId}", databaseId);
 
@@ -781,6 +878,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.TableList> ListTables(string databaseId, List<string>? queries = null, string? search = null, bool? total = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables"
                 .Replace("{databaseId}", databaseId);
 
@@ -821,6 +923,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Table> CreateTable(string databaseId, string tableId, string name, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null, List<object>? columns = null, List<object>? indexes = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables"
                 .Replace("{databaseId}", databaseId);
 
@@ -864,6 +971,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Table> GetTable(string databaseId, string tableId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -899,6 +1016,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Table> UpdateTable(string databaseId, string tableId, string? name = null, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null, bool? purge = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -941,6 +1068,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteTable(string databaseId, string tableId)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -952,7 +1089,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -971,6 +1109,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnList> ListColumns(string databaseId, string tableId, List<string>? queries = null, bool? total = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1010,6 +1158,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnBigint> CreateBigIntColumn(string databaseId, string tableId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/bigint"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1054,6 +1212,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnBigint> UpdateBigIntColumn(string databaseId, string tableId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/bigint/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1097,6 +1270,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnBoolean> CreateBooleanColumn(string databaseId, string tableId, string key, bool required, bool? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/boolean"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1138,6 +1321,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnBoolean> UpdateBooleanColumn(string databaseId, string tableId, string key, bool required, bool @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/boolean/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1178,6 +1376,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnDatetime> CreateDatetimeColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/datetime"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1219,6 +1427,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnDatetime> UpdateDatetimeColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/datetime/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1260,6 +1483,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnEmail> CreateEmailColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/email"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1302,6 +1535,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnEmail> UpdateEmailColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/email/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1343,6 +1591,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnEnum> CreateEnumColumn(string databaseId, string tableId, string key, List<string> elements, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/enum"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1386,6 +1644,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnEnum> UpdateEnumColumn(string databaseId, string tableId, string key, List<string> elements, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/enum/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1429,6 +1702,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnFloat> CreateFloatColumn(string databaseId, string tableId, string key, bool required, double? min = null, double? max = null, double? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/float"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1473,6 +1756,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnFloat> UpdateFloatColumn(string databaseId, string tableId, string key, bool required, double @default, double? min = null, double? max = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/float/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1517,6 +1815,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnInteger> CreateIntegerColumn(string databaseId, string tableId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/integer"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1561,6 +1869,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnInteger> UpdateIntegerColumn(string databaseId, string tableId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/integer/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1604,6 +1927,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnIp> CreateIpColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/ip"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1646,6 +1979,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnIp> UpdateIpColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/ip/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1686,6 +2034,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnLine> CreateLineColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/line"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1726,6 +2084,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnLine> UpdateLineColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/line/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1767,6 +2140,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnLongtext> CreateLongtextColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/longtext"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1810,6 +2193,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnLongtext> UpdateLongtextColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/longtext/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1851,6 +2249,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnMediumtext> CreateMediumtextColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/mediumtext"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1894,6 +2302,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnMediumtext> UpdateMediumtextColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/mediumtext/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -1934,6 +2357,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnPoint> CreatePointColumn(string databaseId, string tableId, string key, bool required, List<double>? @default = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/point"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -1974,6 +2407,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnPoint> UpdatePointColumn(string databaseId, string tableId, string key, bool required, List<double>? @default = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/point/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2014,6 +2462,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnPolygon> CreatePolygonColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/polygon"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2054,6 +2512,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnPolygon> UpdatePolygonColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/polygon/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2096,6 +2569,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnRelationship> CreateRelationshipColumn(string databaseId, string tableId, string relatedTableId, Appwrite.Enums.RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, Appwrite.Enums.RelationMutate? onDelete = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/relationship"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2133,6 +2616,62 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update relationship column. [Learn more about relationship
+        /// columns](https://appwrite.io/docs/databases-relationships#relationship-columns).
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.ColumnRelationship> UpdateRelationshipColumn(string databaseId, string tableId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null)
+        {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/relationship/{key}"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId)
+                .Replace("{key}", key);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "onDelete", onDelete?.Value },
+                { "newKey", newKey }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.ColumnRelationship Convert(Dictionary<string, object> it)
+            {
+                return Models.ColumnRelationship.From(map: it);
+            }
+
+            return _client.Call<Models.ColumnRelationship>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Create a string column.
         /// 
         /// </para>
@@ -2140,6 +2679,16 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.9.0. Please use `TablesDB.createTextColumn` instead.")]
         public Task<Models.ColumnString> CreateStringColumn(string databaseId, string tableId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/string"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2185,6 +2734,21 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTextColumn` instead.")]
         public Task<Models.ColumnString> UpdateStringColumn(string databaseId, string tableId, string key, bool required, string @default, long? size = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/string/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2227,6 +2791,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnText> CreateTextColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/text"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2270,6 +2844,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnText> UpdateTextColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/text/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2311,6 +2900,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnUrl> CreateUrlColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/url"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2353,6 +2952,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnUrl> UpdateUrlColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/url/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2394,6 +3008,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnVarchar> CreateVarcharColumn(string databaseId, string tableId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/varchar"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2438,6 +3062,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnVarchar> UpdateVarcharColumn(string databaseId, string tableId, string key, bool required, string @default, long? size = null, string? newKey = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/varchar/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2479,6 +3118,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> GetColumn(string databaseId, string tableId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2517,23 +3171,55 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.ColumnBoolean.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue6) && typeValue6?.ToString() == "integer")
+                if (it.TryGetValue("type", out var typeValue6) && typeValue6?.ToString() == "bigint")
+                {
+                    return Appwrite.Models.ColumnBigint.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue7) && typeValue7?.ToString() == "integer")
                 {
                     return Appwrite.Models.ColumnInteger.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue7) && typeValue7?.ToString() == "double")
+                if (it.TryGetValue("type", out var typeValue8) && typeValue8?.ToString() == "double")
                 {
                     return Appwrite.Models.ColumnFloat.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue8) && typeValue8?.ToString() == "datetime")
+                if (it.TryGetValue("type", out var typeValue9) && typeValue9?.ToString() == "datetime")
                 {
                     return Appwrite.Models.ColumnDatetime.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue9) && typeValue9?.ToString() == "relationship")
+                if (it.TryGetValue("type", out var typeValue10) && typeValue10?.ToString() == "relationship")
                 {
                     return Appwrite.Models.ColumnRelationship.From(map: it);
                 }
-                if (it.TryGetValue("type", out var typeValue10) && typeValue10?.ToString() == "string")
+                if (it.TryGetValue("type", out var typeValue11) && typeValue11?.ToString() == "point")
+                {
+                    return Appwrite.Models.ColumnPoint.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue12) && typeValue12?.ToString() == "linestring")
+                {
+                    return Appwrite.Models.ColumnLine.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue13) && typeValue13?.ToString() == "polygon")
+                {
+                    return Appwrite.Models.ColumnPolygon.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue14) && typeValue14?.ToString() == "varchar")
+                {
+                    return Appwrite.Models.ColumnVarchar.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue15) && typeValue15?.ToString() == "text")
+                {
+                    return Appwrite.Models.ColumnText.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue16) && typeValue16?.ToString() == "mediumtext")
+                {
+                    return Appwrite.Models.ColumnMediumtext.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue17) && typeValue17?.ToString() == "longtext")
+                {
+                    return Appwrite.Models.ColumnLongtext.From(map: it);
+                }
+                if (it.TryGetValue("type", out var typeValue18) && typeValue18?.ToString() == "string")
                 {
                     return Appwrite.Models.ColumnString.From(map: it);
                 }
@@ -2555,6 +3241,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteColumn(string databaseId, string tableId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2567,7 +3268,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -2581,52 +3283,21 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Update relationship column. [Learn more about relationship
-        /// columns](https://appwrite.io/docs/databases-relationships#relationship-columns).
-        /// 
-        /// </para>
-        /// </summary>
-        public Task<Models.ColumnRelationship> UpdateRelationshipColumn(string databaseId, string tableId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null)
-        {
-            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/{key}/relationship"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "onDelete", onDelete?.Value },
-                { "newKey", newKey }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.ColumnRelationship Convert(Dictionary<string, object> it)
-            {
-                return Models.ColumnRelationship.From(map: it);
-            }
-
-            return _client.Call<Models.ColumnRelationship>(
-                method: "PATCH",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
         /// List indexes on the table.
         /// </para>
         /// </summary>
         public Task<Models.ColumnIndexList> ListIndexes(string databaseId, string tableId, List<string>? queries = null, bool? total = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2661,11 +3332,23 @@ namespace Appwrite.Services
         /// <para>
         /// Creates an index on the columns listed. Your index should include all the
         /// columns you will query in a single request.
-        /// Type can be `key`, `fulltext`, or `unique`.
+        /// Type can be `key`, `fulltext`, `unique`, `spatial`, or `trigram`. `trigram`
+        /// is only available on PostgreSQL and lets `contains`, `startsWith`, and
+        /// `endsWith` queries on string columns use an index.
         /// </para>
         /// </summary>
         public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.TablesDBIndexType type, List<string> columns, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2707,6 +3390,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ColumnIndex> GetIndex(string databaseId, string tableId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2743,6 +3441,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteIndex(string databaseId, string tableId, string key)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (key == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"key\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes/{key}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -2755,7 +3468,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -2775,6 +3489,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.RowList> ListRows(string databaseId, string tableId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2817,6 +3541,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Row> CreateRow(string databaseId, string tableId, string rowId, object data, List<string>? permissions = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2860,6 +3594,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.RowList> CreateRows(string databaseId, string tableId, List<object> rows, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2902,6 +3646,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.RowList> UpsertRows(string databaseId, string tableId, List<object> rows, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2941,6 +3695,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.RowList> UpdateRows(string databaseId, string tableId, object? data = null, List<string>? queries = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -2981,6 +3745,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.RowList> DeleteRows(string databaseId, string tableId, List<string>? queries = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId);
@@ -3020,6 +3794,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Row> GetRow(string databaseId, string tableId, string rowId, List<string>? queries = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (rowId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"rowId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -3061,6 +3850,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Row> UpsertRow(string databaseId, string tableId, string rowId, object? data = null, List<string>? permissions = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (rowId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"rowId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -3102,6 +3906,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Row> UpdateRow(string databaseId, string tableId, string rowId, object? data = null, List<string>? permissions = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (rowId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"rowId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -3142,6 +3961,21 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteRow(string databaseId, string tableId, string rowId, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (rowId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"rowId\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -3155,7 +3989,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -3174,6 +4009,26 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Row> DecrementRowColumn(string databaseId, string tableId, string rowId, string column, double? @value = null, double? min = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (rowId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"rowId\"");
+            }
+
+            if (column == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"column\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}/{column}/decrement"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)
@@ -3215,6 +4070,26 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Row> IncrementRowColumn(string databaseId, string tableId, string rowId, string column, double? @value = null, double? max = null, string? transactionId = null)
         {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            if (rowId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"rowId\"");
+            }
+
+            if (column == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"column\"");
+            }
+
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}/{column}/increment"
                 .Replace("{databaseId}", databaseId)
                 .Replace("{tableId}", tableId)

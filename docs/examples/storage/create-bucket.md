@@ -11,7 +11,7 @@ Client client = new Client()
 
 Storage storage = new Storage(client);
 
-Bucket result = await storage.CreateBucket(
+Appwrite.Models.Bucket result = await storage.CreateBucket(
     bucketId: "<BUCKET_ID>",
     name: "<NAME>",
     permissions: new List<string> { Permission.Read(Role.Any()) }, // optional

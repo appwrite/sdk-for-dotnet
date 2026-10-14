@@ -1,5 +1,22 @@
 # Change Log
 
+## 9.0.0
+
+* Breaking: requests send response format `2.5.0`; `Project.DevKeys` was removed
+* Breaking: removed `Client.SetDevKey`; dev keys apply to client SDKs only
+* Breaking: removed `Account.ListLogs` and `Users.ListLogs` with the `Log` and `LogList` models
+* Breaking: removed `Organization` key methods and `OrganizationKeyScopes`; use the project key methods
+* Breaking: removed `BillingPlanGroup.Starter`
+* Breaking: `Project.UpdateOAuth2Kakao` takes `enabled` before `prompt`
+* Breaking: removed `Block` fields `ProjectName`, `Region`, `OrganizationName`, `OrganizationId`, `BillingPlan` and `Reason`
+* Breaking: removed `DedicatedDatabaseSpecificationList.Pricing` and `DedicatedDatabaseSpecificationPricing`
+* Breaking: `BackupRestoration.Options` is an `object`, not a `string`
+* Breaking: billing, backup, restoration and dedicated database fields the API can omit are nullable
+* Breaking: model constructors follow API field order without default arguments
+* Updated: `Prompt`, `NativeClientIds`, `NativeEnabled`, `Fingerprints` and similar fields are no longer nullable
+* Updated: models fill fields missing from a response with their documented defaults
+* Fixed: query strings escape parameter names and values
+
 ## 8.4.0
 
 * Added: `domains` service to manage domains, DNS records, email presets, prices, transfer status and zones

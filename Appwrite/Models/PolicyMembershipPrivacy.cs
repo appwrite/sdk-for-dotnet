@@ -52,13 +52,13 @@ namespace Appwrite.Models
         }
 
         public static PolicyMembershipPrivacy From(Dictionary<string, object> map) => new PolicyMembershipPrivacy(
-            id: map["$id"].ToString(),
-            userId: (bool)map["userId"],
-            userEmail: (bool)map["userEmail"],
-            userPhone: (bool)map["userPhone"],
-            userName: (bool)map["userName"],
-            userMFA: (bool)map["userMFA"],
-            userAccessedAt: (bool)map["userAccessedAt"]
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            userId: (bool)(map.ContainsKey("userId") ? map["userId"] : false),
+            userEmail: (bool)(map.ContainsKey("userEmail") ? map["userEmail"] : false),
+            userPhone: (bool)(map.ContainsKey("userPhone") ? map["userPhone"] : false),
+            userName: (bool)(map.ContainsKey("userName") ? map["userName"] : false),
+            userMFA: (bool)(map.ContainsKey("userMFA") ? map["userMFA"] : false),
+            userAccessedAt: (bool)(map.ContainsKey("userAccessedAt") ? map["userAccessedAt"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

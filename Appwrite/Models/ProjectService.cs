@@ -28,7 +28,7 @@ namespace Appwrite.Models
 
         public static ProjectService From(Dictionary<string, object> map) => new ProjectService(
             id: new Appwrite.Enums.ProjectServiceId(map["$id"].ToString()!),
-            enabled: (bool)map["enabled"]
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

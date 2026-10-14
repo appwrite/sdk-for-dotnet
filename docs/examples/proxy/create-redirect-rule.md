@@ -11,7 +11,7 @@ Client client = new Client()
 
 Proxy proxy = new Proxy(client);
 
-ProxyRule result = await proxy.CreateRedirectRule(
+Appwrite.Models.ProxyRule result = await proxy.CreateRedirectRule(
     domain: "example.com",
     url: "https://example.com",
     statusCode: StatusCode.MovedPermanently,

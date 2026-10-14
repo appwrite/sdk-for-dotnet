@@ -10,13 +10,13 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnVarchar result = await tablesDB.CreateVarcharColumn(
+Appwrite.Models.ColumnVarchar result = await tablesDB.CreateVarcharColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     size: 1,
     required: false,
-    default: "Hello World", // optional
+    @default: "Hello World", // optional
     array: false, // optional
     encrypt: false // optional
 );

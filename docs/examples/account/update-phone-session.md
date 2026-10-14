@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Session result = await account.UpdatePhoneSession(
+Appwrite.Models.Session result = await account.UpdatePhoneSession(
     userId: "<USER_ID>",
     secret: "<SECRET>"
 );

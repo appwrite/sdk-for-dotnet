@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-Database result = await documentsDB.Get(
+Appwrite.Models.Database result = await documentsDB.Get(
     databaseId: "<DATABASE_ID>"
 );
 

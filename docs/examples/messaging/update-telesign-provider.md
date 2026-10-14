@@ -10,13 +10,13 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateTelesignProvider(
+Appwrite.Models.Provider result = await messaging.UpdateTelesignProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>", // optional
     enabled: false, // optional
     customerId: "<CUSTOMER_ID>", // optional
     apiKey: "<API_KEY>", // optional
-    from: "<FROM>" // optional
+    @from: "<FROM>" // optional
 );
 
 ```
