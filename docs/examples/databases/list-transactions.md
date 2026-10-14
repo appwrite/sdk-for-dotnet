@@ -11,7 +11,8 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 TransactionList result = await databases.ListTransactions(
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

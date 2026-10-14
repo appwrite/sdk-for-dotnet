@@ -68,6 +68,9 @@ namespace Appwrite.Models
         [JsonPropertyName("emailIsCanonical")]
         public bool? EmailIsCanonical { get; private set; }
 
+        [JsonPropertyName("passwordPwned")]
+        public bool? PasswordPwned { get; private set; }
+
         [JsonPropertyName("phoneVerification")]
         public bool PhoneVerification { get; private set; }
 
@@ -115,7 +118,8 @@ namespace Appwrite.Models
             List<Target> targets,
             string accessedAt,
             bool? impersonator,
-            string? impersonatorUserId
+            string? impersonatorUserId,
+            bool? passwordPwned = null
         )
         {
             Id = id;
@@ -137,6 +141,7 @@ namespace Appwrite.Models
             EmailIsDisposable = emailIsDisposable;
             EmailIsCorporate = emailIsCorporate;
             EmailIsCanonical = emailIsCanonical;
+            PasswordPwned = passwordPwned;
             PhoneVerification = phoneVerification;
             Mfa = mfa;
             Prefs = prefs;
@@ -182,7 +187,10 @@ namespace Appwrite.Models
             impersonator: map.TryGetValue("impersonator", out var boolRaw25) && boolRaw25 != null
                                         ? (bool?)boolRaw25
                                         : null,
-            impersonatorUserId: map.TryGetValue("impersonatorUserId", out var impersonatorUserId) ? impersonatorUserId?.ToString() : null
+            impersonatorUserId: map.TryGetValue("impersonatorUserId", out var impersonatorUserId) ? impersonatorUserId?.ToString() : null,
+            passwordPwned: map.TryGetValue("passwordPwned", out var boolRaw20Added) && boolRaw20Added != null
+                                        ? (bool?)boolRaw20Added
+                                        : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -206,6 +214,7 @@ namespace Appwrite.Models
             { "emailIsDisposable", EmailIsDisposable },
             { "emailIsCorporate", EmailIsCorporate },
             { "emailIsCanonical", EmailIsCanonical },
+            { "passwordPwned", PasswordPwned },
             { "phoneVerification", PhoneVerification },
             { "mfa", Mfa },
             { "prefs", Prefs?.ToMap() },

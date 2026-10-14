@@ -15,7 +15,9 @@ OAuth2Apple result = await project.UpdateOAuth2Apple(
     keyId: "<KEY_ID>", // optional
     teamId: "<TEAM_ID>", // optional
     p8File: "<P8_FILE>", // optional
-    enabled: false // optional
+    enabled: false, // optional
+    nativeClientIds: new List<string>(), // optional
+    nativeEnabled: false // optional
 );
 
 ```

@@ -50,6 +50,9 @@ namespace Appwrite.Models
         [JsonPropertyName("wafRules")]
         public long WafRules { get; private set; }
 
+        [JsonPropertyName("environments")]
+        public long? Environments { get; private set; }
+
         [JsonPropertyName("projects")]
         public long Projects { get; private set; }
 
@@ -151,6 +154,9 @@ namespace Appwrite.Models
 
         [JsonPropertyName("requiresBillingAddress")]
         public bool RequiresBillingAddress { get; private set; }
+
+        [JsonPropertyName("eligibleCountries")]
+        public List<string>? EligibleCountries { get; private set; }
 
         [JsonPropertyName("isAvailable")]
         public bool IsAvailable { get; private set; }
@@ -303,7 +309,9 @@ namespace Appwrite.Models
             Appwrite.Enums.BillingPlanGroup @group,
             Program? program,
             double databaseComputeCredit,
-            BillingPlanDedicatedDatabaseLimits? dedicatedDatabases
+            BillingPlanDedicatedDatabaseLimits? dedicatedDatabases,
+            long? environments = null,
+            List<string>? eligibleCountries = null
         )
         {
             Id = id;
@@ -319,6 +327,7 @@ namespace Appwrite.Models
             Members = members;
             Webhooks = webhooks;
             WafRules = wafRules;
+            Environments = environments;
             Projects = projects;
             Platforms = platforms;
             Users = users;
@@ -353,6 +362,7 @@ namespace Appwrite.Models
             EmailBranding = emailBranding;
             RequiresPaymentMethod = requiresPaymentMethod;
             RequiresBillingAddress = requiresBillingAddress;
+            EligibleCountries = eligibleCountries;
             IsAvailable = isAvailable;
             SelfService = selfService;
             PremiumSupport = premiumSupport;
@@ -472,7 +482,13 @@ namespace Appwrite.Models
             databaseComputeCredit: Convert.ToDouble(map["databaseComputeCredit"]),
             dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw73) && objectRaw73 != null
                                     ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw73 is JsonElement jsonObj73 ? jsonObj73.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw73)
-                                    : null
+                                    : null,
+            environments: map.TryGetValue("environments", out var numberRaw14Added) && numberRaw14Added != null
+                                    ? Convert.ToInt64(numberRaw14Added)
+                                    : null,
+            eligibleCountries: map.TryGetValue("eligibleCountries", out var arrayRaw49Added) && arrayRaw49Added != null
+                                ? arrayRaw49Added.ConvertToList<string>()
+                                : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -490,6 +506,7 @@ namespace Appwrite.Models
             { "members", Members },
             { "webhooks", Webhooks },
             { "wafRules", WafRules },
+            { "environments", Environments },
             { "projects", Projects },
             { "platforms", Platforms },
             { "users", Users },
@@ -524,6 +541,7 @@ namespace Appwrite.Models
             { "emailBranding", EmailBranding },
             { "requiresPaymentMethod", RequiresPaymentMethod },
             { "requiresBillingAddress", RequiresBillingAddress },
+            { "eligibleCountries", EligibleCountries },
             { "isAvailable", IsAvailable },
             { "selfService", SelfService },
             { "premiumSupport", PremiumSupport },

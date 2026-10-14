@@ -35,6 +35,12 @@ namespace Appwrite.Models
         [JsonPropertyName("subscribe")]
         public List<string> Subscribe { get; private set; }
 
+        [JsonPropertyName("qos")]
+        public long? Qos { get; private set; }
+
+        [JsonPropertyName("expiry")]
+        public long? Expiry { get; private set; }
+
         public Topic(
             string id,
             string createdAt,
@@ -43,7 +49,9 @@ namespace Appwrite.Models
             long emailTotal,
             long smsTotal,
             long pushTotal,
-            List<string> subscribe
+            List<string> subscribe,
+            long? qos = null,
+            long? expiry = null
         )
         {
             Id = id;
@@ -54,6 +62,8 @@ namespace Appwrite.Models
             SmsTotal = smsTotal;
             PushTotal = pushTotal;
             Subscribe = subscribe;
+            Qos = qos;
+            Expiry = expiry;
         }
 
         public static Topic From(Dictionary<string, object> map) => new Topic(
@@ -64,7 +74,13 @@ namespace Appwrite.Models
             emailTotal: Convert.ToInt64(map["emailTotal"]),
             smsTotal: Convert.ToInt64(map["smsTotal"]),
             pushTotal: Convert.ToInt64(map["pushTotal"]),
-            subscribe: map["subscribe"].ConvertToList<string>()
+            subscribe: map["subscribe"].ConvertToList<string>(),
+            qos: map.TryGetValue("qos", out var numberRaw9Added) && numberRaw9Added != null
+                                    ? Convert.ToInt64(numberRaw9Added)
+                                    : null,
+            expiry: map.TryGetValue("expiry", out var numberRaw10Added) && numberRaw10Added != null
+                                    ? Convert.ToInt64(numberRaw10Added)
+                                    : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -76,7 +92,9 @@ namespace Appwrite.Models
             { "emailTotal", EmailTotal },
             { "smsTotal", SmsTotal },
             { "pushTotal", PushTotal },
-            { "subscribe", Subscribe }
+            { "subscribe", Subscribe },
+            { "qos", Qos },
+            { "expiry", Expiry }
         };
     }
 }

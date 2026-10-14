@@ -13,5 +13,6 @@ namespace Appwrite.Enums
 
         public static ProxyRuleDeploymentResourceType Function => new ProxyRuleDeploymentResourceType("function");
         public static ProxyRuleDeploymentResourceType Site => new ProxyRuleDeploymentResourceType("site");
+        public static ProxyRuleDeploymentResourceType DedicatedDatabase => new ProxyRuleDeploymentResourceType("dedicatedDatabase");
     }
 }

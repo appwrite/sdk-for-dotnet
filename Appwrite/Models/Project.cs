@@ -95,8 +95,17 @@ namespace Appwrite.Models
         [JsonPropertyName("wafEnabled")]
         public bool? WafEnabled { get; private set; }
 
+        [JsonPropertyName("parentId")]
+        public string? ParentId { get; private set; }
+
         [JsonPropertyName("billingLimits")]
         public BillingLimits? BillingLimits { get; private set; }
+
+        [JsonPropertyName("firstAccessedAt")]
+        public string? FirstAccessedAt { get; private set; }
+
+        [JsonPropertyName("mcpAccessedAt")]
+        public string? McpAccessedAt { get; private set; }
 
         [JsonPropertyName("oAuth2ServerEnabled")]
         public bool? OAuth2ServerEnabled { get; private set; }
@@ -195,7 +204,10 @@ namespace Appwrite.Models
             long? oAuth2ServerUserCodeLength,
             string? oAuth2ServerUserCodeFormat,
             long? oAuth2ServerDeviceCodeDuration,
-            string? oAuth2ServerDiscoveryUrl
+            string? oAuth2ServerDiscoveryUrl,
+            string? parentId = null,
+            string? firstAccessedAt = null,
+            string? mcpAccessedAt = null
         )
         {
             Id = id;
@@ -226,7 +238,10 @@ namespace Appwrite.Models
             Blocks = blocks;
             ConsoleAccessedAt = consoleAccessedAt;
             WafEnabled = wafEnabled;
+            ParentId = parentId;
             BillingLimits = billingLimits;
+            FirstAccessedAt = firstAccessedAt;
+            McpAccessedAt = mcpAccessedAt;
             OAuth2ServerEnabled = oAuth2ServerEnabled;
             OAuth2ServerAuthorizationUrl = oAuth2ServerAuthorizationUrl;
             OAuth2ServerScopes = oAuth2ServerScopes;
@@ -322,7 +337,10 @@ namespace Appwrite.Models
             oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw45) && numberRaw45 != null
                                     ? Convert.ToInt64(numberRaw45)
                                     : null,
-            oAuth2ServerDiscoveryUrl: map.TryGetValue("oAuth2ServerDiscoveryUrl", out var oAuth2ServerDiscoveryUrl) ? oAuth2ServerDiscoveryUrl?.ToString() : null
+            oAuth2ServerDiscoveryUrl: map.TryGetValue("oAuth2ServerDiscoveryUrl", out var oAuth2ServerDiscoveryUrl) ? oAuth2ServerDiscoveryUrl?.ToString() : null,
+            parentId: map.TryGetValue("parentId", out var parentId) ? parentId?.ToString() : null,
+            firstAccessedAt: map.TryGetValue("firstAccessedAt", out var firstAccessedAt) ? firstAccessedAt?.ToString() : null,
+            mcpAccessedAt: map.TryGetValue("mcpAccessedAt", out var mcpAccessedAt) ? mcpAccessedAt?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -355,7 +373,10 @@ namespace Appwrite.Models
             { "blocks", Blocks?.Select(it => it.ToMap()).ToList() },
             { "consoleAccessedAt", ConsoleAccessedAt },
             { "wafEnabled", WafEnabled },
+            { "parentId", ParentId },
             { "billingLimits", BillingLimits?.ToMap() },
+            { "firstAccessedAt", FirstAccessedAt },
+            { "mcpAccessedAt", McpAccessedAt },
             { "oAuth2ServerEnabled", OAuth2ServerEnabled },
             { "oAuth2ServerAuthorizationUrl", OAuth2ServerAuthorizationUrl },
             { "oAuth2ServerScopes", OAuth2ServerScopes },

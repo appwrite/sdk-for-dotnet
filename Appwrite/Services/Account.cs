@@ -1654,16 +1654,109 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Use this endpoint to send a 6-digit password recovery code to the user's
+        /// email address. Unlike
+        /// [createRecovery](https://appwrite.io/docs/references/cloud/client-web/account#createRecovery),
+        /// this method requires no redirect URL, which makes it suitable for mobile
+        /// and desktop apps that cannot host a recovery page. Learn more about how to
+        /// [complete the recovery
+        /// process](https://appwrite.io/docs/references/cloud/client-web/account#updateRecoveryOTP).
+        /// The code sent to the user's email address is valid for 15 minutes.
+        /// 
+        /// Enable the **phrase** parameter to include a randomly generated security
+        /// phrase in both the email and the response. Showing that phrase in your app
+        /// lets the user confirm the email genuinely came from your request, which
+        /// helps protect against phishing.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> CreateRecoveryOTP(string email, bool? phrase = null)
+        {
+            var apiPath = "/account/recovery/otp";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "email", email },
+                { "phrase", phrase }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it)
+            {
+                return Models.Token.From(map: it);
+            }
+
+            return _client.Call<Models.Token>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Use this endpoint to complete the user password recovery process using the
+        /// 6-digit code that was emailed by
+        /// [createRecoveryOTP](https://appwrite.io/docs/references/cloud/client-web/account#createRecoveryOTP).
+        /// Pass the **userId** of the user along with the **secret** code from the
+        /// email and the new **password** to set. If confirmed, this route will return
+        /// a 200 status code, the code is consumed and the user's password is updated.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> UpdateRecoveryOTP(string userId, string secret, string password)
+        {
+            var apiPath = "/account/recovery/otp";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "secret", secret },
+                { "password", password }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it)
+            {
+                return Models.Token.From(map: it);
+            }
+
+            return _client.Call<Models.Token>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get the list of active sessions across different devices for the currently
         /// logged in user.
         /// </para>
         /// </summary>
-        public Task<Models.SessionList> ListSessions()
+        public Task<Models.SessionList> ListSessions(bool? total = null)
         {
             var apiPath = "/account/sessions";
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1692,12 +1785,13 @@ namespace Appwrite.Services
         /// from the end client.
         /// </para>
         /// </summary>
-        public Task<object> DeleteSessions()
+        public Task<object> DeleteSessions(bool? current = null)
         {
             var apiPath = "/account/sessions";
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "current", current }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1765,14 +1859,96 @@ namespace Appwrite.Services
         /// limits](https://appwrite.io/docs/authentication-security#limits).
         /// </para>
         /// </summary>
-        public Task<Models.Session> CreateEmailPasswordSession(string email, string password)
+        public Task<Models.Session> CreateEmailPasswordSession(string email, string password, long? duration = null)
         {
             var apiPath = "/account/sessions/email";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "email", email },
-                { "password", password }
+                { "password", password },
+                { "duration", duration }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Session Convert(Dictionary<string, object> it)
+            {
+                return Models.Session.From(map: it);
+            }
+
+            return _client.Call<Models.Session>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Allow the user to login to their account using an OpenID Connect ID token
+        /// obtained natively from the OAuth2 provider, for example via Google
+        /// Credential Manager on Android or Sign in with Apple on iOS. No browser or
+        /// redirect is involved: the ID token is verified against the provider's
+        /// published signing keys and a session is created in a single request.
+        /// 
+        /// Native sign-in is switched on per provider with its nativeEnabled setting.
+        /// It is independent of the browser-based flow's enabled setting, which has no
+        /// effect on this endpoint. The token's audience must match the provider's
+        /// configured client ID or one of its native client IDs; tokens issued for any
+        /// other client ID are rejected. For Sign in with Apple, register your app's
+        /// bundle ID as a native client ID. For Google, the web client ID used by
+        /// Credential Manager is usually the configured client ID; add your Android
+        /// and iOS client IDs as native client IDs if your app requests tokens for
+        /// them.
+        /// 
+        /// Pass the raw nonce used when requesting the ID token so it can be validated
+        /// against the token's nonce claim. When signing in with Apple, the nonce is
+        /// required: hash it with SHA-256 before passing it to the Apple SDK, and send
+        /// the raw value here - Apple tokens requested without a nonce are rejected.
+        /// For Google the nonce is optional: it is validated whenever the token
+        /// carries one, and ignored when the provider issued the token without one.
+        /// Apple only returns the user's name on the first authorization, and never
+        /// inside the ID token - capture it on the client and pass it via the name
+        /// parameter.
+        /// 
+        /// If there is already an active session, the new session will be attached to
+        /// the logged-in account. If there are no active sessions, the server will
+        /// attempt to look for a user with the same email address as the verified
+        /// email received from the provider and attach the new session to the existing
+        /// user. If no matching user is found - the server will create a new user.
+        /// 
+        /// This flow does not return provider refresh tokens. You may pass an access
+        /// token the provider handed your client, along with its lifetime, to store it
+        /// on the session - but Appwrite cannot renew it once it expires. If your app
+        /// needs long-lived access to provider APIs, use the browser-based OAuth2 flow
+        /// instead.
+        /// 
+        /// A user is limited to 10 active sessions at a time by default. [Learn more
+        /// about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Session> CreateIdTokenSession(Appwrite.Enums.IdTokenProvider provider, string idToken, string? nonce = null, string? accessToken = null, long? accessTokenExpiry = null, string? name = null)
+        {
+            var apiPath = "/account/sessions/id-token";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "provider", provider?.Value },
+                { "idToken", idToken },
+                { "nonce", nonce },
+                { "accessToken", accessToken },
+                { "accessTokenExpiry", accessTokenExpiry },
+                { "name", name }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2479,6 +2655,96 @@ namespace Appwrite.Services
         public Task<Models.Token> UpdateVerification(string userId, string secret)
         {
             var apiPath = "/account/verifications/email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "userId", userId },
+                { "secret", secret }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it)
+            {
+                return Models.Token.From(map: it);
+            }
+
+            return _client.Call<Models.Token>(
+                method: "PUT",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Use this endpoint to send a 6-digit verification code to the currently
+        /// logged in user's email address. Unlike
+        /// [createEmailVerification](https://appwrite.io/docs/references/cloud/client-web/account#createEmailVerification),
+        /// this method requires no redirect URL, which makes it suitable for mobile
+        /// and desktop apps that cannot host a verification page. Learn more about how
+        /// to [complete the verification
+        /// process](https://appwrite.io/docs/references/cloud/client-web/account#updateEmailVerificationOTP).
+        /// The code sent to the user's email address is valid for 15 minutes.
+        /// 
+        /// Enable the **phrase** parameter to include a randomly generated security
+        /// phrase in both the email and the response. Showing that phrase in your app
+        /// lets the user confirm the email genuinely came from your request, which
+        /// helps protect against phishing.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> CreateEmailVerificationOTP(bool? phrase = null)
+        {
+            var apiPath = "/account/verifications/email/otp";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "phrase", phrase }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Token Convert(Dictionary<string, object> it)
+            {
+                return Models.Token.From(map: it);
+            }
+
+            return _client.Call<Models.Token>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Use this endpoint to complete the user email verification process using the
+        /// 6-digit code that was emailed by
+        /// [createEmailVerificationOTP](https://appwrite.io/docs/references/cloud/client-web/account#createEmailVerificationOTP).
+        /// Pass the **userId** of the user being verified along with the **secret**
+        /// code from the email. If confirmed, this route will return a 200 status code
+        /// and the code is consumed.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.Token> UpdateEmailVerificationOTP(string userId, string secret)
+        {
+            var apiPath = "/account/verifications/email/otp";
 
             var apiParameters = new Dictionary<string, object?>()
             {

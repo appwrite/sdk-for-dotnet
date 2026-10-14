@@ -53,7 +53,7 @@ namespace Appwrite.Services
         /// Create a new email message.
         /// </para>
         /// </summary>
-        public Task<Models.Message> CreateEmail(string messageId, string subject, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, List<string>? cc = null, List<string>? bcc = null, List<string>? attachments = null, bool? draft = null, bool? html = null, string? scheduledAt = null)
+        public Task<Models.Message> CreateEmail(string messageId, string subject, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, List<string>? cc = null, List<string>? bcc = null, List<string>? attachments = null, bool? draft = null, bool? html = null, string? scheduledAt = null, string? replyToEmail = null, string? replyToName = null)
         {
             var apiPath = "/messaging/messages/email";
 
@@ -70,7 +70,9 @@ namespace Appwrite.Services
                 { "attachments", attachments },
                 { "draft", draft },
                 { "html", html },
-                { "scheduledAt", scheduledAt }
+                { "scheduledAt", scheduledAt },
+                { "replyToEmail", replyToEmail },
+                { "replyToName", replyToName }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -102,7 +104,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, bool? draft = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null, List<string>? attachments = null)
+        public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, bool? draft = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null, List<string>? attachments = null, string? replyToEmail = null, string? replyToName = null)
         {
             var apiPath = "/messaging/messages/email/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -119,7 +121,9 @@ namespace Appwrite.Services
                 { "cc", cc },
                 { "bcc", bcc },
                 { "scheduledAt", scheduledAt },
-                { "attachments", attachments }
+                { "attachments", attachments },
+                { "replyToEmail", replyToEmail },
+                { "replyToName", replyToName }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -148,7 +152,7 @@ namespace Appwrite.Services
         /// Create a new push notification.
         /// </para>
         /// </summary>
-        public Task<Models.Message> CreatePush(string messageId, string? title = null, string? body = null, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, bool? draft = null, string? scheduledAt = null, bool? contentAvailable = null, bool? critical = null, Appwrite.Enums.MessagePriority? priority = null)
+        public Task<Models.Message> CreatePush(string messageId, string? title = null, string? body = null, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, bool? draft = null, string? scheduledAt = null, bool? contentAvailable = null, bool? critical = null, Appwrite.Enums.MessagePriority? priority = null, string? channelId = null)
         {
             var apiPath = "/messaging/messages/push";
 
@@ -172,7 +176,8 @@ namespace Appwrite.Services
                 { "scheduledAt", scheduledAt },
                 { "contentAvailable", contentAvailable },
                 { "critical", critical },
-                { "priority", priority?.Value }
+                { "priority", priority?.Value },
+                { "channelId", channelId }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -204,7 +209,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Message> UpdatePush(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? title = null, string? body = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, bool? draft = null, string? scheduledAt = null, bool? contentAvailable = null, bool? critical = null, Appwrite.Enums.MessagePriority? priority = null)
+        public Task<Models.Message> UpdatePush(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? title = null, string? body = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, bool? draft = null, string? scheduledAt = null, bool? contentAvailable = null, bool? critical = null, Appwrite.Enums.MessagePriority? priority = null, string? channelId = null)
         {
             var apiPath = "/messaging/messages/push/{messageId}"
                 .Replace("{messageId}", messageId);
@@ -228,7 +233,8 @@ namespace Appwrite.Services
                 { "scheduledAt", scheduledAt },
                 { "contentAvailable", contentAvailable },
                 { "critical", critical },
-                { "priority", priority?.Value }
+                { "priority", priority?.Value },
+                { "channelId", channelId }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -708,6 +714,89 @@ namespace Appwrite.Services
                 { "teamId", teamId },
                 { "bundleId", bundleId },
                 { "sandbox", sandbox }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it)
+            {
+                return Models.Provider.From(map: it);
+            }
+
+            return _client.Call<Models.Provider>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a new Appwrite push provider.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> CreateAppwriteProvider(string providerId, string name, bool? enabled = null, long? qos = null, long? expiry = null)
+        {
+            var apiPath = "/messaging/providers/appwrite";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "providerId", providerId },
+                { "name", name },
+                { "enabled", enabled },
+                { "qos", qos },
+                { "expiry", expiry }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it)
+            {
+                return Models.Provider.From(map: it);
+            }
+
+            return _client.Call<Models.Provider>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update an Appwrite push provider by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> UpdateAppwriteProvider(string providerId, string? name = null, bool? enabled = null, long? qos = null, long? expiry = null)
+        {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
+            var apiPath = "/messaging/providers/appwrite/{providerId}"
+                .Replace("{providerId}", providerId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "enabled", enabled },
+                { "qos", qos },
+                { "expiry", expiry }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1928,7 +2017,7 @@ namespace Appwrite.Services
         /// Create a new topic.
         /// </para>
         /// </summary>
-        public Task<Models.Topic> CreateTopic(string topicId, string name, List<string>? subscribe = null)
+        public Task<Models.Topic> CreateTopic(string topicId, string name, List<string>? subscribe = null, long? qos = null, long? expiry = null)
         {
             var apiPath = "/messaging/topics";
 
@@ -1936,7 +2025,9 @@ namespace Appwrite.Services
             {
                 { "topicId", topicId },
                 { "name", name },
-                { "subscribe", subscribe }
+                { "subscribe", subscribe },
+                { "qos", qos },
+                { "expiry", expiry }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2001,7 +2092,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Topic> UpdateTopic(string topicId, string? name = null, List<string>? subscribe = null)
+        public Task<Models.Topic> UpdateTopic(string topicId, string? name = null, List<string>? subscribe = null, long? qos = null, long? expiry = null)
         {
             var apiPath = "/messaging/topics/{topicId}"
                 .Replace("{topicId}", topicId);
@@ -2009,7 +2100,9 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name },
-                { "subscribe", subscribe }
+                { "subscribe", subscribe },
+                { "qos", qos },
+                { "expiry", expiry }
             };
 
             var apiHeaders = new Dictionary<string, string>()

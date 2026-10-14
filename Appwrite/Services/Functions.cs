@@ -114,12 +114,13 @@ namespace Appwrite.Services
         /// Get a list of all runtimes that are currently active on your instance.
         /// </para>
         /// </summary>
-        public Task<Models.RuntimeList> ListRuntimes()
+        public Task<Models.RuntimeList> ListRuntimes(bool? total = null)
         {
             var apiPath = "/functions/runtimes";
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -147,13 +148,14 @@ namespace Appwrite.Services
         /// List allowed function specifications for this instance.
         /// </para>
         /// </summary>
-        public Task<Models.SpecificationList> ListSpecifications(string? type = null)
+        public Task<Models.SpecificationList> ListSpecifications(string? type = null, bool? total = null)
         {
             var apiPath = "/functions/specifications";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "type", type }
+                { "type", type },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

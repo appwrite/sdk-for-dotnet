@@ -23,6 +23,7 @@ namespace Appwrite.Enums
         public static Framework Remix => new Framework("remix");
         public static Framework Lynx => new Framework("lynx");
         public static Framework Flutter => new Framework("flutter");
+        public static Framework Jaspr => new Framework("jaspr");
         public static Framework ReactNative => new Framework("react-native");
         public static Framework Vite => new Framework("vite");
         public static Framework Other => new Framework("other");

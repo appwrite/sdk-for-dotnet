@@ -306,6 +306,84 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the profile photo of the currently authenticated user. The uploaded
+        /// image takes priority over every other photo source, including OAuth2
+        /// identity photos, Gravatar, and Libravatar. Updating an already customized
+        /// photo replaces it. The image must be at most 5MB and is sent in a single
+        /// request.
+        /// </para>
+        /// </summary>
+        public Task<Models.Account> UpdatePhoto(InputFile file, Action<UploadProgress>? onProgress = null)
+        {
+            var apiPath = "/avatars/photo";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "file", file }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "multipart/form-data" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Account Convert(Dictionary<string, object> it)
+            {
+                return Models.Account.From(map: it);
+            }
+
+            string? idParamName = null;
+
+            var paramName = "file";
+
+            return _client.ChunkedUpload(
+                apiPath,
+                apiHeaders,
+                apiParameters,
+                Convert,
+                paramName,
+                idParamName,
+                onProgress,
+                method: "PUT");
+        }
+
+        /// <para>
+        /// Delete the profile photo of the currently authenticated user and store the
+        /// built-in static placeholder in its place. The placeholder is the user's
+        /// photo from then on, so it takes priority over every other photo source —
+        /// OAuth2 identity photos, Gravatar, Libravatar, and initials — until a new
+        /// photo is uploaded with avatars.updatePhoto.
+        /// </para>
+        /// </summary>
+        public Task<object> DeletePhoto()
+        {
+            var apiPath = "/avatars/photo";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
         /// Converts a given plain text to a QR code image. You can use the query
         /// parameters to change the size and style of the resulting image.
         /// 

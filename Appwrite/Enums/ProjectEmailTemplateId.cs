@@ -18,5 +18,7 @@ namespace Appwrite.Enums
         public static ProjectEmailTemplateId MfaChallenge => new ProjectEmailTemplateId("mfaChallenge");
         public static ProjectEmailTemplateId SessionAlert => new ProjectEmailTemplateId("sessionAlert");
         public static ProjectEmailTemplateId OtpSession => new ProjectEmailTemplateId("otpSession");
+        public static ProjectEmailTemplateId OtpVerification => new ProjectEmailTemplateId("otpVerification");
+        public static ProjectEmailTemplateId OtpRecovery => new ProjectEmailTemplateId("otpRecovery");
     }
 }

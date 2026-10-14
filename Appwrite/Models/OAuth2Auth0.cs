@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("clientSecret")]
         public string ClientSecret { get; private set; }
 
+        [JsonPropertyName("prompt")]
+        public List<Appwrite.Enums.OAuth2Auth0Prompt>? Prompt { get; private set; }
+
         [JsonPropertyName("endpoint")]
         public string Endpoint { get; private set; }
 
@@ -31,13 +34,15 @@ namespace Appwrite.Models
             bool enabled,
             string clientId,
             string clientSecret,
-            string endpoint
+            string endpoint,
+            List<Appwrite.Enums.OAuth2Auth0Prompt>? prompt = null
         )
         {
             Id = id;
             Enabled = enabled;
             ClientId = clientId;
             ClientSecret = clientSecret;
+            Prompt = prompt;
             Endpoint = endpoint;
         }
 
@@ -46,7 +51,10 @@ namespace Appwrite.Models
             enabled: (bool)map["enabled"],
             clientId: map["clientId"].ToString(),
             clientSecret: map["clientSecret"].ToString(),
-            endpoint: map["endpoint"].ToString()
+            endpoint: map["endpoint"].ToString(),
+            prompt: map.TryGetValue("prompt", out var arrayRaw5Added) && arrayRaw5Added != null
+                                ? arrayRaw5Added.ConvertToList<Appwrite.Enums.OAuth2Auth0Prompt>()
+                                : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -55,6 +63,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "clientId", ClientId },
             { "clientSecret", ClientSecret },
+            { "prompt", Prompt?.Select(it => it.Value).ToList() },
             { "endpoint", Endpoint }
         };
     }

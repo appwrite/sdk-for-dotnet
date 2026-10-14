@@ -10,7 +10,8 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-RuntimeList result = await functions.ListRuntimes();
-
+RuntimeList result = await functions.ListRuntimes(
+    total: false // optional
+);
 
 ```

@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("clientSecret")]
         public string ClientSecret { get; private set; }
 
+        [JsonPropertyName("prompt")]
+        public List<Appwrite.Enums.OAuth2OktaPrompt>? Prompt { get; private set; }
+
         [JsonPropertyName("domain")]
         public string Domain { get; private set; }
 
@@ -35,13 +38,15 @@ namespace Appwrite.Models
             string clientId,
             string clientSecret,
             string domain,
-            string authorizationServerId
+            string authorizationServerId,
+            List<Appwrite.Enums.OAuth2OktaPrompt>? prompt = null
         )
         {
             Id = id;
             Enabled = enabled;
             ClientId = clientId;
             ClientSecret = clientSecret;
+            Prompt = prompt;
             Domain = domain;
             AuthorizationServerId = authorizationServerId;
         }
@@ -52,7 +57,10 @@ namespace Appwrite.Models
             clientId: map["clientId"].ToString(),
             clientSecret: map["clientSecret"].ToString(),
             domain: map["domain"].ToString(),
-            authorizationServerId: map["authorizationServerId"].ToString()
+            authorizationServerId: map["authorizationServerId"].ToString(),
+            prompt: map.TryGetValue("prompt", out var arrayRaw5Added) && arrayRaw5Added != null
+                                ? arrayRaw5Added.ConvertToList<Appwrite.Enums.OAuth2OktaPrompt>()
+                                : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -61,6 +69,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "clientId", ClientId },
             { "clientSecret", ClientSecret },
+            { "prompt", Prompt?.Select(it => it.Value).ToList() },
             { "domain", Domain },
             { "authorizationServerId", AuthorizationServerId }
         };

@@ -11,7 +11,8 @@ Client client = new Client()
 DocumentsDB documentsDB = new DocumentsDB(client);
 
 TransactionList result = await documentsDB.ListTransactions(
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

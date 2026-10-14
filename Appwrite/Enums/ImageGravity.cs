@@ -11,6 +11,7 @@ namespace Appwrite.Enums
             Value = value;
         }
 
+        public static ImageGravity Auto => new ImageGravity("auto");
         public static ImageGravity Center => new ImageGravity("center");
         public static ImageGravity TopLeft => new ImageGravity("top-left");
         public static ImageGravity Top => new ImageGravity("top");
