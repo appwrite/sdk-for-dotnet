@@ -4,7 +4,7 @@ using Appwrite.Models;
 using Appwrite.Services;
 
 Client client = new Client()
-    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
@@ -15,7 +15,9 @@ OAuth2Apple result = await project.UpdateOAuth2Apple(
     keyId: "<KEY_ID>", // optional
     teamId: "<TEAM_ID>", // optional
     p8File: "<P8_FILE>", // optional
-    enabled: false // optional
+    enabled: false, // optional
+    nativeClientIds: new List<string>(), // optional
+    nativeEnabled: false // optional
 );
 
 ```

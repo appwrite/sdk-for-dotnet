@@ -41,6 +41,9 @@ namespace Appwrite.Models
         [JsonPropertyName("providerRefreshToken")]
         public string ProviderRefreshToken { get; private set; }
 
+        [JsonPropertyName("providerIdToken")]
+        public string? ProviderIdToken { get; private set; }
+
         public Identity(
             string id,
             string createdAt,
@@ -51,7 +54,8 @@ namespace Appwrite.Models
             string providerEmail,
             string providerAccessToken,
             string providerAccessTokenExpiry,
-            string providerRefreshToken
+            string providerRefreshToken,
+            string? providerIdToken = null
         )
         {
             Id = id;
@@ -64,6 +68,7 @@ namespace Appwrite.Models
             ProviderAccessToken = providerAccessToken;
             ProviderAccessTokenExpiry = providerAccessTokenExpiry;
             ProviderRefreshToken = providerRefreshToken;
+            ProviderIdToken = providerIdToken;
         }
 
         public static Identity From(Dictionary<string, object> map) => new Identity(
@@ -76,7 +81,8 @@ namespace Appwrite.Models
             providerEmail: map["providerEmail"].ToString(),
             providerAccessToken: map["providerAccessToken"].ToString(),
             providerAccessTokenExpiry: map["providerAccessTokenExpiry"].ToString(),
-            providerRefreshToken: map["providerRefreshToken"].ToString()
+            providerRefreshToken: map["providerRefreshToken"].ToString(),
+            providerIdToken: map.TryGetValue("providerIdToken", out var providerIdToken) ? providerIdToken?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -90,7 +96,8 @@ namespace Appwrite.Models
             { "providerEmail", ProviderEmail },
             { "providerAccessToken", ProviderAccessToken },
             { "providerAccessTokenExpiry", ProviderAccessTokenExpiry },
-            { "providerRefreshToken", ProviderRefreshToken }
+            { "providerRefreshToken", ProviderRefreshToken },
+            { "providerIdToken", ProviderIdToken }
         };
     }
 }

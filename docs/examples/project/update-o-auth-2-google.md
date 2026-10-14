@@ -5,7 +5,7 @@ using Appwrite.Models;
 using Appwrite.Services;
 
 Client client = new Client()
-    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
@@ -15,7 +15,9 @@ OAuth2Google result = await project.UpdateOAuth2Google(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     prompt: new List&lt;ProjectOAuth2GooglePrompt&gt; { ProjectOAuth2GooglePrompt.None }, // optional
-    enabled: false // optional
+    enabled: false, // optional
+    nativeClientIds: new List<string>(), // optional
+    nativeEnabled: false // optional
 );
 
 ```

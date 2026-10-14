@@ -1,0 +1,206 @@
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Appwrite.Enums;
+using Appwrite.Extensions;
+
+namespace Appwrite.Models
+{
+    public class Account
+    {
+        [JsonPropertyName("$id")]
+        public string Id { get; private set; }
+
+        [JsonPropertyName("$createdAt")]
+        public string CreatedAt { get; private set; }
+
+        [JsonPropertyName("$updatedAt")]
+        public string UpdatedAt { get; private set; }
+
+        [JsonPropertyName("name")]
+        public string Name { get; private set; }
+
+        [JsonPropertyName("registration")]
+        public string Registration { get; private set; }
+
+        [JsonPropertyName("status")]
+        public bool Status { get; private set; }
+
+        [JsonPropertyName("labels")]
+        public List<string> Labels { get; private set; }
+
+        [JsonPropertyName("passwordUpdate")]
+        public string PasswordUpdate { get; private set; }
+
+        [JsonPropertyName("email")]
+        public string Email { get; private set; }
+
+        [JsonPropertyName("phone")]
+        public string Phone { get; private set; }
+
+        [JsonPropertyName("emailVerification")]
+        public bool EmailVerification { get; private set; }
+
+        [JsonPropertyName("emailCanonical")]
+        public string? EmailCanonical { get; private set; }
+
+        [JsonPropertyName("emailIsFree")]
+        public bool? EmailIsFree { get; private set; }
+
+        [JsonPropertyName("emailIsDisposable")]
+        public bool? EmailIsDisposable { get; private set; }
+
+        [JsonPropertyName("emailIsCorporate")]
+        public bool? EmailIsCorporate { get; private set; }
+
+        [JsonPropertyName("emailIsCanonical")]
+        public bool? EmailIsCanonical { get; private set; }
+
+        [JsonPropertyName("passwordPwned")]
+        public bool? PasswordPwned { get; private set; }
+
+        [JsonPropertyName("phoneVerification")]
+        public bool PhoneVerification { get; private set; }
+
+        [JsonPropertyName("mfa")]
+        public bool Mfa { get; private set; }
+
+        [JsonPropertyName("prefs")]
+        public Preferences Prefs { get; private set; }
+
+        [JsonPropertyName("targets")]
+        public List<Target> Targets { get; private set; }
+
+        [JsonPropertyName("accessedAt")]
+        public string AccessedAt { get; private set; }
+
+        [JsonPropertyName("impersonator")]
+        public bool? Impersonator { get; private set; }
+
+        [JsonPropertyName("impersonatorUserId")]
+        public string? ImpersonatorUserId { get; private set; }
+
+        public Account(
+            string id,
+            string createdAt,
+            string updatedAt,
+            string name,
+            string registration,
+            bool status,
+            List<string> labels,
+            string passwordUpdate,
+            string email,
+            string phone,
+            bool emailVerification,
+            string? emailCanonical,
+            bool? emailIsFree,
+            bool? emailIsDisposable,
+            bool? emailIsCorporate,
+            bool? emailIsCanonical,
+            bool? passwordPwned,
+            bool phoneVerification,
+            bool mfa,
+            Preferences prefs,
+            List<Target> targets,
+            string accessedAt,
+            bool? impersonator,
+            string? impersonatorUserId
+        )
+        {
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Name = name;
+            Registration = registration;
+            Status = status;
+            Labels = labels;
+            PasswordUpdate = passwordUpdate;
+            Email = email;
+            Phone = phone;
+            EmailVerification = emailVerification;
+            EmailCanonical = emailCanonical;
+            EmailIsFree = emailIsFree;
+            EmailIsDisposable = emailIsDisposable;
+            EmailIsCorporate = emailIsCorporate;
+            EmailIsCanonical = emailIsCanonical;
+            PasswordPwned = passwordPwned;
+            PhoneVerification = phoneVerification;
+            Mfa = mfa;
+            Prefs = prefs;
+            Targets = targets;
+            AccessedAt = accessedAt;
+            Impersonator = impersonator;
+            ImpersonatorUserId = impersonatorUserId;
+        }
+
+        public static Account From(Dictionary<string, object> map) => new Account(
+            id: map["$id"].ToString(),
+            createdAt: map["$createdAt"].ToString(),
+            updatedAt: map["$updatedAt"].ToString(),
+            name: map["name"].ToString(),
+            registration: map["registration"].ToString(),
+            status: (bool)map["status"],
+            labels: map["labels"].ConvertToList<string>(),
+            passwordUpdate: map["passwordUpdate"].ToString(),
+            email: map["email"].ToString(),
+            phone: map["phone"].ToString(),
+            emailVerification: (bool)map["emailVerification"],
+            emailCanonical: map.TryGetValue("emailCanonical", out var emailCanonical) ? emailCanonical?.ToString() : null,
+            emailIsFree: map.TryGetValue("emailIsFree", out var boolRaw13) && boolRaw13 != null
+                                        ? (bool?)boolRaw13
+                                        : null,
+            emailIsDisposable: map.TryGetValue("emailIsDisposable", out var boolRaw14) && boolRaw14 != null
+                                        ? (bool?)boolRaw14
+                                        : null,
+            emailIsCorporate: map.TryGetValue("emailIsCorporate", out var boolRaw15) && boolRaw15 != null
+                                        ? (bool?)boolRaw15
+                                        : null,
+            emailIsCanonical: map.TryGetValue("emailIsCanonical", out var boolRaw16) && boolRaw16 != null
+                                        ? (bool?)boolRaw16
+                                        : null,
+            passwordPwned: map.TryGetValue("passwordPwned", out var boolRaw17) && boolRaw17 != null
+                                        ? (bool?)boolRaw17
+                                        : null,
+            phoneVerification: (bool)map["phoneVerification"],
+            mfa: (bool)map["mfa"],
+            prefs: Appwrite.Models.Preferences.From(map: map["prefs"] is JsonElement jsonObj20 ? jsonObj20.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
+            targets: map["targets"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Target.From(map: it)).ToList(),
+            accessedAt: map["accessedAt"].ToString(),
+            impersonator: map.TryGetValue("impersonator", out var boolRaw23) && boolRaw23 != null
+                                        ? (bool?)boolRaw23
+                                        : null,
+            impersonatorUserId: map.TryGetValue("impersonatorUserId", out var impersonatorUserId) ? impersonatorUserId?.ToString() : null
+        );
+
+        public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
+        {
+            { "$id", Id },
+            { "$createdAt", CreatedAt },
+            { "$updatedAt", UpdatedAt },
+            { "name", Name },
+            { "registration", Registration },
+            { "status", Status },
+            { "labels", Labels },
+            { "passwordUpdate", PasswordUpdate },
+            { "email", Email },
+            { "phone", Phone },
+            { "emailVerification", EmailVerification },
+            { "emailCanonical", EmailCanonical },
+            { "emailIsFree", EmailIsFree },
+            { "emailIsDisposable", EmailIsDisposable },
+            { "emailIsCorporate", EmailIsCorporate },
+            { "emailIsCanonical", EmailIsCanonical },
+            { "passwordPwned", PasswordPwned },
+            { "phoneVerification", PhoneVerification },
+            { "mfa", Mfa },
+            { "prefs", Prefs?.ToMap() },
+            { "targets", Targets?.Select(it => it.ToMap()).ToList() },
+            { "accessedAt", AccessedAt },
+            { "impersonator", Impersonator },
+            { "impersonatorUserId", ImpersonatorUserId }
+        };
+    }
+}

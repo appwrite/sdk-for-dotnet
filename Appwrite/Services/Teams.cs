@@ -437,7 +437,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Membership> CreateMembership(string teamId, List<string> roles, string? email = null, string? userId = null, string? phone = null, string? url = null, string? name = null)
+        public Task<Models.Membership> CreateMembership(string teamId, List<string> roles, string? email = null, string? userId = null, string? phone = null, string? url = null, string? name = null, string? membershipId = null)
         {
             var apiPath = "/teams/{teamId}/memberships"
                 .Replace("{teamId}", teamId);
@@ -449,7 +449,8 @@ namespace Appwrite.Services
                 { "phone", phone },
                 { "roles", roles },
                 { "url", url },
-                { "name", name }
+                { "name", name },
+                { "membershipId", membershipId }
             };
 
             var apiHeaders = new Dictionary<string, string>()

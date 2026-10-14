@@ -1,0 +1,20 @@
+```csharp
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
+    .SetKey("<YOUR_API_KEY>"); // Your secret API key
+
+Oauth2 oauth2 = new Oauth2(client);
+
+Appwrite.Models.Oauth2Introspection result = await oauth2.Introspect(
+    token: "<TOKEN>",
+    tokenTypeHint: "access_token", // optional
+    clientId: "<CLIENT_ID>", // optional
+    clientSecret: "<CLIENT_SECRET>" // optional
+);
+
+```

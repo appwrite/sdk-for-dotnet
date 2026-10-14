@@ -29,13 +29,17 @@ namespace Appwrite.Models
         [JsonPropertyName("applicationId")]
         public string ApplicationId { get; private set; }
 
+        [JsonPropertyName("fingerprints")]
+        public List<string>? Fingerprints { get; private set; }
+
         public PlatformAndroid(
             string id,
             string createdAt,
             string updatedAt,
             string name,
             Appwrite.Enums.PlatformType type,
-            string applicationId
+            string applicationId,
+            List<string>? fingerprints = null
         )
         {
             Id = id;
@@ -44,6 +48,7 @@ namespace Appwrite.Models
             Name = name;
             Type = type;
             ApplicationId = applicationId;
+            Fingerprints = fingerprints;
         }
 
         public static PlatformAndroid From(Dictionary<string, object> map) => new PlatformAndroid(
@@ -52,7 +57,10 @@ namespace Appwrite.Models
             updatedAt: map["$updatedAt"].ToString(),
             name: map["name"].ToString(),
             type: new Appwrite.Enums.PlatformType(map["type"].ToString()!),
-            applicationId: map["applicationId"].ToString()
+            applicationId: map["applicationId"].ToString(),
+            fingerprints: map.TryGetValue("fingerprints", out var arrayRaw7Added) && arrayRaw7Added != null
+                                ? arrayRaw7Added.ConvertToList<string>()
+                                : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -62,7 +70,8 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "name", Name },
             { "type", Type.Value },
-            { "applicationId", ApplicationId }
+            { "applicationId", ApplicationId },
+            { "fingerprints", Fingerprints }
         };
     }
 }

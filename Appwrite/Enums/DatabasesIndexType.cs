@@ -15,5 +15,6 @@ namespace Appwrite.Enums
         public static DatabasesIndexType Fulltext => new DatabasesIndexType("fulltext");
         public static DatabasesIndexType Unique => new DatabasesIndexType("unique");
         public static DatabasesIndexType Spatial => new DatabasesIndexType("spatial");
+        public static DatabasesIndexType Trigram => new DatabasesIndexType("trigram");
     }
 }

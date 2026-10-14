@@ -272,6 +272,47 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Introspect an OAuth2 access token or refresh token. Authenticate with an
+        /// API key holding the `oauth2.introspect` scope to introspect any token in
+        /// the project, or with the client credentials of the app the token was issued
+        /// to.
+        /// </para>
+        /// </summary>
+        public Task<Models.Oauth2Introspection> Introspect(string token, string? tokenTypeHint = null, string? clientId = null, string? clientSecret = null)
+        {
+            var apiPath = "/oauth2/{project_id}/introspect"
+                .Replace("{project_id}", _client.GetConfig("project"));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "token", token },
+                { "token_type_hint", tokenTypeHint },
+                { "client_id", clientId },
+                { "client_secret", clientSecret }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Oauth2Introspection Convert(Dictionary<string, object> it)
+            {
+                return Models.Oauth2Introspection.From(map: it);
+            }
+
+            return _client.Call<Models.Oauth2Introspection>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// List the organizations the OAuth2 access token can access. Resolves the
         /// token's `organization` authorization details, expanding the `*` wildcard
         /// into the concrete set of organizations the user can see.

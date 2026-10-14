@@ -101,6 +101,7 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes WebhooksWrite => new ProjectKeyScopes("webhooks.write");
         public static ProjectKeyScopes LocaleRead => new ProjectKeyScopes("locale.read");
         public static ProjectKeyScopes AvatarsRead => new ProjectKeyScopes("avatars.read");
+        public static ProjectKeyScopes AvatarsWrite => new ProjectKeyScopes("avatars.write");
         public static ProjectKeyScopes HealthRead => new ProjectKeyScopes("health.read");
         public static ProjectKeyScopes AssistantRead => new ProjectKeyScopes("assistant.read");
         public static ProjectKeyScopes MigrationsRead => new ProjectKeyScopes("migrations.read");
@@ -115,6 +116,7 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes ReportsWrite => new ProjectKeyScopes("reports.write");
         public static ProjectKeyScopes PresencesRead => new ProjectKeyScopes("presences.read");
         public static ProjectKeyScopes PresencesWrite => new ProjectKeyScopes("presences.write");
+        public static ProjectKeyScopes DedicatedDatabasesExecute => new ProjectKeyScopes("dedicatedDatabases.execute");
         public static ProjectKeyScopes BackupsPoliciesRead => new ProjectKeyScopes("backups.policies.read");
         public static ProjectKeyScopes BackupsPoliciesWrite => new ProjectKeyScopes("backups.policies.write");
         public static ProjectKeyScopes ArchivesRead => new ProjectKeyScopes("archives.read");
@@ -132,5 +134,7 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes Oauth2Read => new ProjectKeyScopes("oauth2.read");
         public static ProjectKeyScopes Oauth2Write => new ProjectKeyScopes("oauth2.write");
         public static ProjectKeyScopes Oauth2Introspect => new ProjectKeyScopes("oauth2.introspect");
+        public static ProjectKeyScopes AnalyticsRead => new ProjectKeyScopes("analytics.read");
+        public static ProjectKeyScopes AnalyticsWrite => new ProjectKeyScopes("analytics.write");
     }
 }

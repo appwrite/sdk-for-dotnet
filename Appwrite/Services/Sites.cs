@@ -113,12 +113,13 @@ namespace Appwrite.Services
         /// instance.
         /// </para>
         /// </summary>
-        public Task<Models.FrameworkList> ListFrameworks()
+        public Task<Models.FrameworkList> ListFrameworks(bool? total = null)
         {
             var apiPath = "/sites/frameworks";
 
             var apiParameters = new Dictionary<string, object?>()
             {
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -146,13 +147,14 @@ namespace Appwrite.Services
         /// List allowed site specifications for this instance.
         /// </para>
         /// </summary>
-        public Task<Models.SpecificationList> ListSpecifications(string? type = null)
+        public Task<Models.SpecificationList> ListSpecifications(string? type = null, bool? total = null)
         {
             var apiPath = "/sites/specifications";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "type", type }
+                { "type", type },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

@@ -130,13 +130,14 @@ namespace Appwrite.Services
         /// List transactions across all databases.
         /// </para>
         /// </summary>
-        public Task<Models.TransactionList> ListTransactions(List<string>? queries = null)
+        public Task<Models.TransactionList> ListTransactions(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/tablesdb/transactions";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

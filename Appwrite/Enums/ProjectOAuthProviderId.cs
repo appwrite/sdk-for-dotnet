@@ -33,6 +33,7 @@ namespace Appwrite.Enums
         public static ProjectOAuthProviderId Gitlab => new ProjectOAuthProviderId("gitlab");
         public static ProjectOAuthProviderId Google => new ProjectOAuthProviderId("google");
         public static ProjectOAuthProviderId Huggingface => new ProjectOAuthProviderId("huggingface");
+        public static ProjectOAuthProviderId Kakao => new ProjectOAuthProviderId("kakao");
         public static ProjectOAuthProviderId Keycloak => new ProjectOAuthProviderId("keycloak");
         public static ProjectOAuthProviderId Kick => new ProjectOAuthProviderId("kick");
         public static ProjectOAuthProviderId Linkedin => new ProjectOAuthProviderId("linkedin");
@@ -48,9 +49,11 @@ namespace Appwrite.Enums
         public static ProjectOAuthProviderId Slack => new ProjectOAuthProviderId("slack");
         public static ProjectOAuthProviderId Spotify => new ProjectOAuthProviderId("spotify");
         public static ProjectOAuthProviderId Stripe => new ProjectOAuthProviderId("stripe");
+        public static ProjectOAuthProviderId Tiktok => new ProjectOAuthProviderId("tiktok");
         public static ProjectOAuthProviderId Tradeshift => new ProjectOAuthProviderId("tradeshift");
         public static ProjectOAuthProviderId TradeshiftBox => new ProjectOAuthProviderId("tradeshiftBox");
         public static ProjectOAuthProviderId Twitch => new ProjectOAuthProviderId("twitch");
+        public static ProjectOAuthProviderId Webflow => new ProjectOAuthProviderId("webflow");
         public static ProjectOAuthProviderId Wordpress => new ProjectOAuthProviderId("wordpress");
         public static ProjectOAuthProviderId X => new ProjectOAuthProviderId("x");
         public static ProjectOAuthProviderId Yahoo => new ProjectOAuthProviderId("yahoo");

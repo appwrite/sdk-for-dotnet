@@ -89,6 +89,15 @@ namespace Appwrite.Models
         [JsonPropertyName("storage")]
         public long Storage { get; private set; }
 
+        [JsonPropertyName("storageStatus")]
+        public string? StorageStatus { get; private set; }
+
+        [JsonPropertyName("storageTargetGb")]
+        public long? StorageTargetGb { get; private set; }
+
+        [JsonPropertyName("storageResizeStartedAt")]
+        public string? StorageResizeStartedAt { get; private set; }
+
         [JsonPropertyName("storageClass")]
         public string StorageClass { get; private set; }
 
@@ -207,7 +216,10 @@ namespace Appwrite.Models
             long sqlApiMaxRows,
             long sqlApiMaxBytes,
             long sqlApiTimeoutSeconds,
-            string error
+            string error,
+            string? storageStatus = null,
+            long? storageTargetGb = null,
+            string? storageResizeStartedAt = null
         )
         {
             Id = id;
@@ -236,6 +248,9 @@ namespace Appwrite.Models
             Cpu = cpu;
             Memory = memory;
             Storage = storage;
+            StorageStatus = storageStatus;
+            StorageTargetGb = storageTargetGb;
+            StorageResizeStartedAt = storageResizeStartedAt;
             StorageClass = storageClass;
             StorageMaxGb = storageMaxGb;
             NodePool = nodePool;
@@ -310,7 +325,12 @@ namespace Appwrite.Models
             sqlApiMaxRows: Convert.ToInt64(map["sqlApiMaxRows"]),
             sqlApiMaxBytes: Convert.ToInt64(map["sqlApiMaxBytes"]),
             sqlApiTimeoutSeconds: Convert.ToInt64(map["sqlApiTimeoutSeconds"]),
-            error: map["error"].ToString()
+            error: map["error"].ToString(),
+            storageStatus: map.TryGetValue("storageStatus", out var storageStatus) ? storageStatus?.ToString() : null,
+            storageTargetGb: map.TryGetValue("storageTargetGb", out var numberRaw28Added) && numberRaw28Added != null
+                                    ? Convert.ToInt64(numberRaw28Added)
+                                    : null,
+            storageResizeStartedAt: map.TryGetValue("storageResizeStartedAt", out var storageResizeStartedAt) ? storageResizeStartedAt?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -341,6 +361,9 @@ namespace Appwrite.Models
             { "cpu", Cpu },
             { "memory", Memory },
             { "storage", Storage },
+            { "storageStatus", StorageStatus },
+            { "storageTargetGb", StorageTargetGb },
+            { "storageResizeStartedAt", StorageResizeStartedAt },
             { "storageClass", StorageClass },
             { "storageMaxGb", StorageMaxGb },
             { "nodePool", NodePool },

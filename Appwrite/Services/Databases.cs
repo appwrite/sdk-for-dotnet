@@ -95,13 +95,14 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listTransactions` instead.")]
-        public Task<Models.TransactionList> ListTransactions(List<string>? queries = null)
+        public Task<Models.TransactionList> ListTransactions(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/databases/transactions";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
