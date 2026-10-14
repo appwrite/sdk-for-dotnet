@@ -33,7 +33,7 @@ namespace Appwrite.Models
 
         public static DomainTransferStatus From(Dictionary<string, object> map) => new DomainTransferStatus(
             status: new Appwrite.Enums.DomainTransferStatusEnum(map["status"].ToString()!),
-            reason: map["reason"].ToString(),
+            reason: map.TryGetValue("reason", out var reason) ? reason?.ToString() ?? "" : "",
             timestamp: map["timestamp"].ToString()
         );
 
