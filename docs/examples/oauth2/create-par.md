@@ -11,17 +11,17 @@ Client client = new Client()
 Oauth2 oauth2 = new Oauth2(client);
 
 Oauth2PAR result = await oauth2.CreatePAR(
-    client_id: "<CLIENT_ID>",
-    redirect_uri: "https://example.com",
-    response_type: "code",
+    clientId: "<CLIENT_ID>",
+    redirectUri: "https://example.com",
+    responseType: "code",
     scope: "<SCOPE>", // optional
     state: "<STATE>", // optional
     nonce: "<NONCE>", // optional
-    code_challenge: "<CODE_CHALLENGE>", // optional
-    code_challenge_method: "s256", // optional
+    codeChallenge: "<CODE_CHALLENGE>", // optional
+    codeChallengeMethod: "s256", // optional
     prompt: "<PROMPT>", // optional
-    max_age: 0, // optional
-    authorization_details: "<AUTHORIZATION_DETAILS>", // optional
+    maxAge: 0, // optional
+    authorizationDetails: "<AUTHORIZATION_DETAILS>", // optional
     resource: "", // optional
     audience: "<AUDIENCE>" // optional
 );

@@ -11,8 +11,8 @@ Client client = new Client()
 Oauth2 oauth2 = new Oauth2(client);
 
 Oauth2Approve result = await oauth2.Approve(
-    grant_id: "<GRANT_ID>",
-    authorization_details: "<AUTHORIZATION_DETAILS>", // optional
+    grantId: "<GRANT_ID>",
+    authorizationDetails: "<AUTHORIZATION_DETAILS>", // optional
     scope: "<SCOPE>" // optional
 );
 

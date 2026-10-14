@@ -11,7 +11,7 @@ Client client = new Client()
 Oauth2 oauth2 = new Oauth2(client);
 
 Oauth2Grant result = await oauth2.CreateGrant(
-    user_code: "<USER_CODE>"
+    userCode: "<USER_CODE>"
 );
 
 ```

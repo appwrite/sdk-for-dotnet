@@ -12,9 +12,9 @@ Oauth2 oauth2 = new Oauth2(client);
 
 Appwrite.Models.Oauth2Introspection result = await oauth2.Introspect(
     token: "<TOKEN>",
-    token_type_hint: "access_token", // optional
-    client_id: "<CLIENT_ID>", // optional
-    client_secret: "<CLIENT_SECRET>" // optional
+    tokenTypeHint: "access_token", // optional
+    clientId: "<CLIENT_ID>", // optional
+    clientSecret: "<CLIENT_SECRET>" // optional
 );
 
 ```
