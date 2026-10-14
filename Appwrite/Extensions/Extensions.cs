@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using Appwrite.Enums;
 
 namespace Appwrite.Extensions
 {
@@ -57,6 +58,7 @@ namespace Appwrite.Extensions
                     null => default!,
                     T typedItem => typedItem,
                     JsonElement jsonItem => jsonItem.Deserialize<T>(Client.DeserializerOptions)!,
+                    string text when typeof(IEnum).IsAssignableFrom(typeof(T)) => (T)Activator.CreateInstance(typeof(T), text)!,
                     _ => (T)Convert.ChangeType(item, typeof(T))
                 })
                 .ToList();
