@@ -19,6 +19,7 @@
 * Added: optional `total` on the locale, transaction, runtime, specification and framework lists
 * Added: `dart-3.13` and `flutter-3.47` runtimes, the `jaspr` framework, the `trigram` index type, `auto` image gravity, the `dedicatedDatabase` proxy rule resource type, OTP email templates and new key scopes
 * Added: optional fields on `BillingPlan`, `DedicatedDatabase`, `DedicatedDatabaseSpecification`, `Project` and `Topic`, and `free` and `start` in `BillingPlanGroup`
+* Fixed: OAuth2 provider models with a `prompt` list, such as `OAuth2Google`, no longer throw `InvalidCastException`
 
 ## 8.3.1
 
