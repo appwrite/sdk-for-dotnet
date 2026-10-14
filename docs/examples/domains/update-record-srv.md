@@ -14,7 +14,7 @@ Appwrite.Models.DnsRecord result = await domains.UpdateRecordSRV(
     domainId: "<DOMAIN_ID>",
     recordId: "<RECORD_ID>",
     name: "",
-    value: "<VALUE>",
+    @value: "<VALUE>",
     ttl: 1,
     priority: 0,
     weight: 0,

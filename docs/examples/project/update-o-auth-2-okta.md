@@ -11,7 +11,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Okta result = await project.UpdateOAuth2Okta(
+Appwrite.Models.OAuth2Okta result = await project.UpdateOAuth2Okta(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     domain: "example.com", // optional

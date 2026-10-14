@@ -11,7 +11,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-EmailTemplate result = await project.UpdateEmailTemplate(
+Appwrite.Models.EmailTemplate result = await project.UpdateEmailTemplate(
     templateId: ProjectEmailTemplateId.Verification,
     locale: ProjectEmailTemplateLocale.Af, // optional
     subject: "<SUBJECT>", // optional

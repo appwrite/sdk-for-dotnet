@@ -10,7 +10,7 @@ Client client = new Client()
 
 Teams teams = new Teams(client);
 
-AppInstallationList result = await teams.ListInstallations(
+Appwrite.Models.AppInstallationList result = await teams.ListInstallations(
     teamId: "<TEAM_ID>",
     queries: new List<string>(), // optional
     total: false // optional

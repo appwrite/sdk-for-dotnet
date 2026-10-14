@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseSpecificationList result = await mysql.ListSpecifications();
+Appwrite.Models.DedicatedDatabaseSpecificationList result = await mysql.ListSpecifications();
 
 
 ```

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Activities activities = new Activities(client);
 
-ActivityEvent result = await activities.GetEvent(
+Appwrite.Models.ActivityEvent result = await activities.GetEvent(
     eventId: "<EVENT_ID>"
 );
 

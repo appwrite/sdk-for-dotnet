@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static Headers From(Dictionary<string, object> map) => new Headers(
-            name: map["name"].ToString(),
-            @value: map["value"].ToString()
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            @value: (map.ContainsKey("value") ? map["value"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

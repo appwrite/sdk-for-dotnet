@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateMembershipPrivacyPolicy(
+Appwrite.Models.Project result = await project.UpdateMembershipPrivacyPolicy(
     userId: false, // optional
     userEmail: false, // optional
     userPhone: false, // optional

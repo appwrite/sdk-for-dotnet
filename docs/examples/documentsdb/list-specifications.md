@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-DedicatedDatabaseSpecificationList result = await documentsDB.ListSpecifications();
+Appwrite.Models.DedicatedDatabaseSpecificationList result = await documentsDB.ListSpecifications();
 
 
 ```

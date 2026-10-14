@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabasePITRWindows result = await mysql.GetPitr(
+Appwrite.Models.DedicatedDatabasePITRWindows result = await mysql.GetPitr(
     databaseId: "<DATABASE_ID>"
 );
 

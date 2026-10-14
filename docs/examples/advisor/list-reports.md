@@ -10,7 +10,7 @@ Client client = new Client()
 
 Advisor advisor = new Advisor(client);
 
-ReportList result = await advisor.ListReports(
+Appwrite.Models.ReportList result = await advisor.ListReports(
     queries: new List<string>(), // optional
     total: false // optional
 );

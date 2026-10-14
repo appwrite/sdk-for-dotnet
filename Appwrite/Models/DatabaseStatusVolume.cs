@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static DatabaseStatusVolume From(Dictionary<string, object> map) => new DatabaseStatusVolume(
-            @path: map["path"].ToString(),
-            usedPercent: map["usedPercent"].ToString(),
-            available: map["available"].ToString(),
-            mounted: (bool)map["mounted"]
+            @path: (map.ContainsKey("path") ? map["path"] : "").ToString(),
+            usedPercent: (map.ContainsKey("usedPercent") ? map["usedPercent"] : "0%").ToString(),
+            available: (map.ContainsKey("available") ? map["available"] : "0GB").ToString(),
+            mounted: (bool)(map.ContainsKey("mounted") ? map["mounted"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

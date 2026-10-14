@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Disqus From(Dictionary<string, object> map) => new OAuth2Disqus(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            publicKey: map["publicKey"].ToString(),
-            secretKey: map["secretKey"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            publicKey: (map.ContainsKey("publicKey") ? map["publicKey"] : "").ToString(),
+            secretKey: (map.ContainsKey("secretKey") ? map["secretKey"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

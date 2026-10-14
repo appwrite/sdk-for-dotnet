@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateUserLimitPolicy(
+Appwrite.Models.Project result = await project.UpdateUserLimitPolicy(
     total: 0
 );
 

@@ -58,6 +58,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Report> GetReport(string reportId)
         {
+            if (reportId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"reportId\"");
+            }
+
             var apiPath = "/reports/{reportId}"
                 .Replace("{reportId}", reportId);
 
@@ -94,6 +99,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteReport(string reportId)
         {
+            if (reportId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"reportId\"");
+            }
+
             var apiPath = "/reports/{reportId}"
                 .Replace("{reportId}", reportId);
 
@@ -104,7 +114,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -125,6 +136,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.InsightList> ListInsights(string reportId, List<string>? queries = null, bool? total = null)
         {
+            if (reportId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"reportId\"");
+            }
+
             var apiPath = "/reports/{reportId}/insights"
                 .Replace("{reportId}", reportId);
 
@@ -162,6 +178,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Insight> GetInsight(string reportId, string insightId)
         {
+            if (reportId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"reportId\"");
+            }
+
+            if (insightId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"insightId\"");
+            }
+
             var apiPath = "/reports/{reportId}/insights/{insightId}"
                 .Replace("{reportId}", reportId)
                 .Replace("{insightId}", insightId);

@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnDatetime result = await tablesDB.UpdateDatetimeColumn(
+Appwrite.Models.ColumnDatetime result = await tablesDB.UpdateDatetimeColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: "2020-10-15T06:38:00.000+00:00",
+    @default: "2020-10-15T06:38:00.000+00:00",
     newKey: "<NEW_KEY>" // optional
 );
 

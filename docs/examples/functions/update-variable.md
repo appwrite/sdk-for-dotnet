@@ -10,11 +10,11 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-Variable result = await functions.UpdateVariable(
+Appwrite.Models.Variable result = await functions.UpdateVariable(
     functionId: "<FUNCTION_ID>",
     variableId: "<VARIABLE_ID>",
     key: "<KEY>", // optional
-    value: "<VALUE>", // optional
+    @value: "<VALUE>", // optional
     secret: false // optional
 );
 

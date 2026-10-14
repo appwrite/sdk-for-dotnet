@@ -13,7 +13,7 @@ Domains domains = new Domains(client);
 Appwrite.Models.DnsRecord result = await domains.CreateRecordAAAA(
     domainId: "<DOMAIN_ID>",
     name: "",
-    value: "",
+    @value: "",
     ttl: 1,
     comment: "<COMMENT>" // optional
 );

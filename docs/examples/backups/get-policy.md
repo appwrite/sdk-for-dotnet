@@ -10,7 +10,7 @@ Client client = new Client()
 
 Backups backups = new Backups(client);
 
-BackupPolicy result = await backups.GetPolicy(
+Appwrite.Models.BackupPolicy result = await backups.GetPolicy(
     policyId: "<POLICY_ID>"
 );
 

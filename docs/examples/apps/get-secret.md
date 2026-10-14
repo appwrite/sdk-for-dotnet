@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-AppSecret result = await apps.GetSecret(
+Appwrite.Models.AppSecret result = await apps.GetSecret(
     appId: "<APP_ID>",
     secretId: "<SECRET_ID>"
 );

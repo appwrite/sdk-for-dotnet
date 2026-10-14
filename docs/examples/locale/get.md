@@ -10,7 +10,7 @@ Client client = new Client()
 
 Locale locale = new Locale(client);
 
-Locale result = await locale.Get();
+Appwrite.Models.Locale result = await locale.Get();
 
 
 ```

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-PlatformAndroid result = await project.CreateAndroidPlatform(
+Appwrite.Models.PlatformAndroid result = await project.CreateAndroidPlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     applicationId: "<APPLICATION_ID>",

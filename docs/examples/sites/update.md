@@ -11,7 +11,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-Site result = await sites.Update(
+Appwrite.Models.Site result = await sites.Update(
     siteId: "<SITE_ID>",
     name: "<NAME>",
     framework: Framework.Analog,

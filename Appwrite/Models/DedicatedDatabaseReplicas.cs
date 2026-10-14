@@ -57,16 +57,16 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseReplicas From(Dictionary<string, object> map) => new DedicatedDatabaseReplicas(
-            replicas: Convert.ToInt64(map["replicas"]),
-            syncMode: map["syncMode"].ToString(),
+            replicas: Convert.ToInt64((map.ContainsKey("replicas") ? map["replicas"] : 0)),
+            syncMode: (map.ContainsKey("syncMode") ? map["syncMode"] : "async").ToString(),
             effectiveSyncMode: map.TryGetValue("effectiveSyncMode", out var effectiveSyncMode) ? effectiveSyncMode?.ToString() : null,
-            syncDegraded: (bool)map["syncDegraded"],
-            syncAcknowledgements: Convert.ToInt64(map["syncAcknowledgements"]),
-            syncStandbyCount: Convert.ToInt64(map["syncStandbyCount"]),
+            syncDegraded: (bool)(map.ContainsKey("syncDegraded") ? map["syncDegraded"] : false),
+            syncAcknowledgements: Convert.ToInt64((map.ContainsKey("syncAcknowledgements") ? map["syncAcknowledgements"] : 0)),
+            syncStandbyCount: Convert.ToInt64((map.ContainsKey("syncStandbyCount") ? map["syncStandbyCount"] : 0)),
             syncStateConfirmed: map.TryGetValue("syncStateConfirmed", out var boolRaw7) && boolRaw7 != null
                                         ? (bool?)boolRaw7
                                         : null,
-            members: map["members"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabaseMember.From(map: it)).ToList()
+            members: (map.ContainsKey("members") ? map["members"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabaseMember.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

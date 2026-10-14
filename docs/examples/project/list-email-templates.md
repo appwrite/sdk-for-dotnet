@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-EmailTemplateList result = await project.ListEmailTemplates(
+Appwrite.Models.EmailTemplateList result = await project.ListEmailTemplates(
     queries: new List<string>(), // optional
     total: false // optional
 );

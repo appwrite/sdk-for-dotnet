@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseBackup result = await postgresql.GetBackup(
+Appwrite.Models.DedicatedDatabaseBackup result = await postgresql.GetBackup(
     databaseId: "<DATABASE_ID>",
     backupId: "<BACKUP_ID>"
 );

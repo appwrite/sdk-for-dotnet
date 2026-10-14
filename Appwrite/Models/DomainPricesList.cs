@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static DomainPricesList From(Dictionary<string, object> map) => new DomainPricesList(
-            total: Convert.ToInt64(map["total"]),
-            prices: map["prices"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DomainPrice.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            prices: (map.ContainsKey("prices") ? map["prices"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DomainPrice.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

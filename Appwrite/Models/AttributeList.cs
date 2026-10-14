@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static AttributeList From(Dictionary<string, object> map) => new AttributeList(
-            total: Convert.ToInt64(map["total"]),
-            attributes: map["attributes"].ConvertToList<object>()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            attributes: (map.ContainsKey("attributes") ? map["attributes"] : new List<object>()).ConvertToList<object>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

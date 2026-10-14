@@ -10,12 +10,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeIp result = await databases.UpdateIpAttribute(
+Appwrite.Models.AttributeIp result = await databases.UpdateIpAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
-    default: "192.0.2.0",
+    @default: "192.0.2.0",
     newKey: "<NEW_KEY>" // optional
 );
 

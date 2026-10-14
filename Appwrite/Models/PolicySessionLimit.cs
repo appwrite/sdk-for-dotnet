@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static PolicySessionLimit From(Dictionary<string, object> map) => new PolicySessionLimit(
-            id: map["$id"].ToString(),
-            total: Convert.ToInt64(map["total"])
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

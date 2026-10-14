@@ -11,7 +11,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Zoho result = await project.UpdateOAuth2Zoho(
+Appwrite.Models.OAuth2Zoho result = await project.UpdateOAuth2Zoho(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false, // optional

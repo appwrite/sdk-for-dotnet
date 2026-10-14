@@ -42,11 +42,11 @@ namespace Appwrite.Models
         }
 
         public static PolicyMfaFactors From(Dictionary<string, object> map) => new PolicyMfaFactors(
-            id: map["$id"].ToString(),
-            totp: (bool)map["totp"],
-            email: (bool)map["email"],
-            phone: (bool)map["phone"],
-            custom: (bool)map["custom"]
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            totp: (bool)(map.ContainsKey("totp") ? map["totp"] : true),
+            email: (bool)(map.ContainsKey("email") ? map["email"] : true),
+            phone: (bool)(map.ContainsKey("phone") ? map["phone"] : true),
+            custom: (bool)(map.ContainsKey("custom") ? map["custom"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

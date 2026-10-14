@@ -11,7 +11,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Oidc result = await project.UpdateOAuth2Oidc(
+Appwrite.Models.OAuth2Oidc result = await project.UpdateOAuth2Oidc(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     wellKnownURL: "https://example.com", // optional

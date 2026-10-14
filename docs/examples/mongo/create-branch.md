@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabase result = await mongo.CreateBranch(
+Appwrite.Models.DedicatedDatabase result = await mongo.CreateBranch(
     databaseId: "<DATABASE_ID>",
     branchId: "<BRANCH_ID>", // optional
     ttl: 300 // optional

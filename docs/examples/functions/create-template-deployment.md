@@ -11,7 +11,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-Deployment result = await functions.CreateTemplateDeployment(
+Appwrite.Models.Deployment result = await functions.CreateTemplateDeployment(
     functionId: "<FUNCTION_ID>",
     repository: "<REPOSITORY>",
     owner: "<OWNER>",

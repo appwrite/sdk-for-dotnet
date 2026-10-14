@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-MockNumber result = await project.CreateMockPhone(
+Appwrite.Models.MockNumber result = await project.CreateMockPhone(
     number: "+12065550100",
     otp: "<OTP>"
 );

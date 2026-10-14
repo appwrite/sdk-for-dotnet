@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabasePooler result = await postgresql.UpdatePooler(
+Appwrite.Models.DedicatedDatabasePooler result = await postgresql.UpdatePooler(
     databaseId: "<DATABASE_ID>",
     mode: "transaction", // optional
     maxConnections: 10, // optional

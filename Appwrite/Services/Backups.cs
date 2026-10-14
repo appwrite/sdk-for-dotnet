@@ -89,6 +89,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.BackupArchive> GetArchive(string archiveId)
         {
+            if (archiveId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"archiveId\"");
+            }
+
             var apiPath = "/backups/archives/{archiveId}"
                 .Replace("{archiveId}", archiveId);
 
@@ -123,6 +128,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteArchive(string archiveId)
         {
+            if (archiveId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"archiveId\"");
+            }
+
             var apiPath = "/backups/archives/{archiveId}"
                 .Replace("{archiveId}", archiveId);
 
@@ -228,6 +238,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.BackupPolicy> GetPolicy(string policyId)
         {
+            if (policyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"policyId\"");
+            }
+
             var apiPath = "/backups/policies/{policyId}"
                 .Replace("{policyId}", policyId);
 
@@ -262,6 +277,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.BackupPolicy> UpdatePolicy(string policyId, string? name = null, long? retention = null, string? schedule = null, bool? enabled = null)
         {
+            if (policyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"policyId\"");
+            }
+
             var apiPath = "/backups/policies/{policyId}"
                 .Replace("{policyId}", policyId);
 
@@ -301,6 +321,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeletePolicy(string policyId)
         {
+            if (policyId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"policyId\"");
+            }
+
             var apiPath = "/backups/policies/{policyId}"
                 .Replace("{policyId}", policyId);
 
@@ -434,6 +459,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.BackupRestoration> GetRestoration(string restorationId)
         {
+            if (restorationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"restorationId\"");
+            }
+
             var apiPath = "/backups/restorations/{restorationId}"
                 .Replace("{restorationId}", restorationId);
 

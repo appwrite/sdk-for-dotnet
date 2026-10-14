@@ -10,7 +10,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-Execution result = await sites.GetLog(
+Appwrite.Models.Execution result = await sites.GetLog(
     siteId: "<SITE_ID>",
     logId: "<LOG_ID>"
 );

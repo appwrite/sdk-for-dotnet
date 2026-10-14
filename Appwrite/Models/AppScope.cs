@@ -42,11 +42,11 @@ namespace Appwrite.Models
         }
 
         public static AppScope From(Dictionary<string, object> map) => new AppScope(
-            @value: map["value"].ToString(),
-            description: map["description"].ToString(),
-            type: map["type"].ToString(),
-            category: map["category"].ToString(),
-            deprecated: (bool)map["deprecated"]
+            @value: (map.ContainsKey("value") ? map["value"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
+            category: (map.ContainsKey("category") ? map["category"] : "").ToString(),
+            deprecated: (bool)(map.ContainsKey("deprecated") ? map["deprecated"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

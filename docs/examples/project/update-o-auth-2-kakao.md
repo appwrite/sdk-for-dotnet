@@ -14,8 +14,8 @@ Project project = new Project(client);
 Appwrite.Models.OAuth2Kakao result = await project.UpdateOAuth2Kakao(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
-    prompt: new List&lt;ProjectOAuth2KakaoPrompt&gt; { ProjectOAuth2KakaoPrompt.None }, // optional
-    enabled: false // optional
+    enabled: false, // optional
+    prompt: new List&lt;ProjectOAuth2KakaoPrompt&gt; { ProjectOAuth2KakaoPrompt.None } // optional
 );
 
 ```

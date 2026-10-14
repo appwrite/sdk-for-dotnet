@@ -102,23 +102,23 @@ namespace Appwrite.Models
         }
 
         public static DatabaseMigration From(Dictionary<string, object> map) => new DatabaseMigration(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            projectId: map["projectId"].ToString(),
-            databaseId: map["databaseId"].ToString(),
-            specification: map["specification"].ToString(),
-            phase: map["phase"].ToString(),
-            attempt: Convert.ToInt64(map["attempt"]),
-            lastError: map["lastError"].ToString(),
-            lagDocuments: Convert.ToInt64(map["lagDocuments"]),
-            changelogWatermark: Convert.ToInt64(map["changelogWatermark"]),
-            verifiedAt: map["verifiedAt"].ToString(),
-            cutoverAt: map["cutoverAt"].ToString(),
-            soakUntil: map["soakUntil"].ToString(),
-            autoCutover: (bool)map["autoCutover"],
-            cutoverRequested: (bool)map["cutoverRequested"],
-            paused: (bool)map["paused"]
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            projectId: (map.ContainsKey("projectId") ? map["projectId"] : "").ToString(),
+            databaseId: (map.ContainsKey("databaseId") ? map["databaseId"] : "").ToString(),
+            specification: (map.ContainsKey("specification") ? map["specification"] : "").ToString(),
+            phase: (map.ContainsKey("phase") ? map["phase"] : "pending").ToString(),
+            attempt: Convert.ToInt64((map.ContainsKey("attempt") ? map["attempt"] : 0)),
+            lastError: (map.ContainsKey("lastError") ? map["lastError"] : "").ToString(),
+            lagDocuments: Convert.ToInt64((map.ContainsKey("lagDocuments") ? map["lagDocuments"] : 0)),
+            changelogWatermark: Convert.ToInt64((map.ContainsKey("changelogWatermark") ? map["changelogWatermark"] : 0)),
+            verifiedAt: (map.ContainsKey("verifiedAt") ? map["verifiedAt"] : "").ToString(),
+            cutoverAt: (map.ContainsKey("cutoverAt") ? map["cutoverAt"] : "").ToString(),
+            soakUntil: (map.ContainsKey("soakUntil") ? map["soakUntil"] : "").ToString(),
+            autoCutover: (bool)(map.ContainsKey("autoCutover") ? map["autoCutover"] : true),
+            cutoverRequested: (bool)(map.ContainsKey("cutoverRequested") ? map["cutoverRequested"] : false),
+            paused: (bool)(map.ContainsKey("paused") ? map["paused"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

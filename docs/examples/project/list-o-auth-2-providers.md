@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2ProviderList result = await project.ListOAuth2Providers(
+Appwrite.Models.OAuth2ProviderList result = await project.ListOAuth2Providers(
     queries: new List<string>(), // optional
     total: false // optional
 );

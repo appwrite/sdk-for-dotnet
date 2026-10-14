@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static TopicList From(Dictionary<string, object> map) => new TopicList(
-            total: Convert.ToInt64(map["total"]),
-            topics: map["topics"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Topic.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            topics: (map.ContainsKey("topics") ? map["topics"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Topic.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

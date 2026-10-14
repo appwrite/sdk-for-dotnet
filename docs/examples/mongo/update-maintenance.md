@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabase result = await mongo.UpdateMaintenance(
+Appwrite.Models.DedicatedDatabase result = await mongo.UpdateMaintenance(
     databaseId: "<DATABASE_ID>",
     day: "sun",
     hourUtc: 0

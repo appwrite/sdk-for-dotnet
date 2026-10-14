@@ -10,12 +10,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeInteger result = await databases.UpdateIntegerAttribute(
+Appwrite.Models.AttributeInteger result = await databases.UpdateIntegerAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
-    default: 10,
+    @default: 10,
     min: 0, // optional
     max: 100, // optional
     newKey: "<NEW_KEY>" // optional

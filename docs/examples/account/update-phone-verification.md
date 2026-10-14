@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Token result = await account.UpdatePhoneVerification(
+Appwrite.Models.Token result = await account.UpdatePhoneVerification(
     userId: "<USER_ID>",
     secret: "<SECRET>"
 );

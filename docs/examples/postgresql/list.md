@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseList result = await postgresql.List(
+Appwrite.Models.DedicatedDatabaseList result = await postgresql.List(
     queries: new List<string>() // optional
 );
 

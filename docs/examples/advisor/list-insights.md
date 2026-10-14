@@ -10,7 +10,7 @@ Client client = new Client()
 
 Advisor advisor = new Advisor(client);
 
-InsightList result = await advisor.ListInsights(
+Appwrite.Models.InsightList result = await advisor.ListInsights(
     reportId: "<REPORT_ID>",
     queries: new List<string>(), // optional
     total: false // optional

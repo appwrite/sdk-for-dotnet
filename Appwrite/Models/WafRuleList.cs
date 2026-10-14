@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static WafRuleList From(Dictionary<string, object> map) => new WafRuleList(
-            total: Convert.ToInt64(map["total"]),
-            rules: map["rules"].ConvertToList<object>()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            rules: (map.ContainsKey("rules") ? map["rules"] : new List<object>()).ConvertToList<object>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseExecution result = await postgresql.CreateExecution(
+Appwrite.Models.DedicatedDatabaseExecution result = await postgresql.CreateExecution(
     databaseId: "<DATABASE_ID>",
     sql: "<SQL>",
     bindings: [object], // optional

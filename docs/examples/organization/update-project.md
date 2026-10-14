@@ -10,7 +10,7 @@ Client client = new Client()
 
 Organization organization = new Organization(client);
 
-Project result = await organization.UpdateProject(
+Appwrite.Models.Project result = await organization.UpdateProject(
     projectId: "<PROJECT_ID>",
     name: "<NAME>"
 );

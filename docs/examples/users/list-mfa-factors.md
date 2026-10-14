@@ -10,7 +10,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-MfaFactors result = await users.ListMFAFactors(
+Appwrite.Models.MfaFactors result = await users.ListMFAFactors(
     userId: "<USER_ID>"
 );
 

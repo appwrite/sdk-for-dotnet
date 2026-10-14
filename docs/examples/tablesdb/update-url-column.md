@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnUrl result = await tablesDB.UpdateUrlColumn(
+Appwrite.Models.ColumnUrl result = await tablesDB.UpdateUrlColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: "https://example.com",
+    @default: "https://example.com",
     newKey: "<NEW_KEY>" // optional
 );
 

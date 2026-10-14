@@ -32,9 +32,9 @@ namespace Appwrite.Models
         }
 
         public static DomainTransferStatus From(Dictionary<string, object> map) => new DomainTransferStatus(
-            status: new Appwrite.Enums.DomainTransferStatusEnum(map["status"].ToString()!),
-            reason: map.TryGetValue("reason", out var reason) ? reason?.ToString() ?? "" : "",
-            timestamp: map["timestamp"].ToString()
+            status: new Appwrite.Enums.DomainTransferStatusEnum((map.ContainsKey("status") ? map["status"] : "pending_registry").ToString()!),
+            reason: (map.ContainsKey("reason") ? map["reason"] : "").ToString(),
+            timestamp: (map.ContainsKey("timestamp") ? map["timestamp"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

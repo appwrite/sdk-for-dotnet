@@ -24,14 +24,14 @@ namespace Appwrite.Models
         public string ClientSecret { get; private set; }
 
         [JsonPropertyName("prompt")]
-        public List<Appwrite.Enums.OAuth2ZohoPrompt>? Prompt { get; private set; }
+        public List<Appwrite.Enums.OAuth2ZohoPrompt> Prompt { get; private set; }
 
         public OAuth2Zoho(
             string id,
             bool enabled,
             string clientId,
             string clientSecret,
-            List<Appwrite.Enums.OAuth2ZohoPrompt>? prompt = null
+            List<Appwrite.Enums.OAuth2ZohoPrompt> prompt
         )
         {
             Id = id;
@@ -42,13 +42,11 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Zoho From(Dictionary<string, object> map) => new OAuth2Zoho(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            clientSecret: map["clientSecret"].ToString(),
-            prompt: map.TryGetValue("prompt", out var arrayRaw5Added) && arrayRaw5Added != null
-                                ? arrayRaw5Added.ConvertToList<Appwrite.Enums.OAuth2ZohoPrompt>()
-                                : null
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            clientSecret: (map.ContainsKey("clientSecret") ? map["clientSecret"] : "").ToString(),
+            prompt: (map.ContainsKey("prompt") ? map["prompt"] : new List<object>()).ConvertToList<Appwrite.Enums.OAuth2ZohoPrompt>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -57,7 +55,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "clientId", ClientId },
             { "clientSecret", ClientSecret },
-            { "prompt", Prompt?.Select(it => it.Value).ToList() }
+            { "prompt", Prompt.Select(it => it.Value).ToList() }
         };
     }
 }

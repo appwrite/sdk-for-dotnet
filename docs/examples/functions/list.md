@@ -10,7 +10,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-FunctionList result = await functions.List(
+Appwrite.Models.FunctionList result = await functions.List(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional

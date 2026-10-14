@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabaseRestoration result = await mongo.CreateRestoration(
+Appwrite.Models.DedicatedDatabaseRestoration result = await mongo.CreateRestoration(
     databaseId: "<DATABASE_ID>",
     type: "backup", // optional
     backupId: "<BACKUP_ID>", // optional
