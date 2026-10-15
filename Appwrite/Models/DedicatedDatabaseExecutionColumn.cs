@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseExecutionColumn From(Dictionary<string, object> map) => new DedicatedDatabaseExecutionColumn(
-            name: map["name"].ToString(),
-            type: map["type"].ToString()
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

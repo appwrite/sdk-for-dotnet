@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnLine result = await tablesDB.UpdateLineColumn(
+Appwrite.Models.ColumnLine result = await tablesDB.UpdateLineColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: [[1, 2], [3, 4], [5, 6]], // optional
+    @default: [[1, 2], [3, 4], [5, 6]], // optional
     newKey: "<NEW_KEY>" // optional
 );
 

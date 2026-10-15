@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Slack From(Dictionary<string, object> map) => new OAuth2Slack(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            clientSecret: map["clientSecret"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            clientSecret: (map.ContainsKey("clientSecret") ? map["clientSecret"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

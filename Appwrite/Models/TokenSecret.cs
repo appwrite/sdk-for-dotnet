@@ -47,12 +47,12 @@ namespace Appwrite.Models
         }
 
         public static TokenSecret From(Dictionary<string, object> map) => new TokenSecret(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            userId: map["userId"].ToString(),
-            secret: map["secret"].ToString(),
-            expire: map["expire"].ToString(),
-            phrase: map["phrase"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
+            secret: (map.ContainsKey("secret") ? map["secret"] : "").ToString(),
+            expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString(),
+            phrase: (map.ContainsKey("phrase") ? map["phrase"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

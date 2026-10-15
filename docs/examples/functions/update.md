@@ -11,7 +11,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-Function result = await functions.Update(
+Appwrite.Models.Function result = await functions.Update(
     functionId: "<FUNCTION_ID>",
     name: "<NAME>",
     runtime: Runtime.Node145, // optional
@@ -34,7 +34,8 @@ Function result = await functions.Update(
     buildSpecification: "s-1vcpu-512mb", // optional
     runtimeSpecification: "s-1vcpu-512mb", // optional
     deploymentRetention: 0, // optional
-    interval: 0 // optional
+    interval: 0, // optional
+    emailEnabled: false // optional
 );
 
 ```

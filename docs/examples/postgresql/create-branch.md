@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabase result = await postgresql.CreateBranch(
+Appwrite.Models.DedicatedDatabase result = await postgresql.CreateBranch(
     databaseId: "<DATABASE_ID>",
     branchId: "<BRANCH_ID>", // optional
     ttl: 300 // optional

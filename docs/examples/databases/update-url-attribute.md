@@ -10,12 +10,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeUrl result = await databases.UpdateUrlAttribute(
+Appwrite.Models.AttributeUrl result = await databases.UpdateUrlAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
-    default: "https://example.com",
+    @default: "https://example.com",
     newKey: "<NEW_KEY>" // optional
 );
 

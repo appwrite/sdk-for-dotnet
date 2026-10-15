@@ -10,7 +10,7 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-Site result = await sites.Get(
+Appwrite.Models.Site result = await sites.Get(
     siteId: "<SITE_ID>"
 );
 

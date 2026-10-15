@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdatePasswordHistoryPolicy(
+Appwrite.Models.Project result = await project.UpdatePasswordHistoryPolicy(
     total: 1
 );
 

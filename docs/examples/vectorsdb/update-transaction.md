@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-Transaction result = await vectorsDB.UpdateTransaction(
+Appwrite.Models.Transaction result = await vectorsDB.UpdateTransaction(
     transactionId: "<TRANSACTION_ID>",
     commit: false, // optional
     rollback: false // optional

@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static MockNumber From(Dictionary<string, object> map) => new MockNumber(
-            number: map["number"].ToString(),
-            otp: map["otp"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString()
+            number: (map.ContainsKey("number") ? map["number"] : "").ToString(),
+            otp: (map.ContainsKey("otp") ? map["otp"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

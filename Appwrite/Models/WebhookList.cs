@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static WebhookList From(Dictionary<string, object> map) => new WebhookList(
-            total: Convert.ToInt64(map["total"]),
-            webhooks: map["webhooks"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Webhook.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            webhooks: (map.ContainsKey("webhooks") ? map["webhooks"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Webhook.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

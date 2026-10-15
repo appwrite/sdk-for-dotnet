@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-Transaction result = await databases.CreateTransaction(
+Appwrite.Models.Transaction result = await databases.CreateTransaction(
     ttl: 60 // optional
 );
 

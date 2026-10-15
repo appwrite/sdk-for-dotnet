@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabase result = await mysql.UpdateMaintenance(
+Appwrite.Models.DedicatedDatabase result = await mysql.UpdateMaintenance(
     databaseId: "<DATABASE_ID>",
     day: "sun",
     hourUtc: 0

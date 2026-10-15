@@ -10,13 +10,13 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeEnum result = await databases.UpdateEnumAttribute(
+Appwrite.Models.AttributeEnum result = await databases.UpdateEnumAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     elements: ["active", "inactive"],
     required: false,
-    default: "active",
+    @default: "active",
     newKey: "<NEW_KEY>" // optional
 );
 

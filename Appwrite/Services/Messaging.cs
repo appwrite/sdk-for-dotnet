@@ -106,6 +106,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, bool? draft = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null, List<string>? attachments = null, string? replyToEmail = null, string? replyToName = null)
         {
+            if (messageId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"messageId\"");
+            }
+
             var apiPath = "/messaging/messages/email/{messageId}"
                 .Replace("{messageId}", messageId);
 
@@ -211,6 +216,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Message> UpdatePush(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? title = null, string? body = null, object? data = null, string? action = null, string? image = null, string? icon = null, string? sound = null, string? color = null, string? tag = null, long? badge = null, bool? draft = null, string? scheduledAt = null, bool? contentAvailable = null, bool? critical = null, Appwrite.Enums.MessagePriority? priority = null, string? channelId = null)
         {
+            if (messageId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"messageId\"");
+            }
+
             var apiPath = "/messaging/messages/push/{messageId}"
                 .Replace("{messageId}", messageId);
 
@@ -352,6 +362,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.updateSMS` instead.")]
         public Task<Models.Message> UpdateSms(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? content = null, bool? draft = null, string? scheduledAt = null)
         {
+            if (messageId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"messageId\"");
+            }
+
             var apiPath = "/messaging/messages/sms/{messageId}"
                 .Replace("{messageId}", messageId);
 
@@ -396,6 +411,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Message> UpdateSMS(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? content = null, bool? draft = null, string? scheduledAt = null)
         {
+            if (messageId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"messageId\"");
+            }
+
             var apiPath = "/messaging/messages/sms/{messageId}"
                 .Replace("{messageId}", messageId);
 
@@ -438,6 +458,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Message> GetMessage(string messageId)
         {
+            if (messageId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"messageId\"");
+            }
+
             var apiPath = "/messaging/messages/{messageId}"
                 .Replace("{messageId}", messageId);
 
@@ -473,6 +498,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string messageId)
         {
+            if (messageId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"messageId\"");
+            }
+
             var apiPath = "/messaging/messages/{messageId}"
                 .Replace("{messageId}", messageId);
 
@@ -483,7 +513,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -502,6 +533,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.TargetList> ListTargets(string messageId, List<string>? queries = null, bool? total = null)
         {
+            if (messageId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"messageId\"");
+            }
+
             var apiPath = "/messaging/messages/{messageId}/targets"
                 .Replace("{messageId}", messageId);
 
@@ -660,6 +696,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.updateAPNSProvider` instead.")]
         public Task<Models.Provider> UpdateApnsProvider(string providerId, string? name = null, bool? enabled = null, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/apns/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -702,6 +743,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateAPNSProvider(string providerId, string? name = null, bool? enabled = null, string? authKey = null, string? authKeyId = null, string? teamId = null, string? bundleId = null, bool? sandbox = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/apns/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -905,6 +951,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.updateFCMProvider` instead.")]
         public Task<Models.Provider> UpdateFcmProvider(string providerId, string? name = null, bool? enabled = null, object? serviceAccountJSON = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/fcm/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -943,6 +994,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateFCMProvider(string providerId, string? name = null, bool? enabled = null, object? serviceAccountJSON = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/fcm/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1025,6 +1081,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateMailgunProvider(string providerId, string? name = null, string? apiKey = null, string? domain = null, bool? isEuRegion = null, bool? enabled = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/mailgun/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1109,6 +1170,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateMsg91Provider(string providerId, string? name = null, bool? enabled = null, string? templateId = null, string? senderId = null, string? authKey = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/msg91/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1191,6 +1257,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateResendProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/resend/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1275,6 +1346,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateSendgridProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/sendgrid/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1361,6 +1437,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateSesProvider(string providerId, string? name = null, bool? enabled = null, string? accessKey = null, string? secretKey = null, string? region = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/ses/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1503,6 +1584,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Messaging.updateSMTPProvider` instead.")]
         public Task<Models.Provider> UpdateSmtpProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/smtp/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1551,6 +1637,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateSMTPProvider(string providerId, string? name = null, string? host = null, long? port = null, string? username = null, string? password = null, Appwrite.Enums.SmtpEncryption? encryption = null, bool? autoTLS = null, string? mailer = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/smtp/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1639,6 +1730,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateTelesignProvider(string providerId, string? name = null, bool? enabled = null, string? customerId = null, string? apiKey = null, string? @from = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/telesign/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1719,6 +1815,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateTextmagicProvider(string providerId, string? name = null, bool? enabled = null, string? username = null, string? apiKey = null, string? @from = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/textmagic/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1799,6 +1900,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateTwilioProvider(string providerId, string? name = null, bool? enabled = null, string? accountSid = null, string? authToken = null, string? @from = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/twilio/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1879,6 +1985,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> UpdateVonageProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? apiSecret = null, string? @from = null)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/vonage/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1920,6 +2031,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Provider> GetProvider(string providerId)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1954,6 +2070,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteProvider(string providerId)
         {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
             var apiPath = "/messaging/providers/{providerId}"
                 .Replace("{providerId}", providerId);
 
@@ -1964,7 +2085,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -2059,6 +2181,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Topic> GetTopic(string topicId)
         {
+            if (topicId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"topicId\"");
+            }
+
             var apiPath = "/messaging/topics/{topicId}"
                 .Replace("{topicId}", topicId);
 
@@ -2094,6 +2221,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Topic> UpdateTopic(string topicId, string? name = null, List<string>? subscribe = null, long? qos = null, long? expiry = null)
         {
+            if (topicId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"topicId\"");
+            }
+
             var apiPath = "/messaging/topics/{topicId}"
                 .Replace("{topicId}", topicId);
 
@@ -2133,6 +2265,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteTopic(string topicId)
         {
+            if (topicId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"topicId\"");
+            }
+
             var apiPath = "/messaging/topics/{topicId}"
                 .Replace("{topicId}", topicId);
 
@@ -2143,7 +2280,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -2162,6 +2300,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.SubscriberList> ListSubscribers(string topicId, List<string>? queries = null, string? search = null, bool? total = null)
         {
+            if (topicId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"topicId\"");
+            }
+
             var apiPath = "/messaging/topics/{topicId}/subscribers"
                 .Replace("{topicId}", topicId);
 
@@ -2199,6 +2342,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Subscriber> CreateSubscriber(string topicId, string subscriberId, string targetId)
         {
+            if (topicId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"topicId\"");
+            }
+
             var apiPath = "/messaging/topics/{topicId}/subscribers"
                 .Replace("{topicId}", topicId);
 
@@ -2237,6 +2385,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Subscriber> GetSubscriber(string topicId, string subscriberId)
         {
+            if (topicId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"topicId\"");
+            }
+
+            if (subscriberId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"subscriberId\"");
+            }
+
             var apiPath = "/messaging/topics/{topicId}/subscribers/{subscriberId}"
                 .Replace("{topicId}", topicId)
                 .Replace("{subscriberId}", subscriberId);
@@ -2272,6 +2430,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteSubscriber(string topicId, string subscriberId)
         {
+            if (topicId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"topicId\"");
+            }
+
+            if (subscriberId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"subscriberId\"");
+            }
+
             var apiPath = "/messaging/topics/{topicId}/subscribers/{subscriberId}"
                 .Replace("{topicId}", topicId)
                 .Replace("{subscriberId}", subscriberId);
@@ -2283,7 +2451,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 

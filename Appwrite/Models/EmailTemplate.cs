@@ -57,14 +57,14 @@ namespace Appwrite.Models
         }
 
         public static EmailTemplate From(Dictionary<string, object> map) => new EmailTemplate(
-            templateId: map["templateId"].ToString(),
-            locale: map["locale"].ToString(),
-            message: map["message"].ToString(),
-            senderName: map["senderName"].ToString(),
-            senderEmail: map["senderEmail"].ToString(),
-            replyToEmail: map["replyToEmail"].ToString(),
-            replyToName: map["replyToName"].ToString(),
-            subject: map["subject"].ToString()
+            templateId: (map.ContainsKey("templateId") ? map["templateId"] : "").ToString(),
+            locale: (map.ContainsKey("locale") ? map["locale"] : "").ToString(),
+            message: (map.ContainsKey("message") ? map["message"] : "").ToString(),
+            senderName: (map.ContainsKey("senderName") ? map["senderName"] : "").ToString(),
+            senderEmail: (map.ContainsKey("senderEmail") ? map["senderEmail"] : "").ToString(),
+            replyToEmail: (map.ContainsKey("replyToEmail") ? map["replyToEmail"] : "").ToString(),
+            replyToName: (map.ContainsKey("replyToName") ? map["replyToName"] : "").ToString(),
+            subject: (map.ContainsKey("subject") ? map["subject"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

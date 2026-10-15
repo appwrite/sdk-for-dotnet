@@ -11,7 +11,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-User result = await account.UpdateMFAAuthenticator(
+Appwrite.Models.User result = await account.UpdateMFAAuthenticator(
     type: AuthenticatorType.Totp,
     otp: "<OTP>"
 );

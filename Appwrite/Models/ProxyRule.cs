@@ -56,6 +56,9 @@ namespace Appwrite.Models
         [JsonPropertyName("renewAt")]
         public string RenewAt { get; private set; }
 
+        [JsonPropertyName("protocol")]
+        public Appwrite.Enums.ProxyRuleProtocol Protocol { get; private set; }
+
         public ProxyRule(
             string id,
             string createdAt,
@@ -71,7 +74,8 @@ namespace Appwrite.Models
             string deploymentVcsProviderBranch,
             Appwrite.Enums.ProxyRuleStatus status,
             string logs,
-            string renewAt
+            string renewAt,
+            Appwrite.Enums.ProxyRuleProtocol protocol
         )
         {
             Id = id;
@@ -89,28 +93,30 @@ namespace Appwrite.Models
             Status = status;
             Logs = logs;
             RenewAt = renewAt;
+            Protocol = protocol;
         }
 
         public static ProxyRule From(Dictionary<string, object> map) => new ProxyRule(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            domain: map["domain"].ToString(),
-            type: map["type"].ToString(),
-            trigger: map["trigger"].ToString(),
-            redirectUrl: map["redirectUrl"].ToString(),
-            redirectStatusCode: Convert.ToInt64(map["redirectStatusCode"]),
-            deploymentId: map["deploymentId"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            domain: (map.ContainsKey("domain") ? map["domain"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
+            trigger: (map.ContainsKey("trigger") ? map["trigger"] : "").ToString(),
+            redirectUrl: (map.ContainsKey("redirectUrl") ? map["redirectUrl"] : "").ToString(),
+            redirectStatusCode: Convert.ToInt64((map.ContainsKey("redirectStatusCode") ? map["redirectStatusCode"] : 301)),
+            deploymentId: (map.ContainsKey("deploymentId") ? map["deploymentId"] : "").ToString(),
             deploymentResourceType: map.TryGetValue("deploymentResourceType", out var enumRaw10)
                             ? enumRaw10 == null
                                 ? null
                                 : new Appwrite.Enums.ProxyRuleDeploymentResourceType(enumRaw10.ToString()!)
                             : null,
-            deploymentResourceId: map["deploymentResourceId"].ToString(),
-            deploymentVcsProviderBranch: map["deploymentVcsProviderBranch"].ToString(),
-            status: new Appwrite.Enums.ProxyRuleStatus(map["status"].ToString()!),
-            logs: map["logs"].ToString(),
-            renewAt: map["renewAt"].ToString()
+            deploymentResourceId: (map.ContainsKey("deploymentResourceId") ? map["deploymentResourceId"] : "").ToString(),
+            deploymentVcsProviderBranch: (map.ContainsKey("deploymentVcsProviderBranch") ? map["deploymentVcsProviderBranch"] : "").ToString(),
+            status: new Appwrite.Enums.ProxyRuleStatus((map.ContainsKey("status") ? map["status"] : "unverified").ToString()!),
+            logs: (map.ContainsKey("logs") ? map["logs"] : "").ToString(),
+            renewAt: map["renewAt"].ToString(),
+            protocol: new Appwrite.Enums.ProxyRuleProtocol((map.ContainsKey("protocol") ? map["protocol"] : "http").ToString()!)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -129,7 +135,8 @@ namespace Appwrite.Models
             { "deploymentVcsProviderBranch", DeploymentVcsProviderBranch },
             { "status", Status.Value },
             { "logs", Logs },
-            { "renewAt", RenewAt }
+            { "renewAt", RenewAt },
+            { "protocol", Protocol.Value }
         };
     }
 }

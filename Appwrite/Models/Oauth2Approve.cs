@@ -22,7 +22,7 @@ namespace Appwrite.Models
         }
 
         public static Oauth2Approve From(Dictionary<string, object> map) => new Oauth2Approve(
-            redirectUrl: map["redirectUrl"].ToString()
+            redirectUrl: (map.ContainsKey("redirectUrl") ? map["redirectUrl"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

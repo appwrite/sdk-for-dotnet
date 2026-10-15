@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static PolicyPasswordPwned From(Dictionary<string, object> map) => new PolicyPasswordPwned(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            sessions: (bool)map["sessions"],
-            users: (bool)map["users"]
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
+            sessions: (bool)(map.ContainsKey("sessions") ? map["sessions"] : false),
+            users: (bool)(map.ContainsKey("users") ? map["users"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static DnsRecordsList From(Dictionary<string, object> map) => new DnsRecordsList(
-            total: Convert.ToInt64(map["total"]),
-            dnsRecords: map["dnsRecords"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DnsRecord.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            dnsRecords: (map.ContainsKey("dnsRecords") ? map["dnsRecords"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DnsRecord.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

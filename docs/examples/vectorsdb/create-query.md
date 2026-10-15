@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-DocumentList result = await vectorsDB.CreateQuery(
+Appwrite.Models.DocumentList result = await vectorsDB.CreateQuery(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     queries: new List<string>(), // optional

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Apple result = await project.UpdateOAuth2Apple(
+Appwrite.Models.OAuth2Apple result = await project.UpdateOAuth2Apple(
     serviceId: "<SERVICE_ID>", // optional
     keyId: "<KEY_ID>", // optional
     teamId: "<TEAM_ID>", // optional

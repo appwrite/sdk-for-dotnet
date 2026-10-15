@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Paypal result = await project.UpdateOAuth2Paypal(
+Appwrite.Models.OAuth2Paypal result = await project.UpdateOAuth2Paypal(
     clientId: "<CLIENT_ID>", // optional
     secretKey: "<SECRET_KEY>", // optional
     enabled: false // optional

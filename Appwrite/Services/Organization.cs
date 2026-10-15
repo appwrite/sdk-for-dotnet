@@ -97,7 +97,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -191,6 +192,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppInstallation> GetInstallation(string installationId)
         {
+            if (installationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"installationId\"");
+            }
+
             var apiPath = "/organization/installations/{installationId}"
                 .Replace("{installationId}", installationId);
 
@@ -228,6 +234,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.AppInstallation> UpdateInstallation(string installationId, string? authorizationDetails = null)
         {
+            if (installationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"installationId\"");
+            }
+
             var apiPath = "/organization/installations/{installationId}"
                 .Replace("{installationId}", installationId);
 
@@ -266,6 +277,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteInstallation(string installationId)
         {
+            if (installationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"installationId\"");
+            }
+
             var apiPath = "/organization/installations/{installationId}"
                 .Replace("{installationId}", installationId);
 
@@ -278,183 +294,6 @@ namespace Appwrite.Services
                 { "X-Appwrite-Project", _client.GetConfig("project") },
                 { "content-type", "application/json" },
                 { "accept", "application/json" }
-            };
-
-
-
-            return _client.Call<object>(
-                method: "DELETE",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
-
-        }
-
-        /// <para>
-        /// Get a list of all API keys from the current organization.
-        /// </para>
-        /// </summary>
-        public Task<Models.KeyList> ListKeys(List<string>? queries = null, bool? total = null)
-        {
-            var apiPath = "/organization/keys";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "queries", queries },
-                { "total", total }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.KeyList Convert(Dictionary<string, object> it)
-            {
-                return Models.KeyList.From(map: it);
-            }
-
-            return _client.Call<Models.KeyList>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
-        /// Create a new organization API key.
-        /// </para>
-        /// </summary>
-        public Task<Models.Key> CreateKey(string keyId, string name, List<Appwrite.Enums.OrganizationKeyScopes> scopes, string? expire = null)
-        {
-            var apiPath = "/organization/keys";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "keyId", keyId },
-                { "name", name },
-                { "scopes", scopes?.Select(e => e.Value).ToList() },
-                { "expire", expire }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.Key Convert(Dictionary<string, object> it)
-            {
-                return Models.Key.From(map: it);
-            }
-
-            return _client.Call<Models.Key>(
-                method: "POST",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
-        /// Get a key by its unique ID. This endpoint returns details about a specific
-        /// API key in your organization including its scopes.
-        /// </para>
-        /// </summary>
-        public Task<Models.Key> GetKey(string keyId)
-        {
-            var apiPath = "/organization/keys/{keyId}"
-                .Replace("{keyId}", keyId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.Key Convert(Dictionary<string, object> it)
-            {
-                return Models.Key.From(map: it);
-            }
-
-            return _client.Call<Models.Key>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
-        /// Update a key by its unique ID. Use this endpoint to update the name,
-        /// scopes, or expiration time of an API key.
-        /// </para>
-        /// </summary>
-        public Task<Models.Key> UpdateKey(string keyId, string name, List<Appwrite.Enums.OrganizationKeyScopes> scopes, string? expire = null)
-        {
-            var apiPath = "/organization/keys/{keyId}"
-                .Replace("{keyId}", keyId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "name", name },
-                { "scopes", scopes?.Select(e => e.Value).ToList() },
-                { "expire", expire }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.Key Convert(Dictionary<string, object> it)
-            {
-                return Models.Key.From(map: it);
-            }
-
-            return _client.Call<Models.Key>(
-                method: "PUT",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
-        /// Delete a key by its unique ID. Once deleted, the key can no longer be used
-        /// to authenticate API calls.
-        /// </para>
-        /// </summary>
-        public Task<object> DeleteKey(string keyId)
-        {
-            var apiPath = "/organization/keys/{keyId}"
-                .Replace("{keyId}", keyId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
             };
 
 
@@ -551,6 +390,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Membership> GetMembership(string membershipId)
         {
+            if (membershipId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"membershipId\"");
+            }
+
             var apiPath = "/organization/memberships/{membershipId}"
                 .Replace("{membershipId}", membershipId);
 
@@ -585,6 +429,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Membership> UpdateMembership(string membershipId, List<string> roles)
         {
+            if (membershipId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"membershipId\"");
+            }
+
             var apiPath = "/organization/memberships/{membershipId}"
                 .Replace("{membershipId}", membershipId);
 
@@ -623,6 +472,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteMembership(string membershipId)
         {
+            if (membershipId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"membershipId\"");
+            }
+
             var apiPath = "/organization/memberships/{membershipId}"
                 .Replace("{membershipId}", membershipId);
 
@@ -633,7 +487,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -726,6 +581,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Project> GetProject(string projectId)
         {
+            if (projectId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"projectId\"");
+            }
+
             var apiPath = "/organization/projects/{projectId}"
                 .Replace("{projectId}", projectId);
 
@@ -735,7 +595,8 @@ namespace Appwrite.Services
 
             var apiHeaders = new Dictionary<string, string>()
             {
-                { "X-Appwrite-Project", _client.GetConfig("project") }
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
             };
 
 
@@ -759,6 +620,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Project> UpdateProject(string projectId, string name)
         {
+            if (projectId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"projectId\"");
+            }
+
             var apiPath = "/organization/projects/{projectId}"
                 .Replace("{projectId}", projectId);
 
@@ -795,6 +661,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteProject(string projectId)
         {
+            if (projectId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"projectId\"");
+            }
+
             var apiPath = "/organization/projects/{projectId}"
                 .Replace("{projectId}", projectId);
 
@@ -805,7 +676,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 

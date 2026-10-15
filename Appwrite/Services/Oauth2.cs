@@ -62,7 +62,7 @@ namespace Appwrite.Services
         /// redirect.
         /// </para>
         /// </summary>
-        public Task<Models.Oauth2Authorize> Authorize(string? clientId = null, string? redirectUri = null, string? responseType = null, string? scope = null, string? state = null, string? nonce = null, string? codeChallenge = null, string? codeChallengeMethod = null, string? prompt = null, long? maxAge = null, string? authorizationDetails = null, string? resource = null, string? audience = null, string? requestUri = null)
+        public Task<Models.Oauth2Authorize> Authorize(string? clientId = null, string? redirectUri = null, string? responseType = null, string? scope = null, string? state = null, string? nonce = null, string? codeChallenge = null, string? codeChallengeMethod = null, string? prompt = null, long? maxAge = null, string? authorizationDetails = null, List<string>? resource = null, string? audience = null, string? requestUri = null)
         {
             var apiPath = "/oauth2/{project_id}/authorize"
                 .Replace("{project_id}", _client.GetConfig("project"));
@@ -113,7 +113,7 @@ namespace Appwrite.Services
         /// redirect.
         /// </para>
         /// </summary>
-        public Task<Models.Oauth2Authorize> AuthorizePost(string? clientId = null, string? redirectUri = null, string? responseType = null, string? scope = null, string? state = null, string? nonce = null, string? codeChallenge = null, string? codeChallengeMethod = null, string? prompt = null, long? maxAge = null, string? authorizationDetails = null, string? resource = null, string? audience = null, string? requestUri = null)
+        public Task<Models.Oauth2Authorize> AuthorizePost(string? clientId = null, string? redirectUri = null, string? responseType = null, string? scope = null, string? state = null, string? nonce = null, string? codeChallenge = null, string? codeChallengeMethod = null, string? prompt = null, long? maxAge = null, string? authorizationDetails = null, List<string>? resource = null, string? audience = null, string? requestUri = null)
         {
             var apiPath = "/oauth2/{project_id}/authorize"
                 .Replace("{project_id}", _client.GetConfig("project"));
@@ -162,7 +162,7 @@ namespace Appwrite.Services
         /// code, verification URL, expiration, and polling interval.
         /// </para>
         /// </summary>
-        public Task<Models.Oauth2DeviceAuthorization> CreateDeviceAuthorization(string? clientId = null, string? scope = null, string? authorizationDetails = null, string? resource = null, string? audience = null)
+        public Task<Models.Oauth2DeviceAuthorization> CreateDeviceAuthorization(string? clientId = null, string? scope = null, string? authorizationDetails = null, List<string>? resource = null, string? audience = null)
         {
             var apiPath = "/oauth2/{project_id}/device_authorization"
                 .Replace("{project_id}", _client.GetConfig("project"));
@@ -243,6 +243,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Oauth2Grant> GetGrant(string grantId)
         {
+            if (grantId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"grantId\"");
+            }
+
             var apiPath = "/oauth2/{project_id}/grants/{grant_id}"
                 .Replace("{project_id}", _client.GetConfig("project"))
                 .Replace("{grant_id}", grantId);
@@ -355,7 +360,7 @@ namespace Appwrite.Services
         /// request_uri handle for the authorize endpoint.
         /// </para>
         /// </summary>
-        public Task<Models.Oauth2PAR> CreatePAR(string clientId, string redirectUri, string responseType, string? scope = null, string? state = null, string? nonce = null, string? codeChallenge = null, string? codeChallengeMethod = null, string? prompt = null, long? maxAge = null, string? authorizationDetails = null, string? resource = null, string? audience = null)
+        public Task<Models.Oauth2PAR> CreatePAR(string clientId, string redirectUri, string responseType, string? scope = null, string? state = null, string? nonce = null, string? codeChallenge = null, string? codeChallengeMethod = null, string? prompt = null, long? maxAge = null, string? authorizationDetails = null, List<string>? resource = null, string? audience = null)
         {
             var apiPath = "/oauth2/{project_id}/par"
                 .Replace("{project_id}", _client.GetConfig("project"));
@@ -512,7 +517,7 @@ namespace Appwrite.Services
         /// access and refresh tokens.
         /// </para>
         /// </summary>
-        public Task<Models.Oauth2Token> CreateToken(string grantType, string? code = null, string? refreshToken = null, string? deviceCode = null, string? clientId = null, string? clientSecret = null, string? codeVerifier = null, string? redirectUri = null, string? resource = null, string? audience = null)
+        public Task<Models.Oauth2Token> CreateToken(string grantType, string? code = null, string? refreshToken = null, string? deviceCode = null, string? clientId = null, string? clientSecret = null, string? codeVerifier = null, string? redirectUri = null, List<string>? resource = null, string? audience = null)
         {
             var apiPath = "/oauth2/{project_id}/token"
                 .Replace("{project_id}", _client.GetConfig("project"));

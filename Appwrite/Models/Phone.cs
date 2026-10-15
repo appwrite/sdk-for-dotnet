@@ -32,9 +32,9 @@ namespace Appwrite.Models
         }
 
         public static Phone From(Dictionary<string, object> map) => new Phone(
-            code: map["code"].ToString(),
-            countryCode: map["countryCode"].ToString(),
-            countryName: map["countryName"].ToString()
+            code: (map.ContainsKey("code") ? map["code"] : "").ToString(),
+            countryCode: (map.ContainsKey("countryCode") ? map["countryCode"] : "").ToString(),
+            countryName: (map.ContainsKey("countryName") ? map["countryName"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

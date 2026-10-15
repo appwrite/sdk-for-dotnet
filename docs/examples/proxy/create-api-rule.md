@@ -10,7 +10,7 @@ Client client = new Client()
 
 Proxy proxy = new Proxy(client);
 
-ProxyRule result = await proxy.CreateAPIRule(
+Appwrite.Models.ProxyRule result = await proxy.CreateAPIRule(
     domain: "example.com"
 );
 

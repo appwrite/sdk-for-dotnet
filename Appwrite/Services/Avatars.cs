@@ -257,9 +257,9 @@ namespace Appwrite.Services
 
         /// <para>
         /// Returns the best available profile photo for a user. The endpoint tries
-        /// each source in priority order and returns the first successful result:
-        /// OAuth2 identity photo, Gravatar, Libravatar, Appwrite Initials, built-in
-        /// static fallback.
+        /// each source in priority order and returns the first successful result: a
+        /// custom uploaded photo (see avatars.updatePhoto), OAuth2 identity photo,
+        /// Gravatar, Libravatar, Appwrite Initials, built-in static fallback.
         /// 
         /// Passing `userId` — `current()` for the authenticated user — resolves
         /// the photo from everything known about that user: identity photos, email,

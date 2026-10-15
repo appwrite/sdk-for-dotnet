@@ -21,28 +21,31 @@ namespace Appwrite.Models
         public string DatabaseId { get; private set; }
 
         [JsonPropertyName("sourceDatabaseId")]
-        public string SourceDatabaseId { get; private set; }
+        public string? SourceDatabaseId { get; private set; }
 
         [JsonPropertyName("projectId")]
         public string ProjectId { get; private set; }
 
         [JsonPropertyName("backupId")]
-        public string BackupId { get; private set; }
+        public string? BackupId { get; private set; }
 
         [JsonPropertyName("type")]
         public string Type { get; private set; }
+
+        [JsonPropertyName("restoreMode")]
+        public string RestoreMode { get; private set; }
 
         [JsonPropertyName("status")]
         public string Status { get; private set; }
 
         [JsonPropertyName("targetTime")]
-        public string TargetTime { get; private set; }
+        public string? TargetTime { get; private set; }
 
         [JsonPropertyName("startedAt")]
-        public string StartedAt { get; private set; }
+        public string? StartedAt { get; private set; }
 
         [JsonPropertyName("completedAt")]
-        public string CompletedAt { get; private set; }
+        public string? CompletedAt { get; private set; }
 
         [JsonPropertyName("error")]
         public string Error { get; private set; }
@@ -51,14 +54,15 @@ namespace Appwrite.Models
             string id,
             string createdAt,
             string databaseId,
-            string sourceDatabaseId,
+            string? sourceDatabaseId,
             string projectId,
-            string backupId,
+            string? backupId,
             string type,
+            string restoreMode,
             string status,
-            string targetTime,
-            string startedAt,
-            string completedAt,
+            string? targetTime,
+            string? startedAt,
+            string? completedAt,
             string error
         )
         {
@@ -69,6 +73,7 @@ namespace Appwrite.Models
             ProjectId = projectId;
             BackupId = backupId;
             Type = type;
+            RestoreMode = restoreMode;
             Status = status;
             TargetTime = targetTime;
             StartedAt = startedAt;
@@ -77,18 +82,19 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseRestoration From(Dictionary<string, object> map) => new DedicatedDatabaseRestoration(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            databaseId: map["databaseId"].ToString(),
-            sourceDatabaseId: map["sourceDatabaseId"].ToString(),
-            projectId: map["projectId"].ToString(),
-            backupId: map["backupId"].ToString(),
-            type: map["type"].ToString(),
-            status: map["status"].ToString(),
-            targetTime: map["targetTime"].ToString(),
-            startedAt: map["startedAt"].ToString(),
-            completedAt: map["completedAt"].ToString(),
-            error: map["error"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            databaseId: (map.ContainsKey("databaseId") ? map["databaseId"] : "").ToString(),
+            sourceDatabaseId: map.TryGetValue("sourceDatabaseId", out var sourceDatabaseId) ? sourceDatabaseId?.ToString() : null,
+            projectId: (map.ContainsKey("projectId") ? map["projectId"] : "").ToString(),
+            backupId: map.TryGetValue("backupId", out var backupId) ? backupId?.ToString() : null,
+            type: (map.ContainsKey("type") ? map["type"] : "backup").ToString(),
+            restoreMode: (map.ContainsKey("restoreMode") ? map["restoreMode"] : "in_place").ToString(),
+            status: (map.ContainsKey("status") ? map["status"] : "pending").ToString(),
+            targetTime: map.TryGetValue("targetTime", out var targetTime) ? targetTime?.ToString() : null,
+            startedAt: map.TryGetValue("startedAt", out var startedAt) ? startedAt?.ToString() : null,
+            completedAt: map.TryGetValue("completedAt", out var completedAt) ? completedAt?.ToString() : null,
+            error: (map.ContainsKey("error") ? map["error"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -100,6 +106,7 @@ namespace Appwrite.Models
             { "projectId", ProjectId },
             { "backupId", BackupId },
             { "type", Type },
+            { "restoreMode", RestoreMode },
             { "status", Status },
             { "targetTime", TargetTime },
             { "startedAt", StartedAt },

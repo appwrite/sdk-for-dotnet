@@ -30,7 +30,7 @@ namespace Appwrite.Models
         public string Status { get; private set; }
 
         [JsonPropertyName("startedAt")]
-        public string StartedAt { get; private set; }
+        public string? StartedAt { get; private set; }
 
         [JsonPropertyName("migrationId")]
         public string MigrationId { get; private set; }
@@ -42,7 +42,7 @@ namespace Appwrite.Models
         public List<string> Resources { get; private set; }
 
         [JsonPropertyName("options")]
-        public string Options { get; private set; }
+        public object Options { get; private set; }
 
         public BackupRestoration(
             string id,
@@ -51,11 +51,11 @@ namespace Appwrite.Models
             string archiveId,
             string policyId,
             string status,
-            string startedAt,
+            string? startedAt,
             string migrationId,
             List<string> services,
             List<string> resources,
-            string options
+            object options
         )
         {
             Id = id;
@@ -72,17 +72,17 @@ namespace Appwrite.Models
         }
 
         public static BackupRestoration From(Dictionary<string, object> map) => new BackupRestoration(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            archiveId: map["archiveId"].ToString(),
-            policyId: map["policyId"].ToString(),
-            status: map["status"].ToString(),
-            startedAt: map["startedAt"].ToString(),
-            migrationId: map["migrationId"].ToString(),
-            services: map["services"].ConvertToList<string>(),
-            resources: map["resources"].ConvertToList<string>(),
-            options: map["options"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            archiveId: (map.ContainsKey("archiveId") ? map["archiveId"] : "").ToString(),
+            policyId: (map.ContainsKey("policyId") ? map["policyId"] : "").ToString(),
+            status: (map.ContainsKey("status") ? map["status"] : "").ToString(),
+            startedAt: map.TryGetValue("startedAt", out var startedAt) ? startedAt?.ToString() : null,
+            migrationId: (map.ContainsKey("migrationId") ? map["migrationId"] : "").ToString(),
+            services: (map.ContainsKey("services") ? map["services"] : new List<object>()).ConvertToList<string>(),
+            resources: (map.ContainsKey("resources") ? map["resources"] : new List<object>()).ConvertToList<string>(),
+            options: (map.ContainsKey("options") ? map["options"] : new Dictionary<string, object>())
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

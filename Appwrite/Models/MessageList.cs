@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static MessageList From(Dictionary<string, object> map) => new MessageList(
-            total: Convert.ToInt64(map["total"]),
-            messages: map["messages"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Message.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            messages: (map.ContainsKey("messages") ? map["messages"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Message.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

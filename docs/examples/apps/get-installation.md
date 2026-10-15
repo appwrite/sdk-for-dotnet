@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-AppInstallation result = await apps.GetInstallation(
+Appwrite.Models.AppInstallation result = await apps.GetInstallation(
     appId: "<APP_ID>",
     installationId: "<INSTALLATION_ID>"
 );

@@ -11,7 +11,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.UpdateService(
+Appwrite.Models.Project result = await project.UpdateService(
     serviceId: ProjectServiceId.Account,
     enabled: false
 );

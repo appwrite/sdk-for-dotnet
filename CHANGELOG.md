@@ -1,5 +1,28 @@
 # Change Log
 
+## 9.0.0
+
+* Breaking: requests send response format `2.5.0`
+* Breaking: removed `Client.SetDevKey`, the `DevKey` model and `Project.DevKeys`
+* Breaking: removed `Account.ListLogs` and `Users.ListLogs` with the `Log` and `LogList` models
+* Breaking: removed `Organization.CreateKey`, `GetKey`, `ListKeys`, `UpdateKey` and `DeleteKey`, and `OrganizationKeyScopes`; use `Organization.ListProjectKeys`, `GetProjectKey`, `UpdateProjectKey` and `DeleteProjectKey` instead
+* Breaking: removed `BillingPlanGroup.Starter`; use `BillingPlanGroup.Free`
+* Breaking: `Project.UpdateOAuth2Kakao` takes `enabled` before `prompt`
+* Breaking: removed `Block` fields `ProjectName`, `Region`, `OrganizationName`, `OrganizationId`, `BillingPlan` and `Reason`
+* Breaking: `ListSpecifications` returns each specification's prices and overage rates on the row itself. Removed the list-level `Pricing` field and the `DedicatedDatabaseSpecificationPricing` model
+* Breaking: `BackupRestoration.Options` is an `object`, not a `string`
+* Breaking: billing, backup, restoration and dedicated database fields the API can omit are nullable
+* Breaking: model constructors follow API field order without default arguments
+* Added: `Topic` helper to build MQTT topics for push messages
+* Added: `Mongo`, `Mysql` and `Postgresql` `PromoteRestoration`, `restoreMode`, `targetName` and `autoPromote` on `CreateRestoration`, and `DedicatedDatabaseRestoration.RestoreMode`
+* Added: `Proxy.CreateSMTPRule`, the `ProxyRuleProtocol` enum and `ProxyRule.Protocol`
+* Added: `emailEnabled` on `Functions.Update` and `Function`, and `ExecutionTrigger.Email`
+* Added: `Query` aggregates (`Count`, `CountDistinct`, `Sum`, `Avg`, `Min`, `Max` and more), `GroupBy`, `Having`, `Distinct`, joins, `Relationship`, `Covers`, `SpatialEquals` and `Page`
+* Added: `Query.Builder` to chain queries; `Build()` returns the query list
+* Updated: `Prompt`, `NativeClientIds`, `NativeEnabled`, `Fingerprints` and similar fields are no longer nullable
+* Updated: models fill fields missing from a response with their documented defaults
+* Fixed: query strings escape parameter names and values
+
 ## 8.4.0
 
 * Added: `domains` service to manage domains, DNS records, email presets, prices, transfer status and zones

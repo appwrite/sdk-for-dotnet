@@ -57,14 +57,14 @@ namespace Appwrite.Models
         }
 
         public static BillingPlanAddonDetails From(Dictionary<string, object> map) => new BillingPlanAddonDetails(
-            supported: (bool)map["supported"],
-            planIncluded: Convert.ToInt64(map["planIncluded"]),
-            limit: Convert.ToInt64(map["limit"]),
-            type: map["type"].ToString(),
+            supported: (bool)(map.ContainsKey("supported") ? map["supported"] : false),
+            planIncluded: Convert.ToInt64((map.ContainsKey("planIncluded") ? map["planIncluded"] : 0)),
+            limit: Convert.ToInt64((map.ContainsKey("limit") ? map["limit"] : 0)),
+            type: (map.ContainsKey("type") ? map["type"] : "numeric").ToString(),
             currency: map.TryGetValue("currency", out var currency) ? currency?.ToString() : null,
-            price: Convert.ToDouble(map["price"]),
-            @value: Convert.ToInt64(map["value"]),
-            invoiceDesc: map["invoiceDesc"].ToString()
+            price: Convert.ToDouble((map.ContainsKey("price") ? map["price"] : 0)),
+            @value: Convert.ToInt64((map.ContainsKey("value") ? map["value"] : 0)),
+            invoiceDesc: (map.ContainsKey("invoiceDesc") ? map["invoiceDesc"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

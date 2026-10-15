@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-PlatformList result = await project.ListPlatforms(
+Appwrite.Models.PlatformList result = await project.ListPlatforms(
     queries: new List<string>(), // optional
     total: false // optional
 );

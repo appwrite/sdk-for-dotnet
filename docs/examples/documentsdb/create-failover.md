@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-DedicatedDatabase result = await documentsDB.CreateFailover(
+Appwrite.Models.DedicatedDatabase result = await documentsDB.CreateFailover(
     databaseId: "<DATABASE_ID>",
     targetReplicaId: "<TARGET_REPLICA_ID>" // optional
 );

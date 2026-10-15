@@ -20,6 +20,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ResourceTokenList> List(string bucketId, string fileId, List<string>? queries = null, bool? total = null)
         {
+            if (bucketId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"bucketId\"");
+            }
+
+            if (fileId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"fileId\"");
+            }
+
             var apiPath = "/tokens/buckets/{bucketId}/files/{fileId}"
                 .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
@@ -58,6 +68,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ResourceToken> CreateFileToken(string bucketId, string fileId, string? expire = null)
         {
+            if (bucketId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"bucketId\"");
+            }
+
+            if (fileId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"fileId\"");
+            }
+
             var apiPath = "/tokens/buckets/{bucketId}/files/{fileId}"
                 .Replace("{bucketId}", bucketId)
                 .Replace("{fileId}", fileId);
@@ -95,6 +115,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ResourceToken> Get(string tokenId)
         {
+            if (tokenId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tokenId\"");
+            }
+
             var apiPath = "/tokens/{tokenId}"
                 .Replace("{tokenId}", tokenId);
 
@@ -130,6 +155,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ResourceToken> Update(string tokenId, string? expire = null)
         {
+            if (tokenId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tokenId\"");
+            }
+
             var apiPath = "/tokens/{tokenId}"
                 .Replace("{tokenId}", tokenId);
 
@@ -166,6 +196,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string tokenId)
         {
+            if (tokenId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tokenId\"");
+            }
+
             var apiPath = "/tokens/{tokenId}"
                 .Replace("{tokenId}", tokenId);
 
@@ -176,7 +211,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 

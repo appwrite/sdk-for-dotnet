@@ -62,15 +62,15 @@ namespace Appwrite.Models
         }
 
         public static Target From(Dictionary<string, object> map) => new Target(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
-            userId: map["userId"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
             providerId: map.TryGetValue("providerId", out var providerId) ? providerId?.ToString() : null,
-            providerType: map["providerType"].ToString(),
-            identifier: map["identifier"].ToString(),
-            expired: (bool)map["expired"]
+            providerType: (map.ContainsKey("providerType") ? map["providerType"] : "").ToString(),
+            identifier: (map.ContainsKey("identifier") ? map["identifier"] : "").ToString(),
+            expired: (bool)(map.ContainsKey("expired") ? map["expired"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

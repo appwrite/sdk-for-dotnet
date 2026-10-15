@@ -10,12 +10,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeBigint result = await databases.UpdateBigIntAttribute(
+Appwrite.Models.AttributeBigint result = await databases.UpdateBigIntAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
-    default: 0,
+    @default: 0,
     min: 0, // optional
     max: 1000000, // optional
     newKey: "<NEW_KEY>" // optional

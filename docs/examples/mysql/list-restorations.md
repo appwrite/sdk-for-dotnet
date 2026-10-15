@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseRestorationList result = await mysql.ListRestorations(
+Appwrite.Models.DedicatedDatabaseRestorationList result = await mysql.ListRestorations(
     databaseId: "<DATABASE_ID>",
     status: "pending", // optional
     type: "backup", // optional

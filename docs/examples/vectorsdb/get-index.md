@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-Index result = await vectorsDB.GetIndex(
+Appwrite.Models.Index result = await vectorsDB.GetIndex(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>"

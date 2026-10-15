@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-BackupPolicyList result = await mongo.ListBackupPolicies(
+Appwrite.Models.BackupPolicyList result = await mongo.ListBackupPolicies(
     databaseId: "<DATABASE_ID>",
     queries: new List<string>() // optional
 );

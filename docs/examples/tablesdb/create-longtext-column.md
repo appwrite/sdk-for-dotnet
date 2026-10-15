@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnLongtext result = await tablesDB.CreateLongtextColumn(
+Appwrite.Models.ColumnLongtext result = await tablesDB.CreateLongtextColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: "Hello World", // optional
+    @default: "Hello World", // optional
     array: false, // optional
     encrypt: false // optional
 );

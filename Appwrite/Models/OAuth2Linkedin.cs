@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Linkedin From(Dictionary<string, object> map) => new OAuth2Linkedin(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            primaryClientSecret: map["primaryClientSecret"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            primaryClientSecret: (map.ContainsKey("primaryClientSecret") ? map["primaryClientSecret"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

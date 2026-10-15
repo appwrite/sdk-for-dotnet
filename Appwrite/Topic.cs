@@ -1,0 +1,98 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Appwrite
+{
+    /// <summary>
+    /// Helper to build MQTT topics for <c>Push</c>, level by level.
+    /// <code>
+    /// Topic.Path(new[] { "user", userId, "notification" }); // "user/123/notification"
+    /// Topic.Path(new[] { "org", orgId }).Path(new[] { "logs" }); // "org/42/logs"
+    /// </code>
+    /// The instance <c>Path</c> that appends to a topic lives in <see cref="TopicExtensions"/>.
+    /// </summary>
+    public sealed class Topic
+    {
+        internal IReadOnlyList<string> Levels { get; }
+
+        internal Topic(IReadOnlyList<string> levels)
+        {
+            Levels = levels;
+        }
+
+        /// <summary>Start a topic with the given levels, e.g. <c>Topic.Path(new[] { "user", userId })</c>.</summary>
+        /// <exception cref="ArgumentException">A level is empty, or holds "/", "+" or "#".</exception>
+        public static Topic Path(IEnumerable<string> levels)
+        {
+            return new Topic(LevelsOf(levels));
+        }
+
+        public override string ToString() => string.Join("/", Levels);
+
+        /// <summary>
+        /// Validate the levels passed to <c>Path</c>: a non-empty list of non-empty strings, none
+        /// holding the level separator <c>/</c> or the MQTT wildcards <c>+</c> and <c>#</c>.
+        /// </summary>
+        internal static List<string> LevelsOf(IEnumerable<string> levels)
+        {
+            if (levels == null)
+            {
+                throw new ArgumentException("path() expects an array, e.g. path(['user'])");
+            }
+
+            var list = levels.ToList();
+            if (list.Count == 0)
+            {
+                throw new ArgumentException("path() needs at least one level");
+            }
+
+            for (var index = 0; index < list.Count; index++)
+            {
+                var level = list[index];
+                if (level == null)
+                {
+                    throw new ArgumentException($"level at index {index} must be a string, got null");
+                }
+                if (level.Length == 0)
+                {
+                    throw new ArgumentException($"empty level at index {index}");
+                }
+                if (level.Contains("/"))
+                {
+                    var parts = string.Join(", ", level.Split('/').Select(part => $"'{part}'"));
+                    throw new ArgumentException($"\"{level}\" contains \"/\", split it: path([{parts}])");
+                }
+                if (level.Contains("+"))
+                {
+                    throw new ArgumentException($"\"{level}\" contains \"+\", not allowed in a topic");
+                }
+                if (level.Contains("#"))
+                {
+                    throw new ArgumentException($"\"{level}\" contains \"#\", not allowed in a topic");
+                }
+                if (level.Contains('\0'))
+                {
+                    throw new ArgumentException($"level at index {index} contains a NUL character");
+                }
+            }
+
+            return list;
+        }
+    }
+
+    /// <summary>
+    /// Appends levels to a <see cref="Topic"/>. This is an extension method because C# does not
+    /// allow a static and an instance method with the same signature on one class, and it keeps
+    /// chains reading <c>Topic.Path(...).Path(...)</c>.
+    /// </summary>
+    public static class TopicExtensions
+    {
+        /// <summary>Append the given levels.</summary>
+        /// <exception cref="ArgumentException">A level is empty, or holds "/", "+" or "#".</exception>
+        public static Topic Path(this Topic topic, IEnumerable<string> levels)
+        {
+            return new Topic(topic.Levels.Concat(Topic.LevelsOf(levels)).ToList());
+        }
+    }
+}

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-PlatformApple result = await project.CreateApplePlatform(
+Appwrite.Models.PlatformApple result = await project.CreateApplePlatform(
     platformId: "<PLATFORM_ID>",
     name: "<NAME>",
     bundleIdentifier: "<BUNDLE_IDENTIFIER>"

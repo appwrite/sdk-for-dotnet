@@ -10,7 +10,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-Deployment result = await functions.CreateDuplicateDeployment(
+Appwrite.Models.Deployment result = await functions.CreateDuplicateDeployment(
     functionId: "<FUNCTION_ID>",
     deploymentId: "<DEPLOYMENT_ID>",
     buildId: "<BUILD_ID>" // optional

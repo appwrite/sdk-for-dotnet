@@ -92,12 +92,12 @@ namespace Appwrite.Models
         }
 
         public static Database From(Dictionary<string, object> map) => new Database(
-            id: map["$id"].ToString(),
-            name: map["name"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            enabled: (bool)map["enabled"],
-            type: new Appwrite.Enums.DatabaseType(map["type"].ToString()!),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
+            type: new Appwrite.Enums.DatabaseType((map.ContainsKey("type") ? map["type"] : "legacy").ToString()!),
             status: map.TryGetValue("status", out var enumRaw7)
                             ? enumRaw7 == null
                                 ? null

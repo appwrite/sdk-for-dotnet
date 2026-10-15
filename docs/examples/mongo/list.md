@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabaseList result = await mongo.List(
+Appwrite.Models.DedicatedDatabaseList result = await mongo.List(
     queries: new List<string>() // optional
 );
 

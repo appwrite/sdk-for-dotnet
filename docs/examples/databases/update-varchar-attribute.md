@@ -10,12 +10,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeVarchar result = await databases.UpdateVarcharAttribute(
+Appwrite.Models.AttributeVarchar result = await databases.UpdateVarcharAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
-    default: "Hello World",
+    @default: "Hello World",
     size: 1, // optional
     newKey: "<NEW_KEY>" // optional
 );

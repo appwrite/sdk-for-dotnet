@@ -82,23 +82,23 @@ namespace Appwrite.Models
         }
 
         public static XDomain From(Dictionary<string, object> map) => new XDomain(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            domain: map["domain"].ToString(),
-            registrar: map["registrar"].ToString(),
-            nameservers: map["nameservers"].ToString(),
-            expire: map["expire"].ToString(),
-            renewal: map["renewal"].ToString(),
-            autoRenewal: (bool)map["autoRenewal"],
-            renewalPrice: Convert.ToInt64(map["renewalPrice"]),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            domain: (map.ContainsKey("domain") ? map["domain"] : "").ToString(),
+            registrar: (map.ContainsKey("registrar") ? map["registrar"] : "").ToString(),
+            nameservers: (map.ContainsKey("nameservers") ? map["nameservers"] : "").ToString(),
+            expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString(),
+            renewal: (map.ContainsKey("renewal") ? map["renewal"] : "").ToString(),
+            autoRenewal: (bool)(map.ContainsKey("autoRenewal") ? map["autoRenewal"] : false),
+            renewalPrice: Convert.ToInt64((map.ContainsKey("renewalPrice") ? map["renewalPrice"] : 0)),
             transferStatus: map.TryGetValue("transferStatus", out var enumRaw11)
                             ? enumRaw11 == null
                                 ? null
                                 : new Appwrite.Enums.DomainTransferStatusEnum(enumRaw11.ToString()!)
                             : null,
-            teamId: map["teamId"].ToString(),
-            dnsRecords: map["dnsRecords"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DnsRecord.From(map: it)).ToList()
+            teamId: (map.ContainsKey("teamId") ? map["teamId"] : "").ToString(),
+            dnsRecords: (map.ContainsKey("dnsRecords") ? map["dnsRecords"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DnsRecord.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

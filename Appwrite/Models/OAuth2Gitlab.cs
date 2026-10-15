@@ -42,11 +42,11 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Gitlab From(Dictionary<string, object> map) => new OAuth2Gitlab(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            applicationId: map["applicationId"].ToString(),
-            secret: map["secret"].ToString(),
-            endpoint: map["endpoint"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            applicationId: (map.ContainsKey("applicationId") ? map["applicationId"] : "").ToString(),
+            secret: (map.ContainsKey("secret") ? map["secret"] : "").ToString(),
+            endpoint: (map.ContainsKey("endpoint") ? map["endpoint"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

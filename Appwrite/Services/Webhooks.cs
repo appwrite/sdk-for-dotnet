@@ -100,6 +100,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Webhook> Get(string webhookId)
         {
+            if (webhookId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"webhookId\"");
+            }
+
             var apiPath = "/webhooks/{webhookId}"
                 .Replace("{webhookId}", webhookId);
 
@@ -135,6 +140,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Webhook> Update(string webhookId, string name, string url, List<string> events, bool? enabled = null, bool? tls = null, string? authUsername = null, string? authPassword = null)
         {
+            if (webhookId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"webhookId\"");
+            }
+
             var apiPath = "/webhooks/{webhookId}"
                 .Replace("{webhookId}", webhookId);
 
@@ -178,6 +188,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string webhookId)
         {
+            if (webhookId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"webhookId\"");
+            }
+
             var apiPath = "/webhooks/{webhookId}"
                 .Replace("{webhookId}", webhookId);
 
@@ -188,7 +203,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -209,6 +225,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Webhook> UpdateSecret(string webhookId, string? secret = null)
         {
+            if (webhookId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"webhookId\"");
+            }
+
             var apiPath = "/webhooks/{webhookId}/secret"
                 .Replace("{webhookId}", webhookId);
 

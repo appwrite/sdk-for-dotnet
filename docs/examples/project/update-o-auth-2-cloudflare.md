@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Cloudflare result = await project.UpdateOAuth2Cloudflare(
+Appwrite.Models.OAuth2Cloudflare result = await project.UpdateOAuth2Cloudflare(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional

@@ -42,11 +42,11 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseBackupStorage From(Dictionary<string, object> map) => new DedicatedDatabaseBackupStorage(
-            provider: map["provider"].ToString(),
-            bucket: map["bucket"].ToString(),
-            region: map["region"].ToString(),
-            prefix: map["prefix"].ToString(),
-            endpoint: map["endpoint"].ToString()
+            provider: (map.ContainsKey("provider") ? map["provider"] : "").ToString(),
+            bucket: (map.ContainsKey("bucket") ? map["bucket"] : "").ToString(),
+            region: (map.ContainsKey("region") ? map["region"] : "").ToString(),
+            prefix: (map.ContainsKey("prefix") ? map["prefix"] : "backups/").ToString(),
+            endpoint: (map.ContainsKey("endpoint") ? map["endpoint"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

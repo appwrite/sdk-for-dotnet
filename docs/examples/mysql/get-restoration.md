@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseRestoration result = await mysql.GetRestoration(
+Appwrite.Models.DedicatedDatabaseRestoration result = await mysql.GetRestoration(
     databaseId: "<DATABASE_ID>",
     restorationId: "<RESTORATION_ID>"
 );

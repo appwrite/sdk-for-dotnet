@@ -62,15 +62,15 @@ namespace Appwrite.Models
         }
 
         public static Program From(Dictionary<string, object> map) => new Program(
-            id: map["$id"].ToString(),
-            title: map["title"].ToString(),
-            description: map["description"].ToString(),
-            tag: map["tag"].ToString(),
-            icon: map["icon"].ToString(),
-            url: map["url"].ToString(),
-            active: (bool)map["active"],
-            external: (bool)map["external"],
-            billingPlanId: map["billingPlanId"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            title: (map.ContainsKey("title") ? map["title"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
+            tag: (map.ContainsKey("tag") ? map["tag"] : "").ToString(),
+            icon: (map.ContainsKey("icon") ? map["icon"] : "").ToString(),
+            url: (map.ContainsKey("url") ? map["url"] : "").ToString(),
+            active: (bool)(map.ContainsKey("active") ? map["active"] : true),
+            external: (bool)(map.ContainsKey("external") ? map["external"] : true),
+            billingPlanId: (map.ContainsKey("billingPlanId") ? map["billingPlanId"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

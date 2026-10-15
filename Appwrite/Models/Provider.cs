@@ -62,14 +62,14 @@ namespace Appwrite.Models
         }
 
         public static Provider From(Dictionary<string, object> map) => new Provider(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
-            provider: map["provider"].ToString(),
-            enabled: (bool)map["enabled"],
-            type: map["type"].ToString(),
-            credentials: map["credentials"],
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            provider: (map.ContainsKey("provider") ? map["provider"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
+            credentials: (map.ContainsKey("credentials") ? map["credentials"] : new Dictionary<string, object>()),
             options: map.TryGetValue("options", out var objectRaw9) ? objectRaw9 : null
         );
 

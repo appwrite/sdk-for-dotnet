@@ -22,7 +22,7 @@ namespace Appwrite.Models
         }
 
         public static Oauth2Organization From(Dictionary<string, object> map) => new Oauth2Organization(
-            id: map["$id"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

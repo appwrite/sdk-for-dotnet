@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabase result = await mysql.CreateUpgrade(
+Appwrite.Models.DedicatedDatabase result = await mysql.CreateUpgrade(
     databaseId: "<DATABASE_ID>",
     targetVersion: "<TARGET_VERSION>"
 );

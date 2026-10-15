@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Topic result = await messaging.CreateTopic(
+Appwrite.Models.Topic result = await messaging.CreateTopic(
     topicId: "<TOPIC_ID>",
     name: "<NAME>",
     subscribe: ["any"], // optional

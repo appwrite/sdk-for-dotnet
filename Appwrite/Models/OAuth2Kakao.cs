@@ -42,11 +42,11 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Kakao From(Dictionary<string, object> map) => new OAuth2Kakao(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            clientSecret: map["clientSecret"].ToString(),
-            prompt: map["prompt"].ConvertToList<Appwrite.Enums.OAuth2KakaoPrompt>()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            clientSecret: (map.ContainsKey("clientSecret") ? map["clientSecret"] : "").ToString(),
+            prompt: (map.ContainsKey("prompt") ? map["prompt"] : new List<object>()).ConvertToList<Appwrite.Enums.OAuth2KakaoPrompt>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabaseBackupStorage result = await mongo.UpdateBackupStorage(
+Appwrite.Models.DedicatedDatabaseBackupStorage result = await mongo.UpdateBackupStorage(
     databaseId: "<DATABASE_ID>",
     provider: "s3",
     bucket: "<BUCKET>",

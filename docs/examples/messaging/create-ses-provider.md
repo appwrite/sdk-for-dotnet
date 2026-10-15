@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.CreateSesProvider(
+Appwrite.Models.Provider result = await messaging.CreateSesProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>",
     accessKey: "<ACCESS_KEY>", // optional

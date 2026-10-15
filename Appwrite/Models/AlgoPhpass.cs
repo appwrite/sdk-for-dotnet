@@ -22,7 +22,7 @@ namespace Appwrite.Models
         }
 
         public static AlgoPhpass From(Dictionary<string, object> map) => new AlgoPhpass(
-            type: map["type"].ToString()
+            type: (map.ContainsKey("type") ? map["type"] : "phpass").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

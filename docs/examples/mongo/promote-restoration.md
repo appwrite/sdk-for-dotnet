@@ -8,11 +8,11 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Organization organization = new Organization(client);
+Mongo mongo = new Mongo(client);
 
-KeyList result = await organization.ListKeys(
-    queries: new List<string>(), // optional
-    total: false // optional
+Appwrite.Models.DedicatedDatabaseRestoration result = await mongo.PromoteRestoration(
+    databaseId: "<DATABASE_ID>",
+    restorationId: "<RESTORATION_ID>"
 );
 
 ```

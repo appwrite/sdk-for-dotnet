@@ -42,11 +42,11 @@ namespace Appwrite.Models
         }
 
         public static PasskeyChallenge From(Dictionary<string, object> map) => new PasskeyChallenge(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            passkeyId: map["passkeyId"].ToString(),
-            expire: map["expire"].ToString(),
-            publicKey: map["publicKey"]
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            passkeyId: (map.ContainsKey("passkeyId") ? map["passkeyId"] : "").ToString(),
+            expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString(),
+            publicKey: (map.ContainsKey("publicKey") ? map["publicKey"] : new Dictionary<string, object>())
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

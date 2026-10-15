@@ -133,6 +133,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Oauth2Consent> GetConsent(string consentId)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}"
                 .Replace("{consentId}", consentId);
 
@@ -169,6 +174,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteConsent(string consentId)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}"
                 .Replace("{consentId}", consentId);
 
@@ -201,6 +211,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Oauth2ConsentTokenList> ListConsentTokens(string consentId, List<string>? queries = null, bool? total = null)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}/tokens"
                 .Replace("{consentId}", consentId);
 
@@ -238,6 +253,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Oauth2ConsentToken> GetConsentToken(string consentId, string tokenId)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
+            if (tokenId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tokenId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}/tokens/{tokenId}"
                 .Replace("{consentId}", consentId)
                 .Replace("{tokenId}", tokenId);
@@ -275,6 +300,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteConsentToken(string consentId, string tokenId)
         {
+            if (consentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"consentId\"");
+            }
+
+            if (tokenId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tokenId\"");
+            }
+
             var apiPath = "/account/consents/{consentId}/tokens/{tokenId}"
                 .Replace("{consentId}", consentId)
                 .Replace("{tokenId}", tokenId);
@@ -384,6 +419,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteIdentity(string identityId)
         {
+            if (identityId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"identityId\"");
+            }
+
             var apiPath = "/account/identities/{identityId}"
                 .Replace("{identityId}", identityId);
 
@@ -394,7 +434,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -404,42 +445,6 @@ namespace Appwrite.Services
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
-
-        }
-
-        /// <para>
-        /// Get the list of latest security activity logs for the currently logged in
-        /// user. Each log returns user IP address, location and date and time of log.
-        /// </para>
-        /// </summary>
-        public Task<Models.LogList> ListLogs(List<string>? queries = null, bool? total = null)
-        {
-            var apiPath = "/account/logs";
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "queries", queries },
-                { "total", total }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.LogList Convert(Dictionary<string, object> it)
-            {
-                return Models.LogList.From(map: it);
-            }
-
-            return _client.Call<Models.LogList>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
 
         }
 
@@ -649,7 +654,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -678,7 +684,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1782,7 +1789,8 @@ namespace Appwrite.Services
 
         /// <para>
         /// Delete all sessions from the user account and remove any sessions cookies
-        /// from the end client.
+        /// from the end client. Pass `current` as false to keep the session making the
+        /// request and sign out of every other session.
         /// </para>
         /// </summary>
         public Task<object> DeleteSessions(bool? current = null)
@@ -1797,7 +1805,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1853,6 +1862,9 @@ namespace Appwrite.Services
         /// <para>
         /// Allow the user to login into their account by providing a valid email and
         /// password combination. This route will create a new session for the user.
+        /// Use the optional `duration` parameter to create a shorter session, for
+        /// example when the user doesn't choose "remember me". It must be at least 60
+        /// seconds and cannot exceed the project maximum session length.
         /// 
         /// A user is limited to 10 active sessions at a time by default. [Learn more
         /// about session
@@ -2096,6 +2108,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Session> GetSession(string sessionId)
         {
+            if (sessionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"sessionId\"");
+            }
+
             var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
@@ -2132,6 +2149,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Session> UpdateSession(string sessionId)
         {
+            if (sessionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"sessionId\"");
+            }
+
             var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
@@ -2171,6 +2193,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteSession(string sessionId)
         {
+            if (sessionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"sessionId\"");
+            }
+
             var apiPath = "/account/sessions/{sessionId}"
                 .Replace("{sessionId}", sessionId);
 
@@ -2181,7 +2208,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -2342,6 +2370,10 @@ namespace Appwrite.Services
         /// create a new session using the [Create
         /// session](https://appwrite.io/docs/references/cloud/client-web/account#createSession)
         /// endpoint.
+        /// 
+        /// If there is already an active session, the OAuth2 identity is attached to
+        /// the logged-in account and that session stays active until the token is
+        /// exchanged for a new one.
         /// 
         /// A user is limited to 10 active sessions at a time by default. [Learn more
         /// about session
