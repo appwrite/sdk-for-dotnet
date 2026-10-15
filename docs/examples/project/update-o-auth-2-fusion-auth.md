@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2FusionAuth result = await project.UpdateOAuth2FusionAuth(
+Appwrite.Models.OAuth2FusionAuth result = await project.UpdateOAuth2FusionAuth(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     endpoint: "<ENDPOINT>", // optional

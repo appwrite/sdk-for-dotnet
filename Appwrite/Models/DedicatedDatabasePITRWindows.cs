@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabasePITRWindows From(Dictionary<string, object> map) => new DedicatedDatabasePITRWindows(
-            earliest: map["earliest"].ToString(),
-            latest: map["latest"].ToString()
+            earliest: (map.ContainsKey("earliest") ? map["earliest"] : "").ToString(),
+            latest: (map.ContainsKey("latest") ? map["latest"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

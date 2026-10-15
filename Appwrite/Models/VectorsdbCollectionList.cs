@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static VectorsdbCollectionList From(Dictionary<string, object> map) => new VectorsdbCollectionList(
-            total: Convert.ToInt64(map["total"]),
-            collections: map["collections"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.VectorsdbCollection.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            collections: (map.ContainsKey("collections") ? map["collections"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.VectorsdbCollection.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

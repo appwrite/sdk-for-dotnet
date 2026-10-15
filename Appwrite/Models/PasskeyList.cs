@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static PasskeyList From(Dictionary<string, object> map) => new PasskeyList(
-            total: Convert.ToInt64(map["total"]),
-            passkeys: map["passkeys"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Passkey.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            passkeys: (map.ContainsKey("passkeys") ? map["passkeys"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Passkey.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

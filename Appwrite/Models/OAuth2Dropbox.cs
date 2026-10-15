@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Dropbox From(Dictionary<string, object> map) => new OAuth2Dropbox(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            appKey: map["appKey"].ToString(),
-            appSecret: map["appSecret"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            appKey: (map.ContainsKey("appKey") ? map["appKey"] : "").ToString(),
+            appSecret: (map.ContainsKey("appSecret") ? map["appSecret"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

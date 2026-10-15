@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseBranchList From(Dictionary<string, object> map) => new DedicatedDatabaseBranchList(
-            total: Convert.ToInt64(map["total"]),
-            branches: map["branches"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabaseBranch.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            branches: (map.ContainsKey("branches") ? map["branches"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.DedicatedDatabaseBranch.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

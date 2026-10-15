@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnIndex result = await tablesDB.GetIndex(
+Appwrite.Models.ColumnIndex result = await tablesDB.GetIndex(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>"

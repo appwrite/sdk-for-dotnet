@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DatabaseStatus result = await postgresql.GetStatus(
+Appwrite.Models.DatabaseStatus result = await postgresql.GetStatus(
     databaseId: "<DATABASE_ID>"
 );
 

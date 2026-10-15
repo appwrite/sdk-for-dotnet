@@ -82,21 +82,21 @@ namespace Appwrite.Models
         }
 
         public static Message From(Dictionary<string, object> map) => new Message(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            providerType: map["providerType"].ToString(),
-            topics: map["topics"].ConvertToList<string>(),
-            users: map["users"].ConvertToList<string>(),
-            targets: map["targets"].ConvertToList<string>(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            providerType: (map.ContainsKey("providerType") ? map["providerType"] : "").ToString(),
+            topics: (map.ContainsKey("topics") ? map["topics"] : new List<object>()).ConvertToList<string>(),
+            users: (map.ContainsKey("users") ? map["users"] : new List<object>()).ConvertToList<string>(),
+            targets: (map.ContainsKey("targets") ? map["targets"] : new List<object>()).ConvertToList<string>(),
             scheduledAt: map.TryGetValue("scheduledAt", out var scheduledAt) ? scheduledAt?.ToString() : null,
             deliveredAt: map.TryGetValue("deliveredAt", out var deliveredAt) ? deliveredAt?.ToString() : null,
             deliveryErrors: map.TryGetValue("deliveryErrors", out var arrayRaw10) && arrayRaw10 != null
                                 ? arrayRaw10.ConvertToList<string>()
                                 : null,
-            deliveredTotal: Convert.ToInt64(map["deliveredTotal"]),
-            data: map["data"],
-            status: new Appwrite.Enums.MessageStatus(map["status"].ToString()!)
+            deliveredTotal: Convert.ToInt64((map.ContainsKey("deliveredTotal") ? map["deliveredTotal"] : 0)),
+            data: (map.ContainsKey("data") ? map["data"] : new Dictionary<string, object>()),
+            status: new Appwrite.Enums.MessageStatus((map.ContainsKey("status") ? map["status"] : "draft").ToString()!)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

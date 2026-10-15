@@ -10,13 +10,13 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnEnum result = await tablesDB.CreateEnumColumn(
+Appwrite.Models.ColumnEnum result = await tablesDB.CreateEnumColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     elements: ["active", "inactive"],
     required: false,
-    default: "active", // optional
+    @default: "active", // optional
     array: false // optional
 );
 

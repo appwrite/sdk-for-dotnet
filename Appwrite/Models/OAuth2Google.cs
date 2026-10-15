@@ -27,10 +27,10 @@ namespace Appwrite.Models
         public List<Appwrite.Enums.OAuth2GooglePrompt> Prompt { get; private set; }
 
         [JsonPropertyName("nativeEnabled")]
-        public bool? NativeEnabled { get; private set; }
+        public bool NativeEnabled { get; private set; }
 
         [JsonPropertyName("nativeClientIds")]
-        public List<string>? NativeClientIds { get; private set; }
+        public List<string> NativeClientIds { get; private set; }
 
         public OAuth2Google(
             string id,
@@ -38,8 +38,8 @@ namespace Appwrite.Models
             string clientId,
             string clientSecret,
             List<Appwrite.Enums.OAuth2GooglePrompt> prompt,
-            bool? nativeEnabled = null,
-            List<string>? nativeClientIds = null
+            bool nativeEnabled,
+            List<string> nativeClientIds
         )
         {
             Id = id;
@@ -52,17 +52,13 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Google From(Dictionary<string, object> map) => new OAuth2Google(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            clientSecret: map["clientSecret"].ToString(),
-            prompt: map["prompt"].ConvertToList<Appwrite.Enums.OAuth2GooglePrompt>(),
-            nativeEnabled: map.TryGetValue("nativeEnabled", out var boolRaw6Added) && boolRaw6Added != null
-                                        ? (bool?)boolRaw6Added
-                                        : null,
-            nativeClientIds: map.TryGetValue("nativeClientIds", out var arrayRaw7Added) && arrayRaw7Added != null
-                                ? arrayRaw7Added.ConvertToList<string>()
-                                : null
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            clientSecret: (map.ContainsKey("clientSecret") ? map["clientSecret"] : "").ToString(),
+            prompt: (map.ContainsKey("prompt") ? map["prompt"] : new List<object> { "consent" }).ConvertToList<Appwrite.Enums.OAuth2GooglePrompt>(),
+            nativeEnabled: (bool)(map.ContainsKey("nativeEnabled") ? map["nativeEnabled"] : false),
+            nativeClientIds: (map.ContainsKey("nativeClientIds") ? map["nativeClientIds"] : new List<object>()).ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

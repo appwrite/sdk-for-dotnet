@@ -77,18 +77,18 @@ namespace Appwrite.Models
         }
 
         public static DnsRecord From(Dictionary<string, object> map) => new DnsRecord(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            type: map["type"].ToString(),
-            name: map["name"].ToString(),
-            @value: map["value"].ToString(),
-            ttl: Convert.ToInt64(map["ttl"]),
-            priority: Convert.ToInt64(map["priority"]),
-            @lock: (bool)map["lock"],
-            weight: Convert.ToInt64(map["weight"]),
-            port: Convert.ToInt64(map["port"]),
-            comment: map["comment"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            @value: (map.ContainsKey("value") ? map["value"] : "").ToString(),
+            ttl: Convert.ToInt64((map.ContainsKey("ttl") ? map["ttl"] : 3600)),
+            priority: Convert.ToInt64((map.ContainsKey("priority") ? map["priority"] : 0)),
+            @lock: (bool)(map.ContainsKey("lock") ? map["lock"] : false),
+            weight: Convert.ToInt64((map.ContainsKey("weight") ? map["weight"] : 0)),
+            port: Convert.ToInt64((map.ContainsKey("port") ? map["port"] : 0)),
+            comment: (map.ContainsKey("comment") ? map["comment"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -47,12 +47,12 @@ namespace Appwrite.Models
         }
 
         public static Oauth2DeviceAuthorization From(Dictionary<string, object> map) => new Oauth2DeviceAuthorization(
-            deviceCode: map["device_code"].ToString(),
-            userCode: map["user_code"].ToString(),
-            verificationUri: map["verification_uri"].ToString(),
-            verificationUriComplete: map["verification_uri_complete"].ToString(),
-            expiresIn: Convert.ToInt64(map["expires_in"]),
-            interval: Convert.ToInt64(map["interval"])
+            deviceCode: (map.ContainsKey("device_code") ? map["device_code"] : "").ToString(),
+            userCode: (map.ContainsKey("user_code") ? map["user_code"] : "").ToString(),
+            verificationUri: (map.ContainsKey("verification_uri") ? map["verification_uri"] : "").ToString(),
+            verificationUriComplete: (map.ContainsKey("verification_uri_complete") ? map["verification_uri_complete"] : "").ToString(),
+            expiresIn: Convert.ToInt64((map.ContainsKey("expires_in") ? map["expires_in"] : 0)),
+            interval: Convert.ToInt64((map.ContainsKey("interval") ? map["interval"] : 0))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

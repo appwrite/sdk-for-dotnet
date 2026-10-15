@@ -47,12 +47,12 @@ namespace Appwrite.Models
         }
 
         public static Transaction From(Dictionary<string, object> map) => new Transaction(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            status: map["status"].ToString(),
-            operations: Convert.ToInt64(map["operations"]),
-            expiresAt: map["expiresAt"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            status: (map.ContainsKey("status") ? map["status"] : "pending").ToString(),
+            operations: Convert.ToInt64((map.ContainsKey("operations") ? map["operations"] : 0)),
+            expiresAt: (map.ContainsKey("expiresAt") ? map["expiresAt"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

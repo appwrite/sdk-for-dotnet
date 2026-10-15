@@ -10,12 +10,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeLine result = await databases.UpdateLineAttribute(
+Appwrite.Models.AttributeLine result = await databases.UpdateLineAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
-    default: [[1, 2], [3, 4], [5, 6]], // optional
+    @default: [[1, 2], [3, 4], [5, 6]], // optional
     newKey: "<NEW_KEY>" // optional
 );
 

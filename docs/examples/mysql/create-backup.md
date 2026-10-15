@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseBackup result = await mysql.CreateBackup(
+Appwrite.Models.DedicatedDatabaseBackup result = await mysql.CreateBackup(
     databaseId: "<DATABASE_ID>",
     type: "full" // optional
 );

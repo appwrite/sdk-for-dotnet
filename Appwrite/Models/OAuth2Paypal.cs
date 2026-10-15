@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Paypal From(Dictionary<string, object> map) => new OAuth2Paypal(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            clientId: map["clientId"].ToString(),
-            secretKey: map["secretKey"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            clientId: (map.ContainsKey("clientId") ? map["clientId"] : "").ToString(),
+            secretKey: (map.ContainsKey("secretKey") ? map["secretKey"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

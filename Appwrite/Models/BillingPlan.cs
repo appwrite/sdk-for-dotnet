@@ -51,7 +51,7 @@ namespace Appwrite.Models
         public long WafRules { get; private set; }
 
         [JsonPropertyName("environments")]
-        public long? Environments { get; private set; }
+        public long Environments { get; private set; }
 
         [JsonPropertyName("projects")]
         public long Projects { get; private set; }
@@ -135,7 +135,7 @@ namespace Appwrite.Models
         public long AlertLimit { get; private set; }
 
         [JsonPropertyName("usage")]
-        public UsageBillingPlan Usage { get; private set; }
+        public UsageBillingPlan? Usage { get; private set; }
 
         [JsonPropertyName("addons")]
         public BillingPlanAddon Addons { get; private set; }
@@ -250,6 +250,7 @@ namespace Appwrite.Models
             long? members,
             long webhooks,
             long wafRules,
+            long environments,
             long projects,
             long platforms,
             long users,
@@ -277,13 +278,14 @@ namespace Appwrite.Models
             List<string>? usageAggregateOnlyMetrics,
             long projectInactivityDays,
             long alertLimit,
-            UsageBillingPlan usage,
+            UsageBillingPlan? usage,
             BillingPlanAddon addons,
             bool budgetCapEnabled,
             bool customSmtp,
             bool emailBranding,
             bool requiresPaymentMethod,
             bool requiresBillingAddress,
+            List<string>? eligibleCountries,
             bool isAvailable,
             bool selfService,
             bool premiumSupport,
@@ -309,9 +311,7 @@ namespace Appwrite.Models
             Appwrite.Enums.BillingPlanGroup @group,
             Program? program,
             double databaseComputeCredit,
-            BillingPlanDedicatedDatabaseLimits? dedicatedDatabases,
-            long? environments = null,
-            List<string>? eligibleCountries = null
+            BillingPlanDedicatedDatabaseLimits? dedicatedDatabases
         )
         {
             Id = id;
@@ -392,103 +392,103 @@ namespace Appwrite.Models
         }
 
         public static BillingPlan From(Dictionary<string, object> map) => new BillingPlan(
-            id: map["$id"].ToString(),
-            name: map["name"].ToString(),
-            desc: map["desc"].ToString(),
-            order: Convert.ToInt64(map["order"]),
-            price: Convert.ToDouble(map["price"]),
-            trial: Convert.ToInt64(map["trial"]),
-            bandwidth: Convert.ToInt64(map["bandwidth"]),
-            storage: Convert.ToInt64(map["storage"]),
-            imageTransformations: Convert.ToInt64(map["imageTransformations"]),
-            screenshotsGenerated: Convert.ToInt64(map["screenshotsGenerated"]),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            desc: (map.ContainsKey("desc") ? map["desc"] : "").ToString(),
+            order: Convert.ToInt64((map.ContainsKey("order") ? map["order"] : 0)),
+            price: Convert.ToDouble((map.ContainsKey("price") ? map["price"] : 0)),
+            trial: Convert.ToInt64((map.ContainsKey("trial") ? map["trial"] : 0)),
+            bandwidth: Convert.ToInt64((map.ContainsKey("bandwidth") ? map["bandwidth"] : 0)),
+            storage: Convert.ToInt64((map.ContainsKey("storage") ? map["storage"] : 0)),
+            imageTransformations: Convert.ToInt64((map.ContainsKey("imageTransformations") ? map["imageTransformations"] : 0)),
+            screenshotsGenerated: Convert.ToInt64((map.ContainsKey("screenshotsGenerated") ? map["screenshotsGenerated"] : 0)),
             members: map.TryGetValue("members", out var numberRaw11) && numberRaw11 != null
                                     ? Convert.ToInt64(numberRaw11)
                                     : null,
-            webhooks: Convert.ToInt64(map["webhooks"]),
-            wafRules: Convert.ToInt64(map["wafRules"]),
-            projects: Convert.ToInt64(map["projects"]),
-            platforms: Convert.ToInt64(map["platforms"]),
-            users: Convert.ToInt64(map["users"]),
-            teams: Convert.ToInt64(map["teams"]),
-            databases: Convert.ToInt64(map["databases"]),
-            databasesReads: Convert.ToInt64(map["databasesReads"]),
-            databasesWrites: Convert.ToInt64(map["databasesWrites"]),
-            databasesBatchSize: Convert.ToInt64(map["databasesBatchSize"]),
-            buckets: Convert.ToInt64(map["buckets"]),
-            fileSize: Convert.ToInt64(map["fileSize"]),
-            functions: Convert.ToInt64(map["functions"]),
-            sites: Convert.ToInt64(map["sites"]),
-            executions: Convert.ToInt64(map["executions"]),
-            executionsRetentionCount: Convert.ToInt64(map["executionsRetentionCount"]),
-            gBHours: Convert.ToInt64(map["GBHours"]),
-            realtime: Convert.ToInt64(map["realtime"]),
-            realtimeMessages: Convert.ToInt64(map["realtimeMessages"]),
-            messages: Convert.ToInt64(map["messages"]),
-            topics: Convert.ToInt64(map["topics"]),
-            authPhone: Convert.ToInt64(map["authPhone"]),
-            domains: Convert.ToInt64(map["domains"]),
-            activityLogs: map.TryGetValue("activityLogs", out var numberRaw35) && numberRaw35 != null
-                                    ? Convert.ToInt64(numberRaw35)
+            webhooks: Convert.ToInt64((map.ContainsKey("webhooks") ? map["webhooks"] : 0)),
+            wafRules: Convert.ToInt64((map.ContainsKey("wafRules") ? map["wafRules"] : 0)),
+            environments: Convert.ToInt64((map.ContainsKey("environments") ? map["environments"] : 0)),
+            projects: Convert.ToInt64((map.ContainsKey("projects") ? map["projects"] : 0)),
+            platforms: Convert.ToInt64((map.ContainsKey("platforms") ? map["platforms"] : 0)),
+            users: Convert.ToInt64((map.ContainsKey("users") ? map["users"] : 0)),
+            teams: Convert.ToInt64((map.ContainsKey("teams") ? map["teams"] : 0)),
+            databases: Convert.ToInt64((map.ContainsKey("databases") ? map["databases"] : 0)),
+            databasesReads: Convert.ToInt64((map.ContainsKey("databasesReads") ? map["databasesReads"] : 0)),
+            databasesWrites: Convert.ToInt64((map.ContainsKey("databasesWrites") ? map["databasesWrites"] : 0)),
+            databasesBatchSize: Convert.ToInt64((map.ContainsKey("databasesBatchSize") ? map["databasesBatchSize"] : 0)),
+            buckets: Convert.ToInt64((map.ContainsKey("buckets") ? map["buckets"] : 0)),
+            fileSize: Convert.ToInt64((map.ContainsKey("fileSize") ? map["fileSize"] : 0)),
+            functions: Convert.ToInt64((map.ContainsKey("functions") ? map["functions"] : 0)),
+            sites: Convert.ToInt64((map.ContainsKey("sites") ? map["sites"] : 0)),
+            executions: Convert.ToInt64((map.ContainsKey("executions") ? map["executions"] : 0)),
+            executionsRetentionCount: Convert.ToInt64((map.ContainsKey("executionsRetentionCount") ? map["executionsRetentionCount"] : 1000)),
+            gBHours: Convert.ToInt64((map.ContainsKey("GBHours") ? map["GBHours"] : 0)),
+            realtime: Convert.ToInt64((map.ContainsKey("realtime") ? map["realtime"] : 0)),
+            realtimeMessages: Convert.ToInt64((map.ContainsKey("realtimeMessages") ? map["realtimeMessages"] : 0)),
+            messages: Convert.ToInt64((map.ContainsKey("messages") ? map["messages"] : 0)),
+            topics: Convert.ToInt64((map.ContainsKey("topics") ? map["topics"] : 0)),
+            authPhone: Convert.ToInt64((map.ContainsKey("authPhone") ? map["authPhone"] : 0)),
+            domains: Convert.ToInt64((map.ContainsKey("domains") ? map["domains"] : 0)),
+            activityLogs: map.TryGetValue("activityLogs", out var numberRaw36) && numberRaw36 != null
+                                    ? Convert.ToInt64(numberRaw36)
                                     : null,
-            usageLogs: Convert.ToInt64(map["usageLogs"]),
-            usageLogsIntervals: map.TryGetValue("usageLogsIntervals", out var arrayRaw37) && arrayRaw37 != null
-                                ? arrayRaw37.ConvertToList<string>()
-                                : null,
-            usageAggregateOnlyMetrics: map.TryGetValue("usageAggregateOnlyMetrics", out var arrayRaw38) && arrayRaw38 != null
+            usageLogs: Convert.ToInt64((map.ContainsKey("usageLogs") ? map["usageLogs"] : 0)),
+            usageLogsIntervals: map.TryGetValue("usageLogsIntervals", out var arrayRaw38) && arrayRaw38 != null
                                 ? arrayRaw38.ConvertToList<string>()
                                 : null,
-            projectInactivityDays: Convert.ToInt64(map["projectInactivityDays"]),
-            alertLimit: Convert.ToInt64(map["alertLimit"]),
-            usage: Appwrite.Models.UsageBillingPlan.From(map: map["usage"] is JsonElement jsonObj41 ? jsonObj41.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["usage"]),
-            addons: Appwrite.Models.BillingPlanAddon.From(map: map["addons"] is JsonElement jsonObj42 ? jsonObj42.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["addons"]),
-            budgetCapEnabled: (bool)map["budgetCapEnabled"],
-            customSmtp: (bool)map["customSmtp"],
-            emailBranding: (bool)map["emailBranding"],
-            requiresPaymentMethod: (bool)map["requiresPaymentMethod"],
-            requiresBillingAddress: (bool)map["requiresBillingAddress"],
-            isAvailable: (bool)map["isAvailable"],
-            selfService: (bool)map["selfService"],
-            premiumSupport: (bool)map["premiumSupport"],
-            budgeting: (bool)map["budgeting"],
-            supportsMockNumbers: (bool)map["supportsMockNumbers"],
-            supportsOrganizationRoles: (bool)map["supportsOrganizationRoles"],
-            supportsCredits: (bool)map["supportsCredits"],
-            supportsDedicatedDatabases: (bool)map["supportsDedicatedDatabases"],
-            supportsDisposableEmailValidation: (bool)map["supportsDisposableEmailValidation"],
-            supportsCanonicalEmailValidation: (bool)map["supportsCanonicalEmailValidation"],
-            supportsFreeEmailValidation: (bool)map["supportsFreeEmailValidation"],
-            supportsCorporateEmailValidation: (bool)map["supportsCorporateEmailValidation"],
-            supportsProjectSpecificRoles: (bool)map["supportsProjectSpecificRoles"],
-            backupsEnabled: map.TryGetValue("backupsEnabled", out var boolRaw61) && boolRaw61 != null
-                                        ? (bool?)boolRaw61
-                                        : null,
-            usagePerProject: (bool)map["usagePerProject"],
-            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj63 ? jsonObj63.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
-            backupPolicies: map.TryGetValue("backupPolicies", out var numberRaw64) && numberRaw64 != null
-                                    ? Convert.ToInt64(numberRaw64)
+            usageAggregateOnlyMetrics: map.TryGetValue("usageAggregateOnlyMetrics", out var arrayRaw39) && arrayRaw39 != null
+                                ? arrayRaw39.ConvertToList<string>()
+                                : null,
+            projectInactivityDays: Convert.ToInt64((map.ContainsKey("projectInactivityDays") ? map["projectInactivityDays"] : 0)),
+            alertLimit: Convert.ToInt64((map.ContainsKey("alertLimit") ? map["alertLimit"] : 80)),
+            usage: map.TryGetValue("usage", out var objectRaw42) && objectRaw42 != null
+                                    ? Appwrite.Models.UsageBillingPlan.From(map: objectRaw42 is JsonElement jsonObj42 ? jsonObj42.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw42)
                                     : null,
-            deploymentSize: Convert.ToInt64(map["deploymentSize"]),
-            buildSize: Convert.ToInt64(map["buildSize"]),
-            functionsIntervalMinimum: Convert.ToInt64(map["functionsIntervalMinimum"]),
-            databasesAllowEncrypt: (bool)map["databasesAllowEncrypt"],
-            limits: map.TryGetValue("limits", out var objectRaw69) && objectRaw69 != null
-                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw69 is JsonElement jsonObj69 ? jsonObj69.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw69)
+            addons: Appwrite.Models.BillingPlanAddon.From(map: map["addons"] is JsonElement jsonObj43 ? jsonObj43.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["addons"]),
+            budgetCapEnabled: (bool)(map.ContainsKey("budgetCapEnabled") ? map["budgetCapEnabled"] : false),
+            customSmtp: (bool)(map.ContainsKey("customSmtp") ? map["customSmtp"] : false),
+            emailBranding: (bool)(map.ContainsKey("emailBranding") ? map["emailBranding"] : false),
+            requiresPaymentMethod: (bool)(map.ContainsKey("requiresPaymentMethod") ? map["requiresPaymentMethod"] : true),
+            requiresBillingAddress: (bool)(map.ContainsKey("requiresBillingAddress") ? map["requiresBillingAddress"] : false),
+            eligibleCountries: map.TryGetValue("eligibleCountries", out var arrayRaw49) && arrayRaw49 != null
+                                ? arrayRaw49.ConvertToList<string>()
+                                : null,
+            isAvailable: (bool)(map.ContainsKey("isAvailable") ? map["isAvailable"] : true),
+            selfService: (bool)(map.ContainsKey("selfService") ? map["selfService"] : true),
+            premiumSupport: (bool)(map.ContainsKey("premiumSupport") ? map["premiumSupport"] : true),
+            budgeting: (bool)(map.ContainsKey("budgeting") ? map["budgeting"] : true),
+            supportsMockNumbers: (bool)(map.ContainsKey("supportsMockNumbers") ? map["supportsMockNumbers"] : true),
+            supportsOrganizationRoles: (bool)(map.ContainsKey("supportsOrganizationRoles") ? map["supportsOrganizationRoles"] : true),
+            supportsCredits: (bool)(map.ContainsKey("supportsCredits") ? map["supportsCredits"] : false),
+            supportsDedicatedDatabases: (bool)(map.ContainsKey("supportsDedicatedDatabases") ? map["supportsDedicatedDatabases"] : false),
+            supportsDisposableEmailValidation: (bool)(map.ContainsKey("supportsDisposableEmailValidation") ? map["supportsDisposableEmailValidation"] : false),
+            supportsCanonicalEmailValidation: (bool)(map.ContainsKey("supportsCanonicalEmailValidation") ? map["supportsCanonicalEmailValidation"] : false),
+            supportsFreeEmailValidation: (bool)(map.ContainsKey("supportsFreeEmailValidation") ? map["supportsFreeEmailValidation"] : false),
+            supportsCorporateEmailValidation: (bool)(map.ContainsKey("supportsCorporateEmailValidation") ? map["supportsCorporateEmailValidation"] : false),
+            supportsProjectSpecificRoles: (bool)(map.ContainsKey("supportsProjectSpecificRoles") ? map["supportsProjectSpecificRoles"] : false),
+            backupsEnabled: map.TryGetValue("backupsEnabled", out var boolRaw63) && boolRaw63 != null
+                                        ? (bool?)boolRaw63
+                                        : null,
+            usagePerProject: (bool)(map.ContainsKey("usagePerProject") ? map["usagePerProject"] : true),
+            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj65 ? jsonObj65.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
+            backupPolicies: map.TryGetValue("backupPolicies", out var numberRaw66) && numberRaw66 != null
+                                    ? Convert.ToInt64(numberRaw66)
+                                    : null,
+            deploymentSize: Convert.ToInt64((map.ContainsKey("deploymentSize") ? map["deploymentSize"] : 0)),
+            buildSize: Convert.ToInt64((map.ContainsKey("buildSize") ? map["buildSize"] : 0)),
+            functionsIntervalMinimum: Convert.ToInt64((map.ContainsKey("functionsIntervalMinimum") ? map["functionsIntervalMinimum"] : 0)),
+            databasesAllowEncrypt: (bool)(map.ContainsKey("databasesAllowEncrypt") ? map["databasesAllowEncrypt"] : false),
+            limits: map.TryGetValue("limits", out var objectRaw71) && objectRaw71 != null
+                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw71 is JsonElement jsonObj71 ? jsonObj71.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw71)
                                     : null,
             @group: new Appwrite.Enums.BillingPlanGroup(map["group"].ToString()!),
-            program: map.TryGetValue("program", out var objectRaw71) && objectRaw71 != null
-                                    ? Appwrite.Models.Program.From(map: objectRaw71 is JsonElement jsonObj71 ? jsonObj71.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw71)
+            program: map.TryGetValue("program", out var objectRaw73) && objectRaw73 != null
+                                    ? Appwrite.Models.Program.From(map: objectRaw73 is JsonElement jsonObj73 ? jsonObj73.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw73)
                                     : null,
-            databaseComputeCredit: Convert.ToDouble(map["databaseComputeCredit"]),
-            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw73) && objectRaw73 != null
-                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw73 is JsonElement jsonObj73 ? jsonObj73.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw73)
-                                    : null,
-            environments: map.TryGetValue("environments", out var numberRaw14Added) && numberRaw14Added != null
-                                    ? Convert.ToInt64(numberRaw14Added)
-                                    : null,
-            eligibleCountries: map.TryGetValue("eligibleCountries", out var arrayRaw49Added) && arrayRaw49Added != null
-                                ? arrayRaw49Added.ConvertToList<string>()
-                                : null
+            databaseComputeCredit: Convert.ToDouble((map.ContainsKey("databaseComputeCredit") ? map["databaseComputeCredit"] : 0)),
+            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw75) && objectRaw75 != null
+                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw75 is JsonElement jsonObj75 ? jsonObj75.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw75)
+                                    : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

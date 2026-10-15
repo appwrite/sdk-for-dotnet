@@ -57,16 +57,16 @@ namespace Appwrite.Models
         }
 
         public static AttributeObject From(Dictionary<string, object> map) => new AttributeObject(
-            key: map["key"].ToString(),
-            type: map["type"].ToString(),
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
             status: new Appwrite.Enums.AttributeStatus(map["status"].ToString()!),
-            error: map["error"].ToString(),
-            required: (bool)map["required"],
+            error: (map.ContainsKey("error") ? map["error"] : "").ToString(),
+            required: (bool)(map.ContainsKey("required") ? map["required"] : false),
             array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null
                                         ? (bool?)boolRaw6
                                         : null,
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString()
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

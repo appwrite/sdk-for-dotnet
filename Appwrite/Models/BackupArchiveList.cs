@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static BackupArchiveList From(Dictionary<string, object> map) => new BackupArchiveList(
-            total: Convert.ToInt64(map["total"]),
-            archives: map["archives"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupArchive.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            archives: (map.ContainsKey("archives") ? map["archives"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupArchive.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

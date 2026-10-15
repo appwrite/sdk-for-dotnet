@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Token result = await account.CreateEmailToken(
+Appwrite.Models.Token result = await account.CreateEmailToken(
     userId: "<USER_ID>",
     email: "email@example.com",
     phrase: false // optional

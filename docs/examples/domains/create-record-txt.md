@@ -14,7 +14,7 @@ Appwrite.Models.DnsRecord result = await domains.CreateRecordTXT(
     domainId: "<DOMAIN_ID>",
     name: "",
     ttl: 1,
-    value: "<VALUE>", // optional
+    @value: "<VALUE>", // optional
     comment: "<COMMENT>" // optional
 );
 

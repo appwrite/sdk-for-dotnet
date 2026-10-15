@@ -10,7 +10,7 @@ Client client = new Client()
 
 Proxy proxy = new Proxy(client);
 
-ProxyRuleList result = await proxy.ListRules(
+Appwrite.Models.ProxyRuleList result = await proxy.ListRules(
     queries: new List<string>(), // optional
     total: false // optional
 );

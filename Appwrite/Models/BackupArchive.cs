@@ -24,13 +24,13 @@ namespace Appwrite.Models
         public string PolicyId { get; private set; }
 
         [JsonPropertyName("size")]
-        public long Size { get; private set; }
+        public long? Size { get; private set; }
 
         [JsonPropertyName("status")]
         public string Status { get; private set; }
 
         [JsonPropertyName("startedAt")]
-        public string StartedAt { get; private set; }
+        public string? StartedAt { get; private set; }
 
         [JsonPropertyName("migrationId")]
         public string MigrationId { get; private set; }
@@ -52,9 +52,9 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string policyId,
-            long size,
+            long? size,
             string status,
-            string startedAt,
+            string? startedAt,
             string migrationId,
             List<string> services,
             List<string> resources,
@@ -77,16 +77,18 @@ namespace Appwrite.Models
         }
 
         public static BackupArchive From(Dictionary<string, object> map) => new BackupArchive(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            policyId: map["policyId"].ToString(),
-            size: Convert.ToInt64(map["size"]),
-            status: map["status"].ToString(),
-            startedAt: map["startedAt"].ToString(),
-            migrationId: map["migrationId"].ToString(),
-            services: map["services"].ConvertToList<string>(),
-            resources: map["resources"].ConvertToList<string>(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            policyId: (map.ContainsKey("policyId") ? map["policyId"] : "").ToString(),
+            size: map.TryGetValue("size", out var numberRaw5) && numberRaw5 != null
+                                    ? Convert.ToInt64(numberRaw5)
+                                    : null,
+            status: (map.ContainsKey("status") ? map["status"] : "").ToString(),
+            startedAt: map.TryGetValue("startedAt", out var startedAt) ? startedAt?.ToString() : null,
+            migrationId: (map.ContainsKey("migrationId") ? map["migrationId"] : "").ToString(),
+            services: (map.ContainsKey("services") ? map["services"] : new List<object>()).ConvertToList<string>(),
+            resources: (map.ContainsKey("resources") ? map["resources"] : new List<object>()).ConvertToList<string>(),
             resourceId: map.TryGetValue("resourceId", out var resourceId) ? resourceId?.ToString() : null,
             resourceType: map.TryGetValue("resourceType", out var resourceType) ? resourceType?.ToString() : null
         );

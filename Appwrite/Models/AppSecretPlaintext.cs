@@ -62,14 +62,14 @@ namespace Appwrite.Models
         }
 
         public static AppSecretPlaintext From(Dictionary<string, object> map) => new AppSecretPlaintext(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            appId: map["appId"].ToString(),
-            secret: map["secret"].ToString(),
-            hint: map["hint"].ToString(),
-            createdById: map["createdById"].ToString(),
-            createdByName: map["createdByName"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            appId: (map.ContainsKey("appId") ? map["appId"] : "").ToString(),
+            secret: (map.ContainsKey("secret") ? map["secret"] : "").ToString(),
+            hint: (map.ContainsKey("hint") ? map["hint"] : "").ToString(),
+            createdById: (map.ContainsKey("createdById") ? map["createdById"] : "").ToString(),
+            createdByName: (map.ContainsKey("createdByName") ? map["createdByName"] : "").ToString(),
             lastAccessedAt: map.TryGetValue("lastAccessedAt", out var lastAccessedAt) ? lastAccessedAt?.ToString() : null
         );
 

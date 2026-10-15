@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabase result = await mysql.CreateFailover(
+Appwrite.Models.DedicatedDatabase result = await mysql.CreateFailover(
     databaseId: "<DATABASE_ID>",
     targetReplicaId: "<TARGET_REPLICA_ID>" // optional
 );

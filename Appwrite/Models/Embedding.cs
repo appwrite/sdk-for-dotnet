@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static Embedding From(Dictionary<string, object> map) => new Embedding(
-            model: map["model"].ToString(),
-            dimension: Convert.ToInt64(map["dimension"]),
-            embedding: map["embedding"].ConvertToList<double>(),
-            error: map["error"].ToString()
+            model: (map.ContainsKey("model") ? map["model"] : "").ToString(),
+            dimension: Convert.ToInt64((map.ContainsKey("dimension") ? map["dimension"] : 0)),
+            embedding: (map.ContainsKey("embedding") ? map["embedding"] : new List<object>()).ConvertToList<double>(),
+            error: (map.ContainsKey("error") ? map["error"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

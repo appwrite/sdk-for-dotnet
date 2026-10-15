@@ -11,7 +11,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.CreateSMTPProvider(
+Appwrite.Models.Provider result = await messaging.CreateSMTPProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>",
     host: "<HOST>",

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Message result = await messaging.CreateEmail(
+Appwrite.Models.Message result = await messaging.CreateEmail(
     messageId: "<MESSAGE_ID>",
     subject: "<SUBJECT>",
     content: "<CONTENT>",

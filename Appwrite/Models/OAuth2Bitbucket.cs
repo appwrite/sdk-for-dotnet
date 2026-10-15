@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Bitbucket From(Dictionary<string, object> map) => new OAuth2Bitbucket(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            key: map["key"].ToString(),
-            secret: map["secret"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            secret: (map.ContainsKey("secret") ? map["secret"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

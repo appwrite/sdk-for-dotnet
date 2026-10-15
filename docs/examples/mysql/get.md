@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabase result = await mysql.Get(
+Appwrite.Models.DedicatedDatabase result = await mysql.Get(
     databaseId: "<DATABASE_ID>"
 );
 

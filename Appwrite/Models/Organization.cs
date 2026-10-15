@@ -48,28 +48,28 @@ namespace Appwrite.Models
         public string BillingEmail { get; private set; }
 
         [JsonPropertyName("billingStartDate")]
-        public string BillingStartDate { get; private set; }
+        public string? BillingStartDate { get; private set; }
 
         [JsonPropertyName("billingCurrentInvoiceDate")]
-        public string BillingCurrentInvoiceDate { get; private set; }
+        public string? BillingCurrentInvoiceDate { get; private set; }
 
         [JsonPropertyName("billingNextInvoiceDate")]
-        public string BillingNextInvoiceDate { get; private set; }
+        public string? BillingNextInvoiceDate { get; private set; }
 
         [JsonPropertyName("billingTrialStartDate")]
         public string? BillingTrialStartDate { get; private set; }
 
         [JsonPropertyName("billingTrialDays")]
-        public long BillingTrialDays { get; private set; }
+        public long? BillingTrialDays { get; private set; }
 
         [JsonPropertyName("billingAggregationId")]
-        public string BillingAggregationId { get; private set; }
+        public string? BillingAggregationId { get; private set; }
 
         [JsonPropertyName("billingInvoiceId")]
-        public string BillingInvoiceId { get; private set; }
+        public string? BillingInvoiceId { get; private set; }
 
         [JsonPropertyName("paymentMethodId")]
-        public string PaymentMethodId { get; private set; }
+        public string? PaymentMethodId { get; private set; }
 
         [JsonPropertyName("billingAddressId")]
         public string? BillingAddressId { get; private set; }
@@ -129,14 +129,14 @@ namespace Appwrite.Models
             string billingPlanId,
             BillingPlan billingPlanDetails,
             string billingEmail,
-            string billingStartDate,
-            string billingCurrentInvoiceDate,
-            string billingNextInvoiceDate,
+            string? billingStartDate,
+            string? billingCurrentInvoiceDate,
+            string? billingNextInvoiceDate,
             string? billingTrialStartDate,
-            long billingTrialDays,
-            string billingAggregationId,
-            string billingInvoiceId,
-            string paymentMethodId,
+            long? billingTrialDays,
+            string? billingAggregationId,
+            string? billingInvoiceId,
+            string? paymentMethodId,
             string? billingAddressId,
             string? backupPaymentMethodId,
             string status,
@@ -192,31 +192,33 @@ namespace Appwrite.Models
         }
 
         public static Organization From(Dictionary<string, object> map) => new Organization(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
-            total: Convert.ToInt64(map["total"]),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
             prefs: Appwrite.Models.Preferences.From(map: map["prefs"] is JsonElement jsonObj6 ? jsonObj6.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["prefs"]),
             billingBudget: map.TryGetValue("billingBudget", out var numberRaw7) && numberRaw7 != null
                                     ? Convert.ToInt64(numberRaw7)
                                     : null,
-            budgetAlerts: map["budgetAlerts"].ConvertToList<long>(),
-            billingPlan: map["billingPlan"].ToString(),
-            billingPlanId: map["billingPlanId"].ToString(),
+            budgetAlerts: (map.ContainsKey("budgetAlerts") ? map["budgetAlerts"] : new List<object> { 75 }).ConvertToList<long>(),
+            billingPlan: (map.ContainsKey("billingPlan") ? map["billingPlan"] : "tier-0").ToString(),
+            billingPlanId: (map.ContainsKey("billingPlanId") ? map["billingPlanId"] : "tier-0").ToString(),
             billingPlanDetails: Appwrite.Models.BillingPlan.From(map: map["billingPlanDetails"] is JsonElement jsonObj11 ? jsonObj11.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["billingPlanDetails"]),
-            billingEmail: map["billingEmail"].ToString(),
-            billingStartDate: map["billingStartDate"].ToString(),
-            billingCurrentInvoiceDate: map["billingCurrentInvoiceDate"].ToString(),
-            billingNextInvoiceDate: map["billingNextInvoiceDate"].ToString(),
+            billingEmail: (map.ContainsKey("billingEmail") ? map["billingEmail"] : "").ToString(),
+            billingStartDate: map.TryGetValue("billingStartDate", out var billingStartDate) ? billingStartDate?.ToString() : null,
+            billingCurrentInvoiceDate: map.TryGetValue("billingCurrentInvoiceDate", out var billingCurrentInvoiceDate) ? billingCurrentInvoiceDate?.ToString() : null,
+            billingNextInvoiceDate: map.TryGetValue("billingNextInvoiceDate", out var billingNextInvoiceDate) ? billingNextInvoiceDate?.ToString() : null,
             billingTrialStartDate: map.TryGetValue("billingTrialStartDate", out var billingTrialStartDate) ? billingTrialStartDate?.ToString() : null,
-            billingTrialDays: Convert.ToInt64(map["billingTrialDays"]),
-            billingAggregationId: map["billingAggregationId"].ToString(),
-            billingInvoiceId: map["billingInvoiceId"].ToString(),
-            paymentMethodId: map["paymentMethodId"].ToString(),
+            billingTrialDays: map.TryGetValue("billingTrialDays", out var numberRaw17) && numberRaw17 != null
+                                    ? Convert.ToInt64(numberRaw17)
+                                    : null,
+            billingAggregationId: map.TryGetValue("billingAggregationId", out var billingAggregationId) ? billingAggregationId?.ToString() : null,
+            billingInvoiceId: map.TryGetValue("billingInvoiceId", out var billingInvoiceId) ? billingInvoiceId?.ToString() : null,
+            paymentMethodId: map.TryGetValue("paymentMethodId", out var paymentMethodId) ? paymentMethodId?.ToString() : null,
             billingAddressId: map.TryGetValue("billingAddressId", out var billingAddressId) ? billingAddressId?.ToString() : null,
             backupPaymentMethodId: map.TryGetValue("backupPaymentMethodId", out var backupPaymentMethodId) ? backupPaymentMethodId?.ToString() : null,
-            status: map["status"].ToString(),
+            status: (map.ContainsKey("status") ? map["status"] : "draft").ToString(),
             remarks: map.TryGetValue("remarks", out var remarks) ? remarks?.ToString() : null,
             agreementBAA: map.TryGetValue("agreementBAA", out var agreementBAA) ? agreementBAA?.ToString() : null,
             programManagerName: map.TryGetValue("programManagerName", out var programManagerName) ? programManagerName?.ToString() : null,
@@ -228,9 +230,9 @@ namespace Appwrite.Models
                                     : null,
             billingPlanDowngrade: map.TryGetValue("billingPlanDowngrade", out var billingPlanDowngrade) ? billingPlanDowngrade?.ToString() : null,
             billingTaxId: map.TryGetValue("billingTaxId", out var billingTaxId) ? billingTaxId?.ToString() : null,
-            markedForDeletion: (bool)map["markedForDeletion"],
-            platform: map["platform"].ToString(),
-            projects: map["projects"].ConvertToList<string>()
+            markedForDeletion: (bool)(map.ContainsKey("markedForDeletion") ? map["markedForDeletion"] : false),
+            platform: (map.ContainsKey("platform") ? map["platform"] : "appwrite").ToString(),
+            projects: (map.ContainsKey("projects") ? map["projects"] : new List<object>()).ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

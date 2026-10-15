@@ -57,18 +57,18 @@ namespace Appwrite.Models
         }
 
         public static DomainPrice From(Dictionary<string, object> map) => new DomainPrice(
-            domain: map["domain"].ToString(),
-            tld: map["tld"].ToString(),
-            available: (bool)map["available"],
+            domain: (map.ContainsKey("domain") ? map["domain"] : "").ToString(),
+            tld: (map.ContainsKey("tld") ? map["tld"] : "").ToString(),
+            available: (bool)(map.ContainsKey("available") ? map["available"] : false),
             price: map.TryGetValue("price", out var numberRaw4) && numberRaw4 != null
                                     ? Convert.ToDouble(numberRaw4)
                                     : null,
-            periodYears: Convert.ToInt64(map["periodYears"]),
-            premium: (bool)map["premium"],
+            periodYears: Convert.ToInt64((map.ContainsKey("periodYears") ? map["periodYears"] : 1)),
+            premium: (bool)(map.ContainsKey("premium") ? map["premium"] : false),
             renewalPrice: map.TryGetValue("renewalPrice", out var numberRaw7) && numberRaw7 != null
                                     ? Convert.ToDouble(numberRaw7)
                                     : null,
-            renewalPeriodYears: Convert.ToInt64(map["renewalPeriodYears"])
+            renewalPeriodYears: Convert.ToInt64((map.ContainsKey("renewalPeriodYears") ? map["renewalPeriodYears"] : 1))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

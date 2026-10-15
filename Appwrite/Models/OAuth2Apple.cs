@@ -30,10 +30,10 @@ namespace Appwrite.Models
         public string P8File { get; private set; }
 
         [JsonPropertyName("nativeEnabled")]
-        public bool? NativeEnabled { get; private set; }
+        public bool NativeEnabled { get; private set; }
 
         [JsonPropertyName("nativeClientIds")]
-        public List<string>? NativeClientIds { get; private set; }
+        public List<string> NativeClientIds { get; private set; }
 
         public OAuth2Apple(
             string id,
@@ -42,8 +42,8 @@ namespace Appwrite.Models
             string keyId,
             string teamId,
             string p8File,
-            bool? nativeEnabled = null,
-            List<string>? nativeClientIds = null
+            bool nativeEnabled,
+            List<string> nativeClientIds
         )
         {
             Id = id;
@@ -57,18 +57,14 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Apple From(Dictionary<string, object> map) => new OAuth2Apple(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            serviceId: map["serviceId"].ToString(),
-            keyId: map["keyId"].ToString(),
-            teamId: map["teamId"].ToString(),
-            p8File: map["p8File"].ToString(),
-            nativeEnabled: map.TryGetValue("nativeEnabled", out var boolRaw7Added) && boolRaw7Added != null
-                                        ? (bool?)boolRaw7Added
-                                        : null,
-            nativeClientIds: map.TryGetValue("nativeClientIds", out var arrayRaw8Added) && arrayRaw8Added != null
-                                ? arrayRaw8Added.ConvertToList<string>()
-                                : null
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            serviceId: (map.ContainsKey("serviceId") ? map["serviceId"] : "").ToString(),
+            keyId: (map.ContainsKey("keyId") ? map["keyId"] : "").ToString(),
+            teamId: (map.ContainsKey("teamId") ? map["teamId"] : "").ToString(),
+            p8File: (map.ContainsKey("p8File") ? map["p8File"] : "").ToString(),
+            nativeEnabled: (bool)(map.ContainsKey("nativeEnabled") ? map["nativeEnabled"] : false),
+            nativeClientIds: (map.ContainsKey("nativeClientIds") ? map["nativeClientIds"] : new List<object>()).ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

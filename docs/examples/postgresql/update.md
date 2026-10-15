@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabase result = await postgresql.Update(
+Appwrite.Models.DedicatedDatabase result = await postgresql.Update(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>", // optional
     status: "ready", // optional

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Postgresql postgresql = new Postgresql(client);
 
-DedicatedDatabaseOperationList result = await postgresql.ListOperations(
+Appwrite.Models.DedicatedDatabaseOperationList result = await postgresql.ListOperations(
     databaseId: "<DATABASE_ID>",
     status: "queued", // optional
     limit: 1, // optional

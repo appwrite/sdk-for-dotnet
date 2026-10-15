@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Notion From(Dictionary<string, object> map) => new OAuth2Notion(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            oauthClientId: map["oauthClientId"].ToString(),
-            oauthClientSecret: map["oauthClientSecret"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            oauthClientId: (map.ContainsKey("oauthClientId") ? map["oauthClientId"] : "").ToString(),
+            oauthClientSecret: (map.ContainsKey("oauthClientSecret") ? map["oauthClientSecret"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

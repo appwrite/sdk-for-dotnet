@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static InsightCTA From(Dictionary<string, object> map) => new InsightCTA(
-            label: map["label"].ToString(),
-            service: map["service"].ToString(),
-            method: map["method"].ToString(),
-            @params: map["params"]
+            label: (map.ContainsKey("label") ? map["label"] : "").ToString(),
+            service: (map.ContainsKey("service") ? map["service"] : "").ToString(),
+            method: (map.ContainsKey("method") ? map["method"] : "").ToString(),
+            @params: (map.ContainsKey("params") ? map["params"] : new Dictionary<string, object>())
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

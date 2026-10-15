@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static MfaChallenge From(Dictionary<string, object> map) => new MfaChallenge(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            userId: map["userId"].ToString(),
-            expire: map["expire"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
+            expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

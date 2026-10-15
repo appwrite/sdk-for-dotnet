@@ -67,15 +67,15 @@ namespace Appwrite.Models
         }
 
         public static Index From(Dictionary<string, object> map) => new Index(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            key: map["key"].ToString(),
-            type: map["type"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
             status: new Appwrite.Enums.IndexStatus(map["status"].ToString()!),
-            error: map["error"].ToString(),
-            attributes: map["attributes"].ConvertToList<string>(),
-            lengths: map["lengths"].ConvertToList<long>(),
+            error: (map.ContainsKey("error") ? map["error"] : "").ToString(),
+            attributes: (map.ContainsKey("attributes") ? map["attributes"] : new List<object>()).ConvertToList<string>(),
+            lengths: (map.ContainsKey("lengths") ? map["lengths"] : new List<object>()).ConvertToList<long>(),
             orders: map.TryGetValue("orders", out var arrayRaw10) && arrayRaw10 != null
                                 ? arrayRaw10.ConvertToList<string>()
                                 : null

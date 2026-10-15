@@ -10,7 +10,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-User result = await users.UpdatePhone(
+Appwrite.Models.User result = await users.UpdatePhone(
     userId: "<USER_ID>",
     number: "+12065550100"
 );

@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static IdentityList From(Dictionary<string, object> map) => new IdentityList(
-            total: Convert.ToInt64(map["total"]),
-            identities: map["identities"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Identity.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            identities: (map.ContainsKey("identities") ? map["identities"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Identity.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

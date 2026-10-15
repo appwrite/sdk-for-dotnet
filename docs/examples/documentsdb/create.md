@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-Database result = await documentsDB.Create(
+Appwrite.Models.Database result = await documentsDB.Create(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>",
     enabled: false, // optional

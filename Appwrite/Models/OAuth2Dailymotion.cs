@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2Dailymotion From(Dictionary<string, object> map) => new OAuth2Dailymotion(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            apiKey: map["apiKey"].ToString(),
-            apiSecret: map["apiSecret"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            apiKey: (map.ContainsKey("apiKey") ? map["apiKey"] : "").ToString(),
+            apiSecret: (map.ContainsKey("apiSecret") ? map["apiSecret"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

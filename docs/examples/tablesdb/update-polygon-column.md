@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnPolygon result = await tablesDB.UpdatePolygonColumn(
+Appwrite.Models.ColumnPolygon result = await tablesDB.UpdatePolygonColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: [[[1, 2], [3, 4], [5, 6], [1, 2]]], // optional
+    @default: [[[1, 2], [3, 4], [5, 6], [1, 2]]], // optional
     newKey: "<NEW_KEY>" // optional
 );
 

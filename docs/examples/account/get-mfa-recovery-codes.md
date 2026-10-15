@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-MfaRecoveryCodes result = await account.GetMFARecoveryCodes();
+Appwrite.Models.MfaRecoveryCodes result = await account.GetMFARecoveryCodes();
 
 
 ```

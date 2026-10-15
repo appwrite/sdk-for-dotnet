@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseReplicas result = await mysql.GetReplicas(
+Appwrite.Models.DedicatedDatabaseReplicas result = await mysql.GetReplicas(
     databaseId: "<DATABASE_ID>"
 );
 

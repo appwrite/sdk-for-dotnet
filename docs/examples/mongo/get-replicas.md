@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabaseReplicas result = await mongo.GetReplicas(
+Appwrite.Models.DedicatedDatabaseReplicas result = await mongo.GetReplicas(
     databaseId: "<DATABASE_ID>"
 );
 

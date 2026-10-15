@@ -8,12 +8,11 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Users users = new Users(client);
+Postgresql postgresql = new Postgresql(client);
 
-LogList result = await users.ListLogs(
-    userId: "<USER_ID>",
-    queries: new List<string>(), // optional
-    total: false // optional
+Appwrite.Models.DedicatedDatabaseRestoration result = await postgresql.PromoteRestoration(
+    databaseId: "<DATABASE_ID>",
+    restorationId: "<RESTORATION_ID>"
 );
 
 ```

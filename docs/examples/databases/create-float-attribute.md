@@ -10,14 +10,14 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeFloat result = await databases.CreateFloatAttribute(
+Appwrite.Models.AttributeFloat result = await databases.CreateFloatAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
     min: 0, // optional
     max: 100, // optional
-    default: 10.5, // optional
+    @default: 10.5, // optional
     array: false // optional
 );
 

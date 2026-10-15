@@ -22,7 +22,7 @@ namespace Appwrite.Models
         }
 
         public static AlgoMd5 From(Dictionary<string, object> map) => new AlgoMd5(
-            type: map["type"].ToString()
+            type: (map.ContainsKey("type") ? map["type"] : "md5").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

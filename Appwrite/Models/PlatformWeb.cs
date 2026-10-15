@@ -47,12 +47,12 @@ namespace Appwrite.Models
         }
 
         public static PlatformWeb From(Dictionary<string, object> map) => new PlatformWeb(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
             type: new Appwrite.Enums.PlatformType(map["type"].ToString()!),
-            hostname: map["hostname"].ToString()
+            hostname: (map.ContainsKey("hostname") ? map["hostname"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -52,11 +52,11 @@ namespace Appwrite.Models
         }
 
         public static Oauth2Token From(Dictionary<string, object> map) => new Oauth2Token(
-            accessToken: map["access_token"].ToString(),
-            tokenType: map["token_type"].ToString(),
-            expiresIn: Convert.ToInt64(map["expires_in"]),
-            refreshToken: map["refresh_token"].ToString(),
-            scope: map["scope"].ToString(),
+            accessToken: (map.ContainsKey("access_token") ? map["access_token"] : "").ToString(),
+            tokenType: (map.ContainsKey("token_type") ? map["token_type"] : "Bearer").ToString(),
+            expiresIn: Convert.ToInt64((map.ContainsKey("expires_in") ? map["expires_in"] : 0)),
+            refreshToken: (map.ContainsKey("refresh_token") ? map["refresh_token"] : "").ToString(),
+            scope: (map.ContainsKey("scope") ? map["scope"] : "").ToString(),
             authorizationDetails: map.TryGetValue("authorization_details", out var authorizationDetails) ? authorizationDetails?.ToString() : null,
             idToken: map.TryGetValue("id_token", out var idToken) ? idToken?.ToString() : null
         );

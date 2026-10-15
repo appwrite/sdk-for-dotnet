@@ -10,10 +10,10 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-Provider result = await messaging.CreateVonageProvider(
+Appwrite.Models.Provider result = await messaging.CreateVonageProvider(
     providerId: "<PROVIDER_ID>",
     name: "<NAME>",
-    from: "+12065550100", // optional
+    @from: "+12065550100", // optional
     apiKey: "<API_KEY>", // optional
     apiSecret: "<API_SECRET>", // optional
     enabled: false // optional

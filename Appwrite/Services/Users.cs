@@ -213,6 +213,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteIdentity(string identityId)
         {
+            if (identityId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"identityId\"");
+            }
+
             var apiPath = "/users/identities/{identityId}"
                 .Replace("{identityId}", identityId);
 
@@ -223,7 +228,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -457,6 +463,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> Get(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}"
                 .Replace("{userId}", userId);
 
@@ -496,6 +507,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}"
                 .Replace("{userId}", userId);
 
@@ -506,7 +522,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -525,6 +542,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdateEmail(string userId, string email)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/email"
                 .Replace("{userId}", userId);
 
@@ -560,12 +582,20 @@ namespace Appwrite.Services
         /// impersonation headers are used, the request runs as the target user for API
         /// behavior, while internal audit logs still attribute the action to the
         /// original impersonator and store the impersonated target details only in
-        /// internal audit payload data.
+        /// internal audit payload data. Account endpoints are read-only while
+        /// impersonating: they report the target's account, and anything that would
+        /// change it is refused, so an impersonator cannot alter the target's
+        /// credentials or delete their account.
         /// 
         /// </para>
         /// </summary>
         public Task<Models.User> UpdateImpersonator(string userId, bool impersonator)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/impersonator"
                 .Replace("{userId}", userId);
 
@@ -604,6 +634,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.JWT> CreateJWT(string userId, string? sessionId = null, long? duration = null)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/jwts"
                 .Replace("{userId}", userId);
 
@@ -646,6 +681,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdateLabels(string userId, List<string> labels)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/labels"
                 .Replace("{userId}", userId);
 
@@ -677,47 +717,16 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Get the user activity logs list by its unique ID.
-        /// </para>
-        /// </summary>
-        public Task<Models.LogList> ListLogs(string userId, List<string>? queries = null, bool? total = null)
-        {
-            var apiPath = "/users/{userId}/logs"
-                .Replace("{userId}", userId);
-
-            var apiParameters = new Dictionary<string, object?>()
-            {
-                { "queries", queries },
-                { "total", total }
-            };
-
-            var apiHeaders = new Dictionary<string, string>()
-            {
-                { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "accept", "application/json" }
-            };
-
-
-            static Models.LogList Convert(Dictionary<string, object> it)
-            {
-                return Models.LogList.From(map: it);
-            }
-
-            return _client.Call<Models.LogList>(
-                method: "GET",
-                path: apiPath,
-                headers: apiHeaders,
-                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
-                convert: Convert);
-
-        }
-
-        /// <para>
         /// Get the user membership list by its unique ID.
         /// </para>
         /// </summary>
         public Task<Models.MembershipList> ListMemberships(string userId, List<string>? queries = null, string? search = null, bool? total = null)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/memberships"
                 .Replace("{userId}", userId);
 
@@ -756,6 +765,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.updateMFA` instead.")]
         public Task<Models.User> UpdateMfa(string userId, bool mfa)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa"
                 .Replace("{userId}", userId);
 
@@ -792,6 +806,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdateMFA(string userId, bool mfa)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa"
                 .Replace("{userId}", userId);
 
@@ -829,6 +848,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.deleteMFAAuthenticator` instead.")]
         public Task<object> DeleteMfaAuthenticator(string userId, Appwrite.Enums.AuthenticatorType type)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/authenticators/{type}"
                 .Replace("{userId}", userId)
                 .Replace("{type}", type.Value);
@@ -840,7 +864,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -859,6 +884,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteMFAAuthenticator(string userId, Appwrite.Enums.AuthenticatorType type)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/authenticators/{type}"
                 .Replace("{userId}", userId)
                 .Replace("{type}", type.Value);
@@ -870,7 +900,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -890,6 +921,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.MfaChallengeSecret> GetMFAChallenge(string userId, string challengeId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
+            if (challengeId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"challengeId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/challenges/{challengeId}"
                 .Replace("{userId}", userId)
                 .Replace("{challengeId}", challengeId);
@@ -926,6 +967,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.listMFAFactors` instead.")]
         public Task<Models.MfaFactors> ListMfaFactors(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/factors"
                 .Replace("{userId}", userId);
 
@@ -960,6 +1006,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.MfaFactors> ListMFAFactors(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/factors"
                 .Replace("{userId}", userId);
 
@@ -998,6 +1049,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.getMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> GetMfaRecoveryCodes(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/recovery-codes"
                 .Replace("{userId}", userId);
 
@@ -1035,6 +1091,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.MfaRecoveryCodes> GetMFARecoveryCodes(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/recovery-codes"
                 .Replace("{userId}", userId);
 
@@ -1073,6 +1134,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.updateMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> UpdateMfaRecoveryCodes(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/recovery-codes"
                 .Replace("{userId}", userId);
 
@@ -1111,6 +1177,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.MfaRecoveryCodes> UpdateMFARecoveryCodes(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/recovery-codes"
                 .Replace("{userId}", userId);
 
@@ -1150,6 +1221,11 @@ namespace Appwrite.Services
         [Obsolete("This API has been deprecated since 1.8.0. Please use `Users.createMFARecoveryCodes` instead.")]
         public Task<Models.MfaRecoveryCodes> CreateMfaRecoveryCodes(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/recovery-codes"
                 .Replace("{userId}", userId);
 
@@ -1188,6 +1264,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.MfaRecoveryCodes> CreateMFARecoveryCodes(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/mfa/recovery-codes"
                 .Replace("{userId}", userId);
 
@@ -1223,6 +1304,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdateName(string userId, string name)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/name"
                 .Replace("{userId}", userId);
 
@@ -1434,6 +1520,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdatePassword(string userId, string password)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/password"
                 .Replace("{userId}", userId);
 
@@ -1470,6 +1561,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdatePhone(string userId, string number)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/phone"
                 .Replace("{userId}", userId);
 
@@ -1506,6 +1602,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Preferences> GetPrefs(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/prefs"
                 .Replace("{userId}", userId);
 
@@ -1542,6 +1643,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Preferences> UpdatePrefs(string userId, object prefs)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/prefs"
                 .Replace("{userId}", userId);
 
@@ -1578,6 +1684,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.SessionList> ListSessions(string userId, bool? total = null)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/sessions"
                 .Replace("{userId}", userId);
 
@@ -1618,6 +1729,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Session> CreateSession(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/sessions"
                 .Replace("{userId}", userId);
 
@@ -1653,6 +1769,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteSessions(string userId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/sessions"
                 .Replace("{userId}", userId);
 
@@ -1663,7 +1784,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1682,6 +1804,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteSession(string userId, string sessionId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
+            if (sessionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"sessionId\"");
+            }
+
             var apiPath = "/users/{userId}/sessions/{sessionId}"
                 .Replace("{userId}", userId)
                 .Replace("{sessionId}", sessionId);
@@ -1693,7 +1825,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1713,6 +1846,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdateStatus(string userId, bool status)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/status"
                 .Replace("{userId}", userId);
 
@@ -1749,6 +1887,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.TargetList> ListTargets(string userId, List<string>? queries = null, bool? total = null)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/targets"
                 .Replace("{userId}", userId);
 
@@ -1785,6 +1928,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Target> CreateTarget(string userId, string targetId, Appwrite.Enums.MessagingProviderType providerType, string identifier, string? providerId = null, string? name = null)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/targets"
                 .Replace("{userId}", userId);
 
@@ -1825,6 +1973,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Target> GetTarget(string userId, string targetId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
+            if (targetId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"targetId\"");
+            }
+
             var apiPath = "/users/{userId}/targets/{targetId}"
                 .Replace("{userId}", userId)
                 .Replace("{targetId}", targetId);
@@ -1860,6 +2018,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Target> UpdateTarget(string userId, string targetId, string? identifier = null, string? providerId = null, string? name = null)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
+            if (targetId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"targetId\"");
+            }
+
             var apiPath = "/users/{userId}/targets/{targetId}"
                 .Replace("{userId}", userId)
                 .Replace("{targetId}", targetId);
@@ -1899,6 +2067,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteTarget(string userId, string targetId)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
+            if (targetId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"targetId\"");
+            }
+
             var apiPath = "/users/{userId}/targets/{targetId}"
                 .Replace("{userId}", userId)
                 .Replace("{targetId}", targetId);
@@ -1910,7 +2088,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -1933,6 +2112,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Token> CreateToken(string userId, long? length = null, long? expire = null)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/tokens"
                 .Replace("{userId}", userId);
 
@@ -1970,6 +2154,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdateEmailVerification(string userId, bool emailVerification)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/verification"
                 .Replace("{userId}", userId);
 
@@ -2006,6 +2195,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.User> UpdatePhoneVerification(string userId, bool phoneVerification)
         {
+            if (userId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"userId\"");
+            }
+
             var apiPath = "/users/{userId}/verification/phone"
                 .Replace("{userId}", userId);
 

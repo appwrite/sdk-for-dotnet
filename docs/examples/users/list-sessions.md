@@ -10,7 +10,7 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-SessionList result = await users.ListSessions(
+Appwrite.Models.SessionList result = await users.ListSessions(
     userId: "<USER_ID>",
     total: false // optional
 );

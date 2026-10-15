@@ -10,10 +10,23 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-DocumentList result = await vectorsDB.CreateDocuments(
+Appwrite.Models.DocumentList result = await vectorsDB.CreateDocuments(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    documents: new List<object>(),
+    documents: [
+	    {
+	        "$id": "example1",
+	        "embeddings": [
+	            0.12,
+	            -0.55,
+	            0.88,
+	            1.02
+	        ],
+	        "metadata": {
+	            "name": "First document"
+	        }
+	    }
+	],
     transactionId: "<TRANSACTION_ID>" // optional
 );
 

@@ -8,10 +8,11 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Organization organization = new Organization(client);
+Mysql mysql = new Mysql(client);
 
-Key result = await organization.GetKey(
-    keyId: "<KEY_ID>"
+Appwrite.Models.DedicatedDatabaseRestoration result = await mysql.PromoteRestoration(
+    databaseId: "<DATABASE_ID>",
+    restorationId: "<RESTORATION_ID>"
 );
 
 ```

@@ -54,6 +54,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ActivityEvent> GetEvent(string eventId)
         {
+            if (eventId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"eventId\"");
+            }
+
             var apiPath = "/activities/events/{eventId}"
                 .Replace("{eventId}", eventId);
 

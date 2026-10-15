@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Token result = await account.CreateEmailVerification(
+Appwrite.Models.Token result = await account.CreateEmailVerification(
     url: "https://example.com"
 );
 

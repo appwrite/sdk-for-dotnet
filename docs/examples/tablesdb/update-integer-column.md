@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnInteger result = await tablesDB.UpdateIntegerColumn(
+Appwrite.Models.ColumnInteger result = await tablesDB.UpdateIntegerColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: 10,
+    @default: 10,
     min: 0, // optional
     max: 100, // optional
     newKey: "<NEW_KEY>" // optional

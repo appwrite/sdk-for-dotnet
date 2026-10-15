@@ -62,15 +62,15 @@ namespace Appwrite.Models
         }
 
         public static Subscriber From(Dictionary<string, object> map) => new Subscriber(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            targetId: map["targetId"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            targetId: (map.ContainsKey("targetId") ? map["targetId"] : "").ToString(),
             target: Appwrite.Models.Target.From(map: map["target"] is JsonElement jsonObj5 ? jsonObj5.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["target"]),
-            userId: map["userId"].ToString(),
-            userName: map["userName"].ToString(),
-            topicId: map["topicId"].ToString(),
-            providerType: map["providerType"].ToString()
+            userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
+            userName: (map.ContainsKey("userName") ? map["userName"] : "").ToString(),
+            topicId: (map.ContainsKey("topicId") ? map["topicId"] : "").ToString(),
+            providerType: (map.ContainsKey("providerType") ? map["providerType"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

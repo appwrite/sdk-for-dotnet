@@ -10,11 +10,11 @@ Client client = new Client()
 
 Sites sites = new Sites(client);
 
-Variable result = await sites.UpdateVariable(
+Appwrite.Models.Variable result = await sites.UpdateVariable(
     siteId: "<SITE_ID>",
     variableId: "<VARIABLE_ID>",
     key: "<KEY>", // optional
-    value: "<VALUE>", // optional
+    @value: "<VALUE>", // optional
     secret: false // optional
 );
 

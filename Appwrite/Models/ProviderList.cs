@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static ProviderList From(Dictionary<string, object> map) => new ProviderList(
-            total: Convert.ToInt64(map["total"]),
-            providers: map["providers"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Provider.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            providers: (map.ContainsKey("providers") ? map["providers"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Provider.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

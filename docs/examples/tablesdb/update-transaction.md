@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Transaction result = await tablesDB.UpdateTransaction(
+Appwrite.Models.Transaction result = await tablesDB.UpdateTransaction(
     transactionId: "<TRANSACTION_ID>",
     commit: false, // optional
     rollback: false // optional

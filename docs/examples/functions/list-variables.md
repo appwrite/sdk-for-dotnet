@@ -10,7 +10,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-VariableList result = await functions.ListVariables(
+Appwrite.Models.VariableList result = await functions.ListVariables(
     functionId: "<FUNCTION_ID>",
     queries: new List<string>(), // optional
     total: false // optional
