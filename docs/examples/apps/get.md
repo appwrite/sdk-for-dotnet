@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-App result = await apps.Get(
+Appwrite.Models.App result = await apps.Get(
     appId: "<APP_ID>"
 );
 

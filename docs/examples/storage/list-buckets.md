@@ -10,7 +10,7 @@ Client client = new Client()
 
 Storage storage = new Storage(client);
 
-BucketList result = await storage.ListBuckets(
+Appwrite.Models.BucketList result = await storage.ListBuckets(
     queries: new List<string>(), // optional
     search: "<SEARCH>", // optional
     total: false // optional

@@ -10,13 +10,13 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnString result = await tablesDB.CreateStringColumn(
+Appwrite.Models.ColumnString result = await tablesDB.CreateStringColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     size: 1,
     required: false,
-    default: "Hello World", // optional
+    @default: "Hello World", // optional
     array: false, // optional
     encrypt: false // optional
 );

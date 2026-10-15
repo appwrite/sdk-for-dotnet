@@ -50,8 +50,8 @@ namespace Appwrite.Models
             long smsTotal,
             long pushTotal,
             List<string> subscribe,
-            long? qos = null,
-            long? expiry = null
+            long? qos,
+            long? expiry
         )
         {
             Id = id;
@@ -67,19 +67,19 @@ namespace Appwrite.Models
         }
 
         public static Topic From(Dictionary<string, object> map) => new Topic(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
-            emailTotal: Convert.ToInt64(map["emailTotal"]),
-            smsTotal: Convert.ToInt64(map["smsTotal"]),
-            pushTotal: Convert.ToInt64(map["pushTotal"]),
-            subscribe: map["subscribe"].ConvertToList<string>(),
-            qos: map.TryGetValue("qos", out var numberRaw9Added) && numberRaw9Added != null
-                                    ? Convert.ToInt64(numberRaw9Added)
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            emailTotal: Convert.ToInt64((map.ContainsKey("emailTotal") ? map["emailTotal"] : 0)),
+            smsTotal: Convert.ToInt64((map.ContainsKey("smsTotal") ? map["smsTotal"] : 0)),
+            pushTotal: Convert.ToInt64((map.ContainsKey("pushTotal") ? map["pushTotal"] : 0)),
+            subscribe: (map.ContainsKey("subscribe") ? map["subscribe"] : new List<object> { "users" }).ConvertToList<string>(),
+            qos: map.TryGetValue("qos", out var numberRaw9) && numberRaw9 != null
+                                    ? Convert.ToInt64(numberRaw9)
                                     : null,
-            expiry: map.TryGetValue("expiry", out var numberRaw10Added) && numberRaw10Added != null
-                                    ? Convert.ToInt64(numberRaw10Added)
+            expiry: map.TryGetValue("expiry", out var numberRaw10) && numberRaw10 != null
+                                    ? Convert.ToInt64(numberRaw10)
                                     : null
         );
 

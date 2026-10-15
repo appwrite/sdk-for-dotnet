@@ -10,7 +10,7 @@ Client client = new Client()
 
 Organization organization = new Organization(client);
 
-AppInstallation result = await organization.UpdateInstallation(
+Appwrite.Models.AppInstallation result = await organization.UpdateInstallation(
     installationId: "<INSTALLATION_ID>",
     authorizationDetails: "<AUTHORIZATION_DETAILS>" // optional
 );

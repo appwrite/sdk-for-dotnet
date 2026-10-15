@@ -10,7 +10,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-SpecificationList result = await functions.ListSpecifications(
+Appwrite.Models.SpecificationList result = await functions.ListSpecifications(
     type: "runtimes", // optional
     total: false // optional
 );

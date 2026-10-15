@@ -21,16 +21,16 @@ namespace Appwrite.Models
         public double Price { get; private set; }
 
         [JsonPropertyName("storageOverageRate")]
-        public double? StorageOverageRate { get; private set; }
+        public double StorageOverageRate { get; private set; }
 
         [JsonPropertyName("bandwidthOverageRate")]
-        public double? BandwidthOverageRate { get; private set; }
+        public double BandwidthOverageRate { get; private set; }
 
         [JsonPropertyName("replicaRate")]
-        public double? ReplicaRate { get; private set; }
+        public double ReplicaRate { get; private set; }
 
         [JsonPropertyName("pitrRate")]
-        public double? PitrRate { get; private set; }
+        public double PitrRate { get; private set; }
 
         [JsonPropertyName("cpu")]
         public long Cpu { get; private set; }
@@ -54,16 +54,16 @@ namespace Appwrite.Models
             string slug,
             string name,
             double price,
+            double storageOverageRate,
+            double bandwidthOverageRate,
+            double replicaRate,
+            double pitrRate,
             long cpu,
             long memory,
             long maxConnections,
             long includedStorage,
             long includedBandwidth,
-            bool enabled,
-            double? storageOverageRate = null,
-            double? bandwidthOverageRate = null,
-            double? replicaRate = null,
-            double? pitrRate = null
+            bool enabled
         )
         {
             Slug = slug;
@@ -82,27 +82,19 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseSpecification From(Dictionary<string, object> map) => new DedicatedDatabaseSpecification(
-            slug: map["slug"].ToString(),
-            name: map["name"].ToString(),
-            price: Convert.ToDouble(map["price"]),
-            cpu: Convert.ToInt64(map["cpu"]),
-            memory: Convert.ToInt64(map["memory"]),
-            maxConnections: Convert.ToInt64(map["maxConnections"]),
-            includedStorage: Convert.ToInt64(map["includedStorage"]),
-            includedBandwidth: Convert.ToInt64(map["includedBandwidth"]),
-            enabled: (bool)map["enabled"],
-            storageOverageRate: map.TryGetValue("storageOverageRate", out var numberRaw4Added) && numberRaw4Added != null
-                                    ? Convert.ToDouble(numberRaw4Added)
-                                    : null,
-            bandwidthOverageRate: map.TryGetValue("bandwidthOverageRate", out var numberRaw5Added) && numberRaw5Added != null
-                                    ? Convert.ToDouble(numberRaw5Added)
-                                    : null,
-            replicaRate: map.TryGetValue("replicaRate", out var numberRaw6Added) && numberRaw6Added != null
-                                    ? Convert.ToDouble(numberRaw6Added)
-                                    : null,
-            pitrRate: map.TryGetValue("pitrRate", out var numberRaw7Added) && numberRaw7Added != null
-                                    ? Convert.ToDouble(numberRaw7Added)
-                                    : null
+            slug: (map.ContainsKey("slug") ? map["slug"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            price: Convert.ToDouble((map.ContainsKey("price") ? map["price"] : 0)),
+            storageOverageRate: Convert.ToDouble((map.ContainsKey("storageOverageRate") ? map["storageOverageRate"] : 0)),
+            bandwidthOverageRate: Convert.ToDouble((map.ContainsKey("bandwidthOverageRate") ? map["bandwidthOverageRate"] : 0)),
+            replicaRate: Convert.ToDouble((map.ContainsKey("replicaRate") ? map["replicaRate"] : 0)),
+            pitrRate: Convert.ToDouble((map.ContainsKey("pitrRate") ? map["pitrRate"] : 0)),
+            cpu: Convert.ToInt64((map.ContainsKey("cpu") ? map["cpu"] : 0)),
+            memory: Convert.ToInt64((map.ContainsKey("memory") ? map["memory"] : 0)),
+            maxConnections: Convert.ToInt64((map.ContainsKey("maxConnections") ? map["maxConnections"] : 0)),
+            includedStorage: Convert.ToInt64((map.ContainsKey("includedStorage") ? map["includedStorage"] : 0)),
+            includedBandwidth: Convert.ToInt64((map.ContainsKey("includedBandwidth") ? map["includedBandwidth"] : 0)),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false)
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

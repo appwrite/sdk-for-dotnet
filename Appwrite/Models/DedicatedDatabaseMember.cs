@@ -42,9 +42,9 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseMember From(Dictionary<string, object> map) => new DedicatedDatabaseMember(
-            id: map["$id"].ToString(),
-            role: map["role"].ToString(),
-            status: map["status"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            role: (map.ContainsKey("role") ? map["role"] : "unknown").ToString(),
+            status: (map.ContainsKey("status") ? map["status"] : "").ToString(),
             replicating: map.TryGetValue("replicating", out var boolRaw4) && boolRaw4 != null
                                         ? (bool?)boolRaw4
                                         : null,

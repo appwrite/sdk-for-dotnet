@@ -32,9 +32,9 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabaseExtensions From(Dictionary<string, object> map) => new DedicatedDatabaseExtensions(
-            installed: map["installed"].ConvertToList<string>(),
-            available: map["available"].ConvertToList<string>(),
-            metadata: map["metadata"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.PostgresExtension.From(map: it)).ToList()
+            installed: (map.ContainsKey("installed") ? map["installed"] : new List<object>()).ConvertToList<string>(),
+            available: (map.ContainsKey("available") ? map["available"] : new List<object>()).ConvertToList<string>(),
+            metadata: (map.ContainsKey("metadata") ? map["metadata"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.PostgresExtension.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

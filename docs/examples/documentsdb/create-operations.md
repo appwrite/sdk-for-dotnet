@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-Transaction result = await documentsDB.CreateOperations(
+Appwrite.Models.Transaction result = await documentsDB.CreateOperations(
     transactionId: "<TRANSACTION_ID>",
     operations: [
 	    {

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabase result = await mysql.CreateBranch(
+Appwrite.Models.DedicatedDatabase result = await mysql.CreateBranch(
     databaseId: "<DATABASE_ID>",
     branchId: "<BRANCH_ID>", // optional
     ttl: 300 // optional

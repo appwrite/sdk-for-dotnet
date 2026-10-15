@@ -107,13 +107,13 @@ namespace Appwrite.Models
         }
 
         public static Locale From(Dictionary<string, object> map) => new Locale(
-            ip: map["ip"].ToString(),
-            countryCode: map["countryCode"].ToString(),
-            country: map["country"].ToString(),
-            continentCode: map["continentCode"].ToString(),
-            continent: map["continent"].ToString(),
-            eu: (bool)map["eu"],
-            currency: map["currency"].ToString(),
+            ip: (map.ContainsKey("ip") ? map["ip"] : "").ToString(),
+            countryCode: (map.ContainsKey("countryCode") ? map["countryCode"] : "").ToString(),
+            country: (map.ContainsKey("country") ? map["country"] : "").ToString(),
+            continentCode: (map.ContainsKey("continentCode") ? map["continentCode"] : "").ToString(),
+            continent: (map.ContainsKey("continent") ? map["continent"] : "").ToString(),
+            eu: (bool)(map.ContainsKey("eu") ? map["eu"] : false),
+            currency: (map.ContainsKey("currency") ? map["currency"] : "").ToString(),
             city: map.TryGetValue("city", out var city) ? city?.ToString() : null,
             timeZone: map.TryGetValue("timeZone", out var timeZone) ? timeZone?.ToString() : null,
             postalCode: map.TryGetValue("postalCode", out var postalCode) ? postalCode?.ToString() : null,

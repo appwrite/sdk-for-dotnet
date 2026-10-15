@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static MfaType From(Dictionary<string, object> map) => new MfaType(
-            secret: map["secret"].ToString(),
-            uri: map["uri"].ToString()
+            secret: (map.ContainsKey("secret") ? map["secret"] : "").ToString(),
+            uri: (map.ContainsKey("uri") ? map["uri"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Bitbucket result = await project.UpdateOAuth2Bitbucket(
+Appwrite.Models.OAuth2Bitbucket result = await project.UpdateOAuth2Bitbucket(
     key: "<KEY>", // optional
     secret: "<SECRET>", // optional
     enabled: false // optional

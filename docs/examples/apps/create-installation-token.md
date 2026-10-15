@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-Oauth2Token result = await apps.CreateInstallationToken(
+Appwrite.Models.Oauth2Token result = await apps.CreateInstallationToken(
     appId: "<APP_ID>",
     installationId: "<INSTALLATION_ID>"
 );

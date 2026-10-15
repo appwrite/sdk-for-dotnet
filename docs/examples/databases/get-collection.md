@@ -10,7 +10,7 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-Collection result = await databases.GetCollection(
+Appwrite.Models.Collection result = await databases.GetCollection(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>"
 );

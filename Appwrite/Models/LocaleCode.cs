@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static LocaleCode From(Dictionary<string, object> map) => new LocaleCode(
-            code: map["code"].ToString(),
-            name: map["name"].ToString()
+            code: (map.ContainsKey("code") ? map["code"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

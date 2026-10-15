@@ -10,7 +10,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-DatabaseStatus result = await tablesDB.GetStatus(
+Appwrite.Models.DatabaseStatus result = await tablesDB.GetStatus(
     databaseId: "<DATABASE_ID>"
 );
 

@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-DedicatedDatabase result = await vectorsDB.CreateFailover(
+Appwrite.Models.DedicatedDatabase result = await vectorsDB.CreateFailover(
     databaseId: "<DATABASE_ID>",
     targetReplicaId: "<TARGET_REPLICA_ID>" // optional
 );

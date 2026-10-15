@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Key result = await project.GetKey(
+Appwrite.Models.Key result = await project.GetKey(
     keyId: "<KEY_ID>"
 );
 

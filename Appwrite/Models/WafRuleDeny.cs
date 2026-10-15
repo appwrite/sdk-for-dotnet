@@ -87,20 +87,20 @@ namespace Appwrite.Models
         }
 
         public static WafRuleDeny From(Dictionary<string, object> map) => new WafRuleDeny(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
-            description: map["description"].ToString(),
-            teamId: map["teamId"].ToString(),
-            projectId: map["projectId"].ToString(),
-            resourceType: map["resourceType"].ToString(),
-            resourceId: map["resourceId"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
+            teamId: (map.ContainsKey("teamId") ? map["teamId"] : "").ToString(),
+            projectId: (map.ContainsKey("projectId") ? map["projectId"] : "").ToString(),
+            resourceType: (map.ContainsKey("resourceType") ? map["resourceType"] : "api").ToString(),
+            resourceId: (map.ContainsKey("resourceId") ? map["resourceId"] : "").ToString(),
             action: new Appwrite.Enums.WafRuleAction(map["action"].ToString()!),
-            priority: Convert.ToInt64(map["priority"]),
-            enabled: (bool)map["enabled"],
-            conditions: map["conditions"].ConvertToList<object>(),
-            config: map["config"]
+            priority: Convert.ToInt64((map.ContainsKey("priority") ? map["priority"] : 0)),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
+            conditions: (map.ContainsKey("conditions") ? map["conditions"] : new List<object>()).ConvertToList<object>(),
+            config: (map.ContainsKey("config") ? map["config"] : new Dictionary<string, object>())
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

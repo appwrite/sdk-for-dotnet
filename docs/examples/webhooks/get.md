@@ -10,7 +10,7 @@ Client client = new Client()
 
 Webhooks webhooks = new Webhooks(client);
 
-Webhook result = await webhooks.Get(
+Appwrite.Models.Webhook result = await webhooks.Get(
     webhookId: "<WEBHOOK_ID>"
 );
 

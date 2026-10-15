@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mysql mysql = new Mysql(client);
 
-DedicatedDatabaseList result = await mysql.List(
+Appwrite.Models.DedicatedDatabaseList result = await mysql.List(
     queries: new List<string>() // optional
 );
 

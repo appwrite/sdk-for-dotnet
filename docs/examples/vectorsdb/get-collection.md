@@ -10,7 +10,7 @@ Client client = new Client()
 
 VectorsDB vectorsDB = new VectorsDB(client);
 
-VectorsdbCollection result = await vectorsDB.GetCollection(
+Appwrite.Models.VectorsdbCollection result = await vectorsDB.GetCollection(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>"
 );

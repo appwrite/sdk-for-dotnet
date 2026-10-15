@@ -5,12 +5,12 @@ using Appwrite.Services;
 
 Client client = new Client()
     .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .SetSession("") // The user session to authenticate with
-    .SetProject("<YOUR_PROJECT_ID>"); // Your project ID
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
+    .SetSession(""); // The user session to authenticate with
 
 Oauth2 oauth2 = new Oauth2(client);
 
-Oauth2Authorize result = await oauth2.Authorize(
+Appwrite.Models.Oauth2Authorize result = await oauth2.Authorize(
     clientId: "<CLIENT_ID>", // optional
     redirectUri: "https://example.com", // optional
     responseType: "", // optional
@@ -22,7 +22,7 @@ Oauth2Authorize result = await oauth2.Authorize(
     prompt: "<PROMPT>", // optional
     maxAge: 0, // optional
     authorizationDetails: "<AUTHORIZATION_DETAILS>", // optional
-    resource: "", // optional
+    resource: new List<string>(), // optional
     audience: "<AUDIENCE>", // optional
     requestUri: "<REQUEST_URI>" // optional
 );

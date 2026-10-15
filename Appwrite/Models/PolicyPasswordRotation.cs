@@ -32,9 +32,9 @@ namespace Appwrite.Models
         }
 
         public static PolicyPasswordRotation From(Dictionary<string, object> map) => new PolicyPasswordRotation(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            maxAge: Convert.ToInt64(map["maxAge"])
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            maxAge: Convert.ToInt64((map.ContainsKey("maxAge") ? map["maxAge"] : 31536000))
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

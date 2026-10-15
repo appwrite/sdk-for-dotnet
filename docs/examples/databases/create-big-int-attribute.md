@@ -10,14 +10,14 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeBigint result = await databases.CreateBigIntAttribute(
+Appwrite.Models.AttributeBigint result = await databases.CreateBigIntAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
     min: 0, // optional
     max: 1000000, // optional
-    default: 0, // optional
+    @default: 0, // optional
     array: false // optional
 );
 

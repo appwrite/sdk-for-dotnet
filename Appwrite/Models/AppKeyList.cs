@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static AppKeyList From(Dictionary<string, object> map) => new AppKeyList(
-            total: Convert.ToInt64(map["total"]),
-            keys: map["keys"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.AppKey.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            keys: (map.ContainsKey("keys") ? map["keys"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.AppKey.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

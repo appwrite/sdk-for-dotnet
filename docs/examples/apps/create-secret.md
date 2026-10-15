@@ -10,7 +10,7 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-AppSecretPlaintext result = await apps.CreateSecret(
+Appwrite.Models.AppSecretPlaintext result = await apps.CreateSecret(
     appId: "<APP_ID>"
 );
 

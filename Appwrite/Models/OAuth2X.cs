@@ -37,10 +37,10 @@ namespace Appwrite.Models
         }
 
         public static OAuth2X From(Dictionary<string, object> map) => new OAuth2X(
-            id: map["$id"].ToString(),
-            enabled: (bool)map["enabled"],
-            customerKey: map["customerKey"].ToString(),
-            secretKey: map["secretKey"].ToString()
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            customerKey: (map.ContainsKey("customerKey") ? map["customerKey"] : "").ToString(),
+            secretKey: (map.ContainsKey("secretKey") ? map["secretKey"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

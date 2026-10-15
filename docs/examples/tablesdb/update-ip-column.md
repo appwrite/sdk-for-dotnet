@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnIp result = await tablesDB.UpdateIpColumn(
+Appwrite.Models.ColumnIp result = await tablesDB.UpdateIpColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    default: "192.0.2.0",
+    @default: "192.0.2.0",
     newKey: "<NEW_KEY>" // optional
 );
 

@@ -10,10 +10,10 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Variable result = await project.CreateVariable(
+Appwrite.Models.Variable result = await project.CreateVariable(
     variableId: "<VARIABLE_ID>",
     key: "<KEY>",
-    value: "<VALUE>",
+    @value: "<VALUE>",
     secret: false // optional
 );
 

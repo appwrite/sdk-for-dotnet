@@ -11,7 +11,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-ColumnRelationship result = await tablesDB.CreateRelationshipColumn(
+Appwrite.Models.ColumnRelationship result = await tablesDB.CreateRelationshipColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     relatedTableId: "<RELATED_TABLE_ID>",

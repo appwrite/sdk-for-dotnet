@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static Oauth2Authorize From(Dictionary<string, object> map) => new Oauth2Authorize(
-            grantId: map["grantId"].ToString(),
-            redirectUrl: map["redirectUrl"].ToString()
+            grantId: (map.ContainsKey("grantId") ? map["grantId"] : "").ToString(),
+            redirectUrl: (map.ContainsKey("redirectUrl") ? map["redirectUrl"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

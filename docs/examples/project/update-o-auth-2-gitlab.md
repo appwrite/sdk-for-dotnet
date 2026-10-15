@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Gitlab result = await project.UpdateOAuth2Gitlab(
+Appwrite.Models.OAuth2Gitlab result = await project.UpdateOAuth2Gitlab(
     applicationId: "<APPLICATION_ID>", // optional
     secret: "<SECRET>", // optional
     endpoint: "https://example.com", // optional

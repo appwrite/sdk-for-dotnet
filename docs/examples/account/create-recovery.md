@@ -10,7 +10,7 @@ Client client = new Client()
 
 Account account = new Account(client);
 
-Token result = await account.CreateRecovery(
+Appwrite.Models.Token result = await account.CreateRecovery(
     email: "email@example.com",
     url: "https://example.com"
 );

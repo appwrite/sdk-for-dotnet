@@ -14,5 +14,6 @@ namespace Appwrite.Enums
         public static ExecutionTrigger Http => new ExecutionTrigger("http");
         public static ExecutionTrigger Schedule => new ExecutionTrigger("schedule");
         public static ExecutionTrigger Event => new ExecutionTrigger("event");
+        public static ExecutionTrigger Email => new ExecutionTrigger("email");
     }
 }

@@ -10,7 +10,7 @@ Client client = new Client()
 
 Functions functions = new Functions(client);
 
-Function result = await functions.Get(
+Appwrite.Models.Function result = await functions.Get(
     functionId: "<FUNCTION_ID>"
 );
 

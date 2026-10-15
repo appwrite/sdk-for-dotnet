@@ -10,10 +10,19 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-RowList result = await tablesDB.UpsertRows(
+Appwrite.Models.RowList result = await tablesDB.UpsertRows(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    rows: new List<object>(),
+    rows: [
+	    {
+	        "$id": "example1",
+	        "username": "walter.obrien",
+	        "email": "walter.obrien@example.com",
+	        "fullName": "Walter O'Brien",
+	        "age": 30,
+	        "isAdmin": false
+	    }
+	],
     transactionId: "<TRANSACTION_ID>" // optional
 );
 

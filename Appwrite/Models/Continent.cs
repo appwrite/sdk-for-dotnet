@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static Continent From(Dictionary<string, object> map) => new Continent(
-            name: map["name"].ToString(),
-            code: map["code"].ToString()
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            code: (map.ContainsKey("code") ? map["code"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

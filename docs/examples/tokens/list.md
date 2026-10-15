@@ -10,7 +10,7 @@ Client client = new Client()
 
 Tokens tokens = new Tokens(client);
 
-ResourceTokenList result = await tokens.List(
+Appwrite.Models.ResourceTokenList result = await tokens.List(
     bucketId: "<BUCKET_ID>",
     fileId: "<FILE_ID>",
     queries: new List<string>(), // optional

@@ -10,12 +10,12 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Row result = await tablesDB.DecrementRowColumn(
+Appwrite.Models.Row result = await tablesDB.DecrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
     column: "<COLUMN>",
-    value: 1, // optional
+    @value: 1, // optional
     min: 0, // optional
     transactionId: "<TRANSACTION_ID>" // optional
 );

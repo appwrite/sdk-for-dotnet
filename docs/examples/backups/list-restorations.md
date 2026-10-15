@@ -10,7 +10,7 @@ Client client = new Client()
 
 Backups backups = new Backups(client);
 
-BackupRestorationList result = await backups.ListRestorations(
+Appwrite.Models.BackupRestorationList result = await backups.ListRestorations(
     queries: new List<string>() // optional
 );
 

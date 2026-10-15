@@ -19,6 +19,8 @@ namespace Appwrite.Services
         /// 
         /// Depending on type, the invalidation purges a single cache tag, a single URL
         /// path, or all cached content for the domain.
+        /// 
+        /// Domains that route to a function do not support cache invalidation.
         /// </para>
         /// </summary>
         public Task<Models.ProxyInvalidation> CreateInvalidation(string domain, Appwrite.Enums.InvalidationType type, string? reference = null)
@@ -252,11 +254,54 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create an SMTP ingress rule that asynchronously executes an Appwrite
+        /// Function for incoming email.
+        /// </para>
+        /// </summary>
+        public Task<Models.ProxyRule> CreateSMTPRule(string domain, string functionId, string? branch = null)
+        {
+            var apiPath = "/proxy/rules/smtp";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "domain", domain },
+                { "functionId", functionId },
+                { "branch", branch }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.ProxyRule Convert(Dictionary<string, object> it)
+            {
+                return Models.ProxyRule.From(map: it);
+            }
+
+            return _client.Call<Models.ProxyRule>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Get a proxy rule by its unique ID.
         /// </para>
         /// </summary>
         public Task<Models.ProxyRule> GetRule(string ruleId)
         {
+            if (ruleId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"ruleId\"");
+            }
+
             var apiPath = "/proxy/rules/{ruleId}"
                 .Replace("{ruleId}", ruleId);
 
@@ -291,6 +336,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteRule(string ruleId)
         {
+            if (ruleId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"ruleId\"");
+            }
+
             var apiPath = "/proxy/rules/{ruleId}"
                 .Replace("{ruleId}", ruleId);
 
@@ -301,7 +351,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -323,6 +374,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ProxyRule> UpdateRuleStatus(string ruleId)
         {
+            if (ruleId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"ruleId\"");
+            }
+
             var apiPath = "/proxy/rules/{ruleId}/status"
                 .Replace("{ruleId}", ruleId);
 

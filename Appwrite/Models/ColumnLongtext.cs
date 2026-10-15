@@ -67,16 +67,16 @@ namespace Appwrite.Models
         }
 
         public static ColumnLongtext From(Dictionary<string, object> map) => new ColumnLongtext(
-            key: map["key"].ToString(),
-            type: map["type"].ToString(),
+            key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
             status: new Appwrite.Enums.ColumnStatus(map["status"].ToString()!),
-            error: map["error"].ToString(),
-            required: (bool)map["required"],
+            error: (map.ContainsKey("error") ? map["error"] : "").ToString(),
+            required: (bool)(map.ContainsKey("required") ? map["required"] : false),
             array: map.TryGetValue("array", out var boolRaw6) && boolRaw6 != null
                                         ? (bool?)boolRaw6
                                         : null,
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             @default: map.TryGetValue("default", out var @default) ? @default?.ToString() : null,
             encrypt: map.TryGetValue("encrypt", out var boolRaw10) && boolRaw10 != null
                                         ? (bool?)boolRaw10

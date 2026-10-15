@@ -10,7 +10,7 @@ Client client = new Client()
 
 Mongo mongo = new Mongo(client);
 
-DedicatedDatabaseRestoration result = await mongo.GetRestoration(
+Appwrite.Models.DedicatedDatabaseRestoration result = await mongo.GetRestoration(
     databaseId: "<DATABASE_ID>",
     restorationId: "<RESTORATION_ID>"
 );

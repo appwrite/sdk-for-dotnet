@@ -8,10 +8,12 @@ Client client = new Client()
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
     .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
-Organization organization = new Organization(client);
+Proxy proxy = new Proxy(client);
 
-await organization.DeleteKey(
-    keyId: "<KEY_ID>"
+Appwrite.Models.ProxyRule result = await proxy.CreateSMTPRule(
+    domain: "example.com",
+    functionId: "<FUNCTION_ID>",
+    branch: "<BRANCH>" // optional
 );
 
 ```

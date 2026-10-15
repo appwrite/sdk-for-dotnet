@@ -42,9 +42,9 @@ namespace Appwrite.Models
         }
 
         public static DatabaseStatusReplica From(Dictionary<string, object> map) => new DatabaseStatusReplica(
-            index: Convert.ToInt64(map["index"]),
-            role: map["role"].ToString(),
-            healthy: (bool)map["healthy"],
+            index: Convert.ToInt64((map.ContainsKey("index") ? map["index"] : 0)),
+            role: (map.ContainsKey("role") ? map["role"] : "unknown").ToString(),
+            healthy: (bool)(map.ContainsKey("healthy") ? map["healthy"] : false),
             replicating: map.TryGetValue("replicating", out var boolRaw4) && boolRaw4 != null
                                         ? (bool?)boolRaw4
                                         : null,

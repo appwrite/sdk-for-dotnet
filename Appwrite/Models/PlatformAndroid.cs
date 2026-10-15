@@ -30,7 +30,7 @@ namespace Appwrite.Models
         public string ApplicationId { get; private set; }
 
         [JsonPropertyName("fingerprints")]
-        public List<string>? Fingerprints { get; private set; }
+        public List<string> Fingerprints { get; private set; }
 
         public PlatformAndroid(
             string id,
@@ -39,7 +39,7 @@ namespace Appwrite.Models
             string name,
             Appwrite.Enums.PlatformType type,
             string applicationId,
-            List<string>? fingerprints = null
+            List<string> fingerprints
         )
         {
             Id = id;
@@ -52,15 +52,13 @@ namespace Appwrite.Models
         }
 
         public static PlatformAndroid From(Dictionary<string, object> map) => new PlatformAndroid(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            name: map["name"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
             type: new Appwrite.Enums.PlatformType(map["type"].ToString()!),
-            applicationId: map["applicationId"].ToString(),
-            fingerprints: map.TryGetValue("fingerprints", out var arrayRaw7Added) && arrayRaw7Added != null
-                                ? arrayRaw7Added.ConvertToList<string>()
-                                : null
+            applicationId: (map.ContainsKey("applicationId") ? map["applicationId"] : "").ToString(),
+            fingerprints: (map.ContainsKey("fingerprints") ? map["fingerprints"] : new List<object>()).ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

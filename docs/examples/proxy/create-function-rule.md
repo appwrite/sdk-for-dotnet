@@ -10,7 +10,7 @@ Client client = new Client()
 
 Proxy proxy = new Proxy(client);
 
-ProxyRule result = await proxy.CreateFunctionRule(
+Appwrite.Models.ProxyRule result = await proxy.CreateFunctionRule(
     domain: "example.com",
     functionId: "<FUNCTION_ID>",
     branch: "<BRANCH>" // optional

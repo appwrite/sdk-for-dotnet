@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2WordPress result = await project.UpdateOAuth2WordPress(
+Appwrite.Models.OAuth2WordPress result = await project.UpdateOAuth2WordPress(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional

@@ -10,12 +10,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeBoolean result = await databases.UpdateBooleanAttribute(
+Appwrite.Models.AttributeBoolean result = await databases.UpdateBooleanAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
-    default: false,
+    @default: false,
     newKey: "<NEW_KEY>" // optional
 );
 

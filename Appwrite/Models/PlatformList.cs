@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static PlatformList From(Dictionary<string, object> map) => new PlatformList(
-            total: Convert.ToInt64(map["total"]),
-            platforms: map["platforms"].ConvertToList<object>()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            platforms: (map.ContainsKey("platforms") ? map["platforms"] : new List<object>()).ConvertToList<object>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

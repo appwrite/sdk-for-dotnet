@@ -27,10 +27,10 @@ namespace Appwrite.Models
         public string Name { get; private set; }
 
         [JsonPropertyName("api")]
-        public string Api { get; private set; }
+        public string? Api { get; private set; }
 
         [JsonPropertyName("engine")]
-        public string Engine { get; private set; }
+        public string? Engine { get; private set; }
 
         [JsonPropertyName("version")]
         public string Version { get; private set; }
@@ -45,7 +45,7 @@ namespace Appwrite.Models
         public string Hostname { get; private set; }
 
         [JsonPropertyName("connectionPort")]
-        public long ConnectionPort { get; private set; }
+        public long? ConnectionPort { get; private set; }
 
         [JsonPropertyName("connectionUser")]
         public string ConnectionUser { get; private set; }
@@ -54,7 +54,7 @@ namespace Appwrite.Models
         public string ConnectionPassword { get; private set; }
 
         [JsonPropertyName("credentialGeneration")]
-        public long CredentialGeneration { get; private set; }
+        public long? CredentialGeneration { get; private set; }
 
         [JsonPropertyName("connectionString")]
         public string ConnectionString { get; private set; }
@@ -90,10 +90,10 @@ namespace Appwrite.Models
         public long Storage { get; private set; }
 
         [JsonPropertyName("storageStatus")]
-        public string? StorageStatus { get; private set; }
+        public string StorageStatus { get; private set; }
 
         [JsonPropertyName("storageTargetGb")]
-        public long? StorageTargetGb { get; private set; }
+        public long StorageTargetGb { get; private set; }
 
         [JsonPropertyName("storageResizeStartedAt")]
         public string? StorageResizeStartedAt { get; private set; }
@@ -173,16 +173,16 @@ namespace Appwrite.Models
             string updatedAt,
             string projectId,
             string name,
-            string api,
-            string engine,
+            string? api,
+            string? engine,
             string version,
             string specification,
             string backend,
             string hostname,
-            long connectionPort,
+            long? connectionPort,
             string connectionUser,
             string connectionPassword,
-            long credentialGeneration,
+            long? credentialGeneration,
             string connectionString,
             bool ssl,
             string status,
@@ -194,6 +194,9 @@ namespace Appwrite.Models
             long cpu,
             long memory,
             long storage,
+            string storageStatus,
+            long storageTargetGb,
+            string? storageResizeStartedAt,
             string storageClass,
             long storageMaxGb,
             string nodePool,
@@ -216,10 +219,7 @@ namespace Appwrite.Models
             long sqlApiMaxRows,
             long sqlApiMaxBytes,
             long sqlApiTimeoutSeconds,
-            string error,
-            string? storageStatus = null,
-            long? storageTargetGb = null,
-            string? storageResizeStartedAt = null
+            string error
         )
         {
             Id = id;
@@ -277,60 +277,62 @@ namespace Appwrite.Models
         }
 
         public static DedicatedDatabase From(Dictionary<string, object> map) => new DedicatedDatabase(
-            id: map["$id"].ToString(),
-            createdAt: map["$createdAt"].ToString(),
-            updatedAt: map["$updatedAt"].ToString(),
-            projectId: map["projectId"].ToString(),
-            name: map["name"].ToString(),
-            api: map["api"].ToString(),
-            engine: map["engine"].ToString(),
-            version: map["version"].ToString(),
-            specification: map["specification"].ToString(),
-            backend: map["backend"].ToString(),
-            hostname: map["hostname"].ToString(),
-            connectionPort: Convert.ToInt64(map["connectionPort"]),
-            connectionUser: map["connectionUser"].ToString(),
-            connectionPassword: map["connectionPassword"].ToString(),
-            credentialGeneration: Convert.ToInt64(map["credentialGeneration"]),
-            connectionString: map["connectionString"].ToString(),
-            ssl: (bool)map["ssl"],
-            status: map["status"].ToString(),
-            containerStatus: map["containerStatus"].ToString(),
+            id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
+            createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
+            updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
+            projectId: (map.ContainsKey("projectId") ? map["projectId"] : "").ToString(),
+            name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            api: map.TryGetValue("api", out var api) ? api?.ToString() : null,
+            engine: map.TryGetValue("engine", out var engine) ? engine?.ToString() : null,
+            version: (map.ContainsKey("version") ? map["version"] : "").ToString(),
+            specification: (map.ContainsKey("specification") ? map["specification"] : "").ToString(),
+            backend: (map.ContainsKey("backend") ? map["backend"] : "").ToString(),
+            hostname: (map.ContainsKey("hostname") ? map["hostname"] : "").ToString(),
+            connectionPort: map.TryGetValue("connectionPort", out var numberRaw12) && numberRaw12 != null
+                                    ? Convert.ToInt64(numberRaw12)
+                                    : null,
+            connectionUser: (map.ContainsKey("connectionUser") ? map["connectionUser"] : "").ToString(),
+            connectionPassword: (map.ContainsKey("connectionPassword") ? map["connectionPassword"] : "").ToString(),
+            credentialGeneration: map.TryGetValue("credentialGeneration", out var numberRaw15) && numberRaw15 != null
+                                    ? Convert.ToInt64(numberRaw15)
+                                    : null,
+            connectionString: (map.ContainsKey("connectionString") ? map["connectionString"] : "").ToString(),
+            ssl: (bool)(map.ContainsKey("ssl") ? map["ssl"] : false),
+            status: (map.ContainsKey("status") ? map["status"] : "provisioning").ToString(),
+            containerStatus: (map.ContainsKey("containerStatus") ? map["containerStatus"] : "").ToString(),
             lastAccessedAt: map.TryGetValue("lastAccessedAt", out var lastAccessedAt) ? lastAccessedAt?.ToString() : null,
             idleUntil: map.TryGetValue("idleUntil", out var idleUntil) ? idleUntil?.ToString() : null,
-            lifecycleState: map["lifecycleState"].ToString(),
-            idleTimeoutMinutes: Convert.ToInt64(map["idleTimeoutMinutes"]),
-            cpu: Convert.ToInt64(map["cpu"]),
-            memory: Convert.ToInt64(map["memory"]),
-            storage: Convert.ToInt64(map["storage"]),
-            storageClass: map["storageClass"].ToString(),
-            storageMaxGb: Convert.ToInt64(map["storageMaxGb"]),
-            nodePool: map["nodePool"].ToString(),
-            replicas: Convert.ToInt64(map["replicas"]),
-            syncMode: map["syncMode"].ToString(),
-            networkMaxConnections: Convert.ToInt64(map["networkMaxConnections"]),
-            networkIdleTimeoutSeconds: Convert.ToInt64(map["networkIdleTimeoutSeconds"]),
-            networkIPAllowlist: map["networkIPAllowlist"].ConvertToList<string>(),
-            backupEnabled: (bool)map["backupEnabled"],
-            pitr: (bool)map["pitr"],
-            pitrRetentionDays: Convert.ToInt64(map["pitrRetentionDays"]),
-            storageAutoscaling: (bool)map["storageAutoscaling"],
-            storageAutoscalingThresholdPercent: Convert.ToInt64(map["storageAutoscalingThresholdPercent"]),
-            storageAutoscalingMaxGb: Convert.ToInt64(map["storageAutoscalingMaxGb"]),
-            maintenanceWindowDay: map["maintenanceWindowDay"].ToString(),
-            maintenanceWindowHourUtc: Convert.ToInt64(map["maintenanceWindowHourUtc"]),
-            metricsEnabled: (bool)map["metricsEnabled"],
-            sqlApiEnabled: (bool)map["sqlApiEnabled"],
-            sqlApiAllowedStatements: map["sqlApiAllowedStatements"].ConvertToList<string>(),
-            sqlApiMaxRows: Convert.ToInt64(map["sqlApiMaxRows"]),
-            sqlApiMaxBytes: Convert.ToInt64(map["sqlApiMaxBytes"]),
-            sqlApiTimeoutSeconds: Convert.ToInt64(map["sqlApiTimeoutSeconds"]),
-            error: map["error"].ToString(),
-            storageStatus: map.TryGetValue("storageStatus", out var storageStatus) ? storageStatus?.ToString() : null,
-            storageTargetGb: map.TryGetValue("storageTargetGb", out var numberRaw28Added) && numberRaw28Added != null
-                                    ? Convert.ToInt64(numberRaw28Added)
-                                    : null,
-            storageResizeStartedAt: map.TryGetValue("storageResizeStartedAt", out var storageResizeStartedAt) ? storageResizeStartedAt?.ToString() : null
+            lifecycleState: (map.ContainsKey("lifecycleState") ? map["lifecycleState"] : "").ToString(),
+            idleTimeoutMinutes: Convert.ToInt64((map.ContainsKey("idleTimeoutMinutes") ? map["idleTimeoutMinutes"] : 15)),
+            cpu: Convert.ToInt64((map.ContainsKey("cpu") ? map["cpu"] : 500)),
+            memory: Convert.ToInt64((map.ContainsKey("memory") ? map["memory"] : 512)),
+            storage: Convert.ToInt64((map.ContainsKey("storage") ? map["storage"] : 10)),
+            storageStatus: (map.ContainsKey("storageStatus") ? map["storageStatus"] : "idle").ToString(),
+            storageTargetGb: Convert.ToInt64((map.ContainsKey("storageTargetGb") ? map["storageTargetGb"] : 0)),
+            storageResizeStartedAt: map.TryGetValue("storageResizeStartedAt", out var storageResizeStartedAt) ? storageResizeStartedAt?.ToString() : null,
+            storageClass: (map.ContainsKey("storageClass") ? map["storageClass"] : "ssd").ToString(),
+            storageMaxGb: Convert.ToInt64((map.ContainsKey("storageMaxGb") ? map["storageMaxGb"] : 0)),
+            nodePool: (map.ContainsKey("nodePool") ? map["nodePool"] : "").ToString(),
+            replicas: Convert.ToInt64((map.ContainsKey("replicas") ? map["replicas"] : 0)),
+            syncMode: (map.ContainsKey("syncMode") ? map["syncMode"] : "").ToString(),
+            networkMaxConnections: Convert.ToInt64((map.ContainsKey("networkMaxConnections") ? map["networkMaxConnections"] : 100)),
+            networkIdleTimeoutSeconds: Convert.ToInt64((map.ContainsKey("networkIdleTimeoutSeconds") ? map["networkIdleTimeoutSeconds"] : 900)),
+            networkIPAllowlist: (map.ContainsKey("networkIPAllowlist") ? map["networkIPAllowlist"] : new List<object>()).ConvertToList<string>(),
+            backupEnabled: (bool)(map.ContainsKey("backupEnabled") ? map["backupEnabled"] : true),
+            pitr: (bool)(map.ContainsKey("pitr") ? map["pitr"] : true),
+            pitrRetentionDays: Convert.ToInt64((map.ContainsKey("pitrRetentionDays") ? map["pitrRetentionDays"] : 7)),
+            storageAutoscaling: (bool)(map.ContainsKey("storageAutoscaling") ? map["storageAutoscaling"] : true),
+            storageAutoscalingThresholdPercent: Convert.ToInt64((map.ContainsKey("storageAutoscalingThresholdPercent") ? map["storageAutoscalingThresholdPercent"] : 85)),
+            storageAutoscalingMaxGb: Convert.ToInt64((map.ContainsKey("storageAutoscalingMaxGb") ? map["storageAutoscalingMaxGb"] : 0)),
+            maintenanceWindowDay: (map.ContainsKey("maintenanceWindowDay") ? map["maintenanceWindowDay"] : "sun").ToString(),
+            maintenanceWindowHourUtc: Convert.ToInt64((map.ContainsKey("maintenanceWindowHourUtc") ? map["maintenanceWindowHourUtc"] : 3)),
+            metricsEnabled: (bool)(map.ContainsKey("metricsEnabled") ? map["metricsEnabled"] : false),
+            sqlApiEnabled: (bool)(map.ContainsKey("sqlApiEnabled") ? map["sqlApiEnabled"] : true),
+            sqlApiAllowedStatements: (map.ContainsKey("sqlApiAllowedStatements") ? map["sqlApiAllowedStatements"] : new List<object> { "SELECT", "INSERT", "UPDATE", "DELETE" }).ConvertToList<string>(),
+            sqlApiMaxRows: Convert.ToInt64((map.ContainsKey("sqlApiMaxRows") ? map["sqlApiMaxRows"] : 10000)),
+            sqlApiMaxBytes: Convert.ToInt64((map.ContainsKey("sqlApiMaxBytes") ? map["sqlApiMaxBytes"] : 10485760)),
+            sqlApiTimeoutSeconds: Convert.ToInt64((map.ContainsKey("sqlApiTimeoutSeconds") ? map["sqlApiTimeoutSeconds"] : 30)),
+            error: (map.ContainsKey("error") ? map["error"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

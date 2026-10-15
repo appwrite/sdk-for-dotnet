@@ -10,7 +10,7 @@ Client client = new Client()
 
 Storage storage = new Storage(client);
 
-File result = await storage.UpdateFile(
+Appwrite.Models.File result = await storage.UpdateFile(
     bucketId: "<BUCKET_ID>",
     fileId: "<FILE_ID>",
     name: "<NAME>", // optional

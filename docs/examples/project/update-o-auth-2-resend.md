@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Resend result = await project.UpdateOAuth2Resend(
+Appwrite.Models.OAuth2Resend result = await project.UpdateOAuth2Resend(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false // optional

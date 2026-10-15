@@ -27,8 +27,8 @@ namespace Appwrite.Models
         }
 
         public static RuntimeList From(Dictionary<string, object> map) => new RuntimeList(
-            total: Convert.ToInt64(map["total"]),
-            runtimes: map["runtimes"].ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Runtime.From(map: it)).ToList()
+            total: Convert.ToInt64((map.ContainsKey("total") ? map["total"] : 0)),
+            runtimes: (map.ContainsKey("runtimes") ? map["runtimes"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Runtime.From(map: it)).ToList()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()

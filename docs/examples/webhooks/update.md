@@ -10,11 +10,11 @@ Client client = new Client()
 
 Webhooks webhooks = new Webhooks(client);
 
-Webhook result = await webhooks.Update(
+Appwrite.Models.Webhook result = await webhooks.Update(
     webhookId: "<WEBHOOK_ID>",
     name: "<NAME>",
     url: "https://example.com/webhook",
-    events: new List<string>(),
+    events: ["users.*.create"],
     enabled: false, // optional
     tls: false, // optional
     authUsername: "<AUTH_USERNAME>", // optional

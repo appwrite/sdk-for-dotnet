@@ -77,7 +77,7 @@ namespace Appwrite.Models
         }
 
         public static Oauth2Introspection From(Dictionary<string, object> map) => new Oauth2Introspection(
-            active: (bool)map["active"],
+            active: (bool)(map.ContainsKey("active") ? map["active"] : false),
             tokenUse: map.TryGetValue("token_use", out var tokenUse) ? tokenUse?.ToString() : null,
             tokenType: map.TryGetValue("token_type", out var tokenType) ? tokenType?.ToString() : null,
             scope: map.TryGetValue("scope", out var scope) ? scope?.ToString() : null,

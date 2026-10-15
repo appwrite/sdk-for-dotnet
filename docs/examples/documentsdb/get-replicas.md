@@ -10,7 +10,7 @@ Client client = new Client()
 
 DocumentsDB documentsDB = new DocumentsDB(client);
 
-DedicatedDatabaseReplicas result = await documentsDB.GetReplicas(
+Appwrite.Models.DedicatedDatabaseReplicas result = await documentsDB.GetReplicas(
     databaseId: "<DATABASE_ID>"
 );
 

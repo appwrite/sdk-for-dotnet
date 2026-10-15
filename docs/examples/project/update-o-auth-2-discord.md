@@ -11,7 +11,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-OAuth2Discord result = await project.UpdateOAuth2Discord(
+Appwrite.Models.OAuth2Discord result = await project.UpdateOAuth2Discord(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false, // optional

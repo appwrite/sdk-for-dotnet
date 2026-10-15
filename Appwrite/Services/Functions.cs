@@ -185,6 +185,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Function> Get(string functionId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
 
@@ -217,8 +222,13 @@ namespace Appwrite.Services
         /// Update function by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Function> Update(string functionId, string name, Appwrite.Enums.Runtime? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<Appwrite.Enums.ProjectKeyScopes>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null, long? interval = null)
+        public Task<Models.Function> Update(string functionId, string name, Appwrite.Enums.Runtime? runtime = null, List<string>? execute = null, List<string>? events = null, string? schedule = null, long? timeout = null, bool? enabled = null, bool? logging = null, string? entrypoint = null, string? commands = null, List<Appwrite.Enums.ProjectKeyScopes>? scopes = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null, long? interval = null, bool? emailEnabled = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
 
@@ -245,7 +255,8 @@ namespace Appwrite.Services
                 { "buildSpecification", buildSpecification },
                 { "runtimeSpecification", runtimeSpecification },
                 { "deploymentRetention", deploymentRetention },
-                { "interval", interval }
+                { "interval", interval },
+                { "emailEnabled", emailEnabled }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -276,6 +287,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> Delete(string functionId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}"
                 .Replace("{functionId}", functionId);
 
@@ -286,7 +302,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -306,6 +323,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Function> UpdateFunctionDeployment(string functionId, string deploymentId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployment"
                 .Replace("{functionId}", functionId);
 
@@ -343,6 +365,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.DeploymentList> ListDeployments(string functionId, List<string>? queries = null, string? search = null, bool? total = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployments"
                 .Replace("{functionId}", functionId);
 
@@ -389,6 +416,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> CreateDeployment(string functionId, InputFile code, bool activate, string? entrypoint = null, string? commands = null, Action<UploadProgress>? onProgress = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployments"
                 .Replace("{functionId}", functionId);
 
@@ -424,7 +456,8 @@ namespace Appwrite.Services
                 Convert,
                 paramName,
                 idParamName,
-                onProgress);
+                onProgress,
+                method: "POST");
         }
 
         /// <para>
@@ -437,6 +470,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> CreateDuplicateDeployment(string functionId, string deploymentId, string? buildId = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployments/duplicate"
                 .Replace("{functionId}", functionId);
 
@@ -478,6 +516,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> CreateTemplateDeployment(string functionId, string repository, string owner, string rootDirectory, Appwrite.Enums.TemplateReferenceType type, string reference, bool? activate = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployments/template"
                 .Replace("{functionId}", functionId);
 
@@ -521,6 +564,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> CreateVcsDeployment(string functionId, Appwrite.Enums.VCSReferenceType type, string reference, bool? activate = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployments/vcs"
                 .Replace("{functionId}", functionId);
 
@@ -559,6 +607,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> GetDeployment(string functionId, string deploymentId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
+            if (deploymentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deploymentId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{deploymentId}", deploymentId);
@@ -594,6 +652,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteDeployment(string functionId, string deploymentId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
+            if (deploymentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deploymentId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{deploymentId}", deploymentId);
@@ -605,7 +673,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -626,6 +695,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<byte[]> GetDeploymentDownload(string functionId, string deploymentId, Appwrite.Enums.DeploymentDownloadType? type = null, string? token = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
+            if (deploymentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deploymentId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}/download"
                 .Replace("{functionId}", functionId)
                 .Replace("{deploymentId}", deploymentId);
@@ -662,6 +741,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Deployment> UpdateDeploymentStatus(string functionId, string deploymentId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
+            if (deploymentId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deploymentId\"");
+            }
+
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}/status"
                 .Replace("{functionId}", functionId)
                 .Replace("{deploymentId}", deploymentId);
@@ -699,6 +788,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.ExecutionList> ListExecutions(string functionId, List<string>? queries = null, bool? total = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
 
@@ -738,6 +832,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Execution> CreateExecution(string functionId, string? body = null, bool? @async = null, string? @path = null, Appwrite.Enums.ExecutionMethod? method = null, object? headers = null, string? scheduledAt = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/executions"
                 .Replace("{functionId}", functionId);
 
@@ -779,6 +878,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Execution> GetExecution(string functionId, string executionId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
+            if (executionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"executionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/executions/{executionId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{executionId}", executionId);
@@ -814,6 +923,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteExecution(string functionId, string executionId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
+            if (executionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"executionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/executions/{executionId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{executionId}", executionId);
@@ -825,7 +944,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 
@@ -844,6 +964,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.VariableList> ListVariables(string functionId, List<string>? queries = null, bool? total = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/variables"
                 .Replace("{functionId}", functionId);
 
@@ -881,6 +1006,11 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> CreateVariable(string functionId, string variableId, string key, string @value, bool? secret = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
             var apiPath = "/functions/{functionId}/variables"
                 .Replace("{functionId}", functionId);
 
@@ -920,6 +1050,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> GetVariable(string functionId, string variableId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
+            if (variableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"variableId\"");
+            }
+
             var apiPath = "/functions/{functionId}/variables/{variableId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{variableId}", variableId);
@@ -955,6 +1095,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<Models.Variable> UpdateVariable(string functionId, string variableId, string? key = null, string? @value = null, bool? secret = null)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
+            if (variableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"variableId\"");
+            }
+
             var apiPath = "/functions/{functionId}/variables/{variableId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{variableId}", variableId);
@@ -994,6 +1144,16 @@ namespace Appwrite.Services
         /// </summary>
         public Task<object> DeleteVariable(string functionId, string variableId)
         {
+            if (functionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"functionId\"");
+            }
+
+            if (variableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"variableId\"");
+            }
+
             var apiPath = "/functions/{functionId}/variables/{variableId}"
                 .Replace("{functionId}", functionId)
                 .Replace("{variableId}", variableId);
@@ -1005,7 +1165,8 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "content-type", "application/json" }
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
             };
 
 

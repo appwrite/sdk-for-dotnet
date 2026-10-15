@@ -10,12 +10,12 @@ Client client = new Client()
 
 Databases databases = new Databases(client);
 
-AttributeEmail result = await databases.UpdateEmailAttribute(
+Appwrite.Models.AttributeEmail result = await databases.UpdateEmailAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     key: "<KEY>",
     required: false,
-    default: "email@example.com",
+    @default: "email@example.com",
     newKey: "<NEW_KEY>" // optional
 );
 

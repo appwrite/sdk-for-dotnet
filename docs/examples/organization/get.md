@@ -10,7 +10,7 @@ Client client = new Client()
 
 Organization organization = new Organization(client);
 
-Organization result = await organization.Get();
+Appwrite.Models.Organization result = await organization.Get();
 
 
 ```
