@@ -1,9 +1,8 @@
 # Appwrite .NET SDK
 
-![License](https://img.shields.io/github/license/appwrite/sdk-for-dotnet.svg?style=flat-square)
+![License](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg?style=flat-square)
 ![Version](https://img.shields.io/badge/api%20version-2.5.0-blue.svg?style=flat-square)
-[![Build Status](https://img.shields.io/travis/com/appwrite/sdk-generator?style=flat-square)](https://travis-ci.com/appwrite/sdk-generator)
-[![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
+[![X Account](https://img.shields.io/badge/follow-%40appwrite-000000?logo=x&style=flat-square)](https://x.com/appwrite)
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
 
 **This SDK targets Appwrite server version 2.5.x as shipped on Appwrite Cloud.** Self-hosted releases can lag behind Cloud — if you run an older self-hosted build, use a matching older SDK from [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases) when APIs differ.
@@ -13,104 +12,111 @@ Appwrite is an open-source backend as a service server that abstracts and simpli
 
 ## Installation
 
-### .NET
-Add this reference to your project's `.csproj` file:
+The package targets .NET Standard 2.0 and .NET Framework 4.6.2, so it runs on .NET 5 or later, .NET Core 2.0 or later, and .NET Framework 4.6.2 or later.
+
+Install it with the .NET CLI:
+
+```bash
+dotnet add package Appwrite --version 9.0.0
+```
+
+Or with the Package Manager Console:
+
+```powershell
+Install-Package Appwrite -Version 9.0.0
+```
+
+Or add a reference to your project's `.csproj` file:
 
 ```xml
 <PackageReference Include="Appwrite" Version="9.0.0" />
 ```
 
-You can install packages from the command line:
-
-```powershell
-# Package Manager
-Install-Package Appwrite -Version 9.0.0
-
-# or .NET CLI
-dotnet add package Appwrite --version 9.0.0
-```
-
-
 ## Getting Started
 
-### Initialize & Make API Request
-Once you have installed the package, it is extremely easy to get started with the SDK; all you need to do is import the package in your code, set your Appwrite credentials, and start making API calls. Below is a simple example:
+### Initialize and make an API request
+Initialize the SDK with your Appwrite endpoint, project ID, and an API key. Find the endpoint and project ID in your project's **Settings** page, and create an API key with the scopes your code needs under **Overview > Integrations > API keys**. API keys grant server-level access, so keep them out of client-side code.
 
 ```csharp
 using Appwrite;
 using Appwrite.Services;
-using Appwrite.Models;
 
 var client = new Client()
-  .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-  .SetProject("5ff3379a01d25")                 // Your project ID
-  .SetKey("cd868db89");                         // Your secret API key
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<API_KEY>");
 
 var users = new Users(client);
 
 var user = await users.Create(
     userId: ID.Unique(),
     email: "email@example.com",
-    phone: "+123456789",
     password: "password",
     name: "Walter O'Brien");
 
-Console.WriteLine(user.ToMap());
+Console.WriteLine(user.Name);
 ```
 
-### Error Handling
-The Appwrite .NET SDK raises an `AppwriteException` object with `message`, `code`, and `response` properties. You can handle any errors by catching `AppwriteException` and presenting the `message` to the user or handling it yourself based on the provided error information. Below is an example.
+If you self-host Appwrite, use your own endpoint, such as `https://appwrite.example.com/v1`. During local development with a self-signed certificate, call `.SetSelfSigned(true)` to skip certificate verification. Never use it in production.
+
+### Error handling
+The SDK throws an `AppwriteException` when a request fails. It exposes `Message`, `Code`, `Type`, and `Response` properties that you can use to inspect the error.
 
 ```csharp
-var users = new Users(client);
-
 try
 {
     var user = await users.Create(
         userId: ID.Unique(),
         email: "email@example.com",
-        phone: "+123456789",
         password: "password",
         name: "Walter O'Brien");
-} 
+}
 catch (AppwriteException e)
 {
     Console.WriteLine(e.Message);
 }
 ```
 
+### Preparing models for TablesDB
+The SDK serializes request data with `System.Text.Json` and converts property names from `PascalCase` to `camelCase`. If your table's column names are not in `camelCase`, the serialized names will not match your columns.
+
+Add the `JsonPropertyName` attribute to each property of your model so it serializes to the column name. For example, for a table with a `name` column (string) and a `release_date` column (datetime):
+
+```csharp
+using System.Text.Json.Serialization;
+
+public class Movie
+{
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+
+    [JsonPropertyName("release_date")]
+    public DateTime ReleaseDate { get; set; }
+}
+```
+
+Pass the model as the row data:
+
+```csharp
+var tablesDB = new TablesDB(client);
+
+var row = await tablesDB.CreateRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: ID.Unique(),
+    data: new Movie { Name = "Spider-Man", ReleaseDate = new DateTime(2002, 5, 3) });
+```
+
 ### Learn more
-You can use the following resources to learn more and get help
-- 🚀 [Getting Started Tutorial](https://appwrite.io/docs/getting-started-for-server)
+You can use the following resources to learn more and get help:
+- 🚀 [.NET Quick Start](https://appwrite.io/docs/quick-starts/dotnet)
 - 📜 [Appwrite Docs](https://appwrite.io/docs)
 - 💬 [Discord Community](https://appwrite.io/discord)
 - 🚂 [Appwrite .NET Playground](https://github.com/appwrite/playground-for-dotnet)
 
-
-### Preparing Models for Databases API
-
-For the .NET SDK, we use the `System.Text.Json` library for serialization/deserialization support. The default behavior converts property names from `PascalCase` to `camelCase` on serializing to JSON. In case the names of attributes in your Appwrite collection are not created in `camelCase`, this serializer behavior can cause errors due to mismatches in the names in the serialized JSON and the actual attribute names in your collection.
-
-The way to fix this is to add the `JsonPropertyName` attribute to the properties in the POCO class you create for your model.
-
-For e.g., if you have two attributes, `name` (`string` type) and `release_date` (`DateTime` type), your POCO class would be created as follows:
-
-```csharp
-public class TestModel
-{
-  [JsonPropertyName("name")]
-  public string Name { get; set; }
-
-  [JsonPropertyName("release_date")]
-  public DateTime ReleaseDate { get; set; }
-}
-```
-
-The `JsonPropertyName` attribute will ensure that your data object for the Appwrite database is serialized with the correct names.
-
 ## Contribution
 
-This library is auto-generated by Appwrite custom [SDK Generator](https://github.com/appwrite/sdk-generator). To learn more about how you can help us improve this SDK, please check the [contribution guide](https://github.com/appwrite/sdk-generator/blob/master/CONTRIBUTING.md) before sending a pull-request.
+This library is auto-generated by Appwrite custom [SDK Generator](https://github.com/appwrite/sdk-generator). To learn more about how you can help us improve this SDK, please check the [contribution guide](https://github.com/appwrite/sdk-generator/blob/main/CONTRIBUTING.md) before sending a pull-request.
 
 ## License
 
