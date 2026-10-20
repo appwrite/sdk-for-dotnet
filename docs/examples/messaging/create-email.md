@@ -24,7 +24,8 @@ Appwrite.Models.Message result = await messaging.CreateEmail(
     html: false, // optional
     scheduledAt: "2020-10-15T06:38:00.000+00:00", // optional
     replyToEmail: "email@example.com", // optional
-    replyToName: "<REPLY_TO_NAME>" // optional
+    replyToName: "<REPLY_TO_NAME>", // optional
+    emails: new List<string>() // optional
 );
 
 ```

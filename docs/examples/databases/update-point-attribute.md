@@ -16,7 +16,8 @@ Appwrite.Models.AttributePoint result = await databases.UpdatePointAttribute(
     key: "<KEY>",
     required: false,
     @default: [1, 2], // optional
-    newKey: "<NEW_KEY>" // optional
+    newKey: "<NEW_KEY>", // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

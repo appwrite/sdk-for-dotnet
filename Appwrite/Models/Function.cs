@@ -26,6 +26,9 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
@@ -119,6 +122,7 @@ namespace Appwrite.Models
             string updatedAt,
             List<string> execute,
             string name,
+            string description,
             bool enabled,
             bool live,
             bool logging,
@@ -155,6 +159,7 @@ namespace Appwrite.Models
             UpdatedAt = updatedAt;
             Execute = execute;
             Name = name;
+            Description = description;
             Enabled = enabled;
             Live = live;
             Logging = logging;
@@ -192,6 +197,7 @@ namespace Appwrite.Models
             updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             execute: (map.ContainsKey("execute") ? map["execute"] : new List<object>()).ConvertToList<string>(),
             name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             live: (bool)(map.ContainsKey("live") ? map["live"] : true),
             logging: (bool)(map.ContainsKey("logging") ? map["logging"] : true),
@@ -206,8 +212,8 @@ namespace Appwrite.Models
             vars: (map.ContainsKey("vars") ? map["vars"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Variable.From(map: it)).ToList(),
             events: (map.ContainsKey("events") ? map["events"] : new List<object>()).ConvertToList<string>(),
             schedule: (map.ContainsKey("schedule") ? map["schedule"] : "").ToString(),
-            interval: map.TryGetValue("interval", out var numberRaw20) && numberRaw20 != null
-                                    ? Convert.ToInt64(numberRaw20)
+            interval: map.TryGetValue("interval", out var numberRaw21) && numberRaw21 != null
+                                    ? Convert.ToInt64(numberRaw21)
                                     : null,
             timeout: Convert.ToInt64((map.ContainsKey("timeout") ? map["timeout"] : 15)),
             entrypoint: (map.ContainsKey("entrypoint") ? map["entrypoint"] : "").ToString(),
@@ -232,6 +238,7 @@ namespace Appwrite.Models
             { "$updatedAt", UpdatedAt },
             { "execute", Execute },
             { "name", Name },
+            { "description", Description },
             { "enabled", Enabled },
             { "live", Live },
             { "logging", Logging },

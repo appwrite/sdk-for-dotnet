@@ -57,7 +57,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.create` instead.")]
-        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null)
+        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? description = null)
         {
             var apiPath = "/databases";
 
@@ -65,7 +65,8 @@ namespace Appwrite.Services
             {
                 { "databaseId", databaseId },
                 { "name", name },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -369,7 +370,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.update` instead.")]
-        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null)
+        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -382,7 +383,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "name", name },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -496,7 +498,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createTable` instead.")]
-        public Task<Models.Collection> CreateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, List<object>? attributes = null, List<object>? indexes = null)
+        public Task<Models.Collection> CreateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, List<object>? attributes = null, List<object>? indexes = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -514,7 +516,8 @@ namespace Appwrite.Services
                 { "documentSecurity", documentSecurity },
                 { "enabled", enabled },
                 { "attributes", attributes },
-                { "indexes", indexes }
+                { "indexes", indexes },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -591,7 +594,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTable` instead.")]
-        public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string? name = null, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, bool? purge = null)
+        public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string? name = null, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, bool? purge = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -613,7 +616,8 @@ namespace Appwrite.Services
                 { "permissions", permissions },
                 { "documentSecurity", documentSecurity },
                 { "enabled", enabled },
-                { "purge", purge }
+                { "purge", purge },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -736,7 +740,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createBigIntColumn` instead.")]
-        public Task<Models.AttributeBigint> CreateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
+        public Task<Models.AttributeBigint> CreateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -759,7 +763,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -791,7 +796,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateBigIntColumn` instead.")]
-        public Task<Models.AttributeBigint> UpdateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
+        public Task<Models.AttributeBigint> UpdateBigIntAttribute(string databaseId, string collectionId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -819,7 +824,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -850,7 +856,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createBooleanColumn` instead.")]
-        public Task<Models.AttributeBoolean> CreateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool? @default = null, bool? array = null)
+        public Task<Models.AttributeBoolean> CreateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -871,7 +877,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -902,7 +909,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateBooleanColumn` instead.")]
-        public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool @default, string? newKey = null)
+        public Task<Models.AttributeBoolean> UpdateBooleanAttribute(string databaseId, string collectionId, string key, bool required, bool @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -928,7 +935,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -958,7 +966,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createDatetimeColumn` instead.")]
-        public Task<Models.AttributeDatetime> CreateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
+        public Task<Models.AttributeDatetime> CreateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -979,7 +987,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1010,7 +1019,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateDatetimeColumn` instead.")]
-        public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.AttributeDatetime> UpdateDatetimeAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1036,7 +1045,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1067,7 +1077,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createEmailColumn` instead.")]
-        public Task<Models.AttributeEmail> CreateEmailAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
+        public Task<Models.AttributeEmail> CreateEmailAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1088,7 +1098,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1120,7 +1131,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateEmailColumn` instead.")]
-        public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.AttributeEmail> UpdateEmailAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1146,7 +1157,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1178,7 +1190,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createEnumColumn` instead.")]
-        public Task<Models.AttributeEnum> CreateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? @default = null, bool? array = null)
+        public Task<Models.AttributeEnum> CreateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1200,7 +1212,8 @@ namespace Appwrite.Services
                 { "elements", elements },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1232,7 +1245,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateEnumColumn` instead.")]
-        public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string @default, string? newKey = null)
+        public Task<Models.AttributeEnum> UpdateEnumAttribute(string databaseId, string collectionId, string key, List<string> elements, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1259,7 +1272,8 @@ namespace Appwrite.Services
                 { "elements", elements },
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1291,7 +1305,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createFloatColumn` instead.")]
-        public Task<Models.AttributeFloat> CreateFloatAttribute(string databaseId, string collectionId, string key, bool required, double? min = null, double? max = null, double? @default = null, bool? array = null)
+        public Task<Models.AttributeFloat> CreateFloatAttribute(string databaseId, string collectionId, string key, bool required, double? min = null, double? max = null, double? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1314,7 +1328,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1346,7 +1361,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateFloatColumn` instead.")]
-        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double @default, double? min = null, double? max = null, string? newKey = null)
+        public Task<Models.AttributeFloat> UpdateFloatAttribute(string databaseId, string collectionId, string key, bool required, double @default, double? min = null, double? max = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1374,7 +1389,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1406,7 +1422,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIntegerColumn` instead.")]
-        public Task<Models.AttributeInteger> CreateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
+        public Task<Models.AttributeInteger> CreateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1429,7 +1445,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1461,7 +1478,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateIntegerColumn` instead.")]
-        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
+        public Task<Models.AttributeInteger> UpdateIntegerAttribute(string databaseId, string collectionId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1489,7 +1506,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1520,7 +1538,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIpColumn` instead.")]
-        public Task<Models.AttributeIp> CreateIpAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
+        public Task<Models.AttributeIp> CreateIpAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1541,7 +1559,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1573,7 +1592,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateIpColumn` instead.")]
-        public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.AttributeIp> UpdateIpAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1599,7 +1618,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1629,7 +1649,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createLineColumn` instead.")]
-        public Task<Models.AttributeLine> CreateLineAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null)
+        public Task<Models.AttributeLine> CreateLineAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1649,7 +1669,8 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", @default }
+                { "default", @default },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1680,7 +1701,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateLineColumn` instead.")]
-        public Task<Models.AttributeLine> UpdateLineAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null, string? newKey = null)
+        public Task<Models.AttributeLine> UpdateLineAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1706,7 +1727,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1737,7 +1759,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createLongtextColumn` instead.")]
-        public Task<Models.AttributeLongtext> CreateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeLongtext> CreateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1759,7 +1781,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1791,7 +1814,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateLongtextColumn` instead.")]
-        public Task<Models.AttributeLongtext> UpdateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.AttributeLongtext> UpdateLongtextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1817,7 +1840,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1848,7 +1872,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createMediumtextColumn` instead.")]
-        public Task<Models.AttributeMediumtext> CreateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeMediumtext> CreateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1870,7 +1894,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1902,7 +1927,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateMediumtextColumn` instead.")]
-        public Task<Models.AttributeMediumtext> UpdateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.AttributeMediumtext> UpdateMediumtextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1928,7 +1953,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1958,7 +1984,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPointColumn` instead.")]
-        public Task<Models.AttributePoint> CreatePointAttribute(string databaseId, string collectionId, string key, bool required, List<double>? @default = null)
+        public Task<Models.AttributePoint> CreatePointAttribute(string databaseId, string collectionId, string key, bool required, List<double>? @default = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1978,7 +2004,8 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", @default }
+                { "default", @default },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2009,7 +2036,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePointColumn` instead.")]
-        public Task<Models.AttributePoint> UpdatePointAttribute(string databaseId, string collectionId, string key, bool required, List<double>? @default = null, string? newKey = null)
+        public Task<Models.AttributePoint> UpdatePointAttribute(string databaseId, string collectionId, string key, bool required, List<double>? @default = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2035,7 +2062,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2065,7 +2093,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createPolygonColumn` instead.")]
-        public Task<Models.AttributePolygon> CreatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null)
+        public Task<Models.AttributePolygon> CreatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2085,7 +2113,8 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", @default }
+                { "default", @default },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2116,7 +2145,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updatePolygonColumn` instead.")]
-        public Task<Models.AttributePolygon> UpdatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null, string? newKey = null)
+        public Task<Models.AttributePolygon> UpdatePolygonAttribute(string databaseId, string collectionId, string key, bool required, List<List<object>>? @default = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2142,7 +2171,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2174,7 +2204,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createRelationshipColumn` instead.")]
-        public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, Appwrite.Enums.RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, Appwrite.Enums.RelationMutate? onDelete = null)
+        public Task<Models.AttributeRelationship> CreateRelationshipAttribute(string databaseId, string collectionId, string relatedCollectionId, Appwrite.Enums.RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, Appwrite.Enums.RelationMutate? onDelete = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2197,7 +2227,8 @@ namespace Appwrite.Services
                 { "twoWay", twoWay },
                 { "key", key },
                 { "twoWayKey", twoWayKey },
-                { "onDelete", onDelete?.Value }
+                { "onDelete", onDelete?.Value },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2229,7 +2260,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateRelationshipColumn` instead.")]
-        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null)
+        public Task<Models.AttributeRelationship> UpdateRelationshipAttribute(string databaseId, string collectionId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2254,7 +2285,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "onDelete", onDelete?.Value },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2285,7 +2317,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createStringColumn` instead.")]
-        public Task<Models.AttributeString> CreateStringAttribute(string databaseId, string collectionId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeString> CreateStringAttribute(string databaseId, string collectionId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2308,7 +2340,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2340,7 +2373,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateStringColumn` instead.")]
-        public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string @default, long? size = null, string? newKey = null)
+        public Task<Models.AttributeString> UpdateStringAttribute(string databaseId, string collectionId, string key, bool required, string @default, long? size = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2367,7 +2400,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "size", size },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2398,7 +2432,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createTextColumn` instead.")]
-        public Task<Models.AttributeText> CreateTextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeText> CreateTextAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2420,7 +2454,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2452,7 +2487,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTextColumn` instead.")]
-        public Task<Models.AttributeText> UpdateTextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.AttributeText> UpdateTextAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2478,7 +2513,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2509,7 +2545,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createUrlColumn` instead.")]
-        public Task<Models.AttributeUrl> CreateUrlAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null)
+        public Task<Models.AttributeUrl> CreateUrlAttribute(string databaseId, string collectionId, string key, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2530,7 +2566,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2562,7 +2599,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateUrlColumn` instead.")]
-        public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.AttributeUrl> UpdateUrlAttribute(string databaseId, string collectionId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2588,7 +2625,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2619,7 +2657,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createVarcharColumn` instead.")]
-        public Task<Models.AttributeVarchar> CreateVarcharAttribute(string databaseId, string collectionId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.AttributeVarchar> CreateVarcharAttribute(string databaseId, string collectionId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2642,7 +2680,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2674,7 +2713,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateVarcharColumn` instead.")]
-        public Task<Models.AttributeVarchar> UpdateVarcharAttribute(string databaseId, string collectionId, string key, bool required, string @default, long? size = null, string? newKey = null)
+        public Task<Models.AttributeVarchar> UpdateVarcharAttribute(string databaseId, string collectionId, string key, bool required, string @default, long? size = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2701,7 +2740,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "size", size },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2901,6 +2941,15 @@ namespace Appwrite.Services
         /// <para>
         /// Get a list of all the user's documents in a given collection. You can use
         /// the query params to filter your results.
+        /// 
+        /// Documents returned by aggregate, groupBy or distinct queries hold only the
+        /// attributes they select, group or aggregate, typed as a document types them,
+        /// with a joined attribute named by its join alias (`alias.attribute`). The
+        /// response omits their `$id`, `$sequence`, `$createdAt`, `$updatedAt`,
+        /// `$permissions`, `$databaseId` and `$collectionId` unless they select or
+        /// group it, and those of a right or full join document that no document of
+        /// this collection matched. SDK document models fill omitted system attributes
+        /// with empty values.
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.listRows` instead.")]
@@ -3203,6 +3252,61 @@ namespace Appwrite.Services
 
             return _client.Call<Models.DocumentList>(
                 method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a list of all the user's documents in a given collection using a POST
+        /// request. This behaves identically to the list documents endpoint but
+        /// accepts the queries in the request body, allowing much larger `queries`
+        /// arrays than can fit in a URL query string.
+        /// 
+        /// </para>
+        /// </summary>
+        [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createQuery` instead.")]
+        public Task<Models.DocumentList> CreateQuery(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
+        {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/query"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "transactionId", transactionId },
+                { "total", total },
+                { "ttl", ttl }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DocumentList Convert(Dictionary<string, object> it)
+            {
+                return Models.DocumentList.From(map: it);
+            }
+
+            return _client.Call<Models.DocumentList>(
+                method: "POST",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -3611,7 +3715,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.createIndex` instead.")]
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.DatabasesIndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.DatabasesIndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -3633,7 +3737,8 @@ namespace Appwrite.Services
                 { "type", type?.Value },
                 { "attributes", attributes },
                 { "orders", orders?.Select(e => e.Value).ToList() },
-                { "lengths", lengths }
+                { "lengths", lengths },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()

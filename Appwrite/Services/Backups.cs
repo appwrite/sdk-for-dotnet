@@ -17,13 +17,14 @@ namespace Appwrite.Services
         /// List all archives for a project.
         /// </para>
         /// </summary>
-        public Task<Models.BackupArchiveList> ListArchives(List<string>? queries = null)
+        public Task<Models.BackupArchiveList> ListArchives(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/backups/archives";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -161,13 +162,14 @@ namespace Appwrite.Services
         /// List all policies for a project.
         /// </para>
         /// </summary>
-        public Task<Models.BackupPolicyList> ListPolicies(List<string>? queries = null)
+        public Task<Models.BackupPolicyList> ListPolicies(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/backups/policies";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -423,13 +425,14 @@ namespace Appwrite.Services
         /// List all backup restorations for a project.
         /// </para>
         /// </summary>
-        public Task<Models.BackupRestorationList> ListRestorations(List<string>? queries = null)
+        public Task<Models.BackupRestorationList> ListRestorations(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/backups/restorations";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

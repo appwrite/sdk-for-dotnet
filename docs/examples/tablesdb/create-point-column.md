@@ -15,7 +15,8 @@ Appwrite.Models.ColumnPoint result = await tablesDB.CreatePointColumn(
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     required: false,
-    @default: [1, 2] // optional
+    @default: [1, 2], // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

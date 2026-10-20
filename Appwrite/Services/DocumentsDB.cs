@@ -54,7 +54,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
+        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? description = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
             var apiPath = "/documentsdb";
 
@@ -63,6 +63,7 @@ namespace Appwrite.Services
                 { "databaseId", databaseId },
                 { "name", name },
                 { "enabled", enabled },
+                { "description", description },
                 { "specification", specification },
                 { "replicas", replicas },
                 { "syncMode", syncMode }
@@ -396,7 +397,7 @@ namespace Appwrite.Services
         /// Update a database by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
+        public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null, string? description = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
             if (databaseId == "")
             {
@@ -410,6 +411,7 @@ namespace Appwrite.Services
             {
                 { "name", name },
                 { "enabled", enabled },
+                { "description", description },
                 { "specification", specification },
                 { "replicas", replicas },
                 { "syncMode", syncMode }
@@ -523,7 +525,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        public Task<Models.Collection> CreateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, List<object>? attributes = null, List<object>? indexes = null)
+        public Task<Models.Collection> CreateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, List<object>? attributes = null, List<object>? indexes = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -541,7 +543,8 @@ namespace Appwrite.Services
                 { "documentSecurity", documentSecurity },
                 { "enabled", enabled },
                 { "attributes", attributes },
-                { "indexes", indexes }
+                { "indexes", indexes },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -616,7 +619,7 @@ namespace Appwrite.Services
         /// Update a collection by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, bool? purge = null)
+        public Task<Models.Collection> UpdateCollection(string databaseId, string collectionId, string name, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, bool? purge = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -638,7 +641,8 @@ namespace Appwrite.Services
                 { "permissions", permissions },
                 { "documentSecurity", documentSecurity },
                 { "enabled", enabled },
-                { "purge", purge }
+                { "purge", purge },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1004,6 +1008,60 @@ namespace Appwrite.Services
 
             return _client.Call<Models.DocumentList>(
                 method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a list of all the user's documents in a given collection using a POST
+        /// request. This behaves identically to the list documents endpoint but
+        /// accepts the queries in the request body, allowing much larger `queries`
+        /// arrays than can fit in a URL query string.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.DocumentList> CreateQuery(string databaseId, string collectionId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
+        {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (collectionId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"collectionId\"");
+            }
+
+            var apiPath = "/documentsdb/{databaseId}/collections/{collectionId}/documents/query"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{collectionId}", collectionId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "transactionId", transactionId },
+                { "total", total },
+                { "ttl", ttl }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.DocumentList Convert(Dictionary<string, object> it)
+            {
+                return Models.DocumentList.From(map: it);
+            }
+
+            return _client.Call<Models.DocumentList>(
+                method: "POST",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -1402,7 +1460,7 @@ namespace Appwrite.Services
         /// Attributes can be `key`, `fulltext`, and `unique`.
         /// </para>
         /// </summary>
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.DocumentsDBIndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.DocumentsDBIndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1424,7 +1482,8 @@ namespace Appwrite.Services
                 { "type", type?.Value },
                 { "attributes", attributes },
                 { "orders", orders?.Select(e => e.Value).ToList() },
-                { "lengths", lengths }
+                { "lengths", lengths },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()

@@ -16,7 +16,8 @@ Appwrite.Models.AttributeEmail result = await databases.CreateEmailAttribute(
     key: "<KEY>",
     required: false,
     @default: "email@example.com", // optional
-    array: false // optional
+    array: false, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

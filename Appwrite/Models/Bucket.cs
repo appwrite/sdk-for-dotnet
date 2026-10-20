@@ -29,6 +29,9 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
@@ -50,6 +53,9 @@ namespace Appwrite.Models
         [JsonPropertyName("transformations")]
         public bool Transformations { get; private set; }
 
+        [JsonPropertyName("stripMetadata")]
+        public bool StripMetadata { get; private set; }
+
         [JsonPropertyName("totalSize")]
         public long TotalSize { get; private set; }
 
@@ -60,6 +66,7 @@ namespace Appwrite.Models
             List<string> permissions,
             bool fileSecurity,
             string name,
+            string description,
             bool enabled,
             long maximumFileSize,
             List<string> allowedFileExtensions,
@@ -67,6 +74,7 @@ namespace Appwrite.Models
             bool encryption,
             bool antivirus,
             bool transformations,
+            bool stripMetadata,
             long totalSize
         )
         {
@@ -76,6 +84,7 @@ namespace Appwrite.Models
             Permissions = permissions;
             FileSecurity = fileSecurity;
             Name = name;
+            Description = description;
             Enabled = enabled;
             MaximumFileSize = maximumFileSize;
             AllowedFileExtensions = allowedFileExtensions;
@@ -83,6 +92,7 @@ namespace Appwrite.Models
             Encryption = encryption;
             Antivirus = antivirus;
             Transformations = transformations;
+            StripMetadata = stripMetadata;
             TotalSize = totalSize;
         }
 
@@ -93,6 +103,7 @@ namespace Appwrite.Models
             permissions: (map.ContainsKey("$permissions") ? map["$permissions"] : new List<object>()).ConvertToList<string>(),
             fileSecurity: (bool)(map.ContainsKey("fileSecurity") ? map["fileSecurity"] : false),
             name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             maximumFileSize: Convert.ToInt64((map.ContainsKey("maximumFileSize") ? map["maximumFileSize"] : 0)),
             allowedFileExtensions: (map.ContainsKey("allowedFileExtensions") ? map["allowedFileExtensions"] : new List<object>()).ConvertToList<string>(),
@@ -100,6 +111,7 @@ namespace Appwrite.Models
             encryption: (bool)(map.ContainsKey("encryption") ? map["encryption"] : true),
             antivirus: (bool)(map.ContainsKey("antivirus") ? map["antivirus"] : true),
             transformations: (bool)(map.ContainsKey("transformations") ? map["transformations"] : true),
+            stripMetadata: (bool)(map.ContainsKey("stripMetadata") ? map["stripMetadata"] : false),
             totalSize: Convert.ToInt64((map.ContainsKey("totalSize") ? map["totalSize"] : 0))
         );
 
@@ -111,6 +123,7 @@ namespace Appwrite.Models
             { "$permissions", Permissions },
             { "fileSecurity", FileSecurity },
             { "name", Name },
+            { "description", Description },
             { "enabled", Enabled },
             { "maximumFileSize", MaximumFileSize },
             { "allowedFileExtensions", AllowedFileExtensions },
@@ -118,6 +131,7 @@ namespace Appwrite.Models
             { "encryption", Encryption },
             { "antivirus", Antivirus },
             { "transformations", Transformations },
+            { "stripMetadata", StripMetadata },
             { "totalSize", TotalSize }
         };
     }

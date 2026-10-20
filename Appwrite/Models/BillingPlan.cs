@@ -218,6 +218,9 @@ namespace Appwrite.Models
         [JsonPropertyName("functionsIntervalMinimum")]
         public long FunctionsIntervalMinimum { get; private set; }
 
+        [JsonPropertyName("functionsAllowCron")]
+        public bool FunctionsAllowCron { get; private set; }
+
         [JsonPropertyName("databasesAllowEncrypt")]
         public bool DatabasesAllowEncrypt { get; private set; }
 
@@ -306,6 +309,7 @@ namespace Appwrite.Models
             long deploymentSize,
             long buildSize,
             long functionsIntervalMinimum,
+            bool functionsAllowCron,
             bool databasesAllowEncrypt,
             BillingPlanLimits? limits,
             Appwrite.Enums.BillingPlanGroup @group,
@@ -383,6 +387,7 @@ namespace Appwrite.Models
             DeploymentSize = deploymentSize;
             BuildSize = buildSize;
             FunctionsIntervalMinimum = functionsIntervalMinimum;
+            FunctionsAllowCron = functionsAllowCron;
             DatabasesAllowEncrypt = databasesAllowEncrypt;
             Limits = limits;
             Group = @group;
@@ -477,17 +482,18 @@ namespace Appwrite.Models
             deploymentSize: Convert.ToInt64((map.ContainsKey("deploymentSize") ? map["deploymentSize"] : 0)),
             buildSize: Convert.ToInt64((map.ContainsKey("buildSize") ? map["buildSize"] : 0)),
             functionsIntervalMinimum: Convert.ToInt64((map.ContainsKey("functionsIntervalMinimum") ? map["functionsIntervalMinimum"] : 0)),
+            functionsAllowCron: (bool)(map.ContainsKey("functionsAllowCron") ? map["functionsAllowCron"] : true),
             databasesAllowEncrypt: (bool)(map.ContainsKey("databasesAllowEncrypt") ? map["databasesAllowEncrypt"] : false),
-            limits: map.TryGetValue("limits", out var objectRaw71) && objectRaw71 != null
-                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw71 is JsonElement jsonObj71 ? jsonObj71.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw71)
+            limits: map.TryGetValue("limits", out var objectRaw72) && objectRaw72 != null
+                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw72 is JsonElement jsonObj72 ? jsonObj72.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw72)
                                     : null,
             @group: new Appwrite.Enums.BillingPlanGroup(map["group"].ToString()!),
-            program: map.TryGetValue("program", out var objectRaw73) && objectRaw73 != null
-                                    ? Appwrite.Models.Program.From(map: objectRaw73 is JsonElement jsonObj73 ? jsonObj73.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw73)
+            program: map.TryGetValue("program", out var objectRaw74) && objectRaw74 != null
+                                    ? Appwrite.Models.Program.From(map: objectRaw74 is JsonElement jsonObj74 ? jsonObj74.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw74)
                                     : null,
             databaseComputeCredit: Convert.ToDouble((map.ContainsKey("databaseComputeCredit") ? map["databaseComputeCredit"] : 0)),
-            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw75) && objectRaw75 != null
-                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw75 is JsonElement jsonObj75 ? jsonObj75.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw75)
+            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw76) && objectRaw76 != null
+                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw76 is JsonElement jsonObj76 ? jsonObj76.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw76)
                                     : null
         );
 
@@ -562,6 +568,7 @@ namespace Appwrite.Models
             { "deploymentSize", DeploymentSize },
             { "buildSize", BuildSize },
             { "functionsIntervalMinimum", FunctionsIntervalMinimum },
+            { "functionsAllowCron", FunctionsAllowCron },
             { "databasesAllowEncrypt", DatabasesAllowEncrypt },
             { "limits", Limits?.ToMap() },
             { "group", Group.Value },

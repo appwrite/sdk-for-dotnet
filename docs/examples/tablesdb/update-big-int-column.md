@@ -18,7 +18,8 @@ Appwrite.Models.ColumnBigint result = await tablesDB.UpdateBigIntColumn(
     @default: 0,
     min: 0, // optional
     max: 1000000, // optional
-    newKey: "<NEW_KEY>" // optional
+    newKey: "<NEW_KEY>", // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

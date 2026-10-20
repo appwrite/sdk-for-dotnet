@@ -12,7 +12,8 @@ Domains domains = new Domains(client);
 
 Appwrite.Models.DomainsList result = await domains.List(
     queries: new List<string>(), // optional
-    search: "<SEARCH>" // optional
+    search: "<SEARCH>", // optional
+    total: false // optional
 );
 
 ```

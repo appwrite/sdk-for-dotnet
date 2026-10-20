@@ -18,7 +18,8 @@ Appwrite.Models.Index result = await documentsDB.CreateIndex(
     type: DocumentsDBIndexType.Key,
     attributes: ["username"],
     orders: new List&lt;OrderBy&gt; { OrderBy.Asc }, // optional
-    lengths: new List<long>() // optional
+    lengths: new List<long>(), // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

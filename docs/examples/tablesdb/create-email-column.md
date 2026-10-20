@@ -16,7 +16,8 @@ Appwrite.Models.ColumnEmail result = await tablesDB.CreateEmailColumn(
     key: "<KEY>",
     required: false,
     @default: "email@example.com", // optional
-    array: false // optional
+    array: false, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

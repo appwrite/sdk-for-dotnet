@@ -16,7 +16,8 @@ Appwrite.Models.Key result = await organization.UpdateProjectKey(
     keyId: "<KEY_ID>",
     name: "<NAME>",
     scopes: new List&lt;ProjectKeyScopes&gt; { ProjectKeyScopes.UsersRead },
-    expire: "2020-10-15T06:38:00.000+00:00" // optional
+    expire: "2020-10-15T06:38:00.000+00:00", // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

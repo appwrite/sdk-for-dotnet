@@ -19,7 +19,8 @@ Appwrite.Models.Webhook result = await webhooks.Create(
     tls: false, // optional
     authUsername: "<AUTH_USERNAME>", // optional
     authPassword: "password", // optional
-    secret: "<SECRET>" // optional
+    secret: "<SECRET>", // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

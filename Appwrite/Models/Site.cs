@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
@@ -121,6 +124,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string name,
+            string description,
             bool enabled,
             bool live,
             bool logging,
@@ -158,6 +162,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Name = name;
+            Description = description;
             Enabled = enabled;
             Live = live;
             Logging = logging;
@@ -196,6 +201,7 @@ namespace Appwrite.Models
             createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
             updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             live: (bool)(map.ContainsKey("live") ? map["live"] : true),
             logging: (bool)(map.ContainsKey("logging") ? map["logging"] : true),
@@ -235,6 +241,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "name", Name },
+            { "description", Description },
             { "enabled", Enabled },
             { "live", Live },
             { "logging", Logging },

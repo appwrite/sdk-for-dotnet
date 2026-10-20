@@ -17,24 +17,31 @@ namespace Appwrite.Models
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
+        [JsonPropertyName("denyList")]
+        public List<string> DenyList { get; private set; }
+
         public PolicyPasswordDictionary(
             string id,
-            bool enabled
+            bool enabled,
+            List<string> denyList
         )
         {
             Id = id;
             Enabled = enabled;
+            DenyList = denyList;
         }
 
         public static PolicyPasswordDictionary From(Dictionary<string, object> map) => new PolicyPasswordDictionary(
             id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
-            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false)
+            enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : false),
+            denyList: (map.ContainsKey("denyList") ? map["denyList"] : new List<object>()).ConvertToList<string>()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
         {
             { "$id", Id },
-            { "enabled", Enabled }
+            { "enabled", Enabled },
+            { "denyList", DenyList }
         };
     }
 }
