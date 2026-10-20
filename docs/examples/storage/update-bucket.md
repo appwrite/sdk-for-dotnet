@@ -22,7 +22,8 @@ Appwrite.Models.Bucket result = await storage.UpdateBucket(
     compression: Compression.None, // optional
     encryption: false, // optional
     antivirus: false, // optional
-    transformations: false // optional
+    transformations: false, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

@@ -55,7 +55,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
+        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? description = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
             var apiPath = "/tablesdb";
 
@@ -64,6 +64,7 @@ namespace Appwrite.Services
                 { "databaseId", databaseId },
                 { "name", name },
                 { "enabled", enabled },
+                { "description", description },
                 { "specification", specification },
                 { "replicas", replicas },
                 { "syncMode", syncMode }
@@ -397,7 +398,7 @@ namespace Appwrite.Services
         /// Update a database by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
+        public Task<Models.Database> Update(string databaseId, string? name = null, bool? enabled = null, string? description = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
             if (databaseId == "")
             {
@@ -411,6 +412,7 @@ namespace Appwrite.Services
             {
                 { "name", name },
                 { "enabled", enabled },
+                { "description", description },
                 { "specification", specification },
                 { "replicas", replicas },
                 { "syncMode", syncMode }
@@ -929,7 +931,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        public Task<Models.Table> CreateTable(string databaseId, string tableId, string name, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null, List<object>? columns = null, List<object>? indexes = null)
+        public Task<Models.Table> CreateTable(string databaseId, string tableId, string name, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null, List<object>? columns = null, List<object>? indexes = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -947,7 +949,8 @@ namespace Appwrite.Services
                 { "rowSecurity", rowSecurity },
                 { "enabled", enabled },
                 { "columns", columns },
-                { "indexes", indexes }
+                { "indexes", indexes },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1022,7 +1025,7 @@ namespace Appwrite.Services
         /// Update a table by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Table> UpdateTable(string databaseId, string tableId, string? name = null, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null, bool? purge = null)
+        public Task<Models.Table> UpdateTable(string databaseId, string tableId, string? name = null, List<string>? permissions = null, bool? rowSecurity = null, bool? enabled = null, bool? purge = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1044,7 +1047,8 @@ namespace Appwrite.Services
                 { "permissions", permissions },
                 { "rowSecurity", rowSecurity },
                 { "enabled", enabled },
-                { "purge", purge }
+                { "purge", purge },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1164,7 +1168,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnBigint> CreateBigIntColumn(string databaseId, string tableId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
+        public Task<Models.ColumnBigint> CreateBigIntColumn(string databaseId, string tableId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1187,7 +1191,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1218,7 +1223,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnBigint> UpdateBigIntColumn(string databaseId, string tableId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
+        public Task<Models.ColumnBigint> UpdateBigIntColumn(string databaseId, string tableId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1246,7 +1251,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1276,7 +1282,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnBoolean> CreateBooleanColumn(string databaseId, string tableId, string key, bool required, bool? @default = null, bool? array = null)
+        public Task<Models.ColumnBoolean> CreateBooleanColumn(string databaseId, string tableId, string key, bool required, bool? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1297,7 +1303,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1327,7 +1334,7 @@ namespace Appwrite.Services
         /// already existing rows.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnBoolean> UpdateBooleanColumn(string databaseId, string tableId, string key, bool required, bool @default, string? newKey = null)
+        public Task<Models.ColumnBoolean> UpdateBooleanColumn(string databaseId, string tableId, string key, bool required, bool @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1353,7 +1360,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1382,7 +1390,7 @@ namespace Appwrite.Services
         /// Create a date time column according to the ISO 8601 standard.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnDatetime> CreateDatetimeColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null)
+        public Task<Models.ColumnDatetime> CreateDatetimeColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1403,7 +1411,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1433,7 +1442,7 @@ namespace Appwrite.Services
         /// already existing rows.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnDatetime> UpdateDatetimeColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.ColumnDatetime> UpdateDatetimeColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1459,7 +1468,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1489,7 +1499,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnEmail> CreateEmailColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null)
+        public Task<Models.ColumnEmail> CreateEmailColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1510,7 +1520,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1541,7 +1552,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnEmail> UpdateEmailColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.ColumnEmail> UpdateEmailColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1567,7 +1578,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1597,7 +1609,7 @@ namespace Appwrite.Services
         /// accepted values for this column.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnEnum> CreateEnumColumn(string databaseId, string tableId, string key, List<string> elements, bool required, string? @default = null, bool? array = null)
+        public Task<Models.ColumnEnum> CreateEnumColumn(string databaseId, string tableId, string key, List<string> elements, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1619,7 +1631,8 @@ namespace Appwrite.Services
                 { "elements", elements },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1650,7 +1663,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnEnum> UpdateEnumColumn(string databaseId, string tableId, string key, List<string> elements, bool required, string @default, string? newKey = null)
+        public Task<Models.ColumnEnum> UpdateEnumColumn(string databaseId, string tableId, string key, List<string> elements, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1677,7 +1690,8 @@ namespace Appwrite.Services
                 { "elements", elements },
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1708,7 +1722,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnFloat> CreateFloatColumn(string databaseId, string tableId, string key, bool required, double? min = null, double? max = null, double? @default = null, bool? array = null)
+        public Task<Models.ColumnFloat> CreateFloatColumn(string databaseId, string tableId, string key, bool required, double? min = null, double? max = null, double? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1731,7 +1745,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1762,7 +1777,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnFloat> UpdateFloatColumn(string databaseId, string tableId, string key, bool required, double @default, double? min = null, double? max = null, string? newKey = null)
+        public Task<Models.ColumnFloat> UpdateFloatColumn(string databaseId, string tableId, string key, bool required, double @default, double? min = null, double? max = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1790,7 +1805,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1821,7 +1837,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnInteger> CreateIntegerColumn(string databaseId, string tableId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null)
+        public Task<Models.ColumnInteger> CreateIntegerColumn(string databaseId, string tableId, string key, bool required, long? min = null, long? max = null, long? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1844,7 +1860,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1875,7 +1892,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnInteger> UpdateIntegerColumn(string databaseId, string tableId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null)
+        public Task<Models.ColumnInteger> UpdateIntegerColumn(string databaseId, string tableId, string key, bool required, long @default, long? min = null, long? max = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1903,7 +1920,8 @@ namespace Appwrite.Services
                 { "min", min },
                 { "max", max },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1933,7 +1951,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnIp> CreateIpColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null)
+        public Task<Models.ColumnIp> CreateIpColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1954,7 +1972,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1985,7 +2004,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnIp> UpdateIpColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.ColumnIp> UpdateIpColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2011,7 +2030,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2040,7 +2060,7 @@ namespace Appwrite.Services
         /// Create a geometric line column.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnLine> CreateLineColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null)
+        public Task<Models.ColumnLine> CreateLineColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2060,7 +2080,8 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", @default }
+                { "default", @default },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2090,7 +2111,7 @@ namespace Appwrite.Services
         /// existing rows.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnLine> UpdateLineColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null, string? newKey = null)
+        public Task<Models.ColumnLine> UpdateLineColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2116,7 +2137,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2146,7 +2168,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnLongtext> CreateLongtextColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.ColumnLongtext> CreateLongtextColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2168,7 +2190,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2199,7 +2222,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnLongtext> UpdateLongtextColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.ColumnLongtext> UpdateLongtextColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2225,7 +2248,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2255,7 +2279,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnMediumtext> CreateMediumtextColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.ColumnMediumtext> CreateMediumtextColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2277,7 +2301,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2308,7 +2333,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnMediumtext> UpdateMediumtextColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.ColumnMediumtext> UpdateMediumtextColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2334,7 +2359,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2363,7 +2389,7 @@ namespace Appwrite.Services
         /// Create a geometric point column.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnPoint> CreatePointColumn(string databaseId, string tableId, string key, bool required, List<double>? @default = null)
+        public Task<Models.ColumnPoint> CreatePointColumn(string databaseId, string tableId, string key, bool required, List<double>? @default = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2383,7 +2409,8 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", @default }
+                { "default", @default },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2413,7 +2440,7 @@ namespace Appwrite.Services
         /// existing rows.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnPoint> UpdatePointColumn(string databaseId, string tableId, string key, bool required, List<double>? @default = null, string? newKey = null)
+        public Task<Models.ColumnPoint> UpdatePointColumn(string databaseId, string tableId, string key, bool required, List<double>? @default = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2439,7 +2466,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2468,7 +2496,7 @@ namespace Appwrite.Services
         /// Create a geometric polygon column.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnPolygon> CreatePolygonColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null)
+        public Task<Models.ColumnPolygon> CreatePolygonColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2488,7 +2516,8 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "required", required },
-                { "default", @default }
+                { "default", @default },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2518,7 +2547,7 @@ namespace Appwrite.Services
         /// already existing rows.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnPolygon> UpdatePolygonColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null, string? newKey = null)
+        public Task<Models.ColumnPolygon> UpdatePolygonColumn(string databaseId, string tableId, string key, bool required, List<List<object>>? @default = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2544,7 +2573,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2575,7 +2605,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnRelationship> CreateRelationshipColumn(string databaseId, string tableId, string relatedTableId, Appwrite.Enums.RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, Appwrite.Enums.RelationMutate? onDelete = null)
+        public Task<Models.ColumnRelationship> CreateRelationshipColumn(string databaseId, string tableId, string relatedTableId, Appwrite.Enums.RelationshipType type, bool? twoWay = null, string? key = null, string? twoWayKey = null, Appwrite.Enums.RelationMutate? onDelete = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2598,7 +2628,8 @@ namespace Appwrite.Services
                 { "twoWay", twoWay },
                 { "key", key },
                 { "twoWayKey", twoWayKey },
-                { "onDelete", onDelete?.Value }
+                { "onDelete", onDelete?.Value },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2629,7 +2660,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnRelationship> UpdateRelationshipColumn(string databaseId, string tableId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null)
+        public Task<Models.ColumnRelationship> UpdateRelationshipColumn(string databaseId, string tableId, string key, Appwrite.Enums.RelationMutate? onDelete = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2654,7 +2685,8 @@ namespace Appwrite.Services
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "onDelete", onDelete?.Value },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2685,7 +2717,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.9.0. Please use `TablesDB.createTextColumn` instead.")]
-        public Task<Models.ColumnString> CreateStringColumn(string databaseId, string tableId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.ColumnString> CreateStringColumn(string databaseId, string tableId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2708,7 +2740,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2740,7 +2773,7 @@ namespace Appwrite.Services
         /// </para>
         /// </summary>
         [Obsolete("This API has been deprecated since 1.8.0. Please use `TablesDB.updateTextColumn` instead.")]
-        public Task<Models.ColumnString> UpdateStringColumn(string databaseId, string tableId, string key, bool required, string @default, long? size = null, string? newKey = null)
+        public Task<Models.ColumnString> UpdateStringColumn(string databaseId, string tableId, string key, bool required, string @default, long? size = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2767,7 +2800,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "size", size },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2797,7 +2831,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnText> CreateTextColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.ColumnText> CreateTextColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2819,7 +2853,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2850,7 +2885,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnText> UpdateTextColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.ColumnText> UpdateTextColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2876,7 +2911,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2906,7 +2942,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnUrl> CreateUrlColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null)
+        public Task<Models.ColumnUrl> CreateUrlColumn(string databaseId, string tableId, string key, bool required, string? @default = null, bool? array = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2927,7 +2963,8 @@ namespace Appwrite.Services
                 { "key", key },
                 { "required", required },
                 { "default", @default },
-                { "array", array }
+                { "array", array },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2958,7 +2995,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnUrl> UpdateUrlColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null)
+        public Task<Models.ColumnUrl> UpdateUrlColumn(string databaseId, string tableId, string key, bool required, string @default, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -2984,7 +3021,8 @@ namespace Appwrite.Services
             {
                 { "required", required },
                 { "default", @default },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -3014,7 +3052,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnVarchar> CreateVarcharColumn(string databaseId, string tableId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null)
+        public Task<Models.ColumnVarchar> CreateVarcharColumn(string databaseId, string tableId, string key, long size, bool required, string? @default = null, bool? array = null, bool? encrypt = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -3037,7 +3075,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "array", array },
-                { "encrypt", encrypt }
+                { "encrypt", encrypt },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -3068,7 +3107,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.ColumnVarchar> UpdateVarcharColumn(string databaseId, string tableId, string key, bool required, string @default, long? size = null, string? newKey = null)
+        public Task<Models.ColumnVarchar> UpdateVarcharColumn(string databaseId, string tableId, string key, bool required, string @default, long? size = null, string? newKey = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -3095,7 +3134,8 @@ namespace Appwrite.Services
                 { "required", required },
                 { "default", @default },
                 { "size", size },
-                { "newKey", newKey }
+                { "newKey", newKey },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -3345,7 +3385,7 @@ namespace Appwrite.Services
         /// `endsWith` queries on string columns use an index.
         /// </para>
         /// </summary>
-        public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.TablesDBIndexType type, List<string> columns, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
+        public Task<Models.ColumnIndex> CreateIndex(string databaseId, string tableId, string key, Appwrite.Enums.TablesDBIndexType type, List<string> columns, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -3367,7 +3407,8 @@ namespace Appwrite.Services
                 { "type", type?.Value },
                 { "columns", columns },
                 { "orders", orders?.Select(e => e.Value).ToList() },
-                { "lengths", lengths }
+                { "lengths", lengths },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -3493,6 +3534,13 @@ namespace Appwrite.Services
         /// <para>
         /// Get a list of all the user's rows in a given table. You can use the query
         /// params to filter your results.
+        /// 
+        /// Rows returned by aggregate, groupBy or distinct queries hold only the
+        /// columns they select, group or aggregate, typed as a row types them, with a
+        /// joined column named by its join alias (`alias.column`). They have no `$id`,
+        /// `$sequence`, `$createdAt`, `$updatedAt`, `$permissions`, `$databaseId` or
+        /// `$tableId` unless they select or group it, and neither does a right or full
+        /// join row that no row of this table matched.
         /// </para>
         /// </summary>
         public Task<Models.RowList> ListRows(string databaseId, string tableId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
@@ -3788,6 +3836,60 @@ namespace Appwrite.Services
 
             return _client.Call<Models.RowList>(
                 method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a list of all the user's rows in a given table using a POST request.
+        /// This behaves identically to the list rows endpoint but accepts the queries
+        /// in the request body, allowing much larger `queries` arrays than can fit in
+        /// a URL query string.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.RowList> CreateQuery(string databaseId, string tableId, List<string>? queries = null, string? transactionId = null, bool? total = null, long? ttl = null)
+        {
+            if (databaseId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"databaseId\"");
+            }
+
+            if (tableId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"tableId\"");
+            }
+
+            var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/query"
+                .Replace("{databaseId}", databaseId)
+                .Replace("{tableId}", tableId);
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "transactionId", transactionId },
+                { "total", total },
+                { "ttl", ttl }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.RowList Convert(Dictionary<string, object> it)
+            {
+                return Models.RowList.From(map: it);
+            }
+
+            return _client.Call<Models.RowList>(
+                method: "POST",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,

@@ -13,7 +13,8 @@ Databases databases = new Databases(client);
 Appwrite.Models.Database result = await databases.Update(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>", // optional
-    enabled: false // optional
+    enabled: false, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

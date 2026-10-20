@@ -18,7 +18,8 @@ Appwrite.Models.Collection result = await databases.CreateCollection(
     documentSecurity: false, // optional
     enabled: false, // optional
     attributes: new List<object>(), // optional
-    indexes: new List<object>() // optional
+    indexes: new List<object>(), // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

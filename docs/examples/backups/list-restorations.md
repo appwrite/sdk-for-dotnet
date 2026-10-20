@@ -11,7 +11,8 @@ Client client = new Client()
 Backups backups = new Backups(client);
 
 Appwrite.Models.BackupRestorationList result = await backups.ListRestorations(
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

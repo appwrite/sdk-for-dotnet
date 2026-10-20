@@ -18,7 +18,8 @@ Appwrite.Models.ColumnIndex result = await tablesDB.CreateIndex(
     type: TablesDBIndexType.Key,
     columns: ["username"],
     orders: new List&lt;OrderBy&gt; { OrderBy.Asc }, // optional
-    lengths: new List<long>() // optional
+    lengths: new List<long>(), // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

@@ -17,6 +17,9 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("$createdAt")]
         public string CreatedAt { get; private set; }
 
@@ -59,6 +62,7 @@ namespace Appwrite.Models
         public Database(
             string id,
             string name,
+            string description,
             string createdAt,
             string updatedAt,
             bool enabled,
@@ -76,6 +80,7 @@ namespace Appwrite.Models
         {
             Id = id;
             Name = name;
+            Description = description;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Enabled = enabled;
@@ -94,28 +99,29 @@ namespace Appwrite.Models
         public static Database From(Dictionary<string, object> map) => new Database(
             id: (map.ContainsKey("$id") ? map["$id"] : "").ToString(),
             name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
             updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             type: new Appwrite.Enums.DatabaseType((map.ContainsKey("type") ? map["type"] : "legacy").ToString()!),
-            status: map.TryGetValue("status", out var enumRaw7)
-                            ? enumRaw7 == null
+            status: map.TryGetValue("status", out var enumRaw8)
+                            ? enumRaw8 == null
                                 ? null
-                                : new Appwrite.Enums.DatabaseStatus(enumRaw7.ToString()!)
+                                : new Appwrite.Enums.DatabaseStatus(enumRaw8.ToString()!)
                             : null,
             engine: map.TryGetValue("engine", out var engine) ? engine?.ToString() : null,
             specification: map.TryGetValue("specification", out var specification) ? specification?.ToString() : null,
-            replicas: map.TryGetValue("replicas", out var numberRaw10) && numberRaw10 != null
-                                    ? Convert.ToInt64(numberRaw10)
+            replicas: map.TryGetValue("replicas", out var numberRaw11) && numberRaw11 != null
+                                    ? Convert.ToInt64(numberRaw11)
                                     : null,
             error: map.TryGetValue("error", out var error) ? error?.ToString() : null,
             containerStatus: map.TryGetValue("containerStatus", out var containerStatus) ? containerStatus?.ToString() : null,
             lifecycleState: map.TryGetValue("lifecycleState", out var lifecycleState) ? lifecycleState?.ToString() : null,
-            policies: map.TryGetValue("policies", out var arrayRaw14) && arrayRaw14 != null
-                                    ? arrayRaw14.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupPolicy.From(map: it)).ToList()
+            policies: map.TryGetValue("policies", out var arrayRaw15) && arrayRaw15 != null
+                                    ? arrayRaw15.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupPolicy.From(map: it)).ToList()
                                     : null,
-            archives: map.TryGetValue("archives", out var arrayRaw15) && arrayRaw15 != null
-                                    ? arrayRaw15.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupArchive.From(map: it)).ToList()
+            archives: map.TryGetValue("archives", out var arrayRaw16) && arrayRaw16 != null
+                                    ? arrayRaw16.ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.BackupArchive.From(map: it)).ToList()
                                     : null
         );
 
@@ -123,6 +129,7 @@ namespace Appwrite.Models
         {
             { "$id", Id },
             { "name", Name },
+            { "description", Description },
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "enabled", Enabled },

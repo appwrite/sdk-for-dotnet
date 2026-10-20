@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("emailTotal")]
         public long EmailTotal { get; private set; }
 
@@ -46,6 +49,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string name,
+            string description,
             long emailTotal,
             long smsTotal,
             long pushTotal,
@@ -58,6 +62,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Name = name;
+            Description = description;
             EmailTotal = emailTotal;
             SmsTotal = smsTotal;
             PushTotal = pushTotal;
@@ -71,15 +76,16 @@ namespace Appwrite.Models
             createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
             updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             emailTotal: Convert.ToInt64((map.ContainsKey("emailTotal") ? map["emailTotal"] : 0)),
             smsTotal: Convert.ToInt64((map.ContainsKey("smsTotal") ? map["smsTotal"] : 0)),
             pushTotal: Convert.ToInt64((map.ContainsKey("pushTotal") ? map["pushTotal"] : 0)),
             subscribe: (map.ContainsKey("subscribe") ? map["subscribe"] : new List<object> { "users" }).ConvertToList<string>(),
-            qos: map.TryGetValue("qos", out var numberRaw9) && numberRaw9 != null
-                                    ? Convert.ToInt64(numberRaw9)
-                                    : null,
-            expiry: map.TryGetValue("expiry", out var numberRaw10) && numberRaw10 != null
+            qos: map.TryGetValue("qos", out var numberRaw10) && numberRaw10 != null
                                     ? Convert.ToInt64(numberRaw10)
+                                    : null,
+            expiry: map.TryGetValue("expiry", out var numberRaw11) && numberRaw11 != null
+                                    ? Convert.ToInt64(numberRaw11)
                                     : null
         );
 
@@ -89,6 +95,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "name", Name },
+            { "description", Description },
             { "emailTotal", EmailTotal },
             { "smsTotal", SmsTotal },
             { "pushTotal", PushTotal },

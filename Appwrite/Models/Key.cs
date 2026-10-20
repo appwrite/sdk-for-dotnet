@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("expire")]
         public string Expire { get; private set; }
 
@@ -43,6 +46,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string name,
+            string description,
             string expire,
             List<string> scopes,
             string secret,
@@ -54,6 +58,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Name = name;
+            Description = description;
             Expire = expire;
             Scopes = scopes;
             Secret = secret;
@@ -66,6 +71,7 @@ namespace Appwrite.Models
             createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
             updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString(),
             scopes: (map.ContainsKey("scopes") ? map["scopes"] : new List<object>()).ConvertToList<string>(),
             secret: (map.ContainsKey("secret") ? map["secret"] : "").ToString(),
@@ -79,6 +85,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "name", Name },
+            { "description", Description },
             { "expire", Expire },
             { "scopes", Scopes },
             { "secret", Secret },

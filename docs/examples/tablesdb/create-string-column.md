@@ -18,7 +18,8 @@ Appwrite.Models.ColumnString result = await tablesDB.CreateStringColumn(
     required: false,
     @default: "Hello World", // optional
     array: false, // optional
-    encrypt: false // optional
+    encrypt: false, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

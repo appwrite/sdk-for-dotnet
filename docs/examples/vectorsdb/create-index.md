@@ -18,7 +18,8 @@ Appwrite.Models.Index result = await vectorsDB.CreateIndex(
     type: VectorsDBIndexType.HnswEuclidean,
     attributes: ["embeddings"],
     orders: new List&lt;OrderBy&gt; { OrderBy.Asc }, // optional
-    lengths: new List<long>() // optional
+    lengths: new List<long>(), // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

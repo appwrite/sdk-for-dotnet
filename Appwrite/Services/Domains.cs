@@ -18,14 +18,15 @@ namespace Appwrite.Services
         /// pagination.
         /// </para>
         /// </summary>
-        public Task<Models.DomainsList> List(List<string>? queries = null, string? search = null)
+        public Task<Models.DomainsList> List(List<string>? queries = null, string? search = null, bool? total = null)
         {
             var apiPath = "/domains";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "queries", queries },
-                { "search", search }
+                { "search", search },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -823,7 +824,7 @@ namespace Appwrite.Services
         /// associated with your domain.
         /// </para>
         /// </summary>
-        public Task<Models.DnsRecordsList> ListRecords(string domainId, List<string>? queries = null)
+        public Task<Models.DnsRecordsList> ListRecords(string domainId, List<string>? queries = null, bool? total = null)
         {
             if (domainId == "")
             {
@@ -835,7 +836,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

@@ -19,7 +19,8 @@ Appwrite.Models.AttributeRelationship result = await databases.CreateRelationshi
     twoWay: false, // optional
     key: "<KEY>", // optional
     twoWayKey: "<TWO_WAY_KEY>", // optional
-    onDelete: RelationMutate.Cascade // optional
+    onDelete: RelationMutate.Cascade, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

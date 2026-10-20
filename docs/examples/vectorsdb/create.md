@@ -14,6 +14,7 @@ Appwrite.Models.Database result = await vectorsDB.Create(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>",
     enabled: false, // optional
+    description: "<DESCRIPTION>", // optional
     specification: "serverless", // optional
     replicas: 0, // optional
     syncMode: "async" // optional

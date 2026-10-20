@@ -54,7 +54,7 @@ namespace Appwrite.Services
         /// Create a new site.
         /// </para>
         /// </summary>
-        public Task<Models.Site> Create(string siteId, string name, Appwrite.Enums.Framework framework, Appwrite.Enums.BuildRuntime buildRuntime, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.Adapter? adapter = null, string? installationId = null, string? fallbackFile = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null, List<Appwrite.Enums.ProjectKeyScopes>? scopes = null)
+        public Task<Models.Site> Create(string siteId, string name, Appwrite.Enums.Framework framework, Appwrite.Enums.BuildRuntime buildRuntime, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.Adapter? adapter = null, string? installationId = null, string? fallbackFile = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null, List<Appwrite.Enums.ProjectKeyScopes>? scopes = null, string? description = null)
         {
             var apiPath = "/sites";
 
@@ -83,7 +83,8 @@ namespace Appwrite.Services
                 { "buildSpecification", buildSpecification },
                 { "runtimeSpecification", runtimeSpecification },
                 { "deploymentRetention", deploymentRetention },
-                { "scopes", scopes?.Select(e => e.Value).ToList() }
+                { "scopes", scopes?.Select(e => e.Value).ToList() },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -221,7 +222,7 @@ namespace Appwrite.Services
         /// Update site by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Site> Update(string siteId, string name, Appwrite.Enums.Framework framework, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.BuildRuntime? buildRuntime = null, Appwrite.Enums.Adapter? adapter = null, string? fallbackFile = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null, List<Appwrite.Enums.ProjectKeyScopes>? scopes = null)
+        public Task<Models.Site> Update(string siteId, string name, Appwrite.Enums.Framework framework, bool? enabled = null, bool? logging = null, long? timeout = null, string? installCommand = null, string? buildCommand = null, string? startCommand = null, string? outputDirectory = null, Appwrite.Enums.BuildRuntime? buildRuntime = null, Appwrite.Enums.Adapter? adapter = null, string? fallbackFile = null, string? installationId = null, string? providerRepositoryId = null, string? providerBranch = null, bool? providerSilentMode = null, string? providerRootDirectory = null, List<string>? providerBranches = null, List<string>? providerPaths = null, string? buildSpecification = null, string? runtimeSpecification = null, long? deploymentRetention = null, List<Appwrite.Enums.ProjectKeyScopes>? scopes = null, string? description = null)
         {
             if (siteId == "")
             {
@@ -255,7 +256,8 @@ namespace Appwrite.Services
                 { "buildSpecification", buildSpecification },
                 { "runtimeSpecification", runtimeSpecification },
                 { "deploymentRetention", deploymentRetention },
-                { "scopes", scopes?.Select(e => e.Value).ToList() }
+                { "scopes", scopes?.Select(e => e.Value).ToList() },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -947,7 +949,7 @@ namespace Appwrite.Services
         /// and runtime (server-side rendering) as environment variables.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> CreateVariable(string siteId, string variableId, string key, string @value, bool? secret = null)
+        public Task<Models.Variable> CreateVariable(string siteId, string variableId, string key, string @value, bool? secret = null, string? description = null)
         {
             if (siteId == "")
             {
@@ -962,7 +964,8 @@ namespace Appwrite.Services
                 { "variableId", variableId },
                 { "key", key },
                 { "value", @value },
-                { "secret", secret }
+                { "secret", secret },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1036,7 +1039,7 @@ namespace Appwrite.Services
         /// Update variable by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> UpdateVariable(string siteId, string variableId, string? key = null, string? @value = null, bool? secret = null)
+        public Task<Models.Variable> UpdateVariable(string siteId, string variableId, string? key = null, string? @value = null, bool? secret = null, string? description = null)
         {
             if (siteId == "")
             {
@@ -1056,7 +1059,8 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "value", @value },
-                { "secret", secret }
+                { "secret", secret },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()

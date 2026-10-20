@@ -12,7 +12,8 @@ Postgresql postgresql = new Postgresql(client);
 
 Appwrite.Models.DedicatedDatabaseBackupList result = await postgresql.ListBackups(
     databaseId: "<DATABASE_ID>",
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

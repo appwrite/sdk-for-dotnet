@@ -11,7 +11,8 @@ Client client = new Client()
 Mongo mongo = new Mongo(client);
 
 Appwrite.Models.DedicatedDatabaseList result = await mongo.List(
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

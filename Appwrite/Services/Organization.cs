@@ -828,7 +828,7 @@ namespace Appwrite.Services
         /// name, scopes, or expiration time of an API key.
         /// </para>
         /// </summary>
-        public Task<Models.Key> UpdateProjectKey(string projectId, string keyId, string name, List<Appwrite.Enums.ProjectKeyScopes> scopes, string? expire = null)
+        public Task<Models.Key> UpdateProjectKey(string projectId, string keyId, string name, List<Appwrite.Enums.ProjectKeyScopes> scopes, string? expire = null, string? description = null)
         {
             if (projectId == "")
             {
@@ -848,7 +848,8 @@ namespace Appwrite.Services
             {
                 { "name", name },
                 { "scopes", scopes?.Select(e => e.Value).ToList() },
-                { "expire", expire }
+                { "expire", expire },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()

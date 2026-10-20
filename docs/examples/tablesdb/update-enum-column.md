@@ -17,7 +17,8 @@ Appwrite.Models.ColumnEnum result = await tablesDB.UpdateEnumColumn(
     elements: ["active", "inactive"],
     required: false,
     @default: "active",
-    newKey: "<NEW_KEY>" // optional
+    newKey: "<NEW_KEY>", // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

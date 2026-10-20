@@ -17,13 +17,14 @@ namespace Appwrite.Services
         /// List all events for selected filters.
         /// </para>
         /// </summary>
-        public Task<Models.ActivityEventList> ListEvents(List<string>? queries = null)
+        public Task<Models.ActivityEventList> ListEvents(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/activities/events";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

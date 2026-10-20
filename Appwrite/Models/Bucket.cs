@@ -29,6 +29,9 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
@@ -60,6 +63,7 @@ namespace Appwrite.Models
             List<string> permissions,
             bool fileSecurity,
             string name,
+            string description,
             bool enabled,
             long maximumFileSize,
             List<string> allowedFileExtensions,
@@ -76,6 +80,7 @@ namespace Appwrite.Models
             Permissions = permissions;
             FileSecurity = fileSecurity;
             Name = name;
+            Description = description;
             Enabled = enabled;
             MaximumFileSize = maximumFileSize;
             AllowedFileExtensions = allowedFileExtensions;
@@ -93,6 +98,7 @@ namespace Appwrite.Models
             permissions: (map.ContainsKey("$permissions") ? map["$permissions"] : new List<object>()).ConvertToList<string>(),
             fileSecurity: (bool)(map.ContainsKey("fileSecurity") ? map["fileSecurity"] : false),
             name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             maximumFileSize: Convert.ToInt64((map.ContainsKey("maximumFileSize") ? map["maximumFileSize"] : 0)),
             allowedFileExtensions: (map.ContainsKey("allowedFileExtensions") ? map["allowedFileExtensions"] : new List<object>()).ConvertToList<string>(),
@@ -111,6 +117,7 @@ namespace Appwrite.Models
             { "$permissions", Permissions },
             { "fileSecurity", FileSecurity },
             { "name", Name },
+            { "description", Description },
             { "enabled", Enabled },
             { "maximumFileSize", MaximumFileSize },
             { "allowedFileExtensions", AllowedFileExtensions },

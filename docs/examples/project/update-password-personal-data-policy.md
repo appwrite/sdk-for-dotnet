@@ -11,7 +11,8 @@ Client client = new Client()
 Project project = new Project(client);
 
 Appwrite.Models.Project result = await project.UpdatePasswordPersonalDataPolicy(
-    enabled: false
+    enabled: false,
+    denyList: new List<string>() // optional
 );
 
 ```
