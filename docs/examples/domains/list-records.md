@@ -12,7 +12,8 @@ Domains domains = new Domains(client);
 
 Appwrite.Models.DnsRecordsList result = await domains.ListRecords(
     domainId: "<DOMAIN_ID>",
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

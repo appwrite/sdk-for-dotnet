@@ -16,7 +16,8 @@ Appwrite.Models.AttributeUrl result = await databases.CreateUrlAttribute(
     key: "<KEY>",
     required: false,
     @default: "https://example.com", // optional
-    array: false // optional
+    array: false, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

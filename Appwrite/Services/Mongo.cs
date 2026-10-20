@@ -17,13 +17,14 @@ namespace Appwrite.Services
         /// List all dedicated databases. Results support pagination.
         /// </para>
         /// </summary>
-        public Task<Models.DedicatedDatabaseList> List(List<string>? queries = null)
+        public Task<Models.DedicatedDatabaseList> List(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/mongo";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -277,7 +278,7 @@ namespace Appwrite.Services
         /// status and type.
         /// </para>
         /// </summary>
-        public Task<Models.DedicatedDatabaseBackupList> ListBackups(string databaseId, List<string>? queries = null)
+        public Task<Models.DedicatedDatabaseBackupList> ListBackups(string databaseId, List<string>? queries = null, bool? total = null)
         {
             if (databaseId == "")
             {
@@ -289,7 +290,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -359,7 +361,7 @@ namespace Appwrite.Services
         /// List scheduled backup policies for a dedicated database.
         /// </para>
         /// </summary>
-        public Task<Models.BackupPolicyList> ListBackupPolicies(string databaseId, List<string>? queries = null)
+        public Task<Models.BackupPolicyList> ListBackupPolicies(string databaseId, List<string>? queries = null, bool? total = null)
         {
             if (databaseId == "")
             {
@@ -371,7 +373,8 @@ namespace Appwrite.Services
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "queries", queries }
+                { "queries", queries },
+                { "total", total }
             };
 
             var apiHeaders = new Dictionary<string, string>()

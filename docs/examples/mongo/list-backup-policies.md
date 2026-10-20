@@ -12,7 +12,8 @@ Mongo mongo = new Mongo(client);
 
 Appwrite.Models.BackupPolicyList result = await mongo.ListBackupPolicies(
     databaseId: "<DATABASE_ID>",
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

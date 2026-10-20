@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("key")]
         public string Key { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("type")]
         public string Type { get; private set; }
 
@@ -46,6 +49,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string key,
+            string description,
             string type,
             string status,
             string error,
@@ -58,6 +62,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Key = key;
+            Description = description;
             Type = type;
             Status = status;
             Error = error;
@@ -71,13 +76,14 @@ namespace Appwrite.Models
             createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
             updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             key: (map.ContainsKey("key") ? map["key"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             type: (map.ContainsKey("type") ? map["type"] : "").ToString(),
             status: (map.ContainsKey("status") ? map["status"] : "").ToString(),
             error: (map.ContainsKey("error") ? map["error"] : "").ToString(),
             columns: (map.ContainsKey("columns") ? map["columns"] : new List<object>()).ConvertToList<string>(),
             lengths: (map.ContainsKey("lengths") ? map["lengths"] : new List<object>()).ConvertToList<long>(),
-            orders: map.TryGetValue("orders", out var arrayRaw10) && arrayRaw10 != null
-                                ? arrayRaw10.ConvertToList<string>()
+            orders: map.TryGetValue("orders", out var arrayRaw11) && arrayRaw11 != null
+                                ? arrayRaw11.ConvertToList<string>()
                                 : null
         );
 
@@ -87,6 +93,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "key", Key },
+            { "description", Description },
             { "type", Type },
             { "status", Status },
             { "error", Error },

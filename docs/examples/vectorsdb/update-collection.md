@@ -17,7 +17,8 @@ Appwrite.Models.VectorsdbCollection result = await vectorsDB.UpdateCollection(
     dimension: 4, // optional
     permissions: new List<string> { Permission.Read(Role.Any()) }, // optional
     documentSecurity: false, // optional
-    enabled: false // optional
+    enabled: false, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

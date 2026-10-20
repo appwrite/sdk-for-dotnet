@@ -18,7 +18,8 @@ Appwrite.Models.Table result = await tablesDB.CreateTable(
     rowSecurity: false, // optional
     enabled: false, // optional
     columns: new List<object>(), // optional
-    indexes: new List<object>() // optional
+    indexes: new List<object>(), // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

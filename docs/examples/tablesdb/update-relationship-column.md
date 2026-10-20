@@ -16,7 +16,8 @@ Appwrite.Models.ColumnRelationship result = await tablesDB.UpdateRelationshipCol
     tableId: "<TABLE_ID>",
     key: "<KEY>",
     onDelete: RelationMutate.Cascade, // optional
-    newKey: "<NEW_KEY>" // optional
+    newKey: "<NEW_KEY>", // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

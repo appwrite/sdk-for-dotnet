@@ -16,7 +16,8 @@ Appwrite.Models.ColumnLine result = await tablesDB.UpdateLineColumn(
     key: "<KEY>",
     required: false,
     @default: [[1, 2], [3, 4], [5, 6]], // optional
-    newKey: "<NEW_KEY>" // optional
+    newKey: "<NEW_KEY>", // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

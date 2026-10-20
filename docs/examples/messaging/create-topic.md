@@ -15,7 +15,8 @@ Appwrite.Models.Topic result = await messaging.CreateTopic(
     name: "<NAME>",
     subscribe: ["any"], // optional
     qos: 0, // optional
-    expiry: 0 // optional
+    expiry: 0, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

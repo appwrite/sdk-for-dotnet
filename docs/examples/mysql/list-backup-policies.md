@@ -12,7 +12,8 @@ Mysql mysql = new Mysql(client);
 
 Appwrite.Models.BackupPolicyList result = await mysql.ListBackupPolicies(
     databaseId: "<DATABASE_ID>",
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

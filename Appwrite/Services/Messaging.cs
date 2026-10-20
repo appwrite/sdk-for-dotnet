@@ -53,7 +53,7 @@ namespace Appwrite.Services
         /// Create a new email message.
         /// </para>
         /// </summary>
-        public Task<Models.Message> CreateEmail(string messageId, string subject, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, List<string>? cc = null, List<string>? bcc = null, List<string>? attachments = null, bool? draft = null, bool? html = null, string? scheduledAt = null, string? replyToEmail = null, string? replyToName = null)
+        public Task<Models.Message> CreateEmail(string messageId, string subject, string content, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, List<string>? cc = null, List<string>? bcc = null, List<string>? attachments = null, bool? draft = null, bool? html = null, string? scheduledAt = null, string? replyToEmail = null, string? replyToName = null, List<string>? emails = null)
         {
             var apiPath = "/messaging/messages/email";
 
@@ -72,7 +72,8 @@ namespace Appwrite.Services
                 { "html", html },
                 { "scheduledAt", scheduledAt },
                 { "replyToEmail", replyToEmail },
-                { "replyToName", replyToName }
+                { "replyToName", replyToName },
+                { "emails", emails }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -104,7 +105,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, bool? draft = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null, List<string>? attachments = null, string? replyToEmail = null, string? replyToName = null)
+        public Task<Models.Message> UpdateEmail(string messageId, List<string>? topics = null, List<string>? users = null, List<string>? targets = null, string? subject = null, string? content = null, bool? draft = null, bool? html = null, List<string>? cc = null, List<string>? bcc = null, string? scheduledAt = null, List<string>? attachments = null, string? replyToEmail = null, string? replyToName = null, List<string>? emails = null)
         {
             if (messageId == "")
             {
@@ -128,7 +129,8 @@ namespace Appwrite.Services
                 { "scheduledAt", scheduledAt },
                 { "attachments", attachments },
                 { "replyToEmail", replyToEmail },
-                { "replyToName", replyToName }
+                { "replyToName", replyToName },
+                { "emails", emails }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2139,7 +2141,7 @@ namespace Appwrite.Services
         /// Create a new topic.
         /// </para>
         /// </summary>
-        public Task<Models.Topic> CreateTopic(string topicId, string name, List<string>? subscribe = null, long? qos = null, long? expiry = null)
+        public Task<Models.Topic> CreateTopic(string topicId, string name, List<string>? subscribe = null, long? qos = null, long? expiry = null, string? description = null)
         {
             var apiPath = "/messaging/topics";
 
@@ -2149,7 +2151,8 @@ namespace Appwrite.Services
                 { "name", name },
                 { "subscribe", subscribe },
                 { "qos", qos },
-                { "expiry", expiry }
+                { "expiry", expiry },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -2219,7 +2222,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Topic> UpdateTopic(string topicId, string? name = null, List<string>? subscribe = null, long? qos = null, long? expiry = null)
+        public Task<Models.Topic> UpdateTopic(string topicId, string? name = null, List<string>? subscribe = null, long? qos = null, long? expiry = null, string? description = null)
         {
             if (topicId == "")
             {
@@ -2234,7 +2237,8 @@ namespace Appwrite.Services
                 { "name", name },
                 { "subscribe", subscribe },
                 { "qos", qos },
-                { "expiry", expiry }
+                { "expiry", expiry },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()

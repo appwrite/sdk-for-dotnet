@@ -12,7 +12,8 @@ Postgresql postgresql = new Postgresql(client);
 
 Appwrite.Models.BackupPolicyList result = await postgresql.ListBackupPolicies(
     databaseId: "<DATABASE_ID>",
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

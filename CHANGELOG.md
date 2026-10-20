@@ -1,5 +1,19 @@
 # Change Log
 
+## 10.0.0
+
+* Breaking: `TablesDB`, `DocumentsDB` and `VectorsDB` `Create` and `Update` take `description` before `specification`
+* Breaking: `Functions.Update` takes `description` before `emailEnabled`
+* Added: `CreateQuery` on `Databases`, `DocumentsDB` and `TablesDB` to send list queries in the request body
+* Added: `Account.ListMemberships`
+* Added: optional `description` on create and update for databases, collections, tables, attributes, columns, indexes, buckets, functions, sites, variables, topics, webhooks and keys
+* Added: `Description` on the matching models
+* Added: `total` on list methods in `Activities`, `Backups`, `Domains`, `Mongo`, `Mysql` and `Postgresql`
+* Added: `emails` on `Messaging.CreateEmail` and `Messaging.UpdateEmail`
+* Added: `denyList` on `Project.UpdatePasswordDictionaryPolicy`, `UpdatePasswordPersonalDataPolicy` and their policy models
+* Added: `BillingPlan.FunctionsAllowCron`
+* Added: `stripMetadata` on `Storage.CreateBucket`, `UpdateBucket` and the `Bucket` model
+
 ## 9.0.0
 
 * Breaking: requests send response format `2.5.0`

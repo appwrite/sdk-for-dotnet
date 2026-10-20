@@ -54,7 +54,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
+        public Task<Models.Database> Create(string databaseId, string name, bool? enabled = null, string? description = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
             var apiPath = "/vectorsdb";
 
@@ -63,6 +63,7 @@ namespace Appwrite.Services
                 { "databaseId", databaseId },
                 { "name", name },
                 { "enabled", enabled },
+                { "description", description },
                 { "specification", specification },
                 { "replicas", replicas },
                 { "syncMode", syncMode }
@@ -396,7 +397,7 @@ namespace Appwrite.Services
         /// Update a database by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null, string? specification = null, long? replicas = null, string? syncMode = null)
+        public Task<Models.Database> Update(string databaseId, string name, bool? enabled = null, string? description = null, string? specification = null, long? replicas = null, string? syncMode = null)
         {
             if (databaseId == "")
             {
@@ -410,6 +411,7 @@ namespace Appwrite.Services
             {
                 { "name", name },
                 { "enabled", enabled },
+                { "description", description },
                 { "specification", specification },
                 { "replicas", replicas },
                 { "syncMode", syncMode }
@@ -523,7 +525,7 @@ namespace Appwrite.Services
         /// API or directly from your database console.
         /// </para>
         /// </summary>
-        public Task<Models.VectorsdbCollection> CreateCollection(string databaseId, string collectionId, string name, long dimension, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
+        public Task<Models.VectorsdbCollection> CreateCollection(string databaseId, string collectionId, string name, long dimension, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -540,7 +542,8 @@ namespace Appwrite.Services
                 { "dimension", dimension },
                 { "permissions", permissions },
                 { "documentSecurity", documentSecurity },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -615,7 +618,7 @@ namespace Appwrite.Services
         /// Update a collection by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.VectorsdbCollection> UpdateCollection(string databaseId, string collectionId, string name, long? dimension = null, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null)
+        public Task<Models.VectorsdbCollection> UpdateCollection(string databaseId, string collectionId, string name, long? dimension = null, List<string>? permissions = null, bool? documentSecurity = null, bool? enabled = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -637,7 +640,8 @@ namespace Appwrite.Services
                 { "dimension", dimension },
                 { "permissions", permissions },
                 { "documentSecurity", documentSecurity },
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -1333,7 +1337,7 @@ namespace Appwrite.Services
         /// Attributes can be `key`, `fulltext`, and `unique`.
         /// </para>
         /// </summary>
-        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.VectorsDBIndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null)
+        public Task<Models.Index> CreateIndex(string databaseId, string collectionId, string key, Appwrite.Enums.VectorsDBIndexType type, List<string> attributes, List<Appwrite.Enums.OrderBy>? orders = null, List<long>? lengths = null, string? description = null)
         {
             if (databaseId == "")
             {
@@ -1355,7 +1359,8 @@ namespace Appwrite.Services
                 { "type", type?.Value },
                 { "attributes", attributes },
                 { "orders", orders?.Select(e => e.Value).ToList() },
-                { "lengths", lengths }
+                { "lengths", lengths },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()

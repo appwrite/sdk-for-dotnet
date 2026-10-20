@@ -11,7 +11,8 @@ Client client = new Client()
 Mysql mysql = new Mysql(client);
 
 Appwrite.Models.DedicatedDatabaseList result = await mysql.List(
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

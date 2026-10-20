@@ -18,7 +18,8 @@ Appwrite.Models.Webhook result = await webhooks.Update(
     enabled: false, // optional
     tls: false, // optional
     authUsername: "<AUTH_USERNAME>", // optional
-    authPassword: "password" // optional
+    authPassword: "password", // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

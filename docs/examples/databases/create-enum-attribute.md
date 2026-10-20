@@ -17,7 +17,8 @@ Appwrite.Models.AttributeEnum result = await databases.CreateEnumAttribute(
     elements: ["active", "inactive"],
     required: false,
     @default: "active", // optional
-    array: false // optional
+    array: false, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

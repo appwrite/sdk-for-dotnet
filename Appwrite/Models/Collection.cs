@@ -29,6 +29,9 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("enabled")]
         public bool Enabled { get; private set; }
 
@@ -54,6 +57,7 @@ namespace Appwrite.Models
             List<string> permissions,
             string databaseId,
             string name,
+            string description,
             bool enabled,
             bool documentSecurity,
             List<object> attributes,
@@ -68,6 +72,7 @@ namespace Appwrite.Models
             Permissions = permissions;
             DatabaseId = databaseId;
             Name = name;
+            Description = description;
             Enabled = enabled;
             DocumentSecurity = documentSecurity;
             Attributes = attributes;
@@ -83,6 +88,7 @@ namespace Appwrite.Models
             permissions: (map.ContainsKey("$permissions") ? map["$permissions"] : new List<object>()).ConvertToList<string>(),
             databaseId: (map.ContainsKey("databaseId") ? map["databaseId"] : "").ToString(),
             name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             documentSecurity: (bool)(map.ContainsKey("documentSecurity") ? map["documentSecurity"] : false),
             attributes: (map.ContainsKey("attributes") ? map["attributes"] : new List<object>()).ConvertToList<object>(),
@@ -99,6 +105,7 @@ namespace Appwrite.Models
             { "$permissions", Permissions },
             { "databaseId", DatabaseId },
             { "name", Name },
+            { "description", Description },
             { "enabled", Enabled },
             { "documentSecurity", DocumentSecurity },
             { "attributes", Attributes },

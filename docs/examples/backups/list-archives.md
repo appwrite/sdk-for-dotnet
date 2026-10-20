@@ -11,7 +11,8 @@ Client client = new Client()
 Backups backups = new Backups(client);
 
 Appwrite.Models.BackupArchiveList result = await backups.ListArchives(
-    queries: new List<string>() // optional
+    queries: new List<string>(), // optional
+    total: false // optional
 );
 
 ```

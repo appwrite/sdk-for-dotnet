@@ -17,7 +17,8 @@ Appwrite.Models.ColumnEnum result = await tablesDB.CreateEnumColumn(
     elements: ["active", "inactive"],
     required: false,
     @default: "active", // optional
-    array: false // optional
+    array: false, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

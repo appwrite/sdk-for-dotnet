@@ -54,7 +54,7 @@ namespace Appwrite.Services
         /// receive events from Appwrite when specific events occur.
         /// </para>
         /// </summary>
-        public Task<Models.Webhook> Create(string webhookId, string url, string name, List<string> events, bool? enabled = null, bool? tls = null, string? authUsername = null, string? authPassword = null, string? secret = null)
+        public Task<Models.Webhook> Create(string webhookId, string url, string name, List<string> events, bool? enabled = null, bool? tls = null, string? authUsername = null, string? authPassword = null, string? secret = null, string? description = null)
         {
             var apiPath = "/webhooks";
 
@@ -68,7 +68,8 @@ namespace Appwrite.Services
                 { "tls", tls },
                 { "authUsername", authUsername },
                 { "authPassword", authPassword },
-                { "secret", secret }
+                { "secret", secret },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -138,7 +139,7 @@ namespace Appwrite.Services
         /// events, or status of an existing webhook.
         /// </para>
         /// </summary>
-        public Task<Models.Webhook> Update(string webhookId, string name, string url, List<string> events, bool? enabled = null, bool? tls = null, string? authUsername = null, string? authPassword = null)
+        public Task<Models.Webhook> Update(string webhookId, string name, string url, List<string> events, bool? enabled = null, bool? tls = null, string? authUsername = null, string? authPassword = null, string? description = null)
         {
             if (webhookId == "")
             {
@@ -156,7 +157,8 @@ namespace Appwrite.Services
                 { "enabled", enabled },
                 { "tls", tls },
                 { "authUsername", authUsername },
-                { "authPassword", authPassword }
+                { "authPassword", authPassword },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()

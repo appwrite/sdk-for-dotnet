@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("name")]
         public string Name { get; private set; }
 
+        [JsonPropertyName("description")]
+        public string Description { get; private set; }
+
         [JsonPropertyName("url")]
         public string Url { get; private set; }
 
@@ -55,6 +58,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string name,
+            string description,
             string url,
             List<string> events,
             bool tls,
@@ -70,6 +74,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Name = name;
+            Description = description;
             Url = url;
             Events = events;
             Tls = tls;
@@ -86,6 +91,7 @@ namespace Appwrite.Models
             createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
             updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             name: (map.ContainsKey("name") ? map["name"] : "").ToString(),
+            description: (map.ContainsKey("description") ? map["description"] : "").ToString(),
             url: (map.ContainsKey("url") ? map["url"] : "").ToString(),
             events: (map.ContainsKey("events") ? map["events"] : new List<object>()).ConvertToList<string>(),
             tls: (bool)(map.ContainsKey("tls") ? map["tls"] : true),
@@ -103,6 +109,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "name", Name },
+            { "description", Description },
             { "url", Url },
             { "events", Events },
             { "tls", Tls },

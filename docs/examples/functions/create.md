@@ -34,7 +34,8 @@ Appwrite.Models.Function result = await functions.Create(
     buildSpecification: "s-1vcpu-512mb", // optional
     runtimeSpecification: "s-1vcpu-512mb", // optional
     deploymentRetention: 0, // optional
-    interval: 0 // optional
+    interval: 0, // optional
+    description: "<DESCRIPTION>" // optional
 );
 
 ```

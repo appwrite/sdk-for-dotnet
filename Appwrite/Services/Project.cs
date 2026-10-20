@@ -420,7 +420,7 @@ namespace Appwrite.Services
         /// scopes, or expiration time of an API key.
         /// </para>
         /// </summary>
-        public Task<Models.Key> UpdateKey(string keyId, string name, List<Appwrite.Enums.ProjectKeyScopes> scopes, string? expire = null)
+        public Task<Models.Key> UpdateKey(string keyId, string name, List<Appwrite.Enums.ProjectKeyScopes> scopes, string? expire = null, string? description = null)
         {
             if (keyId == "")
             {
@@ -434,7 +434,8 @@ namespace Appwrite.Services
             {
                 { "name", name },
                 { "scopes", scopes?.Select(e => e.Value).ToList() },
-                { "expire", expire }
+                { "expire", expire },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -3722,15 +3723,24 @@ namespace Appwrite.Services
         /// Updating this policy allows you to control if new passwords are checked
         /// against most common passwords dictionary. When enabled, and user changes
         /// their password, password must not be contained in the dictionary.
+        /// 
+        /// Custom denyList entries use case-sensitive equality and apply only while
+        /// this policy is enabled. Omit denyList or pass null to preserve it, pass an
+        /// array to replace it, or pass [] to clear it. Entries are stored without
+        /// trimming or deduplication. Existing passwords remain valid for sign-in and
+        /// password confirmation. The combined serialized project authentication
+        /// configuration must fit within 16,384 characters, even when each list meets
+        /// its entry limits.
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdatePasswordDictionaryPolicy(bool enabled)
+        public Task<Models.Project> UpdatePasswordDictionaryPolicy(bool enabled, List<string>? denyList = null)
         {
             var apiPath = "/project/policies/password-dictionary";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "denyList", denyList }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -3803,15 +3813,26 @@ namespace Appwrite.Services
         /// against personal data. When enabled, and user sets or changes their
         /// password, the password must not contain user ID, name, email or phone
         /// number.
+        /// 
+        /// Custom denyList entries use case-insensitive substring matching and apply
+        /// only while this policy is enabled. Omit denyList or pass null to preserve
+        /// it, pass an array to replace it, or pass [] to clear it. Entries are stored
+        /// without trimming or deduplication. Existing passwords remain valid for
+        /// sign-in and password confirmation. The combined serialized project
+        /// authentication configuration must fit within 16,384 characters, even when
+        /// each list meets its entry limits.
+        /// Password recovery also checks the recovered user profile, closing the
+        /// previous gap in profile-based personal-data validation.
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdatePasswordPersonalDataPolicy(bool enabled)
+        public Task<Models.Project> UpdatePasswordPersonalDataPolicy(bool enabled, List<string>? denyList = null)
         {
             var apiPath = "/project/policies/password-personal-data";
 
             var apiParameters = new Dictionary<string, object?>()
             {
-                { "enabled", enabled }
+                { "enabled", enabled },
+                { "denyList", denyList }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -4556,7 +4577,7 @@ namespace Appwrite.Services
         /// by all functions and sites in the project.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> CreateVariable(string variableId, string key, string @value, bool? secret = null)
+        public Task<Models.Variable> CreateVariable(string variableId, string key, string @value, bool? secret = null, string? description = null)
         {
             var apiPath = "/project/variables";
 
@@ -4565,7 +4586,8 @@ namespace Appwrite.Services
                 { "variableId", variableId },
                 { "key", key },
                 { "value", @value },
-                { "secret", secret }
+                { "secret", secret },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -4633,7 +4655,7 @@ namespace Appwrite.Services
         /// Update variable by its unique ID.
         /// </para>
         /// </summary>
-        public Task<Models.Variable> UpdateVariable(string variableId, string? key = null, string? @value = null, bool? secret = null)
+        public Task<Models.Variable> UpdateVariable(string variableId, string? key = null, string? @value = null, bool? secret = null, string? description = null)
         {
             if (variableId == "")
             {
@@ -4647,7 +4669,8 @@ namespace Appwrite.Services
             {
                 { "key", key },
                 { "value", @value },
-                { "secret", secret }
+                { "secret", secret },
+                { "description", description }
             };
 
             var apiHeaders = new Dictionary<string, string>()
