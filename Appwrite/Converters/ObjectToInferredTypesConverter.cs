@@ -36,10 +36,6 @@ namespace Appwrite.Converters
                     return list;
 
                 case JsonValueKind.String:
-                    if (element.TryGetDateTime(out DateTime datetime))
-                    {
-                        return datetime;
-                    }
                     return element.GetString();
 
                 case JsonValueKind.Number:

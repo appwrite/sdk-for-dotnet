@@ -1,5 +1,10 @@
 # Change Log
 
+## 11.0.0
+
+* Breaking: date-like strings in `Data` and other dynamic values stay `string` instead of being converted to `DateTime`
+* Fixed: `CreatedAt`, `UpdatedAt` and other datetime properties keep the server's exact ISO 8601 text, with milliseconds and offset, under any culture
+
 ## 10.0.0
 
 * Breaking: `TablesDB`, `DocumentsDB` and `VectorsDB` `Create` and `Update` take `description` before `specification`
