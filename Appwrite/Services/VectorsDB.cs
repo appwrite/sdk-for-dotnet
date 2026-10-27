@@ -208,7 +208,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/transactions/{transactionId}"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -247,7 +247,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/transactions/{transactionId}"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -289,7 +289,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/transactions/{transactionId}"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -324,7 +324,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/transactions/{transactionId}/operations"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -366,7 +366,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -405,7 +405,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -452,7 +452,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -488,7 +488,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -533,7 +533,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -586,8 +586,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -631,8 +631,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -684,8 +684,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -726,8 +726,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -778,8 +778,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -831,8 +831,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -883,8 +883,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -933,8 +933,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -983,8 +983,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1035,8 +1035,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/query"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1091,9 +1091,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/{documentId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1147,9 +1147,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/{documentId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1203,9 +1203,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/{documentId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1258,9 +1258,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/documents/{documentId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1301,8 +1301,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/indexes"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1350,8 +1350,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/indexes"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1407,9 +1407,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/indexes/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1458,9 +1458,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/collections/{collectionId}/indexes/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1503,7 +1503,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/failovers"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1547,7 +1547,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/operations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1590,7 +1590,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/replicas"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1631,7 +1631,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/vectorsdb/{databaseId}/status"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

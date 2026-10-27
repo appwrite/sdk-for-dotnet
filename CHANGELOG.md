@@ -1,5 +1,20 @@
 # Change Log
 
+## 11.1.0
+
+* Updated: requests send response format `2.6.2`
+* Updated: redirects are no longer followed; a 3xx response throws `AppwriteException` naming its `Location`
+* Updated: the client no longer keeps cookies between requests
+* Fixed: a `.` or `..` path parameter throws `AppwriteException` before the request is sent
+* Added: `Migrations` service with `List`, `Get`, `Retry`, `Delete`, Appwrite, Firebase, NHost and Supabase migrations and reports, and CSV and JSON imports and exports
+* Added: `AppwriteMigrationResource`, `FirebaseMigrationResource`, `NHostMigrationResource`, `SupabaseMigrationResource` and `OnDuplicate` enums
+* Added: `Migration`, `MigrationList` and `MigrationReport` models
+* Added: `Project.UpdateDenyRealtimeGuestsPolicy`, `ProjectPolicyId.DenyRealtimeGuests` and the `PolicyDenyRealtimeGuests` model
+* Added: `Project.DeleteSessions` to sign out every session in the project
+* Added: `DeploymentRetention`, `DeploymentRetentionMax` and `DeploymentsRetentionCount` on `BillingPlan`
+* Added: `Python315`, `Deno29`, `Go127` and `Rust199` on `Runtime` and `BuildRuntime`
+* Fixed: path parameters and upload IDs are percent-encoded as one segment, so `/`, `?` and `#` stay in the value
+
 ## 11.0.0
 
 * Breaking: date-like strings in `Data` and other dynamic values stay `string` instead of being converted to `DateTime`

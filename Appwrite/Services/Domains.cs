@@ -180,7 +180,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -222,7 +222,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -259,7 +259,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/nameservers"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -304,7 +304,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/nameservers/verification"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -344,7 +344,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/google-workspace"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -385,7 +385,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/google-workspace"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -425,7 +425,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/icloud"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -466,7 +466,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/icloud"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -506,7 +506,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/mailgun"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -547,7 +547,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/mailgun"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -587,7 +587,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/outlook"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -628,7 +628,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/outlook"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -668,7 +668,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/proton-mail"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -709,7 +709,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/proton-mail"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -749,7 +749,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/zoho"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -790,7 +790,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/presets/zoho"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -832,7 +832,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -875,7 +875,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/a"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -928,8 +928,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/a/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -976,7 +976,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/aaaa"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1029,8 +1029,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/aaaa/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1078,7 +1078,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/alias"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1134,8 +1134,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/alias/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1182,7 +1182,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/caa"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1235,8 +1235,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/caa/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1286,7 +1286,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/cname"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1335,8 +1335,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/cname/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1382,7 +1382,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/https"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1435,8 +1435,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/https/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1486,7 +1486,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/mx"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1536,8 +1536,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/mx/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1585,7 +1585,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/ns"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1640,8 +1640,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/ns/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1689,7 +1689,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/srv"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1754,8 +1754,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/srv/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1804,7 +1804,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/txt"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1858,8 +1858,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/txt/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1914,8 +1914,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1961,8 +1961,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/records/{recordId}"
-                .Replace("{domainId}", domainId)
-                .Replace("{recordId}", recordId);
+                .Replace("{domainId}", Client.EncodePath(domainId))
+                .Replace("{recordId}", Client.EncodePath(recordId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2003,7 +2003,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/team"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2045,7 +2045,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/transfers/status"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2087,7 +2087,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/zone"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2112,8 +2112,8 @@ namespace Appwrite.Services
         /// <para>
         /// Update the DNS zone for the given domain using the provided zone file
         /// content.
-        /// All parsed records are imported and then the main domain document is
-        /// returned.
+        /// All parsed records the domain does not already have are imported and then
+        /// the main domain document is returned.
         /// </para>
         /// </summary>
         public Task<Models.XDomain> UpdateZone(string domainId, string content)
@@ -2124,7 +2124,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/domains/{domainId}/zone"
-                .Replace("{domainId}", domainId);
+                .Replace("{domainId}", Client.EncodePath(domainId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

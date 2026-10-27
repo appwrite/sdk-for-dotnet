@@ -145,7 +145,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -187,7 +187,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -250,7 +250,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -286,7 +286,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -328,7 +328,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -369,7 +369,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups/policies"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -410,7 +410,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups/policies"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -461,8 +461,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups/policies/{policyId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{policyId}", policyId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{policyId}", Client.EncodePath(policyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -506,8 +506,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups/policies/{policyId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{policyId}", policyId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{policyId}", Client.EncodePath(policyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -557,8 +557,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups/policies/{policyId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{policyId}", policyId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{policyId}", Client.EncodePath(policyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -595,7 +595,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups/storage"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -648,8 +648,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups/{backupId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{backupId}", backupId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{backupId}", Client.EncodePath(backupId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -694,8 +694,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/backups/{backupId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{backupId}", backupId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{backupId}", Client.EncodePath(backupId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -731,7 +731,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/branches"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -774,7 +774,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/branches"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -823,8 +823,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/branches/{branchId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{branchId}", branchId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{branchId}", Client.EncodePath(branchId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -867,7 +867,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/credentials"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -919,7 +919,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/executions"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -962,7 +962,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/extensions"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1002,7 +1002,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/extensions"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1049,8 +1049,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/extensions/{extensionName}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{extensionName}", extensionName);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{extensionName}", Client.EncodePath(extensionName));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1098,7 +1098,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/failovers"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1141,7 +1141,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/maintenance"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1186,7 +1186,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/migrations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1231,7 +1231,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/operations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1274,7 +1274,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/pitr"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1314,7 +1314,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/pooler"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1354,7 +1354,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/pooler"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1403,7 +1403,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/replicas"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1443,7 +1443,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/restorations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1500,7 +1500,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/restorations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1553,8 +1553,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/restorations/{restorationId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{restorationId}", restorationId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{restorationId}", Client.EncodePath(restorationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1603,8 +1603,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/restorations/{restorationId}/promotions"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{restorationId}", restorationId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{restorationId}", Client.EncodePath(restorationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1646,7 +1646,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/status"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1686,7 +1686,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/postgresql/{databaseId}/upgrades"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

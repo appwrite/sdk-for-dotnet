@@ -192,7 +192,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -231,7 +231,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -295,7 +295,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -331,7 +331,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployment"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -373,7 +373,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployments"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -424,7 +424,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployments"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -478,7 +478,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployments/duplicate"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -524,7 +524,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployments/template"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -572,7 +572,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployments/vcs"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -620,8 +620,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{deploymentId}", deploymentId);
+                .Replace("{functionId}", Client.EncodePath(functionId))
+                .Replace("{deploymentId}", Client.EncodePath(deploymentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -665,8 +665,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{deploymentId}", deploymentId);
+                .Replace("{functionId}", Client.EncodePath(functionId))
+                .Replace("{deploymentId}", Client.EncodePath(deploymentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -708,8 +708,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}/download"
-                .Replace("{functionId}", functionId)
-                .Replace("{deploymentId}", deploymentId);
+                .Replace("{functionId}", Client.EncodePath(functionId))
+                .Replace("{deploymentId}", Client.EncodePath(deploymentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -754,8 +754,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/deployments/{deploymentId}/status"
-                .Replace("{functionId}", functionId)
-                .Replace("{deploymentId}", deploymentId);
+                .Replace("{functionId}", Client.EncodePath(functionId))
+                .Replace("{deploymentId}", Client.EncodePath(deploymentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -796,7 +796,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/executions"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -840,7 +840,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/executions"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -891,8 +891,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/executions/{executionId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{executionId}", executionId);
+                .Replace("{functionId}", Client.EncodePath(functionId))
+                .Replace("{executionId}", Client.EncodePath(executionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -936,8 +936,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/executions/{executionId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{executionId}", executionId);
+                .Replace("{functionId}", Client.EncodePath(functionId))
+                .Replace("{executionId}", Client.EncodePath(executionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -972,7 +972,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/variables"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1014,7 +1014,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/variables"
-                .Replace("{functionId}", functionId);
+                .Replace("{functionId}", Client.EncodePath(functionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1064,8 +1064,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/variables/{variableId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{variableId}", variableId);
+                .Replace("{functionId}", Client.EncodePath(functionId))
+                .Replace("{variableId}", Client.EncodePath(variableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1109,8 +1109,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/variables/{variableId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{variableId}", variableId);
+                .Replace("{functionId}", Client.EncodePath(functionId))
+                .Replace("{variableId}", Client.EncodePath(variableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1159,8 +1159,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/functions/{functionId}/variables/{variableId}"
-                .Replace("{functionId}", functionId)
-                .Replace("{variableId}", variableId);
+                .Replace("{functionId}", Client.EncodePath(functionId))
+                .Replace("{variableId}", Client.EncodePath(variableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

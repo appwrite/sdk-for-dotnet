@@ -16,7 +16,7 @@ Appwrite.Models.User result = await users.CreateScryptUser(
     password: "password",
     passwordSalt: "<PASSWORD_SALT>",
     passwordCpu: 8,
-    passwordMemory: 65536,
+    passwordMemory: 14,
     passwordParallel: 1,
     passwordLength: 64,
     name: "<NAME>" // optional

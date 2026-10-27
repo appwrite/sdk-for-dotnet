@@ -101,7 +101,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}"
-                .Replace("{teamId}", teamId);
+                .Replace("{teamId}", Client.EncodePath(teamId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -140,7 +140,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}"
-                .Replace("{teamId}", teamId);
+                .Replace("{teamId}", Client.EncodePath(teamId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -182,7 +182,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}"
-                .Replace("{teamId}", teamId);
+                .Replace("{teamId}", Client.EncodePath(teamId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -217,7 +217,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/installations"
-                .Replace("{teamId}", teamId);
+                .Replace("{teamId}", Client.EncodePath(teamId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -261,7 +261,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/installations"
-                .Replace("{teamId}", teamId);
+                .Replace("{teamId}", Client.EncodePath(teamId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -309,8 +309,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/installations/{installationId}"
-                .Replace("{teamId}", teamId)
-                .Replace("{installationId}", installationId);
+                .Replace("{teamId}", Client.EncodePath(teamId))
+                .Replace("{installationId}", Client.EncodePath(installationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -357,8 +357,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/installations/{installationId}"
-                .Replace("{teamId}", teamId)
-                .Replace("{installationId}", installationId);
+                .Replace("{teamId}", Client.EncodePath(teamId))
+                .Replace("{installationId}", Client.EncodePath(installationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -406,8 +406,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/installations/{installationId}"
-                .Replace("{teamId}", teamId)
-                .Replace("{installationId}", installationId);
+                .Replace("{teamId}", Client.EncodePath(teamId))
+                .Replace("{installationId}", Client.EncodePath(installationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -444,7 +444,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/memberships"
-                .Replace("{teamId}", teamId);
+                .Replace("{teamId}", Client.EncodePath(teamId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -506,7 +506,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/memberships"
-                .Replace("{teamId}", teamId);
+                .Replace("{teamId}", Client.EncodePath(teamId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -560,8 +560,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/memberships/{membershipId}"
-                .Replace("{teamId}", teamId)
-                .Replace("{membershipId}", membershipId);
+                .Replace("{teamId}", Client.EncodePath(teamId))
+                .Replace("{membershipId}", Client.EncodePath(membershipId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -608,8 +608,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/memberships/{membershipId}"
-                .Replace("{teamId}", teamId)
-                .Replace("{membershipId}", membershipId);
+                .Replace("{teamId}", Client.EncodePath(teamId))
+                .Replace("{membershipId}", Client.EncodePath(membershipId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -657,8 +657,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/memberships/{membershipId}"
-                .Replace("{teamId}", teamId)
-                .Replace("{membershipId}", membershipId);
+                .Replace("{teamId}", Client.EncodePath(teamId))
+                .Replace("{membershipId}", Client.EncodePath(membershipId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -704,8 +704,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/memberships/{membershipId}/status"
-                .Replace("{teamId}", teamId)
-                .Replace("{membershipId}", membershipId);
+                .Replace("{teamId}", Client.EncodePath(teamId))
+                .Replace("{membershipId}", Client.EncodePath(membershipId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -749,7 +749,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/prefs"
-                .Replace("{teamId}", teamId);
+                .Replace("{teamId}", Client.EncodePath(teamId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -790,7 +790,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/teams/{teamId}/prefs"
-                .Replace("{teamId}", teamId);
+                .Replace("{teamId}", Client.EncodePath(teamId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

@@ -13,7 +13,7 @@ Users users = new Users(client);
 Appwrite.Models.User result = await users.CreateArgon2User(
     userId: "<USER_ID>",
     email: "email@example.com",
-    password: "password",
+    password: "",
     name: "<NAME>" // optional
 );
 

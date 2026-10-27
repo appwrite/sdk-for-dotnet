@@ -209,7 +209,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/transactions/{transactionId}"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -248,7 +248,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/transactions/{transactionId}"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -290,7 +290,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/transactions/{transactionId}"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -325,7 +325,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/transactions/{transactionId}/operations"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -367,7 +367,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -406,7 +406,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -453,7 +453,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -496,7 +496,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/failovers"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -538,7 +538,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/migrations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -584,7 +584,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/migrations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -631,8 +631,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{migrationId}", migrationId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{migrationId}", Client.EncodePath(migrationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -677,8 +677,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{migrationId}", migrationId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{migrationId}", Client.EncodePath(migrationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -726,8 +726,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/migrations/{migrationId}/cutovers"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{migrationId}", migrationId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{migrationId}", Client.EncodePath(migrationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -770,7 +770,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/operations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -813,7 +813,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/replicas"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -854,7 +854,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/status"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -894,7 +894,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -939,7 +939,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -993,8 +993,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1038,8 +1038,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1091,8 +1091,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1132,8 +1132,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1181,8 +1181,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/bigint"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1241,9 +1241,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/bigint/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1295,8 +1295,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/boolean"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1352,9 +1352,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/boolean/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1403,8 +1403,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/datetime"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1460,9 +1460,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/datetime/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1512,8 +1512,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/email"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1570,9 +1570,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/email/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1622,8 +1622,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/enum"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1681,9 +1681,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/enum/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1735,8 +1735,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/float"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1795,9 +1795,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/float/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1850,8 +1850,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/integer"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1910,9 +1910,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/integer/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1964,8 +1964,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/ip"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2022,9 +2022,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/ip/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2073,8 +2073,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/line"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2129,9 +2129,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/line/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2181,8 +2181,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/longtext"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2240,9 +2240,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/longtext/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2292,8 +2292,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/mediumtext"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2351,9 +2351,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/mediumtext/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2402,8 +2402,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/point"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2458,9 +2458,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/point/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2509,8 +2509,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/polygon"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2565,9 +2565,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/polygon/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2618,8 +2618,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/relationship"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2678,9 +2678,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/relationship/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2730,8 +2730,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/string"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2791,9 +2791,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/string/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2844,8 +2844,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/text"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2903,9 +2903,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/text/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2955,8 +2955,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/url"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3013,9 +3013,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/url/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3065,8 +3065,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/varchar"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3125,9 +3125,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/varchar/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3182,9 +3182,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3305,9 +3305,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/columns/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3347,8 +3347,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3398,8 +3398,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3455,9 +3455,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3506,9 +3506,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/indexes/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3557,8 +3557,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3609,8 +3609,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3662,8 +3662,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3714,8 +3714,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3763,8 +3763,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3813,8 +3813,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3865,8 +3865,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/query"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3921,9 +3921,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{rowId}", rowId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{rowId}", Client.EncodePath(rowId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3977,9 +3977,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{rowId}", rowId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{rowId}", Client.EncodePath(rowId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4033,9 +4033,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{rowId}", rowId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{rowId}", Client.EncodePath(rowId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4088,9 +4088,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{rowId}", rowId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{rowId}", Client.EncodePath(rowId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4141,10 +4141,10 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}/{column}/decrement"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{rowId}", rowId)
-                .Replace("{column}", column);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{rowId}", Client.EncodePath(rowId))
+                .Replace("{column}", Client.EncodePath(column));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4202,10 +4202,10 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tablesdb/{databaseId}/tables/{tableId}/rows/{rowId}/{column}/increment"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{tableId}", tableId)
-                .Replace("{rowId}", rowId)
-                .Replace("{column}", column);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{tableId}", Client.EncodePath(tableId))
+                .Replace("{rowId}", Client.EncodePath(rowId))
+                .Replace("{column}", Client.EncodePath(column));
 
             var apiParameters = new Dictionary<string, object?>()
             {
