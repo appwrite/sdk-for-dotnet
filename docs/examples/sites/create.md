@@ -35,7 +35,7 @@ Appwrite.Models.Site result = await sites.Create(
     buildSpecification: "s-1vcpu-512mb", // optional
     runtimeSpecification: "s-1vcpu-512mb", // optional
     deploymentRetention: 0, // optional
-    scopes: new List&lt;ProjectKeyScopes&gt; { ProjectKeyScopes.ProjectRead }, // optional
+    scopes: new List<ProjectKeyScopes> { ProjectKeyScopes.ProjectRead }, // optional
     description: "<DESCRIPTION>" // optional
 );
 

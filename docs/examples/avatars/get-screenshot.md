@@ -26,7 +26,7 @@ byte[] result = await avatars.GetScreenshot(
     longitude: -122.4194, // optional
     accuracy: 100, // optional
     touch: true, // optional
-    permissions: new List&lt;BrowserPermission&gt; { BrowserPermission.Geolocation, BrowserPermission.Notifications }, // optional
+    permissions: new List<BrowserPermission> { BrowserPermission.Geolocation, BrowserPermission.Notifications }, // optional
     sleep: 3, // optional
     width: 800, // optional
     height: 600, // optional

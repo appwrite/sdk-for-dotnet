@@ -18,7 +18,7 @@ Appwrite.Models.DedicatedDatabaseBackupStorage result = await mongo.UpdateBackup
     secretKey: "<SECRET_KEY>",
     region: "<REGION>", // optional
     prefix: "<PREFIX>", // optional
-    endpoint: "<ENDPOINT>" // optional
+    endpoint: "https://example.com" // optional
 );
 
 ```

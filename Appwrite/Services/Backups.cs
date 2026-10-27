@@ -96,7 +96,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/backups/archives/{archiveId}"
-                .Replace("{archiveId}", archiveId);
+                .Replace("{archiveId}", Client.EncodePath(archiveId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -135,7 +135,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/backups/archives/{archiveId}"
-                .Replace("{archiveId}", archiveId);
+                .Replace("{archiveId}", Client.EncodePath(archiveId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -246,7 +246,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/backups/policies/{policyId}"
-                .Replace("{policyId}", policyId);
+                .Replace("{policyId}", Client.EncodePath(policyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -285,7 +285,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/backups/policies/{policyId}"
-                .Replace("{policyId}", policyId);
+                .Replace("{policyId}", Client.EncodePath(policyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -329,7 +329,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/backups/policies/{policyId}"
-                .Replace("{policyId}", policyId);
+                .Replace("{policyId}", Client.EncodePath(policyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -468,7 +468,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/backups/restorations/{restorationId}"
-                .Replace("{restorationId}", restorationId);
+                .Replace("{restorationId}", Client.EncodePath(restorationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

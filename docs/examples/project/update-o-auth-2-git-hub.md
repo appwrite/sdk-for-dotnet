@@ -15,7 +15,7 @@ Appwrite.Models.OAuth2Github result = await project.UpdateOAuth2GitHub(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false, // optional
-    prompt: new List&lt;ProjectOAuth2GitHubPrompt&gt; { ProjectOAuth2GitHubPrompt.SelectAccount } // optional
+    prompt: new List<ProjectOAuth2GitHubPrompt> { ProjectOAuth2GitHubPrompt.SelectAccount } // optional
 );
 
 ```

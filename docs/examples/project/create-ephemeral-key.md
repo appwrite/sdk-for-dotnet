@@ -12,7 +12,7 @@ Client client = new Client()
 Project project = new Project(client);
 
 Appwrite.Models.EphemeralKey result = await project.CreateEphemeralKey(
-    scopes: new List&lt;ProjectKeyScopes&gt; { ProjectKeyScopes.UsersRead },
+    scopes: new List<ProjectKeyScopes> { ProjectKeyScopes.UsersRead },
     duration: 600
 );
 

@@ -61,7 +61,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/activities/events/{eventId}"
-                .Replace("{eventId}", eventId);
+                .Replace("{eventId}", Client.EncodePath(eventId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

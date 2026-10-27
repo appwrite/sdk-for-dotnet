@@ -13,7 +13,7 @@ Organization organization = new Organization(client);
 
 Appwrite.Models.EphemeralKey result = await organization.CreateEphemeralProjectKey(
     projectId: "<PROJECT_ID>",
-    scopes: new List&lt;ProjectKeyScopes&gt; { ProjectKeyScopes.UsersRead },
+    scopes: new List<ProjectKeyScopes> { ProjectKeyScopes.UsersRead },
     duration: 600
 );
 

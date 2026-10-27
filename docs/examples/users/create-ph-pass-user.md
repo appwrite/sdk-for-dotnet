@@ -13,7 +13,7 @@ Users users = new Users(client);
 Appwrite.Models.User result = await users.CreatePHPassUser(
     userId: "<USER_ID>",
     email: "email@example.com",
-    password: "password",
+    password: "$P$BrOEFP1YR5W1yHpvvGuoeVUDPmw9ra/",
     name: "<NAME>" // optional
 );
 

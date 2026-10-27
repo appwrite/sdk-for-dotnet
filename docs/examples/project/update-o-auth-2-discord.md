@@ -15,7 +15,7 @@ Appwrite.Models.OAuth2Discord result = await project.UpdateOAuth2Discord(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false, // optional
-    prompt: new List&lt;ProjectOAuth2DiscordPrompt&gt; { ProjectOAuth2DiscordPrompt.None } // optional
+    prompt: new List<ProjectOAuth2DiscordPrompt> { ProjectOAuth2DiscordPrompt.None } // optional
 );
 
 ```

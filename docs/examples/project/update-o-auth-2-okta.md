@@ -17,7 +17,7 @@ Appwrite.Models.OAuth2Okta result = await project.UpdateOAuth2Okta(
     domain: "example.com", // optional
     authorizationServerId: "<AUTHORIZATION_SERVER_ID>", // optional
     enabled: false, // optional
-    prompt: new List&lt;ProjectOAuth2OktaPrompt&gt; { ProjectOAuth2OktaPrompt.None } // optional
+    prompt: new List<ProjectOAuth2OktaPrompt> { ProjectOAuth2OktaPrompt.None } // optional
 );
 
 ```

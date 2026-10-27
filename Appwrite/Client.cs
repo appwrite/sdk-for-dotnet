@@ -25,6 +25,26 @@ namespace Appwrite
             return _config.TryGetValue(key, out var value) ? value : "";
         }
 
+        /// <summary>
+        /// Encodes a value as one path segment. Everything but letters, digits
+        /// and -_.!~*'() is escaped, as encodeURIComponent does, so a value
+        /// fills exactly the segment it replaces.
+        /// </summary>
+        internal static string EncodePath(string? value)
+        {
+            if (value == "." || value == "..")
+            {
+                throw new AppwriteException("Path parameter cannot be \".\" or \"..\"");
+            }
+
+            return Uri.EscapeDataString(value ?? string.Empty)
+                .Replace("%21", "!")
+                .Replace("%2A", "*")
+                .Replace("%27", "'")
+                .Replace("%28", "(")
+                .Replace("%29", ")");
+        }
+
         private HttpClient _http;
         private HttpClient _httpForRedirect;
         private readonly Dictionary<string, string> _headers;
@@ -66,23 +86,19 @@ namespace Appwrite
             HttpClient? httpForRedirect = null)
         {
             _endpoint = endpoint;
-            _http = http ?? new HttpClient();
+            _http = http ?? new HttpClient(CreateHandler());
 
-            _httpForRedirect = httpForRedirect ?? new HttpClient(
-                new HttpClientHandler()
-                {
-                    AllowAutoRedirect = false
-                });
+            _httpForRedirect = httpForRedirect ?? new HttpClient(CreateHandler());
 
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent", $"AppwriteDotNetSDK/11.0.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
+                { "user-agent", $"AppwriteDotNetSDK/11.1.0 ({Environment.OSVersion.Platform}; {Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "11.0.0"},
-                { "X-Appwrite-Response-Format", "2.5.0" }
+                { "x-sdk-version", "11.1.0"},
+                { "X-Appwrite-Response-Format", "2.6.2" }
             };
 
             _config = new Dictionary<string, string>();
@@ -95,16 +111,29 @@ namespace Appwrite
 
         public Client SetSelfSigned(bool selfSigned)
         {
-            var handler = new HttpClientHandler()
+            var handler = CreateHandler();
+            if (selfSigned)
             {
-                ServerCertificateCustomValidationCallback = (request, cert, chain, errors) => true
-            };
+                handler.ServerCertificateCustomValidationCallback = (request, cert, chain, errors) => true;
+            }
 
-            _http = selfSigned
-                ? new HttpClient(handler)
-                : new HttpClient();
+            _http = new HttpClient(handler);
 
             return this;
+        }
+
+        /// <summary>
+        /// Calls follow no redirects, which would carry the API key to wherever
+        /// they point, and keep no cookies, which would carry one caller's
+        /// session into the next call made on this client.
+        /// </summary>
+        private static HttpClientHandler CreateHandler()
+        {
+            return new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+                UseCookies = false
+            };
         }
 
         public Client SetEndpoint(string endpoint)
@@ -422,6 +451,14 @@ namespace Appwrite
 
             var isJson = contentType.Contains("application/json");
 
+            if (code >= 300 && code < 400)
+            {
+                var location = response.Headers.Location?.OriginalString ?? "";
+                var body = await response.Content.ReadAsStringAsync();
+
+                throw new AppwriteException($"Redirect to {location} not followed", code, "", body);
+            }
+
             if (code >= 400)
             {
                 var text = await response.Content.ReadAsStringAsync();
@@ -584,12 +621,13 @@ namespace Appwrite
                 && uploadIdValue != null)
             {
                 uploadId = uploadIdValue.ToString() ?? string.Empty;
+                var uploadPath = EncodePath(uploadId);
                 try
                 {
                     // Make a request to check if a file already exists
                     var current = await Call<Dictionary<string, object?>>(
                         method: "GET",
-                        path: $"{path}/{uploadId}",
+                        path: $"{path}/{uploadPath}",
                         new Dictionary<string, string> { { "content-type", "application/json" } },
                         parameters: new Dictionary<string, object?>()
                     );

@@ -1,11 +1,11 @@
 # Appwrite .NET SDK
 
 ![License](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg?style=flat-square)
-![Version](https://img.shields.io/badge/api%20version-2.5.0-blue.svg?style=flat-square)
+![Version](https://img.shields.io/badge/api%20version-2.6.2-blue.svg?style=flat-square)
 [![X Account](https://img.shields.io/badge/follow-%40appwrite-000000?logo=x&style=flat-square)](https://x.com/appwrite)
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
 
-**This SDK targets Appwrite server version 2.5.x as shipped on Appwrite Cloud.** Self-hosted releases can lag behind Cloud — if you run an older self-hosted build, use a matching older SDK from [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases) when APIs differ.
+**This SDK targets Appwrite server version 2.6.x as shipped on Appwrite Cloud.** Self-hosted releases can lag behind Cloud — if you run an older self-hosted build, use a matching older SDK from [previous releases](https://github.com/appwrite/sdk-for-dotnet/releases) when APIs differ.
 
 Appwrite is an open-source backend as a service server that abstracts and simplifies complex and repetitive development tasks behind a very simple to use REST API. Appwrite aims to help you develop your apps faster and in a more secure way. Use the .NET SDK to integrate your app with the Appwrite server to easily start interacting with all of Appwrite backend APIs and tools. For full API documentation and tutorials go to [https://appwrite.io/docs](https://appwrite.io/docs)
 
@@ -17,19 +17,19 @@ The package targets .NET Standard 2.0 and .NET Framework 4.6.2, so it runs on .N
 Install it with the .NET CLI:
 
 ```bash
-dotnet add package Appwrite --version 11.0.0
+dotnet add package Appwrite --version 11.1.0
 ```
 
 Or with the Package Manager Console:
 
 ```powershell
-Install-Package Appwrite -Version 11.0.0
+Install-Package Appwrite -Version 11.1.0
 ```
 
 Or add a reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="11.0.0" />
+<PackageReference Include="Appwrite" Version="11.1.0" />
 ```
 
 ## Getting Started

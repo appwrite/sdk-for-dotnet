@@ -303,7 +303,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/proxy/rules/{ruleId}"
-                .Replace("{ruleId}", ruleId);
+                .Replace("{ruleId}", Client.EncodePath(ruleId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -342,7 +342,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/proxy/rules/{ruleId}"
-                .Replace("{ruleId}", ruleId);
+                .Replace("{ruleId}", Client.EncodePath(ruleId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -380,7 +380,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/proxy/rules/{ruleId}/status"
-                .Replace("{ruleId}", ruleId);
+                .Replace("{ruleId}", Client.EncodePath(ruleId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

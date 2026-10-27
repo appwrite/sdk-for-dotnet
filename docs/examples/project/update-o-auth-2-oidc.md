@@ -18,7 +18,7 @@ Appwrite.Models.OAuth2Oidc result = await project.UpdateOAuth2Oidc(
     authorizationURL: "https://example.com", // optional
     tokenURL: "https://example.com", // optional
     userInfoURL: "https://example.com", // optional
-    prompt: new List&lt;ProjectOAuth2OidcPrompt&gt; { ProjectOAuth2OidcPrompt.None }, // optional
+    prompt: new List<ProjectOAuth2OidcPrompt> { ProjectOAuth2OidcPrompt.None }, // optional
     maxAge: 0, // optional
     enabled: false // optional
 );

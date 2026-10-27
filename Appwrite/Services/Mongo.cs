@@ -145,7 +145,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -187,7 +187,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -250,7 +250,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -286,7 +286,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -328,7 +328,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -369,7 +369,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups/policies"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -410,7 +410,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups/policies"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -461,8 +461,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups/policies/{policyId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{policyId}", policyId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{policyId}", Client.EncodePath(policyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -506,8 +506,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups/policies/{policyId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{policyId}", policyId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{policyId}", Client.EncodePath(policyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -557,8 +557,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups/policies/{policyId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{policyId}", policyId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{policyId}", Client.EncodePath(policyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -595,7 +595,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups/storage"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -648,8 +648,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups/{backupId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{backupId}", backupId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{backupId}", Client.EncodePath(backupId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -694,8 +694,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/backups/{backupId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{backupId}", backupId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{backupId}", Client.EncodePath(backupId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -731,7 +731,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/branches"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -774,7 +774,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/branches"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -823,8 +823,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/branches/{branchId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{branchId}", branchId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{branchId}", Client.EncodePath(branchId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -867,7 +867,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/credentials"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -915,7 +915,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/failovers"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -958,7 +958,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/maintenance"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1003,7 +1003,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/migrations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1048,7 +1048,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/operations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1091,7 +1091,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/pitr"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1131,7 +1131,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/replicas"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1171,7 +1171,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/restorations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1228,7 +1228,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/restorations"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1281,8 +1281,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/restorations/{restorationId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{restorationId}", restorationId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{restorationId}", Client.EncodePath(restorationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1331,8 +1331,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/restorations/{restorationId}/promotions"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{restorationId}", restorationId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{restorationId}", Client.EncodePath(restorationId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1374,7 +1374,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/status"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1414,7 +1414,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/mongo/{databaseId}/upgrades"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

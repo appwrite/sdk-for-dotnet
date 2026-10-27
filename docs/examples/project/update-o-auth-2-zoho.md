@@ -15,7 +15,7 @@ Appwrite.Models.OAuth2Zoho result = await project.UpdateOAuth2Zoho(
     clientId: "<CLIENT_ID>", // optional
     clientSecret: "<CLIENT_SECRET>", // optional
     enabled: false, // optional
-    prompt: new List&lt;ProjectOAuth2ZohoPrompt&gt; { ProjectOAuth2ZohoPrompt.Consent } // optional
+    prompt: new List<ProjectOAuth2ZohoPrompt> { ProjectOAuth2ZohoPrompt.Consent } // optional
 );
 
 ```

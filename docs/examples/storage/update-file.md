@@ -13,7 +13,7 @@ Storage storage = new Storage(client);
 Appwrite.Models.File result = await storage.UpdateFile(
     bucketId: "<BUCKET_ID>",
     fileId: "<FILE_ID>",
-    name: "<NAME>", // optional
+    name: null, // optional
     permissions: new List<string> { Permission.Read(Role.Any()) } // optional
 );
 

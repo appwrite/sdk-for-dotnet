@@ -16,7 +16,7 @@ Appwrite.Models.OAuth2Auth0 result = await project.UpdateOAuth2Auth0(
     clientSecret: "<CLIENT_SECRET>", // optional
     endpoint: "<ENDPOINT>", // optional
     enabled: false, // optional
-    prompt: new List&lt;ProjectOAuth2Auth0Prompt&gt; { ProjectOAuth2Auth0Prompt.None } // optional
+    prompt: new List<ProjectOAuth2Auth0Prompt> { ProjectOAuth2Auth0Prompt.None } // optional
 );
 
 ```

@@ -17,7 +17,7 @@ Appwrite.Models.Index result = await databases.CreateIndex(
     key: "<KEY>",
     type: DatabasesIndexType.Key,
     attributes: ["username"],
-    orders: new List&lt;OrderBy&gt; { OrderBy.Asc }, // optional
+    orders: new List<OrderBy> { OrderBy.Asc }, // optional
     lengths: new List<long>(), // optional
     description: "<DESCRIPTION>" // optional
 );
