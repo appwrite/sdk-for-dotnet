@@ -107,7 +107,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/webhooks/{webhookId}"
-                .Replace("{webhookId}", webhookId);
+                .Replace("{webhookId}", Client.EncodePath(webhookId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -147,7 +147,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/webhooks/{webhookId}"
-                .Replace("{webhookId}", webhookId);
+                .Replace("{webhookId}", Client.EncodePath(webhookId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -196,7 +196,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/webhooks/{webhookId}"
-                .Replace("{webhookId}", webhookId);
+                .Replace("{webhookId}", Client.EncodePath(webhookId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -233,7 +233,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/webhooks/{webhookId}/secret"
-                .Replace("{webhookId}", webhookId);
+                .Replace("{webhookId}", Client.EncodePath(webhookId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

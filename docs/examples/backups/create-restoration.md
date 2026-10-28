@@ -13,7 +13,7 @@ Backups backups = new Backups(client);
 
 Appwrite.Models.BackupRestoration result = await backups.CreateRestoration(
     archiveId: "<ARCHIVE_ID>",
-    services: new List&lt;BackupServices&gt; { BackupServices.Databases },
+    services: new List<BackupServices> { BackupServices.Databases },
     newResourceId: "<NEW_RESOURCE_ID>", // optional
     newResourceName: "<NEW_RESOURCE_NAME>" // optional
 );

@@ -83,7 +83,7 @@ namespace Appwrite.Services
         public Task<Models.Project> UpdateAuthMethod(Appwrite.Enums.ProjectAuthMethodId methodId, bool enabled)
         {
             var apiPath = "/project/auth-methods/{methodId}"
-                .Replace("{methodId}", methodId.Value);
+                .Replace("{methodId}", Client.EncodePath(methodId.Value));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -152,16 +152,25 @@ namespace Appwrite.Services
         /// Create a new environment of the project. An environment is a separate
         /// project in the same organization and region, with its own resources and
         /// users. Its usage is billed under the project it belongs to.
+        /// 
+        /// Pass `resources` to copy the project into the environment. The environment
+        /// is returned at once and the copy runs as a migration of the environment,
+        /// listed by its migrations routes and announced on its `migrations.*`
+        /// realtime events; a resource whose ID can be chosen keeps it. Users are
+        /// copied newest first and at most 90 of them, so the environment keeps room
+        /// under its limit of 100 users for test accounts, and the memberships of
+        /// users left behind are not copied.
         /// </para>
         /// </summary>
-        public Task<Models.Project> CreateEnvironment(string environmentId, string name)
+        public Task<Models.Project> CreateEnvironment(string environmentId, string name, List<Appwrite.Enums.EnvironmentResource>? resources = null)
         {
             var apiPath = "/project/environments";
 
             var apiParameters = new Dictionary<string, object?>()
             {
                 { "environmentId", environmentId },
-                { "name", name }
+                { "name", name },
+                { "resources", resources?.Select(e => e.Value).ToList() }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -198,7 +207,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/environments/{environmentId}"
-                .Replace("{environmentId}", environmentId);
+                .Replace("{environmentId}", Client.EncodePath(environmentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -237,7 +246,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/environments/{environmentId}"
-                .Replace("{environmentId}", environmentId);
+                .Replace("{environmentId}", Client.EncodePath(environmentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -278,7 +287,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/environments/{environmentId}"
-                .Replace("{environmentId}", environmentId);
+                .Replace("{environmentId}", Client.EncodePath(environmentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -388,7 +397,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/keys/{keyId}"
-                .Replace("{keyId}", keyId);
+                .Replace("{keyId}", Client.EncodePath(keyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -428,7 +437,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/keys/{keyId}"
-                .Replace("{keyId}", keyId);
+                .Replace("{keyId}", Client.EncodePath(keyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -473,7 +482,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/keys/{keyId}"
-                .Replace("{keyId}", keyId);
+                .Replace("{keyId}", Client.EncodePath(keyId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -618,7 +627,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/mock-phones/{number}"
-                .Replace("{number}", number);
+                .Replace("{number}", Client.EncodePath(number));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -658,7 +667,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/mock-phones/{number}"
-                .Replace("{number}", number);
+                .Replace("{number}", Client.EncodePath(number));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -700,7 +709,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/mock-phones/{number}"
-                .Replace("{number}", number);
+                .Replace("{number}", Client.EncodePath(number));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2661,7 +2670,7 @@ namespace Appwrite.Services
         public Task<object> GetOAuth2Provider(Appwrite.Enums.ProjectOAuthProviderId providerId)
         {
             var apiPath = "/project/oauth2/{providerId}"
-                .Replace("{providerId}", providerId.Value);
+                .Replace("{providerId}", Client.EncodePath(providerId.Value));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2961,7 +2970,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/platforms/android/{platformId}"
-                .Replace("{platformId}", platformId);
+                .Replace("{platformId}", Client.EncodePath(platformId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3044,7 +3053,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/platforms/apple/{platformId}"
-                .Replace("{platformId}", platformId);
+                .Replace("{platformId}", Client.EncodePath(platformId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3126,7 +3135,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/platforms/linux/{platformId}"
-                .Replace("{platformId}", platformId);
+                .Replace("{platformId}", Client.EncodePath(platformId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3208,7 +3217,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/platforms/web/{platformId}"
-                .Replace("{platformId}", platformId);
+                .Replace("{platformId}", Client.EncodePath(platformId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3290,7 +3299,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/platforms/windows/{platformId}"
-                .Replace("{platformId}", platformId);
+                .Replace("{platformId}", Client.EncodePath(platformId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3333,7 +3342,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/platforms/{platformId}"
-                .Replace("{platformId}", platformId);
+                .Replace("{platformId}", Client.EncodePath(platformId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3393,7 +3402,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/platforms/{platformId}"
-                .Replace("{platformId}", platformId);
+                .Replace("{platformId}", Client.EncodePath(platformId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3567,6 +3576,43 @@ namespace Appwrite.Services
         public Task<Models.Project> UpdateDenyFreeEmailPolicy(bool enabled)
         {
             var apiPath = "/project/policies/deny-free-email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Project Convert(Dictionary<string, object> it)
+            {
+                return Models.Project.From(map: it);
+            }
+
+            return _client.Call<Models.Project>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Configures if guests, connections without a signed-in user, may subscribe
+        /// to realtime channels. When enabled, a guest can still connect and sign in
+        /// over the connection, but cannot subscribe until it does.
+        /// </para>
+        /// </summary>
+        public Task<Models.Project> UpdateDenyRealtimeGuestsPolicy(bool enabled)
+        {
+            var apiPath = "/project/policies/deny-realtime-guests";
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4171,7 +4217,7 @@ namespace Appwrite.Services
         public Task<object> GetPolicy(Appwrite.Enums.ProjectPolicyId policyId)
         {
             var apiPath = "/project/policies/{policyId}"
-                .Replace("{policyId}", policyId.Value);
+                .Replace("{policyId}", Client.EncodePath(policyId.Value));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4254,7 +4300,11 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.PolicyDenyCorporateEmail.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue18) && idValue18?.ToString() == "passkey")
+                if (it.TryGetValue("$id", out var idValue18) && idValue18?.ToString() == "deny-realtime-guests")
+                {
+                    return Appwrite.Models.PolicyDenyRealtimeGuests.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue19) && idValue19?.ToString() == "passkey")
                 {
                     return Appwrite.Models.PolicyPasskey.From(map: it);
                 }
@@ -4278,7 +4328,7 @@ namespace Appwrite.Services
         public Task<Models.Project> UpdateProtocol(Appwrite.Enums.ProjectProtocolId protocolId, bool enabled)
         {
             var apiPath = "/project/protocols/{protocolId}"
-                .Replace("{protocolId}", protocolId.Value);
+                .Replace("{protocolId}", Client.EncodePath(protocolId.Value));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4315,7 +4365,7 @@ namespace Appwrite.Services
         public Task<Models.Project> UpdateService(Appwrite.Enums.ProjectServiceId serviceId, bool enabled)
         {
             var apiPath = "/project/services/{serviceId}"
-                .Replace("{serviceId}", serviceId.Value);
+                .Replace("{serviceId}", Client.EncodePath(serviceId.Value));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4341,6 +4391,38 @@ namespace Appwrite.Services
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete all sessions in the project. Any session created before this request
+        /// will be invalidated immediately: users will be signed out of every active
+        /// client (web, mobile, server SDKs, JWTs), and will be able to sign in again
+        /// afterwards. API keys are not affected by this action.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteSessions()
+        {
+            var apiPath = "/project/sessions";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 
@@ -4509,7 +4591,7 @@ namespace Appwrite.Services
         public Task<Models.EmailTemplate> GetEmailTemplate(Appwrite.Enums.ProjectEmailTemplateId templateId, Appwrite.Enums.ProjectEmailTemplateLocale? locale = null)
         {
             var apiPath = "/project/templates/email/{templateId}"
-                .Replace("{templateId}", templateId.Value);
+                .Replace("{templateId}", Client.EncodePath(templateId.Value));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4624,7 +4706,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/variables/{variableId}"
-                .Replace("{variableId}", variableId);
+                .Replace("{variableId}", Client.EncodePath(variableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4663,7 +4745,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/variables/{variableId}"
-                .Replace("{variableId}", variableId);
+                .Replace("{variableId}", Client.EncodePath(variableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -4707,7 +4789,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/project/variables/{variableId}"
-                .Replace("{variableId}", variableId);
+                .Replace("{variableId}", Client.EncodePath(variableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

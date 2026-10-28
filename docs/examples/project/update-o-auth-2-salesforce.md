@@ -15,7 +15,7 @@ Appwrite.Models.OAuth2Salesforce result = await project.UpdateOAuth2Salesforce(
     customerKey: "<CUSTOMER_KEY>", // optional
     customerSecret: "<CUSTOMER_SECRET>", // optional
     enabled: false, // optional
-    prompt: new List&lt;ProjectOAuth2SalesforcePrompt&gt; { ProjectOAuth2SalesforcePrompt.Login } // optional
+    prompt: new List<ProjectOAuth2SalesforcePrompt> { ProjectOAuth2SalesforcePrompt.Login } // optional
 );
 
 ```

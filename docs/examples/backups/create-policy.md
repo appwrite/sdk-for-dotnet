@@ -13,7 +13,7 @@ Backups backups = new Backups(client);
 
 Appwrite.Models.BackupPolicy result = await backups.CreatePolicy(
     policyId: "<POLICY_ID>",
-    services: new List&lt;BackupServices&gt; { BackupServices.Databases },
+    services: new List<BackupServices> { BackupServices.Databases },
     retention: 1,
     schedule: "",
     name: "<NAME>", // optional

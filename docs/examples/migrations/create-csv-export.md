@@ -1,0 +1,26 @@
+```csharp
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
+    .SetKey("<YOUR_API_KEY>"); // Your secret API key
+
+Migrations migrations = new Migrations(client);
+
+Appwrite.Models.Migration result = await migrations.CreateCSVExport(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    filename: "<FILENAME>",
+    columns: new List<string>(), // optional
+    queries: new List<string>(), // optional
+    delimiter: "<DELIMITER>", // optional
+    enclosure: "<ENCLOSURE>", // optional
+    escape: "<ESCAPE>", // optional
+    header: false, // optional
+    notify: false // optional
+);
+
+```

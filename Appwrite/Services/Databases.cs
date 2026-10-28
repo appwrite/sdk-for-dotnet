@@ -176,7 +176,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/transactions/{transactionId}"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -216,7 +216,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/transactions/{transactionId}"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -259,7 +259,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/transactions/{transactionId}"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -295,7 +295,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/transactions/{transactionId}/operations"
-                .Replace("{transactionId}", transactionId);
+                .Replace("{transactionId}", Client.EncodePath(transactionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -338,7 +338,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -378,7 +378,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -423,7 +423,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -460,7 +460,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -506,7 +506,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections"
-                .Replace("{databaseId}", databaseId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -561,8 +561,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -607,8 +607,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -661,8 +661,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -703,8 +703,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -753,8 +753,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/bigint"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -814,9 +814,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/bigint/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -869,8 +869,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -927,9 +927,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/boolean/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -979,8 +979,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1037,9 +1037,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/datetime/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1090,8 +1090,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1149,9 +1149,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/email/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1203,8 +1203,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1263,9 +1263,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/enum/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1318,8 +1318,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1379,9 +1379,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/float/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1435,8 +1435,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1496,9 +1496,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/integer/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1551,8 +1551,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1610,9 +1610,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/ip/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1662,8 +1662,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1719,9 +1719,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/line/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1772,8 +1772,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/longtext"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1832,9 +1832,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/longtext/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1885,8 +1885,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/mediumtext"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1945,9 +1945,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/mediumtext/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1997,8 +1997,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2054,9 +2054,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/point/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2106,8 +2106,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2163,9 +2163,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/polygon/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2217,8 +2217,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/relationship"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2278,9 +2278,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/relationship/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2330,8 +2330,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2391,9 +2391,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/string/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2445,8 +2445,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/text"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2505,9 +2505,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/text/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2558,8 +2558,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2617,9 +2617,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/url/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2670,8 +2670,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/varchar"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2731,9 +2731,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/varchar/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2789,9 +2789,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2913,9 +2913,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/attributes/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2966,8 +2966,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3019,8 +3019,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3073,8 +3073,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3126,8 +3126,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3177,8 +3177,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3228,8 +3228,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3281,8 +3281,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/query"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3338,9 +3338,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3395,9 +3395,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3452,9 +3452,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3508,9 +3508,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3562,10 +3562,10 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/decrement"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId)
-                .Replace("{attribute}", attribute);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId))
+                .Replace("{attribute}", Client.EncodePath(attribute));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3624,10 +3624,10 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}/{attribute}/increment"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{documentId}", documentId)
-                .Replace("{attribute}", attribute);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{documentId}", Client.EncodePath(documentId))
+                .Replace("{attribute}", Client.EncodePath(attribute));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3676,8 +3676,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3728,8 +3728,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3786,9 +3786,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -3838,9 +3838,9 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/databases/{databaseId}/collections/{collectionId}/indexes/{key}"
-                .Replace("{databaseId}", databaseId)
-                .Replace("{collectionId}", collectionId)
-                .Replace("{key}", key);
+                .Replace("{databaseId}", Client.EncodePath(databaseId))
+                .Replace("{collectionId}", Client.EncodePath(collectionId))
+                .Replace("{key}", Client.EncodePath(key));
 
             var apiParameters = new Dictionary<string, object?>()
             {

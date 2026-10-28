@@ -191,7 +191,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -230,7 +230,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -294,7 +294,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -330,7 +330,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployment"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -372,7 +372,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployments"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -416,7 +416,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployments"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -471,7 +471,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployments/duplicate"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -516,7 +516,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployments/template"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -564,7 +564,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployments/vcs"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -612,8 +612,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployments/{deploymentId}"
-                .Replace("{siteId}", siteId)
-                .Replace("{deploymentId}", deploymentId);
+                .Replace("{siteId}", Client.EncodePath(siteId))
+                .Replace("{deploymentId}", Client.EncodePath(deploymentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -657,8 +657,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployments/{deploymentId}"
-                .Replace("{siteId}", siteId)
-                .Replace("{deploymentId}", deploymentId);
+                .Replace("{siteId}", Client.EncodePath(siteId))
+                .Replace("{deploymentId}", Client.EncodePath(deploymentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -700,8 +700,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployments/{deploymentId}/download"
-                .Replace("{siteId}", siteId)
-                .Replace("{deploymentId}", deploymentId);
+                .Replace("{siteId}", Client.EncodePath(siteId))
+                .Replace("{deploymentId}", Client.EncodePath(deploymentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -746,8 +746,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/deployments/{deploymentId}/status"
-                .Replace("{siteId}", siteId)
-                .Replace("{deploymentId}", deploymentId);
+                .Replace("{siteId}", Client.EncodePath(siteId))
+                .Replace("{deploymentId}", Client.EncodePath(deploymentId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -788,7 +788,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/logs"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -834,8 +834,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/logs/{logId}"
-                .Replace("{siteId}", siteId)
-                .Replace("{logId}", logId);
+                .Replace("{siteId}", Client.EncodePath(siteId))
+                .Replace("{logId}", Client.EncodePath(logId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -879,8 +879,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/logs/{logId}"
-                .Replace("{siteId}", siteId)
-                .Replace("{logId}", logId);
+                .Replace("{siteId}", Client.EncodePath(siteId))
+                .Replace("{logId}", Client.EncodePath(logId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -915,7 +915,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/variables"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -957,7 +957,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/variables"
-                .Replace("{siteId}", siteId);
+                .Replace("{siteId}", Client.EncodePath(siteId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1007,8 +1007,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/variables/{variableId}"
-                .Replace("{siteId}", siteId)
-                .Replace("{variableId}", variableId);
+                .Replace("{siteId}", Client.EncodePath(siteId))
+                .Replace("{variableId}", Client.EncodePath(variableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1052,8 +1052,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/variables/{variableId}"
-                .Replace("{siteId}", siteId)
-                .Replace("{variableId}", variableId);
+                .Replace("{siteId}", Client.EncodePath(siteId))
+                .Replace("{variableId}", Client.EncodePath(variableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1102,8 +1102,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/sites/{siteId}/variables/{variableId}"
-                .Replace("{siteId}", siteId)
-                .Replace("{variableId}", variableId);
+                .Replace("{siteId}", Client.EncodePath(siteId))
+                .Replace("{variableId}", Client.EncodePath(variableId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

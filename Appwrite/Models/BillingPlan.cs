@@ -95,6 +95,15 @@ namespace Appwrite.Models
         [JsonPropertyName("executionsRetentionCount")]
         public long ExecutionsRetentionCount { get; private set; }
 
+        [JsonPropertyName("deploymentRetention")]
+        public long? DeploymentRetention { get; private set; }
+
+        [JsonPropertyName("deploymentRetentionMax")]
+        public long? DeploymentRetentionMax { get; private set; }
+
+        [JsonPropertyName("deploymentsRetentionCount")]
+        public long? DeploymentsRetentionCount { get; private set; }
+
         [JsonPropertyName("GBHours")]
         public long GBHours { get; private set; }
 
@@ -268,6 +277,9 @@ namespace Appwrite.Models
             long sites,
             long executions,
             long executionsRetentionCount,
+            long? deploymentRetention,
+            long? deploymentRetentionMax,
+            long? deploymentsRetentionCount,
             long gBHours,
             long realtime,
             long realtimeMessages,
@@ -346,6 +358,9 @@ namespace Appwrite.Models
             Sites = sites;
             Executions = executions;
             ExecutionsRetentionCount = executionsRetentionCount;
+            DeploymentRetention = deploymentRetention;
+            DeploymentRetentionMax = deploymentRetentionMax;
+            DeploymentsRetentionCount = deploymentsRetentionCount;
             GBHours = gBHours;
             Realtime = realtime;
             RealtimeMessages = realtimeMessages;
@@ -427,6 +442,15 @@ namespace Appwrite.Models
             sites: Convert.ToInt64((map.ContainsKey("sites") ? map["sites"] : 0)),
             executions: Convert.ToInt64((map.ContainsKey("executions") ? map["executions"] : 0)),
             executionsRetentionCount: Convert.ToInt64((map.ContainsKey("executionsRetentionCount") ? map["executionsRetentionCount"] : 1000)),
+            deploymentRetention: map.TryGetValue("deploymentRetention", out var numberRaw29) && numberRaw29 != null
+                                    ? Convert.ToInt64(numberRaw29)
+                                    : null,
+            deploymentRetentionMax: map.TryGetValue("deploymentRetentionMax", out var numberRaw30) && numberRaw30 != null
+                                    ? Convert.ToInt64(numberRaw30)
+                                    : null,
+            deploymentsRetentionCount: map.TryGetValue("deploymentsRetentionCount", out var numberRaw31) && numberRaw31 != null
+                                    ? Convert.ToInt64(numberRaw31)
+                                    : null,
             gBHours: Convert.ToInt64((map.ContainsKey("GBHours") ? map["GBHours"] : 0)),
             realtime: Convert.ToInt64((map.ContainsKey("realtime") ? map["realtime"] : 0)),
             realtimeMessages: Convert.ToInt64((map.ContainsKey("realtimeMessages") ? map["realtimeMessages"] : 0)),
@@ -434,29 +458,29 @@ namespace Appwrite.Models
             topics: Convert.ToInt64((map.ContainsKey("topics") ? map["topics"] : 0)),
             authPhone: Convert.ToInt64((map.ContainsKey("authPhone") ? map["authPhone"] : 0)),
             domains: Convert.ToInt64((map.ContainsKey("domains") ? map["domains"] : 0)),
-            activityLogs: map.TryGetValue("activityLogs", out var numberRaw36) && numberRaw36 != null
-                                    ? Convert.ToInt64(numberRaw36)
+            activityLogs: map.TryGetValue("activityLogs", out var numberRaw39) && numberRaw39 != null
+                                    ? Convert.ToInt64(numberRaw39)
                                     : null,
             usageLogs: Convert.ToInt64((map.ContainsKey("usageLogs") ? map["usageLogs"] : 0)),
-            usageLogsIntervals: map.TryGetValue("usageLogsIntervals", out var arrayRaw38) && arrayRaw38 != null
-                                ? arrayRaw38.ConvertToList<string>()
+            usageLogsIntervals: map.TryGetValue("usageLogsIntervals", out var arrayRaw41) && arrayRaw41 != null
+                                ? arrayRaw41.ConvertToList<string>()
                                 : null,
-            usageAggregateOnlyMetrics: map.TryGetValue("usageAggregateOnlyMetrics", out var arrayRaw39) && arrayRaw39 != null
-                                ? arrayRaw39.ConvertToList<string>()
+            usageAggregateOnlyMetrics: map.TryGetValue("usageAggregateOnlyMetrics", out var arrayRaw42) && arrayRaw42 != null
+                                ? arrayRaw42.ConvertToList<string>()
                                 : null,
             projectInactivityDays: Convert.ToInt64((map.ContainsKey("projectInactivityDays") ? map["projectInactivityDays"] : 0)),
             alertLimit: Convert.ToInt64((map.ContainsKey("alertLimit") ? map["alertLimit"] : 80)),
-            usage: map.TryGetValue("usage", out var objectRaw42) && objectRaw42 != null
-                                    ? Appwrite.Models.UsageBillingPlan.From(map: objectRaw42 is JsonElement jsonObj42 ? jsonObj42.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw42)
+            usage: map.TryGetValue("usage", out var objectRaw45) && objectRaw45 != null
+                                    ? Appwrite.Models.UsageBillingPlan.From(map: objectRaw45 is JsonElement jsonObj45 ? jsonObj45.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw45)
                                     : null,
-            addons: Appwrite.Models.BillingPlanAddon.From(map: map["addons"] is JsonElement jsonObj43 ? jsonObj43.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["addons"]),
+            addons: Appwrite.Models.BillingPlanAddon.From(map: map["addons"] is JsonElement jsonObj46 ? jsonObj46.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["addons"]),
             budgetCapEnabled: (bool)(map.ContainsKey("budgetCapEnabled") ? map["budgetCapEnabled"] : false),
             customSmtp: (bool)(map.ContainsKey("customSmtp") ? map["customSmtp"] : false),
             emailBranding: (bool)(map.ContainsKey("emailBranding") ? map["emailBranding"] : false),
             requiresPaymentMethod: (bool)(map.ContainsKey("requiresPaymentMethod") ? map["requiresPaymentMethod"] : true),
             requiresBillingAddress: (bool)(map.ContainsKey("requiresBillingAddress") ? map["requiresBillingAddress"] : false),
-            eligibleCountries: map.TryGetValue("eligibleCountries", out var arrayRaw49) && arrayRaw49 != null
-                                ? arrayRaw49.ConvertToList<string>()
+            eligibleCountries: map.TryGetValue("eligibleCountries", out var arrayRaw52) && arrayRaw52 != null
+                                ? arrayRaw52.ConvertToList<string>()
                                 : null,
             isAvailable: (bool)(map.ContainsKey("isAvailable") ? map["isAvailable"] : true),
             selfService: (bool)(map.ContainsKey("selfService") ? map["selfService"] : true),
@@ -471,29 +495,29 @@ namespace Appwrite.Models
             supportsFreeEmailValidation: (bool)(map.ContainsKey("supportsFreeEmailValidation") ? map["supportsFreeEmailValidation"] : false),
             supportsCorporateEmailValidation: (bool)(map.ContainsKey("supportsCorporateEmailValidation") ? map["supportsCorporateEmailValidation"] : false),
             supportsProjectSpecificRoles: (bool)(map.ContainsKey("supportsProjectSpecificRoles") ? map["supportsProjectSpecificRoles"] : false),
-            backupsEnabled: map.TryGetValue("backupsEnabled", out var boolRaw63) && boolRaw63 != null
-                                        ? (bool?)boolRaw63
+            backupsEnabled: map.TryGetValue("backupsEnabled", out var boolRaw66) && boolRaw66 != null
+                                        ? (bool?)boolRaw66
                                         : null,
             usagePerProject: (bool)(map.ContainsKey("usagePerProject") ? map["usagePerProject"] : true),
-            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj65 ? jsonObj65.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
-            backupPolicies: map.TryGetValue("backupPolicies", out var numberRaw66) && numberRaw66 != null
-                                    ? Convert.ToInt64(numberRaw66)
+            supportedAddons: Appwrite.Models.BillingPlanSupportedAddons.From(map: map["supportedAddons"] is JsonElement jsonObj68 ? jsonObj68.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["supportedAddons"]),
+            backupPolicies: map.TryGetValue("backupPolicies", out var numberRaw69) && numberRaw69 != null
+                                    ? Convert.ToInt64(numberRaw69)
                                     : null,
             deploymentSize: Convert.ToInt64((map.ContainsKey("deploymentSize") ? map["deploymentSize"] : 0)),
             buildSize: Convert.ToInt64((map.ContainsKey("buildSize") ? map["buildSize"] : 0)),
             functionsIntervalMinimum: Convert.ToInt64((map.ContainsKey("functionsIntervalMinimum") ? map["functionsIntervalMinimum"] : 0)),
             functionsAllowCron: (bool)(map.ContainsKey("functionsAllowCron") ? map["functionsAllowCron"] : true),
             databasesAllowEncrypt: (bool)(map.ContainsKey("databasesAllowEncrypt") ? map["databasesAllowEncrypt"] : false),
-            limits: map.TryGetValue("limits", out var objectRaw72) && objectRaw72 != null
-                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw72 is JsonElement jsonObj72 ? jsonObj72.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw72)
+            limits: map.TryGetValue("limits", out var objectRaw75) && objectRaw75 != null
+                                    ? Appwrite.Models.BillingPlanLimits.From(map: objectRaw75 is JsonElement jsonObj75 ? jsonObj75.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw75)
                                     : null,
             @group: new Appwrite.Enums.BillingPlanGroup(map["group"].ToString()!),
-            program: map.TryGetValue("program", out var objectRaw74) && objectRaw74 != null
-                                    ? Appwrite.Models.Program.From(map: objectRaw74 is JsonElement jsonObj74 ? jsonObj74.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw74)
+            program: map.TryGetValue("program", out var objectRaw77) && objectRaw77 != null
+                                    ? Appwrite.Models.Program.From(map: objectRaw77 is JsonElement jsonObj77 ? jsonObj77.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw77)
                                     : null,
             databaseComputeCredit: Convert.ToDouble((map.ContainsKey("databaseComputeCredit") ? map["databaseComputeCredit"] : 0)),
-            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw76) && objectRaw76 != null
-                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw76 is JsonElement jsonObj76 ? jsonObj76.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw76)
+            dedicatedDatabases: map.TryGetValue("dedicatedDatabases", out var objectRaw79) && objectRaw79 != null
+                                    ? Appwrite.Models.BillingPlanDedicatedDatabaseLimits.From(map: objectRaw79 is JsonElement jsonObj79 ? jsonObj79.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw79)
                                     : null
         );
 
@@ -527,6 +551,9 @@ namespace Appwrite.Models
             { "sites", Sites },
             { "executions", Executions },
             { "executionsRetentionCount", ExecutionsRetentionCount },
+            { "deploymentRetention", DeploymentRetention },
+            { "deploymentRetentionMax", DeploymentRetentionMax },
+            { "deploymentsRetentionCount", DeploymentsRetentionCount },
             { "GBHours", GBHours },
             { "realtime", Realtime },
             { "realtimeMessages", RealtimeMessages },

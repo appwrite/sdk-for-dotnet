@@ -13,7 +13,7 @@ Oauth2 oauth2 = new Oauth2(client);
 Appwrite.Models.Oauth2Authorize result = await oauth2.AuthorizePost(
     clientId: "<CLIENT_ID>", // optional
     redirectUri: "https://example.com", // optional
-    responseType: "", // optional
+    responseType: null, // optional
     scope: "<SCOPE>", // optional
     state: "<STATE>", // optional
     nonce: "<NONCE>", // optional

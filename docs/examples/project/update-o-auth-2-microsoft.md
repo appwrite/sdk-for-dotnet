@@ -16,7 +16,7 @@ Appwrite.Models.OAuth2Microsoft result = await project.UpdateOAuth2Microsoft(
     applicationSecret: "<APPLICATION_SECRET>", // optional
     tenant: "<TENANT>", // optional
     enabled: false, // optional
-    prompt: new List&lt;ProjectOAuth2MicrosoftPrompt&gt; { ProjectOAuth2MicrosoftPrompt.None } // optional
+    prompt: new List<ProjectOAuth2MicrosoftPrompt> { ProjectOAuth2MicrosoftPrompt.None } // optional
 );
 
 ```

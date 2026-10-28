@@ -14,7 +14,7 @@ Appwrite.Models.BackupPolicy result = await backups.UpdatePolicy(
     policyId: "<POLICY_ID>",
     name: "<NAME>", // optional
     retention: 1, // optional
-    schedule: "", // optional
+    schedule: null, // optional
     enabled: false // optional
 );
 

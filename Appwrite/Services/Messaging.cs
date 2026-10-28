@@ -113,7 +113,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/messages/email/{messageId}"
-                .Replace("{messageId}", messageId);
+                .Replace("{messageId}", Client.EncodePath(messageId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -224,7 +224,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/messages/push/{messageId}"
-                .Replace("{messageId}", messageId);
+                .Replace("{messageId}", Client.EncodePath(messageId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -370,7 +370,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/messages/sms/{messageId}"
-                .Replace("{messageId}", messageId);
+                .Replace("{messageId}", Client.EncodePath(messageId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -419,7 +419,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/messages/sms/{messageId}"
-                .Replace("{messageId}", messageId);
+                .Replace("{messageId}", Client.EncodePath(messageId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -466,7 +466,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/messages/{messageId}"
-                .Replace("{messageId}", messageId);
+                .Replace("{messageId}", Client.EncodePath(messageId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -506,7 +506,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/messages/{messageId}"
-                .Replace("{messageId}", messageId);
+                .Replace("{messageId}", Client.EncodePath(messageId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -541,7 +541,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/messages/{messageId}/targets"
-                .Replace("{messageId}", messageId);
+                .Replace("{messageId}", Client.EncodePath(messageId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -704,7 +704,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/apns/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -751,7 +751,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/apns/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -837,7 +837,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/appwrite/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -959,7 +959,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/fcm/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1002,7 +1002,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/fcm/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1089,7 +1089,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/mailgun/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1178,7 +1178,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/msg91/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1265,7 +1265,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/resend/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1354,7 +1354,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/sendgrid/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1445,7 +1445,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/ses/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1592,7 +1592,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/smtp/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1645,7 +1645,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/smtp/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1738,7 +1738,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/telesign/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1823,7 +1823,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/textmagic/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1908,7 +1908,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/twilio/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -1993,7 +1993,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/vonage/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2039,7 +2039,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2078,7 +2078,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/providers/{providerId}"
-                .Replace("{providerId}", providerId);
+                .Replace("{providerId}", Client.EncodePath(providerId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2190,7 +2190,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/topics/{topicId}"
-                .Replace("{topicId}", topicId);
+                .Replace("{topicId}", Client.EncodePath(topicId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2230,7 +2230,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/topics/{topicId}"
-                .Replace("{topicId}", topicId);
+                .Replace("{topicId}", Client.EncodePath(topicId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2275,7 +2275,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/topics/{topicId}"
-                .Replace("{topicId}", topicId);
+                .Replace("{topicId}", Client.EncodePath(topicId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2310,7 +2310,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/topics/{topicId}/subscribers"
-                .Replace("{topicId}", topicId);
+                .Replace("{topicId}", Client.EncodePath(topicId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2352,7 +2352,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/topics/{topicId}/subscribers"
-                .Replace("{topicId}", topicId);
+                .Replace("{topicId}", Client.EncodePath(topicId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2400,8 +2400,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/topics/{topicId}/subscribers/{subscriberId}"
-                .Replace("{topicId}", topicId)
-                .Replace("{subscriberId}", subscriberId);
+                .Replace("{topicId}", Client.EncodePath(topicId))
+                .Replace("{subscriberId}", Client.EncodePath(subscriberId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -2445,8 +2445,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/messaging/topics/{topicId}/subscribers/{subscriberId}"
-                .Replace("{topicId}", topicId)
-                .Replace("{subscriberId}", subscriberId);
+                .Replace("{topicId}", Client.EncodePath(topicId))
+                .Replace("{subscriberId}", Client.EncodePath(subscriberId));
 
             var apiParameters = new Dictionary<string, object?>()
             {

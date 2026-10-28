@@ -31,8 +31,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tokens/buckets/{bucketId}/files/{fileId}"
-                .Replace("{bucketId}", bucketId)
-                .Replace("{fileId}", fileId);
+                .Replace("{bucketId}", Client.EncodePath(bucketId))
+                .Replace("{fileId}", Client.EncodePath(fileId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -79,8 +79,8 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tokens/buckets/{bucketId}/files/{fileId}"
-                .Replace("{bucketId}", bucketId)
-                .Replace("{fileId}", fileId);
+                .Replace("{bucketId}", Client.EncodePath(bucketId))
+                .Replace("{fileId}", Client.EncodePath(fileId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -121,7 +121,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tokens/{tokenId}"
-                .Replace("{tokenId}", tokenId);
+                .Replace("{tokenId}", Client.EncodePath(tokenId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -161,7 +161,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tokens/{tokenId}"
-                .Replace("{tokenId}", tokenId);
+                .Replace("{tokenId}", Client.EncodePath(tokenId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
@@ -202,7 +202,7 @@ namespace Appwrite.Services
             }
 
             var apiPath = "/tokens/{tokenId}"
-                .Replace("{tokenId}", tokenId);
+                .Replace("{tokenId}", Client.EncodePath(tokenId));
 
             var apiParameters = new Dictionary<string, object?>()
             {
