@@ -35,6 +35,12 @@ namespace Appwrite.Models
         [JsonPropertyName("budgetAlerts")]
         public List<long> BudgetAlerts { get; private set; }
 
+        [JsonPropertyName("budgetNotify")]
+        public List<string> BudgetNotify { get; private set; }
+
+        [JsonPropertyName("budgetCritical")]
+        public List<long> BudgetCritical { get; private set; }
+
         [JsonPropertyName("billingPlan")]
         public string BillingPlan { get; private set; }
 
@@ -98,6 +104,9 @@ namespace Appwrite.Models
         [JsonPropertyName("programDiscordChannelUrl")]
         public string? ProgramDiscordChannelUrl { get; private set; }
 
+        [JsonPropertyName("educationExpiresAt")]
+        public string? EducationExpiresAt { get; private set; }
+
         [JsonPropertyName("billingLimits")]
         public BillingLimits? BillingLimits { get; private set; }
 
@@ -125,6 +134,8 @@ namespace Appwrite.Models
             Preferences prefs,
             long? billingBudget,
             List<long> budgetAlerts,
+            List<string> budgetNotify,
+            List<long> budgetCritical,
             string billingPlan,
             string billingPlanId,
             BillingPlan billingPlanDetails,
@@ -146,6 +157,7 @@ namespace Appwrite.Models
             string? programManagerCalendar,
             string? programDiscordChannelName,
             string? programDiscordChannelUrl,
+            string? educationExpiresAt,
             BillingLimits? billingLimits,
             string? billingPlanDowngrade,
             string? billingTaxId,
@@ -162,6 +174,8 @@ namespace Appwrite.Models
             Prefs = prefs;
             BillingBudget = billingBudget;
             BudgetAlerts = budgetAlerts;
+            BudgetNotify = budgetNotify;
+            BudgetCritical = budgetCritical;
             BillingPlan = billingPlan;
             BillingPlanId = billingPlanId;
             BillingPlanDetails = billingPlanDetails;
@@ -183,6 +197,7 @@ namespace Appwrite.Models
             ProgramManagerCalendar = programManagerCalendar;
             ProgramDiscordChannelName = programDiscordChannelName;
             ProgramDiscordChannelUrl = programDiscordChannelUrl;
+            EducationExpiresAt = educationExpiresAt;
             BillingLimits = billingLimits;
             BillingPlanDowngrade = billingPlanDowngrade;
             BillingTaxId = billingTaxId;
@@ -202,16 +217,18 @@ namespace Appwrite.Models
                                     ? Convert.ToInt64(numberRaw7)
                                     : null,
             budgetAlerts: (map.ContainsKey("budgetAlerts") ? map["budgetAlerts"] : new List<object> { 75 }).ConvertToList<long>(),
+            budgetNotify: (map.ContainsKey("budgetNotify") ? map["budgetNotify"] : new List<object> { "owner", "billing" }).ConvertToList<string>(),
+            budgetCritical: (map.ContainsKey("budgetCritical") ? map["budgetCritical"] : new List<object>()).ConvertToList<long>(),
             billingPlan: (map.ContainsKey("billingPlan") ? map["billingPlan"] : "tier-0").ToString(),
             billingPlanId: (map.ContainsKey("billingPlanId") ? map["billingPlanId"] : "tier-0").ToString(),
-            billingPlanDetails: Appwrite.Models.BillingPlan.From(map: map["billingPlanDetails"] is JsonElement jsonObj11 ? jsonObj11.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["billingPlanDetails"]),
+            billingPlanDetails: Appwrite.Models.BillingPlan.From(map: map["billingPlanDetails"] is JsonElement jsonObj13 ? jsonObj13.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)map["billingPlanDetails"]),
             billingEmail: (map.ContainsKey("billingEmail") ? map["billingEmail"] : "").ToString(),
             billingStartDate: map.TryGetValue("billingStartDate", out var billingStartDate) ? billingStartDate?.ToString() : null,
             billingCurrentInvoiceDate: map.TryGetValue("billingCurrentInvoiceDate", out var billingCurrentInvoiceDate) ? billingCurrentInvoiceDate?.ToString() : null,
             billingNextInvoiceDate: map.TryGetValue("billingNextInvoiceDate", out var billingNextInvoiceDate) ? billingNextInvoiceDate?.ToString() : null,
             billingTrialStartDate: map.TryGetValue("billingTrialStartDate", out var billingTrialStartDate) ? billingTrialStartDate?.ToString() : null,
-            billingTrialDays: map.TryGetValue("billingTrialDays", out var numberRaw17) && numberRaw17 != null
-                                    ? Convert.ToInt64(numberRaw17)
+            billingTrialDays: map.TryGetValue("billingTrialDays", out var numberRaw19) && numberRaw19 != null
+                                    ? Convert.ToInt64(numberRaw19)
                                     : null,
             billingAggregationId: map.TryGetValue("billingAggregationId", out var billingAggregationId) ? billingAggregationId?.ToString() : null,
             billingInvoiceId: map.TryGetValue("billingInvoiceId", out var billingInvoiceId) ? billingInvoiceId?.ToString() : null,
@@ -225,8 +242,9 @@ namespace Appwrite.Models
             programManagerCalendar: map.TryGetValue("programManagerCalendar", out var programManagerCalendar) ? programManagerCalendar?.ToString() : null,
             programDiscordChannelName: map.TryGetValue("programDiscordChannelName", out var programDiscordChannelName) ? programDiscordChannelName?.ToString() : null,
             programDiscordChannelUrl: map.TryGetValue("programDiscordChannelUrl", out var programDiscordChannelUrl) ? programDiscordChannelUrl?.ToString() : null,
-            billingLimits: map.TryGetValue("billingLimits", out var objectRaw30) && objectRaw30 != null
-                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw30 is JsonElement jsonObj30 ? jsonObj30.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw30)
+            educationExpiresAt: map.TryGetValue("educationExpiresAt", out var educationExpiresAt) ? educationExpiresAt?.ToString() : null,
+            billingLimits: map.TryGetValue("billingLimits", out var objectRaw33) && objectRaw33 != null
+                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw33 is JsonElement jsonObj33 ? jsonObj33.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw33)
                                     : null,
             billingPlanDowngrade: map.TryGetValue("billingPlanDowngrade", out var billingPlanDowngrade) ? billingPlanDowngrade?.ToString() : null,
             billingTaxId: map.TryGetValue("billingTaxId", out var billingTaxId) ? billingTaxId?.ToString() : null,
@@ -245,6 +263,8 @@ namespace Appwrite.Models
             { "prefs", Prefs?.ToMap() },
             { "billingBudget", BillingBudget },
             { "budgetAlerts", BudgetAlerts },
+            { "budgetNotify", BudgetNotify },
+            { "budgetCritical", BudgetCritical },
             { "billingPlan", BillingPlan },
             { "billingPlanId", BillingPlanId },
             { "billingPlanDetails", BillingPlanDetails?.ToMap() },
@@ -266,6 +286,7 @@ namespace Appwrite.Models
             { "programManagerCalendar", ProgramManagerCalendar },
             { "programDiscordChannelName", ProgramDiscordChannelName },
             { "programDiscordChannelUrl", ProgramDiscordChannelUrl },
+            { "educationExpiresAt", EducationExpiresAt },
             { "billingLimits", BillingLimits?.ToMap() },
             { "billingPlanDowngrade", BillingPlanDowngrade },
             { "billingTaxId", BillingTaxId },

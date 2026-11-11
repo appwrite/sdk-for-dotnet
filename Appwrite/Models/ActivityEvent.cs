@@ -98,6 +98,9 @@ namespace Appwrite.Models
         [JsonPropertyName("sdkVersion")]
         public string SdkVersion { get; private set; }
 
+        [JsonPropertyName("reason")]
+        public string Reason { get; private set; }
+
         public ActivityEvent(
             string id,
             string actorType,
@@ -127,7 +130,8 @@ namespace Appwrite.Models
             string teamId,
             string hostname,
             string sdk,
-            string sdkVersion
+            string sdkVersion,
+            string reason
         )
         {
             Id = id;
@@ -159,6 +163,7 @@ namespace Appwrite.Models
             Hostname = hostname;
             Sdk = sdk;
             SdkVersion = sdkVersion;
+            Reason = reason;
         }
 
         public static ActivityEvent From(Dictionary<string, object> map) => new ActivityEvent(
@@ -190,7 +195,8 @@ namespace Appwrite.Models
             teamId: (map.ContainsKey("teamId") ? map["teamId"] : "").ToString(),
             hostname: (map.ContainsKey("hostname") ? map["hostname"] : "").ToString(),
             sdk: (map.ContainsKey("sdk") ? map["sdk"] : "").ToString(),
-            sdkVersion: (map.ContainsKey("sdkVersion") ? map["sdkVersion"] : "").ToString()
+            sdkVersion: (map.ContainsKey("sdkVersion") ? map["sdkVersion"] : "").ToString(),
+            reason: (map.ContainsKey("reason") ? map["reason"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -223,7 +229,8 @@ namespace Appwrite.Models
             { "teamId", TeamId },
             { "hostname", Hostname },
             { "sdk", Sdk },
-            { "sdkVersion", SdkVersion }
+            { "sdkVersion", SdkVersion },
+            { "reason", Reason }
         };
     }
 }

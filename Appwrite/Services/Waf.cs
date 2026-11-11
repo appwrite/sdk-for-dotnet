@@ -60,7 +60,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleBypass> CreateBypassRule(string ruleId, string resourceType, string name, string? resourceId = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null)
+        public Task<Models.WafRuleBypass> CreateBypassRule(string ruleId, string resourceType, string name, string? resourceId = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, object? schedule = null)
         {
             var apiPath = "/waf/rules/bypass";
 
@@ -73,7 +73,8 @@ namespace Appwrite.Services
                 { "description", description },
                 { "priority", priority },
                 { "enabled", enabled },
-                { "conditions", conditions }
+                { "conditions", conditions },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -108,7 +109,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleBypass> UpdateBypassRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null)
+        public Task<Models.WafRuleBypass> UpdateBypassRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, object? schedule = null)
         {
             if (ruleId == "")
             {
@@ -126,7 +127,8 @@ namespace Appwrite.Services
                 { "description", description },
                 { "priority", priority },
                 { "enabled", enabled },
-                { "conditions", conditions }
+                { "conditions", conditions },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -164,7 +166,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleChallenge> CreateChallengeRule(string ruleId, string resourceType, string name, string? resourceId = null, string? description = null, string? challengeType = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, long? difficulty = null, long? ttl = null)
+        public Task<Models.WafRuleChallenge> CreateChallengeRule(string ruleId, string resourceType, string name, string? resourceId = null, string? description = null, string? challengeType = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, long? difficulty = null, long? ttl = null, object? schedule = null)
         {
             var apiPath = "/waf/rules/challenge";
 
@@ -180,7 +182,8 @@ namespace Appwrite.Services
                 { "enabled", enabled },
                 { "conditions", conditions },
                 { "difficulty", difficulty },
-                { "ttl", ttl }
+                { "ttl", ttl },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -218,7 +221,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleChallenge> UpdateChallengeRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, string? challengeType = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, long? difficulty = null, long? ttl = null)
+        public Task<Models.WafRuleChallenge> UpdateChallengeRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, string? challengeType = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, long? difficulty = null, long? ttl = null, object? schedule = null)
         {
             if (ruleId == "")
             {
@@ -239,7 +242,8 @@ namespace Appwrite.Services
                 { "enabled", enabled },
                 { "conditions", conditions },
                 { "difficulty", difficulty },
-                { "ttl", ttl }
+                { "ttl", ttl },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -284,7 +288,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleDeny> CreateDenyRule(string ruleId, string resourceType, string name, string? resourceId = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null)
+        public Task<Models.WafRuleDeny> CreateDenyRule(string ruleId, string resourceType, string name, string? resourceId = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, object? schedule = null)
         {
             var apiPath = "/waf/rules/deny";
 
@@ -297,7 +301,8 @@ namespace Appwrite.Services
                 { "description", description },
                 { "priority", priority },
                 { "enabled", enabled },
-                { "conditions", conditions }
+                { "conditions", conditions },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -342,7 +347,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleDeny> UpdateDenyRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null)
+        public Task<Models.WafRuleDeny> UpdateDenyRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, object? schedule = null)
         {
             if (ruleId == "")
             {
@@ -360,7 +365,8 @@ namespace Appwrite.Services
                 { "description", description },
                 { "priority", priority },
                 { "enabled", enabled },
-                { "conditions", conditions }
+                { "conditions", conditions },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -397,7 +403,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleRateLimit> CreateRateLimitRule(string ruleId, string resourceType, string name, long limit, long interval, string? resourceId = null, string? description = null, string? key = null, string? strategy = null, long? maxBucketSize = null, long? priority = null, bool? enabled = null, List<string>? conditions = null)
+        public Task<Models.WafRuleRateLimit> CreateRateLimitRule(string ruleId, string resourceType, string name, long limit, long interval, string? resourceId = null, string? description = null, string? key = null, string? strategy = null, long? maxBucketSize = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, object? schedule = null)
         {
             var apiPath = "/waf/rules/rate-limit";
 
@@ -415,7 +421,8 @@ namespace Appwrite.Services
                 { "maxBucketSize", maxBucketSize },
                 { "priority", priority },
                 { "enabled", enabled },
-                { "conditions", conditions }
+                { "conditions", conditions },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -452,7 +459,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleRateLimit> UpdateRateLimitRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, long? limit = null, long? interval = null, string? key = null, long? maxBucketSize = null, long? priority = null, bool? enabled = null, List<string>? conditions = null)
+        public Task<Models.WafRuleRateLimit> UpdateRateLimitRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, long? limit = null, long? interval = null, string? key = null, long? maxBucketSize = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, object? schedule = null)
         {
             if (ruleId == "")
             {
@@ -474,7 +481,8 @@ namespace Appwrite.Services
                 { "maxBucketSize", maxBucketSize },
                 { "priority", priority },
                 { "enabled", enabled },
-                { "conditions", conditions }
+                { "conditions", conditions },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -509,7 +517,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleRedirect> CreateRedirectRule(string ruleId, string resourceType, string name, string location, long statusCode, string? resourceId = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null)
+        public Task<Models.WafRuleRedirect> CreateRedirectRule(string ruleId, string resourceType, string name, string location, long statusCode, string? resourceId = null, string? description = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, object? schedule = null)
         {
             var apiPath = "/waf/rules/redirect";
 
@@ -524,7 +532,8 @@ namespace Appwrite.Services
                 { "statusCode", statusCode },
                 { "priority", priority },
                 { "enabled", enabled },
-                { "conditions", conditions }
+                { "conditions", conditions },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()
@@ -559,7 +568,7 @@ namespace Appwrite.Services
         /// 
         /// </para>
         /// </summary>
-        public Task<Models.WafRuleRedirect> UpdateRedirectRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, string? location = null, long? statusCode = null, long? priority = null, bool? enabled = null, List<string>? conditions = null)
+        public Task<Models.WafRuleRedirect> UpdateRedirectRule(string ruleId, string? resourceType = null, string? resourceId = null, string? name = null, string? description = null, string? location = null, long? statusCode = null, long? priority = null, bool? enabled = null, List<string>? conditions = null, object? schedule = null)
         {
             if (ruleId == "")
             {
@@ -579,7 +588,8 @@ namespace Appwrite.Services
                 { "statusCode", statusCode },
                 { "priority", priority },
                 { "enabled", enabled },
-                { "conditions", conditions }
+                { "conditions", conditions },
+                { "schedule", schedule }
             };
 
             var apiHeaders = new Dictionary<string, string>()

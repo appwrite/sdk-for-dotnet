@@ -21,7 +21,8 @@ Appwrite.Models.WafRuleChallenge result = await waf.CreateChallengeRule(
     enabled: false, // optional
     conditions: new List<string>(), // optional
     difficulty: 1, // optional
-    ttl: 900 // optional
+    ttl: 900, // optional
+    schedule: [object] // optional
 );
 
 ```

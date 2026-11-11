@@ -336,6 +336,184 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create an account switching device. A device is a container, scoped to one
+        /// browser or app install, that holds multiple sessions and tracks which one
+        /// is active. Once a device exists, session creation endpoints attach the new
+        /// session to it automatically, so a single browser can stay signed in to
+        /// several accounts and switch between them. A device holds at most one
+        /// session per user: signing in again as a user it already holds replaces that
+        /// user's session. The device lives as long as its newest session.
+        /// 
+        /// The device secret is returned in a cookie. Run this on app start: if the
+        /// browser already has a valid device, the existing one is returned with the
+        /// same status code instead of an error, so it is always safe to call.
+        /// 
+        /// Every session that joins the device rotates the device secret and re-issues
+        /// the cookie, so an earlier copy of the secret stops working. A client that
+        /// keeps the secret itself, rather than relying on the cookie, must replace it
+        /// from each session response.
+        /// </para>
+        /// </summary>
+        public Task<Models.Device> CreateDevice()
+        {
+            var apiPath = "/account/devices";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Device Convert(Dictionary<string, object> it)
+            {
+                return Models.Device.From(map: it);
+            }
+
+            return _client.Call<Models.Device>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get the account switching device for the current browser, including every
+        /// session it holds, the name of the user each session belongs to, and the ID
+        /// of the active session. Use the string 'current' to reference the current
+        /// browser's device.
+        /// </para>
+        /// </summary>
+        public Task<Models.Device> GetDevice(string deviceId)
+        {
+            if (deviceId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deviceId\"");
+            }
+
+            var apiPath = "/account/devices/{deviceId}"
+                .Replace("{deviceId}", Client.EncodePath(deviceId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Device Convert(Dictionary<string, object> it)
+            {
+                return Models.Device.From(map: it);
+            }
+
+            return _client.Call<Models.Device>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete the account switching device for the current browser. Every session
+        /// the device holds is signed out, each firing its own session delete event,
+        /// the device is removed, and both the device and session cookies are cleared.
+        /// Use the string 'current' to reference the current browser's device.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteDevice(string deviceId)
+        {
+            if (deviceId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deviceId\"");
+            }
+
+            var apiPath = "/account/devices/{deviceId}"
+                .Replace("{deviceId}", Client.EncodePath(deviceId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
+        /// Switch the active account on an account switching device to one of the
+        /// sessions it holds. The chosen session becomes active and its secret is
+        /// written to the browser's session cookie, so subsequent requests
+        /// authenticate as that account. Use the string 'current' to reference the
+        /// current browser's device.
+        /// 
+        /// Switching rotates the chosen session's secret. Any other holder of that
+        /// session, such as a copy kept elsewhere, stops working, so a session should
+        /// not be shared across devices.
+        /// </para>
+        /// </summary>
+        public Task<Models.Session> UpdateDeviceSession(string deviceId, string sessionId)
+        {
+            if (deviceId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"deviceId\"");
+            }
+
+            var apiPath = "/account/devices/{deviceId}/session"
+                .Replace("{deviceId}", Client.EncodePath(deviceId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "sessionId", sessionId }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Session Convert(Dictionary<string, object> it)
+            {
+                return Models.Session.From(map: it);
+            }
+
+            return _client.Call<Models.Session>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update currently logged in user account email address. After changing user
         /// address, the user confirmation status will get reset. A new confirmation
         /// email is not sent automatically however you can use the send confirmation

@@ -53,6 +53,9 @@ namespace Appwrite.Models
         [JsonPropertyName("config")]
         public object Config { get; private set; }
 
+        [JsonPropertyName("schedule")]
+        public object? Schedule { get; private set; }
+
         [JsonPropertyName("location")]
         public string Location { get; private set; }
 
@@ -74,6 +77,7 @@ namespace Appwrite.Models
             bool enabled,
             List<object> conditions,
             object config,
+            object? schedule,
             string location,
             long statusCode
         )
@@ -92,6 +96,7 @@ namespace Appwrite.Models
             Enabled = enabled;
             Conditions = conditions;
             Config = config;
+            Schedule = schedule;
             Location = location;
             StatusCode = statusCode;
         }
@@ -111,6 +116,7 @@ namespace Appwrite.Models
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             conditions: (map.ContainsKey("conditions") ? map["conditions"] : new List<object>()).ConvertToList<object>(),
             config: (map.ContainsKey("config") ? map["config"] : new Dictionary<string, object>()),
+            schedule: map.TryGetValue("schedule", out var objectRaw15) ? objectRaw15 : null,
             location: (map.ContainsKey("location") ? map["location"] : "/").ToString(),
             statusCode: Convert.ToInt64((map.ContainsKey("statusCode") ? map["statusCode"] : 302))
         );
@@ -131,6 +137,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "conditions", Conditions },
             { "config", Config },
+            { "schedule", Schedule },
             { "location", Location },
             { "statusCode", StatusCode }
         };

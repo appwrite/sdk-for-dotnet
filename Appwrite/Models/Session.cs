@@ -23,6 +23,9 @@ namespace Appwrite.Models
         [JsonPropertyName("userId")]
         public string UserId { get; private set; }
 
+        [JsonPropertyName("userName")]
+        public string UserName { get; private set; }
+
         [JsonPropertyName("expire")]
         public string Expire { get; private set; }
 
@@ -103,6 +106,7 @@ namespace Appwrite.Models
             string createdAt,
             string updatedAt,
             string userId,
+            string userName,
             string expire,
             string provider,
             string providerUid,
@@ -134,6 +138,7 @@ namespace Appwrite.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             UserId = userId;
+            UserName = userName;
             Expire = expire;
             Provider = provider;
             ProviderUid = providerUid;
@@ -166,6 +171,7 @@ namespace Appwrite.Models
             createdAt: (map.ContainsKey("$createdAt") ? map["$createdAt"] : "").ToString(),
             updatedAt: (map.ContainsKey("$updatedAt") ? map["$updatedAt"] : "").ToString(),
             userId: (map.ContainsKey("userId") ? map["userId"] : "").ToString(),
+            userName: (map.ContainsKey("userName") ? map["userName"] : "").ToString(),
             expire: (map.ContainsKey("expire") ? map["expire"] : "").ToString(),
             provider: (map.ContainsKey("provider") ? map["provider"] : "").ToString(),
             providerUid: (map.ContainsKey("providerUid") ? map["providerUid"] : "").ToString(),
@@ -199,6 +205,7 @@ namespace Appwrite.Models
             { "$createdAt", CreatedAt },
             { "$updatedAt", UpdatedAt },
             { "userId", UserId },
+            { "userName", UserName },
             { "expire", Expire },
             { "provider", Provider },
             { "providerUid", ProviderUid },

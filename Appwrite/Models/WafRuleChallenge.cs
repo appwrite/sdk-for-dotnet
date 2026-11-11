@@ -53,6 +53,9 @@ namespace Appwrite.Models
         [JsonPropertyName("config")]
         public object Config { get; private set; }
 
+        [JsonPropertyName("schedule")]
+        public object? Schedule { get; private set; }
+
         [JsonPropertyName("challengeType")]
         public string ChallengeType { get; private set; }
 
@@ -77,6 +80,7 @@ namespace Appwrite.Models
             bool enabled,
             List<object> conditions,
             object config,
+            object? schedule,
             string challengeType,
             long difficulty,
             long ttl
@@ -96,6 +100,7 @@ namespace Appwrite.Models
             Enabled = enabled;
             Conditions = conditions;
             Config = config;
+            Schedule = schedule;
             ChallengeType = challengeType;
             Difficulty = difficulty;
             Ttl = ttl;
@@ -116,6 +121,7 @@ namespace Appwrite.Models
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             conditions: (map.ContainsKey("conditions") ? map["conditions"] : new List<object>()).ConvertToList<object>(),
             config: (map.ContainsKey("config") ? map["config"] : new Dictionary<string, object>()),
+            schedule: map.TryGetValue("schedule", out var objectRaw15) ? objectRaw15 : null,
             challengeType: (map.ContainsKey("challengeType") ? map["challengeType"] : "compute").ToString(),
             difficulty: Convert.ToInt64((map.ContainsKey("difficulty") ? map["difficulty"] : 3)),
             ttl: Convert.ToInt64((map.ContainsKey("ttl") ? map["ttl"] : 1800))
@@ -137,6 +143,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "conditions", Conditions },
             { "config", Config },
+            { "schedule", Schedule },
             { "challengeType", ChallengeType },
             { "difficulty", Difficulty },
             { "ttl", Ttl }
