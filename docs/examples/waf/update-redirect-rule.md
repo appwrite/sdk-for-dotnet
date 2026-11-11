@@ -20,7 +20,8 @@ Appwrite.Models.WafRuleRedirect result = await waf.UpdateRedirectRule(
     statusCode: 300, // optional
     priority: -100000, // optional
     enabled: false, // optional
-    conditions: new List<string>() // optional
+    conditions: new List<string>(), // optional
+    schedule: [object] // optional
 );
 
 ```

@@ -22,7 +22,8 @@ Appwrite.Models.WafRuleRateLimit result = await waf.UpdateRateLimitRule(
     maxBucketSize: 1, // optional
     priority: -100000, // optional
     enabled: false, // optional
-    conditions: new List<string>() // optional
+    conditions: new List<string>(), // optional
+    schedule: [object] // optional
 );
 
 ```

@@ -114,10 +114,11 @@ namespace Appwrite.Services
 
         /// <para>
         /// Get a list of all environments of the project. You can use the query params
-        /// to filter your results.
+        /// to filter your results. An environment is listed by its ID, the one passed
+        /// in the `X-Appwrite-Environment` header to act in it.
         /// </para>
         /// </summary>
-        public Task<Models.ProjectList> ListEnvironments(List<string>? queries = null, bool? total = null)
+        public Task<Models.EnvironmentList> ListEnvironments(List<string>? queries = null, bool? total = null)
         {
             var apiPath = "/project/environments";
 
@@ -134,12 +135,12 @@ namespace Appwrite.Services
             };
 
 
-            static Models.ProjectList Convert(Dictionary<string, object> it)
+            static Models.EnvironmentList Convert(Dictionary<string, object> it)
             {
-                return Models.ProjectList.From(map: it);
+                return Models.EnvironmentList.From(map: it);
             }
 
-            return _client.Call<Models.ProjectList>(
+            return _client.Call<Models.EnvironmentList>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -151,7 +152,11 @@ namespace Appwrite.Services
         /// <para>
         /// Create a new environment of the project. An environment is a separate
         /// project in the same organization and region, with its own resources and
-        /// users. Its usage is billed under the project it belongs to.
+        /// users. Its usage is billed under the project it belongs to. Requests act in
+        /// the environment when they carry the project's ID in the
+        /// `X-Appwrite-Project` header and the environment's ID in the
+        /// `X-Appwrite-Environment` header; the environment has no project ID of its
+        /// own to pass.
         /// 
         /// Pass `resources` to copy the project into the environment. The environment
         /// is returned at once and the copy runs as a migration of the environment,
@@ -162,7 +167,7 @@ namespace Appwrite.Services
         /// users left behind are not copied.
         /// </para>
         /// </summary>
-        public Task<Models.Project> CreateEnvironment(string environmentId, string name, List<Appwrite.Enums.EnvironmentResource>? resources = null)
+        public Task<Models.Environment> CreateEnvironment(string environmentId, string name, List<Appwrite.Enums.EnvironmentResource>? resources = null)
         {
             var apiPath = "/project/environments";
 
@@ -181,12 +186,12 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Project Convert(Dictionary<string, object> it)
+            static Models.Environment Convert(Dictionary<string, object> it)
             {
-                return Models.Project.From(map: it);
+                return Models.Environment.From(map: it);
             }
 
-            return _client.Call<Models.Project>(
+            return _client.Call<Models.Environment>(
                 method: "POST",
                 path: apiPath,
                 headers: apiHeaders,
@@ -196,10 +201,11 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Get an environment of the project by its unique ID.
+        /// Get an environment of the project by its ID, the one passed in the
+        /// `X-Appwrite-Environment` header to act in it.
         /// </para>
         /// </summary>
-        public Task<Models.Project> GetEnvironment(string environmentId)
+        public Task<Models.Environment> GetEnvironment(string environmentId)
         {
             if (environmentId == "")
             {
@@ -220,12 +226,12 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Project Convert(Dictionary<string, object> it)
+            static Models.Environment Convert(Dictionary<string, object> it)
             {
-                return Models.Project.From(map: it);
+                return Models.Environment.From(map: it);
             }
 
-            return _client.Call<Models.Project>(
+            return _client.Call<Models.Environment>(
                 method: "GET",
                 path: apiPath,
                 headers: apiHeaders,
@@ -235,10 +241,11 @@ namespace Appwrite.Services
         }
 
         /// <para>
-        /// Update the name of an environment of the project.
+        /// Update the name of an environment of the project. The environment ID cannot
+        /// be changed.
         /// </para>
         /// </summary>
-        public Task<Models.Project> UpdateEnvironment(string environmentId, string name)
+        public Task<Models.Environment> UpdateEnvironment(string environmentId, string name)
         {
             if (environmentId == "")
             {
@@ -261,12 +268,12 @@ namespace Appwrite.Services
             };
 
 
-            static Models.Project Convert(Dictionary<string, object> it)
+            static Models.Environment Convert(Dictionary<string, object> it)
             {
-                return Models.Project.From(map: it);
+                return Models.Environment.From(map: it);
             }
 
-            return _client.Call<Models.Project>(
+            return _client.Call<Models.Environment>(
                 method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
@@ -2403,6 +2410,80 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 Vipps MobilePay configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Vipps> UpdateOAuth2Vipps(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/vipps";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Vipps Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Vipps.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Vipps>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the project OAuth2 Vipps MobilePay Sandbox configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Vipps> UpdateOAuth2VippsSandbox(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/vippsSandbox";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Vipps Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Vipps.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Vipps>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Webflow configuration.
         /// </para>
         /// </summary>
@@ -2813,61 +2894,77 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.OAuth2Facebook.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue33) && idValue33?.ToString() == "tradeshiftBox")
+                if (it.TryGetValue("$id", out var idValue33) && idValue33?.ToString() == "tradeshift")
                 {
                     return Appwrite.Models.OAuth2Tradeshift.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue34) && idValue34?.ToString() == "paypalSandbox")
+                if (it.TryGetValue("$id", out var idValue34) && idValue34?.ToString() == "tradeshiftBox")
+                {
+                    return Appwrite.Models.OAuth2Tradeshift.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue35) && idValue35?.ToString() == "paypal")
                 {
                     return Appwrite.Models.OAuth2Paypal.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue35) && idValue35?.ToString() == "gitlab")
+                if (it.TryGetValue("$id", out var idValue36) && idValue36?.ToString() == "paypalSandbox")
+                {
+                    return Appwrite.Models.OAuth2Paypal.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue37) && idValue37?.ToString() == "gitlab")
                 {
                     return Appwrite.Models.OAuth2Gitlab.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue36) && idValue36?.ToString() == "authentik")
+                if (it.TryGetValue("$id", out var idValue38) && idValue38?.ToString() == "authentik")
                 {
                     return Appwrite.Models.OAuth2Authentik.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue37) && idValue37?.ToString() == "auth0")
+                if (it.TryGetValue("$id", out var idValue39) && idValue39?.ToString() == "auth0")
                 {
                     return Appwrite.Models.OAuth2Auth0.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue38) && idValue38?.ToString() == "fusionauth")
+                if (it.TryGetValue("$id", out var idValue40) && idValue40?.ToString() == "fusionauth")
                 {
                     return Appwrite.Models.OAuth2FusionAuth.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue39) && idValue39?.ToString() == "keycloak")
+                if (it.TryGetValue("$id", out var idValue41) && idValue41?.ToString() == "keycloak")
                 {
                     return Appwrite.Models.OAuth2Keycloak.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue40) && idValue40?.ToString() == "oidc")
+                if (it.TryGetValue("$id", out var idValue42) && idValue42?.ToString() == "oidc")
                 {
                     return Appwrite.Models.OAuth2Oidc.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue41) && idValue41?.ToString() == "apple")
+                if (it.TryGetValue("$id", out var idValue43) && idValue43?.ToString() == "apple")
                 {
                     return Appwrite.Models.OAuth2Apple.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue42) && idValue42?.ToString() == "okta")
+                if (it.TryGetValue("$id", out var idValue44) && idValue44?.ToString() == "okta")
                 {
                     return Appwrite.Models.OAuth2Okta.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue43) && idValue43?.ToString() == "kick")
+                if (it.TryGetValue("$id", out var idValue45) && idValue45?.ToString() == "kick")
                 {
                     return Appwrite.Models.OAuth2Kick.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue44) && idValue44?.ToString() == "microsoft")
+                if (it.TryGetValue("$id", out var idValue46) && idValue46?.ToString() == "microsoft")
                 {
                     return Appwrite.Models.OAuth2Microsoft.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue45) && idValue45?.ToString() == "tiktok")
+                if (it.TryGetValue("$id", out var idValue47) && idValue47?.ToString() == "tiktok")
                 {
                     return Appwrite.Models.OAuth2TikTok.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue46) && idValue46?.ToString() == "kakao")
+                if (it.TryGetValue("$id", out var idValue48) && idValue48?.ToString() == "kakao")
                 {
                     return Appwrite.Models.OAuth2Kakao.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue49) && idValue49?.ToString() == "vipps")
+                {
+                    return Appwrite.Models.OAuth2Vipps.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue50) && idValue50?.ToString() == "vippsSandbox")
+                {
+                    return Appwrite.Models.OAuth2Vipps.From(map: it);
                 }
                 throw new System.Exception("Unable to match response to any expected response model");
             }
@@ -3453,6 +3550,44 @@ namespace Appwrite.Services
 
             return _client.Call<Models.PolicyList>(
                 method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update whether account devices are enabled for the project. When enabled, a
+        /// browser can create an account device that holds multiple sessions and
+        /// switch between them. When disabled, account devices can no longer be
+        /// created, so each browser is limited to a single active session.
+        /// </para>
+        /// </summary>
+        public Task<Models.Project> UpdateAccountDevicesPolicy(bool enabled)
+        {
+            var apiPath = "/project/policies/account-devices";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Project Convert(Dictionary<string, object> it)
+            {
+                return Models.Project.From(map: it);
+            }
+
+            return _client.Call<Models.Project>(
+                method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
@@ -4308,11 +4443,86 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.PolicyPasskey.From(map: it);
                 }
+                if (it.TryGetValue("$id", out var idValue20) && idValue20?.ToString() == "account-devices")
+                {
+                    return Appwrite.Models.PolicyAccountDevices.From(map: it);
+                }
                 throw new System.Exception("Unable to match response to any expected response model");
             }
 
             return _client.Call<object>(
                 method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get the project preferences. Preferences are a key-value object stored on
+        /// the project for anyone working on it.
+        /// </para>
+        /// </summary>
+        public Task<Models.Preferences> GetPrefs()
+        {
+            var apiPath = "/project/prefs";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Preferences Convert(Dictionary<string, object> it)
+            {
+                return Models.Preferences.From(map: it);
+            }
+
+            return _client.Call<Models.Preferences>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the project preferences. The object you pass is stored as is and
+        /// replaces any previous value. The maximum allowed prefs size is 64kB and
+        /// throws an error if exceeded.
+        /// </para>
+        /// </summary>
+        public Task<Models.Preferences> UpdatePrefs(object prefs)
+        {
+            var apiPath = "/project/prefs";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "prefs", prefs }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Preferences Convert(Dictionary<string, object> it)
+            {
+                return Models.Preferences.From(map: it);
+            }
+
+            return _client.Call<Models.Preferences>(
+                method: "PUT",
                 path: apiPath,
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,

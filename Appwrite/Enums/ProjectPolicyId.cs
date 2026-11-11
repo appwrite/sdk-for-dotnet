@@ -30,5 +30,6 @@ namespace Appwrite.Enums
         public static ProjectPolicyId DenyCorporateEmail => new ProjectPolicyId("deny-corporate-email");
         public static ProjectPolicyId DenyRealtimeGuests => new ProjectPolicyId("deny-realtime-guests");
         public static ProjectPolicyId Passkey => new ProjectPolicyId("passkey");
+        public static ProjectPolicyId AccountDevices => new ProjectPolicyId("account-devices");
     }
 }

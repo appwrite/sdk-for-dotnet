@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Appwrite.Models.ProjectList result = await project.ListEnvironments(
+Appwrite.Models.EnvironmentList result = await project.ListEnvironments(
     queries: new List<string>(), // optional
     total: false // optional
 );

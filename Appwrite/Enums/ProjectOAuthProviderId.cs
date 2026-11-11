@@ -53,6 +53,8 @@ namespace Appwrite.Enums
         public static ProjectOAuthProviderId Tradeshift => new ProjectOAuthProviderId("tradeshift");
         public static ProjectOAuthProviderId TradeshiftBox => new ProjectOAuthProviderId("tradeshiftBox");
         public static ProjectOAuthProviderId Twitch => new ProjectOAuthProviderId("twitch");
+        public static ProjectOAuthProviderId Vipps => new ProjectOAuthProviderId("vipps");
+        public static ProjectOAuthProviderId VippsSandbox => new ProjectOAuthProviderId("vippsSandbox");
         public static ProjectOAuthProviderId Webflow => new ProjectOAuthProviderId("webflow");
         public static ProjectOAuthProviderId Wordpress => new ProjectOAuthProviderId("wordpress");
         public static ProjectOAuthProviderId X => new ProjectOAuthProviderId("x");
