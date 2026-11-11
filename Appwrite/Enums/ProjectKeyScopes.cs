@@ -99,6 +99,10 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes RulesWrite => new ProjectKeyScopes("rules.write");
         public static ProjectKeyScopes WebhooksRead => new ProjectKeyScopes("webhooks.read");
         public static ProjectKeyScopes WebhooksWrite => new ProjectKeyScopes("webhooks.write");
+        public static ProjectKeyScopes MonitorsRead => new ProjectKeyScopes("monitors.read");
+        public static ProjectKeyScopes MonitorsWrite => new ProjectKeyScopes("monitors.write");
+        public static ProjectKeyScopes AlertsRead => new ProjectKeyScopes("alerts.read");
+        public static ProjectKeyScopes AlertsWrite => new ProjectKeyScopes("alerts.write");
         public static ProjectKeyScopes LocaleRead => new ProjectKeyScopes("locale.read");
         public static ProjectKeyScopes AvatarsRead => new ProjectKeyScopes("avatars.read");
         public static ProjectKeyScopes AvatarsWrite => new ProjectKeyScopes("avatars.write");
@@ -114,6 +118,8 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes InsightsWrite => new ProjectKeyScopes("insights.write");
         public static ProjectKeyScopes ReportsRead => new ProjectKeyScopes("reports.read");
         public static ProjectKeyScopes ReportsWrite => new ProjectKeyScopes("reports.write");
+        public static ProjectKeyScopes ReviewsRead => new ProjectKeyScopes("reviews.read");
+        public static ProjectKeyScopes ReviewsWrite => new ProjectKeyScopes("reviews.write");
         public static ProjectKeyScopes PresencesRead => new ProjectKeyScopes("presences.read");
         public static ProjectKeyScopes PresencesWrite => new ProjectKeyScopes("presences.write");
         public static ProjectKeyScopes DedicatedDatabasesExecute => new ProjectKeyScopes("dedicatedDatabases.execute");

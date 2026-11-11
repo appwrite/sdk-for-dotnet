@@ -53,6 +53,9 @@ namespace Appwrite.Models
         [JsonPropertyName("config")]
         public object Config { get; private set; }
 
+        [JsonPropertyName("schedule")]
+        public object? Schedule { get; private set; }
+
         public WafRuleDeny(
             string id,
             string createdAt,
@@ -67,7 +70,8 @@ namespace Appwrite.Models
             long priority,
             bool enabled,
             List<object> conditions,
-            object config
+            object config,
+            object? schedule
         )
         {
             Id = id;
@@ -84,6 +88,7 @@ namespace Appwrite.Models
             Enabled = enabled;
             Conditions = conditions;
             Config = config;
+            Schedule = schedule;
         }
 
         public static WafRuleDeny From(Dictionary<string, object> map) => new WafRuleDeny(
@@ -100,7 +105,8 @@ namespace Appwrite.Models
             priority: Convert.ToInt64((map.ContainsKey("priority") ? map["priority"] : 0)),
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             conditions: (map.ContainsKey("conditions") ? map["conditions"] : new List<object>()).ConvertToList<object>(),
-            config: (map.ContainsKey("config") ? map["config"] : new Dictionary<string, object>())
+            config: (map.ContainsKey("config") ? map["config"] : new Dictionary<string, object>()),
+            schedule: map.TryGetValue("schedule", out var objectRaw15) ? objectRaw15 : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -118,7 +124,8 @@ namespace Appwrite.Models
             { "priority", Priority },
             { "enabled", Enabled },
             { "conditions", Conditions },
-            { "config", Config }
+            { "config", Config },
+            { "schedule", Schedule }
         };
     }
 }

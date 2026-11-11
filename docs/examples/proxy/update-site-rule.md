@@ -1,0 +1,19 @@
+```csharp
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
+    .SetKey("<YOUR_API_KEY>"); // Your secret API key
+
+Proxy proxy = new Proxy(client);
+
+Appwrite.Models.ProxyRule result = await proxy.UpdateSiteRule(
+    ruleId: "<RULE_ID>",
+    siteId: "<SITE_ID>",
+    branch: "<BRANCH>" // optional
+);
+
+```

@@ -1,0 +1,22 @@
+```csharp
+using Appwrite;
+using Appwrite.Enums;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
+    .SetKey("<YOUR_API_KEY>"); // Your secret API key
+
+Proxy proxy = new Proxy(client);
+
+Appwrite.Models.ProxyRule result = await proxy.UpdateRedirectRule(
+    ruleId: "<RULE_ID>",
+    url: "https://example.com",
+    statusCode: StatusCode.MovedPermanently,
+    resourceId: "<RESOURCE_ID>",
+    resourceType: ProxyResourceType.Site
+);
+
+```

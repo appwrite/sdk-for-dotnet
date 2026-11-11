@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Appwrite.Models.Project result = await project.GetEnvironment(
+Appwrite.Models.Environment result = await project.GetEnvironment(
     environmentId: "<ENVIRONMENT_ID>"
 );
 

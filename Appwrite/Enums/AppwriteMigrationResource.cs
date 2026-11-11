@@ -47,6 +47,7 @@ namespace Appwrite.Enums
         public static AppwriteMigrationResource ProjectVariable => new AppwriteMigrationResource("project-variable");
         public static AppwriteMigrationResource ProjectProtocols => new AppwriteMigrationResource("project-protocols");
         public static AppwriteMigrationResource ProjectLabels => new AppwriteMigrationResource("project-labels");
+        public static AppwriteMigrationResource ProjectPreferences => new AppwriteMigrationResource("project-preferences");
         public static AppwriteMigrationResource ProjectServices => new AppwriteMigrationResource("project-services");
         public static AppwriteMigrationResource ProjectEmailTemplate => new AppwriteMigrationResource("project-email-template");
         public static AppwriteMigrationResource ProjectEnvironment => new AppwriteMigrationResource("project-environment");

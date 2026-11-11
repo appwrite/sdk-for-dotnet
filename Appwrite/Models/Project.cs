@@ -68,6 +68,9 @@ namespace Appwrite.Models
         [JsonPropertyName("labels")]
         public List<string> Labels { get; private set; }
 
+        [JsonPropertyName("prefs")]
+        public Preferences? Prefs { get; private set; }
+
         [JsonPropertyName("status")]
         public string Status { get; private set; }
 
@@ -94,6 +97,9 @@ namespace Appwrite.Models
 
         [JsonPropertyName("parentId")]
         public string? ParentId { get; private set; }
+
+        [JsonPropertyName("environmentId")]
+        public string? EnvironmentId { get; private set; }
 
         [JsonPropertyName("billingLimits")]
         public BillingLimits? BillingLimits { get; private set; }
@@ -175,6 +181,7 @@ namespace Appwrite.Models
             long pingCount,
             string pingedAt,
             List<string> labels,
+            Preferences? prefs,
             string status,
             object onboarding,
             List<ProjectAuthMethod> authMethods,
@@ -184,6 +191,7 @@ namespace Appwrite.Models
             string consoleAccessedAt,
             bool? wafEnabled,
             string? parentId,
+            string? environmentId,
             BillingLimits? billingLimits,
             string? firstAccessedAt,
             string? mcpAccessedAt,
@@ -225,6 +233,7 @@ namespace Appwrite.Models
             PingCount = pingCount;
             PingedAt = pingedAt;
             Labels = labels;
+            Prefs = prefs;
             Status = status;
             Onboarding = onboarding;
             AuthMethods = authMethods;
@@ -234,6 +243,7 @@ namespace Appwrite.Models
             ConsoleAccessedAt = consoleAccessedAt;
             WafEnabled = wafEnabled;
             ParentId = parentId;
+            EnvironmentId = environmentId;
             BillingLimits = billingLimits;
             FirstAccessedAt = firstAccessedAt;
             McpAccessedAt = mcpAccessedAt;
@@ -276,6 +286,9 @@ namespace Appwrite.Models
             pingCount: Convert.ToInt64((map.ContainsKey("pingCount") ? map["pingCount"] : 0)),
             pingedAt: (map.ContainsKey("pingedAt") ? map["pingedAt"] : "").ToString(),
             labels: (map.ContainsKey("labels") ? map["labels"] : new List<object>()).ConvertToList<string>(),
+            prefs: map.TryGetValue("prefs", out var objectRaw20) && objectRaw20 != null
+                                    ? Appwrite.Models.Preferences.From(map: objectRaw20 is JsonElement jsonObj20 ? jsonObj20.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw20)
+                                    : null,
             status: (map.ContainsKey("status") ? map["status"] : "active").ToString(),
             onboarding: (map.ContainsKey("onboarding") ? map["onboarding"] : new Dictionary<string, object>()),
             authMethods: (map.ContainsKey("authMethods") ? map["authMethods"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectAuthMethod.From(map: it)).ToList(),
@@ -283,56 +296,57 @@ namespace Appwrite.Models
             protocols: (map.ContainsKey("protocols") ? map["protocols"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectProtocol.From(map: it)).ToList(),
             blocks: (map.ContainsKey("blocks") ? map["blocks"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Block.From(map: it)).ToList(),
             consoleAccessedAt: (map.ContainsKey("consoleAccessedAt") ? map["consoleAccessedAt"] : "").ToString(),
-            wafEnabled: map.TryGetValue("wafEnabled", out var boolRaw27) && boolRaw27 != null
-                                        ? (bool?)boolRaw27
+            wafEnabled: map.TryGetValue("wafEnabled", out var boolRaw28) && boolRaw28 != null
+                                        ? (bool?)boolRaw28
                                         : null,
             parentId: map.TryGetValue("parentId", out var parentId) ? parentId?.ToString() : null,
-            billingLimits: map.TryGetValue("billingLimits", out var objectRaw29) && objectRaw29 != null
-                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw29 is JsonElement jsonObj29 ? jsonObj29.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw29)
+            environmentId: map.TryGetValue("environmentId", out var environmentId) ? environmentId?.ToString() : null,
+            billingLimits: map.TryGetValue("billingLimits", out var objectRaw31) && objectRaw31 != null
+                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw31 is JsonElement jsonObj31 ? jsonObj31.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw31)
                                     : null,
             firstAccessedAt: map.TryGetValue("firstAccessedAt", out var firstAccessedAt) ? firstAccessedAt?.ToString() : null,
             mcpAccessedAt: map.TryGetValue("mcpAccessedAt", out var mcpAccessedAt) ? mcpAccessedAt?.ToString() : null,
-            oAuth2ServerEnabled: map.TryGetValue("oAuth2ServerEnabled", out var boolRaw32) && boolRaw32 != null
-                                        ? (bool?)boolRaw32
+            oAuth2ServerEnabled: map.TryGetValue("oAuth2ServerEnabled", out var boolRaw34) && boolRaw34 != null
+                                        ? (bool?)boolRaw34
                                         : null,
             oAuth2ServerAuthorizationUrl: map.TryGetValue("oAuth2ServerAuthorizationUrl", out var oAuth2ServerAuthorizationUrl) ? oAuth2ServerAuthorizationUrl?.ToString() : null,
-            oAuth2ServerScopes: map.TryGetValue("oAuth2ServerScopes", out var arrayRaw34) && arrayRaw34 != null
-                                ? arrayRaw34.ConvertToList<string>()
-                                : null,
-            oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw35) && arrayRaw35 != null
-                                ? arrayRaw35.ConvertToList<string>()
-                                : null,
-            oAuth2ServerInstallationScopes: map.TryGetValue("oAuth2ServerInstallationScopes", out var arrayRaw36) && arrayRaw36 != null
+            oAuth2ServerScopes: map.TryGetValue("oAuth2ServerScopes", out var arrayRaw36) && arrayRaw36 != null
                                 ? arrayRaw36.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw37) && arrayRaw37 != null
+            oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw37) && arrayRaw37 != null
                                 ? arrayRaw37.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw38) && numberRaw38 != null
-                                    ? Convert.ToInt64(numberRaw38)
-                                    : null,
-            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw39) && numberRaw39 != null
-                                    ? Convert.ToInt64(numberRaw39)
-                                    : null,
-            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw40) && numberRaw40 != null
+            oAuth2ServerInstallationScopes: map.TryGetValue("oAuth2ServerInstallationScopes", out var arrayRaw38) && arrayRaw38 != null
+                                ? arrayRaw38.ConvertToList<string>()
+                                : null,
+            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw39) && arrayRaw39 != null
+                                ? arrayRaw39.ConvertToList<string>()
+                                : null,
+            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw40) && numberRaw40 != null
                                     ? Convert.ToInt64(numberRaw40)
                                     : null,
-            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw41) && numberRaw41 != null
+            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw41) && numberRaw41 != null
                                     ? Convert.ToInt64(numberRaw41)
                                     : null,
-            oAuth2ServerInstallationAccessTokenDuration: map.TryGetValue("oAuth2ServerInstallationAccessTokenDuration", out var numberRaw42) && numberRaw42 != null
+            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw42) && numberRaw42 != null
                                     ? Convert.ToInt64(numberRaw42)
                                     : null,
-            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw43) && boolRaw43 != null
-                                        ? (bool?)boolRaw43
+            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw43) && numberRaw43 != null
+                                    ? Convert.ToInt64(numberRaw43)
+                                    : null,
+            oAuth2ServerInstallationAccessTokenDuration: map.TryGetValue("oAuth2ServerInstallationAccessTokenDuration", out var numberRaw44) && numberRaw44 != null
+                                    ? Convert.ToInt64(numberRaw44)
+                                    : null,
+            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw45) && boolRaw45 != null
+                                        ? (bool?)boolRaw45
                                         : null,
             oAuth2ServerVerificationUrl: map.TryGetValue("oAuth2ServerVerificationUrl", out var oAuth2ServerVerificationUrl) ? oAuth2ServerVerificationUrl?.ToString() : null,
-            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw45) && numberRaw45 != null
-                                    ? Convert.ToInt64(numberRaw45)
+            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw47) && numberRaw47 != null
+                                    ? Convert.ToInt64(numberRaw47)
                                     : null,
             oAuth2ServerUserCodeFormat: map.TryGetValue("oAuth2ServerUserCodeFormat", out var oAuth2ServerUserCodeFormat) ? oAuth2ServerUserCodeFormat?.ToString() : null,
-            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw47) && numberRaw47 != null
-                                    ? Convert.ToInt64(numberRaw47)
+            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw49) && numberRaw49 != null
+                                    ? Convert.ToInt64(numberRaw49)
                                     : null,
             oAuth2ServerDiscoveryUrl: map.TryGetValue("oAuth2ServerDiscoveryUrl", out var oAuth2ServerDiscoveryUrl) ? oAuth2ServerDiscoveryUrl?.ToString() : null
         );
@@ -358,6 +372,7 @@ namespace Appwrite.Models
             { "pingCount", PingCount },
             { "pingedAt", PingedAt },
             { "labels", Labels },
+            { "prefs", Prefs?.ToMap() },
             { "status", Status },
             { "onboarding", Onboarding },
             { "authMethods", AuthMethods?.Select(it => it.ToMap()).ToList() },
@@ -367,6 +382,7 @@ namespace Appwrite.Models
             { "consoleAccessedAt", ConsoleAccessedAt },
             { "wafEnabled", WafEnabled },
             { "parentId", ParentId },
+            { "environmentId", EnvironmentId },
             { "billingLimits", BillingLimits?.ToMap() },
             { "firstAccessedAt", FirstAccessedAt },
             { "mcpAccessedAt", McpAccessedAt },

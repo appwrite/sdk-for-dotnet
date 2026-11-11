@@ -366,10 +366,144 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the function and VCS branch a function proxy rule executes. The rule
+        /// domain cannot be changed.
+        /// </para>
+        /// </summary>
+        public Task<Models.ProxyRule> UpdateFunctionRule(string ruleId, string functionId, string? branch = null)
+        {
+            if (ruleId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"ruleId\"");
+            }
+
+            var apiPath = "/proxy/rules/{ruleId}/function"
+                .Replace("{ruleId}", Client.EncodePath(ruleId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "functionId", functionId },
+                { "branch", branch }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.ProxyRule Convert(Dictionary<string, object> it)
+            {
+                return Models.ProxyRule.From(map: it);
+            }
+
+            return _client.Call<Models.ProxyRule>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the target URL, status code and parent resource of a redirect proxy
+        /// rule. The rule domain cannot be changed.
+        /// </para>
+        /// </summary>
+        public Task<Models.ProxyRule> UpdateRedirectRule(string ruleId, string url, Appwrite.Enums.StatusCode statusCode, string resourceId, Appwrite.Enums.ProxyResourceType resourceType)
+        {
+            if (ruleId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"ruleId\"");
+            }
+
+            var apiPath = "/proxy/rules/{ruleId}/redirect"
+                .Replace("{ruleId}", Client.EncodePath(ruleId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "url", url },
+                { "statusCode", statusCode?.Value },
+                { "resourceId", resourceId },
+                { "resourceType", resourceType?.Value }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.ProxyRule Convert(Dictionary<string, object> it)
+            {
+                return Models.ProxyRule.From(map: it);
+            }
+
+            return _client.Call<Models.ProxyRule>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the site and VCS branch a site proxy rule serves. The rule domain
+        /// cannot be changed.
+        /// </para>
+        /// </summary>
+        public Task<Models.ProxyRule> UpdateSiteRule(string ruleId, string siteId, string? branch = null)
+        {
+            if (ruleId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"ruleId\"");
+            }
+
+            var apiPath = "/proxy/rules/{ruleId}/site"
+                .Replace("{ruleId}", Client.EncodePath(ruleId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "siteId", siteId },
+                { "branch", branch }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.ProxyRule Convert(Dictionary<string, object> it)
+            {
+                return Models.ProxyRule.From(map: it);
+            }
+
+            return _client.Call<Models.ProxyRule>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// If not succeeded yet, retry verification process of a proxy rule domain.
         /// This endpoint triggers domain verification by checking DNS records. If
         /// verification is successful, a TLS certificate will be automatically
-        /// provisioned for the domain asynchronously in the background.
+        /// provisioned for the domain asynchronously in the background. A verified
+        /// rule whose certificate renewal failed or is blocked, or whose certificate
+        /// expired, is checked the same way, and its certificate renewed in the
+        /// background.
         /// </para>
         /// </summary>
         public Task<Models.ProxyRule> UpdateRuleStatus(string ruleId)

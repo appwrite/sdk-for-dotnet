@@ -56,6 +56,12 @@ namespace Appwrite.Models
         [JsonPropertyName("renewAt")]
         public string RenewAt { get; private set; }
 
+        [JsonPropertyName("expireAt")]
+        public string ExpireAt { get; private set; }
+
+        [JsonPropertyName("certificateStatus")]
+        public string CertificateStatus { get; private set; }
+
         [JsonPropertyName("protocol")]
         public Appwrite.Enums.ProxyRuleProtocol Protocol { get; private set; }
 
@@ -75,6 +81,8 @@ namespace Appwrite.Models
             Appwrite.Enums.ProxyRuleStatus status,
             string logs,
             string renewAt,
+            string expireAt,
+            string certificateStatus,
             Appwrite.Enums.ProxyRuleProtocol protocol
         )
         {
@@ -93,6 +101,8 @@ namespace Appwrite.Models
             Status = status;
             Logs = logs;
             RenewAt = renewAt;
+            ExpireAt = expireAt;
+            CertificateStatus = certificateStatus;
             Protocol = protocol;
         }
 
@@ -116,6 +126,8 @@ namespace Appwrite.Models
             status: new Appwrite.Enums.ProxyRuleStatus((map.ContainsKey("status") ? map["status"] : "unverified").ToString()!),
             logs: (map.ContainsKey("logs") ? map["logs"] : "").ToString(),
             renewAt: map["renewAt"].ToString(),
+            expireAt: (map.ContainsKey("expireAt") ? map["expireAt"] : "").ToString(),
+            certificateStatus: (map.ContainsKey("certificateStatus") ? map["certificateStatus"] : "").ToString(),
             protocol: new Appwrite.Enums.ProxyRuleProtocol((map.ContainsKey("protocol") ? map["protocol"] : "http").ToString()!)
         );
 
@@ -136,6 +148,8 @@ namespace Appwrite.Models
             { "status", Status.Value },
             { "logs", Logs },
             { "renewAt", RenewAt },
+            { "expireAt", ExpireAt },
+            { "certificateStatus", CertificateStatus },
             { "protocol", Protocol.Value }
         };
     }

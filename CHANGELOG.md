@@ -1,5 +1,23 @@
 # Change Log
 
+## 11.2.0
+
+* Updated: `Project.ListEnvironments`, `Project.CreateEnvironment`, `Project.GetEnvironment`, `Project.UpdateEnvironment` return `Environment` models instead of `Project`
+* Added: `Account.CreateDevice`, `Account.GetDevice`, `Account.DeleteDevice` and `Account.UpdateDeviceSession`, and the `Device` model
+* Added: `Project.UpdateAccountDevicesPolicy`, `ProjectPolicyId.AccountDevices` and the `PolicyAccountDevices` model
+* Added: `Project.UpdateOAuth2Vipps`, `Project.UpdateOAuth2VippsSandbox` and the `OAuth2Vipps` model
+* Added: `OAuthProvider.Vipps` and `OAuthProvider.VippsSandbox`
+* Added: `Proxy.UpdateFunctionRule`, `Proxy.UpdateRedirectRule` and `Proxy.UpdateSiteRule`
+* Added: optional `schedule` on `waf` rule create and update methods and on `WafRule*` models
+* Added: `Project.GetPrefs` and `Project.UpdatePrefs` for project preferences
+* Added: `Client.SetEnvironment` to act in a project environment
+* Added: `AppwriteMigrationResource.ProjectPreferences` to migrate project preferences
+* Added: `monitors.read`, `monitors.write`, `alerts.read`, `alerts.write`, `reviews.read` and `reviews.write` to `ProjectKeyScopes`
+* Added: `Organization.BudgetNotify`, `BudgetCritical` and `EducationExpiresAt`
+* Added: `Project.EnvironmentId`, `Session.UserName` and `ActivityEvent.Reason`
+* Added: `ProxyRule.ExpireAt` and `CertificateStatus`
+* Updated: requests send response format `2.7.1`; README targets Appwrite 2.7.x
+
 ## 11.1.0
 
 * Updated: requests send response format `2.6.2`

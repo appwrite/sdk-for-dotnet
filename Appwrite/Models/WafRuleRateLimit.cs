@@ -53,6 +53,9 @@ namespace Appwrite.Models
         [JsonPropertyName("config")]
         public object Config { get; private set; }
 
+        [JsonPropertyName("schedule")]
+        public object? Schedule { get; private set; }
+
         [JsonPropertyName("limit")]
         public long Limit { get; private set; }
 
@@ -83,6 +86,7 @@ namespace Appwrite.Models
             bool enabled,
             List<object> conditions,
             object config,
+            object? schedule,
             long limit,
             long interval,
             string key,
@@ -104,6 +108,7 @@ namespace Appwrite.Models
             Enabled = enabled;
             Conditions = conditions;
             Config = config;
+            Schedule = schedule;
             Limit = limit;
             Interval = interval;
             Key = key;
@@ -126,6 +131,7 @@ namespace Appwrite.Models
             enabled: (bool)(map.ContainsKey("enabled") ? map["enabled"] : true),
             conditions: (map.ContainsKey("conditions") ? map["conditions"] : new List<object>()).ConvertToList<object>(),
             config: (map.ContainsKey("config") ? map["config"] : new Dictionary<string, object>()),
+            schedule: map.TryGetValue("schedule", out var objectRaw15) ? objectRaw15 : null,
             limit: Convert.ToInt64((map.ContainsKey("limit") ? map["limit"] : 100)),
             interval: Convert.ToInt64((map.ContainsKey("interval") ? map["interval"] : 3600)),
             key: (map.ContainsKey("key") ? map["key"] : "ip").ToString(),
@@ -149,6 +155,7 @@ namespace Appwrite.Models
             { "enabled", Enabled },
             { "conditions", Conditions },
             { "config", Config },
+            { "schedule", Schedule },
             { "limit", Limit },
             { "interval", Interval },
             { "key", Key },
