@@ -549,6 +549,96 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the LDAP configuration for your project. Use this endpoint to
+        /// connect your project to an LDAP directory, such as OpenLDAP or Active
+        /// Directory, so users can sign in with their directory credentials. Omitted
+        /// parameters keep their stored value. Enabling LDAP connects to the directory
+        /// and binds as the service account, so a project cannot be left enabled with
+        /// a configuration that cannot sign anyone in.
+        /// </para>
+        /// </summary>
+        public Task<Models.Project> UpdateLDAP(bool? enabled = null, List<string>? hosts = null, long? port = null, Appwrite.Enums.ProjectLDAPEncryption? encryption = null, bool? verification = null, string? certificate = null, long? timeout = null, string? baseDn = null, string? bindDn = null, string? bindPassword = null, string? userFilter = null, string? requiredGroupDn = null, string? idAttribute = null, string? emailAttribute = null, string? nameAttribute = null, string? phoneAttribute = null)
+        {
+            var apiPath = "/project/ldap";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "enabled", enabled },
+                { "hosts", hosts },
+                { "port", port },
+                { "encryption", encryption?.Value },
+                { "verification", verification },
+                { "certificate", certificate },
+                { "timeout", timeout },
+                { "baseDn", baseDn },
+                { "bindDn", bindDn },
+                { "bindPassword", bindPassword },
+                { "userFilter", userFilter },
+                { "requiredGroupDn", requiredGroupDn },
+                { "idAttribute", idAttribute },
+                { "emailAttribute", emailAttribute },
+                { "nameAttribute", nameAttribute },
+                { "phoneAttribute", phoneAttribute }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Project Convert(Dictionary<string, object> it)
+            {
+                return Models.Project.From(map: it);
+            }
+
+            return _client.Call<Models.Project>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Test the stored LDAP configuration against the directory without signing
+        /// anyone in. Connects to the directory, binds as the service account and
+        /// reads the base DN. Pass a username to also look the user up and check the
+        /// required group, and a password to also verify it. The error names the step
+        /// that failed.
+        /// </para>
+        /// </summary>
+        public Task<object> CreateLDAPTest(string? username = null, string? password = null)
+        {
+            var apiPath = "/project/ldap/tests";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "username", username },
+                { "password", password }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
         /// Get a list of all mock phones in the project. This endpoint returns an
         /// array of all mock phones and their OTPs.
         /// </para>
@@ -1845,6 +1935,43 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 Naver configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Naver> UpdateOAuth2Naver(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/naver";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Naver Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Naver.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Naver>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Notion configuration.
         /// </para>
         /// </summary>
@@ -2958,11 +3085,15 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.OAuth2Kakao.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue49) && idValue49?.ToString() == "vipps")
+                if (it.TryGetValue("$id", out var idValue49) && idValue49?.ToString() == "naver")
+                {
+                    return Appwrite.Models.OAuth2Naver.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue50) && idValue50?.ToString() == "vipps")
                 {
                     return Appwrite.Models.OAuth2Vipps.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue50) && idValue50?.ToString() == "vippsSandbox")
+                if (it.TryGetValue("$id", out var idValue51) && idValue51?.ToString() == "vippsSandbox")
                 {
                     return Appwrite.Models.OAuth2Vipps.From(map: it);
                 }
@@ -2975,6 +3106,42 @@ namespace Appwrite.Services
                 headers: apiHeaders,
                 parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
                 convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete all passwords in the project, forcing every user to reset their
+        /// password. Any password set before this request stops working for email and
+        /// password sign-in immediately: signing in returns a
+        /// `user_password_reset_required` error until the user sets a new password
+        /// through password recovery, or until a new password is set for them with the
+        /// Users API. Existing sessions are not affected; call the delete sessions
+        /// endpoint to sign users out as well. Users without a password and API keys
+        /// are not affected by this action.
+        /// </para>
+        /// </summary>
+        public Task<object> DeletePasswords()
+        {
+            var apiPath = "/project/passwords";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
 
         }
 

@@ -119,6 +119,12 @@ namespace Appwrite.Models
         [JsonPropertyName("fallbackFile")]
         public string FallbackFile { get; private set; }
 
+        [JsonPropertyName("analyticsEnabled")]
+        public bool AnalyticsEnabled { get; private set; }
+
+        [JsonPropertyName("analyticsPropertyId")]
+        public string AnalyticsPropertyId { get; private set; }
+
         public Site(
             string id,
             string createdAt,
@@ -155,7 +161,9 @@ namespace Appwrite.Models
             string runtimeSpecification,
             string buildRuntime,
             string adapter,
-            string fallbackFile
+            string fallbackFile,
+            bool analyticsEnabled,
+            string analyticsPropertyId
         )
         {
             Id = id;
@@ -194,6 +202,8 @@ namespace Appwrite.Models
             BuildRuntime = buildRuntime;
             Adapter = adapter;
             FallbackFile = fallbackFile;
+            AnalyticsEnabled = analyticsEnabled;
+            AnalyticsPropertyId = analyticsPropertyId;
         }
 
         public static Site From(Dictionary<string, object> map) => new Site(
@@ -232,7 +242,9 @@ namespace Appwrite.Models
             runtimeSpecification: (map.ContainsKey("runtimeSpecification") ? map["runtimeSpecification"] : "s-1vcpu-512mb").ToString(),
             buildRuntime: (map.ContainsKey("buildRuntime") ? map["buildRuntime"] : "").ToString(),
             adapter: map["adapter"].ToString(),
-            fallbackFile: map["fallbackFile"].ToString()
+            fallbackFile: map["fallbackFile"].ToString(),
+            analyticsEnabled: (bool)(map.ContainsKey("analyticsEnabled") ? map["analyticsEnabled"] : false),
+            analyticsPropertyId: (map.ContainsKey("analyticsPropertyId") ? map["analyticsPropertyId"] : "").ToString()
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -272,7 +284,9 @@ namespace Appwrite.Models
             { "runtimeSpecification", RuntimeSpecification },
             { "buildRuntime", BuildRuntime },
             { "adapter", Adapter },
-            { "fallbackFile", FallbackFile }
+            { "fallbackFile", FallbackFile },
+            { "analyticsEnabled", AnalyticsEnabled },
+            { "analyticsPropertyId", AnalyticsPropertyId }
         };
     }
 }

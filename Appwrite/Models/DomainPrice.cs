@@ -35,6 +35,9 @@ namespace Appwrite.Models
         [JsonPropertyName("renewalPeriodYears")]
         public long RenewalPeriodYears { get; private set; }
 
+        [JsonPropertyName("reason")]
+        public string? Reason { get; private set; }
+
         public DomainPrice(
             string domain,
             string tld,
@@ -43,7 +46,8 @@ namespace Appwrite.Models
             long periodYears,
             bool premium,
             double? renewalPrice,
-            long renewalPeriodYears
+            long renewalPeriodYears,
+            string? reason
         )
         {
             Domain = domain;
@@ -54,6 +58,7 @@ namespace Appwrite.Models
             Premium = premium;
             RenewalPrice = renewalPrice;
             RenewalPeriodYears = renewalPeriodYears;
+            Reason = reason;
         }
 
         public static DomainPrice From(Dictionary<string, object> map) => new DomainPrice(
@@ -68,7 +73,8 @@ namespace Appwrite.Models
             renewalPrice: map.TryGetValue("renewalPrice", out var numberRaw7) && numberRaw7 != null
                                     ? Convert.ToDouble(numberRaw7)
                                     : null,
-            renewalPeriodYears: Convert.ToInt64((map.ContainsKey("renewalPeriodYears") ? map["renewalPeriodYears"] : 1))
+            renewalPeriodYears: Convert.ToInt64((map.ContainsKey("renewalPeriodYears") ? map["renewalPeriodYears"] : 1)),
+            reason: map.TryGetValue("reason", out var reason) ? reason?.ToString() : null
         );
 
         public Dictionary<string, object?> ToMap() => new Dictionary<string, object?>()
@@ -80,7 +86,8 @@ namespace Appwrite.Models
             { "periodYears", PeriodYears },
             { "premium", Premium },
             { "renewalPrice", RenewalPrice },
-            { "renewalPeriodYears", RenewalPeriodYears }
+            { "renewalPeriodYears", RenewalPeriodYears },
+            { "reason", Reason }
         };
     }
 }
