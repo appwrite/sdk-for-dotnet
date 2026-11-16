@@ -10,7 +10,7 @@ Client client = new Client()
 
 Oauth2 oauth2 = new Oauth2(client);
 
-Appwrite.Models. result = await oauth2.Revoke(
+object result = await oauth2.Revoke(
     token: "<TOKEN>",
     tokenTypeHint: "access_token", // optional
     clientId: "<CLIENT_ID>", // optional

@@ -318,6 +318,51 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Turn analytics on or off for a site. Turning it on links an analytics
+        /// property named after the site, creating one on first use, and injects the
+        /// tracker into pages served on the site's production domains. Turning it on
+        /// also needs the `analytics.write` scope. Turning it off stops the injection
+        /// and keeps the property and its data.
+        /// </para>
+        /// </summary>
+        public Task<Models.Site> UpdateAnalytics(string siteId, bool enabled)
+        {
+            if (siteId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"siteId\"");
+            }
+
+            var apiPath = "/sites/{siteId}/analytics"
+                .Replace("{siteId}", Client.EncodePath(siteId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Site Convert(Dictionary<string, object> it)
+            {
+                return Models.Site.From(map: it);
+            }
+
+            return _client.Call<Models.Site>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the site active deployment. Use this endpoint to switch the code
         /// deployment that should be used when visitor opens your site.
         /// </para>

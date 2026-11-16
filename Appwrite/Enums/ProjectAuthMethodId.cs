@@ -19,5 +19,6 @@ namespace Appwrite.Enums
         public static ProjectAuthMethodId Jwt => new ProjectAuthMethodId("jwt");
         public static ProjectAuthMethodId Phone => new ProjectAuthMethodId("phone");
         public static ProjectAuthMethodId Passkey => new ProjectAuthMethodId("passkey");
+        public static ProjectAuthMethodId Ldap => new ProjectAuthMethodId("ldap");
     }
 }

@@ -428,6 +428,9 @@ namespace Appwrite.Services
         /// When width and height are specified, the image is resized accordingly. If
         /// both dimensions are 0, the API provides an image at original size. If
         /// dimensions are not specified, the default viewport size is 1280x720px.
+        /// 
+        /// Set `output` to `auto` to receive avif or webp when the `Accept` header of
+        /// your request supports it, falling back to png.
         /// </para>
         /// </summary>
         public Task<byte[]> GetScreenshot(string url, object? headers = null, long? viewportWidth = null, long? viewportHeight = null, double? scale = null, Appwrite.Enums.BrowserTheme? theme = null, string? userAgent = null, bool? fullpage = null, string? locale = null, Appwrite.Enums.Timezone? timezone = null, double? latitude = null, double? longitude = null, double? accuracy = null, bool? touch = null, List<Appwrite.Enums.BrowserPermission>? permissions = null, long? sleep = null, long? width = null, long? height = null, long? quality = null, Appwrite.Enums.ImageFormat? output = null)
@@ -461,7 +464,7 @@ namespace Appwrite.Services
             var apiHeaders = new Dictionary<string, string>()
             {
                 { "X-Appwrite-Project", _client.GetConfig("project") },
-                { "accept", "image/png" }
+                { "accept", "image/*" }
             };
 
 

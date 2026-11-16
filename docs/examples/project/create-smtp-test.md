@@ -10,7 +10,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Appwrite.Models. result = await project.CreateSMTPTest(
+object result = await project.CreateSMTPTest(
     emails: ["recipient@example.com"]
 );
 
