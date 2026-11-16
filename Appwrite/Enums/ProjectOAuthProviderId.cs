@@ -38,6 +38,7 @@ namespace Appwrite.Enums
         public static ProjectOAuthProviderId Kick => new ProjectOAuthProviderId("kick");
         public static ProjectOAuthProviderId Linkedin => new ProjectOAuthProviderId("linkedin");
         public static ProjectOAuthProviderId Microsoft => new ProjectOAuthProviderId("microsoft");
+        public static ProjectOAuthProviderId Naver => new ProjectOAuthProviderId("naver");
         public static ProjectOAuthProviderId Notion => new ProjectOAuthProviderId("notion");
         public static ProjectOAuthProviderId Oidc => new ProjectOAuthProviderId("oidc");
         public static ProjectOAuthProviderId Okta => new ProjectOAuthProviderId("okta");

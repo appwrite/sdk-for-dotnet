@@ -59,6 +59,54 @@ namespace Appwrite.Models
         [JsonPropertyName("smtpSecure")]
         public string SmtpSecure { get; private set; }
 
+        [JsonPropertyName("ldapEnabled")]
+        public bool LdapEnabled { get; private set; }
+
+        [JsonPropertyName("ldapHosts")]
+        public List<string> LdapHosts { get; private set; }
+
+        [JsonPropertyName("ldapPort")]
+        public long LdapPort { get; private set; }
+
+        [JsonPropertyName("ldapEncryption")]
+        public string LdapEncryption { get; private set; }
+
+        [JsonPropertyName("ldapVerification")]
+        public bool LdapVerification { get; private set; }
+
+        [JsonPropertyName("ldapCertificate")]
+        public string LdapCertificate { get; private set; }
+
+        [JsonPropertyName("ldapTimeout")]
+        public long LdapTimeout { get; private set; }
+
+        [JsonPropertyName("ldapBaseDn")]
+        public string LdapBaseDn { get; private set; }
+
+        [JsonPropertyName("ldapBindDn")]
+        public string LdapBindDn { get; private set; }
+
+        [JsonPropertyName("ldapBindPassword")]
+        public string LdapBindPassword { get; private set; }
+
+        [JsonPropertyName("ldapUserFilter")]
+        public string LdapUserFilter { get; private set; }
+
+        [JsonPropertyName("ldapRequiredGroupDn")]
+        public string LdapRequiredGroupDn { get; private set; }
+
+        [JsonPropertyName("ldapIdAttribute")]
+        public string LdapIdAttribute { get; private set; }
+
+        [JsonPropertyName("ldapEmailAttribute")]
+        public string LdapEmailAttribute { get; private set; }
+
+        [JsonPropertyName("ldapNameAttribute")]
+        public string LdapNameAttribute { get; private set; }
+
+        [JsonPropertyName("ldapPhoneAttribute")]
+        public string LdapPhoneAttribute { get; private set; }
+
         [JsonPropertyName("pingCount")]
         public long PingCount { get; private set; }
 
@@ -178,6 +226,22 @@ namespace Appwrite.Models
             string smtpUsername,
             string smtpPassword,
             string smtpSecure,
+            bool ldapEnabled,
+            List<string> ldapHosts,
+            long ldapPort,
+            string ldapEncryption,
+            bool ldapVerification,
+            string ldapCertificate,
+            long ldapTimeout,
+            string ldapBaseDn,
+            string ldapBindDn,
+            string ldapBindPassword,
+            string ldapUserFilter,
+            string ldapRequiredGroupDn,
+            string ldapIdAttribute,
+            string ldapEmailAttribute,
+            string ldapNameAttribute,
+            string ldapPhoneAttribute,
             long pingCount,
             string pingedAt,
             List<string> labels,
@@ -230,6 +294,22 @@ namespace Appwrite.Models
             SmtpUsername = smtpUsername;
             SmtpPassword = smtpPassword;
             SmtpSecure = smtpSecure;
+            LdapEnabled = ldapEnabled;
+            LdapHosts = ldapHosts;
+            LdapPort = ldapPort;
+            LdapEncryption = ldapEncryption;
+            LdapVerification = ldapVerification;
+            LdapCertificate = ldapCertificate;
+            LdapTimeout = ldapTimeout;
+            LdapBaseDn = ldapBaseDn;
+            LdapBindDn = ldapBindDn;
+            LdapBindPassword = ldapBindPassword;
+            LdapUserFilter = ldapUserFilter;
+            LdapRequiredGroupDn = ldapRequiredGroupDn;
+            LdapIdAttribute = ldapIdAttribute;
+            LdapEmailAttribute = ldapEmailAttribute;
+            LdapNameAttribute = ldapNameAttribute;
+            LdapPhoneAttribute = ldapPhoneAttribute;
             PingCount = pingCount;
             PingedAt = pingedAt;
             Labels = labels;
@@ -283,11 +363,27 @@ namespace Appwrite.Models
             smtpUsername: (map.ContainsKey("smtpUsername") ? map["smtpUsername"] : "").ToString(),
             smtpPassword: (map.ContainsKey("smtpPassword") ? map["smtpPassword"] : "").ToString(),
             smtpSecure: (map.ContainsKey("smtpSecure") ? map["smtpSecure"] : "").ToString(),
+            ldapEnabled: (bool)(map.ContainsKey("ldapEnabled") ? map["ldapEnabled"] : false),
+            ldapHosts: (map.ContainsKey("ldapHosts") ? map["ldapHosts"] : new List<object>()).ConvertToList<string>(),
+            ldapPort: Convert.ToInt64((map.ContainsKey("ldapPort") ? map["ldapPort"] : 636)),
+            ldapEncryption: (map.ContainsKey("ldapEncryption") ? map["ldapEncryption"] : "ldaps").ToString(),
+            ldapVerification: (bool)(map.ContainsKey("ldapVerification") ? map["ldapVerification"] : true),
+            ldapCertificate: (map.ContainsKey("ldapCertificate") ? map["ldapCertificate"] : "").ToString(),
+            ldapTimeout: Convert.ToInt64((map.ContainsKey("ldapTimeout") ? map["ldapTimeout"] : 10)),
+            ldapBaseDn: (map.ContainsKey("ldapBaseDn") ? map["ldapBaseDn"] : "").ToString(),
+            ldapBindDn: (map.ContainsKey("ldapBindDn") ? map["ldapBindDn"] : "").ToString(),
+            ldapBindPassword: (map.ContainsKey("ldapBindPassword") ? map["ldapBindPassword"] : "").ToString(),
+            ldapUserFilter: (map.ContainsKey("ldapUserFilter") ? map["ldapUserFilter"] : "(uid={username})").ToString(),
+            ldapRequiredGroupDn: (map.ContainsKey("ldapRequiredGroupDn") ? map["ldapRequiredGroupDn"] : "").ToString(),
+            ldapIdAttribute: (map.ContainsKey("ldapIdAttribute") ? map["ldapIdAttribute"] : "entryUUID").ToString(),
+            ldapEmailAttribute: (map.ContainsKey("ldapEmailAttribute") ? map["ldapEmailAttribute"] : "mail").ToString(),
+            ldapNameAttribute: (map.ContainsKey("ldapNameAttribute") ? map["ldapNameAttribute"] : "cn").ToString(),
+            ldapPhoneAttribute: (map.ContainsKey("ldapPhoneAttribute") ? map["ldapPhoneAttribute"] : "").ToString(),
             pingCount: Convert.ToInt64((map.ContainsKey("pingCount") ? map["pingCount"] : 0)),
             pingedAt: (map.ContainsKey("pingedAt") ? map["pingedAt"] : "").ToString(),
             labels: (map.ContainsKey("labels") ? map["labels"] : new List<object>()).ConvertToList<string>(),
-            prefs: map.TryGetValue("prefs", out var objectRaw20) && objectRaw20 != null
-                                    ? Appwrite.Models.Preferences.From(map: objectRaw20 is JsonElement jsonObj20 ? jsonObj20.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw20)
+            prefs: map.TryGetValue("prefs", out var objectRaw36) && objectRaw36 != null
+                                    ? Appwrite.Models.Preferences.From(map: objectRaw36 is JsonElement jsonObj36 ? jsonObj36.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw36)
                                     : null,
             status: (map.ContainsKey("status") ? map["status"] : "active").ToString(),
             onboarding: (map.ContainsKey("onboarding") ? map["onboarding"] : new Dictionary<string, object>()),
@@ -296,57 +392,57 @@ namespace Appwrite.Models
             protocols: (map.ContainsKey("protocols") ? map["protocols"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.ProjectProtocol.From(map: it)).ToList(),
             blocks: (map.ContainsKey("blocks") ? map["blocks"] : new List<object>()).ConvertToList<Dictionary<string, object>>().Select(it => Appwrite.Models.Block.From(map: it)).ToList(),
             consoleAccessedAt: (map.ContainsKey("consoleAccessedAt") ? map["consoleAccessedAt"] : "").ToString(),
-            wafEnabled: map.TryGetValue("wafEnabled", out var boolRaw28) && boolRaw28 != null
-                                        ? (bool?)boolRaw28
+            wafEnabled: map.TryGetValue("wafEnabled", out var boolRaw44) && boolRaw44 != null
+                                        ? (bool?)boolRaw44
                                         : null,
             parentId: map.TryGetValue("parentId", out var parentId) ? parentId?.ToString() : null,
             environmentId: map.TryGetValue("environmentId", out var environmentId) ? environmentId?.ToString() : null,
-            billingLimits: map.TryGetValue("billingLimits", out var objectRaw31) && objectRaw31 != null
-                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw31 is JsonElement jsonObj31 ? jsonObj31.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw31)
+            billingLimits: map.TryGetValue("billingLimits", out var objectRaw47) && objectRaw47 != null
+                                    ? Appwrite.Models.BillingLimits.From(map: objectRaw47 is JsonElement jsonObj47 ? jsonObj47.Deserialize<Dictionary<string, object>>()! : (Dictionary<string, object>)objectRaw47)
                                     : null,
             firstAccessedAt: map.TryGetValue("firstAccessedAt", out var firstAccessedAt) ? firstAccessedAt?.ToString() : null,
             mcpAccessedAt: map.TryGetValue("mcpAccessedAt", out var mcpAccessedAt) ? mcpAccessedAt?.ToString() : null,
-            oAuth2ServerEnabled: map.TryGetValue("oAuth2ServerEnabled", out var boolRaw34) && boolRaw34 != null
-                                        ? (bool?)boolRaw34
+            oAuth2ServerEnabled: map.TryGetValue("oAuth2ServerEnabled", out var boolRaw50) && boolRaw50 != null
+                                        ? (bool?)boolRaw50
                                         : null,
             oAuth2ServerAuthorizationUrl: map.TryGetValue("oAuth2ServerAuthorizationUrl", out var oAuth2ServerAuthorizationUrl) ? oAuth2ServerAuthorizationUrl?.ToString() : null,
-            oAuth2ServerScopes: map.TryGetValue("oAuth2ServerScopes", out var arrayRaw36) && arrayRaw36 != null
-                                ? arrayRaw36.ConvertToList<string>()
+            oAuth2ServerScopes: map.TryGetValue("oAuth2ServerScopes", out var arrayRaw52) && arrayRaw52 != null
+                                ? arrayRaw52.ConvertToList<string>()
                                 : null,
-            oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw37) && arrayRaw37 != null
-                                ? arrayRaw37.ConvertToList<string>()
+            oAuth2ServerDefaultScopes: map.TryGetValue("oAuth2ServerDefaultScopes", out var arrayRaw53) && arrayRaw53 != null
+                                ? arrayRaw53.ConvertToList<string>()
                                 : null,
-            oAuth2ServerInstallationScopes: map.TryGetValue("oAuth2ServerInstallationScopes", out var arrayRaw38) && arrayRaw38 != null
-                                ? arrayRaw38.ConvertToList<string>()
+            oAuth2ServerInstallationScopes: map.TryGetValue("oAuth2ServerInstallationScopes", out var arrayRaw54) && arrayRaw54 != null
+                                ? arrayRaw54.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw39) && arrayRaw39 != null
-                                ? arrayRaw39.ConvertToList<string>()
+            oAuth2ServerAuthorizationDetailsTypes: map.TryGetValue("oAuth2ServerAuthorizationDetailsTypes", out var arrayRaw55) && arrayRaw55 != null
+                                ? arrayRaw55.ConvertToList<string>()
                                 : null,
-            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw40) && numberRaw40 != null
-                                    ? Convert.ToInt64(numberRaw40)
+            oAuth2ServerAccessTokenDuration: map.TryGetValue("oAuth2ServerAccessTokenDuration", out var numberRaw56) && numberRaw56 != null
+                                    ? Convert.ToInt64(numberRaw56)
                                     : null,
-            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw41) && numberRaw41 != null
-                                    ? Convert.ToInt64(numberRaw41)
+            oAuth2ServerRefreshTokenDuration: map.TryGetValue("oAuth2ServerRefreshTokenDuration", out var numberRaw57) && numberRaw57 != null
+                                    ? Convert.ToInt64(numberRaw57)
                                     : null,
-            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw42) && numberRaw42 != null
-                                    ? Convert.ToInt64(numberRaw42)
+            oAuth2ServerPublicAccessTokenDuration: map.TryGetValue("oAuth2ServerPublicAccessTokenDuration", out var numberRaw58) && numberRaw58 != null
+                                    ? Convert.ToInt64(numberRaw58)
                                     : null,
-            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw43) && numberRaw43 != null
-                                    ? Convert.ToInt64(numberRaw43)
+            oAuth2ServerPublicRefreshTokenDuration: map.TryGetValue("oAuth2ServerPublicRefreshTokenDuration", out var numberRaw59) && numberRaw59 != null
+                                    ? Convert.ToInt64(numberRaw59)
                                     : null,
-            oAuth2ServerInstallationAccessTokenDuration: map.TryGetValue("oAuth2ServerInstallationAccessTokenDuration", out var numberRaw44) && numberRaw44 != null
-                                    ? Convert.ToInt64(numberRaw44)
+            oAuth2ServerInstallationAccessTokenDuration: map.TryGetValue("oAuth2ServerInstallationAccessTokenDuration", out var numberRaw60) && numberRaw60 != null
+                                    ? Convert.ToInt64(numberRaw60)
                                     : null,
-            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw45) && boolRaw45 != null
-                                        ? (bool?)boolRaw45
+            oAuth2ServerConfidentialPkce: map.TryGetValue("oAuth2ServerConfidentialPkce", out var boolRaw61) && boolRaw61 != null
+                                        ? (bool?)boolRaw61
                                         : null,
             oAuth2ServerVerificationUrl: map.TryGetValue("oAuth2ServerVerificationUrl", out var oAuth2ServerVerificationUrl) ? oAuth2ServerVerificationUrl?.ToString() : null,
-            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw47) && numberRaw47 != null
-                                    ? Convert.ToInt64(numberRaw47)
+            oAuth2ServerUserCodeLength: map.TryGetValue("oAuth2ServerUserCodeLength", out var numberRaw63) && numberRaw63 != null
+                                    ? Convert.ToInt64(numberRaw63)
                                     : null,
             oAuth2ServerUserCodeFormat: map.TryGetValue("oAuth2ServerUserCodeFormat", out var oAuth2ServerUserCodeFormat) ? oAuth2ServerUserCodeFormat?.ToString() : null,
-            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw49) && numberRaw49 != null
-                                    ? Convert.ToInt64(numberRaw49)
+            oAuth2ServerDeviceCodeDuration: map.TryGetValue("oAuth2ServerDeviceCodeDuration", out var numberRaw65) && numberRaw65 != null
+                                    ? Convert.ToInt64(numberRaw65)
                                     : null,
             oAuth2ServerDiscoveryUrl: map.TryGetValue("oAuth2ServerDiscoveryUrl", out var oAuth2ServerDiscoveryUrl) ? oAuth2ServerDiscoveryUrl?.ToString() : null
         );
@@ -369,6 +465,22 @@ namespace Appwrite.Models
             { "smtpUsername", SmtpUsername },
             { "smtpPassword", SmtpPassword },
             { "smtpSecure", SmtpSecure },
+            { "ldapEnabled", LdapEnabled },
+            { "ldapHosts", LdapHosts },
+            { "ldapPort", LdapPort },
+            { "ldapEncryption", LdapEncryption },
+            { "ldapVerification", LdapVerification },
+            { "ldapCertificate", LdapCertificate },
+            { "ldapTimeout", LdapTimeout },
+            { "ldapBaseDn", LdapBaseDn },
+            { "ldapBindDn", LdapBindDn },
+            { "ldapBindPassword", LdapBindPassword },
+            { "ldapUserFilter", LdapUserFilter },
+            { "ldapRequiredGroupDn", LdapRequiredGroupDn },
+            { "ldapIdAttribute", LdapIdAttribute },
+            { "ldapEmailAttribute", LdapEmailAttribute },
+            { "ldapNameAttribute", LdapNameAttribute },
+            { "ldapPhoneAttribute", LdapPhoneAttribute },
             { "pingCount", PingCount },
             { "pingedAt", PingedAt },
             { "labels", Labels },

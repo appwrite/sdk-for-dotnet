@@ -24,8 +24,11 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes PoliciesWrite => new ProjectKeyScopes("policies.write");
         public static ProjectKeyScopes ProjectPoliciesRead => new ProjectKeyScopes("project.policies.read");
         public static ProjectKeyScopes ProjectPoliciesWrite => new ProjectKeyScopes("project.policies.write");
+        public static ProjectKeyScopes ProjectVideosProfilesRead => new ProjectKeyScopes("project.videos.profiles.read");
+        public static ProjectKeyScopes ProjectVideosProfilesWrite => new ProjectKeyScopes("project.videos.profiles.write");
         public static ProjectKeyScopes ProjectOauth2Read => new ProjectKeyScopes("project.oauth2.read");
         public static ProjectKeyScopes ProjectOauth2Write => new ProjectKeyScopes("project.oauth2.write");
+        public static ProjectKeyScopes ProjectLdapWrite => new ProjectKeyScopes("project.ldap.write");
         public static ProjectKeyScopes TemplatesRead => new ProjectKeyScopes("templates.read");
         public static ProjectKeyScopes TemplatesWrite => new ProjectKeyScopes("templates.write");
         public static ProjectKeyScopes StagesRead => new ProjectKeyScopes("stages.read");
@@ -122,6 +125,9 @@ namespace Appwrite.Enums
         public static ProjectKeyScopes ReviewsWrite => new ProjectKeyScopes("reviews.write");
         public static ProjectKeyScopes PresencesRead => new ProjectKeyScopes("presences.read");
         public static ProjectKeyScopes PresencesWrite => new ProjectKeyScopes("presences.write");
+        public static ProjectKeyScopes VideosPlay => new ProjectKeyScopes("videos.play");
+        public static ProjectKeyScopes VideosRead => new ProjectKeyScopes("videos.read");
+        public static ProjectKeyScopes VideosWrite => new ProjectKeyScopes("videos.write");
         public static ProjectKeyScopes DedicatedDatabasesExecute => new ProjectKeyScopes("dedicatedDatabases.execute");
         public static ProjectKeyScopes BackupsPoliciesRead => new ProjectKeyScopes("backups.policies.read");
         public static ProjectKeyScopes BackupsPoliciesWrite => new ProjectKeyScopes("backups.policies.write");

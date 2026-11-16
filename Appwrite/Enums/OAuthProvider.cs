@@ -38,6 +38,7 @@ namespace Appwrite.Enums
         public static OAuthProvider Kick => new OAuthProvider("kick");
         public static OAuthProvider Linkedin => new OAuthProvider("linkedin");
         public static OAuthProvider Microsoft => new OAuthProvider("microsoft");
+        public static OAuthProvider Naver => new OAuthProvider("naver");
         public static OAuthProvider Notion => new OAuthProvider("notion");
         public static OAuthProvider Oidc => new OAuthProvider("oidc");
         public static OAuthProvider Okta => new OAuthProvider("okta");

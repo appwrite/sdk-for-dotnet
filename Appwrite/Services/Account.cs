@@ -2216,6 +2216,50 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Allow the user to login into their account by providing the username and
+        /// password they use in the project's LDAP directory. The directory verifies
+        /// the password; on the first sign-in an account is created from the directory
+        /// entry, and on later sign-ins the name, email and phone follow the
+        /// directory. This endpoint requires LDAP to be configured and enabled for the
+        /// project. A user is limited to 10 active sessions at a time by default.
+        /// [Learn more about session
+        /// limits](https://appwrite.io/docs/authentication-security#limits).
+        /// </para>
+        /// </summary>
+        public Task<Models.Session> CreateLDAPSession(string username, string password, long? duration = null)
+        {
+            var apiPath = "/account/sessions/ldap";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "username", username },
+                { "password", password },
+                { "duration", duration }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Session Convert(Dictionary<string, object> it)
+            {
+                return Models.Session.From(map: it);
+            }
+
+            return _client.Call<Models.Session>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Use this endpoint to create a session from token. Provide the **userId**
         /// and **secret** parameters from the successful response of authentication
         /// flows initiated by token creation. For example, magic URL and phone login.

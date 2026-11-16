@@ -518,8 +518,11 @@ namespace Appwrite.Services
         /// Get a file preview image. Currently, this method supports preview for image
         /// files (jpg, png, and gif), other supported formats, like pdf, docs, slides,
         /// and spreadsheets, will return the file icon image. You can also pass query
-        /// string arguments for cutting and resizing your preview image. Preview is
+        /// string arguments for cutting and resizing your preview image. Set `output`
+        /// to `auto` to receive avif or webp when the client's `Accept` header
+        /// supports it, falling back to the original image format. Preview is
         /// supported only for image files smaller than 10MB.
+        /// 
         /// </para>
         /// </summary>
         public Task<byte[]> GetFilePreview(string bucketId, string fileId, long? width = null, long? height = null, Appwrite.Enums.ImageGravity? gravity = null, long? quality = null, long? borderWidth = null, string? borderColor = null, long? borderRadius = null, double? opacity = null, long? rotation = null, string? background = null, Appwrite.Enums.ImageFormat? output = null, string? token = null)
