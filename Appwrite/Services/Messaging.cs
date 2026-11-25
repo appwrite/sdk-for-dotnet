@@ -870,6 +870,180 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Create a new Bird email provider. It sends email through Bird's email API
+        /// with a workspace API key that holds the `emails:write` scope.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> CreateBirdEmailProvider(string providerId, string name, string? apiKey = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null, bool? enabled = null)
+        {
+            var apiPath = "/messaging/providers/bird-email";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "providerId", providerId },
+                { "name", name },
+                { "apiKey", apiKey },
+                { "fromName", fromName },
+                { "fromEmail", fromEmail },
+                { "replyToName", replyToName },
+                { "replyToEmail", replyToEmail },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it)
+            {
+                return Models.Provider.From(map: it);
+            }
+
+            return _client.Call<Models.Provider>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a Bird email provider by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> UpdateBirdEmailProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? fromName = null, string? fromEmail = null, string? replyToName = null, string? replyToEmail = null)
+        {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
+            var apiPath = "/messaging/providers/bird-email/{providerId}"
+                .Replace("{providerId}", Client.EncodePath(providerId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "enabled", enabled },
+                { "apiKey", apiKey },
+                { "fromName", fromName },
+                { "fromEmail", fromEmail },
+                { "replyToName", replyToName },
+                { "replyToEmail", replyToEmail }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it)
+            {
+                return Models.Provider.From(map: it);
+            }
+
+            return _client.Call<Models.Provider>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a new Bird SMS provider. It sends SMS through Bird with a workspace
+        /// API key that holds the `sms:write` scope.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> CreateBirdSMSProvider(string providerId, string name, string? @from = null, string? apiKey = null, bool? enabled = null)
+        {
+            var apiPath = "/messaging/providers/bird-sms";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "providerId", providerId },
+                { "name", name },
+                { "from", @from },
+                { "apiKey", apiKey },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it)
+            {
+                return Models.Provider.From(map: it);
+            }
+
+            return _client.Call<Models.Provider>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a Bird SMS provider by its unique ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Provider> UpdateBirdSMSProvider(string providerId, string? name = null, bool? enabled = null, string? apiKey = null, string? @from = null)
+        {
+            if (providerId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"providerId\"");
+            }
+
+            var apiPath = "/messaging/providers/bird-sms/{providerId}"
+                .Replace("{providerId}", Client.EncodePath(providerId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "enabled", enabled },
+                { "apiKey", apiKey },
+                { "from", @from }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Provider Convert(Dictionary<string, object> it)
+            {
+                return Models.Provider.From(map: it);
+            }
+
+            return _client.Call<Models.Provider>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Create a new Firebase Cloud Messaging provider.
         /// </para>
         /// </summary>

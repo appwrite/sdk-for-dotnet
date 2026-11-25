@@ -1032,6 +1032,43 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 Atlassian configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Atlassian> UpdateOAuth2Atlassian(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/atlassian";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Atlassian Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Atlassian.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Atlassian>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Auth0 configuration.
         /// </para>
         /// </summary>
@@ -1745,6 +1782,43 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 Instagram configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Instagram> UpdateOAuth2Instagram(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/instagram";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Instagram Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Instagram.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Instagram>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Kakao configuration.
         /// </para>
         /// </summary>
@@ -1859,6 +1933,80 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 LINE configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Line> UpdateOAuth2Line(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/line";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Line Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Line.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Line>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the project OAuth2 Linear configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Linear> UpdateOAuth2Linear(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/linear";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Linear Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Linear.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Linear>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Linkedin configuration.
         /// </para>
         /// </summary>
@@ -1963,6 +2111,43 @@ namespace Appwrite.Services
             }
 
             return _client.Call<Models.OAuth2Naver>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the project OAuth2 Netlify configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Netlify> UpdateOAuth2Netlify(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/netlify";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Netlify Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Netlify.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Netlify>(
                 method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
@@ -2092,6 +2277,43 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 Patreon configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Patreon> UpdateOAuth2Patreon(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/patreon";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Patreon Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Patreon.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Patreon>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Paypal configuration.
         /// </para>
         /// </summary>
@@ -2203,6 +2425,80 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 Railway configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Railway> UpdateOAuth2Railway(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/railway";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Railway Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Railway.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Railway>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the project OAuth2 Reddit configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Reddit> UpdateOAuth2Reddit(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/reddit";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Reddit Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Reddit.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Reddit>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Resend configuration.
         /// </para>
         /// </summary>
@@ -2231,6 +2527,43 @@ namespace Appwrite.Services
             }
 
             return _client.Call<Models.OAuth2Resend>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the project OAuth2 Roblox configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Roblox> UpdateOAuth2Roblox(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/roblox";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Roblox Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Roblox.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Roblox>(
                 method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
@@ -2343,6 +2676,43 @@ namespace Appwrite.Services
             }
 
             return _client.Call<Models.OAuth2Spotify>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the project OAuth2 Strava configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Strava> UpdateOAuth2Strava(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/strava";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Strava Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Strava.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Strava>(
                 method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
@@ -2537,6 +2907,43 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 Vercel configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2Vercel> UpdateOAuth2Vercel(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/vercel";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2Vercel Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2Vercel.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2Vercel>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Vipps MobilePay configuration.
         /// </para>
         /// </summary>
@@ -2611,6 +3018,43 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Update the project OAuth2 VK configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2VK> UpdateOAuth2VK(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/vk";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2VK Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2VK.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2VK>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
         /// Update the project OAuth2 Webflow configuration.
         /// </para>
         /// </summary>
@@ -2676,6 +3120,43 @@ namespace Appwrite.Services
             }
 
             return _client.Call<Models.OAuth2WordPress>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update the project OAuth2 WorkOS configuration.
+        /// </para>
+        /// </summary>
+        public Task<Models.OAuth2WorkOS> UpdateOAuth2WorkOS(string? clientId = null, string? clientSecret = null, bool? enabled = null)
+        {
+            var apiPath = "/project/oauth2/workos";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "clientId", clientId },
+                { "clientSecret", clientSecret },
+                { "enabled", enabled }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.OAuth2WorkOS Convert(Dictionary<string, object> it)
+            {
+                return Models.OAuth2WorkOS.From(map: it);
+            }
+
+            return _client.Call<Models.OAuth2WorkOS>(
                 method: "PATCH",
                 path: apiPath,
                 headers: apiHeaders,
@@ -2993,107 +3474,159 @@ namespace Appwrite.Services
                 {
                     return Appwrite.Models.OAuth2HuggingFace.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue26) && idValue26?.ToString() == "resend")
+                if (it.TryGetValue("$id", out var idValue26) && idValue26?.ToString() == "instagram")
+                {
+                    return Appwrite.Models.OAuth2Instagram.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue27) && idValue27?.ToString() == "patreon")
+                {
+                    return Appwrite.Models.OAuth2Patreon.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue28) && idValue28?.ToString() == "strava")
+                {
+                    return Appwrite.Models.OAuth2Strava.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue29) && idValue29?.ToString() == "vk")
+                {
+                    return Appwrite.Models.OAuth2VK.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue30) && idValue30?.ToString() == "netlify")
+                {
+                    return Appwrite.Models.OAuth2Netlify.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue31) && idValue31?.ToString() == "railway")
+                {
+                    return Appwrite.Models.OAuth2Railway.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue32) && idValue32?.ToString() == "reddit")
+                {
+                    return Appwrite.Models.OAuth2Reddit.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue33) && idValue33?.ToString() == "vercel")
+                {
+                    return Appwrite.Models.OAuth2Vercel.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue34) && idValue34?.ToString() == "atlassian")
+                {
+                    return Appwrite.Models.OAuth2Atlassian.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue35) && idValue35?.ToString() == "line")
+                {
+                    return Appwrite.Models.OAuth2Line.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue36) && idValue36?.ToString() == "linear")
+                {
+                    return Appwrite.Models.OAuth2Linear.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue37) && idValue37?.ToString() == "roblox")
+                {
+                    return Appwrite.Models.OAuth2Roblox.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue38) && idValue38?.ToString() == "workos")
+                {
+                    return Appwrite.Models.OAuth2WorkOS.From(map: it);
+                }
+                if (it.TryGetValue("$id", out var idValue39) && idValue39?.ToString() == "resend")
                 {
                     return Appwrite.Models.OAuth2Resend.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue27) && idValue27?.ToString() == "cloudflare")
+                if (it.TryGetValue("$id", out var idValue40) && idValue40?.ToString() == "cloudflare")
                 {
                     return Appwrite.Models.OAuth2Cloudflare.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue28) && idValue28?.ToString() == "linkedin")
+                if (it.TryGetValue("$id", out var idValue41) && idValue41?.ToString() == "linkedin")
                 {
                     return Appwrite.Models.OAuth2Linkedin.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue29) && idValue29?.ToString() == "disqus")
+                if (it.TryGetValue("$id", out var idValue42) && idValue42?.ToString() == "disqus")
                 {
                     return Appwrite.Models.OAuth2Disqus.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue30) && idValue30?.ToString() == "amazon")
+                if (it.TryGetValue("$id", out var idValue43) && idValue43?.ToString() == "amazon")
                 {
                     return Appwrite.Models.OAuth2Amazon.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue31) && idValue31?.ToString() == "etsy")
+                if (it.TryGetValue("$id", out var idValue44) && idValue44?.ToString() == "etsy")
                 {
                     return Appwrite.Models.OAuth2Etsy.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue32) && idValue32?.ToString() == "facebook")
+                if (it.TryGetValue("$id", out var idValue45) && idValue45?.ToString() == "facebook")
                 {
                     return Appwrite.Models.OAuth2Facebook.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue33) && idValue33?.ToString() == "tradeshift")
+                if (it.TryGetValue("$id", out var idValue46) && idValue46?.ToString() == "tradeshift")
                 {
                     return Appwrite.Models.OAuth2Tradeshift.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue34) && idValue34?.ToString() == "tradeshiftBox")
+                if (it.TryGetValue("$id", out var idValue47) && idValue47?.ToString() == "tradeshiftBox")
                 {
                     return Appwrite.Models.OAuth2Tradeshift.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue35) && idValue35?.ToString() == "paypal")
+                if (it.TryGetValue("$id", out var idValue48) && idValue48?.ToString() == "paypal")
                 {
                     return Appwrite.Models.OAuth2Paypal.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue36) && idValue36?.ToString() == "paypalSandbox")
+                if (it.TryGetValue("$id", out var idValue49) && idValue49?.ToString() == "paypalSandbox")
                 {
                     return Appwrite.Models.OAuth2Paypal.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue37) && idValue37?.ToString() == "gitlab")
+                if (it.TryGetValue("$id", out var idValue50) && idValue50?.ToString() == "gitlab")
                 {
                     return Appwrite.Models.OAuth2Gitlab.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue38) && idValue38?.ToString() == "authentik")
+                if (it.TryGetValue("$id", out var idValue51) && idValue51?.ToString() == "authentik")
                 {
                     return Appwrite.Models.OAuth2Authentik.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue39) && idValue39?.ToString() == "auth0")
+                if (it.TryGetValue("$id", out var idValue52) && idValue52?.ToString() == "auth0")
                 {
                     return Appwrite.Models.OAuth2Auth0.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue40) && idValue40?.ToString() == "fusionauth")
+                if (it.TryGetValue("$id", out var idValue53) && idValue53?.ToString() == "fusionauth")
                 {
                     return Appwrite.Models.OAuth2FusionAuth.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue41) && idValue41?.ToString() == "keycloak")
+                if (it.TryGetValue("$id", out var idValue54) && idValue54?.ToString() == "keycloak")
                 {
                     return Appwrite.Models.OAuth2Keycloak.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue42) && idValue42?.ToString() == "oidc")
+                if (it.TryGetValue("$id", out var idValue55) && idValue55?.ToString() == "oidc")
                 {
                     return Appwrite.Models.OAuth2Oidc.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue43) && idValue43?.ToString() == "apple")
+                if (it.TryGetValue("$id", out var idValue56) && idValue56?.ToString() == "apple")
                 {
                     return Appwrite.Models.OAuth2Apple.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue44) && idValue44?.ToString() == "okta")
+                if (it.TryGetValue("$id", out var idValue57) && idValue57?.ToString() == "okta")
                 {
                     return Appwrite.Models.OAuth2Okta.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue45) && idValue45?.ToString() == "kick")
+                if (it.TryGetValue("$id", out var idValue58) && idValue58?.ToString() == "kick")
                 {
                     return Appwrite.Models.OAuth2Kick.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue46) && idValue46?.ToString() == "microsoft")
+                if (it.TryGetValue("$id", out var idValue59) && idValue59?.ToString() == "microsoft")
                 {
                     return Appwrite.Models.OAuth2Microsoft.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue47) && idValue47?.ToString() == "tiktok")
+                if (it.TryGetValue("$id", out var idValue60) && idValue60?.ToString() == "tiktok")
                 {
                     return Appwrite.Models.OAuth2TikTok.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue48) && idValue48?.ToString() == "kakao")
+                if (it.TryGetValue("$id", out var idValue61) && idValue61?.ToString() == "kakao")
                 {
                     return Appwrite.Models.OAuth2Kakao.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue49) && idValue49?.ToString() == "naver")
+                if (it.TryGetValue("$id", out var idValue62) && idValue62?.ToString() == "naver")
                 {
                     return Appwrite.Models.OAuth2Naver.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue50) && idValue50?.ToString() == "vipps")
+                if (it.TryGetValue("$id", out var idValue63) && idValue63?.ToString() == "vipps")
                 {
                     return Appwrite.Models.OAuth2Vipps.From(map: it);
                 }
-                if (it.TryGetValue("$id", out var idValue51) && idValue51?.ToString() == "vippsSandbox")
+                if (it.TryGetValue("$id", out var idValue64) && idValue64?.ToString() == "vippsSandbox")
                 {
                     return Appwrite.Models.OAuth2Vipps.From(map: it);
                 }

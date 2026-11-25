@@ -17,19 +17,19 @@ The package targets .NET Standard 2.0 and .NET Framework 4.6.2, so it runs on .N
 Install it with the .NET CLI:
 
 ```bash
-dotnet add package Appwrite --version 11.3.0
+dotnet add package Appwrite --version 11.4.0
 ```
 
 Or with the Package Manager Console:
 
 ```powershell
-Install-Package Appwrite -Version 11.3.0
+Install-Package Appwrite -Version 11.4.0
 ```
 
 Or add a reference to your project's `.csproj` file:
 
 ```xml
-<PackageReference Include="Appwrite" Version="11.3.0" />
+<PackageReference Include="Appwrite" Version="11.4.0" />
 ```
 
 ## Getting Started

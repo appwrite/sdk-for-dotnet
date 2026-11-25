@@ -1,0 +1,24 @@
+```csharp
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
+    .SetKey("<YOUR_API_KEY>"); // Your secret API key
+
+Messaging messaging = new Messaging(client);
+
+Appwrite.Models.Provider result = await messaging.UpdateBirdEmailProvider(
+    providerId: "<PROVIDER_ID>",
+    name: "<NAME>", // optional
+    enabled: false, // optional
+    apiKey: "<API_KEY>", // optional
+    fromName: "<FROM_NAME>", // optional
+    fromEmail: "email@example.com", // optional
+    replyToName: "<REPLY_TO_NAME>", // optional
+    replyToEmail: "email@example.com" // optional
+);
+
+```
