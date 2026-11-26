@@ -5722,5 +5722,221 @@ namespace Appwrite.Services
 
         }
 
+        /// <para>
+        /// Get a list of video profiles in the current project (`GET
+        /// /v1/project/videos/profiles`). Every profile is returned regardless of
+        /// codec. Filter with `queries`, for example `Query.equal('codec', ['h264'])`
+        /// for one encode ladder, or on `name`, `width`, `height`, `videoBitRate` and
+        /// `audioBitRate`. Search with `Query.search()` on the `search` attribute.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.VideoProfileList> ListVideoProfiles(List<string>? queries = null, bool? total = null)
+        {
+            var apiPath = "/project/videos/profiles";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "total", total }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.VideoProfileList Convert(Dictionary<string, object> it)
+            {
+                return Models.VideoProfileList.From(map: it);
+            }
+
+            return _client.Call<Models.VideoProfileList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create a video profile (`POST /v1/project/videos/profiles`) describing an
+        /// encoding target: output dimensions, video/audio bitrates, and encode codec.
+        /// Only codecs enabled on this instance are accepted; the default is `h264`. A
+        /// disabled codec is rejected. Creating a profile with the same width, height,
+        /// bitrates, and codec fails with `video_profile_already_exists`. Bitrates are
+        /// in bits per second and must be multiples of 1000. Renditions are encoded
+        /// against a profile.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.VideoProfile> CreateVideoProfile(string profileId, string name, long videoBitRate, long audioBitRate, long width, long height, Appwrite.Enums.VideoCodecId? codec = null)
+        {
+            var apiPath = "/project/videos/profiles";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "profileId", profileId },
+                { "name", name },
+                { "videoBitRate", videoBitRate },
+                { "audioBitRate", audioBitRate },
+                { "width", width },
+                { "height", height },
+                { "codec", codec?.Value }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.VideoProfile Convert(Dictionary<string, object> it)
+            {
+                return Models.VideoProfile.From(map: it);
+            }
+
+            return _client.Call<Models.VideoProfile>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get a video profile by its unique ID (`GET
+        /// /v1/project/videos/profiles/:profileId`).
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.VideoProfile> GetVideoProfile(string profileId)
+        {
+            if (profileId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"profileId\"");
+            }
+
+            var apiPath = "/project/videos/profiles/{profileId}"
+                .Replace("{profileId}", Client.EncodePath(profileId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.VideoProfile Convert(Dictionary<string, object> it)
+            {
+                return Models.VideoProfile.From(map: it);
+            }
+
+            return _client.Call<Models.VideoProfile>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update a video profile by its unique ID (`PATCH
+        /// /v1/project/videos/profiles/:profileId`). Existing renditions are not
+        /// re-encoded. Changing the profile onto the same width, height, bitrates, and
+        /// codec as another profile fails with `video_profile_already_exists`.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<Models.VideoProfile> UpdateVideoProfile(string profileId, string? name = null, long? videoBitRate = null, long? audioBitRate = null, long? width = null, long? height = null)
+        {
+            if (profileId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"profileId\"");
+            }
+
+            var apiPath = "/project/videos/profiles/{profileId}"
+                .Replace("{profileId}", Client.EncodePath(profileId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "videoBitRate", videoBitRate },
+                { "audioBitRate", audioBitRate },
+                { "width", width },
+                { "height", height }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.VideoProfile Convert(Dictionary<string, object> it)
+            {
+                return Models.VideoProfile.From(map: it);
+            }
+
+            return _client.Call<Models.VideoProfile>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete a video profile by its unique ID (`DELETE
+        /// /v1/project/videos/profiles/:profileId`). Renditions already encoded
+        /// against it are left in place.
+        /// 
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteVideoProfile(string profileId)
+        {
+            if (profileId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"profileId\"");
+            }
+
+            var apiPath = "/project/videos/profiles/{profileId}"
+                .Replace("{profileId}", Client.EncodePath(profileId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
     }
 }
