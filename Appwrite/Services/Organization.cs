@@ -112,6 +112,208 @@ namespace Appwrite.Services
         }
 
         /// <para>
+        /// Get a list of your organization's escalations. Use `Query.search('search',
+        /// term)` to search escalation IDs and names.
+        /// </para>
+        /// </summary>
+        public Task<Models.EscalationList> ListEscalations(List<string>? queries = null, bool? total = null)
+        {
+            var apiPath = "/organization/escalations";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "queries", queries },
+                { "total", total }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.EscalationList Convert(Dictionary<string, object> it)
+            {
+                return Models.EscalationList.From(map: it);
+            }
+
+            return _client.Call<Models.EscalationList>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Create an escalation for your organization. A monitor using it notifies the
+        /// escalation's steps one after another while its alert fires, each by email,
+        /// push and in the console, until a member acknowledges the alert or it
+        /// resolves. Each step waits its `delay` in seconds, after the alert fires for
+        /// the first step and after the previous step for the others, then notifies
+        /// the members holding its `roles` and those named in `userIds`. With
+        /// `repeat`, the steps run again from the first, a monitor's cooldown after
+        /// the last step.
+        /// </para>
+        /// </summary>
+        public Task<Models.Escalation> CreateEscalation(string escalationId, string name, List<object> steps, long? repeat = null)
+        {
+            var apiPath = "/organization/escalations";
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "escalationId", escalationId },
+                { "name", name },
+                { "steps", steps },
+                { "repeat", repeat }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Escalation Convert(Dictionary<string, object> it)
+            {
+                return Models.Escalation.From(map: it);
+            }
+
+            return _client.Call<Models.Escalation>(
+                method: "POST",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Get one of your organization's escalations by its ID.
+        /// </para>
+        /// </summary>
+        public Task<Models.Escalation> GetEscalation(string escalationId)
+        {
+            if (escalationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"escalationId\"");
+            }
+
+            var apiPath = "/organization/escalations/{escalationId}"
+                .Replace("{escalationId}", Client.EncodePath(escalationId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Escalation Convert(Dictionary<string, object> it)
+            {
+                return Models.Escalation.From(map: it);
+            }
+
+            return _client.Call<Models.Escalation>(
+                method: "GET",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Update an escalation's name, steps or repeats; what you leave out stays as
+        /// it is. Alerts already escalating keep the steps they started with; the next
+        /// alert uses the new ones.
+        /// </para>
+        /// </summary>
+        public Task<Models.Escalation> UpdateEscalation(string escalationId, string? name = null, List<object>? steps = null, long? repeat = null)
+        {
+            if (escalationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"escalationId\"");
+            }
+
+            var apiPath = "/organization/escalations/{escalationId}"
+                .Replace("{escalationId}", Client.EncodePath(escalationId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+                { "name", name },
+                { "steps", steps },
+                { "repeat", repeat }
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+            static Models.Escalation Convert(Dictionary<string, object> it)
+            {
+                return Models.Escalation.From(map: it);
+            }
+
+            return _client.Call<Models.Escalation>(
+                method: "PATCH",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!,
+                convert: Convert);
+
+        }
+
+        /// <para>
+        /// Delete an escalation. An escalation that a monitor uses cannot be deleted:
+        /// move the monitor to another escalation or to `notify` roles first. Open
+        /// alerts keep the steps they started with.
+        /// </para>
+        /// </summary>
+        public Task<object> DeleteEscalation(string escalationId)
+        {
+            if (escalationId == "")
+            {
+                throw new AppwriteException("Missing required parameter: \"escalationId\"");
+            }
+
+            var apiPath = "/organization/escalations/{escalationId}"
+                .Replace("{escalationId}", Client.EncodePath(escalationId));
+
+            var apiParameters = new Dictionary<string, object?>()
+            {
+            };
+
+            var apiHeaders = new Dictionary<string, string>()
+            {
+                { "X-Appwrite-Project", _client.GetConfig("project") },
+                { "content-type", "application/json" },
+                { "accept", "application/json" }
+            };
+
+
+
+            return _client.Call<object>(
+                method: "DELETE",
+                path: apiPath,
+                headers: apiHeaders,
+                parameters: apiParameters.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value)!);
+
+        }
+
+        /// <para>
         /// List app installations on the organization. Any organization member can
         /// read installations.
         /// </para>
