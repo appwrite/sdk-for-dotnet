@@ -93,11 +93,11 @@ namespace Appwrite
             _headers = new Dictionary<string, string>()
             {
                 { "content-type", "application/json" },
-                { "user-agent", $"AppwriteDotNetSDK/11.6.0 ({System.Environment.OSVersion.Platform}; {System.Environment.OSVersion.VersionString})"},
+                { "user-agent", $"AppwriteDotNetSDK/11.7.0 ({System.Environment.OSVersion.Platform}; {System.Environment.OSVersion.VersionString})"},
                 { "x-sdk-name", ".NET" },
                 { "x-sdk-platform", "server" },
                 { "x-sdk-language", "dotnet" },
-                { "x-sdk-version", "11.6.0"},
+                { "x-sdk-version", "11.7.0"},
                 { "X-Appwrite-Response-Format", "2.7.2" }
             };
 
