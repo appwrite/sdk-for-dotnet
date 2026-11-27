@@ -6,7 +6,7 @@ using Appwrite.Services;
 Client client = new Client()
     .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<YOUR_PROJECT_ID>") // Your project ID
-    .SetSession(""); // The user session to authenticate with
+    .SetKey("<YOUR_API_KEY>"); // Your secret API key
 
 Analytics analytics = new Analytics(client);
 
